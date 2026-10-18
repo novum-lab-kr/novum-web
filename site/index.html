@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>novum — Where Possibility Begins.</title>
-<meta name="description" content="novum builds Hermes, an AI agent platform that plans, builds and operates software services.">
+<meta name="description" content="novum builds Athena, an AI agent development team that plans, builds, reviews and ships software, and Athena Studio, its desktop app.">
 <meta property="og:title" content="novum — Where Possibility Begins.">
-<meta property="og:description" content="Hermes: an AI agent platform that plans, builds and operates software services.">
+<meta property="og:description" content="Athena: an AI agent development team that plans, builds, reviews and ships software.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#F5F3EF" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#141719" media="(prefers-color-scheme: dark)">
@@ -66,6 +66,10 @@ h2{font-size:clamp(28px,3.4vw,40px);line-height:1.15;letter-spacing:-.015em;font
 .product .body{padding:40px}
 .tag{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--slate);margin-bottom:14px}
 .tag i{width:8px;height:8px;border-radius:50%;background:#2FB36B;box-shadow:0 0 0 4px rgba(47,179,107,.18)}
+.tag.soon i{background:#E0A43A;box-shadow:0 0 0 4px rgba(224,164,58,.18)}
+.product.studio{margin-top:48px}
+.product .art .logo-art{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.product .art .logo-art img{width:min(42%,180px);height:auto}
 .product h3{font-size:30px;font-weight:600;letter-spacing:-.01em;margin-bottom:6px}
 .product .kr{color:var(--muted);font-size:15px;margin-bottom:18px}
 .product ul{list-style:none;margin:22px 0 30px;display:grid;gap:10px}
@@ -810,7 +814,7 @@ footer .biz{margin-top:12px;font-size:12px;display:block}
 </svg></span>
     </a>
     <nav>
-      <a href="#hermes">Hermes</a>
+      <a href="#athena">Athena</a>
       <a href="#proof">In production</a>
       <a href="#roadmap">Roadmap</a>
       <a href="#company">Company</a>
@@ -824,9 +828,9 @@ footer .biz{margin-top:12px;font-size:12px;display:block}
     <div>
       <p class="eyebrow">AI agent platform · Seoul</p>
       <h1>Where Possibility Begins.</h1>
-      <p class="lead">novum builds <strong>Hermes</strong>, an AI agent platform where a team of Claude agents plans, builds and operates software services under human direction. We are proving it in production on our own services before opening it to other teams.</p>
+      <p class="lead">novum builds <strong>Athena</strong>, an AI agent development team where Claude agents plan, build, review and ship software under human direction. Its desktop app, <strong>Athena Studio</strong>, is coming soon.</p>
       <div class="btns">
-        <a class="btn primary" href="#hermes">Meet Hermes →</a>
+        <a class="btn primary" href="#athena">Meet Athena →</a>
         <a class="btn" href="mailto:mcsung@novum-lab.com">Contact us</a>
       </div>
     </div>
@@ -1515,10 +1519,10 @@ footer .biz{margin-top:12px;font-size:12px;display:block}
   </div>
 </div>
 
-<section id="hermes">
+<section id="athena">
   <div class="wrap">
     <div class="sec-head">
-      <div class="label">Hermes</div>
+      <div class="label">Athena</div>
       <div>
         <h2>An AI team that ships and runs services.</h2>
         <p>Each service gets a lead agent built on Claude. It turns goals into plans, asks a human at the moments that matter, then coordinates specialist agents to build, verify, release and keep the service healthy.</p>
@@ -1539,6 +1543,26 @@ footer .biz{margin-top:12px;font-size:12px;display:block}
     <div class="roles">
       <span>Product management</span><span>Backend</span><span>Frontend</span><span>Mobile</span><span>QA</span><span>Security</span><span>Code review</span><span>DevOps &amp; monitoring</span><span>Market research</span><span>Business strategy</span>
     </div>
+    <article class="product studio">
+      <div class="art">
+        <svg viewBox="0 0 400 320" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs><radialGradient id="sglow" cx="50%" cy="50%" r="55%"><stop offset="0" stop-color="#FFE2B2" stop-opacity=".16"/><stop offset="1" stop-color="#FFE2B2" stop-opacity="0"/></radialGradient></defs>
+          <rect width="400" height="320" fill="url(#sglow)"/>
+        </svg>
+        <div class="logo-art"><img src="img/athena-logo-white.png" width="180" height="180" alt="Athena logo"></div>
+      </div>
+      <div class="body">
+        <div class="tag soon"><i></i>Coming soon</div>
+        <h3>Athena Studio</h3>
+        <p class="kr">아테나 스튜디오 · Desktop app for Athena</p>
+        <p>One desktop window for working with your Athena agent team: run the agents, follow every task and see what each agent is doing as it happens.</p>
+        <ul>
+          <li>Workspace: a built-in terminal with tabs and split panes, one workspace per repository</li>
+          <li>Status board: plans, reviews and agent progress at a glance</li>
+          <li>Agent monitor: a live feed of what each agent is working on</li>
+        </ul>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -1548,7 +1572,7 @@ footer .biz{margin-top:12px;font-size:12px;display:block}
       <div class="label">In production</div>
       <div>
         <h2>Proven on our own services first.</h2>
-        <p>We validate Hermes by running real consumer products with it, end to end, from first commit to daily operations.</p>
+        <p>We run real consumer products with our AI agent team, end to end, from first commit to daily operations.</p>
       </div>
     </div>
     <article class="product">
@@ -1569,13 +1593,13 @@ footer .biz{margin-top:12px;font-size:12px;display:block}
         </svg>
       </div>
       <div class="body">
-        <div class="tag"><i></i>Live · Built &amp; operated by Hermes</div>
+        <div class="tag"><i></i>Live · Built &amp; operated by our AI agent team</div>
         <h3>Syung</h3>
         <p class="kr">슝 · Real-time Seoul metro map</p>
         <p>A live 3D map of the Seoul Metropolitan subway that shows every train moving along its track, so riders see where trains are right now instead of reading timetables.</p>
         <ul>
-          <li>Planned, built, tested and deployed by Hermes agents</li>
-          <li>Monitored around the clock by the Hermes operations agent</li>
+          <li>Planned, built, tested and deployed by our AI agents</li>
+          <li>Monitored around the clock by our AI operations agent</li>
           <li>Turns public transit data into a product people check on the go</li>
         </ul>
         <a class="btn primary" href="https://syung.novum-lab.com" target="_blank" rel="noopener">Open Syung →</a>
@@ -1591,9 +1615,9 @@ footer .biz{margin-top:12px;font-size:12px;display:block}
       <div><h2>From internal platform to product.</h2></div>
     </div>
     <div class="road">
-      <div class="phase now"><small>Now</small><b>Validate in production</b><span>Run Hermes on our own services and harden it against real workloads.</span></div>
-      <div class="phase"><small>Next</small><b>More services</b><span>Launch additional consumer services built and operated by Hermes.</span></div>
-      <div class="phase"><small>Later</small><b>Hermes for teams</b><span>Open the platform to other small teams that want to ship like a full product org.</span></div>
+      <div class="phase now"><small>Now</small><b>Validate in production</b><span>Run Athena on our own services and harden it against real workloads.</span></div>
+      <div class="phase"><small>Next</small><b>More services</b><span>Launch additional consumer services built and operated by Athena.</span></div>
+      <div class="phase"><small>Later</small><b>Athena for teams</b><span>Open the platform to other small teams that want to ship like a full product org.</span></div>
     </div>
   </div>
 </section>
