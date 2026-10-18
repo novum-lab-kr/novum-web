@@ -70,6 +70,10 @@ h2{font-size:clamp(28px,3.4vw,40px);line-height:1.15;letter-spacing:-.015em;font
 .product.studio{margin-top:48px}
 .product .art .logo-art{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
 .product .art .logo-art img{width:min(42%,180px);height:auto}
+.product.chagok{margin-top:24px}
+.product .art.mint{background:#DDF1E7}
+@media (prefers-color-scheme: dark){.product .art.mint{background:#163128}}
+.product .art .logo-art img.app-icon{width:min(38%,160px);border-radius:22%;image-rendering:pixelated;box-shadow:0 10px 30px rgba(6,38,28,.18)}
 .product h3{font-size:30px;font-weight:600;letter-spacing:-.01em;margin-bottom:6px}
 .product .kr{color:var(--muted);font-size:15px;margin-bottom:18px}
 .product ul{list-style:none;margin:22px 0 30px;display:grid;gap:10px}
@@ -1572,7 +1576,7 @@ footer .biz{margin-top:12px;font-size:12px;display:block}
       <div class="label">In production</div>
       <div>
         <h2>Proven on our own services first.</h2>
-        <p>We run real consumer products with our AI agent team, end to end, from first commit to daily operations.</p>
+        <p>We build and run real consumer products, end to end, from first commit to daily operations.</p>
       </div>
     </div>
     <article class="product">
@@ -1603,6 +1607,22 @@ footer .biz{margin-top:12px;font-size:12px;display:block}
           <li>Turns public transit data into a product people check on the go</li>
         </ul>
         <a class="btn primary" href="https://syung.novum-lab.com" target="_blank" rel="noopener">Open Syung →</a>
+      </div>
+    </article>
+    <article class="product chagok">
+      <div class="art mint">
+        <div class="logo-art"><img class="app-icon" src="img/chagok-icon.png" width="160" height="160" alt="Chagok app icon"></div>
+      </div>
+      <div class="body">
+        <div class="tag soon"><i></i>Coming soon</div>
+        <h3>Chagok</h3>
+        <p class="kr">차곡차곡 · Sticker goal tracker</p>
+        <p>Set your own goals, add a sticker each time you finish one, and look back as the board fills up.</p>
+        <ul>
+          <li>Tally boards and calendar boards</li>
+          <li>Add stickers from the iOS home-screen widget or Apple Watch</li>
+          <li>Works offline; sign in to back up and restore</li>
+        </ul>
       </div>
     </article>
   </div>
