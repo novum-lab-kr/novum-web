@@ -28,6 +28,40 @@
       }, (0.35 + i * 0.09 + 0.5) * 1000);
     });
     svg.classList.add('fd-play');
+    setTimeout(function () { startPulses(svg); }, (0.35 + paths.length * 0.09 + 0.6) * 1000);
+  }
+
+  // 다 그린 뒤 계속 도는 움직임: 금빛 점 하나가 흐름 순서(문서 순서)대로 선을 하나씩 타고 지나간다.
+  // 모든 점이 같은 주기(CYCLE)를 쓰고 자기 차례에만 보이게 해서, 점 하나가 끝까지 흘러가는 것처럼 보인다
+  var NS = 'http://www.w3.org/2000/svg';
+  function startPulses(svg) {
+    var lines = [].slice.call(svg.querySelectorAll('.fd-l')).filter(function (p) {
+      try { return p.getTotalLength() > 20; } catch (e) { return false; }
+    });
+    if (!lines.length) return;
+    var CYCLE = Math.max(4, lines.length * 0.9), slot = 0.9 / lines.length;
+    lines.forEach(function (p, i) {
+      if (!p.id) p.id = 'fdp-' + Math.random().toString(36).slice(2, 9);
+      var a = 0.02 + i * slot, b = a + slot * 0.9, e = slot * 0.12;
+      var c = document.createElementNS(NS, 'circle');
+      c.setAttribute('r', '3.6');
+      c.setAttribute('class', 'fd-pulse');
+      c.setAttribute('opacity', '0');
+      var mv = document.createElementNS(NS, 'animateMotion');
+      mv.setAttribute('dur', CYCLE + 's'); mv.setAttribute('repeatCount', 'indefinite');
+      mv.setAttribute('calcMode', 'linear');
+      mv.setAttribute('keyPoints', '0;0;1;1'); mv.setAttribute('keyTimes', '0;' + a.toFixed(4) + ';' + b.toFixed(4) + ';1');
+      var mp = document.createElementNS(NS, 'mpath');
+      mp.setAttribute('href', '#' + p.id); mp.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#' + p.id);
+      mv.appendChild(mp);
+      var op = document.createElementNS(NS, 'animate');
+      op.setAttribute('attributeName', 'opacity'); op.setAttribute('dur', CYCLE + 's'); op.setAttribute('repeatCount', 'indefinite');
+      op.setAttribute('values', '0;0;1;1;0;0');
+      op.setAttribute('keyTimes', ['0', a, a + e, b - e, b, '1'].map(function (v) { return typeof v === 'number' ? v.toFixed(4) : v; }).join(';'));
+      c.appendChild(mv); c.appendChild(op);
+      p.parentNode.insertBefore(c, p.nextSibling);
+      try { mv.beginElement(); op.beginElement(); } catch (err) {}
+    });
   }
 
   function check() {

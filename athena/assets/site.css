@@ -741,3 +741,14 @@ main, footer { position: relative; }
 .lg-agent::before { background: rgba(127, 178, 255, .4); }
 .lg-rev::before { background: rgba(176, 148, 255, .42); }
 .lg-learn::before { background: rgba(111, 207, 151, .4); }
+
+/* 그림 계속 움직이기(motion.js startPulses · 동작 줄이기면 motion.js 가 아예 안 돈다) */
+.fd-pulse { fill: #f6e2b0; filter: drop-shadow(0 0 4px rgba(242, 217, 160, .95)) drop-shadow(0 0 10px rgba(217, 181, 111, .6)); pointer-events: none; }
+.fd-play .fd-n { animation: fdn 2.4s linear infinite; }
+@keyframes fdn { to { stroke-dashoffset: -21; } }
+.fd-play .fd-box.fd-lead { animation: fdlead 3.2s ease-in-out infinite; }
+@keyframes fdlead {
+  0%, 100% { stroke: rgba(255, 255, 255, .42); filter: drop-shadow(0 0 14px rgba(255, 255, 255, .05)) drop-shadow(0 8px 16px rgba(0, 0, 0, .4)); }
+  50% { stroke: rgba(255, 255, 255, .75); filter: drop-shadow(0 0 22px rgba(255, 255, 255, .16)) drop-shadow(0 8px 16px rgba(0, 0, 0, .4)); }
+}
+@media (prefers-reduced-motion: reduce) { .fd-play .fd-n, .fd-play .fd-box.fd-lead { animation: none; } .fd-pulse { display: none; } }
