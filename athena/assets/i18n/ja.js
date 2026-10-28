@@ -404,9 +404,6 @@ window.ATHENA_I18N.ja = {
   "s.d.check": "チェックスクリプト",
   "s.d.qa2": "QA チェック",
   "s.d.noqa": "画面なし・QA なし",
-  "s.d.more": "mobile-fe",
-  "s.d.mores": "ui-kit · …",
-  "s.d.morem": "mobile-fe · ui-kit · …",
   "s.d.route": "<tspan style=\"font-weight:600\">ルーティング</tspan>: どの依頼をどのリポジトリへ送るか",
   "s.d.svc": "<tspan style=\"font-weight:600\">サービス概要</tspan>: 各アプリの役割と技術スタック",
   "s.d.fp": "<tspan style=\"font-weight:600\">ベースライン</tspan>: 次の同期では変わった部分だけ更新",
@@ -423,5 +420,11 @@ window.ATHENA_I18N.ja = {
   "n.lg.you": "あなたが決める",
   "n.lg.ag": "エージェントの作業・チェック",
   "n.lg.rv": "レビュー",
-  "n.lg.ln": "学習"
+  "n.lg.ln": "学習",
+  "s.d.a3": "mobile-app",
+  "s.d.a3s": "mobile 担当エージェント",
+  "s.d.a3m": "同じノート · アプリのルール(Expo)",
+  "s.d.apprules": "アプリのルール(Expo)",
+  "s.d.packmore": "+ リポジトリごとにエージェント 1 つ(ui-kit · …)",
+  "s.d.packmore2": "+ ui-kit · …"
 };

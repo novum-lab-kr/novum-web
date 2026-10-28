@@ -404,9 +404,6 @@ window.ATHENA_I18N.ko = {
   "s.d.check": "점검 스크립트",
   "s.d.qa2": "QA 점검",
   "s.d.noqa": "화면이 없어 QA 없음",
-  "s.d.more": "mobile-fe",
-  "s.d.mores": "ui-kit · …",
-  "s.d.morem": "mobile-fe · ui-kit · …",
   "s.d.route": "<tspan style=\"font-weight:600\">라우팅</tspan>: 어떤 요청이 어느 레포로 가는지",
   "s.d.svc": "<tspan style=\"font-weight:600\">서비스 개요</tspan>: 앱마다 하는 일과 기술 스택",
   "s.d.fp": "<tspan style=\"font-weight:600\">기준점</tspan>: 다음 동기화 때 바뀐 것만 고쳐요",
@@ -423,5 +420,11 @@ window.ATHENA_I18N.ko = {
   "n.lg.you": "내가 결정",
   "n.lg.ag": "에이전트 작업 · 검사",
   "n.lg.rv": "리뷰",
-  "n.lg.ln": "학습"
+  "n.lg.ln": "학습",
+  "s.d.a3": "mobile-app",
+  "s.d.a3s": "mobile 담당 에이전트",
+  "s.d.a3m": "같은 노트 · 앱 규칙(Expo)",
+  "s.d.apprules": "앱 규칙(Expo)",
+  "s.d.packmore": "+ 레포마다 에이전트 하나(ui-kit · …)",
+  "s.d.packmore2": "+ ui-kit · …"
 };

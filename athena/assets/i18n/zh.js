@@ -404,9 +404,6 @@ window.ATHENA_I18N.zh = {
   "s.d.check": "检查脚本",
   "s.d.qa2": "QA 检查",
   "s.d.noqa": "无画面，不做 QA",
-  "s.d.more": "mobile-fe",
-  "s.d.mores": "ui-kit · …",
-  "s.d.morem": "mobile-fe · ui-kit · …",
   "s.d.route": "<tspan style=\"font-weight:600\">路由</tspan>: 哪个需求交给哪个仓库",
   "s.d.svc": "<tspan style=\"font-weight:600\">服务概览</tspan>: 每个应用的用途和技术栈",
   "s.d.fp": "<tspan style=\"font-weight:600\">基线</tspan>: 之后同步只更新有变化的部分",
@@ -423,5 +420,11 @@ window.ATHENA_I18N.zh = {
   "n.lg.you": "由你决定",
   "n.lg.ag": "智能体编写与检查",
   "n.lg.rv": "审查",
-  "n.lg.ln": "学习"
+  "n.lg.ln": "学习",
+  "s.d.a3": "mobile-app",
+  "s.d.a3s": "负责 mobile 的智能体",
+  "s.d.a3m": "相同笔记 · 应用规则(Expo)",
+  "s.d.apprules": "应用规则(Expo)",
+  "s.d.packmore": "+ 每个仓库一个智能体(ui-kit · …)",
+  "s.d.packmore2": "+ ui-kit · …"
 };
