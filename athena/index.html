@@ -44,135 +44,148 @@
 </header>
 
 <main>
-<div class="top-hero">
+<div class="h3-hero">
   <div class="wrap">
-    <p class="status" data-t="m.status">macOS 13 or later · Apple Silicon and Intel · <b>Not released yet</b></p>
-    <h1 data-t="m.h1">Run a team of AI coding agents from one Mac app.</h1>
-    <p class="lead" data-t="m.lead">Athena Studio runs Athena, a team lead agent that writes a plan and hands each part to the coding agent for that repository. You watch their terminals side by side, answer their questions and review the pull requests they open. It uses Claude Code or Codex with your own account.</p>
-    <div class="btns">
-      <a class="btn gold" href="mailto:mcsung@novum-lab.com?subject=Athena%20Studio%20%E2%80%94%20notify%20me%20at%20launch" data-t="m.notify">Get notified at launch</a>
-      <a class="btn" href="#start" data-t="m.howto.btn">How to use it ↓</a>
-      <small data-t="m.mailnote">Opens your email app.</small>
+    <div class="h3-head">
+      <h1 data-t="n.h1">Your AI coding team, in one window.</h1>
+      <div>
+        <p class="h3-lead" data-t="n.lead">Ask Athena, the team lead, to plan and split work across your repositories. Answer the agents' questions, and check code changes and PRs in the same Mac app.</p>
+        <div class="btns">
+          <a class="btn gold" href="mailto:mcsung@novum-lab.com?subject=Athena%20Studio%20%E2%80%94%20notify%20me%20at%20launch" data-t="n.cta">Get launch updates</a>
+          <a class="btn" href="#flow" data-t="n.cta2">See the workflow ↓</a>
+        </div>
+        <p class="h3-note" data-t="n.note">macOS 13+ · Apple Silicon / Intel · Claude Code or Codex · Not released yet (the button opens your email app)</p>
+      </div>
     </div>
-    <figure class="hero-shot shot">
-      <img data-lang-src="/assets/shots/workspace-{l}" src="/assets/shots/workspace-en.webp" srcset="/assets/shots/workspace-en-1200.webp 1200w, /assets/shots/workspace-en.webp 2400w" sizes="(max-width: 1180px) 100vw, 1140px" width="2400" height="1350" alt="Athena Studio window: workspaces on the left, Athena and a web agent working side by side, and the agent monitor below." data-ta="alt:h.hero.alt">
-      <span class="pin" style="left:19%;top:10.5%">1</span>
-      <span class="pin" style="left:52.5%;top:10.5%">2</span>
-      <span class="pin" style="left:19%;top:83%">3</span>
+    <figure class="shot h3-shot">
+      <picture>
+        <img data-lang-src="/assets/shots/workspace-{l}" src="/assets/shots/workspace-en.webp" srcset="/assets/shots/workspace-en-1200.webp 1200w, /assets/shots/workspace-en.webp 2400w" sizes="(max-width: 1296px) 100vw, 1248px" width="2400" height="1350" alt="Athena Studio window: workspaces on the left, Athena and a web agent working side by side, and the agent monitor below." data-ta="alt:h.hero.alt">
+      </picture>
     </figure>
-    <ol class="pins">
-      <li><b>1</b><span data-t="m.pin1">Athena's pane. You type requests here, and Athena replies with its plan.</span></li>
-      <li><b>2</b><span data-t="m.pin2">A repository agent, working on its own branch.</span></li>
-      <li><b>3</b><span data-t="m.pin3">The agent monitor: file edits and commands from every agent.</span></li>
-    </ol>
+    <p class="h3-steps"><span data-t="n.steps">Install → connect repositories → ask Athena → answer questions → review the PR</span></p>
   </div>
 </div>
 
-<section id="start">
+<section id="flow" class="h3-sec">
   <div class="wrap">
-    <div class="sec-head">
-      <h2 data-t="m.start.h">How to use it</h2>
-      <p data-t="m.start.p">Once it's released, going from install to a merged pull request looks like this.</p>
-    </div>
-    <ol class="howto">
-      <li><span class="n">01</span><b data-t="m.s1">Install</b><span data-t="m.s1p">Install the app. Claude Code or Codex needs to be installed and signed in with your account, along with git, Python 3 and Node.js.</span></li>
-      <li><span class="n">02</span><b data-t="m.s2">Make a pack</b><span data-t="m.s2p">On first launch, choose New Pack and pick repositories on your Mac. A pack is the set of repositories and agent settings you work with. If your team already has one, import it.</span></li>
-      <li><span class="n">03</span><b data-t="m.s3">Ask Athena</b><span data-t="m.s3p">In the athena workspace, describe the change you want. Athena writes a plan and hands it to the agent for each repository involved.</span></li>
-      <li><span class="n">04</span><b data-t="m.s4">Answer questions</b><span data-t="m.s4p">When an agent needs a decision, a red dot appears in the menu bar and the question shows up in Work. Open it, choose an answer, and the agent continues.</span></li>
-      <li><span class="n">05</span><b data-t="m.s5">Review and merge</b><span data-t="m.s5p">Check the diff and test results, then merge the pull request. With automatic review turned on for a repository, review and fixes run first and you click Merge at the end.</span></li>
-    </ol>
-    <p class="after-link" data-t="m.start.more"><a href="/docs/#start">Step-by-step guide in Docs →</a></p>
+    <p class="h3-num">01</p>
+    <h2 data-t="n.f.h">Ask Athena. The work is split by repository.</h2>
+    <p class="h3-p" data-t="n.f.p">Athena writes the plan and hands each part to that repository's agent. Each agent works on its own branch and asks you when a decision is needed.</p>
+    <blockquote class="h3-quote"><span class="who" data-t="n.f.qwho">Request from our demo project</span><span data-t="h.b1.q">Customers keep abandoning carts. Add a saved-cart reminder on web, and paginate order history in api so mobile can use it too.</span></blockquote>
+
+    <figure class="flowd" aria-label="How a request flows" data-ta="aria-label:n.d.aria">
+      <svg class="flowd-wide" viewBox="0 0 1200 460" role="img" aria-hidden="true">
+        <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="fd-head"/></marker><marker id="ahq" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="fd-headq"/></marker></defs>
+        <path class="fd-q" d="M445 108 V34 H90 V166" marker-end="url(#ahq)"/>
+        <text class="fd-ql" x="268" y="24" text-anchor="middle" data-t="n.d.q">Asks you when a decision is needed</text>
+        <path class="fd-l" d="M160 208 H216" marker-end="url(#ah)"/>
+        <path class="fd-l" d="M410 208 H445 V108 H476" marker-end="url(#ah)"/>
+        <path class="fd-l" d="M445 208 V308 H476" marker-end="url(#ah)"/>
+        <path class="fd-l" d="M660 108 H726" marker-end="url(#ah)"/><path class="fd-l" d="M660 308 H726" marker-end="url(#ah)"/>
+        <path class="fd-l" d="M920 108 H986" marker-end="url(#ah)"/><path class="fd-l" d="M920 308 H986" marker-end="url(#ah)"/>
+        <path class="fd-l" d="M1180 108 H1192 V417"/><path class="fd-l" d="M1085 346 V417"/><path class="fd-l" d="M1192 417 H924" marker-end="url(#ah)"/>
+        <path class="fd-n" d="M600 417 H315 V260" marker-end="url(#ah)"/>
+        <text class="fd-nl" x="458" y="408" text-anchor="middle" data-t="n.d.next">Read by the next task</text>
+        <g><rect class="fd-box fd-you" x="20" y="170" width="140" height="76" rx="12"/><text class="fd-t" x="90" y="203" text-anchor="middle" data-t="m.r1">You</text><text class="fd-s" x="90" y="227" text-anchor="middle" data-t="n.d.you">Request</text></g>
+        <g><rect class="fd-box fd-lead" x="220" y="160" width="190" height="96" rx="14"/><text class="fd-t" x="315" y="200" text-anchor="middle">Athena</text><text class="fd-s" x="315" y="226" text-anchor="middle" data-t="n.d.lead">Plans and assigns</text></g>
+        <g><rect class="fd-box" x="480" y="70" width="180" height="76" rx="12"/><text class="fd-t" x="570" y="103" text-anchor="middle" data-t="n.d.api">api agent</text><text class="fd-s" x="570" y="127" text-anchor="middle" data-t="n.d.br">Own branch</text></g>
+        <g><rect class="fd-box" x="480" y="270" width="180" height="76" rx="12"/><text class="fd-t" x="570" y="303" text-anchor="middle" data-t="n.d.web">web agent</text><text class="fd-s" x="570" y="327" text-anchor="middle" data-t="n.d.br">Own branch</text></g>
+        <g><rect class="fd-box" x="730" y="70" width="190" height="76" rx="12"/><text class="fd-t" x="825" y="103" text-anchor="middle" data-t="n.d.chk">Tests and checks</text><text class="fd-s" x="825" y="127" text-anchor="middle" data-t="n.d.pr">then a draft PR</text></g>
+        <g><rect class="fd-box" x="730" y="270" width="190" height="76" rx="12"/><text class="fd-t" x="825" y="303" text-anchor="middle" data-t="n.d.chk">Tests and checks</text><text class="fd-s" x="825" y="327" text-anchor="middle" data-t="n.d.pr">then a draft PR</text></g>
+        <g><rect class="fd-box fd-you" x="990" y="70" width="190" height="76" rx="12"/><text class="fd-t" x="1085" y="103" text-anchor="middle" data-t="n.d.mg">Review and merge</text><text class="fd-s" x="1085" y="127" text-anchor="middle" data-t="n.d.mgs">Confirm is optional</text></g>
+        <g><rect class="fd-box fd-you" x="990" y="270" width="190" height="76" rx="12"/><text class="fd-t" x="1085" y="303" text-anchor="middle" data-t="n.d.mg">Review and merge</text><text class="fd-s" x="1085" y="327" text-anchor="middle" data-t="n.d.mgs">Confirm is optional</text></g>
+        <g><rect class="fd-box" x="600" y="390" width="320" height="56" rx="12"/><text class="fd-t" x="760" y="424" text-anchor="middle" data-t="n.d.learn">Learning notes per repository</text></g>
+      </svg>
+      <svg class="flowd-tall" viewBox="0 0 354 640" role="img" aria-hidden="true">
+        <defs><marker id="ahm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="fd-head"/></marker><marker id="ahqm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="fd-headq"/></marker></defs>
+        <g><rect class="fd-box fd-you" x="97" y="6" width="160" height="58" rx="12"/><text class="fd-t" x="177" y="31" text-anchor="middle" data-t="m.r1">You</text><text class="fd-s" x="177" y="52" text-anchor="middle" data-t="n.d.you">Request</text></g>
+        <path class="fd-l" d="M177 64 V92" marker-end="url(#ahm)"/>
+        <path class="fd-q" d="M264 180 H350 V35 H261" marker-end="url(#ahqm)"/>
+        <g><rect class="fd-box fd-lead" x="87" y="96" width="180" height="64" rx="14"/><text class="fd-t" x="177" y="123" text-anchor="middle">Athena</text><text class="fd-s" x="177" y="146" text-anchor="middle" data-t="n.d.lead">Plans and assigns</text></g>
+        <path class="fd-l" d="M177 160 V180 H90 V200" marker-end="url(#ahm)"/><path class="fd-l" d="M177 180 H264 V200" marker-end="url(#ahm)"/>
+        <g><rect class="fd-box" x="10" y="204" width="160" height="60" rx="12"/><text class="fd-t" x="90" y="230" text-anchor="middle" data-t="n.d.api">api agent</text><text class="fd-s" x="90" y="252" text-anchor="middle" data-t="n.d.br">Own branch</text></g>
+        <g><rect class="fd-box" x="184" y="204" width="160" height="60" rx="12"/><text class="fd-t" x="264" y="230" text-anchor="middle" data-t="n.d.web">web agent</text><text class="fd-s" x="264" y="252" text-anchor="middle" data-t="n.d.br">Own branch</text></g>
+        <path class="fd-l" d="M90 264 V290" marker-end="url(#ahm)"/><path class="fd-l" d="M264 264 V290" marker-end="url(#ahm)"/>
+        <g><rect class="fd-box" x="10" y="294" width="160" height="60" rx="12"/><text class="fd-t" x="90" y="320" text-anchor="middle" data-t="n.d.chk">Tests and checks</text><text class="fd-s" x="90" y="342" text-anchor="middle" data-t="n.d.pr">then a draft PR</text></g>
+        <g><rect class="fd-box" x="184" y="294" width="160" height="60" rx="12"/><text class="fd-t" x="264" y="320" text-anchor="middle" data-t="n.d.chk">Tests and checks</text><text class="fd-s" x="264" y="342" text-anchor="middle" data-t="n.d.pr">then a draft PR</text></g>
+        <path class="fd-l" d="M90 354 V380" marker-end="url(#ahm)"/><path class="fd-l" d="M264 354 V380" marker-end="url(#ahm)"/>
+        <g><rect class="fd-box fd-you" x="10" y="384" width="160" height="60" rx="12"/><text class="fd-t" x="90" y="410" text-anchor="middle" data-t="n.d.mg">Review and merge</text><text class="fd-s" x="90" y="432" text-anchor="middle" data-t="n.d.mgs">Confirm is optional</text></g>
+        <g><rect class="fd-box fd-you" x="184" y="384" width="160" height="60" rx="12"/><text class="fd-t" x="264" y="410" text-anchor="middle" data-t="n.d.mg">Review and merge</text><text class="fd-s" x="264" y="432" text-anchor="middle" data-t="n.d.mgs">Confirm is optional</text></g>
+        <path class="fd-l" d="M90 444 V466 H177 V490" marker-end="url(#ahm)"/><path class="fd-l" d="M264 444 V466 H177"/>
+        <g><rect class="fd-box" x="47" y="494" width="260" height="52" rx="12"/><text class="fd-t" x="177" y="526" text-anchor="middle" data-t="n.d.learn">Learning notes per repository</text></g>
+        <path class="fd-n" d="M47 520 H4 V128 H83" marker-end="url(#ahm)"/>
+        <text class="fd-nl" x="177" y="572" text-anchor="middle" data-t="n.d.next">Read by the next task</text>
+        <text class="fd-ql" x="177" y="604" text-anchor="middle" data-t="n.d.q">Asks you when a decision is needed</text>
+        <path class="fd-q" d="M20 598 H52"/>
+      </svg>
+      <figcaption data-t="n.d.cap">Each repository works on its own branch and PR. Work that depends on another repository's change starts after that change is done. Automatic review and merge is set per repository.</figcaption>
+    </figure>
   </div>
 </section>
 
-<section id="how" class="rule">
+<section id="questions" class="h3-sec">
   <div class="wrap">
-    <div class="sec-head">
-      <h2 data-t="m.how.h">Who does what</h2>
-      <p data-t="m.how.p">You talk to one team lead. It plans the work and passes it to an agent per repository. Decisions and the final merge come back to you.</p>
-    </div>
-    <div class="roles" role="table" aria-label="Who does what at each stage">
-      <div class="h"></div>
-      <div class="h" data-t="m.st1">1 · Request and plan</div>
-      <div class="h" data-t="m.st2">2 · Work</div>
-      <div class="h" data-t="m.st3">3 · Check and PR</div>
-      <div class="h" data-t="m.st4">4 · Review and merge</div>
-
-      <div class="r"><span data-t="m.r1">You</span></div>
-      <div class="you" data-stage="1 · Request and plan" data-role="You" data-ta="data-stage:m.st1,data-role:m.r1"><span class="cell" data-t="m.c11">Send a request in plain words</span></div>
-      <div class="you" data-stage="2 · Work" data-role="You" data-ta="data-stage:m.st2,data-role:m.r1"><span class="cell" data-t="m.c12">Answer when a decision is needed</span></div>
-      <div></div>
-      <div class="you" data-stage="4 · Review and merge" data-role="You" data-ta="data-stage:m.st4,data-role:m.r1"><span class="cell" data-t="m.c14">Check the PR and click Merge</span></div>
-
-      <div class="r"><span data-t="m.r2">Athena</span><small data-t="m.r2s">team lead</small></div>
-      <div data-stage="1 · Request and plan" data-role="Athena" data-ta="data-stage:m.st1,data-role:m.r2"><span class="cell" data-t="m.c21">Picks the repositories and writes a plan</span></div>
-      <div data-stage="2 · Work" data-role="Athena" data-ta="data-stage:m.st2,data-role:m.r2"><span class="cell" data-t="m.c22">Hands each part to an agent, asks you when a decision is needed</span></div>
-      <div></div>
-      <div></div>
-
-      <div class="r"><span data-t="m.r3">Repository agents</span><small data-t="m.r3s">one per repository</small></div>
-      <div></div>
-      <div data-stage="2 · Work" data-role="Agents" data-ta="data-stage:m.st2,data-role:m.r3"><span class="cell"><code>api</code> · <span data-t="m.c32">own branch and worktree</span></span><span class="cell"><code>web</code> · <span data-t="m.c32b">starts after api if it depends on it</span></span></div>
-      <div data-stage="3 · Check and PR" data-role="Agents" data-ta="data-stage:m.st3,data-role:m.r3"><span class="cell" data-t="m.c33">Runs tests and checks, then opens a draft PR</span></div>
-      <div data-stage="4 · Review and merge" data-role="Agents" data-ta="data-stage:m.st4,data-role:m.r3"><span class="cell" data-t="m.c34">Fixes review comments, up to 3 rounds</span></div>
-    </div>
-    <p class="roles-note" data-t="m.how.note"><b>Afterwards:</b> what came up in reviews and QA is saved as learning notes for that repository, and agents read them at the start of the next task.</p>
-  </div>
-</section>
-
-<section id="example" class="rule">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2 data-t="m.ex.h">One request, start to finish</h2>
-      <p data-t="m.ex.p">From our demo project, a small shop with web, api and mobile repositories. The pictures are the real app.</p>
-    </div>
-    <div class="case">
-      <div><div class="k" data-t="m.e1k">Request<span>you → Athena</span></div><div><blockquote data-t="h.b1.q">Customers keep abandoning carts. Add a saved-cart reminder on web, and paginate order history in api so mobile can use it too.</blockquote></div></div>
-      <div><div class="k" data-t="m.e2k">Plan<span>Athena</span></div><div><p data-t="m.e2">Athena writes two plans. The api change goes first because web and mobile read the new response, and each plan goes to that repository's agent.</p></div></div>
-      <div><div class="k" data-t="m.e3k">Question<span>api agent → you</span></div><div><p data-t="m.e3">The api agent asks how many orders a page should hold. You pick 20 and the agent continues.</p><figure class="shot sm"><img src="/assets/shots/answer-modal.webp" width="958" height="774" loading="lazy" alt="A question from the api agent: default page size for order history, 20 (recommended) or 50, with a Send answer button." data-ta="alt:h.b3.alt1"></figure></div></div>
-      <div><div class="k" data-t="m.e4k">Change<span>web agent</span></div><div><p data-t="m.e4">The web agent adds the reminder banner and its tests. You read the diff next to the terminal; the cart tests pass (6 of 6).</p><figure class="shot sm"><img src="/assets/shots/explorer-diff.webp" width="1490" height="700" loading="lazy" alt="Diff of CartPage.tsx in the viewer next to the list of changed files." data-ta="alt:m.e4alt"></figure></div></div>
-      <div><div class="k" data-t="m.e5k">Pull request<span>you</span></div><div><p data-t="m.e5">Each agent opens a draft PR. If automatic review is on for that repository, review and fixes run first; then you check it and merge.</p></div></div>
-    </div>
-    <p class="after-link" data-t="m.ex.more"><a href="/features/#day">The whole session with more screenshots →</a></p>
-  </div>
-</section>
-
-<section id="look" class="rule">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2 data-t="m.look.h">Where to look while it works</h2>
-    </div>
-    <ul class="look">
-      <li><b data-t="h.f.mon">Agent monitor</b><span data-t="m.l1">Bottom of the window. File edits, commands and messages from each working agent, labeled by repository and branch.</span><a href="/features/#monitor" data-t="m.more">More →</a></li>
-      <li><b data-t="h.f.work">Work</b><span data-t="m.l2">Top bar. Questions waiting for you, tasks in progress and what finished in the last day.</span><a href="/features/#work" data-t="m.more">More →</a></li>
-      <li><b data-t="h.f.det">Pane details</b><span data-t="m.l3">Icon in an agent's title bar. Its plan, progress, what blocks it, its PR and token usage.</span><a href="/features/#details" data-t="m.more">More →</a></li>
-      <li><b data-t="h.f.exp">Explorer</b><span data-t="m.l4">Right side. Files and git changes in the workspace; changed files open as a diff.</span><a href="/features/#explorer" data-t="m.more">More →</a></li>
-    </ul>
-    <p class="after-link" data-t="m.look.more"><a href="/features/">All features →</a></p>
-  </div>
-</section>
-
-<section id="facts" class="rule">
-  <div class="wrap">
-    <div class="facts4">
-      <div><h3 data-t="m.f1h">What you need</h3><p data-t="m.f1">macOS 13 or later on Apple Silicon or Intel. Claude Code or Codex, plus git, Python 3 and Node.js. Automatic PR review needs Claude Code.</p></div>
-      <div><h3 data-t="m.f2h">Where your code goes</h3><p data-t="m.f2">The app doesn't send your code to novum. Your agents talk to Anthropic or OpenAI as they normally do, and pushes go to your GitHub. <a href="/docs/#security">Details</a></p></div>
-      <div><h3 data-t="m.f3h">Cost</h3><p data-t="m.f3">Athena Studio itself is free. AI usage is billed under your Claude or Codex plan.</p></div>
-      <div><h3 data-t="m.f4h">Languages</h3><p data-t="m.f4">English, Korean, Japanese and Chinese, for the app and for agent replies, plans, issues and commit messages.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="rule" style="padding-top:56px">
-  <div class="wrap">
-    <div class="endrow">
-      <p data-t="m.end">Athena Studio isn't released yet.<span>We'll email you when the macOS build is ready.</span></p>
-      <div class="btns">
-        <a class="btn gold" href="mailto:mcsung@novum-lab.com?subject=Athena%20Studio%20%E2%80%94%20notify%20me%20at%20launch" data-t="m.notify">Get notified at launch</a>
-        <a class="t" href="/docs/" data-t="nav.docs">Docs</a>
-        <a class="t" href="/releases/" data-t="nav.releases">Releases</a>
+    <div class="h3-panel">
+      <div class="h3-panel-txt">
+        <p class="h3-num">02 · <span data-t="n.q.tag">api · order history</span></p>
+        <h2 data-t="n.q.h">Answer agent questions without leaving the app.</h2>
+        <p class="h3-p" data-t="n.q.p">Should order history show 20 or 50 items per page? The question appears in Work and a red dot shows in the menu bar. Send your answer and the agent continues.</p>
+        <p class="h3-sum" data-t="n.q.sum">In the demo, 20 was chosen. The screen is the English demo.</p>
       </div>
+      <figure class="shot h3-q"><img src="/assets/shots/answer-modal.webp" width="958" height="774" loading="lazy" alt="A question from the api agent: default page size for order history, 20 (recommended) or 50, with a Send answer button." data-ta="alt:h.b3.alt1"></figure>
     </div>
+  </div>
+</section>
+
+<section id="code" class="h3-sec">
+  <div class="wrap">
+    <p class="h3-num">03 · <span data-t="n.c.tag">web · cart reminder</span></p>
+    <h2 data-t="n.c.h">See the code change beside the test results.</h2>
+    <p class="h3-p" data-t="n.c.p">Read the diff next to the terminal and check the results before you merge. Automatic PR review and merging are set per repository, with an option to confirm before each merge.</p>
+    <figure class="shot h3-code">
+      <picture>
+        <source media="(max-width: 640px)" srcset="/assets/shots/code-diff-m.webp">
+        <img src="/assets/shots/code-wide.webp" width="2150" height="720" loading="lazy" alt="Terminal with 6 passing cart tests next to the diff of CartPage.tsx." data-ta="alt:n.c.alt">
+      </picture>
+    </figure>
+    <figure class="shot h3-code-m"><img src="/assets/shots/code-test-m.webp" width="720" height="284" loading="lazy" alt="The cart tests: 6 passed." data-ta="alt:n.c.alt2"></figure>
+    <p class="h3-cap" data-t="n.c.cap">Demo cart task in the web repository: 6 tests passing and the CartPage.tsx diff.</p>
+  </div>
+</section>
+
+<section id="start" class="h3-sec">
+  <div class="wrap">
+    <div class="h3-start">
+      <div>
+        <p class="h3-num">04</p>
+        <h2 data-t="n.s.h">Connect your repositories and get started.</h2>
+        <p class="h3-p" data-t="n.s.p">Install the app and group the repositories you work with into a pack. Then send your first request in the athena workspace.</p>
+        <ol class="h3-steps-list">
+          <li><b data-t="m.s1">Install</b> <span data-t="n.s1">Claude Code or Codex signed in, plus git, Python 3 and Node.js.</span></li>
+          <li><b data-t="m.s2">Make a pack</b> <span data-t="n.s2">New Pack on first launch, or import your team's pack.</span></li>
+          <li><b data-t="m.s3">Ask Athena</b> <span data-t="n.s3">Describe the change in the athena workspace.</span></li>
+          <li><b data-t="m.s4">Answer questions</b> <span data-t="n.s4">Open the question in Work and answer it.</span></li>
+          <li><b data-t="m.s5">Review and merge</b> <span data-t="n.s5">Check the diff and tests, then merge the PR.</span></li>
+        </ol>
+        <p class="h3-link"><a href="/docs/#start" data-t="n.s.more">Setup guide in Docs →</a></p>
+      </div>
+      <figure class="shot h3-pack"><img src="/assets/shots/packs-modal.webp" width="958" height="710" loading="lazy" alt="The Packs window: Demo Shop and Side Project, with Create New, Import and Export." data-ta="alt:f.pk.alt"></figure>
+    </div>
+    <dl class="h3-facts">
+      <div><dt data-t="m.f2h">Where your code goes</dt><dd data-t="n.x2">The app doesn't send your code or files to novum. AI requests go to the provider you use, and pushes go to your GitHub. <a href="/docs/#security">Details</a></dd></div>
+      <div><dt data-t="m.f3h">Cost</dt><dd data-t="m.f3">Athena Studio itself is free. AI usage is billed under your Claude or Codex plan.</dd></div>
+      <div><dt data-t="m.f4h">Languages</dt><dd data-t="n.x4">English, Korean, Japanese or Chinese, for the app and the agents.</dd></div>
+      <div><dt data-t="m.f1h">What you need</dt><dd data-t="n.x1">macOS 13 or later. Automatic PR review needs Claude Code. <a href="/download/">Full requirements</a></dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="h3-end">
+  <div class="wrap">
+    <img src="/assets/owl-white.png" alt="" width="36" height="36">
+    <h2 data-t="n.e.h">Meet Athena Studio on your Mac.</h2>
+    <p data-t="n.e.p">Get an email when the first public build is ready.</p>
+    <a class="btn gold" href="mailto:mcsung@novum-lab.com?subject=Athena%20Studio%20%E2%80%94%20notify%20me%20at%20launch" data-t="n.cta">Get launch updates</a>
   </div>
 </section>
 </main>
