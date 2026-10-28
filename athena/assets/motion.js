@@ -21,7 +21,11 @@
       p.getBoundingClientRect();
       p.style.transition = 'stroke-dashoffset .5s ease ' + (0.35 + i * 0.09) + 's';
       p.style.strokeDashoffset = 0;
-      if (m) setTimeout(function () { p.setAttribute('marker-end', m); }, (0.35 + i * 0.09 + 0.5) * 1000);
+      // 다 그린 뒤에는 그리기용 점선 설정을 지워 원래 선 모양(점선 등)으로 돌린다
+      setTimeout(function () {
+        if (m) p.setAttribute('marker-end', m);
+        p.style.transition = ''; p.style.strokeDasharray = ''; p.style.strokeDashoffset = '';
+      }, (0.35 + i * 0.09 + 0.5) * 1000);
     });
     svg.classList.add('fd-play');
   }

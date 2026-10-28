@@ -700,3 +700,44 @@ main, footer { position: relative; }
 .setup .flowd { margin-top: 28px; }
 .setup .h3-steps-list { max-width: 820px; margin-top: 32px; }
 .setup .h3-steps-list + .setup-p { margin-top: 20px; font-size: 16px; }
+
+/* ── 그림 다듬기(2026-10-28): 역할 색 · 그림자 · 둥근 선 · 점 무늬 판 ── */
+.flowd {
+  border-radius: 20px; border-color: rgba(255, 255, 255, .07);
+  background:
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, .055) 1px, transparent 1.4px) 0 0 / 22px 22px,
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255, 255, 255, .03), transparent 70%),
+    #121518;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .04);
+}
+.fd-box { fill: #1b1f24; stroke: rgba(255, 255, 255, .11); stroke-width: 1.2; filter: drop-shadow(0 6px 12px rgba(0, 0, 0, .35)); }
+.fd-box.fd-lead { fill: #262b32; stroke: rgba(255, 255, 255, .42); stroke-width: 1.6; filter: drop-shadow(0 0 18px rgba(255, 255, 255, .07)) drop-shadow(0 8px 16px rgba(0, 0, 0, .4)); }
+.fd-box.fd-you { fill: #241f16; stroke: rgba(217, 181, 111, .75); stroke-width: 1.4; }
+.fd-box.fd-agent { fill: #172030; stroke: rgba(127, 178, 255, .5); }
+.fd-box.fd-rev { fill: #1e1b2e; stroke: rgba(176, 148, 255, .55); }
+.fd-box.fd-learn { fill: #15231c; stroke: rgba(111, 207, 151, .5); }
+.fd-t { font-weight: 650; letter-spacing: -.01em; }
+.fd-l { stroke: #6d7681; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.fd-head { fill: #6d7681; }
+.fd-n { stroke: #4f5761; stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 5; }
+.fd-q { stroke-linecap: round; stroke-linejoin: round; }
+.fd-nl { fill: #8b949e; }
+/* 첫 설정 그림의 묶음 판 · 단계 점 */
+.su-panel { fill: rgba(255, 255, 255, .018); stroke: rgba(255, 255, 255, .09); stroke-dasharray: 4 6; }
+.su-dot { fill: #262b32; stroke: rgba(255, 255, 255, .35); }
+/* 범례 */
+.fd-legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 20px; margin-top: 18px; font-size: 13px; color: var(--muted); }
+.fd-legend span { display: inline-flex; align-items: center; gap: 7px; }
+.fd-legend span::before { content: ""; width: 12px; height: 12px; border-radius: 4px; border: 1.4px solid; }
+.lg-you::before { border-color: rgba(217, 181, 111, .85); background: #241f16; }
+.lg-lead::before { border-color: rgba(255, 255, 255, .5); background: #262b32; }
+.lg-agent::before { border-color: rgba(127, 178, 255, .6); background: #172030; }
+.lg-rev::before { border-color: rgba(176, 148, 255, .65); background: #1e1b2e; }
+.lg-learn::before { border-color: rgba(111, 207, 151, .6); background: #15231c; }
+.flowd .fd-legend + figcaption { margin-top: 12px; }
+/* 범례 칸은 그림보다 작으니 색을 진하게 */
+.lg-you::before { background: rgba(217, 181, 111, .45); }
+.lg-lead::before { background: rgba(255, 255, 255, .28); }
+.lg-agent::before { background: rgba(127, 178, 255, .4); }
+.lg-rev::before { background: rgba(176, 148, 255, .42); }
+.lg-learn::before { background: rgba(111, 207, 151, .4); }

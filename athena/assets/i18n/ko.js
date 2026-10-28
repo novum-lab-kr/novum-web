@@ -419,5 +419,9 @@ window.ATHENA_I18N.ko = {
   "s.d.report": "보고",
   "s.d.reports2": "만든 것 · 아직 내가 볼 것",
   "s.d.note": "레포는 읽기만 해요. 설치나 fetch는 먼저 물어봐요.",
-  "s.d.notem": "레포는 읽기만 해요. 설치나 fetch는 먼저 물어봐요."
+  "s.d.notem": "레포는 읽기만 해요. 설치나 fetch는 먼저 물어봐요.",
+  "n.lg.you": "내가 결정",
+  "n.lg.ag": "에이전트 작업 · 검사",
+  "n.lg.rv": "리뷰",
+  "n.lg.ln": "학습"
 };

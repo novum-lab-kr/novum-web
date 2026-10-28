@@ -419,5 +419,9 @@ window.ATHENA_I18N.zh = {
   "s.d.report": "报告",
   "s.d.reports2": "已完成的内容 · 仍需你确认的事项",
   "s.d.note": "仓库只读取。安装或 fetch 前会先询问。",
-  "s.d.notem": "仓库只读取。安装或 fetch 前会先询问。"
+  "s.d.notem": "仓库只读取。安装或 fetch 前会先询问。",
+  "n.lg.you": "由你决定",
+  "n.lg.ag": "智能体编写与检查",
+  "n.lg.rv": "审查",
+  "n.lg.ln": "学习"
 };
