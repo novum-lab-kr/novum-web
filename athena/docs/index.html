@@ -18,9 +18,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=20261028d">
-<script src="/assets/lang.js?v=20261028d"></script>
-<script src="/assets/motion.js?v=20261028d" defer></script>
+<link rel="stylesheet" href="/assets/site.css?v=20261028e">
+<script src="/assets/lang.js?v=20261028e"></script>
+<script src="/assets/motion.js?v=20261028e" defer></script>
 </head>
 <body>
 <header class="top">
@@ -42,6 +42,7 @@
     <h1 class="grad" data-t="o.h1">Using Athena Studio</h1>
     <div class="toc">
       <a href="#start" data-t="d.start.label">Get started</a>
+      <a href="#setup" data-t="s.label">First setup</a>
       <a href="#shortcuts" data-t="f.k.label">Shortcuts</a>
       <a href="#security" data-t="h.s.label">Data and security</a>
       <a href="#compare" data-t="h.c.label">Compared</a>
@@ -60,6 +61,152 @@
       <div><b data-t="d.s1">Install</b><span data-t="d.s1p">Open the downloaded file and drag Athena Studio into Applications.</span></div>
       <div><b data-t="d.s2">Open it</b><span data-t="d.s2p">Open Athena Studio from Applications. Anything else it needs is listed on the Download page.</span></div>
       <div><b data-t="d.s3">Add your repositories</b><span data-t="d.s3p">Create a pack from the repositories on your Mac, or import one from your team. Then ask Athena for your first task.</span></div>
+    </div>
+    <div class="setup" id="setup">
+      <h3 data-t="s.h">First setup: Athena learns your repositories</h3>
+      <p class="setup-p" data-t="s.p">When you create a pack, Athena sets it up for you. It only reads your code.</p>
+      <figure class="flowd" aria-label="What Athena does on first setup" data-ta="aria-label:s.d.aria">
+      <svg class="flowd-wide" viewBox="0 0 1200 560" role="img" aria-hidden="true">
+        <defs>
+        <marker id="sah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="fd-head"/></marker>
+        </defs>
+        <style>
+        .su-panel { fill: none; stroke: var(--line-2, #3a4048); stroke-width: 1.2; stroke-dasharray: 5 5; }
+        .su-h { fill: var(--muted, #9aa3ad); font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+        .su-t { fill: var(--text, #e8eaed); font-size: 15px; font-weight: 600; }
+        .su-s { fill: var(--muted, #9aa3ad); font-size: 13px; }
+        .su-i { fill: var(--text, #e8eaed); font-size: 13.5px; }
+        .su-dot { fill: #22262c; stroke: #8a939c; stroke-width: 1.5; }
+        .su-dot-you { fill: rgba(217,181,111,.12); stroke: rgba(217,181,111,.8); stroke-width: 1.5; }
+        .su-n { fill: var(--text, #e8eaed); font-size: 12px; font-weight: 700; }
+        .su-li { fill: #8a939c; }
+        </style>
+        <rect class="su-panel" x="20" y="40" width="240" height="420" rx="16"/>
+        <text class="su-h" x="40" y="70" data-t="s.d.mac">Your Mac</text>
+        <g><rect class="fd-box" x="40" y="88" width="200" height="64" rx="12"/><text class="su-t" x="58" y="115" data-t="s.d.r1">web</text><text class="su-s" x="58" y="137" data-t="s.d.r1s">front end · main</text></g>
+        <g><rect class="fd-box" x="40" y="166" width="200" height="64" rx="12"/><text class="su-t" x="58" y="193" data-t="s.d.r2">api</text><text class="su-s" x="58" y="215" data-t="s.d.r2s">back end · main</text></g>
+        <g><rect class="fd-box" x="40" y="244" width="200" height="64" rx="12"/><text class="su-t" x="58" y="271" data-t="s.d.r3">mobile</text><text class="su-s" x="58" y="293" data-t="s.d.r3s">app · develop</text></g>
+        <g><rect class="fd-box" x="40" y="322" width="200" height="64" rx="12"/><text class="su-t" x="58" y="349" data-t="s.d.r4">ui-kit</text><text class="su-s" x="58" y="371" data-t="s.d.r4s">shared packages · main</text></g>
+        <text class="su-s" x="140" y="430" text-anchor="middle" data-t="s.d.found">found up to 3 folders deep</text>
+        <path class="fd-l" d="M260 250 H306" marker-end="url(#sah)"/>
+        <text class="fd-nl" x="283" y="240" text-anchor="middle" data-t="s.d.reads2">reads</text>
+        <g><rect class="fd-box fd-lead" x="310" y="40" width="320" height="76" rx="14"/><text class="fd-t" x="470" y="72" text-anchor="middle">Athena</text><text class="fd-s" x="470" y="96" text-anchor="middle" data-t="s.d.lead">first setup · reads production branches</text></g>
+        <rect class="fd-box" x="310" y="132" width="320" height="328" rx="14"/>
+        <path d="M338 168 V412" stroke="#5d656e" stroke-width="1.4"/>
+        <g><circle class="su-dot" cx="338" cy="168" r="12"/><text class="su-n" x="338" y="172" text-anchor="middle">1</text><text class="su-i" x="362" y="173" data-t="s.d.st1">Find repos · guess type and branches</text></g>
+        <g><circle class="su-dot-you" cx="338" cy="208" r="12"/><text class="su-n" x="338" y="212" text-anchor="middle">2</text><text class="su-i" x="362" y="213" data-t="s.d.st2">You confirm repos, names, auto review</text></g>
+        <g><circle class="su-dot" cx="338" cy="248" r="12"/><text class="su-n" x="338" y="252" text-anchor="middle">3</text><text class="su-i" x="362" y="253" data-t="s.d.st3">Set up an agent for each repo</text></g>
+        <g><circle class="su-dot" cx="338" cy="288" r="12"/><text class="su-n" x="338" y="292" text-anchor="middle">4</text><text class="su-i" x="362" y="293" data-t="s.d.st4">Read the code and fill in</text><text class="su-s" x="362" y="311" data-t="s.d.st4s">one worker per repo, side by side</text></g>
+        <g><circle class="su-dot" cx="338" cy="338" r="12"/><text class="su-n" x="338" y="342" text-anchor="middle">5</text><text class="su-i" x="362" y="343" data-t="s.d.st5">Draft QA checks for each screen</text></g>
+        <g><circle class="su-dot" cx="338" cy="376" r="12"/><text class="su-n" x="338" y="380" text-anchor="middle">6</text><text class="su-i" x="362" y="381" data-t="s.d.st6">Run checks · take a code baseline</text></g>
+        <g><circle class="su-dot" cx="338" cy="414" r="12" style="stroke-dasharray:3 3"/><text class="su-n" x="338" y="418" text-anchor="middle">7</text><text class="su-i" x="362" y="419" data-t="s.d.st7">Draw diagrams (optional)</text></g>
+        <path class="fd-l" d="M630 250 H676" marker-end="url(#sah)"/>
+        <text class="fd-nl" x="653" y="240" text-anchor="middle" data-t="s.d.writes">writes</text>
+        <rect class="su-panel" x="680" y="40" width="500" height="420" rx="16"/>
+        <text class="su-h" x="700" y="70" data-t="s.d.pack">Your pack</text>
+        <g>
+        <rect class="fd-box" x="700" y="88" width="150" height="198" rx="12"/>
+        <text class="su-t" x="716" y="114" data-t="s.d.a1">web-fe</text><text class="su-s" x="716" y="133" data-t="s.d.a1s">agent for web</text>
+        <circle class="su-li" cx="720" cy="160" r="2.5"/><text class="su-i" x="730" y="165" data-t="s.d.rules">Rules</text>
+        <circle class="su-li" cx="720" cy="184" r="2.5"/><text class="su-i" x="730" y="189" data-t="s.d.notes">Structure notes</text>
+        <circle class="su-li" cx="720" cy="208" r="2.5"/><text class="su-i" x="730" y="213" data-t="s.d.gotchas">Gotchas notebook</text>
+        <circle class="su-li" cx="720" cy="232" r="2.5"/><text class="su-i" x="730" y="237" data-t="s.d.check">Check script</text>
+        <circle class="su-li" cx="720" cy="256" r="2.5"/><text class="su-i" x="730" y="261" data-t="s.d.qa2">QA checks</text>
+        </g>
+        <g>
+        <rect class="fd-box" x="865" y="88" width="150" height="198" rx="12"/>
+        <text class="su-t" x="881" y="114" data-t="s.d.a2">api-be</text><text class="su-s" x="881" y="133" data-t="s.d.a2s">agent for api</text>
+        <circle class="su-li" cx="885" cy="160" r="2.5"/><text class="su-i" x="895" y="165" data-t="s.d.rules">Rules</text>
+        <circle class="su-li" cx="885" cy="184" r="2.5"/><text class="su-i" x="895" y="189" data-t="s.d.notes">Structure notes</text>
+        <circle class="su-li" cx="885" cy="208" r="2.5"/><text class="su-i" x="895" y="213" data-t="s.d.gotchas">Gotchas notebook</text>
+        <circle class="su-li" cx="885" cy="232" r="2.5"/><text class="su-i" x="895" y="237" data-t="s.d.check">Check script</text>
+        <text class="su-s" x="881" y="261" data-t="s.d.noqa">no screens, no QA</text>
+        </g>
+        <g>
+        <rect class="fd-box" x="1030" y="88" width="130" height="198" rx="12" style="stroke-dasharray:5 5"/>
+        <text class="su-t" x="1095" y="180" text-anchor="middle" data-t="s.d.more">mobile-fe</text>
+        <text class="su-s" x="1095" y="200" text-anchor="middle" data-t="s.d.mores">ui-kit · …</text>
+        </g>
+        <g><rect class="fd-box" x="700" y="302" width="460" height="46" rx="10"/><text class="su-i" x="718" y="330" data-t="s.d.route"><tspan style="font-weight:600">Routing</tspan>: which request goes to which repository</text></g>
+        <g><rect class="fd-box" x="700" y="356" width="460" height="46" rx="10"/><text class="su-i" x="718" y="384" data-t="s.d.svc"><tspan style="font-weight:600">Service overview</tspan>: what each app does, its stack</text></g>
+        <g><rect class="fd-box" x="700" y="410" width="460" height="38" rx="10"/><text class="su-i" x="718" y="434" data-t="s.d.fp"><tspan style="font-weight:600">Baseline</tspan>: later syncs update only what changed</text></g>
+        <path class="fd-l" d="M470 460 V490" marker-end="url(#sah)"/>
+        <g><rect class="fd-box fd-you" x="310" y="494" width="320" height="56" rx="12"/><text class="fd-t" x="470" y="518" text-anchor="middle" data-t="s.d.report">Report</text><text class="fd-s" x="470" y="539" text-anchor="middle" data-t="s.d.reports2">what was made · what still needs you</text></g>
+        <text class="fd-nl" x="920" y="526" text-anchor="middle" data-t="s.d.note">Repositories are only read. Installs and fetches are asked first.</text>
+      </svg>
+      <svg class="flowd-tall" viewBox="0 0 360 1210" role="img" aria-hidden="true">
+        <defs>
+        <marker id="sahm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="fd-head"/></marker>
+        </defs>
+        <style>
+        .su-h { fill: var(--muted, #9aa3ad); font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+        .su-t { fill: var(--text, #e8eaed); font-size: 14px; font-weight: 600; }
+        .su-s { fill: var(--muted, #9aa3ad); font-size: 12px; }
+        .su-i { fill: var(--text, #e8eaed); font-size: 13px; }
+        .su-dot { fill: #22262c; stroke: #8a939c; stroke-width: 1.5; }
+        .su-dot-you { fill: rgba(217,181,111,.12); stroke: rgba(217,181,111,.8); stroke-width: 1.5; }
+        .su-n { fill: var(--text, #e8eaed); font-size: 11px; font-weight: 700; }
+        .su-li { fill: #8a939c; }
+        </style>
+        <text class="su-h" x="20" y="30" data-t="s.d.mac">Your Mac</text>
+        <g><rect class="fd-box" x="20" y="44" width="155" height="56" rx="12"/><text class="su-t" x="36" y="68" data-t="s.d.r1">web</text><text class="su-s" x="36" y="88" data-t="s.d.r1s">front end · main</text></g>
+        <g><rect class="fd-box" x="185" y="44" width="155" height="56" rx="12"/><text class="su-t" x="201" y="68" data-t="s.d.r2">api</text><text class="su-s" x="201" y="88" data-t="s.d.r2s">back end · main</text></g>
+        <g><rect class="fd-box" x="20" y="108" width="155" height="56" rx="12"/><text class="su-t" x="36" y="132" data-t="s.d.r3">mobile</text><text class="su-s" x="36" y="152" data-t="s.d.r3s">app · develop</text></g>
+        <g><rect class="fd-box" x="185" y="108" width="155" height="56" rx="12"/><text class="su-t" x="201" y="132" data-t="s.d.r4">ui-kit</text><text class="su-s" x="201" y="152" data-t="s.d.r4sm">shared packages</text></g>
+        <text class="su-s" x="180" y="184" text-anchor="middle" data-t="s.d.found">found up to 3 folders deep</text>
+        <path class="fd-l" d="M180 194 V224" marker-end="url(#sahm)"/>
+        <text class="fd-nl" x="192" y="214" style="font-size:12px" data-t="s.d.reads2">reads</text>
+        <g><rect class="fd-box fd-lead" x="20" y="230" width="320" height="64" rx="14"/><text class="fd-t" x="180" y="257" text-anchor="middle">Athena</text><text class="fd-s" x="180" y="280" text-anchor="middle" data-t="s.d.lead">first setup · reads production branches</text></g>
+        <rect class="fd-box" x="20" y="304" width="320" height="300" rx="14"/>
+        <path d="M44 332 V582" stroke="#5d656e" stroke-width="1.4"/>
+        <g><circle class="su-dot" cx="44" cy="332" r="11"/><text class="su-n" x="44" y="336" text-anchor="middle">1</text><text class="su-i" x="66" y="337" data-t="s.d.st1">Find repos · guess type and branches</text></g>
+        <g><circle class="su-dot-you" cx="44" cy="372" r="11"/><text class="su-n" x="44" y="376" text-anchor="middle">2</text><text class="su-i" x="66" y="377" data-t="s.d.st2">You confirm repos, names, auto review</text></g>
+        <g><circle class="su-dot" cx="44" cy="412" r="11"/><text class="su-n" x="44" y="416" text-anchor="middle">3</text><text class="su-i" x="66" y="417" data-t="s.d.st3">Set up an agent for each repo</text></g>
+        <g><circle class="su-dot" cx="44" cy="452" r="11"/><text class="su-n" x="44" y="456" text-anchor="middle">4</text><text class="su-i" x="66" y="457" data-t="s.d.st4">Read the code and fill in</text><text class="su-s" x="66" y="475" data-t="s.d.st4s">one worker per repo, side by side</text></g>
+        <g><circle class="su-dot" cx="44" cy="502" r="11"/><text class="su-n" x="44" y="506" text-anchor="middle">5</text><text class="su-i" x="66" y="507" data-t="s.d.st5">Draft QA checks for each screen</text></g>
+        <g><circle class="su-dot" cx="44" cy="542" r="11"/><text class="su-n" x="44" y="546" text-anchor="middle">6</text><text class="su-i" x="66" y="547" data-t="s.d.st6">Run checks · take a code baseline</text></g>
+        <g><circle class="su-dot" cx="44" cy="582" r="11" style="stroke-dasharray:3 3"/><text class="su-n" x="44" y="586" text-anchor="middle">7</text><text class="su-i" x="66" y="587" data-t="s.d.st7">Draw diagrams (optional)</text></g>
+        <path class="fd-l" d="M180 604 V634" marker-end="url(#sahm)"/>
+        <text class="fd-nl" x="192" y="624" style="font-size:12px" data-t="s.d.writes">writes</text>
+        <text class="su-h" x="20" y="660" data-t="s.d.pack">Your pack</text>
+        <g>
+        <rect class="fd-box" x="20" y="672" width="155" height="180" rx="12"/>
+        <text class="su-t" x="34" y="696" data-t="s.d.a1">web-fe</text><text class="su-s" x="34" y="714" data-t="s.d.a1s">agent for web</text>
+        <circle class="su-li" cx="38" cy="736" r="2.3"/><text class="su-i" x="47" y="741" data-t="s.d.rules">Rules</text>
+        <circle class="su-li" cx="38" cy="758" r="2.3"/><text class="su-i" x="47" y="763" data-t="s.d.notes">Structure notes</text>
+        <circle class="su-li" cx="38" cy="780" r="2.3"/><text class="su-i" x="47" y="785" data-t="s.d.gotchas">Gotchas notebook</text>
+        <circle class="su-li" cx="38" cy="802" r="2.3"/><text class="su-i" x="47" y="807" data-t="s.d.check">Check script</text>
+        <circle class="su-li" cx="38" cy="824" r="2.3"/><text class="su-i" x="47" y="829" data-t="s.d.qa2">QA checks</text>
+        </g>
+        <g>
+        <rect class="fd-box" x="185" y="672" width="155" height="180" rx="12"/>
+        <text class="su-t" x="199" y="696" data-t="s.d.a2">api-be</text><text class="su-s" x="199" y="714" data-t="s.d.a2s">agent for api</text>
+        <circle class="su-li" cx="203" cy="736" r="2.3"/><text class="su-i" x="212" y="741" data-t="s.d.rules">Rules</text>
+        <circle class="su-li" cx="203" cy="758" r="2.3"/><text class="su-i" x="212" y="763" data-t="s.d.notes">Structure notes</text>
+        <circle class="su-li" cx="203" cy="780" r="2.3"/><text class="su-i" x="212" y="785" data-t="s.d.gotchas">Gotchas notebook</text>
+        <circle class="su-li" cx="203" cy="802" r="2.3"/><text class="su-i" x="212" y="807" data-t="s.d.check">Check script</text>
+        <text class="su-s" x="199" y="829" data-t="s.d.noqa">no screens, no QA</text>
+        </g>
+        <g><rect class="fd-box" x="20" y="862" width="320" height="40" rx="10" style="stroke-dasharray:5 5"/><text class="su-i" x="180" y="887" text-anchor="middle" data-t="s.d.morem">mobile-fe · ui-kit · …</text></g>
+        <g><rect class="fd-box" x="20" y="912" width="320" height="52" rx="10"/><text class="su-t" x="36" y="934" data-t="s.d.routet">Routing</text><text class="su-s" x="36" y="953" data-t="s.d.routes">which request goes to which repository</text></g>
+        <g><rect class="fd-box" x="20" y="972" width="320" height="52" rx="10"/><text class="su-t" x="36" y="994" data-t="s.d.svct">Service overview</text><text class="su-s" x="36" y="1013" data-t="s.d.svcs">what each app does, its stack</text></g>
+        <g><rect class="fd-box" x="20" y="1032" width="320" height="52" rx="10"/><text class="su-t" x="36" y="1054" data-t="s.d.fpt">Baseline</text><text class="su-s" x="36" y="1073" data-t="s.d.fps">later syncs update only what changed</text></g>
+        <path class="fd-l" d="M180 1084 V1106" marker-end="url(#sahm)"/>
+        <g><rect class="fd-box fd-you" x="20" y="1110" width="320" height="56" rx="12"/><text class="fd-t" x="180" y="1134" text-anchor="middle" data-t="s.d.report">Report</text><text class="fd-s" x="180" y="1155" text-anchor="middle" data-t="s.d.reports2">what was made · what still needs you</text></g>
+        <text class="fd-nl" x="180" y="1192" text-anchor="middle" style="font-size:12px" data-t="s.d.notem">Repos are only read. Installs and fetches are asked first.</text>
+      </svg>
+        <figcaption data-t="s.d.cap">First setup: Athena reads your repositories and builds the pack for you.</figcaption>
+      </figure>
+      <ol class="h3-steps-list">
+        <li data-t="s.1">Finds the repositories on your Mac and guesses each one's type (front end or back end), production branch and PR base.</li>
+        <li data-t="s.2">Asks you to confirm which repositories to include, the company name, agent names and where automatic review is on. Wrong guesses get fixed here.</li>
+        <li data-t="s.3">Creates an agent for each repository with its rules, structure notes, a gotchas notebook and a check script.</li>
+        <li data-t="s.4">Reads each repository's production branch and fills in what the agent handles, the rules it must follow, language and type status, and a short service overview. Athena also writes the routing table, which says which request goes to which repository.</li>
+        <li data-t="s.5">Drafts QA checks for each app's screens.</li>
+        <li data-t="s.6">Runs the checks once and takes a code baseline, so later updates only touch what changed.</li>
+        <li data-t="s.7">If you want, draws diagrams for each service: structure, screen map and request flow.</li>
+      </ol>
+      <p class="setup-p" data-t="s.end">At the end, Athena reports what it made and what still needs your confirmation. It only reads your repositories and asks before installing or fetching anything.</p>
     </div>
     <p class="hint" data-t="o.req">Before you install, check <a href="/download/">what you need</a>.</p>
     <p class="hint" data-t="d.eula">By installing Athena Studio you agree to the <a href="/terms/">End User License Agreement</a>. Looking for what changed? See the <a href="/releases/">release notes</a>.</p>
@@ -107,7 +254,7 @@
       <p data-t="h.s.p">The app runs on your computer. Your agents still send requests to their AI provider, and your code goes to GitHub when they push.</p>
     </div>
     <div class="sec-grid">
-      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><b data-t="h.s.1">Runs on your Mac</b><span data-t="h.s.1p">Agents, terminals and the worklist run locally. The app does not send your code or files to novum's servers.</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><b data-t="h.s.1">Runs on your Mac</b><span data-t="h.s.1p">Agents, terminals and the worklist run locally. The app does not send your code or files to Novum Lab's servers.</span></div>
       <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span><b data-t="h.s.2">Your own AI account</b><span data-t="h.s.2p">Agents run as the Claude Code or Codex you already signed into, under that provider's terms and your plan.</span></div>
       <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="12" r="2.5"/><path d="M6 8.5v7M8.3 7.2l7.5 3.6"/></svg></span><b data-t="h.s.3">Agents work on branches</b><span data-t="h.s.3p">Each agent works on its own branch and worktree. Automatic merge is off until you turn it on for a repository.</span></div>
       <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l8-4 8 4v6c0 4-3.5 7-8 8-4.5-1-8-4-8-8z"/><path d="M9 12l2 2 4-4"/></svg></span><b data-t="h.s.4">Signed and notarized</b><span data-t="h.s.4p">Public release builds are signed with an Apple Developer ID and notarized by Apple.</span></div>
@@ -138,7 +285,7 @@
         <tr><th data-t="h.c.r9">Several companies</th><td data-h="Claude Code" data-t="h.c.r9a">Separate folders and setups</td><td class="us" data-h="Athena Studio" data-t="h.c.r9b">One pack each. Switch in a click, share with your team</td></tr>
       </tbody>
     </table>
-    <p class="fine" data-t="h.c.fine">Athena Studio needs Claude Code or Codex. Claude Code is made by Anthropic and Codex by OpenAI; Athena Studio is made by novum and is not affiliated with either.</p>
+    <p class="fine" data-t="h.c.fine">Athena Studio needs Claude Code or Codex. Claude Code is made by Anthropic and Codex by OpenAI; Athena Studio is made by Novum Lab and is not affiliated with either.</p>
   </div>
 </section>
 
@@ -152,8 +299,8 @@
       <details><summary data-t="h.q0">Which Macs does it run on?</summary><p data-t="h.q0a">macOS 13 Ventura or later, on Apple Silicon or Intel. It's free to <a href="/download/">download</a>.</p></details>
       <details><summary data-t="h.q2">How much does it cost?</summary><p data-t="h.q2a">Athena Studio is free to download and use. Your agents run on your own Claude Code or Codex plan, so their usage is billed by that provider as usual.</p></details>
       <details><summary data-t="h.q3">Do I need Claude Code or Codex?</summary><p data-t="h.q3a">Yes, at least one of them, signed in on your Mac. Agents can run on either. Automatic PR review uses Claude Code; with Codex as well, it adds a second reviewer from a different model.</p></details>
-      <details><summary data-t="h.q10">How do I update?</summary><p data-t="h.q10a">The app doesn't update itself yet. Download the new .dmg from the <a href="/download/">Download page</a> and drag Athena Studio into Applications to replace the old one.</p></details>
-      <details><summary data-t="h.q5">Does my code leave my Mac?</summary><p data-t="h.q5a">Not to us. Athena Studio does not send your code or files to novum's servers. Your agents talk to their own provider (Anthropic or OpenAI) as they normally do, and pushes go to your GitHub.</p></details>
+      <details><summary data-t="h.q10">How do I update?</summary><p data-t="h.q10a">From the next release, the app updates itself from ⚙ inside the app. If you're on 0.15.8, download that next release once from the <a href="/download/">Download page</a> and drag it into Applications to replace the old app.</p></details>
+      <details><summary data-t="h.q5">Does my code leave my Mac?</summary><p data-t="h.q5a">Not to us. Athena Studio does not send your code or files to Novum Lab's servers. Your agents talk to their own provider (Anthropic or OpenAI) as they normally do, and pushes go to your GitHub.</p></details>
       <details><summary data-t="h.q6">Will agents merge code on their own?</summary><p data-t="h.q6a">Only if you turn it on. Automatic merge is off by default and set per repository, and you can keep a final click before every merge.</p></details>
       <details><summary data-t="h.q7">Do agents keep working when I close the app?</summary><p data-t="h.q7a">Yes. Terminals and agents keep running in the background, even after you quit. Open the app again and you're back to the same tabs and layout.</p></details>
       <details><summary data-t="h.q8">Can I use it for more than one company or project?</summary><p data-t="h.q8a">Yes. Make a pack for each: its repositories, agents and rules. Switching packs doesn't stop work in the other one, and you can export a pack for your team.</p></details>
@@ -180,7 +327,7 @@
       </div>
     </div>
     <div class="foot-lang" role="group" aria-label="Language"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><button type="button" data-set-lang="en" lang="en">English</button><button type="button" data-set-lang="ko" lang="ko">한국어</button><button type="button" data-set-lang="ja" lang="ja">日本語</button><button type="button" data-set-lang="zh" lang="zh-Hans">中文</button></div>
-    <div class="biz"><span data-t="c.made">© 2026 novum. Athena Studio is made by novum.</span><br>novum · CEO: Eunju Kim · Business Registration No. 496-37-01619 · Seoul, Republic of Korea · <a href="mailto:mcsung@novum-lab.com">mcsung@novum-lab.com</a></div>
+    <div class="biz"><span data-t="c.made">© 2026 Novum Lab. Athena Studio is made by Novum Lab.</span><br>Novum Lab · CEO: Eunju Kim · Business Registration No. 496-37-01619 · Seoul, Republic of Korea · <a href="mailto:mcsung@novum-lab.com">mcsung@novum-lab.com</a></div>
   </div>
 </footer>
 </body>
