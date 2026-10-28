@@ -27,6 +27,7 @@
     <a class="brand" href="/"><img src="/assets/owl-white.png" alt="">Athena Studio</a>
     <nav>
       <a class="nav-x" href="/features/" aria-current="page" data-t="nav.features">Features</a>
+      <a class="nav-x" href="/docs/" data-t="nav.docs">Docs</a>
       <a class="nav-x" href="/releases/" data-t="nav.releases">Releases</a>
       <details class="lang">
         <summary aria-label="Language"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><span data-lang-label>EN</span></summary>
@@ -49,6 +50,7 @@
     <h1 class="grad" data-t="f.h1">Built for working with a team of agents.</h1>
     <p class="lead" data-t="f.lead">Athena does the work. Athena Studio is where you watch it, steer it and sign off on it.</p>
     <div class="toc">
+      <a href="#day" data-t="h.day.label">A day with Athena</a>
       <a href="#workspaces" data-t="f.ws.label">Workspaces</a>
       <a href="#monitor" data-t="h.f.mon">Agent monitor</a>
       <a href="#work" data-t="h.f.work">Work</a>
@@ -59,10 +61,108 @@
       <a href="#menubar" data-t="h.f.bar">Menu bar</a>
       <a href="#packs" data-t="h.f.packs">Packs</a>
       <a href="#language" data-t="f.lg.label">Languages</a>
-      <a href="#keys" data-t="f.k.label">Shortcuts</a>
+      <a href="/docs/#shortcuts" data-t="f.k.label">Shortcuts</a>
     </div>
   </div>
 </div>
+
+<section id="day" class="feat">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label" data-t="h.day.label">A day with Athena</div>
+      <h2 data-t="h.day.h2">One request, from plain words to a merged pull request.</h2>
+      <p data-t="h.day.p">A real session in our demo project: a small online shop with web, api and mobile repositories. Every picture below is the actual app.</p>
+    </div>
+    <div class="steps-bar">
+      <a href="#ask"><b>1</b><span data-t="h.s1">Ask</span></a><span class="arrow">→</span>
+      <a href="#plan"><b>2</b><span data-t="h.s2">Plan and delegate</span></a><span class="arrow">→</span>
+      <a href="#decide"><b>3</b><span data-t="h.s3">You decide</span></a><span class="arrow">→</span>
+      <a href="#build"><b>4</b><span data-t="h.s4">Build and verify</span></a><span class="arrow">→</span>
+      <a href="#merge"><b>5</b><span data-t="h.s5">Review and merge</span></a><span class="arrow">→</span>
+      <a href="#learn"><b>6</b><span data-t="h.s6">Learn</span></a>
+    </div>
+
+    <div class="story">
+      <div class="beat" id="ask">
+        <div class="txt">
+          <div class="time">01 <span>·</span> <span data-t="h.b1.k">You ask</span></div>
+          <h3 data-t="h.b1.h">Say what you want, in plain words.</h3>
+          <p data-t="h.b1.p">You talk to Athena, the team lead, in the athena workspace. No ticket template, no prompt engineering.</p>
+          <blockquote data-t="h.b1.q">Customers keep abandoning carts. Add a saved-cart reminder on web, and paginate order history in api so mobile can use it too.</blockquote>
+        </div>
+        <figure class="shot sm" style="max-width:480px;justify-self:center"><img src="/assets/shots/athena-pane.webp" width="1066" height="1290" loading="lazy" alt="Athena's pane: the request, two plans written, one delegated to api-be and one to web-fe, and a summary of what each agent is doing." data-ta="alt:h.b1.alt"></figure>
+      </div>
+
+      <div class="beat flip" id="plan">
+        <div class="txt">
+          <div class="time">02 <span>·</span> <span data-t="h.b2.k">Plan and delegate</span></div>
+          <h3 data-t="h.b2.h">Athena splits it up and hands it out.</h3>
+          <p data-t="h.b2.p">Two plans, api first because web and mobile depend on the new response. Each goes to the agent for that repository, on its own branch and worktree, so nobody steps on anybody.</p>
+          <ul class="ticks">
+            <li data-t="h.b2.l1"><code>api-be</code> on <code>feat/orders-pagination</code></li>
+            <li data-t="h.b2.l2"><code>web-fe</code> on <code>feat/cart-reminder</code></li>
+            <li data-t="h.b2.l3">The agent monitor follows both, tool call by tool call.</li>
+          </ul>
+        </div>
+        <figure class="shot sm"><img src="/assets/shots/agents.webp" width="1600" height="1200" loading="lazy" alt="Athena and web-fe working side by side, with the agent monitor below following every agent." data-ta="alt:h.b2.alt2"></figure>
+      </div>
+
+      <div class="beat" id="decide">
+        <div class="txt">
+          <div class="time">03 <span>·</span> <span data-t="h.b3.k">You decide</span></div>
+          <h3 data-t="h.b3.h">Questions come to you. You don't go looking for them.</h3>
+          <p data-t="h.b3.p">api-be needs one product call: 20 or 50 orders per page. Instead of waiting in a terminal you'll never scroll to, the question lands in Work and lights up the menu bar. Pick an answer, add a note if you like, and the agent carries on.</p>
+        </div>
+        <div class="pair">
+          <figure class="shot sm"><img src="/assets/shots/answer-modal.webp" width="958" height="774" loading="lazy" alt="A question from the api agent: default page size for order history, 20 (recommended) or 50, with a Send answer button." data-ta="alt:h.b3.alt1"></figure>
+          <figure class="shot sm fade-b"><img src="/assets/shots/menubar.webp" width="704" height="588" loading="lazy" alt="Menu bar panel: one item needs attention, and each agent with its branch and status." data-ta="alt:h.b3.alt2"></figure>
+        </div>
+      </div>
+
+      <div class="beat flip" id="build">
+        <div class="txt">
+          <div class="time">04 <span>·</span> <span data-t="h.b4.k">Build and verify</span></div>
+          <h3 data-t="h.b4.h">Read the change right next to the work.</h3>
+          <p data-t="h.b4.p">web-fe writes the banner and its tests, runs them and lints before it calls anything done. You open the changed files in Explorer and read the diff beside the terminal.</p>
+          <ul class="ticks">
+            <li data-t="h.b4.l1">Tests and checks run before every pull request</li>
+            <li data-t="h.b4.l2">Changed files marked M · U · A · D in the file tree</li>
+            <li data-t="h.b4.l3">Syntax-highlighted diffs with line numbers</li>
+          </ul>
+        </div>
+        <figure class="shot"><img src="/assets/shots/explorer-1200.webp" srcset="/assets/shots/explorer-1200.webp 1200w, /assets/shots/explorer.webp 2400w" sizes="(max-width: 900px) 100vw, 680px" width="1200" height="675" loading="lazy" alt="Terminal with passing tests on the left, a diff of CartPage.tsx on the right, and the list of changed files." data-ta="alt:h.b4.alt"></figure>
+      </div>
+
+      <div class="beat" id="merge">
+        <div class="txt">
+          <div class="time">05 <span>·</span> <span data-t="h.b5.k">Review and merge</span></div>
+          <h3 data-t="h.b5.h">Reviews run themselves. Merges follow your rules.</h3>
+          <p data-t="h.b5.p">As soon as work is pushed, an automatic review starts. Comments go back to the agent until the pull request is approved. Then it merges, or waits for your click. You set that per repository.</p>
+          <ul class="ticks">
+            <li data-t="h.b5.l1">Off by default, switched on per repository</li>
+            <li data-t="h.b5.l2">“Confirm before merging” keeps one last click for you</li>
+            <li data-t="h.b5.l3">With Codex installed, it reviews alongside Claude</li>
+          </ul>
+        </div>
+        <figure class="shot sm" style="max-width:520px;justify-self:center"><img src="/assets/shots/settings-pop.webp" width="706" height="600" loading="lazy" alt="Settings: PR auto-merge switched on for web and api, with Confirm before merging on for web, and off for mobile." data-ta="alt:h.b5.alt"></figure>
+      </div>
+
+      <div class="beat flip" id="learn">
+        <div class="txt">
+          <div class="time">06 <span>·</span> <span data-t="h.b6.k">Learn</span></div>
+          <h3 data-t="h.b6.h">Tomorrow's task starts smarter.</h3>
+          <p data-t="h.b6.p">What the team learned along the way, from review comments to QA findings, is saved as learning notes for that repository. The next task reads them before it starts.</p>
+        </div>
+        <div class="learn-card">
+          <div class="h"><img src="/assets/owl-white.png" alt="" width="18" height="18"><span data-t="h.b6.card">Learning · api</span></div>
+          <div><span class="g">+</span> <span data-t="h.b6.n1">List endpoints use cursor pagination on createdAt, 20 per page.</span></div>
+          <div><span class="g">+</span> <span data-t="h.b6.n2">Response shape: { items, nextCursor }. Mobile reads the same shape.</span></div>
+          <div class="y" style="margin-top:12px" data-t="h.b6.n3">→ read by the next task in api</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="feat full" id="workspaces">
   <div class="wrap">
@@ -253,32 +353,6 @@
   </div>
 </section>
 
-<section class="feat" id="keys">
-  <div class="wrap">
-    <div class="grid">
-      <div class="txt">
-        <div class="label" data-t="f.k.label">Shortcuts</div>
-        <h2 data-t="h.k.h2">Made for your hands on the keyboard.</h2>
-        <p data-t="f.k.p">Mac-style line editing works in the terminal too.</p>
-      </div>
-      <table class="key-table">
-        <tr><td><kbd>⌘</kbd><kbd>1</kbd></td><td data-t="k.work">Workspaces and terminals</td></tr>
-        <tr><td><kbd>⌘</kbd><kbd>2</kbd></td><td data-t="k.board">Open the worklist</td></tr>
-        <tr><td><kbd>⌘</kbd><kbd>T</kbd></td><td data-t="k.tab">New tab</td></tr>
-        <tr><td><kbd>⌘</kbd><kbd>⇧</kbd><kbd>T</kbd></td><td data-t="k.space">New workspace</td></tr>
-        <tr><td><kbd>⌘</kbd><kbd>D</kbd></td><td data-t="k.right">Split right</td></tr>
-        <tr><td><kbd>⌘</kbd><kbd>⇧</kbd><kbd>D</kbd></td><td data-t="k.down">Split down</td></tr>
-        <tr><td><kbd>⌘</kbd><kbd>⇧</kbd><kbd>B</kbd></td><td data-t="k.browser">Side browser</td></tr>
-        <tr><td><kbd>⌘</kbd><kbd>⇧</kbd><kbd>P</kbd></td><td data-t="k.packs">Switch pack</td></tr>
-        <tr><td><kbd>⌘</kbd><kbd>←</kbd> <kbd>⌘</kbd><kbd>→</kbd></td><td data-t="k.line">Start or end of the line</td></tr>
-        <tr><td><kbd>⌘</kbd><kbd>⌫</kbd></td><td data-t="k.del">Delete to the start of the line</td></tr>
-        <tr><td><kbd>⇧</kbd><kbd>↩</kbd></td><td data-t="k.nl">New line instead of sending</td></tr>
-        <tr><td><kbd>⌘</kbd><kbd>Q</kbd></td><td data-t="k.quit">Quit the app; agents keep running in the background</td></tr>
-      </table>
-    </div>
-  </div>
-</section>
-
 <section class="cta rule">
   <div class="wrap">
     <img class="owl" src="/assets/owl-white-512.png" alt="">
@@ -299,6 +373,7 @@
       <a class="brand" href="/"><img src="/assets/owl-white.png" alt="">Athena Studio</a>
       <div class="links">
         <a href="/features/" data-t="nav.features">Features</a>
+        <a href="/docs/" data-t="nav.docs">Docs</a>
         <a href="/releases/" data-t="nav.releases">Releases</a>
         <a href="/download/" data-t="nav.download">Download</a>
         <a href="/terms/" data-t="nav.terms">Terms</a>

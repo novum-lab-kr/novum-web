@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-t="o.title">Docs — Athena Studio</title>
+<meta name="description" data-ta="content:o.desc" content="Getting started with Athena Studio, keyboard shortcuts, data and security, how it compares, and frequently asked questions.">
+<meta property="og:title" content="Docs — Athena Studio">
+<meta property="og:description" content="Getting started with Athena Studio, keyboard shortcuts, data and security, how it compares, and frequently asked questions.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://athena.novum-lab.com/docs/">
+<meta property="og:image" content="https://athena.novum-lab.com/assets/shots/workspace-en-1200.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://athena.novum-lab.com/docs/">
+<meta name="theme-color" content="#09090b">
+<link rel="icon" type="image/png" href="/assets/favicon-white.png">
+<link rel="apple-touch-icon" href="/assets/app-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=20261028">
+<script src="/assets/lang.js?v=20261028"></script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/assets/owl-white.png" alt="">Athena Studio</a>
+    <nav>
+      <a class="nav-x" href="/features/" data-t="nav.features">Features</a>
+      <a class="nav-x" href="/docs/" aria-current="page" data-t="nav.docs">Docs</a>
+      <a class="nav-x" href="/releases/" data-t="nav.releases">Releases</a>
+      <details class="lang">
+        <summary aria-label="Language"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><span data-lang-label>EN</span></summary>
+        <ul>
+          <li><button type="button" data-set-lang="en" lang="en">English</button></li>
+          <li><button type="button" data-set-lang="ko" lang="ko">한국어</button></li>
+          <li><button type="button" data-set-lang="ja" lang="ja">日本語</button></li>
+          <li><button type="button" data-set-lang="zh" lang="zh-Hans">中文</button></li>
+        </ul>
+      </details>
+      <a class="btn sm gold" href="/download/" data-t="nav.download">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="page-head">
+  <div class="wrap">
+    <p class="eyebrow"><i></i><span data-t="nav.docs">Docs</span></p>
+    <h1 class="grad" data-t="o.h1">Everything you need to work with Athena Studio.</h1>
+    <div class="toc">
+      <a href="#start" data-t="d.start.label">Get started</a>
+      <a href="#shortcuts" data-t="f.k.label">Shortcuts</a>
+      <a href="#security" data-t="h.s.label">Data and security</a>
+      <a href="#compare" data-t="h.c.label">Compared</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </div>
+</div>
+
+<section id="start" class="rule">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label" data-t="d.start.label">Get started</div>
+      <h2 data-t="d.start.h">Three steps to your first agent.</h2>
+    </div>
+    <div class="three">
+      <div><b data-t="d.s1">Install</b><span data-t="d.s1p">Open the downloaded file and drag Athena Studio into Applications. It's signed and notarized, so it opens without a warning.</span></div>
+      <div><b data-t="d.s2">Open it</b><span data-t="d.s2p">On first launch the app sets up the Athena core for you. There's nothing else to install.</span></div>
+      <div><b data-t="d.s3">Add your repositories</b><span data-t="d.s3p">Create a pack from the repositories on your Mac, or import one from your team. Then ask Athena for your first task.</span></div>
+    </div>
+    <p class="hint" data-t="o.req">Before you install, check <a href="/download/">what you need</a>.</p>
+    <p class="hint" data-t="d.eula">By installing Athena Studio you agree to the <a href="/terms/">End User License Agreement</a>. Looking for what changed? See the <a href="/releases/">release notes</a>.</p>
+  </div>
+</section>
+
+<section class="feat" id="shortcuts">
+  <div class="wrap">
+    <div class="grid">
+      <div class="txt">
+        <div class="label" data-t="f.k.label">Shortcuts</div>
+        <h2 data-t="h.k.h2">Made for your hands on the keyboard.</h2>
+        <p data-t="f.k.p">Mac-style line editing works in the terminal too.</p>
+      </div>
+      <table class="key-table">
+        <tr><td><kbd>⌘</kbd><kbd>1</kbd></td><td data-t="k.work">Workspaces and terminals</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>2</kbd></td><td data-t="k.board">Open the worklist</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>T</kbd></td><td data-t="k.tab">New tab</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⇧</kbd><kbd>T</kbd></td><td data-t="k.space">New workspace</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>D</kbd></td><td data-t="k.right">Split right</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⇧</kbd><kbd>D</kbd></td><td data-t="k.down">Split down</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⇧</kbd><kbd>B</kbd></td><td data-t="k.browser">Side browser</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⇧</kbd><kbd>P</kbd></td><td data-t="k.packs">Switch pack</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>←</kbd> <kbd>⌘</kbd><kbd>→</kbd></td><td data-t="k.line">Start or end of the line</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⌫</kbd></td><td data-t="k.del">Delete to the start of the line</td></tr>
+        <tr><td><kbd>⇧</kbd><kbd>↩</kbd></td><td data-t="k.nl">New line instead of sending</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>Q</kbd></td><td data-t="k.quit">Quit the app; agents keep running in the background</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="security" class="rule">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label" data-t="h.s.label">Data and security</div>
+      <h2 data-t="h.s.h2">Your code stays on your Mac.</h2>
+      <p data-t="h.s.p">Athena Studio runs on your computer with tools you already trust. Here's exactly what goes where.</p>
+    </div>
+    <div class="sec-grid">
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><b data-t="h.s.1">Runs on your Mac</b><span data-t="h.s.1p">Agents, terminals and the worklist run locally. The app does not send your code or files to novum's servers.</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span><b data-t="h.s.2">Your own AI account</b><span data-t="h.s.2p">Agents run as the Claude Code or Codex you already signed into, under that provider's terms and your plan.</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="12" r="2.5"/><path d="M6 8.5v7M8.3 7.2l7.5 3.6"/></svg></span><b data-t="h.s.3">Branches, not your main</b><span data-t="h.s.3p">Each agent works on its own branch and worktree. Automatic merge is off until you turn it on for a repository.</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l8-4 8 4v6c0 4-3.5 7-8 8-4.5-1-8-4-8-8z"/><path d="M9 12l2 2 4-4"/></svg></span><b data-t="h.s.4">Signed and notarized</b><span data-t="h.s.4p">Release builds are signed with an Apple Developer ID and notarized by Apple, so macOS opens them without a warning.</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9"/></svg></span><b data-t="h.s.5">A separate browser</b><span data-t="h.s.5p">The side browser is sandboxed, opens only http and https, and keeps its sign-ins apart from your main browser.</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg></span><b data-t="h.s.6">Optional means optional</b><span data-t="h.s.6p">Extras that send data elsewhere only switch on when you add your own key. Without one, nothing is sent.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="compare" class="rule">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label" data-t="h.c.label">Compared</div>
+      <h2 data-t="h.c.h2">Claude Code on its own, or with Athena Studio.</h2>
+      <p data-t="h.c.p">Athena Studio doesn't replace your coding agent. It runs Claude Code or Codex for you and adds the team around it.</p>
+    </div>
+    <table class="cmp">
+      <thead><tr><th></th><th data-t="h.c.a">Claude Code in a terminal</th><th class="us" data-t="h.c.b">With Athena Studio</th></tr></thead>
+      <tbody>
+        <tr><th data-t="h.c.r1">Agents at once</th><td data-h="Claude Code" data-t="h.c.r1a">One per terminal window</td><td class="us" data-h="Athena Studio" data-t="h.c.r1b">A team lead plus an agent for each repository, side by side</td></tr>
+        <tr><th data-t="h.c.r2">Planning</th><td data-h="Claude Code" data-t="h.c.r2a">Inside the conversation</td><td class="us" data-h="Athena Studio" data-t="h.c.r2b">A written plan per task, with progress, blockers and next step</td></tr>
+        <tr><th data-t="h.c.r3">Questions for you</th><td data-h="Claude Code" data-t="h.c.r3a">Wherever that session has scrolled to</td><td class="us" data-h="Athena Studio" data-t="h.c.r3b">One Work list and a menu bar alert. Answer with a click</td></tr>
+        <tr><th data-t="h.c.r4">Branches</th><td data-h="Claude Code" data-t="h.c.r4a">You create and switch them</td><td class="us" data-h="Athena Studio" data-t="h.c.r4b">Each agent works on its own branch and worktree</td></tr>
+        <tr><th data-t="h.c.r5">Seeing progress</th><td data-h="Claude Code" data-t="h.c.r5a">Read each terminal</td><td class="us" data-h="Athena Studio" data-t="h.c.r5b">Live agent monitor and pane details</td></tr>
+        <tr><th data-t="h.c.r6">Pull requests</th><td data-h="Claude Code" data-t="h.c.r6a">You open, review and merge them</td><td class="us" data-h="Athena Studio" data-t="h.c.r6b">Opened after checks, reviewed and fixed automatically, merged by your rules</td></tr>
+        <tr><th data-t="h.c.r7">Lessons</th><td data-h="Claude Code" data-t="h.c.r7a">Whatever you write down yourself</td><td class="us" data-h="Athena Studio" data-t="h.c.r7b">Learning notes per repository, read by the next task</td></tr>
+        <tr><th data-t="h.c.r8">Closing the window</th><td data-h="Claude Code" data-t="h.c.r8a">The session ends with the terminal</td><td class="us" data-h="Athena Studio" data-t="h.c.r8b">Agents keep running; reopen to the same layout</td></tr>
+        <tr><th data-t="h.c.r9">Several companies</th><td data-h="Claude Code" data-t="h.c.r9a">Separate folders and setups</td><td class="us" data-h="Athena Studio" data-t="h.c.r9b">One pack each. Switch in a click, share with your team</td></tr>
+      </tbody>
+    </table>
+    <p class="fine" data-t="h.c.fine">Athena Studio needs Claude Code or Codex. Claude Code is made by Anthropic and Codex by OpenAI; Athena Studio is made by novum and is not affiliated with either.</p>
+  </div>
+</section>
+
+<section id="faq" class="rule">
+  <div class="wrap">
+    <div class="sec-head center">
+      <div class="label">FAQ</div>
+      <h2 data-t="h.q.h2">Questions</h2>
+    </div>
+    <div class="faq">
+      <details><summary data-t="h.q1">Can I use Athena Studio now?</summary><p data-t="h.q1a">Not yet. The first public build for macOS is almost ready. <a href="mailto:mcsung@novum-lab.com?subject=Athena%20Studio%20%E2%80%94%20notify%20me%20at%20launch">Get notified</a> and we'll email you when it's out.</p></details>
+      <details><summary data-t="h.q2">How much does it cost?</summary><p data-t="h.q2a">Athena Studio is free to download and use. Your agents run on your own Claude Code or Codex plan, so their usage is billed by that provider as usual.</p></details>
+      <details><summary data-t="h.q3">Do I need Claude Code or Codex?</summary><p data-t="h.q3a">Yes, at least one of them, signed in on your Mac. With Claude Code alone you get the full team. Add Codex and pull request reviews get a second opinion from a different model.</p></details>
+      <details><summary data-t="h.q4">Do I need to install Athena separately?</summary><p data-t="h.q4a">No. The app brings the Athena core with it and sets it up on first launch.</p></details>
+      <details><summary data-t="h.q5">Does my code leave my Mac?</summary><p data-t="h.q5a">Not to us. Athena Studio does not send your code or files to novum's servers. Your agents talk to their own provider (Anthropic or OpenAI) as they normally do, and pushes go to your GitHub.</p></details>
+      <details><summary data-t="h.q6">Will agents merge code on their own?</summary><p data-t="h.q6a">Only if you turn it on. Automatic merge is off by default and set per repository, and you can keep a final click before every merge.</p></details>
+      <details><summary data-t="h.q7">Do agents keep working when I close the app?</summary><p data-t="h.q7a">Yes. Terminals and agents keep running in the background. Even after you quit, open the app again and you're back to the same tabs and layout.</p></details>
+      <details><summary data-t="h.q8">Can I use it for more than one company or project?</summary><p data-t="h.q8a">Yes. Make a pack for each: its repositories, agents and rules. Switching packs doesn't stop work in the other one, and you can export a pack for your team.</p></details>
+      <details><summary data-t="h.q9">What about Windows or Linux?</summary><p data-t="h.q9a">Athena Studio is a Mac app for now.</p></details>
+    </div>
+  </div>
+</section>
+</main>
+
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <a class="brand" href="/"><img src="/assets/owl-white.png" alt="">Athena Studio</a>
+      <div class="links">
+        <a href="/features/" data-t="nav.features">Features</a>
+        <a href="/docs/" data-t="nav.docs">Docs</a>
+        <a href="/releases/" data-t="nav.releases">Releases</a>
+        <a href="/download/" data-t="nav.download">Download</a>
+        <a href="/terms/" data-t="nav.terms">Terms</a>
+        <a href="https://novum-lab.com">novum-lab.com</a>
+      </div>
+    </div>
+    <div class="biz"><span data-t="c.made">© 2026 novum. Athena Studio is made by novum.</span><br>novum · CEO: Eunju Kim · Business Registration No. 496-37-01619 · Seoul, Republic of Korea · <a href="mailto:mcsung@novum-lab.com">mcsung@novum-lab.com</a></div>
+  </div>
+</footer>
+</body>
+</html>

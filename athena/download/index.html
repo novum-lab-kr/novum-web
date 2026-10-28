@@ -27,6 +27,7 @@
     <a class="brand" href="/"><img src="/assets/owl-white.png" alt="">Athena Studio</a>
     <nav>
       <a class="nav-x" href="/features/" data-t="nav.features">Features</a>
+      <a class="nav-x" href="/docs/" data-t="nav.docs">Docs</a>
       <a class="nav-x" href="/releases/" data-t="nav.releases">Releases</a>
       <details class="lang">
         <summary aria-label="Language"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><span data-lang-label>EN</span></summary>
@@ -55,19 +56,33 @@
   <div class="wrap">
     <!-- 배포판이 올라오면(latest.json 200) 두 버튼의 aria-disabled · soon 을 지운다. 주소는 athena-studio docs/release/homepage-handoff.md 의 고정 주소 -->
     <div class="dl">
-      <div class="main">
+      <div class="main" data-arch="arm64">
         <small data-t="d.rec">Most Macs since 2020</small>
         <b>Apple Silicon</b>
         <span data-t="d.arm">M1, M2, M3, M4 and later</span>
         <a class="btn gold" href="https://github.com/novum-lab-kr/athena-studio-releases/releases/latest/download/Athena-Studio-mac-arm64.dmg" aria-disabled="true"><span data-t="d.get">Download .dmg</span> <span class="soon" data-t="c.soon">Soon</span></a>
       </div>
-      <div>
+      <div data-arch="x64">
         <small data-t="d.old">Older Macs</small>
         <b>Intel</b>
         <span data-t="d.x64">Macs with an Intel processor</span>
         <a class="btn" href="https://github.com/novum-lab-kr/athena-studio-releases/releases/latest/download/Athena-Studio-mac-x64.dmg" aria-disabled="true"><span data-t="d.get">Download .dmg</span> <span class="soon" data-t="c.soon">Soon</span></a>
       </div>
     </div>
+    <script>
+/* 칩 감지: Chromium 은 UA-CH 로 x86 을 알려 준다. Safari 는 알 수 없어서 Apple Silicon 을 기본으로 둔다 */
+(function () {
+  var ua = navigator.userAgentData;
+  if (!ua || !ua.getHighEntropyValues) return;
+  ua.getHighEntropyValues(['architecture']).then(function (h) {
+    if (h.architecture !== 'x86') return;
+    var arm = document.querySelector('[data-arch="arm64"]'), x64 = document.querySelector('[data-arch="x64"]');
+    arm.classList.remove('main'); x64.classList.add('main');
+    arm.querySelector('.btn').classList.remove('gold'); x64.querySelector('.btn').classList.add('gold');
+    x64.parentNode.insertBefore(x64, arm);
+  }).catch(function () {});
+})();
+</script>
     <p class="hint" data-t="d.which">Not sure which one? Open  → About This Mac. “Chip: Apple M…” means Apple Silicon; “Processor: Intel” means Intel.</p>
     <p class="hint" data-t="d.notify">Want to know when it's ready? <a href="mailto:mcsung@novum-lab.com?subject=Athena%20Studio%20%E2%80%94%20notify%20me%20at%20launch">Get notified</a>.</p>
   </div>
@@ -86,23 +101,11 @@
       <li><b>Node.js</b><span data-t="d.r4p">Used by Athena's scripts</span></li>
       <li><b data-t="d.r5">GitHub</b><span data-t="d.r5p">Access to your repositories. The gh CLI is optional, for opening pull requests.</span></li>
     </ul>
-  </div>
-</section>
-
-<section class="rule">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="label" data-t="d.start.label">Get started</div>
-      <h2 data-t="d.start.h">Three steps to your first agent.</h2>
-    </div>
-    <div class="three">
-      <div><b data-t="d.s1">Install</b><span data-t="d.s1p">Open the downloaded file and drag Athena Studio into Applications. It's signed and notarized, so it opens without a warning.</span></div>
-      <div><b data-t="d.s2">Open it</b><span data-t="d.s2p">On first launch the app sets up the Athena core for you. There's nothing else to install.</span></div>
-      <div><b data-t="d.s3">Add your repositories</b><span data-t="d.s3p">Create a pack from the repositories on your Mac, or import one from your team. Then ask Athena for your first task.</span></div>
-    </div>
+    <p class="hint" style="margin-top:28px" data-t="d.next">Installed? <a href="/docs/#start">Get started in Docs</a>: your first pack and your first request.</p>
     <p class="hint" data-t="d.eula">By installing Athena Studio you agree to the <a href="/terms/">End User License Agreement</a>. Looking for what changed? See the <a href="/releases/">release notes</a>.</p>
   </div>
 </section>
+
 </main>
 
 
@@ -112,6 +115,7 @@
       <a class="brand" href="/"><img src="/assets/owl-white.png" alt="">Athena Studio</a>
       <div class="links">
         <a href="/features/" data-t="nav.features">Features</a>
+        <a href="/docs/" data-t="nav.docs">Docs</a>
         <a href="/releases/" data-t="nav.releases">Releases</a>
         <a href="/download/" data-t="nav.download">Download</a>
         <a href="/terms/" data-t="nav.terms">Terms</a>
