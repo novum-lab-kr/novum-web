@@ -18,9 +18,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=20261028">
-<script src="/assets/lang.js?v=20261028"></script>
-<script src="/assets/motion.js?v=20261028" defer></script>
+<link rel="stylesheet" href="/assets/site.css?v=20261028b">
+<script src="/assets/lang.js?v=20261028b"></script>
+<script src="/assets/motion.js?v=20261028b" defer></script>
 </head>
 <body>
 <header class="top">
@@ -43,15 +43,16 @@
       <div>
         <p class="h3-lead" data-t="n.lead">Ask Athena, the team lead, to plan and split work across your repositories. Answer the agents' questions, and check code changes and PRs in the same Mac app.</p>
         <div class="btns">
-          <a class="btn gold" href="mailto:mcsung@novum-lab.com?subject=Athena%20Studio%20%E2%80%94%20notify%20me%20at%20launch" data-t="n.cta">Get launch updates</a>
+          <a class="btn gold" href="/download/" data-t="n.dl">Download for macOS</a>
           <a class="btn" href="#flow" data-t="n.cta2">See the workflow ↓</a>
         </div>
-        <p class="h3-note" data-t="n.note">macOS 13+ · Apple Silicon / Intel · Claude Code or Codex · Not released yet (the button opens your email app)</p>
+        <p class="h3-note" data-t="n.note2">Free · macOS 13+ · Apple Silicon / Intel · Needs Claude Code or Codex</p>
       </div>
     </div>
-    <figure class="shot h3-shot">
+    <figure class="shot h3-shot h3-gif">
       <picture>
-        <img data-lang-src="/assets/shots/workspace-{l}" src="/assets/shots/workspace-en.webp" srcset="/assets/shots/workspace-en-1200.webp 1200w, /assets/shots/workspace-en.webp 2400w" sizes="(max-width: 1296px) 100vw, 1248px" width="2400" height="1350" alt="Athena Studio window: workspaces on the left, Athena and a web agent working side by side, and the agent monitor below." data-ta="alt:h.hero.alt">
+        <source media="(prefers-reduced-motion: reduce)" srcset="/assets/shots/workspace-en-1200.webp">
+        <img src="/assets/shots/team.gif" width="1200" height="676" alt="Athena Studio at work: Athena and the web agent write code side by side while the agent monitor fills up below." data-ta="alt:n.hero.alt">
       </picture>
     </figure>
     <p class="h3-steps"><span data-t="n.steps">Install → connect repositories → ask Athena → answer questions → review the PR</span></p>
@@ -66,49 +67,82 @@
     <blockquote class="h3-quote"><span class="who" data-t="n.f.qwho">Request from our demo project</span><span data-t="h.b1.q">Customers keep abandoning carts. Add a saved-cart reminder on web, and paginate order history in api so mobile can use it too.</span></blockquote>
 
     <figure class="flowd" aria-label="How a request flows" data-ta="aria-label:n.d.aria">
-      <svg class="flowd-wide" viewBox="0 0 1200 460" role="img" aria-hidden="true">
-        <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="fd-head"/></marker><marker id="ahq" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="fd-headq"/></marker></defs>
-        <path class="fd-q" d="M445 108 V34 H90 V166" marker-end="url(#ahq)"/>
-        <text class="fd-ql" x="268" y="24" text-anchor="middle" data-t="n.d.q">Asks you when a decision is needed</text>
-        <path class="fd-l" d="M160 208 H216" marker-end="url(#ah)"/>
-        <path class="fd-l" d="M410 208 H445 V108 H476" marker-end="url(#ah)"/>
-        <path class="fd-l" d="M445 208 V308 H476" marker-end="url(#ah)"/>
-        <path class="fd-l" d="M660 108 H726" marker-end="url(#ah)"/><path class="fd-l" d="M660 308 H726" marker-end="url(#ah)"/>
-        <path class="fd-l" d="M920 108 H986" marker-end="url(#ah)"/><path class="fd-l" d="M920 308 H986" marker-end="url(#ah)"/>
-        <path class="fd-l" d="M1180 108 H1192 V417"/><path class="fd-l" d="M1085 346 V417"/><path class="fd-l" d="M1192 417 H924" marker-end="url(#ah)"/>
-        <path class="fd-n" d="M600 417 H315 V260" marker-end="url(#ah)"/>
-        <text class="fd-nl" x="458" y="408" text-anchor="middle" data-t="n.d.next">Read by the next task</text>
-        <g><rect class="fd-box fd-you" x="20" y="170" width="140" height="76" rx="12"/><text class="fd-t" x="90" y="203" text-anchor="middle" data-t="m.r1">You</text><text class="fd-s" x="90" y="227" text-anchor="middle" data-t="n.d.you">Request</text></g>
-        <g><rect class="fd-box fd-lead" x="220" y="160" width="190" height="96" rx="14"/><text class="fd-t" x="315" y="200" text-anchor="middle">Athena</text><text class="fd-s" x="315" y="226" text-anchor="middle" data-t="n.d.lead">Plans and assigns</text></g>
-        <g><rect class="fd-box" x="480" y="70" width="180" height="76" rx="12"/><text class="fd-t" x="570" y="103" text-anchor="middle" data-t="n.d.api">api agent</text><text class="fd-s" x="570" y="127" text-anchor="middle" data-t="n.d.br">Own branch</text></g>
-        <g><rect class="fd-box" x="480" y="270" width="180" height="76" rx="12"/><text class="fd-t" x="570" y="303" text-anchor="middle" data-t="n.d.web">web agent</text><text class="fd-s" x="570" y="327" text-anchor="middle" data-t="n.d.br">Own branch</text></g>
-        <g><rect class="fd-box" x="730" y="70" width="190" height="76" rx="12"/><text class="fd-t" x="825" y="103" text-anchor="middle" data-t="n.d.chk">Tests and checks</text><text class="fd-s" x="825" y="127" text-anchor="middle" data-t="n.d.pr">then a draft PR</text></g>
-        <g><rect class="fd-box" x="730" y="270" width="190" height="76" rx="12"/><text class="fd-t" x="825" y="303" text-anchor="middle" data-t="n.d.chk">Tests and checks</text><text class="fd-s" x="825" y="327" text-anchor="middle" data-t="n.d.pr">then a draft PR</text></g>
-        <g><rect class="fd-box fd-you" x="990" y="70" width="190" height="76" rx="12"/><text class="fd-t" x="1085" y="103" text-anchor="middle" data-t="n.d.mg">Review and merge</text><text class="fd-s" x="1085" y="127" text-anchor="middle" data-t="n.d.mgs">Confirm is optional</text></g>
-        <g><rect class="fd-box fd-you" x="990" y="270" width="190" height="76" rx="12"/><text class="fd-t" x="1085" y="303" text-anchor="middle" data-t="n.d.mg">Review and merge</text><text class="fd-s" x="1085" y="327" text-anchor="middle" data-t="n.d.mgs">Confirm is optional</text></g>
-        <g><rect class="fd-box" x="600" y="390" width="320" height="56" rx="12"/><text class="fd-t" x="760" y="424" text-anchor="middle" data-t="n.d.learn">Learning notes per repository</text></g>
+      <svg class="flowd-wide" viewBox="0 0 1200 480" role="img" aria-hidden="true">
+        <defs>
+        <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="fd-head"/></marker>
+        <marker id="ahq" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="fd-headq"/></marker>
+        </defs>
+        <path class="fd-l" d="M170 78 H226" marker-end="url(#ah)"/>
+        <path class="fd-l" d="M440 78 H496" marker-end="url(#ah)"/>
+        <path class="fd-l" d="M600 116 V150 H228 V170" marker-end="url(#ah)"/>
+        <path class="fd-l" d="M320 228 H376" marker-end="url(#ah)"/>
+        <path class="fd-l" d="M580 228 H636" marker-end="url(#ah)"/>
+        <path class="fd-l" d="M840 228 H896" marker-end="url(#ah)"/>
+        <path class="fd-n" d="M1000 266 V304 H220 V270" marker-end="url(#ah)"/>
+        <text class="fd-nl" x="610" y="296" text-anchor="middle" data-t="n.d.after2">A repository that depends on another starts after that change is merged (api before web · mobile)</text>
+        <path class="fd-l" d="M1100 228 H1150 V390 H1104" marker-end="url(#ah)"/>
+        <path class="fd-l" d="M880 390 H824" marker-end="url(#ah)"/>
+        <path class="fd-l" d="M620 390 H564" marker-end="url(#ah)"/>
+        <path class="fd-n" d="M320 390 H6 V14 H335 V26" marker-end="url(#ah)"/>
+        <text class="fd-nl" x="163" y="380" text-anchor="middle" data-t="n.d.next">Read by the next task</text>
+        <path class="fd-q" d="M120 228 H95 V120" marker-end="url(#ahq)"/>
+        <g><rect class="fd-box fd-you" x="20" y="40" width="150" height="76" rx="12"/><text class="fd-t" x="95" y="73" text-anchor="middle" data-t="m.r1">You</text><text class="fd-s" x="95" y="97" text-anchor="middle" data-t="n.d.you">Request</text></g>
+        <g><rect class="fd-box fd-lead" x="230" y="30" width="210" height="96" rx="14"/><text class="fd-t" x="335" y="70" text-anchor="middle">Athena</text><text class="fd-s" x="335" y="96" text-anchor="middle" data-t="n.d.lead2">Plans and splits by repository</text></g>
+        <g><rect class="fd-box fd-you" x="500" y="40" width="200" height="76" rx="12"/><text class="fd-t" x="600" y="73" text-anchor="middle" data-t="n.d.ok">You approve</text><text class="fd-s" x="600" y="97" text-anchor="middle" data-t="n.d.oks">the plan and its decisions</text></g>
+        <g>
+        <rect class="fd-box" x="136" y="174" width="200" height="76" rx="12"/>
+        <rect class="fd-box" x="128" y="182" width="200" height="76" rx="12"/>
+        <rect class="fd-box" x="120" y="190" width="200" height="76" rx="12"/>
+        <text class="fd-t" x="220" y="223" text-anchor="middle" data-t="n.d.agents">Agent per repository</text>
+        <text class="fd-s" x="220" y="247" text-anchor="middle" data-t="n.d.agentss">api · web · mobile</text>
+        </g>
+        <g><rect class="fd-box" x="380" y="190" width="200" height="76" rx="12"/><text class="fd-t" x="480" y="223" text-anchor="middle" data-t="n.d.chk">Tests and checks</text><text class="fd-s" x="480" y="247" text-anchor="middle" data-t="n.d.pr2">own branch · draft PR</text></g>
+        <g><rect class="fd-box" x="640" y="190" width="200" height="76" rx="12"/><text class="fd-t" x="740" y="223" text-anchor="middle" data-t="n.d.rv">Automatic review</text><text class="fd-s" x="740" y="247" text-anchor="middle" data-t="n.d.rvs">Claude + Codex</text></g>
+        <g><rect class="fd-box fd-you" x="900" y="190" width="200" height="76" rx="12"/><text class="fd-t" x="1000" y="223" text-anchor="middle" data-t="n.d.mg2">Merge</text><text class="fd-s" x="1000" y="247" text-anchor="middle" data-t="n.d.mgs2">Your confirm is optional</text></g>
+        <g><rect class="fd-box" x="880" y="360" width="220" height="60" rx="12"/><text class="fd-t" x="990" y="386" text-anchor="middle" data-t="n.d.lr">Learning review</text><text class="fd-s" x="990" y="408" text-anchor="middle" data-t="n.d.lrs">suggests notes</text></g>
+        <g><rect class="fd-box fd-you" x="620" y="360" width="200" height="60" rx="12"/><text class="fd-t" x="720" y="386" text-anchor="middle" data-t="n.d.pick">You pick</text><text class="fd-s" x="720" y="408" text-anchor="middle" data-t="n.d.picks">what to keep</text></g>
+        <g><rect class="fd-box" x="320" y="360" width="240" height="60" rx="12"/><text class="fd-t" x="440" y="386" text-anchor="middle" data-t="n.d.learn2">Learning notes</text><text class="fd-s" x="440" y="408" text-anchor="middle" data-t="n.d.learns">per repository</text></g>
+        <path class="fd-q" d="M330 462 H372"/>
+        <text class="fd-ql" x="382" y="467" data-t="n.d.q2">Any agent asks you when a decision is needed (Work → Waiting for you)</text>
       </svg>
-      <svg class="flowd-tall" viewBox="0 0 354 640" role="img" aria-hidden="true">
-        <defs><marker id="ahm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="fd-head"/></marker><marker id="ahqm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="fd-headq"/></marker></defs>
-        <g><rect class="fd-box fd-you" x="97" y="6" width="160" height="58" rx="12"/><text class="fd-t" x="177" y="31" text-anchor="middle" data-t="m.r1">You</text><text class="fd-s" x="177" y="52" text-anchor="middle" data-t="n.d.you">Request</text></g>
-        <path class="fd-l" d="M177 64 V92" marker-end="url(#ahm)"/>
-        <path class="fd-q" d="M264 180 H350 V35 H261" marker-end="url(#ahqm)"/>
-        <g><rect class="fd-box fd-lead" x="87" y="96" width="180" height="64" rx="14"/><text class="fd-t" x="177" y="123" text-anchor="middle">Athena</text><text class="fd-s" x="177" y="146" text-anchor="middle" data-t="n.d.lead">Plans and assigns</text></g>
-        <path class="fd-l" d="M177 160 V180 H90 V200" marker-end="url(#ahm)"/><path class="fd-l" d="M177 180 H264 V200" marker-end="url(#ahm)"/>
-        <g><rect class="fd-box" x="10" y="204" width="160" height="60" rx="12"/><text class="fd-t" x="90" y="230" text-anchor="middle" data-t="n.d.api">api agent</text><text class="fd-s" x="90" y="252" text-anchor="middle" data-t="n.d.br">Own branch</text></g>
-        <g><rect class="fd-box" x="184" y="204" width="160" height="60" rx="12"/><text class="fd-t" x="264" y="230" text-anchor="middle" data-t="n.d.web">web agent</text><text class="fd-s" x="264" y="252" text-anchor="middle" data-t="n.d.br">Own branch</text></g>
-        <path class="fd-l" d="M90 264 V290" marker-end="url(#ahm)"/><path class="fd-l" d="M264 264 V290" marker-end="url(#ahm)"/>
-        <g><rect class="fd-box" x="10" y="294" width="160" height="60" rx="12"/><text class="fd-t" x="90" y="320" text-anchor="middle" data-t="n.d.chk">Tests and checks</text><text class="fd-s" x="90" y="342" text-anchor="middle" data-t="n.d.pr">then a draft PR</text></g>
-        <g><rect class="fd-box" x="184" y="294" width="160" height="60" rx="12"/><text class="fd-t" x="264" y="320" text-anchor="middle" data-t="n.d.chk">Tests and checks</text><text class="fd-s" x="264" y="342" text-anchor="middle" data-t="n.d.pr">then a draft PR</text></g>
-        <path class="fd-l" d="M90 354 V380" marker-end="url(#ahm)"/><path class="fd-l" d="M264 354 V380" marker-end="url(#ahm)"/>
-        <g><rect class="fd-box fd-you" x="10" y="384" width="160" height="60" rx="12"/><text class="fd-t" x="90" y="410" text-anchor="middle" data-t="n.d.mg">Review and merge</text><text class="fd-s" x="90" y="432" text-anchor="middle" data-t="n.d.mgs">Confirm is optional</text></g>
-        <g><rect class="fd-box fd-you" x="184" y="384" width="160" height="60" rx="12"/><text class="fd-t" x="264" y="410" text-anchor="middle" data-t="n.d.mg">Review and merge</text><text class="fd-s" x="264" y="432" text-anchor="middle" data-t="n.d.mgs">Confirm is optional</text></g>
-        <path class="fd-l" d="M90 444 V466 H177 V490" marker-end="url(#ahm)"/><path class="fd-l" d="M264 444 V466 H177"/>
-        <g><rect class="fd-box" x="47" y="494" width="260" height="52" rx="12"/><text class="fd-t" x="177" y="526" text-anchor="middle" data-t="n.d.learn">Learning notes per repository</text></g>
-        <path class="fd-n" d="M47 520 H4 V128 H83" marker-end="url(#ahm)"/>
-        <text class="fd-nl" x="177" y="572" text-anchor="middle" data-t="n.d.next">Read by the next task</text>
-        <text class="fd-ql" x="177" y="604" text-anchor="middle" data-t="n.d.q">Asks you when a decision is needed</text>
-        <path class="fd-q" d="M20 598 H52"/>
+      <svg class="flowd-tall" viewBox="0 0 360 860" role="img" aria-hidden="true">
+        <defs>
+        <marker id="ahm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="fd-head"/></marker>
+        <marker id="ahqm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="fd-headq"/></marker>
+        </defs>
+        <path class="fd-l" d="M180 66 V82" marker-end="url(#ahm)"/>
+        <path class="fd-l" d="M180 146 V164" marker-end="url(#ahm)"/>
+        <path class="fd-l" d="M180 224 V240" marker-end="url(#ahm)"/>
+        <path class="fd-l" d="M180 308 V330" marker-end="url(#ahm)"/>
+        <path class="fd-l" d="M180 390 V406" marker-end="url(#ahm)"/>
+        <path class="fd-l" d="M180 466 V482" marker-end="url(#ahm)"/>
+        <path class="fd-l" d="M180 542 V576" marker-end="url(#ahm)"/>
+        <path class="fd-l" d="M180 636 V652" marker-end="url(#ahm)"/>
+        <path class="fd-l" d="M180 712 V728" marker-end="url(#ahm)"/>
+        <path class="fd-n" d="M290 514 H334 V292 H310" marker-end="url(#ahm)"/>
+        <text class="fd-nl" x="326" y="404" text-anchor="middle" transform="rotate(-90 326 404)" style="font-size:12px" data-t="n.d.after3">Next repository after a merge</text>
+        <path class="fd-n" d="M70 760 H14 V116 H66" marker-end="url(#ahm)"/>
+        <text class="fd-nl" x="22" y="440" text-anchor="middle" transform="rotate(-90 22 440)" style="font-size:12px" data-t="n.d.next">Read by the next task</text>
+        <path class="fd-q" d="M306 266 H350 V38 H294" marker-end="url(#ahqm)"/>
+        <g><rect class="fd-box fd-you" x="70" y="10" width="220" height="56" rx="12"/><text class="fd-t" x="180" y="34" text-anchor="middle" data-t="m.r1">You</text><text class="fd-s" x="180" y="55" text-anchor="middle" data-t="n.d.you">Request</text></g>
+        <g><rect class="fd-box fd-lead" x="70" y="86" width="220" height="60" rx="14"/><text class="fd-t" x="180" y="112" text-anchor="middle">Athena</text><text class="fd-s" x="180" y="134" text-anchor="middle" data-t="n.d.lead2">Plans and splits by repository</text></g>
+        <g><rect class="fd-box fd-you" x="70" y="168" width="220" height="56" rx="12"/><text class="fd-t" x="180" y="192" text-anchor="middle" data-t="n.d.ok">You approve</text><text class="fd-s" x="180" y="213" text-anchor="middle" data-t="n.d.oks">the plan and its decisions</text></g>
+        <g>
+        <rect class="fd-box" x="86" y="236" width="220" height="56" rx="12"/>
+        <rect class="fd-box" x="78" y="244" width="220" height="56" rx="12"/>
+        <rect class="fd-box" x="70" y="252" width="220" height="56" rx="12"/>
+        <text class="fd-t" x="180" y="276" text-anchor="middle" data-t="n.d.agents">Agent per repository</text>
+        <text class="fd-s" x="180" y="297" text-anchor="middle" data-t="n.d.agentss">api · web · mobile</text>
+        </g>
+        <g><rect class="fd-box" x="70" y="334" width="220" height="56" rx="12"/><text class="fd-t" x="180" y="358" text-anchor="middle" data-t="n.d.chk">Tests and checks</text><text class="fd-s" x="180" y="379" text-anchor="middle" data-t="n.d.pr2">own branch · draft PR</text></g>
+        <g><rect class="fd-box" x="70" y="410" width="220" height="56" rx="12"/><text class="fd-t" x="180" y="434" text-anchor="middle" data-t="n.d.rv">Automatic review</text><text class="fd-s" x="180" y="455" text-anchor="middle" data-t="n.d.rvs">Claude + Codex</text></g>
+        <g><rect class="fd-box fd-you" x="70" y="486" width="220" height="56" rx="12"/><text class="fd-t" x="180" y="510" text-anchor="middle" data-t="n.d.mg2">Merge</text><text class="fd-s" x="180" y="531" text-anchor="middle" data-t="n.d.mgs2">Your confirm is optional</text></g>
+        <g><rect class="fd-box" x="70" y="580" width="220" height="56" rx="12"/><text class="fd-t" x="180" y="604" text-anchor="middle" data-t="n.d.lr">Learning review</text><text class="fd-s" x="180" y="625" text-anchor="middle" data-t="n.d.lrs">suggests notes</text></g>
+        <g><rect class="fd-box fd-you" x="70" y="656" width="220" height="56" rx="12"/><text class="fd-t" x="180" y="680" text-anchor="middle" data-t="n.d.pick">You pick</text><text class="fd-s" x="180" y="701" text-anchor="middle" data-t="n.d.picks">what to keep</text></g>
+        <g><rect class="fd-box" x="70" y="732" width="220" height="56" rx="12"/><text class="fd-t" x="180" y="756" text-anchor="middle" data-t="n.d.learn2">Learning notes</text><text class="fd-s" x="180" y="777" text-anchor="middle" data-t="n.d.learns">per repository</text></g>
+        <path class="fd-q" d="M40 830 H72"/>
+        <text class="fd-ql" x="80" y="826" style="font-size:12.5px" data-t="n.d.q3a">Any agent asks you when a</text>
+        <text class="fd-ql" x="80" y="844" style="font-size:12.5px" data-t="n.d.q3b">decision is needed (Work → Waiting)</text>
       </svg>
       <figcaption data-t="n.d.cap">Each repository works on its own branch and PR. Work that depends on another repository's change starts after that change is done. Automatic review and merge is set per repository.</figcaption>
     </figure>
@@ -117,14 +151,19 @@
 
 <section id="questions" class="h3-sec">
   <div class="wrap">
-    <div class="h3-panel">
+    <div class="h3-panel h3-stack">
       <div class="h3-panel-txt">
         <p class="h3-num">02 · <span data-t="n.q.tag">api · order history</span></p>
         <h2 data-t="n.q.h">Answer agent questions without leaving the app.</h2>
         <p class="h3-p" data-t="n.q.p">Should order history show 20 or 50 items per page? The question appears in Work and a red dot shows in the menu bar. Send your answer and the agent continues.</p>
         <p class="h3-sum" data-t="n.q.sum">In the demo, 20 was chosen. The screen is the English demo.</p>
       </div>
-      <figure class="shot h3-q"><img src="/assets/shots/answer-modal.webp" width="958" height="774" loading="lazy" alt="A question from the api agent: default page size for order history, 20 (recommended) or 50, with a Send answer button." data-ta="alt:h.b3.alt1"></figure>
+      <figure class="shot h3-q h3-gif">
+        <picture>
+          <source media="(prefers-reduced-motion: reduce)" srcset="/assets/shots/answer-modal.webp">
+          <img src="/assets/shots/answer.gif" width="1200" height="676" loading="lazy" alt="Answering the api agent's page-size question in Work: the answer is typed into the agent's pane and it carries on." data-ta="alt:n.q.alt">
+        </picture>
+      </figure>
     </div>
   </div>
 </section>
@@ -166,7 +205,7 @@
     <dl class="h3-facts">
       <div><dt data-t="m.f2h">Where your code goes</dt><dd data-t="n.x2">The app doesn't send your code or files to novum. AI requests go to the provider you use, and pushes go to your GitHub. <a href="/docs/#security">Details</a></dd></div>
       <div><dt data-t="m.f3h">Cost</dt><dd data-t="m.f3">Athena Studio itself is free. AI usage is billed under your Claude or Codex plan.</dd></div>
-      <div><dt data-t="m.f4h">Languages</dt><dd data-t="n.x4">English, Korean, Japanese or Chinese, for the app and the agents.</dd></div>
+      <div><dt data-t="m.f4h">Languages</dt><dd data-t="n.x4">English, Korean, Japanese or Chinese, for the app and the agents. The work board (⌘2) is in Korean for now.</dd></div>
       <div><dt data-t="m.f1h">What you need</dt><dd data-t="n.x1">macOS 13 or later. Automatic PR review needs Claude Code. <a href="/download/">Full requirements</a></dd></div>
     </dl>
   </div>
@@ -176,8 +215,8 @@
   <div class="wrap">
     <img src="/assets/owl-white.png" alt="" width="36" height="36">
     <h2 data-t="n.e.h">Meet Athena Studio on your Mac.</h2>
-    <p data-t="n.e.p">Get an email when the first public build is ready.</p>
-    <a class="btn gold" href="mailto:mcsung@novum-lab.com?subject=Athena%20Studio%20%E2%80%94%20notify%20me%20at%20launch" data-t="n.cta">Get launch updates</a>
+    <p data-t="n.e.p2">Free for macOS 13 or later, on Apple Silicon and Intel.</p>
+    <a class="btn gold" href="/download/" data-t="n.dl">Download for macOS</a>
   </div>
 </section>
 </main>
@@ -193,6 +232,7 @@
         <a href="/releases/" data-t="nav.releases">Releases</a>
         <a href="/download/" data-t="nav.download">Download</a>
         <a href="/terms/" data-t="nav.terms">Terms</a>
+        <a href="https://github.com/novum-lab-kr/athena-studio/issues/new/choose" data-t="nav.issue">Report an issue</a>
         <a href="https://novum-lab.com">novum-lab.com</a>
       </div>
     </div>

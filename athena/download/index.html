@@ -18,9 +18,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=20261028">
-<script src="/assets/lang.js?v=20261028"></script>
-<script src="/assets/motion.js?v=20261028" defer></script>
+<link rel="stylesheet" href="/assets/site.css?v=20261028b">
+<script src="/assets/lang.js?v=20261028b"></script>
+<script src="/assets/motion.js?v=20261028b" defer></script>
 </head>
 <body>
 <header class="top">
@@ -40,25 +40,25 @@
   <div class="wrap">
     <p class="eyebrow"><i></i><span data-t="nav.download">Download</span></p>
     <h1 class="grad" data-t="d.h1">Athena Studio for macOS</h1>
-    <p class="lead" data-t="d.lead">The first public build is almost ready. This page will have it the moment it's out.</p>
+    <p class="lead" data-t="d.lead2">Free for macOS 13 Ventura or later. Signed and notarized by Apple.</p>
   </div>
 </div>
 
 <section style="padding-top:0">
   <div class="wrap">
-    <!-- 배포판이 올라오면(latest.json 200) 두 버튼의 aria-disabled · soon 을 지운다. 주소는 athena-studio docs/release/homepage-handoff.md 의 고정 주소 -->
+    <!-- 주소는 athena-studio docs/release/homepage-handoff.md 의 고정 주소(늘 최신 배포판) -->
     <div class="dl">
       <div class="main" data-arch="arm64">
         <small data-t="d.rec">Most Macs since 2020</small>
         <b>Apple Silicon</b>
         <span data-t="d.arm">M1, M2, M3, M4 and later</span>
-        <a class="btn gold" href="https://github.com/novum-lab-kr/athena-studio-releases/releases/latest/download/Athena-Studio-mac-arm64.dmg" aria-disabled="true"><span data-t="d.get">Download .dmg</span> <span class="soon" data-t="c.soon">Soon</span></a>
+        <a class="btn gold" href="https://github.com/novum-lab-kr/athena-studio-releases/releases/latest/download/Athena-Studio-mac-arm64.dmg"><span data-t="d.get">Download .dmg</span></a>
       </div>
       <div data-arch="x64">
         <small data-t="d.old">Older Macs</small>
         <b>Intel</b>
         <span data-t="d.x64">Macs with an Intel processor</span>
-        <a class="btn" href="https://github.com/novum-lab-kr/athena-studio-releases/releases/latest/download/Athena-Studio-mac-x64.dmg" aria-disabled="true"><span data-t="d.get">Download .dmg</span> <span class="soon" data-t="c.soon">Soon</span></a>
+        <a class="btn" href="https://github.com/novum-lab-kr/athena-studio-releases/releases/latest/download/Athena-Studio-mac-x64.dmg"><span data-t="d.get">Download .dmg</span></a>
       </div>
     </div>
     <script>
@@ -76,7 +76,7 @@
 })();
 </script>
     <p class="hint" data-t="d.which">Not sure which one? Open  → About This Mac. “Chip: Apple M…” means Apple Silicon; “Processor: Intel” means Intel.</p>
-    <p class="hint" data-t="d.notify">Want to know when it's ready? <a href="mailto:mcsung@novum-lab.com?subject=Athena%20Studio%20%E2%80%94%20notify%20me%20at%20launch">Get notified</a>.</p>
+    <p class="hint" data-t="d.upd">Updating? The app doesn't update itself yet. Download the new .dmg and drag Athena Studio into Applications to replace the old one.</p>
   </div>
 </section>
 
@@ -91,7 +91,7 @@
       <li><b data-t="d.r2">AI agent</b><span data-t="d.r2p">Claude Code or Codex, signed in with your own account. Both is even better: Codex joins pull request reviews.</span></li>
       <li><b data-t="d.r3">git and Python 3</b><span data-t="d.r3p">Part of Apple's Command Line Tools. If they're missing, macOS offers to install them on first launch.</span></li>
       <li><b>Node.js</b><span data-t="d.r4p">Used by Athena's scripts</span></li>
-      <li><b data-t="d.r5">GitHub</b><span data-t="d.r5p">Access to your repositories. The gh CLI is optional, for opening pull requests.</span></li>
+      <li><b data-t="d.r5">GitHub</b><span data-t="d.r5p">Access to your repositories. The gh CLI is needed for pull requests and automatic review.</span></li>
     </ul>
     <p class="hint" style="margin-top:28px" data-t="d.next">Installed? <a href="/docs/#start">Get started in Docs</a>: your first pack and your first request.</p>
     <p class="hint" data-t="d.eula">By installing Athena Studio you agree to the <a href="/terms/">End User License Agreement</a>. Looking for what changed? See the <a href="/releases/">release notes</a>.</p>
@@ -111,6 +111,7 @@
         <a href="/releases/" data-t="nav.releases">Releases</a>
         <a href="/download/" data-t="nav.download">Download</a>
         <a href="/terms/" data-t="nav.terms">Terms</a>
+        <a href="https://github.com/novum-lab-kr/athena-studio/issues/new/choose" data-t="nav.issue">Report an issue</a>
         <a href="https://novum-lab.com">novum-lab.com</a>
       </div>
     </div>

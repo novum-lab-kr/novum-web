@@ -4,7 +4,7 @@
   var LANGS = ['en', 'ko', 'ja', 'zh'];
   var NAMES = { en: 'EN', ko: '한국어', ja: '日本語', zh: '中文' };
   var KEY = 'athena-lang';
-  var VER = '20261028';
+  var VER = '20261028b';
   var root = document.documentElement;
   var dicts = {};
 

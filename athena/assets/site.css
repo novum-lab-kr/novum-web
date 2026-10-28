@@ -636,3 +636,56 @@ html:lang(ko) .h3-sec h2, html:lang(ja) .h3-sec h2, html:lang(zh-Hans) .h3-sec h
 .foot-lang button:hover { color: var(--text); }
 .foot-lang button[aria-current="true"] { color: var(--text); text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--gold); }
 .foot-lang button:focus-visible { outline: 2px solid var(--gold-2); outline-offset: 2px; }
+
+/* ── 2026-10-28 배포판 · 움직이는 그림 ── */
+.h3-gif { max-width: 1200px; margin-left: auto; margin-right: auto; }
+.h3-panel.h3-stack { grid-template-columns: 1fr; gap: 32px; }
+.h3-stack .h3-panel-txt { max-width: 760px; }
+.h3-stack .h3-q { max-width: 1200px; justify-self: stretch; }
+@media (max-width: 900px) { .h3-panel.h3-stack { padding: 28px 16px; gap: 20px; } }
+.tag.dev { color: var(--muted); background: rgba(255, 255, 255, .06); }
+.learn-card .d { font: 500 12px/1.5 var(--sans); color: var(--dim); margin: -4px 0 12px; }
+
+/* ── 배경: 첫 화면 · 페이지 머리에 옅은 격자, 앱 화면 뒤 약한 금빛, 끝 칸에 빛 한 점 ── */
+.h3-hero, .page-head, .h3-end, .cta { position: relative; isolation: isolate; }
+.h3-hero::before, .page-head::before {
+  content: ""; display: block; position: absolute; inset: 0 0 auto 0; height: 760px; z-index: -1; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, .075) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, .075) 1px, transparent 1px);
+  background-size: 56px 56px; background-position: center top;
+  -webkit-mask-image: radial-gradient(ellipse 70% 75% at 50% 0%, #000 25%, transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 75% at 50% 0%, #000 25%, transparent 75%);
+}
+.page-head::before { height: 480px; }
+.h3-hero::after {
+  content: ""; position: absolute; left: 50%; top: 420px; width: min(1100px, 92vw); height: 560px; transform: translateX(-50%); z-index: -1; pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(217, 181, 111, .2), rgba(217, 181, 111, 0) 65%);
+  filter: blur(10px);
+}
+.h3-end::before, .cta::before {
+  content: ""; display: block; position: absolute; left: 50%; bottom: 0; width: min(900px, 100vw); height: 420px; transform: translateX(-50%); z-index: -1; pointer-events: none;
+  background: radial-gradient(ellipse 60% 70% at 50% 100%, rgba(217, 181, 111, .10), rgba(217, 181, 111, 0) 70%);
+}
+.h3-sec#questions .h3-panel { background: linear-gradient(180deg, #1c2126, #171a1e); }
+footer { background: var(--bg-2); }
+/* 페이지 전체: 아주 옅은 점 무늬(고정) + 내려가며 바뀌는 은은한 색 번짐 */
+body {
+  background:
+    radial-gradient(900px 700px at 92% 1500px, rgba(127, 178, 255, .07), transparent 70%),
+    radial-gradient(900px 700px at 4% 2700px, rgba(217, 181, 111, .06), transparent 70%),
+    radial-gradient(900px 700px at 90% 4000px, rgba(111, 207, 151, .045), transparent 70%),
+    var(--bg);
+}
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: -2; pointer-events: none;
+  background-image: radial-gradient(rgba(255, 255, 255, .06) 1px, transparent 1.2px);
+  background-size: 22px 22px;
+}
+main, footer { position: relative; }
+@media (max-width: 760px) { .h3-hero::before { height: 520px; background-size: 40px 40px; } .h3-hero::after { top: 300px; height: 360px; } }
+@media (max-width: 480px) { html:lang(ja) .h3-head h1 { font-size: 8vw; } }
+/* 받기 버튼 안 글자는 버튼 색 그대로(.dl span 의 회색을 받지 않게) */
+.dl .btn span { color: inherit; font-size: inherit; }
+/* 단축키 칸: 긴 조합(⌘⇧[ ⌘⇧])도 옆 칸을 덮지 않게 내용만큼 넓힌다 */
+.key-table td:first-child { width: 1%; padding-right: 28px; }

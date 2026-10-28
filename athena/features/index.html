@@ -18,9 +18,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=20261028">
-<script src="/assets/lang.js?v=20261028"></script>
-<script src="/assets/motion.js?v=20261028" defer></script>
+<link rel="stylesheet" href="/assets/site.css?v=20261028b">
+<script src="/assets/lang.js?v=20261028b"></script>
+<script src="/assets/motion.js?v=20261028b" defer></script>
 </head>
 <body>
 <header class="top">
@@ -44,6 +44,7 @@
     <div class="toc">
       <a href="#day" data-t="h.day.label">A day with Athena</a>
       <a href="#workspaces" data-t="f.ws.label">Workspaces</a>
+      <a href="#panes" data-t="f.pn.label">Split panes</a>
       <a href="#monitor" data-t="h.f.mon">Agent monitor</a>
       <a href="#work" data-t="h.f.work">Work</a>
       <a href="#details" data-t="h.f.det">Pane details</a>
@@ -142,11 +143,12 @@
       <div class="beat flip" id="learn">
         <div class="txt">
           <div class="time">06 <span>·</span> <span data-t="h.b6.k">Learn</span></div>
-          <h3 data-t="h.b6.h">Notes for the next task.</h3>
-          <p data-t="h.b6.p">What came up along the way, from review comments to QA findings, is saved as learning notes for that repository. Agents read them at the start of the next task.</p>
+          <h3 data-t="h.b6.h">Notes you choose, for the next task.</h3>
+          <p data-t="h.b6.p">After a merge, the learning review suggests notes from what came up along the way, from review comments to QA findings. Only the ones you pick in Learning are kept for that repository, and agents read them at the start of the next task.</p>
         </div>
         <div class="learn-card">
           <div class="h"><img src="/assets/owl-white.png" alt="" width="18" height="18"><span data-t="h.b6.card">Learning · api</span></div>
+          <div class="d" data-t="h.b6.n0">Suggested by the learning review · picked by you</div>
           <div><span class="g">+</span> <span data-t="h.b6.n1">List endpoints use cursor pagination on createdAt, 20 per page.</span></div>
           <div><span class="g">+</span> <span data-t="h.b6.n2">Response shape: { items, nextCursor }. Mobile reads the same shape.</span></div>
           <div class="y" style="margin-top:12px" data-t="h.b6.n3">→ read by the next task in api</div>
@@ -164,13 +166,32 @@
         <h2 data-t="f.ws.h">One workspace for each repository.</h2>
         <p data-t="f.ws.p">The left side lists your repositories with the branches and agents working in them. The middle holds tabs and split terminals, with each agent in its own named pane. Explorer sits on the right.</p>
         <ul>
-          <li data-t="f.ws.l1">Tabs and split panes; drag the edges to resize, double-click to split evenly</li>
+          <li data-t="f.ws.l1">A tab for each task, split into panes inside</li>
           <li data-t="f.ws.l2">Agent panes are named by agent and branch, Athena's by the task it's planning</li>
           <li data-t="f.ws.l3">Close the window and everything keeps running; reopen to the same tabs and layout</li>
           <li data-t="f.ws.l4">Give repositories a display name and image, shared with your team through the pack</li>
         </ul>
       </div>
       <figure class="shot"><img data-lang-src="/assets/shots/workspace-{l}" src="/assets/shots/workspace-en.webp" srcset="/assets/shots/workspace-en-1200.webp 1200w, /assets/shots/workspace-en.webp 2400w" sizes="(max-width: 1180px) 100vw, 1140px" width="2400" height="1350" alt="Athena Studio window: workspaces on the left, Athena and a web agent working side by side, and the agent monitor below." data-ta="alt:h.hero.alt"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="feat flip" id="panes">
+  <div class="wrap">
+    <div class="grid">
+      <div class="txt">
+        <div class="label" data-t="f.pn.label">Split panes</div>
+        <h2 data-t="f.pn.h">Put your agents side by side.</h2>
+        <p data-t="f.pn.p">Split a tab into panes and keep the team lead and the agents it hands work to in view at the same time. Arrange them the way you like, and the layout stays.</p>
+        <ul>
+          <li data-t="f.pn.l1"><kbd>⌘</kbd><kbd>D</kbd> splits right, <kbd>⌘</kbd><kbd>⇧</kbd><kbd>D</kbd> splits down</li>
+          <li data-t="f.pn.l2"><kbd>⌘</kbd><kbd>⌥</kbd> and an arrow key move between panes</li>
+          <li data-t="f.pn.l3">Drag a border to resize; double-click it to even them out</li>
+          <li data-t="f.pn.l4">Close the window and the layout stays as it was</li>
+        </ul>
+      </div>
+      <figure class="shot sm"><img src="/assets/shots/agents.webp" width="1600" height="1200" loading="lazy" alt="Athena and web-fe working side by side, with the agent monitor below following every agent." data-ta="alt:h.b2.alt2"></figure>
     </div>
   </div>
 </section>
@@ -348,11 +369,11 @@
 <section class="cta rule">
   <div class="wrap">
     <img class="owl" src="/assets/owl-white-512.png" alt="">
-    <h2 data-t="c.cta.h">Be the first to try Athena Studio.</h2>
-    <p data-t="c.cta.p">We'll email you when the first macOS build is ready.</p>
+    <h2 data-t="c.cta.h2">Try Athena Studio on your Mac.</h2>
+    <p data-t="n.e.p2">Free for macOS 13 or later, on Apple Silicon and Intel.</p>
     <div class="btns">
-      <a class="btn gold" href="mailto:mcsung@novum-lab.com?subject=Athena%20Studio%20%E2%80%94%20notify%20me%20at%20launch" data-t="c.notify">Get notified</a>
-      <a class="btn" href="/download/" data-t="nav.download">Download</a>
+      <a class="btn gold" href="/download/" data-t="n.dl">Download for macOS</a>
+      <a class="btn" href="/docs/" data-t="nav.docs">Docs</a>
     </div>
   </div>
 </section>
@@ -369,6 +390,7 @@
         <a href="/releases/" data-t="nav.releases">Releases</a>
         <a href="/download/" data-t="nav.download">Download</a>
         <a href="/terms/" data-t="nav.terms">Terms</a>
+        <a href="https://github.com/novum-lab-kr/athena-studio/issues/new/choose" data-t="nav.issue">Report an issue</a>
         <a href="https://novum-lab.com">novum-lab.com</a>
       </div>
     </div>
