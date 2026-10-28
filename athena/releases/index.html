@@ -1,77 +1,127 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Release notes — Athena Studio</title>
-<meta name="description" content="What's new in Athena Studio, newest first.">
+<title data-t="r.title">Release notes — Athena Studio</title>
+<meta name="description" data-ta="content:r.desc" content="What changed in Athena Studio, newest first.">
 <meta property="og:title" content="Release notes — Athena Studio">
-<meta property="og:description" content="What's new in Athena Studio, newest first.">
+<meta property="og:description" content="What changed in Athena Studio, newest first.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://athena.novum-lab.com/releases/">
-<meta property="og:image" content="https://athena.novum-lab.com/assets/owl-white-512.png">
+<meta property="og:image" content="https://athena.novum-lab.com/assets/shots/workspace-en-1200.webp">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://athena.novum-lab.com/releases/">
-<meta name="theme-color" content="#F5F3EF" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#141719" media="(prefers-color-scheme: dark)">
-<link rel="icon" type="image/png" href="/assets/favicon-black.png" media="(prefers-color-scheme: light)">
-<link rel="icon" type="image/png" href="/assets/favicon-white.png" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#09090b">
+<link rel="icon" type="image/png" href="/assets/favicon-white.png">
 <link rel="apple-touch-icon" href="/assets/app-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=20261028">
+<script src="/assets/lang.js?v=20261028"></script>
 </head>
 <body>
-<header>
+<header class="top">
   <div class="wrap">
-    <a class="brand" href="/"><img class="only-light" src="/assets/owl-black.png" alt=""><img class="only-dark" src="/assets/owl-white.png" alt="">Athena Studio</a>
+    <a class="brand" href="/"><img src="/assets/owl-white.png" alt="">Athena Studio</a>
     <nav>
-      <a href="/#how" class="hide-m">How it works</a>
-      <a href="/features/">Features</a>
-      <a href="/releases/" aria-current="page">Releases</a>
-      <a class="btn small primary" href="/download/">Download</a>
-      <a class="by" href="https://novum-lab.com">by novum</a>
+      <a class="nav-x" href="/features/" data-t="nav.features">Features</a>
+      <a class="nav-x" href="/releases/" aria-current="page" data-t="nav.releases">Releases</a>
+      <details class="lang">
+        <summary aria-label="Language"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><span data-lang-label>EN</span></summary>
+        <ul>
+          <li><button type="button" data-set-lang="en" lang="en">English</button></li>
+          <li><button type="button" data-set-lang="ko" lang="ko">한국어</button></li>
+          <li><button type="button" data-set-lang="ja" lang="ja">日本語</button></li>
+          <li><button type="button" data-set-lang="zh" lang="zh-Hans">中文</button></li>
+        </ul>
+      </details>
+      <a class="btn sm gold" href="/download/" data-t="nav.download">Download</a>
     </nav>
   </div>
 </header>
+
 <main>
-<div class="page-hero"><div class="wrap">
-  <p class="eyebrow">Release notes</p>
-  <h1>What's new in Athena Studio</h1>
-  <p class="lead">Athena Studio is in active development. Here's what changed, newest first. Public builds for macOS are coming soon.</p>
-</div></div>
-<section style="border-top:0;padding-top:16px">
+<div class="page-head">
   <div class="wrap">
-    <article class="rel" id="v0.13"><div class="ver"><b>0.13</b><span>v0.13.0 – v0.13.34<br>Oct 27–28, 2026</span></div><ul><li><em class="new">New</em><span>Athena follows up-to-date coding rules: per-layer language and type rules, modern syntax, scaffolds, and a type-check step in verification.</span></li><li><em class="imp">Improved</em><span>The app interface was rebuilt on TypeScript and React for a steadier screen.</span></li><li><em class="fix">Fixed</em><span>Large pull requests are reviewed code-first. If a diff had to be cut short, an approval asks you to confirm.</span></li><li><em class="fix">Fixed</em><span>Plans with steps left are no longer completed or archived automatically.</span></li><li><em class="fix">Fixed</em><span>⌘← and ⌘→ move to the start and end of the line, fixing repeated characters with Korean input.</span></li><li><em class="fix">Fixed</em><span>The agent monitor shows in every workspace.</span></li></ul></article>
-    <article class="rel" id="v0.12"><div class="ver"><b>0.12</b><span>v0.12.0 – v0.12.3<br>Oct 27, 2026</span></div><ul><li><em class="new">New</em><span>Pane details show token usage.</span></li><li><em class="imp">Improved</em><span>The agent monitor shows only agents that are working, labeled by repository.</span></li><li><em class="fix">Fixed</em><span>Blocked items in pane details are shown in red.</span></li></ul></article>
-    <article class="rel" id="v0.11"><div class="ver"><b>0.11</b><span>v0.11.0 – v0.11.5<br>Oct 26–27, 2026</span></div><ul><li><em class="new">New</em><span>The status board became the work board: an issue list as the first screen, finished work archived automatically, and a pane details pop-up.</span></li><li><em class="imp">Improved</em><span>Pane details are easier to read and have a back button.</span></li><li><em class="imp">Improved</em><span>Pane title bars are always visible, focused or not.</span></li></ul></article>
-    <article class="rel" id="v0.10"><div class="ver"><b>0.10</b><span>v0.10.0 – v0.10.7<br>Oct 26, 2026</span></div><ul><li><em class="new">New</em><span>Repositories in the sidebar get two-letter badges.</span></li><li><em class="imp">Improved</em><span>Terminals redraw smoothly in real time while you resize the window, without jumping lines or overflow.</span></li><li><em class="fix">Fixed</em><span>Pull requests opened after a plan is complete are also reviewed and merged automatically.</span></li></ul></article>
-    <article class="rel" id="v0.9"><div class="ver"><b>0.9</b><span>v0.9.0<br>Oct 26, 2026</span></div><ul><li><em class="new">New</em><span>Repository logos in the sidebar. The Athena workspace always shows the Athena logo.</span></li></ul></article>
-    <article class="rel" id="v0.8"><div class="ver"><b>0.8</b><span>v0.8.0 – v0.8.2<br>Oct 26, 2026</span></div><ul><li><em class="new">New</em><span>Repository images in expanded sidebar rows.</span></li><li><em class="fix">Fixed</em><span>⌘⌫ deletes to the start of the line, and ⇧↩ inserts a new line instead of sending.</span></li></ul></article>
-    <article class="rel" id="v0.7"><div class="ver"><b>0.7</b><span>v0.7.0<br>Oct 26, 2026</span></div><ul><li><em class="imp">Improved</em><span>Core updates apply right away, even while agents are working. Commits and heavy commands finish first.</span></li></ul></article>
-    <article class="rel" id="v0.6"><div class="ver"><b>0.6</b><span>v0.6.0 – v0.6.1<br>Oct 26, 2026</span></div><ul><li><em class="new">New</em><span>Automatic pull request review starts as soon as work is pushed and carries over earlier approvals. Without Codex, Claude reviews twice.</span></li><li><em class="fix">Fixed</em><span>Automatic flows resolve merge conflicts more reliably.</span></li></ul></article>
-    <article class="rel" id="v0.5"><div class="ver"><b>0.5</b><span>v0.5.0<br>Oct 26, 2026</span></div><ul><li><em class="imp">Improved</em><span>Automatic review settles implementation details itself, raises all comments at once and blocks only on real problems.</span></li></ul></article>
-    <article class="rel" id="v0.4"><div class="ver"><b>0.4</b><span>v0.4.0<br>Oct 26, 2026</span></div><ul><li><em class="new">New</em><span>Rename repositories and give them images. Shared through pack export and backup.</span></li></ul></article>
-    <article class="rel" id="v0.3"><div class="ver"><b>0.3</b><span>v0.3.0 – v0.3.1<br>Oct 26, 2026</span></div><ul><li><em class="new">New</em><span>Choose a model for each role in a pack: agents, pull request review and learning review.</span></li></ul></article>
-    <article class="rel" id="v0.2"><div class="ver"><b>0.2</b><span>v0.2.0<br>Oct 26, 2026</span></div><ul><li><em class="new">New</em><span>Version numbers. Every release is tagged and the app shows its version.</span></li></ul></article>
+    <p class="eyebrow"><i></i><span data-t="r.eyebrow">Release notes</span></p>
+    <h1 class="grad" data-t="r.h1">What's new in Athena Studio</h1>
+    <p class="lead" data-t="r.lead">Athena Studio is in active development. Here's what changed, newest first. Public builds for macOS are coming soon.</p>
   </div>
-</section>
-<section class="cta-sec" style="border-top:0;padding-top:0">
+</div>
+
+<!-- athena-studio CHANGELOG.md 와 같은 내용. 0.15(첫 배포판) 절은 배포판이 공개되면 더한다 -->
+<section style="padding-top:0">
   <div class="wrap">
-    <div class="cta">
-      <img src="/assets/owl-white-512.png" alt="">
-      <div><h2>Be the first to try Athena Studio.</h2><p>We'll email you when the first macOS build is ready.</p></div>
-      <div class="btns"><a class="btn primary" href="mailto:mcsung@novum-lab.com?subject=Athena%20Studio%20%E2%80%94%20notify%20me%20at%20launch">Get notified</a><a class="btn" href="/releases/">Release notes</a></div>
-    </div>
+    <div class="rel"><div class="v"><b>0.13</b><span>v0.13.0 – v0.13.34<br><span data-t="r.d13">Oct 27–28, 2026</span></span></div><ul>
+      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.13a">Athena follows up-to-date coding rules: per-layer language and type rules, modern syntax, scaffolds, and a type-check step in verification.</span></li>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.13b">The app interface was rebuilt on TypeScript and React for a steadier screen.</span></li>
+      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.13c">Large pull requests are reviewed code-first. If a diff had to be cut short, an approval asks you to confirm.</span></li>
+      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.13d">Plans with steps left are no longer completed or archived automatically.</span></li>
+      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.13e">⌘← and ⌘→ move to the start and end of the line, fixing repeated characters with Korean input.</span></li>
+      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.13f">The agent monitor shows in every workspace.</span></li>
+    </ul></div>
+    <div class="rel"><div class="v"><b>0.12</b><span>v0.12.0 – v0.12.3<br><span data-t="r.d12">Oct 27, 2026</span></span></div><ul>
+      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.12a">Pane details show token usage.</span></li>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.12b">The agent monitor shows only agents that are working, labeled by repository.</span></li>
+      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.12c">Blocked items in pane details are shown in red.</span></li>
+    </ul></div>
+    <div class="rel"><div class="v"><b>0.11</b><span>v0.11.0 – v0.11.5<br><span data-t="r.d11">Oct 26–27, 2026</span></span></div><ul>
+      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.11a">The status board became the work board: an issue list as the first screen, finished work archived automatically, and a pane details pop-up.</span></li>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.11b">Pane details are easier to read and have a back button.</span></li>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.11c">Pane title bars are always visible, focused or not.</span></li>
+    </ul></div>
+    <div class="rel"><div class="v"><b>0.10</b><span>v0.10.0 – v0.10.7<br><span data-t="r.d26">Oct 26, 2026</span></span></div><ul>
+      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.10a">Repositories in the sidebar get two-letter badges.</span></li>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.10b">Terminals redraw smoothly in real time while you resize the window, without jumping lines or overflow.</span></li>
+      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.10c">Pull requests opened after a plan is complete are also reviewed and merged automatically.</span></li>
+    </ul></div>
+    <div class="rel"><div class="v"><b>0.9</b><span>v0.9.0<br><span data-t="r.d26">Oct 26, 2026</span></span></div><ul>
+      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.9a">Repository logos in the sidebar. The Athena workspace always shows the Athena logo.</span></li>
+    </ul></div>
+    <div class="rel"><div class="v"><b>0.8</b><span>v0.8.0 – v0.8.2<br><span data-t="r.d26">Oct 26, 2026</span></span></div><ul>
+      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.8a">Repository images in expanded sidebar rows.</span></li>
+      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.8b">⌘⌫ deletes to the start of the line, and ⇧↩ inserts a new line instead of sending.</span></li>
+    </ul></div>
+    <div class="rel"><div class="v"><b>0.7</b><span>v0.7.0<br><span data-t="r.d26">Oct 26, 2026</span></span></div><ul>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.7a">Core updates apply right away, even while agents are working. Commits and heavy commands finish first.</span></li>
+    </ul></div>
+    <div class="rel"><div class="v"><b>0.6</b><span>v0.6.0 – v0.6.1<br><span data-t="r.d26">Oct 26, 2026</span></span></div><ul>
+      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.6a">Automatic pull request review starts as soon as work is pushed and carries over earlier approvals. Without Codex, Claude reviews twice.</span></li>
+      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.6b">Automatic flows resolve merge conflicts more reliably.</span></li>
+    </ul></div>
+    <div class="rel"><div class="v"><b>0.5</b><span>v0.5.0<br><span data-t="r.d26">Oct 26, 2026</span></span></div><ul>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.5a">Automatic review settles implementation details itself, raises all comments at once and blocks only on real problems.</span></li>
+    </ul></div>
+    <div class="rel"><div class="v"><b>0.4</b><span>v0.4.0<br><span data-t="r.d26">Oct 26, 2026</span></span></div><ul>
+      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.4a">Rename repositories and give them images. Shared through pack export and backup.</span></li>
+    </ul></div>
+    <div class="rel"><div class="v"><b>0.3</b><span>v0.3.0 – v0.3.1<br><span data-t="r.d26">Oct 26, 2026</span></span></div><ul>
+      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.3a">Choose a model for each role in a pack: agents, pull request review and learning review.</span></li>
+    </ul></div>
+    <div class="rel"><div class="v"><b>0.2</b><span>v0.2.0<br><span data-t="r.d26">Oct 26, 2026</span></span></div><ul>
+      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.2a">Version numbers. Every release is tagged and the app shows its version.</span></li>
+    </ul></div>
   </div>
 </section>
 </main>
+
+
 <footer>
   <div class="wrap">
-    <span>© 2026 novum. Athena Studio is made by novum.</span>
-    <nav><a href="/features/">Features</a><a href="/releases/">Releases</a><a href="/download/">Download</a><a href="/terms/">Terms</a><a href="https://novum-lab.com">novum-lab.com</a></nav>
+    <div class="row">
+      <a class="brand" href="/"><img src="/assets/owl-white.png" alt="">Athena Studio</a>
+      <div class="links">
+        <a href="/features/" data-t="nav.features">Features</a>
+        <a href="/releases/" data-t="nav.releases">Releases</a>
+        <a href="/download/" data-t="nav.download">Download</a>
+        <a href="/terms/" data-t="nav.terms">Terms</a>
+        <a href="https://novum-lab.com">novum-lab.com</a>
+      </div>
+    </div>
+    <div class="biz"><span data-t="c.made">© 2026 novum. Athena Studio is made by novum.</span><br>novum · CEO: Eunju Kim · Business Registration No. 496-37-01619 · Seoul, Republic of Korea · <a href="mailto:mcsung@novum-lab.com">mcsung@novum-lab.com</a></div>
   </div>
-  <div class="wrap biz">novum · CEO: Eunju Kim · Business Registration No. 496-37-01619 · Seoul, Republic of Korea · <a href="mailto:mcsung@novum-lab.com">mcsung@novum-lab.com</a></div>
 </footer>
 </body>
 </html>

@@ -1,232 +1,395 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Athena Studio — Your AI dev team, in one window</title>
-<meta name="description" content="Athena Studio is a Mac app for Athena, a team of AI agents that plans, writes and reviews code across your repositories. Coming soon from novum.">
+<title data-t="h.title">Athena Studio — Your AI dev team, in one window</title>
+<meta name="description" data-ta="content:h.desc" content="Athena Studio is a Mac app for running Athena, a team of AI coding agents. Watch every agent work, answer their questions in one place and decide what gets merged.">
 <meta property="og:title" content="Athena Studio — Your AI dev team, in one window">
-<meta property="og:description" content="Athena Studio is a Mac app for Athena, a team of AI agents that plans, writes and reviews code across your repositories. Coming soon from novum.">
+<meta property="og:description" content="A Mac app for running a team of AI coding agents. Watch every agent work, answer their questions in one place and decide what gets merged.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://athena.novum-lab.com/">
-<meta property="og:image" content="https://athena.novum-lab.com/assets/owl-white-512.png">
+<meta property="og:image" content="https://athena.novum-lab.com/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://athena.novum-lab.com/">
-<meta name="theme-color" content="#F5F3EF" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#141719" media="(prefers-color-scheme: dark)">
-<link rel="icon" type="image/png" href="/assets/favicon-black.png" media="(prefers-color-scheme: light)">
-<link rel="icon" type="image/png" href="/assets/favicon-white.png" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#09090b">
+<link rel="icon" type="image/png" href="/assets/favicon-white.png">
 <link rel="apple-touch-icon" href="/assets/app-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=20261028">
+<script src="/assets/lang.js?v=20261028"></script>
 </head>
 <body>
-<header>
+<header class="top">
   <div class="wrap">
-    <a class="brand" href="/"><img class="only-light" src="/assets/owl-black.png" alt=""><img class="only-dark" src="/assets/owl-white.png" alt="">Athena Studio</a>
+    <a class="brand" href="/"><img src="/assets/owl-white.png" alt="">Athena Studio</a>
     <nav>
-      <a href="/#how" class="hide-m">How it works</a>
-      <a href="/features/">Features</a>
-      <a href="/releases/">Releases</a>
-      <a class="btn small primary" href="/download/">Download</a>
-      <a class="by" href="https://novum-lab.com">by novum</a>
+      <a class="nav-x" href="/features/" data-t="nav.features">Features</a>
+      <a class="nav-x" href="/releases/" data-t="nav.releases">Releases</a>
+      <details class="lang">
+        <summary aria-label="Language"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><span data-lang-label>EN</span></summary>
+        <ul>
+          <li><button type="button" data-set-lang="en" lang="en">English</button></li>
+          <li><button type="button" data-set-lang="ko" lang="ko">한국어</button></li>
+          <li><button type="button" data-set-lang="ja" lang="ja">日本語</button></li>
+          <li><button type="button" data-set-lang="zh" lang="zh-Hans">中文</button></li>
+        </ul>
+      </details>
+      <a class="btn sm gold" href="/download/" data-t="nav.download">Download</a>
     </nav>
   </div>
 </header>
+
 <main>
 <div class="hero">
   <div class="wrap">
-    <div>
-      <p class="eyebrow">Desktop app for macOS · Coming soon</p>
-      <h1>Your AI dev team, in one window.</h1>
-      <p class="lead">Athena Studio runs <strong>Athena</strong>, a team of AI agents that plans, writes and reviews code across your repositories, all in one Mac app. Watch every agent work, answer their questions and decide what ships.</p>
-      <div class="btns"><a class="btn primary" href="/download/">Download for macOS <span class="soon">Soon</span></a><a class="btn" href="#how">How it works</a></div>
+    <img class="owl" src="/assets/owl-white-512.png" alt="">
+    <p class="eyebrow"><i></i><span data-t="h.eyebrow">For macOS · Coming soon</span></p>
+    <h1 class="grad" data-t="h.h1">Your AI dev team, in one window.</h1>
+    <p class="lead" data-t="h.lead">Athena Studio runs <strong>Athena</strong>: a team lead agent that plans the work, and a coding agent for each of your repositories. Watch them all at once, answer their questions in one place, and decide what gets merged.</p>
+    <div class="btns">
+      <a class="btn gold" href="/download/"><span data-t="h.cta.dl">Download for macOS</span> <span class="soon" data-t="c.soon">Soon</span></a>
+      <a class="btn" href="#day" data-t="h.cta.day">See a day with Athena</a>
     </div>
-    <div><div class="win" aria-hidden="true">
-  <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="tab on">Workspaces</span><span class="tab">Board</span><span class="grow"></span><span class="work">Work 3 · <em>● 1</em></span></div>
-  <div class="win-body">
-    <div class="win-side">
-      <div class="sp on"><b><img src="/assets/owl-white.png" alt="">athena</b><small>main</small><span class="ag"><i></i>Athena</span></div>
-      <div class="sp"><b><span class="badge">AP</span>api</b><small>feat/login-limit</small><span class="ag"><i></i>api-be</span></div>
-      <div class="sp"><b><span class="badge">WE</span>web</b><small>fix/signup-form</small><span class="ag"><i class="wait"></i>web-fe</span></div>
+    <p class="note" data-t="h.note">Works with Claude Code or Codex · Apple Silicon and Intel</p>
+  </div>
+  <div class="stage">
+    <figure class="shot">
+      <img data-lang-src="/assets/shots/workspace-{l}" src="/assets/shots/workspace-en.webp" srcset="/assets/shots/workspace-en-1200.webp 1200w, /assets/shots/workspace-en.webp 2400w" sizes="(max-width: 1240px) 100vw, 1200px" width="2400" height="1350" alt="Athena Studio window: workspaces on the left, Athena and a web agent working side by side, and the agent monitor below." data-ta="alt:h.hero.alt">
+    </figure>
+  </div>
+</div>
+
+<section id="why">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label" data-t="h.why.label">Why</div>
+      <h2 data-t="h.why.h2">Agents got fast. Keeping track of them didn't.</h2>
+      <p data-t="h.why.p">Run three coding agents and you get three terminals, three branches, and questions scrolling by where you can't see them. Athena Studio gives the team one place to work, and you one place to look.</p>
     </div>
-    <div class="win-main">
-      <div class="panes">
-        <div class="pane focus"><div class="pane-head">🧭 Athena · Rate-limit the login API</div><pre><span class="y">›</span> Add rate limiting to the login API
-<span class="d">Routing →</span> api <span class="d">(backend)</span>
-<span class="d">Plan written:</span> docs/plans/login-limit.md
-<span class="d">Delegating to</span> <span class="b">api-be</span> <span class="d">on</span> feat/login-limit</pre></div>
-        <div class="pane"><div class="pane-head">🤖 api-be · feat/login-limit</div><pre><span class="d">Edit</span> src/auth/limit.ts
-<span class="d">Run</span> npm test
-<span class="g">✓ 42 passed</span>
-<span class="d">Opened draft PR</span> <span class="b">#128</span>
-<span class="d">Auto review started…</span></pre></div>
+    <div class="vs">
+      <div>
+        <h3 data-t="h.why.no">Agents in separate terminals</h3>
+        <ul>
+          <li data-t="h.why.no1">You flip between windows to see who is done and who is stuck.</li>
+          <li data-t="h.why.no2">A question waits in the scrollback until you happen to look.</li>
+          <li data-t="h.why.no3">Branches, plans and pull requests live in your head.</li>
+          <li data-t="h.why.no4">Close the terminal and the session goes with it.</li>
+        </ul>
       </div>
-      <div class="monitor"><div class="chips"><span>api-be · 14 tools</span><span>web-fe · waiting</span></div>
-        <div class="feed"><b>12:04</b> api-be · Edit src/auth/limit.ts<br><b>12:05</b> api-be · npm test — 42 passed<br><b>12:06</b> web-fe · asks: keep the old error text?</div></div>
-    </div>
-  </div>
-</div><p class="caption">Illustration. The app may look different.</p></div>
-  </div>
-</div>
-<section id="how">
-  <div class="wrap">
-    <div class="sec-head"><div class="label">How it works</div><div><h2>A team that asks before it acts.</h2><p>Athena is the team lead. It routes your request, plans the work and hands it to an agent for each repository. You step in where it matters: approving bigger changes and the final merge.</p></div></div>
-    <div class="flowfig">
-<svg class="wide" viewBox="0 0 1000 470" role="img" aria-labelledby="flow-t flow-d"><title id="flow-t">How Athena works</title><desc id="flow-d">You ask Athena. Athena picks the repository and writes a plan. Bigger changes wait for your go-ahead. An agent for each repository works on its own branch, verifies and opens a pull request. The pull request is reviewed, fixed and merged, with one click from you if you want. Lessons are saved to each repository notebook and read by the next task.</desc>
-<rect class="fl-box you" x="20" y="30" width="150" height="96" rx="14"/>
-<text class="fl-you-t" x="38" y="60">You</text>
-<text class="fl-s" x="38" y="80">Ask in plain words</text>
-<rect class="fl-box lead" x="230" y="30" width="330" height="96" rx="14"/>
-<text class="fl-n" x="248" y="54">01 · ATHENA</text>
-<text class="fl-on-dark" x="248" y="76">Athena, the team lead</text>
-<text class="fl-on-dark-s" x="248" y="96">Picks the repository and writes a plan</text>
-<rect class="fl-box" x="620" y="30" width="360" height="96" rx="14"/>
-<text class="fl-n" x="638" y="54">02 · YOU DECIDE</text>
-<text class="fl-t" x="638" y="76">Your go-ahead</text>
-<text class="fl-s" x="638" y="96">Bigger changes wait for you</text>
-<text class="fl-s" x="638" y="113">in the decision console</text>
-<rect class="fl-box" x="620" y="190" width="360" height="120" rx="14"/>
-<text class="fl-n" x="638" y="214">03 · AGENTS</text>
-<text class="fl-t" x="638" y="236">Repository agents</text>
-<text class="fl-s" x="638" y="256">One per repository, each on its own branch</text>
-<rect x="638" y="272" width="76" height="24" rx="12" fill="none" stroke="currentColor" class="fl-a"/><text class="fl-s" x="676" y="288" text-anchor="middle">web</text>
-<rect x="724" y="272" width="76" height="24" rx="12" fill="none" stroke="currentColor" class="fl-a"/><text class="fl-s" x="762" y="288" text-anchor="middle">api</text>
-<rect x="810" y="272" width="76" height="24" rx="12" fill="none" stroke="currentColor" class="fl-a"/><text class="fl-s" x="848" y="288" text-anchor="middle">app</text>
-<rect class="fl-box" x="330" y="190" width="230" height="120" rx="14"/>
-<text class="fl-n" x="348" y="214">04 · VERIFY</text>
-<text class="fl-t" x="348" y="236">Verify, then PR</text>
-<text class="fl-s" x="348" y="256">Tests and checks run</text>
-<text class="fl-s" x="348" y="273">before every pull request</text>
-<rect class="fl-box" x="20" y="190" width="270" height="120" rx="14"/>
-<text class="fl-n" x="38" y="214">05 · REVIEW</text>
-<text class="fl-t" x="38" y="236">Review, fix, merge</text>
-<text class="fl-s" x="38" y="256">Automatic review loop,</text>
-<text class="fl-s" x="38" y="273">merge with one click from you</text>
-<rect class="fl-box" x="20" y="360" width="270" height="96" rx="14"/>
-<text class="fl-n" x="38" y="384">06 · LEARN</text>
-<text class="fl-t" x="38" y="406">Learn</text>
-<text class="fl-s" x="38" y="426">Lessons go into each repo's notebook</text>
-<path class="fl-a" d="M170 78 L228 78"/><polygon class="fl-head" points="228,78 220,73 220,83"/>
-<path class="fl-a" d="M560 78 L618 78"/><polygon class="fl-head" points="618,78 610,73 610,83"/>
-<path class="fl-a" d="M800 126 L800 188"/><polygon class="fl-head" points="800,188 795,180 805,180"/>
-<path class="fl-a" d="M620 250 L562 250"/><polygon class="fl-head" points="562,250 570,245 570,255"/>
-<path class="fl-a" d="M330 250 L292 250"/><polygon class="fl-head" points="292,250 300,245 300,255"/>
-<path class="fl-a" d="M155 310 L155 358"/><polygon class="fl-head" points="155,358 150,350 160,350"/>
-<path class="fl-a loop" d="M290 408 L800 408 L800 312"/><polygon class="fl-head loop" points="800,312 795,320 805,320"/>
-<text class="fl-loop" x="545" y="398" text-anchor="middle">The next task reads the lessons</text>
-</svg>
-<svg class="tall" viewBox="0 0 360 1000" role="img" aria-label="How Athena works: you ask, Athena plans, you approve bigger changes, repository agents build, verify and open a pull request, the pull request is reviewed and merged, and lessons are saved for the next task.">
-<rect class="fl-box you" x="20" y="10" width="300" height="96" rx="14"/>
-<text class="fl-you-t" x="38" y="40">You</text>
-<text class="fl-s" x="38" y="60">Ask in plain words</text>
-<rect class="fl-box lead" x="20" y="142" width="300" height="96" rx="14"/>
-<text class="fl-n" x="38" y="166">01 · ATHENA</text>
-<text class="fl-on-dark" x="38" y="188">Athena, the team lead</text>
-<text class="fl-on-dark-s" x="38" y="208">Picks the repo, writes a plan</text>
-<rect class="fl-box" x="20" y="274" width="300" height="96" rx="14"/>
-<text class="fl-n" x="38" y="298">02 · YOU DECIDE</text>
-<text class="fl-t" x="38" y="320">Your go-ahead</text>
-<text class="fl-s" x="38" y="340">Bigger changes wait for you</text>
-<rect class="fl-box" x="20" y="406" width="300" height="126" rx="14"/>
-<text class="fl-n" x="38" y="430">03 · AGENTS</text>
-<text class="fl-t" x="38" y="452">Repository agents</text>
-<text class="fl-s" x="38" y="472">One per repo, own branch</text>
-<rect x="38" y="496" width="70" height="24" rx="12" fill="none" stroke="currentColor" class="fl-a"/><text class="fl-s" x="76" y="512" text-anchor="middle">web</text>
-<rect x="124" y="496" width="70" height="24" rx="12" fill="none" stroke="currentColor" class="fl-a"/><text class="fl-s" x="162" y="512" text-anchor="middle">api</text>
-<rect x="210" y="496" width="70" height="24" rx="12" fill="none" stroke="currentColor" class="fl-a"/><text class="fl-s" x="248" y="512" text-anchor="middle">app</text>
-<rect class="fl-box" x="20" y="568" width="300" height="96" rx="14"/>
-<text class="fl-n" x="38" y="592">04 · VERIFY</text>
-<text class="fl-t" x="38" y="614">Verify, then PR</text>
-<text class="fl-s" x="38" y="634">Checks before every PR</text>
-<rect class="fl-box" x="20" y="700" width="300" height="96" rx="14"/>
-<text class="fl-n" x="38" y="724">05 · REVIEW</text>
-<text class="fl-t" x="38" y="746">Review, fix, merge</text>
-<text class="fl-s" x="38" y="766">One click from you, if you want</text>
-<rect class="fl-box" x="20" y="832" width="300" height="96" rx="14"/>
-<text class="fl-n" x="38" y="856">06 · LEARN</text>
-<text class="fl-t" x="38" y="878">Learn</text>
-<text class="fl-s" x="38" y="898">Saved to each repo's notebook</text>
-<path class="fl-a" d="M170 106 L170 140"/><polygon class="fl-head" points="170,140 165,132 175,132"/>
-<path class="fl-a" d="M170 238 L170 272"/><polygon class="fl-head" points="170,272 165,264 175,264"/>
-<path class="fl-a" d="M170 370 L170 404"/><polygon class="fl-head" points="170,404 165,396 175,396"/>
-<path class="fl-a" d="M170 532 L170 566"/><polygon class="fl-head" points="170,566 165,558 175,558"/>
-<path class="fl-a" d="M170 664 L170 698"/><polygon class="fl-head" points="170,698 165,690 175,690"/>
-<path class="fl-a" d="M170 796 L170 830"/><polygon class="fl-head" points="170,830 165,822 175,822"/>
-<path class="fl-a loop" d="M320 880.0 L342 880.0 L342 469.0 L322 469.0"/><polygon class="fl-head loop" points="322,469.0 330,464.0 330,474.0"/>
-</svg>
-</div>
-    <div class="where">
-      <div><b>Workspaces · Agent monitor</b>Watch steps 01 and 03 happen live, one workspace per repository.</div>
-      <div><b>Requests · Menu bar</b>Every question and decision for steps 02 and 05 comes to you in one place.</div>
-      <div><b>Explorer · Side browser</b>Read the diffs, plans and test pages behind step 04.</div>
+      <div class="yes">
+        <h3><img src="/assets/owl-white.png" alt=""><span data-t="h.why.yes">With Athena Studio</span></h3>
+        <ul>
+          <li data-t="h.why.yes1">Every agent in its own pane, grouped by repository, with a live monitor underneath.</li>
+          <li data-t="h.why.yes2">Every question and decision in one Work list, and a red dot in the menu bar.</li>
+          <li data-t="h.why.yes3">Each task gets a written plan, its own branch and a pull request you can open from the pane.</li>
+          <li data-t="h.why.yes4">Close the app and agents keep running. Reopen to the same tabs and layout.</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
-<section id="features">
+
+<section id="day" class="rule">
   <div class="wrap">
-    <div class="sec-head"><div class="label">Features</div><div><h2>Everything your agents do, on one screen.</h2><p>Terminals, agents, questions and reviews used to live in different windows. Athena Studio puts them side by side.</p></div></div>
-    <div class="cards">
-      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M9 12h12"/></svg></span><b>Workspaces</b><span>A workspace for each repository with tabs and split terminals. Agents keep running when you close the app.</span></div>
-      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-7 4 14 3-7h4"/></svg></span><b>Agent monitor</b><span>A live feed of what each agent is doing right now, tool by tool.</span></div>
-      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4z"/><path d="M9 10h6"/></svg></span><b>Requests</b><span>Questions and decisions from agents in one list. Answer them without leaving the app.</span></div>
-      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18"/><circle cx="17" cy="11" r="3"/><path d="M5 11h7M5 16h9"/></svg></span><b>Menu bar</b><span>A red dot when something needs you, plus agents, usage and progress at a glance.</span></div>
-      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h6l2 2h8v14H4z"/><path d="M9 13l2 2 4-4"/></svg></span><b>Explorer</b><span>Files, git changes and syntax-highlighted diffs next to the terminal.</span></div>
-      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M14 4v16M17 10l-2 2 2 2"/></svg></span><b>Side browser</b><span>Plans, the decision console and your local test pages in a drawer beside your work.</span></div>
+    <div class="sec-head">
+      <div class="label" data-t="h.day.label">A day with Athena</div>
+      <h2 data-t="h.day.h2">One request, from plain words to a merged pull request.</h2>
+      <p data-t="h.day.p">A real session in our demo project: a small online shop with web, api and mobile repositories. Every picture below is the actual app.</p>
     </div>
-    <p class="more"><a href="/features/">See all features →</a></p>
+    <div class="steps-bar">
+      <a href="#ask"><b>1</b><span data-t="h.s1">Ask</span></a><span class="arrow">→</span>
+      <a href="#plan"><b>2</b><span data-t="h.s2">Plan and delegate</span></a><span class="arrow">→</span>
+      <a href="#decide"><b>3</b><span data-t="h.s3">You decide</span></a><span class="arrow">→</span>
+      <a href="#build"><b>4</b><span data-t="h.s4">Build and verify</span></a><span class="arrow">→</span>
+      <a href="#merge"><b>5</b><span data-t="h.s5">Review and merge</span></a><span class="arrow">→</span>
+      <a href="#learn"><b>6</b><span data-t="h.s6">Learn</span></a>
+    </div>
+
+    <div class="story">
+      <div class="beat" id="ask">
+        <div class="txt">
+          <div class="time">01 <span>·</span> <span data-t="h.b1.k">You ask</span></div>
+          <h3 data-t="h.b1.h">Say what you want, in plain words.</h3>
+          <p data-t="h.b1.p">You talk to Athena, the team lead, in the athena workspace. No ticket template, no prompt engineering.</p>
+          <blockquote data-t="h.b1.q">Customers keep abandoning carts. Add a saved-cart reminder on web, and paginate order history in api so mobile can use it too.</blockquote>
+        </div>
+        <figure class="shot sm" style="max-width:480px;justify-self:center"><img src="/assets/shots/athena-pane.webp" width="1066" height="1290" loading="lazy" alt="Athena's pane: the request, two plans written, one delegated to api-be and one to web-fe, and a summary of what each agent is doing." data-ta="alt:h.b1.alt"></figure>
+      </div>
+
+      <div class="beat flip" id="plan">
+        <div class="txt">
+          <div class="time">02 <span>·</span> <span data-t="h.b2.k">Plan and delegate</span></div>
+          <h3 data-t="h.b2.h">Athena splits it up and hands it out.</h3>
+          <p data-t="h.b2.p">Two plans, api first because web and mobile depend on the new response. Each goes to the agent for that repository, on its own branch and worktree, so nobody steps on anybody.</p>
+          <ul class="ticks">
+            <li data-t="h.b2.l1"><code>api-be</code> on <code>feat/orders-pagination</code></li>
+            <li data-t="h.b2.l2"><code>web-fe</code> on <code>feat/cart-reminder</code></li>
+            <li data-t="h.b2.l3">The agent monitor follows both, tool call by tool call.</li>
+          </ul>
+        </div>
+        <figure class="shot sm"><img src="/assets/shots/agents.webp" width="1600" height="1200" loading="lazy" alt="Athena and web-fe working side by side, with the agent monitor below following every agent." data-ta="alt:h.b2.alt2"></figure>
+      </div>
+
+      <div class="beat" id="decide">
+        <div class="txt">
+          <div class="time">03 <span>·</span> <span data-t="h.b3.k">You decide</span></div>
+          <h3 data-t="h.b3.h">Questions come to you. You don't go looking for them.</h3>
+          <p data-t="h.b3.p">api-be needs one product call: 20 or 50 orders per page. Instead of waiting in a terminal you'll never scroll to, the question lands in Work and lights up the menu bar. Pick an answer, add a note if you like, and the agent carries on.</p>
+        </div>
+        <div class="pair">
+          <figure class="shot sm"><img src="/assets/shots/answer-modal.webp" width="958" height="774" loading="lazy" alt="A question from the api agent: default page size for order history, 20 (recommended) or 50, with a Send answer button." data-ta="alt:h.b3.alt1"></figure>
+          <figure class="shot sm fade-b"><img src="/assets/shots/menubar.webp" width="704" height="588" loading="lazy" alt="Menu bar panel: one item needs attention, and each agent with its branch and status." data-ta="alt:h.b3.alt2"></figure>
+        </div>
+      </div>
+
+      <div class="beat flip" id="build">
+        <div class="txt">
+          <div class="time">04 <span>·</span> <span data-t="h.b4.k">Build and verify</span></div>
+          <h3 data-t="h.b4.h">Read the change right next to the work.</h3>
+          <p data-t="h.b4.p">web-fe writes the banner and its tests, runs them and lints before it calls anything done. You open the changed files in Explorer and read the diff beside the terminal.</p>
+          <ul class="ticks">
+            <li data-t="h.b4.l1">Tests and checks run before every pull request</li>
+            <li data-t="h.b4.l2">Changed files marked M · U · A · D in the file tree</li>
+            <li data-t="h.b4.l3">Syntax-highlighted diffs with line numbers</li>
+          </ul>
+        </div>
+        <figure class="shot"><img src="/assets/shots/explorer-1200.webp" srcset="/assets/shots/explorer-1200.webp 1200w, /assets/shots/explorer.webp 2400w" sizes="(max-width: 900px) 100vw, 680px" width="1200" height="675" loading="lazy" alt="Terminal with passing tests on the left, a diff of CartPage.tsx on the right, and the list of changed files." data-ta="alt:h.b4.alt"></figure>
+      </div>
+
+      <div class="beat" id="merge">
+        <div class="txt">
+          <div class="time">05 <span>·</span> <span data-t="h.b5.k">Review and merge</span></div>
+          <h3 data-t="h.b5.h">Reviews run themselves. Merges follow your rules.</h3>
+          <p data-t="h.b5.p">As soon as work is pushed, an automatic review starts. Comments go back to the agent until the pull request is approved. Then it merges, or waits for your click. You set that per repository.</p>
+          <ul class="ticks">
+            <li data-t="h.b5.l1">Off by default, switched on per repository</li>
+            <li data-t="h.b5.l2">“Confirm before merging” keeps one last click for you</li>
+            <li data-t="h.b5.l3">With Codex installed, it reviews alongside Claude</li>
+          </ul>
+        </div>
+        <figure class="shot sm" style="max-width:520px;justify-self:center"><img src="/assets/shots/settings-pop.webp" width="706" height="600" loading="lazy" alt="Settings: PR auto-merge switched on for web and api, with Confirm before merging on for web, and off for mobile." data-ta="alt:h.b5.alt"></figure>
+      </div>
+
+      <div class="beat flip" id="learn">
+        <div class="txt">
+          <div class="time">06 <span>·</span> <span data-t="h.b6.k">Learn</span></div>
+          <h3 data-t="h.b6.h">Tomorrow's task starts smarter.</h3>
+          <p data-t="h.b6.p">What the team learned along the way, from review comments to QA findings, is saved as learning notes for that repository. The next task reads them before it starts.</p>
+        </div>
+        <div class="learn-card">
+          <div class="h"><img src="/assets/owl-white.png" alt="" width="18" height="18"><span data-t="h.b6.card">Learning · api</span></div>
+          <div><span class="g">+</span> <span data-t="h.b6.n1">List endpoints use cursor pagination on createdAt, 20 per page.</span></div>
+          <div><span class="g">+</span> <span data-t="h.b6.n2">Response shape: { items, nextCursor }. Mobile reads the same shape.</span></div>
+          <div class="y" style="margin-top:12px" data-t="h.b6.n3">→ read by the next task in api</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
-<section id="packs">
+
+<section id="features" class="rule">
   <div class="wrap">
-    <div class="sec-head"><div class="label">Packs</div><div><h2>Bring your whole setup.</h2><p>A pack holds one company's repositories, agents and routing rules. Keep one for each company or team you work with.</p></div></div>
-    <div class="cards">
-      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg></span><b>Switch</b><span>Move between packs in one click. Agents in the other pack keep working where you left them.</span></div>
-      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 8l5-5 5 5"/><path d="M5 14v6h14v-6"/></svg></span><b>Share</b><span>Export a pack and your team imports it, with the same repositories, agents and rules.</span></div>
-      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 3-6.2"/><path d="M4 4v5h5"/></svg></span><b>Back up and restore</b><span>Save a pack with your work, including agent conversations and unfinished branches, and pick up again later.</span></div>
+    <div class="sec-head">
+      <div class="label" data-t="h.f.label">Features</div>
+      <h2 data-t="h.f.h2">Everything your agents do, on one screen.</h2>
+      <p data-t="h.f.p">Terminals, agents, questions, diffs and reviews used to live in different windows. Athena Studio puts them side by side.</p>
+    </div>
+    <div class="bento">
+      <a class="tile w4" href="/features/#monitor">
+        <div class="t"><b data-t="h.f.mon">Agent monitor</b><span data-t="h.f.mon.p">A live feed of every working agent, tool by tool, at the bottom of the window.</span></div>
+        <div class="pic"><img src="/assets/shots/monitor.webp" width="2160" height="340" loading="lazy" alt=""></div>
+      </a>
+      <a class="tile" href="/features/#work">
+        <div class="t"><b data-t="h.f.work">Work</b><span data-t="h.f.work.p">What's waiting for you, in progress and done, in one pop-up.</span></div>
+        <div class="pic c"><img src="/assets/shots/work-pop.webp" width="800" height="1034" loading="lazy" alt="" style="max-height:300px;object-fit:cover;object-position:top"></div>
+      </a>
+      <a class="tile" href="/features/#details">
+        <div class="t"><b data-t="h.f.det">Pane details</b><span data-t="h.f.det.p">What an agent is doing, what blocks it, its plan, PR and tokens.</span></div>
+        <div class="pic c"><img src="/assets/shots/detail-panel.webp" width="880" height="1710" loading="lazy" alt="" style="max-height:300px;object-fit:cover;object-position:top"></div>
+      </a>
+      <a class="tile w4" href="/features/#explorer">
+        <div class="t"><b data-t="h.f.exp">Explorer</b><span data-t="h.f.exp.p">Files, git changes and diffs for the workspace, next to the terminal.</span></div>
+        <div class="pic"><img src="/assets/shots/explorer-diff.webp" width="1490" height="700" loading="lazy" alt=""></div>
+      </a>
+      <a class="tile w3" href="/features/#menubar">
+        <div class="t"><b data-t="h.f.bar">Menu bar</b><span data-t="h.f.bar.p">A red dot when something needs you. Agents and status at a glance.</span></div>
+        <div class="pic c"><img src="/assets/shots/menubar.webp" width="704" height="588" loading="lazy" alt="" style="max-height:280px;object-fit:cover;object-position:top"></div>
+      </a>
+      <a class="tile w3" href="/features/#packs">
+        <div class="t"><b data-t="h.f.packs">Packs</b><span data-t="h.f.packs.p">One pack per company: repositories, agents and rules. Switch in a click, share with your team.</span></div>
+        <div class="pic c"><img src="/assets/shots/packs-modal.webp" width="958" height="710" loading="lazy" alt="" style="max-height:280px;object-fit:cover;object-position:top"></div>
+      </a>
+    </div>
+    <p class="more"><a class="btn" href="/features/" data-t="h.f.more">See all features →</a></p>
+  </div>
+</section>
+
+<section id="languages" class="rule" data-tab-scope>
+  <div class="wrap">
+    <div class="langs">
+      <div>
+        <div class="sec-head" style="margin-bottom:28px">
+          <div class="label" data-t="h.l.label">Four languages</div>
+          <h2 data-t="h.l.h2">Your team speaks your language.</h2>
+          <p data-t="h.l.p">Athena Studio works in English, Korean, Japanese and Chinese. Pick one and everything follows, not just the buttons.</p>
+        </div>
+        <ul class="ticks">
+          <li data-t="h.l.l1">The whole app interface</li>
+          <li data-t="h.l.l2">Agent replies and questions</li>
+          <li data-t="h.l.l3">Plans, issues and learning notes</li>
+          <li data-t="h.l.l4">Commit messages and pull requests</li>
+        </ul>
+      </div>
+      <div>
+        <div class="tabs" role="tablist" data-tabs="lang">
+          <button type="button" role="tab" data-tab="en" aria-selected="true">English</button>
+          <button type="button" role="tab" data-tab="ko" aria-selected="false" lang="ko">한국어</button>
+          <button type="button" role="tab" data-tab="ja" aria-selected="false" lang="ja">日本語</button>
+          <button type="button" role="tab" data-tab="zh" aria-selected="false" lang="zh-Hans">中文</button>
+        </div>
+        <figure class="shot sm"><img data-tab-src="/assets/shots/workspace-{l}" src="/assets/shots/workspace-en-1200.webp" srcset="/assets/shots/workspace-en-1200.webp 1200w, /assets/shots/workspace-en.webp 2400w" sizes="(max-width: 960px) 100vw, 700px" width="1200" height="675" loading="lazy" alt="Athena Studio in the selected language." data-ta="alt:h.l.alt"></figure>
+        <div class="out" style="margin-top:12px">
+          <div data-panel="en"><small>Commit</small><p class="m">feat(cart): add saved-cart reminder banner</p></div>
+          <div data-panel="ko" hidden lang="ko"><small>Commit</small><p class="m">feat(cart): 장바구니 저장 알림 배너 추가</p></div>
+          <div data-panel="ja" hidden lang="ja"><small>Commit</small><p class="m">feat(cart): 保存したカートのリマインダーバナーを追加</p></div>
+          <div data-panel="zh" hidden lang="zh-Hans"><small>Commit</small><p class="m">feat(cart): 添加已保存购物车提醒横幅</p></div>
+          <div data-panel="en"><small>Agent</small><p>Banner renders for returning shoppers. Next: the empty-cart case and the dismiss button.</p></div>
+          <div data-panel="ko" hidden lang="ko"><small>Agent</small><p>다시 온 손님에게 배너가 떠요. 다음은 빈 장바구니일 때와 닫기 버튼이에요.</p></div>
+          <div data-panel="ja" hidden lang="ja"><small>Agent</small><p>再訪したお客様にバナーが表示されます。次はカートが空のときと閉じるボタンです。</p></div>
+          <div data-panel="zh" hidden lang="zh-Hans"><small>Agent</small><p>回访顾客会看到横幅。接下来处理空购物车的情况和关闭按钮。</p></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
-<section id="requirements">
+
+<section id="compare" class="rule">
   <div class="wrap">
-    <div class="sec-head"><div class="label">What you need</div><div><h2>Bring your own AI agent.</h2><p>Athena Studio runs on top of the coding agent you already use.</p></div></div>
-    <div class="facts">
-      <div class="fact"><small>Computer</small><strong>Mac</strong><span>macOS</span></div>
-      <div class="fact"><small>AI agent</small><strong>Claude Code or Codex</strong><span>With your own account</span></div>
-      <div class="fact"><small>Code</small><strong>git and GitHub</strong><span>For your repositories</span></div>
-      <div class="fact"><small>Language</small><strong>English, 한국어</strong><span>日本語 and 中文 in preview</span></div>
+    <div class="sec-head">
+      <div class="label" data-t="h.c.label">Compared</div>
+      <h2 data-t="h.c.h2">Claude Code on its own, or with Athena Studio.</h2>
+      <p data-t="h.c.p">Athena Studio doesn't replace your coding agent. It runs Claude Code or Codex for you and adds the team around it.</p>
+    </div>
+    <table class="cmp">
+      <thead><tr><th></th><th data-t="h.c.a">Claude Code in a terminal</th><th class="us" data-t="h.c.b">With Athena Studio</th></tr></thead>
+      <tbody>
+        <tr><th data-t="h.c.r1">Agents at once</th><td data-h="Claude Code" data-t="h.c.r1a">One per terminal window</td><td class="us" data-h="Athena Studio" data-t="h.c.r1b">A team lead plus an agent for each repository, side by side</td></tr>
+        <tr><th data-t="h.c.r2">Planning</th><td data-h="Claude Code" data-t="h.c.r2a">Inside the conversation</td><td class="us" data-h="Athena Studio" data-t="h.c.r2b">A written plan per task, with progress, blockers and next step</td></tr>
+        <tr><th data-t="h.c.r3">Questions for you</th><td data-h="Claude Code" data-t="h.c.r3a">Wherever that session has scrolled to</td><td class="us" data-h="Athena Studio" data-t="h.c.r3b">One Work list and a menu bar alert. Answer with a click</td></tr>
+        <tr><th data-t="h.c.r4">Branches</th><td data-h="Claude Code" data-t="h.c.r4a">You create and switch them</td><td class="us" data-h="Athena Studio" data-t="h.c.r4b">Each agent works on its own branch and worktree</td></tr>
+        <tr><th data-t="h.c.r5">Seeing progress</th><td data-h="Claude Code" data-t="h.c.r5a">Read each terminal</td><td class="us" data-h="Athena Studio" data-t="h.c.r5b">Live agent monitor and pane details</td></tr>
+        <tr><th data-t="h.c.r6">Pull requests</th><td data-h="Claude Code" data-t="h.c.r6a">You open, review and merge them</td><td class="us" data-h="Athena Studio" data-t="h.c.r6b">Opened after checks, reviewed and fixed automatically, merged by your rules</td></tr>
+        <tr><th data-t="h.c.r7">Lessons</th><td data-h="Claude Code" data-t="h.c.r7a">Whatever you write down yourself</td><td class="us" data-h="Athena Studio" data-t="h.c.r7b">Learning notes per repository, read by the next task</td></tr>
+        <tr><th data-t="h.c.r8">Closing the window</th><td data-h="Claude Code" data-t="h.c.r8a">The session ends with the terminal</td><td class="us" data-h="Athena Studio" data-t="h.c.r8b">Agents keep running; reopen to the same layout</td></tr>
+        <tr><th data-t="h.c.r9">Several companies</th><td data-h="Claude Code" data-t="h.c.r9a">Separate folders and setups</td><td class="us" data-h="Athena Studio" data-t="h.c.r9b">One pack each. Switch in a click, share with your team</td></tr>
+      </tbody>
+    </table>
+    <p class="fine" data-t="h.c.fine">Athena Studio needs Claude Code or Codex. Claude Code is made by Anthropic and Codex by OpenAI; Athena Studio is made by novum and is not affiliated with either.</p>
+  </div>
+</section>
+
+<section id="shortcuts" class="rule">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label" data-t="h.k.label">Keyboard</div>
+      <h2 data-t="h.k.h2">Made for your hands on the keyboard.</h2>
+    </div>
+    <div class="keys">
+      <div class="key"><div class="k"><kbd>⌘</kbd><kbd>1</kbd></div><span data-t="k.work">Workspaces and terminals</span></div>
+      <div class="key"><div class="k"><kbd>⌘</kbd><kbd>2</kbd></div><span data-t="k.board">Open the worklist</span></div>
+      <div class="key"><div class="k"><kbd>⌘</kbd><kbd>T</kbd></div><span data-t="k.tab">New tab</span></div>
+      <div class="key"><div class="k"><kbd>⌘</kbd><kbd>⇧</kbd><kbd>T</kbd></div><span data-t="k.space">New workspace</span></div>
+      <div class="key"><div class="k"><kbd>⌘</kbd><kbd>D</kbd></div><span data-t="k.right">Split right</span></div>
+      <div class="key"><div class="k"><kbd>⌘</kbd><kbd>⇧</kbd><kbd>D</kbd></div><span data-t="k.down">Split down</span></div>
+      <div class="key"><div class="k"><kbd>⌘</kbd><kbd>⇧</kbd><kbd>B</kbd></div><span data-t="k.browser">Side browser</span></div>
+      <div class="key"><div class="k"><kbd>⌘</kbd><kbd>⇧</kbd><kbd>P</kbd></div><span data-t="k.packs">Switch pack</span></div>
     </div>
   </div>
 </section>
-<section id="faq">
+
+<section id="security" class="rule">
   <div class="wrap">
-    <div class="sec-head"><div class="label">FAQ</div><div><h2>Questions</h2></div></div>
+    <div class="sec-head">
+      <div class="label" data-t="h.s.label">Data and security</div>
+      <h2 data-t="h.s.h2">Your code stays on your Mac.</h2>
+      <p data-t="h.s.p">Athena Studio runs on your computer with tools you already trust. Here's exactly what goes where.</p>
+    </div>
+    <div class="sec-grid">
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><b data-t="h.s.1">Runs on your Mac</b><span data-t="h.s.1p">Agents, terminals and the worklist run locally. The app does not send your code or files to novum's servers.</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span><b data-t="h.s.2">Your own AI account</b><span data-t="h.s.2p">Agents run as the Claude Code or Codex you already signed into, under that provider's terms and your plan.</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="12" r="2.5"/><path d="M6 8.5v7M8.3 7.2l7.5 3.6"/></svg></span><b data-t="h.s.3">Branches, not your main</b><span data-t="h.s.3p">Each agent works on its own branch and worktree. Automatic merge is off until you turn it on for a repository.</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l8-4 8 4v6c0 4-3.5 7-8 8-4.5-1-8-4-8-8z"/><path d="M9 12l2 2 4-4"/></svg></span><b data-t="h.s.4">Signed and notarized</b><span data-t="h.s.4p">Release builds are signed with an Apple Developer ID and notarized by Apple, so macOS opens them without a warning.</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9"/></svg></span><b data-t="h.s.5">A separate browser</b><span data-t="h.s.5p">The side browser is sandboxed, opens only http and https, and keeps its sign-ins apart from your main browser.</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg></span><b data-t="h.s.6">Optional means optional</b><span data-t="h.s.6p">Extras that send data elsewhere only switch on when you add your own key. Without one, nothing is sent.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="needs" class="rule">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label" data-t="h.n.label">What you need</div>
+      <h2 data-t="h.n.h2">Bring your own coding agent.</h2>
+    </div>
+    <div class="needs">
+      <div><small data-t="h.n.1k">Computer</small><b data-t="h.n.1">A Mac</b><span data-t="h.n.1p">macOS 13 Ventura or later, Apple Silicon or Intel</span></div>
+      <div><small data-t="h.n.2k">AI agent</small><b>Claude Code · Codex</b><span data-t="h.n.2p">At least one, signed in with your own account</span></div>
+      <div><small data-t="h.n.3k">Developer tools</small><b>git · Node.js</b><span data-t="h.n.3p">macOS offers to install git and Python with the Command Line Tools</span></div>
+      <div><small data-t="h.n.4k">Code</small><b data-t="h.n.4">Your repositories</b><span data-t="h.n.4p">On GitHub. The gh CLI is optional, for opening pull requests</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="rule">
+  <div class="wrap">
+    <div class="sec-head center">
+      <div class="label">FAQ</div>
+      <h2 data-t="h.q.h2">Questions</h2>
+    </div>
     <div class="faq">
-      <details><summary>Can I use Athena Studio now?</summary><p>Not yet. Athena Studio is in active development, and the first public build for macOS is coming soon. <a href="mailto:mcsung@novum-lab.com?subject=Athena%20Studio%20%E2%80%94%20notify%20me%20at%20launch">Get notified</a> and we'll let you know.</p></details>
-      <details><summary>Do I need to install Athena separately?</summary><p>No. The app brings the Athena core with it and sets it up on first launch. You only need Claude Code or Codex.</p></details>
-      <details><summary>Can my agents work while the app is closed?</summary><p>Yes. Terminals and agents keep running in the background. Open the app again and you're back to the same tabs and layout.</p></details>
-      <details><summary>Do agents merge code on their own?</summary><p>Only if you turn it on. Automatic review and merge is off by default and is set per repository. You can keep a final click before every merge.</p></details>
-      <details><summary>How much will it cost?</summary><p>We'll share pricing when we launch.</p></details>
+      <details><summary data-t="h.q1">Can I use Athena Studio now?</summary><p data-t="h.q1a">Not yet. The first public build for macOS is almost ready. <a href="mailto:mcsung@novum-lab.com?subject=Athena%20Studio%20%E2%80%94%20notify%20me%20at%20launch">Get notified</a> and we'll email you when it's out.</p></details>
+      <details><summary data-t="h.q2">How much does it cost?</summary><p data-t="h.q2a">Athena Studio is free to download and use. Your agents run on your own Claude Code or Codex plan, so their usage is billed by that provider as usual.</p></details>
+      <details><summary data-t="h.q3">Do I need Claude Code or Codex?</summary><p data-t="h.q3a">Yes, at least one of them, signed in on your Mac. With Claude Code alone you get the full team. Add Codex and pull request reviews get a second opinion from a different model.</p></details>
+      <details><summary data-t="h.q4">Do I need to install Athena separately?</summary><p data-t="h.q4a">No. The app brings the Athena core with it and sets it up on first launch.</p></details>
+      <details><summary data-t="h.q5">Does my code leave my Mac?</summary><p data-t="h.q5a">Not to us. Athena Studio does not send your code or files to novum's servers. Your agents talk to their own provider (Anthropic or OpenAI) as they normally do, and pushes go to your GitHub.</p></details>
+      <details><summary data-t="h.q6">Will agents merge code on their own?</summary><p data-t="h.q6a">Only if you turn it on. Automatic merge is off by default and set per repository, and you can keep a final click before every merge.</p></details>
+      <details><summary data-t="h.q7">Do agents keep working when I close the app?</summary><p data-t="h.q7a">Yes. Terminals and agents keep running in the background. Even after you quit, open the app again and you're back to the same tabs and layout.</p></details>
+      <details><summary data-t="h.q8">Can I use it for more than one company or project?</summary><p data-t="h.q8a">Yes. Make a pack for each: its repositories, agents and rules. Switching packs doesn't stop work in the other one, and you can export a pack for your team.</p></details>
+      <details><summary data-t="h.q9">What about Windows or Linux?</summary><p data-t="h.q9a">Athena Studio is a Mac app for now.</p></details>
     </div>
   </div>
 </section>
-<section class="cta-sec" style="border-top:0;padding-top:0">
+
+<section class="cta rule">
   <div class="wrap">
-    <div class="cta">
-      <img src="/assets/owl-white-512.png" alt="">
-      <div><h2>Be the first to try Athena Studio.</h2><p>We'll email you when the first macOS build is ready.</p></div>
-      <div class="btns"><a class="btn primary" href="mailto:mcsung@novum-lab.com?subject=Athena%20Studio%20%E2%80%94%20notify%20me%20at%20launch">Get notified</a><a class="btn" href="/releases/">Release notes</a></div>
+    <img class="owl" src="/assets/owl-white-512.png" alt="">
+    <h2 data-t="c.cta.h">Be the first to try Athena Studio.</h2>
+    <p data-t="c.cta.p">We'll email you when the first macOS build is ready.</p>
+    <div class="btns">
+      <a class="btn gold" href="mailto:mcsung@novum-lab.com?subject=Athena%20Studio%20%E2%80%94%20notify%20me%20at%20launch" data-t="c.notify">Get notified</a>
+      <a class="btn" href="/releases/" data-t="c.notes">Release notes</a>
     </div>
   </div>
 </section>
 </main>
+
 <footer>
   <div class="wrap">
-    <span>© 2026 novum. Athena Studio is made by novum.</span>
-    <nav><a href="/features/">Features</a><a href="/releases/">Releases</a><a href="/download/">Download</a><a href="/terms/">Terms</a><a href="https://novum-lab.com">novum-lab.com</a></nav>
+    <div class="row">
+      <a class="brand" href="/"><img src="/assets/owl-white.png" alt="">Athena Studio</a>
+      <div class="links">
+        <a href="/features/" data-t="nav.features">Features</a>
+        <a href="/releases/" data-t="nav.releases">Releases</a>
+        <a href="/download/" data-t="nav.download">Download</a>
+        <a href="/terms/" data-t="nav.terms">Terms</a>
+        <a href="https://novum-lab.com">novum-lab.com</a>
+      </div>
+    </div>
+    <div class="biz"><span data-t="c.made">© 2026 novum. Athena Studio is made by novum.</span><br>novum · CEO: Eunju Kim · Business Registration No. 496-37-01619 · Seoul, Republic of Korea · <a href="mailto:mcsung@novum-lab.com">mcsung@novum-lab.com</a></div>
   </div>
-  <div class="wrap biz">novum · CEO: Eunju Kim · Business Registration No. 496-37-01619 · Seoul, Republic of Korea · <a href="mailto:mcsung@novum-lab.com">mcsung@novum-lab.com</a></div>
 </footer>
 </body>
 </html>
