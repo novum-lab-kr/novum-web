@@ -689,3 +689,6 @@ main, footer { position: relative; }
 .dl .btn span { color: inherit; font-size: inherit; }
 /* 단축키 칸: 긴 조합(⌘⇧[ ⌘⇧])도 옆 칸을 덮지 않게 내용만큼 넓힌다 */
 .key-table td:first-child { width: 1%; padding-right: 28px; }
+/* 첫 제목: 영어 두 줄이 셋째 줄로 넘치지 않게 조금 줄이고, 줄이 나뉘면 고르게 */
+.h3-head h1 { font-size: clamp(36px, 4.1vw, 58px); text-wrap: balance; }
+.nw { white-space: nowrap; }

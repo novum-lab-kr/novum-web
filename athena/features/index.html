@@ -18,9 +18,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=20261028c">
-<script src="/assets/lang.js?v=20261028c"></script>
-<script src="/assets/motion.js?v=20261028c" defer></script>
+<link rel="stylesheet" href="/assets/site.css?v=20261028d">
+<script src="/assets/lang.js?v=20261028d"></script>
+<script src="/assets/motion.js?v=20261028d" defer></script>
 </head>
 <body>
 <header class="top">
@@ -39,8 +39,8 @@
 <div class="page-head">
   <div class="wrap">
     <p class="eyebrow"><i></i><span data-t="nav.features">Features</span></p>
-    <h1 class="grad" data-t="f.h1">Built for working with a team of agents.</h1>
-    <p class="lead" data-t="f.lead">Athena does the work. Athena Studio is where you watch it, steer it and sign off on it.</p>
+    <h1 class="grad" data-t="f.h1">A tour of Athena Studio</h1>
+    <p class="lead" data-t="f.lead">First, one request from our demo shop, followed from the first message to the merged pull request. After that, each part of the app in turn.</p>
     <div class="toc">
       <a href="#day" data-t="h.day.label">A day with Athena</a>
       <a href="#workspaces" data-t="f.ws.label">Workspaces</a>
@@ -80,7 +80,7 @@
         <div class="txt">
           <div class="time">01 <span>·</span> <span data-t="h.b1.k">You ask</span></div>
           <h3 data-t="h.b1.h">Describe the change in plain words.</h3>
-          <p data-t="h.b1.p">In the athena workspace, describe the change and the repositories it touches. Athena, the team lead, takes it from there.</p>
+          <p data-t="h.b1.p">In the athena workspace, describe the change and the repositories it touches. Athena, the team lead, reads it and writes the plans.</p>
           <blockquote data-t="h.b1.q">Customers keep abandoning carts. Add a saved-cart reminder on web, and paginate order history in api so mobile can use it too.</blockquote>
         </div>
         <figure class="shot sm" style="max-width:480px;justify-self:center"><img src="/assets/shots/athena-pane.webp" width="1066" height="1290" loading="lazy" alt="Athena's pane: the request, two plans written, one delegated to api-be and one to web-fe, and a summary of what each agent is doing." data-ta="alt:h.b1.alt"></figure>
@@ -115,7 +115,7 @@
       <div class="beat flip" id="build">
         <div class="txt">
           <div class="time">04 <span>·</span> <span data-t="h.b4.k">Build and verify</span></div>
-          <h3 data-t="h.b4.h">Read the change next to the work.</h3>
+          <h3 data-t="h.b4.h">Check the diff before anything merges.</h3>
           <p data-t="h.b4.p">web-fe writes the banner and its tests, runs them and lints before it calls anything done. You open the changed files in Explorer and read the diff beside the terminal.</p>
           <ul class="ticks">
             <li data-t="h.b4.l1">Tests and checks run before every pull request</li>
@@ -144,7 +144,7 @@
         <div class="txt">
           <div class="time">06 <span>·</span> <span data-t="h.b6.k">Learn</span></div>
           <h3 data-t="h.b6.h">Notes you choose, for the next task.</h3>
-          <p data-t="h.b6.p">After a merge, the learning review suggests notes from what came up along the way, from review comments to QA findings. Only the ones you pick in Learning are kept for that repository, and agents read them at the start of the next task.</p>
+          <p data-t="h.b6.p">After a merge, the learning review suggests notes from what came up along the way, such as review comments and QA findings. Only the ones you pick in Learning are kept for that repository, and agents read them at the start of the next task.</p>
         </div>
         <div class="learn-card">
           <div class="h"><img src="/assets/owl-white.png" alt="" width="18" height="18"><span data-t="h.b6.card">Learning · api</span></div>
@@ -219,13 +219,13 @@
     <div class="grid">
       <div class="txt">
         <div class="label" data-t="h.f.work">Work</div>
-        <h2 data-t="f.wk.h">Answer your agents without leaving the app.</h2>
-        <p data-t="f.wk.p">When an agent needs you, its question or decision lands at the top of Work, above everything in progress and what finished in the last day. Click it, answer, and the agent carries on.</p>
+        <h2 data-t="f.wk.h">Agent questions land in one list.</h2>
+        <p data-t="f.wk.p">When an agent needs you, its question or decision goes to the top of Work, above the tasks in progress and the ones that finished in the last day. Answer it there and the agent picks up where it stopped.</p>
         <ul>
           <li data-t="f.wk.l1">Waiting for you, in progress and recently finished in one pop-up</li>
           <li data-t="f.wk.l2">Each task shows its state: waiting on you, blocked, working or idle</li>
           <li data-t="f.wk.l3">Choices come with a recommendation and room for a note</li>
-          <li data-t="f.wk.l4">QA, learning notes and the archive are one click away</li>
+          <li data-t="f.wk.l4">QA, learning notes and the archive open from the same pop-up</li>
         </ul>
       </div>
       <div class="pair">
@@ -315,10 +315,10 @@
     <div class="grid">
       <div class="txt">
         <div class="label" data-t="h.f.bar">Menu bar</div>
-        <h2 data-t="f.mb.h">Know when you're needed, whatever you're doing.</h2>
-        <p data-t="f.mb.p">Athena Studio lives in the Mac menu bar. A red dot on the owl means a question is open or a plan is blocked. Click it for the full picture.</p>
+        <h2 data-t="f.mb.h">A red dot when an agent needs you.</h2>
+        <p data-t="f.mb.p">Athena Studio has an owl icon in the Mac menu bar. A red dot on it means a question is open or a plan is blocked. Click the owl to see each agent and its status.</p>
         <ul>
-          <li data-t="f.mb.l1">What needs your attention, one click from an answer</li>
+          <li data-t="f.mb.l1">Items that need you, each linked to where you answer</li>
           <li data-t="f.mb.l2">Every agent by workspace: waiting for input, working or idle</li>
           <li data-t="f.mb.l3">Claude and Codex usage with reset times, and a count of work by stage</li>
           <li data-t="f.mb.l4">Notifications only for things you need to answer, with a pause button</li>
@@ -334,7 +334,7 @@
     <div class="grid">
       <div class="txt">
         <div class="label" data-t="h.f.packs">Packs</div>
-        <h2 data-t="f.pk.h">Set up a company once. Share it with the team.</h2>
+        <h2 data-t="f.pk.h">A pack for each company you work with.</h2>
         <p data-t="f.pk.p">A pack holds one company's repositories, agents and routing rules. Each pack runs on its own, so switching never stops work in another.</p>
         <ul>
           <li data-t="f.pk.l1">Create a pack from the repositories on your Mac, or import one from a file, folder or git repository</li>
