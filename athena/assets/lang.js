@@ -1,10 +1,10 @@
 /* 언어 고르기 · 바꾸기. 페이지는 영어 원문을 담고, data-t 키가 있는 곳만 /assets/i18n/<언어>.js 사전으로 바꾼다.
-   고르는 순서: ?lang= → 이 브라우저에서 고른 것(localStorage) → 브라우저 언어 → 영어 */
+   고르는 순서: ?lang= → 이 브라우저에서 고른 것(localStorage) → 영어. 브라우저 언어는 보지 않는다(덕배 2026-10-28, 처음은 늘 영어) */
 (function () {
   var LANGS = ['en', 'ko', 'ja', 'zh'];
   var NAMES = { en: 'EN', ko: '한국어', ja: '日本語', zh: '中文' };
   var KEY = 'athena-lang';
-  var VER = '20261028b';
+  var VER = '20261028c';
   var root = document.documentElement;
   var dicts = {};
 
@@ -13,11 +13,6 @@
     try { q = new URLSearchParams(location.search).get('lang'); } catch (e) {}
     if (LANGS.indexOf(q) >= 0) return q;
     try { var s = localStorage.getItem(KEY); if (LANGS.indexOf(s) >= 0) return s; } catch (e) {}
-    var list = navigator.languages || [navigator.language || 'en'];
-    for (var i = 0; i < list.length; i++) {
-      var c = String(list[i] || '').slice(0, 2).toLowerCase();
-      if (LANGS.indexOf(c) >= 0) return c;
-    }
     return 'en';
   }
 
