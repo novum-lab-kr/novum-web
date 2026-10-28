@@ -17,7 +17,7 @@
 <link rel="apple-touch-icon" href="/assets/app-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css?v=20261028">
 <script src="/assets/lang.js?v=20261028"></script>
 </head>
@@ -70,7 +70,7 @@
   <div class="wrap">
     <div class="sec-head">
       <div class="label" data-t="h.day.label">A day with Athena</div>
-      <h2 data-t="h.day.h2">One request, from plain words to a merged pull request.</h2>
+      <h2 data-t="h.day.h2">One request, from start to merged pull request.</h2>
       <p data-t="h.day.p">A real session in our demo project: a small online shop with web, api and mobile repositories. Every picture below is the actual app.</p>
     </div>
     <div class="steps-bar">
@@ -86,8 +86,8 @@
       <div class="beat" id="ask">
         <div class="txt">
           <div class="time">01 <span>·</span> <span data-t="h.b1.k">You ask</span></div>
-          <h3 data-t="h.b1.h">Say what you want, in plain words.</h3>
-          <p data-t="h.b1.p">You talk to Athena, the team lead, in the athena workspace. No ticket template, no prompt engineering.</p>
+          <h3 data-t="h.b1.h">Describe the change in plain words.</h3>
+          <p data-t="h.b1.p">In the athena workspace, describe the change and the repositories it touches. Athena, the team lead, takes it from there.</p>
           <blockquote data-t="h.b1.q">Customers keep abandoning carts. Add a saved-cart reminder on web, and paginate order history in api so mobile can use it too.</blockquote>
         </div>
         <figure class="shot sm" style="max-width:480px;justify-self:center"><img src="/assets/shots/athena-pane.webp" width="1066" height="1290" loading="lazy" alt="Athena's pane: the request, two plans written, one delegated to api-be and one to web-fe, and a summary of what each agent is doing." data-ta="alt:h.b1.alt"></figure>
@@ -96,8 +96,8 @@
       <div class="beat flip" id="plan">
         <div class="txt">
           <div class="time">02 <span>·</span> <span data-t="h.b2.k">Plan and delegate</span></div>
-          <h3 data-t="h.b2.h">Athena splits it up and hands it out.</h3>
-          <p data-t="h.b2.p">Two plans, api first because web and mobile depend on the new response. Each goes to the agent for that repository, on its own branch and worktree, so nobody steps on anybody.</p>
+          <h3 data-t="h.b2.h">Athena splits the work and hands it out.</h3>
+          <p data-t="h.b2.p">Two plans, api first because web and mobile depend on the new response. Each goes to the agent for that repository, on its own branch and worktree.</p>
           <ul class="ticks">
             <li data-t="h.b2.l1"><code>api-be</code> on <code>feat/orders-pagination</code></li>
             <li data-t="h.b2.l2"><code>web-fe</code> on <code>feat/cart-reminder</code></li>
@@ -110,8 +110,8 @@
       <div class="beat" id="decide">
         <div class="txt">
           <div class="time">03 <span>·</span> <span data-t="h.b3.k">You decide</span></div>
-          <h3 data-t="h.b3.h">Questions come to you. You don't go looking for them.</h3>
-          <p data-t="h.b3.p">api-be needs one product call: 20 or 50 orders per page. Instead of waiting in a terminal you'll never scroll to, the question lands in Work and lights up the menu bar. Pick an answer, add a note if you like, and the agent carries on.</p>
+          <h3 data-t="h.b3.h">Questions wait for you in Work.</h3>
+          <p data-t="h.b3.p">api-be needs one product decision: 20 or 50 orders per page. The question appears in Work and a red dot shows on the menu bar icon. Pick an answer, add a note if you like, and the agent continues.</p>
         </div>
         <div class="pair">
           <figure class="shot sm"><img src="/assets/shots/answer-modal.webp" width="958" height="774" loading="lazy" alt="A question from the api agent: default page size for order history, 20 (recommended) or 50, with a Send answer button." data-ta="alt:h.b3.alt1"></figure>
@@ -122,7 +122,7 @@
       <div class="beat flip" id="build">
         <div class="txt">
           <div class="time">04 <span>·</span> <span data-t="h.b4.k">Build and verify</span></div>
-          <h3 data-t="h.b4.h">Read the change right next to the work.</h3>
+          <h3 data-t="h.b4.h">Read the change next to the work.</h3>
           <p data-t="h.b4.p">web-fe writes the banner and its tests, runs them and lints before it calls anything done. You open the changed files in Explorer and read the diff beside the terminal.</p>
           <ul class="ticks">
             <li data-t="h.b4.l1">Tests and checks run before every pull request</li>
@@ -136,11 +136,11 @@
       <div class="beat" id="merge">
         <div class="txt">
           <div class="time">05 <span>·</span> <span data-t="h.b5.k">Review and merge</span></div>
-          <h3 data-t="h.b5.h">Reviews run themselves. Merges follow your rules.</h3>
-          <p data-t="h.b5.p">As soon as work is pushed, an automatic review starts. Comments go back to the agent until the pull request is approved. Then it merges, or waits for your click. You set that per repository.</p>
+          <h3 data-t="h.b5.h">Automatic review, if you turn it on.</h3>
+          <p data-t="h.b5.p">In a repository with automatic review on, a single-repository PR is reviewed as soon as the agent pushes. Comments go back to the agent for up to three rounds. By default the merge waits for your click.</p>
           <ul class="ticks">
             <li data-t="h.b5.l1">Off by default, switched on per repository</li>
-            <li data-t="h.b5.l2">“Confirm before merging” keeps one last click for you</li>
+            <li data-t="h.b5.l2">“Confirm before merging” keeps the last click for you</li>
             <li data-t="h.b5.l3">With Codex installed, it reviews alongside Claude</li>
           </ul>
         </div>
@@ -150,8 +150,8 @@
       <div class="beat flip" id="learn">
         <div class="txt">
           <div class="time">06 <span>·</span> <span data-t="h.b6.k">Learn</span></div>
-          <h3 data-t="h.b6.h">Tomorrow's task starts smarter.</h3>
-          <p data-t="h.b6.p">What the team learned along the way, from review comments to QA findings, is saved as learning notes for that repository. The next task reads them before it starts.</p>
+          <h3 data-t="h.b6.h">Notes for the next task.</h3>
+          <p data-t="h.b6.p">What came up along the way, from review comments to QA findings, is saved as learning notes for that repository. Agents read them at the start of the next task.</p>
         </div>
         <div class="learn-card">
           <div class="h"><img src="/assets/owl-white.png" alt="" width="18" height="18"><span data-t="h.b6.card">Learning · api</span></div>
@@ -188,7 +188,7 @@
     <div class="grid">
       <div class="txt">
         <div class="label" data-t="h.f.mon">Agent monitor</div>
-        <h2 data-t="f.mo.h">See what every agent is doing, without opening a terminal.</h2>
+        <h2 data-t="f.mo.h">Follow every agent without opening each terminal.</h2>
         <p data-t="f.mo.p">A live feed at the bottom of the window follows each agent tool by tool: files read and edited, commands run, and what it says along the way. It works across every workspace.</p>
         <ul>
           <li data-t="f.mo.l1">Only agents that are working right now show up as chips</li>
@@ -228,7 +228,7 @@
     <div class="grid">
       <div class="txt">
         <div class="label" data-t="h.f.det">Pane details</div>
-        <h2 data-t="f.dt.h">Everything about one agent, one click from its pane.</h2>
+        <h2 data-t="f.dt.h">Details for one agent, opened from its pane.</h2>
         <p data-t="f.dt.p">Open details from an agent's title bar and a panel slides in over the window, without resizing your terminals. It shows what the agent needs from you, what blocks it, its plan and its pull request.</p>
         <ul>
           <li data-t="f.dt.l1">Blockers in red, questions for you at the top</li>
@@ -247,7 +247,7 @@
     <div class="grid">
       <div class="txt">
         <div class="label" data-t="f.co.label">Decision console</div>
-        <h2 data-t="f.co.h">Bigger calls get a proper page.</h2>
+        <h2 data-t="f.co.h">A decision console for plans with several choices.</h2>
         <p data-t="f.co.p">When a plan has several decisions to make, Athena writes them up as a decision console: each choice with its trade-offs and a recommendation. It opens in the side browser next to the agent, and the agent continues once you've chosen.</p>
         <ul>
           <li data-t="f.co.l1">Required and optional decisions, with recommended options marked</li>
@@ -283,8 +283,8 @@
     <div class="grid">
       <div class="txt">
         <div class="label" data-t="f.rv.label">Automatic PR review</div>
-        <h2 data-t="f.rv.h">Reviews and fixes run on their own.</h2>
-        <p data-t="f.rv.p">As soon as an agent pushes, a review starts. Comments go back to the agent, and the loop repeats until the pull request is approved. Big diffs are reviewed code-first, and earlier approvals carry over.</p>
+        <h2 data-t="f.rv.h">Automatic PR review</h2>
+        <p data-t="f.rv.p">In a repository with automatic review on, a single-repository PR is reviewed as soon as the agent pushes. Comments go back to the agent for up to three rounds, then the PR moves to the merge step. Big diffs are reviewed code-first, and earlier approvals carry over.</p>
         <ul>
           <li data-t="f.rv.l1">Off by default, switched on per repository in Settings</li>
           <li data-t="f.rv.l2">Keep “Confirm before merging” on for one last click from you</li>
@@ -339,7 +339,7 @@
     <div class="grid">
       <div class="txt">
         <div class="label" data-t="f.lg.label">Languages</div>
-        <h2 data-t="h.l.h2">Your team speaks your language.</h2>
+        <h2 data-t="h.l.h2">Pick the app and agent language.</h2>
         <p data-t="f.lg.p">Choose English, Korean, Japanese or Chinese from the View menu. The app switches, and so do your agents: their replies, plans, issues, learning notes and commit messages.</p>
         <div class="tabs" role="tablist" data-tabs="lang" style="margin-top:24px">
           <button type="button" role="tab" data-tab="en" aria-selected="true">English</button>
