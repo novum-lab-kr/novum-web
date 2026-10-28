@@ -18,9 +18,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=20261028h">
-<script src="/assets/lang.js?v=20261028h"></script>
-<script src="/assets/motion.js?v=20261028h" defer></script>
+<link rel="stylesheet" href="/assets/site.css?v=20261028i">
+<script src="/assets/lang.js?v=20261028i"></script>
+<script src="/assets/motion.js?v=20261028i" defer></script>
 </head>
 <body>
 <header class="top">
@@ -40,32 +40,62 @@
   <div class="wrap">
     <p class="eyebrow"><i></i><span data-t="nav.docs">Docs</span></p>
     <h1 class="grad" data-t="o.h1">Using Athena Studio</h1>
-    <div class="toc">
-      <a href="#start" data-t="d.start.label">Get started</a>
-      <a href="#setup" data-t="s.label">First setup</a>
-      <a href="#shortcuts" data-t="f.k.label">Shortcuts</a>
-      <a href="#security" data-t="h.s.label">Data and security</a>
-      <a href="#compare" data-t="h.c.label">Compared</a>
-      <a href="#faq">FAQ</a>
-    </div>
+    <p class="lead" data-t="doc.lead">Install the app, set up your first pack and get through your first task. The rest is reference you can come back to.</p>
   </div>
 </div>
 
-<section id="start" class="rule">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="label" data-t="d.start.label">Get started</div>
-      <h2 data-t="d.start.h">Three steps to your first agent.</h2>
+<div class="wrap doc-wrap">
+  <nav class="doc-toc" aria-label="Docs">
+    <div class="doc-toc-in">
+        <a href="#before" data-t="doc.n.before">Before you install</a>
+        <a href="#install" data-t="doc.n.install">Install and open</a>
+        <a href="#setup" data-t="s.label">First setup</a>
+        <a href="#workflow" data-t="doc.n.workflow">Your first task</a>
+        <a href="#app" data-t="doc.n.app">Around the app</a>
+        <a href="#settings" data-t="doc.n.settings">Settings</a>
+        <a href="#shortcuts" data-t="f.k.label">Shortcuts</a>
+        <a href="#update" data-t="doc.n.update">Updating</a>
+        <a href="#security" data-t="h.s.label">Data and security</a>
+        <a href="#troubleshooting" data-t="doc.n.trouble">Troubleshooting</a>
+        <a href="#faq">FAQ</a>
     </div>
-    <div class="three">
-      <div><b data-t="d.s1">Install</b><span data-t="d.s1p">Open the downloaded file and drag Athena Studio into Applications.</span></div>
-      <div><b data-t="d.s2">Open it</b><span data-t="d.s2p">Open Athena Studio from Applications. Anything else it needs is listed on the Download page.</span></div>
-      <div><b data-t="d.s3">Add your repositories</b><span data-t="d.s3p">Create a pack from the repositories on your Mac, or import one from your team. Then ask Athena for your first task.</span></div>
-    </div>
-    <div class="setup" id="setup">
-      <h3 data-t="s.h">First setup: Athena learns your repositories</h3>
-      <p class="setup-p" data-t="s.p">When you create a pack, Athena sets it up for you. It only reads your code.</p>
-      <figure class="flowd" aria-label="What Athena does on first setup" data-ta="aria-label:s.d.aria">
+  </nav>
+  <div class="doc-body">
+<span id="start"></span>
+<section class="doc-sec" id="before">
+  <p class="doc-label" data-t="doc.n.before">Before you install</p>
+  <h2 data-t="doc.b.h">Check these first.</h2>
+  <p class="doc-p" data-t="doc.b.p">Athena Studio runs on your Mac and drives the coding agent you already use.</p>
+  <ul class="req">
+      <li><b data-t="d.r1">macOS</b><span data-t="d.r1p">macOS 13 Ventura or later</span></li>
+      <li><b data-t="d.r2">AI agent</b><span data-t="d.r2p">Claude Code or Codex, signed in with your own account. Both is even better: Codex joins pull request reviews.</span></li>
+      <li><b data-t="d.r3">git and Python 3</b><span data-t="d.r3p">Part of Apple's Command Line Tools. If they're missing, macOS offers to install them on first launch.</span></li>
+      <li><b>Node.js</b><span data-t="d.r4p">Used by Athena's scripts</span></li>
+      <li><b data-t="d.r5">GitHub</b><span data-t="d.r5p">Access to your repositories. The gh CLI is needed for pull requests and automatic review.</span></li>
+      </ul>
+</section>
+
+<section class="doc-sec" id="install">
+  <p class="doc-label" data-t="doc.n.install">Install and open</p>
+  <h2 data-t="doc.i.h">Install Athena Studio.</h2>
+  <ol class="h3-steps-list">
+    <li data-t="doc.i1">Download the .dmg for your Mac's chip from the <a href="/download/">Download page</a>.</li>
+    <li data-t="d.s1p">Open the downloaded file and drag Athena Studio into Applications.</li>
+    <li data-t="doc.i3">Open Athena Studio. It's signed and notarized by Apple, so it opens without a security warning. If git or Python 3 is missing, macOS offers to install Apple's Command Line Tools.</li>
+    <li data-t="doc.i4">On first launch the start screen offers New Pack and Import Pack. A pack is the set of repositories, agents and rules for one company or project.</li>
+  </ol>
+</section>
+
+<section class="doc-sec" id="setup">
+  <p class="doc-label" data-t="s.label">First setup</p>
+  <h2 data-t="s.h">First setup: Athena learns your repositories</h2>
+  <p class="doc-p" data-t="s.p">When you create a pack, Athena sets it up for you. It only reads your code.</p>
+  <div class="doc-three">
+    <div class="you"><b data-t="doc.su.you.h">You confirm</b><span data-t="doc.su.you.p">Which repositories to include, the company name, agent names and where automatic review is on. Fix any wrong guesses here.</span></div>
+    <div><b data-t="doc.su.ath.h">Athena prepares</b><span data-t="doc.su.ath.p">An agent for each repository with its rules and notes, the routing table, QA checks and a code baseline. Your repositories aren't changed, and it asks before installing or fetching anything.</span></div>
+    <div><b data-t="doc.su.end.h">When it's done</b><span data-t="doc.su.end.p">Athena reports what it made and what still needs you. Then ask for your first task in the athena workspace.</span></div>
+  </div>
+  <figure class="flowd" aria-label="What Athena does on first setup" data-ta="aria-label:s.d.aria">
       <svg class="flowd-wide" viewBox="0 0 1200 560" role="img" aria-hidden="true">
         <defs>
         <marker id="sah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1.2L9 5L1 8.8Q2.6 5 1 1.2z" class="fd-head"/></marker>
@@ -202,32 +232,118 @@
         <text class="fd-nl" x="180" y="1192" text-anchor="middle" style="font-size:12px" data-t="s.d.notem">Repos are only read. Installs and fetches are asked first.</text>
       </svg>
         <figcaption data-t="s.d.cap">First setup: Athena reads your repositories and builds the pack for you.</figcaption>
-      </figure>
-      <ol class="h3-steps-list">
-        <li data-t="s.1">Finds the repositories on your Mac and guesses each one's type (front end or back end), production branch and PR base.</li>
-        <li data-t="s.2">Asks you to confirm which repositories to include, the company name, agent names and where automatic review is on. Wrong guesses get fixed here.</li>
-        <li data-t="s.3">Creates an agent for each repository with its rules, structure notes, a gotchas notebook and a check script.</li>
-        <li data-t="s.4">Reads each repository's production branch and fills in what the agent handles, the rules it must follow, language and type status, and a short service overview. Athena also writes the routing table, which says which request goes to which repository.</li>
-        <li data-t="s.5">Drafts QA checks for each app's screens.</li>
-        <li data-t="s.6">Runs the checks once and takes a code baseline, so later updates only touch what changed.</li>
-        <li data-t="s.7">If you want, draws diagrams for each service: structure, screen map and request flow.</li>
-      </ol>
-      <p class="setup-p" data-t="s.end">At the end, Athena reports what it made and what still needs your confirmation. It only reads your repositories and asks before installing or fetching anything.</p>
+  </figure>
+  <details class="doc-more">
+    <summary data-t="doc.su.more">What Athena does, step by step</summary>
+        <ol class="h3-steps-list">
+          <li data-t="s.1">Finds the repositories on your Mac and guesses each one's type (front end or back end), production branch and PR base.</li>
+          <li data-t="s.2">Asks you to confirm which repositories to include, the company name, agent names and where automatic review is on. Wrong guesses get fixed here.</li>
+          <li data-t="s.3">Creates an agent for each repository with its rules, structure notes, a gotchas notebook and a check script.</li>
+          <li data-t="s.4">Reads each repository's production branch and fills in what the agent handles, the rules it must follow, language and type status, and a short service overview. Athena also writes the routing table, which says which request goes to which repository.</li>
+          <li data-t="s.5">Drafts QA checks for each app's screens.</li>
+          <li data-t="s.6">Runs the checks once and takes a code baseline, so later updates only touch what changed.</li>
+          <li data-t="s.7">If you want, draws diagrams for each service: structure, screen map and request flow.</li>
+        </ol>
+  </details>
+  <p class="doc-note" data-t="doc.su.imp">Have a pack from your team? Use File → Import Pack… and pick an archive, a pack folder or a git repository.</p>
+</section>
+
+<section class="doc-sec" id="workflow">
+  <p class="doc-label" data-t="doc.n.workflow">Your first task</p>
+  <h2 data-t="doc.w.h">From one request to a merged pull request.</h2>
+  <p class="doc-p" data-t="doc.w.p">The demo project below is a small shop with web, api and mobile repositories. Your own repositories work the same way.</p>
+  <div class="doc-steps">
+    <div class="doc-step has-fig narrow" id="w-ask">
+      <div class="doc-step-txt">
+        <span class="n">01</span>
+        <h3 data-t="doc.w1.h">Ask Athena</h3>
+        <p data-t="doc.w1.p">In the athena workspace, type what you want changed and which repositories it touches. Plain words are fine.</p>
+        <blockquote class="h3-quote"><span data-t="h.b1.q">Customers keep abandoning carts. Add a saved-cart reminder on web, and paginate order history in api so mobile can use it too.</span></blockquote>
+      </div>
+      <figure class="shot sm"><img src="/assets/shots/athena-pane.webp" width="1066" height="1290" loading="lazy" alt="Athena's pane: the request, two plans written, one delegated to api-be and one to web-fe." data-ta="alt:h.b1.alt"></figure>
     </div>
-    <p class="hint" data-t="o.req">Before you install, check <a href="/download/">what you need</a>.</p>
-    <p class="hint" data-t="d.eula">By installing Athena Studio you agree to the <a href="/terms/">End User License Agreement</a>. Looking for what changed? See the <a href="/releases/">release notes</a>.</p>
+    <div class="doc-step has-fig" id="w-plan">
+      <div class="doc-step-txt">
+        <span class="n">02</span>
+        <h3 data-t="doc.w2.h">Check the plan</h3>
+        <p data-t="doc.w2.p">Athena writes a plan for each repository and hands it to that repository's agent, which works on its own branch in a new pane. When a plan has several choices, Athena opens a decision console in the side browser so you can pick.</p>
+      </div>
+      <figure class="shot"><img src="/assets/shots/agents.webp" width="1600" height="1200" loading="lazy" alt="Athena and web-fe working side by side, with the agent monitor below following every agent." data-ta="alt:h.b2.alt2"></figure>
+    </div>
+    <div class="doc-step has-fig narrow" id="w-answer">
+      <div class="doc-step-txt">
+        <span class="n">03</span>
+        <h3 data-t="doc.w3.h">Answer questions</h3>
+        <p data-t="doc.w3.p">When an agent needs a decision, Work at the top right shows a dot and the question waits under Waiting for you. Click it, pick an answer, add a note if you like, and send. The owl in the menu bar gets a red dot too.</p>
+      </div>
+      <figure class="shot sm"><img src="/assets/shots/answer-modal.webp" width="958" height="774" loading="lazy" alt="A question from the api agent: default page size for order history, 20 (recommended) or 50, with a Send answer button." data-ta="alt:h.b3.alt1"></figure>
+    </div>
+    <div class="doc-step" id="w-follow">
+      <div class="doc-step-txt">
+        <span class="n">04</span>
+        <h3 data-t="doc.w4.h">Follow the work</h3>
+        <p data-t="doc.w4.p">The agent monitor at the bottom of the window shows what each agent is reading, editing and running. For one agent's plan, blockers and pull request, open details from its pane's title bar.</p>
+      </div>
+    </div>
+    <div class="doc-step has-fig" id="w-diff">
+      <div class="doc-step-txt">
+        <span class="n">05</span>
+        <h3 data-t="doc.w5.h">Check the change</h3>
+        <p data-t="doc.w5.p">Agents run tests and checks before they open a draft pull request. In Explorer on the right, open Changes and click a file to read its diff next to the terminal.</p>
+      </div>
+      <figure class="shot"><img src="/assets/shots/explorer-1200.webp" srcset="/assets/shots/explorer-1200.webp 1200w, /assets/shots/explorer.webp 2400w" sizes="(max-width: 900px) 100vw, 640px" width="1200" height="675" loading="lazy" alt="Terminal with passing tests on the left, a diff of CartPage.tsx on the right, and the list of changed files." data-ta="alt:h.b4.alt"></figure>
+    </div>
+    <div class="doc-step has-fig narrow" id="w-merge">
+      <div class="doc-step-txt">
+        <span class="n">06</span>
+        <h3 data-t="doc.w6.h">Merge</h3>
+        <p data-t="doc.w6.p">In repositories with PR auto-merge on, the pull request is reviewed and fixed automatically. If Confirm before merging is on, the merge waits for your click. In other repositories, merge on GitHub as usual.</p>
+      </div>
+      <figure class="shot sm"><img src="/assets/shots/settings-pop.webp" width="706" height="600" loading="lazy" alt="Settings: PR auto-merge switched on for web and api, with Confirm before merging on for web, and off for mobile." data-ta="alt:h.b5.alt"></figure>
+    </div>
+    <div class="doc-step" id="w-learn">
+      <div class="doc-step-txt">
+        <span class="n">07</span>
+        <h3 data-t="doc.w7.h">Keep what was learned</h3>
+        <p data-t="doc.w7.p">After the merge, the learning review suggests notes. Open the work board (⌘2), go to Learning and pick the ones to keep. The next task in that repository reads them. The work board is in Korean for now.</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="feat" id="shortcuts">
-  <div class="wrap">
-    <div class="grid">
-      <div class="txt">
-        <div class="label" data-t="f.k.label">Shortcuts</div>
-        <h2 data-t="h.k.h2">Keyboard shortcuts</h2>
-        <p data-t="f.k.p">Mac-style line editing works in the terminal too.</p>
-      </div>
-      <table class="key-table">
+<section class="doc-sec" id="app">
+  <p class="doc-label" data-t="doc.n.app">Around the app</p>
+  <h2 data-t="doc.a.h">Where things are.</h2>
+  <dl class="doc-dl">
+      <div><dt data-t="f.ws.label">Workspaces</dt><dd data-t="doc.a.ws">The left list has one workspace per repository, with its branches and agents. The middle holds tabs and split panes, one agent per pane. ⌘1 brings you back here.</dd></div>
+      <div><dt data-t="h.f.mon">Agent monitor</dt><dd data-t="doc.a.mon">Bottom of the window. Shows only agents that are working right now; fold it away with ⌄.</dd></div>
+      <div><dt data-t="h.f.work">Work</dt><dd data-t="doc.a.work">Top right of the tab bar. Questions waiting for you, work in progress and what finished in the last 24 hours.</dd></div>
+      <div><dt data-t="doc.a.boardt">Work board (⌘2)</dt><dd data-t="doc.a.board">Opens in your default browser: issues, QA, learning, metrics and archive. In Korean for now.</dd></div>
+      <div><dt data-t="h.f.det">Pane details</dt><dd data-t="doc.a.det">The icon at the right of an agent pane's title bar. Plan, progress, blockers, tokens and the pull request; Esc closes it.</dd></div>
+      <div><dt data-t="h.f.exp">Explorer</dt><dd data-t="doc.a.exp">Right side. Files and Changes for the current workspace; changed files open as a diff.</dd></div>
+      <div><dt data-t="doc.a.brt">Side browser</dt><dd data-t="doc.a.br">A drawer on the right (⌘⇧B) for plans, decision consoles and local test pages. Its sign-ins are kept apart from your main browser.</dd></div>
+      <div><dt data-t="h.f.bar">Menu bar</dt><dd data-t="doc.a.bar">The owl in the Mac menu bar. A red dot means a question is open or a plan is blocked; click for every agent and its status.</dd></div>
+  </dl>
+</section>
+
+<section class="doc-sec" id="settings">
+  <p class="doc-label" data-t="doc.n.settings">Settings</p>
+  <h2 data-t="doc.s.h">Change how Athena Studio works.</h2>
+  <dl class="doc-dl">
+      <div><dt data-t="doc.s.mt">PR auto-merge</dt><dd data-t="doc.s.m">⚙ at the right end of the tab bar. One switch per repository, with Confirm before merging under it. Off until you turn it on.</dd></div>
+      <div><dt data-t="doc.s.lt">Language</dt><dd data-t="doc.s.l">View → Language. The app and your agents switch together: replies, plans, issues and commit messages.</dd></div>
+      <div><dt data-t="doc.s.nt">Notifications</dt><dd data-t="doc.s.n">Click the owl in the menu bar → Pause Notifications, for an hour or until 9 the next morning.</dd></div>
+      <div><dt data-t="doc.s.pt">Packs</dt><dd data-t="doc.s.p">The pack name at the left of the tab bar (⌘⇧P). Switch, create, import or export. Agents in the other pack keep working, and an export can include agent conversations and unfinished branches.</dd></div>
+      <div><dt data-t="doc.s.rt">Repository name and image</dt><dd data-t="doc.s.r">Right-click a repository in the left list. The name and image are saved in the pack, so your team sees them too.</dd></div>
+  </dl>
+</section>
+
+<section class="doc-sec" id="shortcuts">
+  <p class="doc-label" data-t="f.k.label">Shortcuts</p>
+  <h2 data-t="h.k.h2">Keyboard shortcuts</h2>
+  <p class="doc-p" data-t="f.k.p">Mac-style line editing works in the terminal too.</p>
+  <table class="key-table doc-keys">
+        <tr class="kg"><th colspan="2" data-t="doc.k.g1">Workspaces and panes</th></tr>
         <tr><td><kbd>⌘</kbd><kbd>1</kbd></td><td data-t="k.work">Workspaces and terminals</td></tr>
         <tr><td><kbd>⌘</kbd><kbd>2</kbd></td><td data-t="k.board">Open the worklist</td></tr>
         <tr><td><kbd>⌘</kbd><kbd>T</kbd></td><td data-t="k.tab">New tab</td></tr>
@@ -239,82 +355,85 @@
         <tr><td><kbd>⌘</kbd><kbd>⌥</kbd><kbd>W</kbd></td><td data-t="k.closetab">Close tab</td></tr>
         <tr><td><kbd>⌘</kbd><kbd>⇧</kbd><kbd>[</kbd> <kbd>⌘</kbd><kbd>⇧</kbd><kbd>]</kbd></td><td data-t="k.tabs">Previous or next tab</td></tr>
         <tr><td><kbd>⌘</kbd><kbd>⇧</kbd><kbd>↑</kbd> <kbd>⌘</kbd><kbd>⇧</kbd><kbd>↓</kbd></td><td data-t="k.spaces">Previous or next workspace</td></tr>
+        <tr class="kg"><th colspan="2" data-t="doc.k.g2">Panels and packs</th></tr>
         <tr><td><kbd>⌘</kbd><kbd>B</kbd></td><td data-t="k.left">Collapse the left list</td></tr>
         <tr><td><kbd>⌘</kbd><kbd>⌥</kbd><kbd>B</kbd></td><td data-t="k.rightp">Collapse the right panel</td></tr>
         <tr><td><kbd>⌘</kbd><kbd>⇧</kbd><kbd>B</kbd></td><td data-t="k.browser">Side browser</td></tr>
         <tr><td><kbd>⌘</kbd><kbd>⇧</kbd><kbd>P</kbd></td><td data-t="k.packs">Switch pack</td></tr>
+        <tr class="kg"><th colspan="2" data-t="doc.k.g3">Typing in the terminal</th></tr>
         <tr><td><kbd>⌘</kbd><kbd>←</kbd> <kbd>⌘</kbd><kbd>→</kbd></td><td data-t="k.line">Start or end of the line</td></tr>
         <tr><td><kbd>⌘</kbd><kbd>⌫</kbd></td><td data-t="k.del">Delete to the start of the line</td></tr>
         <tr><td><kbd>⇧</kbd><kbd>↩</kbd></td><td data-t="k.nl">New line instead of sending</td></tr>
+        <tr class="kg"><th colspan="2" data-t="doc.k.g4">App</th></tr>
         <tr><td><kbd>⌘</kbd><kbd>Q</kbd></td><td data-t="k.quit">Quit the app; agents keep running in the background</td></tr>
-      </table>
-    </div>
-  </div>
+  </table>
 </section>
 
-<section id="security" class="rule">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="label" data-t="h.s.label">Data and security</div>
-      <h2 data-t="h.s.h2">What runs on your Mac, and what is sent elsewhere.</h2>
-      <p data-t="h.s.p">The app runs on your computer. Your agents still send requests to their AI provider, and your code goes to GitHub when they push.</p>
-    </div>
-    <div class="sec-grid">
+<section class="doc-sec" id="update">
+  <p class="doc-label" data-t="doc.n.update">Updating</p>
+  <h2 data-t="doc.u.h">Keep Athena Studio up to date.</h2>
+  <p class="doc-p" data-t="doc.u.now">Right now (0.15.8): download the new .dmg from the <a href="/download/">Download page</a> and drag Athena Studio into Applications to replace the old app. Your packs and work stay where they are.</p>
+  <p class="doc-p doc-soon"><span class="tag dev" data-t="doc.u.soon">Next release</span> <span data-t="doc.u.next">Coming in the next release: ⚙ → App update installs new versions from inside the app. After one last manual update, you won't need the .dmg again.</span></p>
+  <p class="doc-p" data-t="doc.u.core">The Athena core that comes with the app is updated when you open a new version, even while agents are working.</p>
+</section>
+
+<section class="doc-sec" id="security">
+  <p class="doc-label" data-t="h.s.label">Data and security</p>
+  <h2 data-t="h.s.h2">What runs on your Mac, and what is sent elsewhere.</h2>
+  <p class="doc-p" data-t="h.s.p">The app runs on your computer. Your agents still send requests to their AI provider, and your code goes to GitHub when they push.</p>
+  <div class="sec-grid">
       <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><b data-t="h.s.1">Runs on your Mac</b><span data-t="h.s.1p">Agents, terminals and the worklist run locally. The app does not send your code or files to Novum Lab's servers.</span></div>
       <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span><b data-t="h.s.2">Your own AI account</b><span data-t="h.s.2p">Agents run as the Claude Code or Codex you already signed into, under that provider's terms and your plan.</span></div>
       <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="12" r="2.5"/><path d="M6 8.5v7M8.3 7.2l7.5 3.6"/></svg></span><b data-t="h.s.3">Agents work on branches</b><span data-t="h.s.3p">Each agent works on its own branch and worktree. Automatic merge is off until you turn it on for a repository.</span></div>
       <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l8-4 8 4v6c0 4-3.5 7-8 8-4.5-1-8-4-8-8z"/><path d="M9 12l2 2 4-4"/></svg></span><b data-t="h.s.4">Signed and notarized</b><span data-t="h.s.4p">Public release builds are signed with an Apple Developer ID and notarized by Apple.</span></div>
       <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9"/></svg></span><b data-t="h.s.5">A separate browser</b><span data-t="h.s.5p">The side browser is sandboxed, opens only http and https, and keeps its sign-ins apart from your main browser.</span></div>
       <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg></span><b data-t="h.s.6">TypeSafe Jev is optional</b><span data-t="h.s.6p">Only if you add your own TypeSafe Jev key, QA error details and learning notes are sent to TypeSafe Jev. Without a key, nothing is sent to it.</span></div>
-    </div>
   </div>
 </section>
 
-<section id="compare" class="rule">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="label" data-t="h.c.label">Compared</div>
-      <h2 data-t="h.c.h2">Claude Code on its own, or with Athena Studio.</h2>
-      <p data-t="h.c.p">Athena Studio runs the Claude Code or Codex you already use, and adds a team lead, written plans and reviews on top.</p>
-    </div>
-    <table class="cmp">
-      <thead><tr><th></th><th data-t="h.c.a">Claude Code in a terminal</th><th class="us" data-t="h.c.b">With Athena Studio</th></tr></thead>
-      <tbody>
-        <tr><th data-t="h.c.r1">Agents at once</th><td data-h="Claude Code" data-t="h.c.r1a">One per terminal window</td><td class="us" data-h="Athena Studio" data-t="h.c.r1b">A team lead plus an agent for each repository, side by side</td></tr>
-        <tr><th data-t="h.c.r2">Planning</th><td data-h="Claude Code" data-t="h.c.r2a">Inside the conversation</td><td class="us" data-h="Athena Studio" data-t="h.c.r2b">A written plan per task, with progress, blockers and next step</td></tr>
-        <tr><th data-t="h.c.r3">Questions for you</th><td data-h="Claude Code" data-t="h.c.r3a">Wherever that session has scrolled to</td><td class="us" data-h="Athena Studio" data-t="h.c.r3b">One Work list and a menu bar alert. Answer with a click</td></tr>
-        <tr><th data-t="h.c.r4">Branches</th><td data-h="Claude Code" data-t="h.c.r4a">You create and switch them</td><td class="us" data-h="Athena Studio" data-t="h.c.r4b">Each agent works on its own branch and worktree</td></tr>
-        <tr><th data-t="h.c.r5">Seeing progress</th><td data-h="Claude Code" data-t="h.c.r5a">Read each terminal</td><td class="us" data-h="Athena Studio" data-t="h.c.r5b">Live agent monitor and pane details</td></tr>
-        <tr><th data-t="h.c.r6">Pull requests</th><td data-h="Claude Code" data-t="h.c.r6a">You open, review and merge them</td><td class="us" data-h="Athena Studio" data-t="h.c.r6b">Opened after checks; with automatic review on, reviewed and fixed before you merge</td></tr>
-        <tr><th data-t="h.c.r7">Lessons</th><td data-h="Claude Code" data-t="h.c.r7a">Whatever you write down yourself</td><td class="us" data-h="Athena Studio" data-t="h.c.r7b">Learning notes per repository, read by the next task</td></tr>
-        <tr><th data-t="h.c.r8">Closing the window</th><td data-h="Claude Code" data-t="h.c.r8a">The session ends with the terminal</td><td class="us" data-h="Athena Studio" data-t="h.c.r8b">Agents keep running; reopen to the same layout</td></tr>
-        <tr><th data-t="h.c.r9">Several companies</th><td data-h="Claude Code" data-t="h.c.r9a">Separate folders and setups</td><td class="us" data-h="Athena Studio" data-t="h.c.r9b">One pack each. Switch in a click, share with your team</td></tr>
-      </tbody>
-    </table>
-    <p class="fine" data-t="h.c.fine">Athena Studio needs Claude Code or Codex. Claude Code is made by Anthropic and Codex by OpenAI; Athena Studio is made by Novum Lab and is not affiliated with either.</p>
-  </div>
+<section class="doc-sec" id="troubleshooting">
+  <p class="doc-label" data-t="doc.n.trouble">Troubleshooting</p>
+  <h2 data-t="doc.t.h">If something goes wrong.</h2>
+  <dl class="doc-dl">
+      <div><dt data-t="doc.t1q">Panes look disconnected or stop responding</dt><dd data-t="doc.t1a">View → Reattach Terminal. Panes and agents stay as they are.</dd></div>
+      <div><dt data-t="doc.t2q">Reattaching doesn't help</dt><dd data-t="doc.t2a">View → Restart Terminal Daemon. This closes all open panes, including their agents.</dd></div>
+      <div><dt data-t="doc.t3q">An agent seems stuck</dt><dd data-t="doc.t3a">Look in Work for a question waiting for you, and in the pane's details for a blocker.</dd></div>
+      <div><dt data-t="doc.t4q">No pull request opens</dt><dd data-t="doc.t4a">Make sure the gh CLI is installed and signed in (<code>gh auth login</code>), and that the repository has a GitHub remote.</dd></div>
+      <div><dt data-t="doc.t5q">Claude Code, Codex, git or Python is missing</dt><dd data-t="doc.t5a">Install it and sign in from Terminal (for git and Python: <code>xcode-select --install</code>), then reopen Athena Studio.</dd></div>
+      <div><dt data-t="doc.t6q">Nothing else works</dt><dd data-t="doc.t6a">View → Reset Studio deletes every pack and pane and restarts the app. Your repository folders are kept. Use it last, after <a href="https://github.com/novum-lab-kr/athena-studio/issues/new/choose">reporting an issue</a>.</dd></div>
+  </dl>
+  <p class="doc-note" data-t="doc.t.logs">Logs are in <code>~/Library/Application Support/Athena Studio</code> (daemon.log, board.log, pack.log). Attach them when you report an issue.</p>
 </section>
 
-<section id="faq" class="rule">
-  <div class="wrap">
-    <div class="sec-head center">
-      <div class="label">FAQ</div>
-      <h2 data-t="h.q.h2">Questions</h2>
-    </div>
-    <div class="faq">
+<section class="doc-sec" id="faq">
+  <p class="doc-label">FAQ</p>
+  <h2 data-t="h.q.h2">Questions</h2>
+  <div class="faq">
       <details><summary data-t="h.q0">Which Macs does it run on?</summary><p data-t="h.q0a">macOS 13 Ventura or later, on Apple Silicon or Intel. It's free to <a href="/download/">download</a>.</p></details>
       <details><summary data-t="h.q2">How much does it cost?</summary><p data-t="h.q2a">Athena Studio is free to download and use. Your agents run on your own Claude Code or Codex plan, so their usage is billed by that provider as usual.</p></details>
       <details><summary data-t="h.q3">Do I need Claude Code or Codex?</summary><p data-t="h.q3a">Yes, at least one of them, signed in on your Mac. Agents can run on either. Automatic PR review uses Claude Code; with Codex as well, it adds a second reviewer from a different model.</p></details>
-      <details><summary data-t="h.q10">How do I update?</summary><p data-t="h.q10a">From the next release, the app updates itself from ⚙ inside the app. If you're on 0.15.8, download that next release once from the <a href="/download/">Download page</a> and drag it into Applications to replace the old app.</p></details>
-      <details><summary data-t="h.q5">Does my code leave my Mac?</summary><p data-t="h.q5a">Not to us. Athena Studio does not send your code or files to Novum Lab's servers. Your agents talk to their own provider (Anthropic or OpenAI) as they normally do, and pushes go to your GitHub.</p></details>
       <details><summary data-t="h.q6">Will agents merge code on their own?</summary><p data-t="h.q6a">Only if you turn it on. Automatic merge is off by default and set per repository, and you can keep a final click before every merge.</p></details>
       <details><summary data-t="h.q7">Do agents keep working when I close the app?</summary><p data-t="h.q7a">Yes. Terminals and agents keep running in the background, even after you quit. Open the app again and you're back to the same tabs and layout.</p></details>
       <details><summary data-t="h.q8">Can I use it for more than one company or project?</summary><p data-t="h.q8a">Yes. Make a pack for each: its repositories, agents and rules. Switching packs doesn't stop work in the other one, and you can export a pack for your team.</p></details>
       <details><summary data-t="h.q9">What about Windows or Linux?</summary><p data-t="h.q9a">Athena Studio is a Mac app for now.</p></details>
       <details><summary data-t="h.q11">Found a bug or have an idea?</summary><p data-t="h.q11a"><a href="https://github.com/novum-lab-kr/athena-studio/issues/new/choose">Open an issue on GitHub</a> and pick a bug report or a feature request.</p></details>
-    </div>
   </div>
 </section>
+  </div>
+</div>
+<script>
+/* 목차: 지금 읽는 장을 표시 */
+(function () {
+  var links = [].slice.call(document.querySelectorAll('.doc-toc a'));
+  var secs = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function on() {
+    var cur = 0;
+    secs.forEach(function (s, i) { if (s && s.getBoundingClientRect().top < 140) cur = i; });
+    links.forEach(function (a, i) { a.classList.toggle('on', i === cur); });
+  }
+  window.addEventListener('scroll', on, { passive: true }); on();
+})();
+</script>
 </main>
 
 

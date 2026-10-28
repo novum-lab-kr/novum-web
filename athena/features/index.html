@@ -18,9 +18,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=20261028h">
-<script src="/assets/lang.js?v=20261028h"></script>
-<script src="/assets/motion.js?v=20261028h" defer></script>
+<link rel="stylesheet" href="/assets/site.css?v=20261028i">
+<script src="/assets/lang.js?v=20261028i"></script>
+<script src="/assets/motion.js?v=20261028i" defer></script>
 </head>
 <body>
 <header class="top">
@@ -40,135 +40,33 @@
   <div class="wrap">
     <p class="eyebrow"><i></i><span data-t="nav.features">Features</span></p>
     <h1 class="grad" data-t="f.h1">A tour of Athena Studio</h1>
-    <p class="lead" data-t="f.lead">First, one request from our demo shop, followed from the first message to the merged pull request. After that, each part of the app in turn.</p>
+    <p class="lead" data-t="f.lead2">What each part of the app does. For step-by-step use, see the <a href="/docs/#workflow">Docs</a>.</p>
     <div class="toc">
-      <a href="#day" data-t="h.day.label">A day with Athena</a>
       <a href="#workspaces" data-t="f.ws.label">Workspaces</a>
-      <a href="#panes" data-t="f.pn.label">Split panes</a>
-      <a href="#monitor" data-t="h.f.mon">Agent monitor</a>
-      <a href="#work" data-t="h.f.work">Work</a>
-      <a href="#details" data-t="h.f.det">Pane details</a>
-      <a href="#console" data-t="f.co.label">Decision console</a>
-      <a href="#explorer" data-t="h.f.exp">Explorer</a>
-      <a href="#review" data-t="f.rv.label">Automatic PR review</a>
-      <a href="#menubar" data-t="h.f.bar">Menu bar</a>
-      <a href="#packs" data-t="h.f.packs">Packs</a>
-      <a href="#language" data-t="f.lg.label">Languages</a>
-      <a href="/docs/#shortcuts" data-t="f.k.label">Shortcuts</a>
+      <a href="#status" data-t="f.g2.l">Progress and questions</a>
+      <a href="#decisions" data-t="f.g3.l">Decisions and code</a>
+      <a href="#review" data-t="f.g4.l">Review and learning</a>
+      <a href="#packs" data-t="f.g5.l">Packs and languages</a>
     </div>
   </div>
 </div>
+<script>
+/* 예전 하루 흐름(#day 등)은 문서의 첫 작업으로 옮겼다 */
+(function () { var h = location.hash.slice(1); if (['day', 'ask', 'plan', 'decide', 'build', 'merge', 'learn'].indexOf(h) >= 0) location.replace('/docs/#workflow'); })();
+</script>
 
-<section id="day" class="feat">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="label" data-t="h.day.label">A day with Athena</div>
-      <h2 data-t="h.day.h2">One request, from start to merged pull request.</h2>
-      <p data-t="h.day.p">A real session in our demo project: a small online shop with web, api and mobile repositories. Every picture below is the actual app.</p>
-    </div>
-    <div class="steps-bar">
-      <a href="#ask"><b>1</b><span data-t="h.s1">Ask</span></a><span class="arrow">→</span>
-      <a href="#plan"><b>2</b><span data-t="h.s2">Plan and delegate</span></a><span class="arrow">→</span>
-      <a href="#decide"><b>3</b><span data-t="h.s3">You decide</span></a><span class="arrow">→</span>
-      <a href="#build"><b>4</b><span data-t="h.s4">Build and verify</span></a><span class="arrow">→</span>
-      <a href="#merge"><b>5</b><span data-t="h.s5">Review and merge</span></a><span class="arrow">→</span>
-      <a href="#learn"><b>6</b><span data-t="h.s6">Learn</span></a>
-    </div>
-
-    <div class="story">
-      <div class="beat" id="ask">
-        <div class="txt">
-          <div class="time">01 <span>·</span> <span data-t="h.b1.k">You ask</span></div>
-          <h3 data-t="h.b1.h">Describe the change in plain words.</h3>
-          <p data-t="h.b1.p">In the athena workspace, describe the change and the repositories it touches. Athena, the team lead, reads it and writes the plans.</p>
-          <blockquote data-t="h.b1.q">Customers keep abandoning carts. Add a saved-cart reminder on web, and paginate order history in api so mobile can use it too.</blockquote>
-        </div>
-        <figure class="shot sm" style="max-width:480px;justify-self:center"><img src="/assets/shots/athena-pane.webp" width="1066" height="1290" loading="lazy" alt="Athena's pane: the request, two plans written, one delegated to api-be and one to web-fe, and a summary of what each agent is doing." data-ta="alt:h.b1.alt"></figure>
-      </div>
-
-      <div class="beat flip" id="plan">
-        <div class="txt">
-          <div class="time">02 <span>·</span> <span data-t="h.b2.k">Plan and delegate</span></div>
-          <h3 data-t="h.b2.h">Athena splits the work and hands it out.</h3>
-          <p data-t="h.b2.p">Two plans, api first because web and mobile depend on the new response. Each goes to the agent for that repository, on its own branch and worktree.</p>
-          <ul class="ticks">
-            <li data-t="h.b2.l1"><code>api-be</code> on <code>feat/orders-pagination</code></li>
-            <li data-t="h.b2.l2"><code>web-fe</code> on <code>feat/cart-reminder</code></li>
-            <li data-t="h.b2.l3">The agent monitor follows both, tool call by tool call.</li>
-          </ul>
-        </div>
-        <figure class="shot sm"><img src="/assets/shots/agents.webp" width="1600" height="1200" loading="lazy" alt="Athena and web-fe working side by side, with the agent monitor below following every agent." data-ta="alt:h.b2.alt2"></figure>
-      </div>
-
-      <div class="beat" id="decide">
-        <div class="txt">
-          <div class="time">03 <span>·</span> <span data-t="h.b3.k">You decide</span></div>
-          <h3 data-t="h.b3.h">Questions wait for you in Work.</h3>
-          <p data-t="h.b3.p">api-be needs one product decision: 20 or 50 orders per page. The question appears in Work and a red dot shows on the menu bar icon. Pick an answer, add a note if you like, and the agent continues.</p>
-        </div>
-        <div class="pair">
-          <figure class="shot sm"><img src="/assets/shots/answer-modal.webp" width="958" height="774" loading="lazy" alt="A question from the api agent: default page size for order history, 20 (recommended) or 50, with a Send answer button." data-ta="alt:h.b3.alt1"></figure>
-          <figure class="shot sm fade-b" style="max-height:470px"><img src="/assets/shots/menubar.webp" width="690" height="1062" loading="lazy" alt="Menu bar panel: one item needs attention, and each agent with its branch and status." data-ta="alt:h.b3.alt2"></figure>
-        </div>
-      </div>
-
-      <div class="beat flip" id="build">
-        <div class="txt">
-          <div class="time">04 <span>·</span> <span data-t="h.b4.k">Build and verify</span></div>
-          <h3 data-t="h.b4.h">Check the diff before anything merges.</h3>
-          <p data-t="h.b4.p">web-fe writes the banner and its tests, runs them and lints before it calls anything done. You open the changed files in Explorer and read the diff beside the terminal.</p>
-          <ul class="ticks">
-            <li data-t="h.b4.l1">Tests and checks run before every pull request</li>
-            <li data-t="h.b4.l2">Changed files marked M · U · A · D in the file tree</li>
-            <li data-t="h.b4.l3">Syntax-highlighted diffs with line numbers</li>
-          </ul>
-        </div>
-        <figure class="shot"><img src="/assets/shots/explorer-1200.webp" srcset="/assets/shots/explorer-1200.webp 1200w, /assets/shots/explorer.webp 2400w" sizes="(max-width: 900px) 100vw, 680px" width="1200" height="675" loading="lazy" alt="Terminal with passing tests on the left, a diff of CartPage.tsx on the right, and the list of changed files." data-ta="alt:h.b4.alt"></figure>
-      </div>
-
-      <div class="beat" id="merge">
-        <div class="txt">
-          <div class="time">05 <span>·</span> <span data-t="h.b5.k">Review and merge</span></div>
-          <h3 data-t="h.b5.h">Automatic review, if you turn it on.</h3>
-          <p data-t="h.b5.p">In a repository with automatic review on, a single-repository PR is reviewed as soon as the agent pushes. Comments go back to the agent for up to three rounds. By default the merge waits for your click.</p>
-          <ul class="ticks">
-            <li data-t="h.b5.l1">Off by default, switched on per repository</li>
-            <li data-t="h.b5.l2">“Confirm before merging” keeps the last click for you</li>
-            <li data-t="h.b5.l3">With Codex installed, it reviews alongside Claude</li>
-          </ul>
-        </div>
-        <figure class="shot sm" style="max-width:520px;justify-self:center"><img src="/assets/shots/settings-pop.webp" width="706" height="600" loading="lazy" alt="Settings: PR auto-merge switched on for web and api, with Confirm before merging on for web, and off for mobile." data-ta="alt:h.b5.alt"></figure>
-      </div>
-
-      <div class="beat flip" id="learn">
-        <div class="txt">
-          <div class="time">06 <span>·</span> <span data-t="h.b6.k">Learn</span></div>
-          <h3 data-t="h.b6.h">Notes you choose, for the next task.</h3>
-          <p data-t="h.b6.p">After a merge, the learning review suggests notes from what came up along the way, such as review comments and QA findings. Only the ones you pick in Learning are kept for that repository, and agents read them at the start of the next task.</p>
-        </div>
-        <div class="learn-card">
-          <div class="h"><img src="/assets/owl-white.png" alt="" width="18" height="18"><span data-t="h.b6.card">Learning · api</span></div>
-          <div class="d" data-t="h.b6.n0">Suggested by the learning review · picked by you</div>
-          <div><span class="g">+</span> <span data-t="h.b6.n1">List endpoints use cursor pagination on createdAt, 20 per page.</span></div>
-          <div><span class="g">+</span> <span data-t="h.b6.n2">Response shape: { items, nextCursor }. Mobile reads the same shape.</span></div>
-          <div class="y" style="margin-top:12px" data-t="h.b6.n3">→ read by the next task in api</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="feat full" id="workspaces">
+<section class="feat full" id="workspaces"><span id="panes" class="anchor"></span>
   <div class="wrap">
     <div class="grid">
       <div class="txt">
         <div class="label" data-t="f.ws.label">Workspaces</div>
-        <h2 data-t="f.ws.h">One workspace for each repository.</h2>
+        <h2 data-t="f.g1.h">Every repository gets its own workspace.</h2>
         <p data-t="f.ws.p">The left side lists your repositories with the branches and agents working in them. The middle holds tabs and split terminals, with each agent in its own named pane. Explorer sits on the right.</p>
         <ul>
           <li data-t="f.ws.l1">A tab for each task, split into panes inside</li>
           <li data-t="f.ws.l2">Agent panes are named by agent and branch, Athena's by the task it's planning</li>
           <li data-t="f.ws.l3">Close the window and everything keeps running; reopen to the same tabs and layout</li>
+          <li data-t="f.pn.l5">Call an agent and it takes the largest pane, split along its longer side (from the next update)</li>
           <li data-t="f.ws.l4">Give repositories a display name and image, shared with your team through the pack</li>
         </ul>
       </div>
@@ -177,91 +75,37 @@
   </div>
 </section>
 
-<section class="feat flip" id="panes">
+<section class="feat" id="status">
+  <span id="monitor" class="anchor"></span><span id="work" class="anchor"></span><span id="details" class="anchor"></span><span id="menubar" class="anchor"></span>
   <div class="wrap">
-    <div class="grid">
-      <div class="txt">
-        <div class="label" data-t="f.pn.label">Split panes</div>
-        <h2 data-t="f.pn.h">Put your agents side by side.</h2>
-        <p data-t="f.pn.p">Split a tab into panes and keep the team lead and the agents it hands work to in view at the same time. Arrange them the way you like, and the layout stays.</p>
-        <ul>
-          <li data-t="f.pn.l1"><kbd>⌘</kbd><kbd>D</kbd> splits right, <kbd>⌘</kbd><kbd>⇧</kbd><kbd>D</kbd> splits down</li>
-          <li data-t="f.pn.l2"><kbd>⌘</kbd><kbd>⌥</kbd> and an arrow key move between panes</li>
-          <li data-t="f.pn.l3">Drag a border to resize; double-click it to even them out</li>
-          <li data-t="f.pn.l4">Close the window and the layout stays as it was</li>
-          <li data-t="f.pn.l5">Call an agent and it takes the largest pane, split along its longer side (from the next update)</li>
-        </ul>
-      </div>
-      <figure class="shot sm"><img src="/assets/shots/agents.webp" width="1600" height="1200" loading="lazy" alt="Athena and web-fe working side by side, with the agent monitor below following every agent." data-ta="alt:h.b2.alt2"></figure>
+    <div class="sec-head">
+      <div class="label" data-t="f.g2.l">Progress and questions</div>
+      <h2 data-t="f.g2.h">See what every agent is doing, and what it needs from you.</h2>
     </div>
-  </div>
-</section>
-
-<section class="feat full" id="monitor">
-  <div class="wrap">
-    <div class="grid">
-      <div class="txt">
-        <div class="label" data-t="h.f.mon">Agent monitor</div>
-        <h2 data-t="f.mo.h">Follow every agent without opening each terminal.</h2>
-        <p data-t="f.mo.p">A live feed at the bottom of the window follows each agent tool by tool: files read and edited, commands run, and what it says along the way. It works across every workspace.</p>
-        <ul>
-          <li data-t="f.mo.l1">Only agents that are working right now show up as chips</li>
-          <li data-t="f.mo.l2">Each line is labeled with the repository and branch</li>
-          <li data-t="f.mo.l3">Fold it away when you need the room</li>
-        </ul>
-      </div>
-      <figure class="shot sm"><img src="/assets/shots/monitor.webp" width="2160" height="340" loading="lazy" alt="Agent monitor: chips for the web, api and athena agents, and a live feed of edits, test runs and messages." data-ta="alt:h.b2.alt"></figure>
+    <div class="quad">
+      <div><h3 data-t="h.f.mon">Agent monitor</h3><p data-t="f.mo.p">A live feed at the bottom of the window follows each agent tool by tool: files read and edited, commands run, and what it says along the way. It works across every workspace.</p></div>
+      <div><h3 data-t="h.f.work">Work</h3><p data-t="f.wk.p">When an agent needs you, its question or decision goes to the top of Work, above the tasks in progress and the ones that finished in the last day. Answer it there and the agent picks up where it stopped.</p></div>
+      <div><h3 data-t="h.f.det">Pane details</h3><p data-t="f.dt.p">Open details from an agent's title bar and a panel slides in over the window, without resizing your terminals. It shows what the agent needs from you, what blocks it, its plan and its pull request.</p></div>
+      <div><h3 data-t="h.f.bar">Menu bar</h3><p data-t="f.mb.p">Athena Studio has an owl icon in the Mac menu bar. A red dot on it means a question is open or a plan is blocked. Click the owl to see each agent and its status.</p></div>
     </div>
-  </div>
-</section>
-
-<section class="feat" id="work">
-  <div class="wrap">
-    <div class="grid">
-      <div class="txt">
-        <div class="label" data-t="h.f.work">Work</div>
-        <h2 data-t="f.wk.h">Agent questions land in one list.</h2>
-        <p data-t="f.wk.p">When an agent needs you, its question or decision goes to the top of Work, above the tasks in progress and the ones that finished in the last day. Answer it there and the agent picks up where it stopped.</p>
-        <ul>
-          <li data-t="f.wk.l1">Waiting for you, in progress and recently finished in one pop-up</li>
-          <li data-t="f.wk.l2">Each task shows its state: waiting on you, blocked, working or idle</li>
-          <li data-t="f.wk.l3">Choices come with a recommendation and room for a note</li>
-          <li data-t="f.wk.l4">QA, learning notes and the archive open from the same pop-up</li>
-        </ul>
-      </div>
-      <div class="pair">
-        <figure class="shot sm"><img src="/assets/shots/work-pop.webp" width="800" height="1034" loading="lazy" alt="The Work pop-up." data-ta="alt:f.wk.alt1"></figure>
-        <figure class="shot sm"><img src="/assets/shots/answer-modal.webp" width="958" height="774" loading="lazy" alt="Answering a question about page size." data-ta="alt:f.wk.alt2"></figure>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="feat flip" id="details">
-  <div class="wrap">
-    <div class="grid">
-      <div class="txt">
-        <div class="label" data-t="h.f.det">Pane details</div>
-        <h2 data-t="f.dt.h">Details for one agent, opened from its pane.</h2>
-        <p data-t="f.dt.p">Open details from an agent's title bar and a panel slides in over the window, without resizing your terminals. It shows what the agent needs from you, what blocks it, its plan and its pull request.</p>
-        <ul>
-          <li data-t="f.dt.l1">Blockers in red, questions for you at the top</li>
-          <li data-t="f.dt.l2">The plan's request, progress, next step and checks</li>
-          <li data-t="f.dt.l3">Running time and token usage</li>
-          <li data-t="f.dt.l4">A link to the pull request and its automatic review</li>
-        </ul>
-      </div>
+    <figure class="shot sm g2-mon"><img src="/assets/shots/monitor.webp" width="2160" height="340" loading="lazy" alt="Agent monitor: chips for the web, api and athena agents, and a live feed of edits, test runs and messages." data-ta="alt:h.b2.alt"></figure>
+    <div class="pair g2-pair">
+      <figure class="shot sm"><img src="/assets/shots/work-pop.webp" width="800" height="1034" loading="lazy" alt="The Work pop-up." data-ta="alt:f.wk.alt1"></figure>
       <figure class="shot sm narrow"><img src="/assets/shots/detail-panel.webp" width="880" height="1710" loading="lazy" alt="Pane details for api-be: a question for you, a blocked note, status and tokens, the pull request and the plan's progress." data-ta="alt:f.dt.alt"></figure>
     </div>
   </div>
 </section>
 
-<section class="feat" id="console">
+<section class="feat" id="decisions">
+  <span id="console" class="anchor"></span>
   <div class="wrap">
+    <div class="sec-head">
+      <div class="label" data-t="f.g3.l">Decisions and code</div>
+      <h2 data-t="f.g3.h">Make the calls, then read the code.</h2>
+    </div>
     <div class="grid">
       <div class="txt">
-        <div class="label" data-t="f.co.label">Decision console</div>
-        <h2 data-t="f.co.h">A decision console for plans with several choices.</h2>
+        <h3 data-t="f.co.h">A decision console for plans with several choices.</h3>
         <p data-t="f.co.p">When a plan has several decisions to make, Athena writes them up as a decision console: each choice with its trade-offs and a recommendation. It opens in the side browser next to the agent, and the agent continues once you've chosen.</p>
         <ul>
           <li data-t="f.co.l1">Required and optional decisions, with recommended options marked</li>
@@ -271,15 +115,9 @@
       </div>
       <figure class="shot"><img src="/assets/shots/browser-1200.webp" srcset="/assets/shots/browser-1200.webp 1200w, /assets/shots/browser.webp 2400w" sizes="(max-width: 900px) 100vw, 680px" width="1200" height="675" loading="lazy" alt="The decision console in the side browser, next to the api agent's terminal." data-ta="alt:f.co.alt"></figure>
     </div>
-  </div>
-</section>
-
-<section class="feat flip" id="explorer">
-  <div class="wrap">
-    <div class="grid">
+    <div class="grid flip-g" id="explorer">
       <div class="txt">
-        <div class="label" data-t="h.f.exp">Explorer</div>
-        <h2 data-t="f.ex.h">Read the work beside the terminal.</h2>
+        <h3 data-t="f.ex.h">Read the work beside the terminal.</h3>
         <p data-t="f.ex.p">Browse the files and git changes of the current workspace and open them next to the terminal. Changed files open as a diff.</p>
         <ul>
           <li data-t="f.ex.l1">File tree with git status (M · U · A · D · R) and a list of changes</li>
@@ -293,11 +131,15 @@
 </section>
 
 <section class="feat" id="review">
+  <span id="learn-notes" class="anchor"></span>
   <div class="wrap">
+    <div class="sec-head">
+      <div class="label" data-t="f.g4.l">Review and learning</div>
+      <h2 data-t="f.g4.h">Pull requests get reviewed, and the lessons stay.</h2>
+    </div>
     <div class="grid">
       <div class="txt">
-        <div class="label" data-t="f.rv.label">Automatic PR review</div>
-        <h2 data-t="f.rv.h">Automatic PR review</h2>
+        <h3 data-t="f.rv.h">Automatic PR review</h3>
         <p data-t="f.rv.p">In a repository with automatic review on, a single-repository PR is reviewed as soon as the agent pushes. Comments go back to the agent for up to three rounds, then the PR moves to the merge step. Big diffs are reviewed code-first, and earlier approvals carry over.</p>
         <ul>
           <li data-t="f.rv.l1">Off by default, switched on per repository in Settings</li>
@@ -308,34 +150,32 @@
       </div>
       <figure class="shot sm mid"><img src="/assets/shots/settings-pop.webp" width="706" height="600" loading="lazy" alt="Settings: PR auto-merge switched on for web and api, with Confirm before merging on for web, and off for mobile." data-ta="alt:h.b5.alt"></figure>
     </div>
-  </div>
-</section>
-
-<section class="feat flip" id="menubar">
-  <div class="wrap">
-    <div class="grid">
+    <div class="grid flip-g">
       <div class="txt">
-        <div class="label" data-t="h.f.bar">Menu bar</div>
-        <h2 data-t="f.mb.h">A red dot when an agent needs you.</h2>
-        <p data-t="f.mb.p">Athena Studio has an owl icon in the Mac menu bar. A red dot on it means a question is open or a plan is blocked. Click the owl to see each agent and its status.</p>
-        <ul>
-          <li data-t="f.mb.l1">Items that need you, each linked to where you answer</li>
-          <li data-t="f.mb.l2">Every agent by workspace: waiting for input, working or idle</li>
-          <li data-t="f.mb.l3">Claude and Codex usage with reset times, and a count of work by stage</li>
-          <li data-t="f.mb.l4">Notifications only for things you need to answer, with a pause button</li>
-        </ul>
+        <h3 data-t="h.b6.h">Notes you choose, for the next task.</h3>
+        <p data-t="h.b6.p">After a merge, the learning review suggests notes from what came up along the way, such as review comments and QA findings. Only the ones you pick in Learning are kept for that repository, and agents read them at the start of the next task.</p>
       </div>
-      <figure class="shot sm narrow"><img src="/assets/shots/menubar.webp" width="690" height="1062" loading="lazy" alt="Menu bar panel: one item needs attention, and each agent with its branch and status." data-ta="alt:h.b3.alt2"></figure>
+      <div class="learn-card">
+          <div class="h"><img src="/assets/owl-white.png" alt="" width="18" height="18"><span data-t="h.b6.card">Learning · api</span></div>
+          <div class="d" data-t="h.b6.n0">Suggested by the learning review · picked by you</div>
+          <div><span class="g">+</span> <span data-t="h.b6.n1">List endpoints use cursor pagination on createdAt, 20 per page.</span></div>
+          <div><span class="g">+</span> <span data-t="h.b6.n2">Response shape: { items, nextCursor }. Mobile reads the same shape.</span></div>
+          <div class="y" style="margin-top:12px" data-t="h.b6.n3">→ read by the next task in api</div>
+        </div>
     </div>
   </div>
 </section>
 
-<section class="feat" id="packs">
+<section class="feat" id="packs" data-tab-scope>
+  <span id="language" class="anchor"></span>
   <div class="wrap">
+    <div class="sec-head">
+      <div class="label" data-t="f.g5.l">Packs and languages</div>
+      <h2 data-t="f.g5.h">One pack per company, in the language you work in.</h2>
+    </div>
     <div class="grid">
       <div class="txt">
-        <div class="label" data-t="h.f.packs">Packs</div>
-        <h2 data-t="f.pk.h">A pack for each company you work with.</h2>
+                <h3 data-t="f.pk.h">A pack for each company you work with.</h3>
         <p data-t="f.pk.p">A pack holds one company's repositories, agents and routing rules. Each pack runs on its own, so switching never stops work in another.</p>
         <ul>
           <li data-t="f.pk.l1">Create a pack from the repositories on your Mac, or import one from a file, folder or git repository</li>
@@ -345,15 +185,9 @@
       </div>
       <figure class="shot sm mid"><img src="/assets/shots/packs-modal.webp" width="958" height="710" loading="lazy" alt="The Packs window: Demo Shop and Side Project, with Create New, Import and Export." data-ta="alt:f.pk.alt"></figure>
     </div>
-  </div>
-</section>
-
-<section class="feat flip" id="language" data-tab-scope>
-  <div class="wrap">
-    <div class="grid">
+    <div class="grid flip-g">
       <div class="txt">
-        <div class="label" data-t="f.lg.label">Languages</div>
-        <h2 data-t="h.l.h2">Pick the app and agent language.</h2>
+                <h3 data-t="h.l.h2">Pick the app and agent language.</h3>
         <p data-t="f.lg.p">Choose English, Korean, Japanese or Chinese from the View menu. The app switches, and so do your agents: their replies, plans, issues, learning notes and commit messages.</p>
         <div class="tabs" role="tablist" data-tabs="lang" style="margin-top:24px">
           <button type="button" role="tab" data-tab="en" aria-selected="true">English</button>

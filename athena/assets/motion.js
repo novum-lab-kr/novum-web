@@ -6,7 +6,7 @@
   if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   var SEL = '.h3-sec h2, .h3-sec .h3-p, .h3-quote, .h3-panel, .h3-code, .h3-start > *, .h3-facts > div, .h3-end .wrap > *,' +
-    ' .feat .txt, .feat figure, .feat .pair, .sec-head, .three > div, .rel, .faq details, .sec-grid > div, .key, .cmp, .story .beat > *';
+    ' .feat .txt, .feat figure, .feat .pair, .sec-head, .three > div, .rel, .faq details, .sec-grid > div, .key, .cmp, .story .beat > *, .why-grid > div, .quad > div';
   var pending = [], diagrams = [];
 
   function playDiagram(svg) {
@@ -32,36 +32,70 @@
   }
 
   // 다 그린 뒤 계속 도는 움직임: 금빛 점 하나가 흐름 순서(문서 순서)대로 선을 하나씩 타고 지나간다.
-  // 모든 점이 같은 주기(CYCLE)를 쓰고 자기 차례에만 보이게 해서, 점 하나가 끝까지 흘러가는 것처럼 보인다
-  var NS = 'http://www.w3.org/2000/svg';
+  // 선 길이에 맞춰 같은 빠르기(SPEED)로 가고, 선 사이에서 잠깐 쉰다. 모든 점이 같은 주기(cycle)를 쓰고
+  // 자기 차례에만 보여서 점 하나가 끝까지 흘러가는 것처럼 보인다(Codex 4차: 선마다 같은 시간이면 긴 선에서 튄다)
+  var NS = 'http://www.w3.org/2000/svg', SPEED = 95, MIN = 0.55, REST = 0.35;
   function startPulses(svg) {
-    var lines = [].slice.call(svg.querySelectorAll('.fd-l')).filter(function (p) {
-      try { return p.getTotalLength() > 20; } catch (e) { return false; }
+    var lines = [], t = 0.3;
+    [].forEach.call(svg.querySelectorAll('.fd-l'), function (p) {
+      var len = 0;
+      try { len = p.getTotalLength(); } catch (e) {}
+      if (len <= 20) return;
+      var d = Math.max(MIN, len / SPEED);
+      lines.push({ p: p, s: t, d: d });
+      t += d + REST;
     });
     if (!lines.length) return;
-    var CYCLE = Math.max(4, lines.length * 0.9), slot = 0.9 / lines.length;
-    lines.forEach(function (p, i) {
+    var cycle = t + 1.2, f = function (v) { return (v / cycle).toFixed(4); };
+    lines.forEach(function (L) {
+      var p = L.p;
       if (!p.id) p.id = 'fdp-' + Math.random().toString(36).slice(2, 9);
-      var a = 0.02 + i * slot, b = a + slot * 0.9, e = slot * 0.12;
+      var e = Math.min(0.12, L.d / 4);
       var c = document.createElementNS(NS, 'circle');
-      c.setAttribute('r', '3.6');
+      c.setAttribute('r', '2.8');
       c.setAttribute('class', 'fd-pulse');
       c.setAttribute('opacity', '0');
       var mv = document.createElementNS(NS, 'animateMotion');
-      mv.setAttribute('dur', CYCLE + 's'); mv.setAttribute('repeatCount', 'indefinite');
+      mv.setAttribute('dur', cycle.toFixed(2) + 's'); mv.setAttribute('repeatCount', 'indefinite');
       mv.setAttribute('calcMode', 'linear');
-      mv.setAttribute('keyPoints', '0;0;1;1'); mv.setAttribute('keyTimes', '0;' + a.toFixed(4) + ';' + b.toFixed(4) + ';1');
+      mv.setAttribute('keyPoints', '0;0;1;1'); mv.setAttribute('keyTimes', '0;' + f(L.s) + ';' + f(L.s + L.d) + ';1');
       var mp = document.createElementNS(NS, 'mpath');
       mp.setAttribute('href', '#' + p.id); mp.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#' + p.id);
       mv.appendChild(mp);
       var op = document.createElementNS(NS, 'animate');
-      op.setAttribute('attributeName', 'opacity'); op.setAttribute('dur', CYCLE + 's'); op.setAttribute('repeatCount', 'indefinite');
+      op.setAttribute('attributeName', 'opacity'); op.setAttribute('dur', cycle.toFixed(2) + 's'); op.setAttribute('repeatCount', 'indefinite');
       op.setAttribute('values', '0;0;1;1;0;0');
-      op.setAttribute('keyTimes', ['0', a, a + e, b - e, b, '1'].map(function (v) { return typeof v === 'number' ? v.toFixed(4) : v; }).join(';'));
+      op.setAttribute('keyTimes', ['0', f(L.s), f(L.s + e), f(L.s + L.d - e), f(L.s + L.d), '1'].join(';'));
       c.appendChild(mv); c.appendChild(op);
       p.parentNode.insertBefore(c, p.nextSibling);
       try { mv.beginElement(); op.beginElement(); } catch (err) {}
     });
+    watch(svg);
+  }
+
+  // 화면 밖이거나 탭이 숨으면 멈추고, 돌아오면 이어서. [일시정지]로 멈춘 것은 저절로 다시 돌지 않는다
+  function setRun(svg) {
+    var fig = svg.closest('.flowd'), run = !fig.classList.contains('fd-user-pause') && svg._seen && !document.hidden;
+    try { run ? svg.unpauseAnimations() : svg.pauseAnimations(); } catch (e) {}
+    svg.classList.toggle('fd-paused', !run);
+  }
+  function watch(svg) {
+    svg._seen = true;
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) { es.forEach(function (en) { svg._seen = en.isIntersecting; setRun(svg); }); }).observe(svg);
+    }
+    document.addEventListener('visibilitychange', function () { setRun(svg); });
+    var fig = svg.closest('.flowd');
+    if (fig.querySelector('.fd-toggle')) return;
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'fd-toggle'; b.setAttribute('aria-label', 'Pause animation');
+    b.innerHTML = '<svg viewBox="0 0 16 16" aria-hidden="true"><path class="i-pause" d="M5 3.5v9M11 3.5v9"/><path class="i-play" d="M5 3.2l8 4.8-8 4.8z"/></svg>';
+    b.addEventListener('click', function () {
+      var off = fig.classList.toggle('fd-user-pause');
+      b.setAttribute('aria-label', off ? 'Play animation' : 'Pause animation');
+      [].forEach.call(fig.querySelectorAll('svg.fd-play'), setRun);
+    });
+    fig.appendChild(b);
   }
 
   function check() {
