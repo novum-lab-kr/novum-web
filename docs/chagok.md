@@ -54,4 +54,4 @@ athena.novum-lab.com 과 같은 길이다. **`main` 에 합치는 순간 운영 
 지금은 운영 주소(`https://chagok.novum-lab.com`)에 올라가 있지만 **공식 게시 전**이라 랜딩(`/`)만 검색에 열어 둔다. 검색 차단은 서버 Caddy 블록이 `/` 를 뺀 모든 경로에 `X-Robots-Tag: noindex` 헤더를 붙여 한다(`@noindex` · 레포에는 없다).
 공식 게시 때: 위 「게시 전 채울 것」을 채우고, 판 날짜(`versions.json`, 각 판 상단)를 게시하는 날로 맞추고, Caddy 블록의 noindex 규칙을 지운다(서버 창).
 
-`app-ads.txt` 는 아직 없다. AdMob 광고를 내기 전에 `chagok/` 루트(`https://chagok.novum-lab.com/app-ads.txt`)에 둔다 — 내용은 AdMob 가입 뒤 받는 한 줄(앱 레포 `docs/RELEASE-DECISIONS.md` 「`app-ads.txt`」 — 그 줄은 옛 Netlify 주소 · 옛 레포 기준이다).
+`chagok/app-ads.txt` 는 AdMob 광고 판매자 확인용 한 줄이다(2026-10-29 출시 전에 미리 · `https://chagok.novum-lab.com/app-ads.txt`). 게시자 ID `pub-3557389923784580` 은 앱 `app.json` 의 iOS AdMob 앱 ID 앞부분이다(Android 쪽 `3940256099942544` 는 Google 테스트 ID 라 아니다). 앱 ID 나 AdMob 계정이 바뀌면 이 줄도 바꾼다. 검색 차단(noindex 헤더)과 상관없이 광고 크롤러가 읽는다. 앱 레포 `docs/RELEASE-DECISIONS.md` 「`app-ads.txt`」 줄은 옛 Netlify 주소 · 옛 레포 기준이다.
