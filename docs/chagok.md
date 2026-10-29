@@ -1,7 +1,7 @@
 # 차곡차곡 사이트 (chagok.novum-lab.com)
 
 차곡차곡 앱의 소개(랜딩) · 고객 지원 · 이용약관 · 개인정보 처리방침 사이트. 파일은 이 레포 `chagok/` 에 있다.
-앱은 `https://chagok.novum-lab.com/{terms,privacy}/` 를 앱 안 시트로 열고, 판 정보는 `versions.json` 을 읽는다.
+앱은 약관 · 처리방침(`/{terms,privacy}/`)을 앱 안 시트로 열고, 판 정보는 `versions.json` 을 읽는다. 앱이 이 주소(`https://chagok.novum-lab.com`)를 보게 하는 변경은 앱 레포 `chore/policy-url-vps` 에 있고, 2026-10-29 앱 `main` 은 아직 옛 주소 `https://chagok-app-terms.netlify.app` 을 읽는다(앱 `src/policy/urls.ts`).
 
 이전 기록은 GitHub `novum-lab-kr/chagok-app-policy`(보관)에 있다 — 2026-10-29 그 레포 `main`(ca97b05)의 사이트 파일만 옮겨 왔다.
 
@@ -21,15 +21,23 @@
 1. `chagok/terms/v2/index.html` 처럼 새 판 폴더를 만든다. 이미 시행된 판의 본문은 고치지 않는다(오탈자만).
 2. `chagok/versions.json` 에 판을 추가한다. `postedAt`(게시일)과 `effectiveAt`(시행일)은 로컬 날짜 `YYYY-MM-DD`.
    - 사전 고지: 시행일 7일 전, 이용자에게 불리하면 30일 전에 게시한다.
-   - `requiresConsent`: 로그인한 사용자에게 다시 동의를 받을 개정이면 `true`.
+   - `requiresConsent`: 다시 동의를 받을 개정이면 `true` 로 적어 두지만 **앱은 이 값을 읽지 않는다** — 2026-10-01 설계 변경으로 재동의 화면이 없다(앱 `src/policy/versions.ts` 주석). 바꿔도 앱 동작은 그대로다.
 3. 시행일 전까지 `terms/` 는 이전 판을 보여주고 위에 "M월 D일부터 바뀌어요"를 띄운다.
-   판 선택 규칙은 앱의 `src/policy/versions.ts` 와 같다.
+   **시행 중인 판**(시행일이 지난 판 중 번호가 가장 큰 것)은 사이트와 앱이 같게 고르지만, **시행 예정 판**은 다르게 고른다.
+   - 사이트(`assets/policy.js`): 시행일이 오늘보다 뒤인 판 중 **시행일이 가장 이른 것**(게시일은 안 본다)
+   - 앱(`src/policy/versions.ts` `upcomingChange`): 게시일 ≤ 오늘 < 시행일인 판 중 **번호가 가장 큰 것**(이미 알린 판 · 시행 중인 판이 없는 처음 게시는 빼고)
+
+   그래서 **예정 판은 하나만 두고, 게시일을 미래로 두지 않는다**(게시하는 날 넣는다). 둘 이상이거나 게시일이 미래면 사이트 안내와 앱 안내가 달라진다. 판 선택 규칙을 고치면 사이트와 앱을 같이 고친다.
+
+> **`versions.json` 이 깨지거나, 약관 · 처리방침 중 하나라도 시행 중인 판이 없으면 앱이 계정 연결을 멈춘다**(앱 `src/policy/manifest.ts` · `app/account/connect.tsx` — 어느 판에 동의했는지 모른 채 연결하지 않는다). 새 판만 미래 시행일로 넣고 기존 판을 지우면 안 된다. 날짜는 `YYYY-MM-DD` 문자열로 비교하므로 0 을 채운다(`2026-9-30` ✕).
 
 고친 뒤 `node deploy/check-chagok.mjs` 로 검사한다(Actions 도 같은 검사를 돌린다 — `versions.json` 형식 · 판 파일 · `policy.js` 문법 · 페이지가 부르는 사이트 안 파일).
 
 ## 게시 전 채울 것
 
-판 날짜, 약관 끝과 지원 페이지(`support/`)의 사업장 주소, 전화번호, 통신판매업 신고번호(유료 상품을 팔기 전에, 전자상거래법 제10조와 제13조). 최종 문안은 법률 검토를 받는다.
+판 날짜, 약관 끝과 지원 페이지(`support/`)의 사업장 주소, 전화번호. 최종 문안은 법률 검토를 받는다.
+
+통신판매업 신고번호는 **면제 조건이 맞는 동안은 칸을 두지 않는다** — 직전년도 거래 50회 미만이거나 간이과세자면 신고 면제다(공정위 「통신판매업 신고 면제 기준에 대한 고시」 2조 · 앱 레포 `docs/LEGAL-REVIEW.md`). 지금은 면제 기간이라 신고하지 않았다(2026-10-28 은주). **조건이 바뀌면 신고한 뒤 번호를 넣는다** — 법률 점검(`docs/LEGAL-REVIEW.md` 2절)에서 조건이 아직 맞는지 본다.
 
 ## 게시
 
@@ -39,5 +47,7 @@ athena.novum-lab.com 과 같은 길이다. **`main` 에 합치는 순간 운영 
 - 서버 레포 안에서 `main` 이 움직여도 hook(`deploy/hooks/reference-transaction`)이 같은 반영을 돈다
 - Caddy 블록 `chagok.novum-lab.com` 이 그 폴더를 낸다. 서버 · Caddy 는 서버 창 일이다
 
-2026-09-30부터 초안을 공개해 두었다(앱 연결 확인용). 검색 차단은 서버 Caddy 블록이 `/` 를 뺀 모든 경로에 `X-Robots-Tag: noindex` 헤더를 붙여 한다(`@noindex` · 레포에는 없다).
+지금은 운영 주소(`https://chagok.novum-lab.com`)에 올라가 있지만 **공식 게시 전**이라 랜딩(`/`)만 검색에 열어 둔다. 검색 차단은 서버 Caddy 블록이 `/` 를 뺀 모든 경로에 `X-Robots-Tag: noindex` 헤더를 붙여 한다(`@noindex` · 레포에는 없다).
 공식 게시 때: 위 「게시 전 채울 것」을 채우고, 판 날짜(`versions.json`, 각 판 상단)를 게시하는 날로 맞추고, Caddy 블록의 noindex 규칙을 지운다(서버 창).
+
+`app-ads.txt` 는 아직 없다. AdMob 광고를 내기 전에 `chagok/` 루트(`https://chagok.novum-lab.com/app-ads.txt`)에 둔다 — 내용은 AdMob 가입 뒤 받는 한 줄(앱 레포 `docs/RELEASE-DECISIONS.md` 「`app-ads.txt`」 — 그 줄은 옛 Netlify 주소 · 옛 레포 기준이다).
