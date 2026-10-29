@@ -411,7 +411,7 @@ window.ATHENA_I18N.zh = {
   "f.lead2": "应用各部分的作用。分步骤的用法请看<a href=\"/docs/#workflow\">文档</a>。",
   "n.k.h": "与你已在用的编程智能体配合使用。",
   "n.k.more": "在文档中查看安装与首次设置 →",
-  "d.ver": "版本 0.19.2 · 2026 年 10 月 29 日 · <a href=\"/releases/\">更新内容</a>",
+  "d.ver": "版本 <span data-rel-ver>0.19.2</span> · <span data-rel-date>2026 年 10 月 29 日</span> · <a href=\"/releases/\">更新内容</a>",
   "d.upd2": "从旧版本更新？请看文档中的<a href=\"/docs/#update\">更新</a>。",
   "r.devsum": "首个公开版本之前的开发版(0.2 – 0.13)",
   "n.why.l": "为什么选择 Athena Studio",

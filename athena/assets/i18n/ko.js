@@ -411,7 +411,7 @@ window.ATHENA_I18N.ko = {
   "f.lead2": "앱의 각 부분이 하는 일이에요. 단계별 사용법은 <a href=\"/docs/#workflow\">문서</a>에 있어요.",
   "n.k.h": "이미 쓰는 코딩 에이전트와 같이 써요.",
   "n.k.more": "문서에서 설치 · 첫 설정 보기 →",
-  "d.ver": "버전 0.19.2 · 2026년 10월 29일 · <a href=\"/releases/\">바뀐 것</a>",
+  "d.ver": "버전 <span data-rel-ver>0.19.2</span> · <span data-rel-date>2026년 10월 29일</span> · <a href=\"/releases/\">바뀐 것</a>",
   "d.upd2": "이전 버전에서 업데이트한다면 문서의 <a href=\"/docs/#update\">업데이트</a>를 보세요.",
   "r.devsum": "첫 공개판 전 개발판(0.2 – 0.13)",
   "n.why.l": "왜 Athena Studio인가요",

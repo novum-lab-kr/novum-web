@@ -411,7 +411,7 @@ window.ATHENA_I18N.ja = {
   "f.lead2": "アプリの各部分の役割です。手順ごとの使い方は<a href=\"/docs/#workflow\">ドキュメント</a>にあります。",
   "n.k.h": "いつも使っているコーディングエージェントと一緒に使えます。",
   "n.k.more": "インストールと初回設定はドキュメントへ →",
-  "d.ver": "バージョン 0.19.2 · 2026 年 10 月 29 日 · <a href=\"/releases/\">変更点</a>",
+  "d.ver": "バージョン <span data-rel-ver>0.19.2</span> · <span data-rel-date>2026 年 10 月 29 日</span> · <a href=\"/releases/\">変更点</a>",
   "d.upd2": "以前のバージョンから更新する場合は、ドキュメントの<a href=\"/docs/#update\">アップデート</a>をご覧ください。",
   "r.devsum": "最初の公開版より前の開発版(0.2 – 0.13)",
   "n.why.l": "Athena Studio を選ぶ理由",
