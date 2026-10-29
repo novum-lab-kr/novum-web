@@ -1,0 +1,44 @@
+name: check-and-deploy
+
+# main 에 머지되면 athena/ 를 검사하고 서버(athena.novum-lab.com)에 반영한다. PR 은 검사만.
+# site/(novum-lab.com)는 아직 자동 반영이 없다.
+on:
+  push:
+    branches: [main]
+    paths: ['athena/**', 'deploy/**', '.github/workflows/deploy.yml']
+  pull_request:
+    paths: ['athena/**', 'deploy/**', '.github/workflows/deploy.yml']
+  workflow_dispatch:
+
+# main 배포는 한 줄로 차례대로, PR 검사는 PR 마다 따로(슝 deploy.yml 과 같은 방식)
+concurrency:
+  group: ${{ github.event_name == 'pull_request' && format('ci-{0}', github.ref) || 'deploy' }}
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node deploy/check-athena.mjs
+
+  deploy:
+    needs: check
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Deploy on the server
+        env:
+          SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+          HOST: ${{ secrets.DEPLOY_HOST }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy && chmod 600 ~/.ssh/deploy
+          printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+          # 서버에서 이 키는 deploy/remote.sh(복사본) 하나만 돌게 묶여 있다 — 여기서 보내는 명령은 무시된다
+          ssh -i ~/.ssh/deploy -o IdentitiesOnly=yes -o BatchMode=yes "root@$HOST" deploy
