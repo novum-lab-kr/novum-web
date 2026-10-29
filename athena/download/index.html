@@ -75,8 +75,10 @@
 
   new MutationObserver(fill).observe(line, { childList: true });
 
+  // 4초 제한 — AbortController 가 없는 브라우저도 만료 뒤 온 응답은 버린다
+  var expired = false;
   var ctrl = window.AbortController ? new AbortController() : null;
-  var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 4000);
+  var timer = setTimeout(function () { expired = true; if (ctrl) ctrl.abort(); }, 4000);
   fetch('https://api.github.com/repos/novum-lab-kr/athena-studio-releases/releases/latest', {
     headers: { Accept: 'application/vnd.github+json' },
     signal: ctrl ? ctrl.signal : undefined
@@ -85,6 +87,7 @@
     return res.json();
   }).then(function (rel) {
     clearTimeout(timer);
+    if (expired) return;
     var version = String(rel.tag_name || '').replace(/^v/, '');
     if (!/^\d+\.\d+\.\d+$/.test(version) || isNaN(Date.parse(rel.published_at))) return;
     latest = { version: version, published: rel.published_at };
