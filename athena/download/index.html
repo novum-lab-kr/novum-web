@@ -18,9 +18,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=20261028i">
+<link rel="stylesheet" href="/assets/site.css?v=20261029a">
 <script src="/assets/analytics.js?v=20261029a" async></script>
-<script src="/assets/lang.js?v=20261029a"></script>
+<script src="/assets/lang.js?v=20261029b"></script>
 <script src="/assets/motion.js?v=20261028i" defer></script>
 </head>
 <body>
@@ -45,7 +45,8 @@
     <script>
 /* 버전 줄을 최신 배포판으로(2026-10-29). latest.json 은 github.com 302 에 CORS 헤더가 없어 브라우저가 못 읽는다 —
    GitHub REST API releases/latest(Access-Control-Allow-Origin: *)의 tag_name · published_at 을 쓴다.
-   로그인 없이 방문자 IP 당 시간 60회라 실패 · 4초 넘게 느리면 위에 적어 둔 값 그대로 둔다(새 배포판이 나오면 적어 둔 값도 고친다).
+   로그인 없이 방문자 IP 당 시간 60회라 실패 · 4초 넘게 느리면 적어 둔 값 그대로 둔다(새 배포판이 나오면 적어 둔 값도 고친다 —
+   이 줄 · 받기 카드 두 곳의 data-rel-ver · 사전 ko · ja · zh 의 d.ver).
    lang.js 가 언어를 바꾸며 이 줄의 innerHTML 을 갈아 끼우므로, 줄이 바뀔 때마다 다시 채운다 */
 (function () {
   var line = document.querySelector('.dl-ver');
@@ -62,11 +63,14 @@
     return MONTHS[month - 1] + ' ' + day + ', ' + year;
   }
 
+  // 버전은 이 줄과 받기 카드(.dl-card-ver) 모두에 — 같은 응답 하나로 채운다
   function fill() {
     if (!latest) return;
-    var ver = line.querySelector('[data-rel-ver]'), date = line.querySelector('[data-rel-date]');
+    var date = line.querySelector('[data-rel-date]');
     var lang = document.documentElement.getAttribute('data-lang') || 'en';
-    if (ver && ver.textContent !== latest.version) ver.textContent = latest.version;
+    for (const ver of document.querySelectorAll('[data-rel-ver]')) {
+      if (ver.textContent !== latest.version) ver.textContent = latest.version;
+    }
     if (date) {
       var text = formatDate(latest.published, lang);
       if (date.textContent !== text) date.textContent = text;
@@ -108,12 +112,14 @@
         <b>Apple Silicon</b>
         <span data-t="d.arm">M1, M2, M3, M4 and later</span>
         <a class="btn gold" href="https://github.com/novum-lab-kr/athena-studio-releases/releases/latest/download/Athena-Studio-mac-arm64.dmg" data-dl="arm64"><span data-t="d.get">Download .dmg</span></a>
+        <span class="dl-card-ver">v<span data-rel-ver>0.19.2</span></span>
       </div>
       <div data-arch="x64">
         <small data-t="d.old">Older Macs</small>
         <b>Intel</b>
         <span data-t="d.x64">Macs with an Intel processor</span>
         <a class="btn" href="https://github.com/novum-lab-kr/athena-studio-releases/releases/latest/download/Athena-Studio-mac-x64.dmg" data-dl="x64"><span data-t="d.get">Download .dmg</span></a>
+        <span class="dl-card-ver">v<span data-rel-ver>0.19.2</span></span>
       </div>
     </div>
     <script>
