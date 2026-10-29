@@ -24,7 +24,8 @@ fi
 
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
-git archive "$REF" athena | tar -x -C "$TMP"
+# tar.umask=022: 파일 644 · 폴더 755 로(기본 umask 002 면 664 · 775 로 나간다 — 서버 창 2026-10-29)
+git -c tar.umask=022 archive "$REF" athena | tar -x -C "$TMP"
 
 # --delete: 레포에서 지운 파일은 운영에서도 지운다. 체크섬으로 비교해 같은 파일은 건드리지 않는다
 rsync -a --delete --checksum "$TMP/athena/" "$DEST/"
