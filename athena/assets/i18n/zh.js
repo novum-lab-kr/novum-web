@@ -45,6 +45,7 @@ window.ATHENA_I18N.zh = {
   "n.e.h": "在你的 Mac 上试试。",
   "nav.terms": "条款",
   "c.made": "© 2026 Novum Lab. Athena Studio 由 Novum Lab 打造。",
+  "c.ga": "本网站使用 Google Analytics Cookie 统计访问量和下载量。",
   "o.title": "文档 — Athena Studio",
   "o.desc": "Athena Studio 入门、键盘快捷键、数据与安全、对比以及常见问题。",
   "o.h1": "Athena Studio 使用指南",
