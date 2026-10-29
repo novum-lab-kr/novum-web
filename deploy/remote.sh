@@ -5,7 +5,7 @@
 set -eu
 
 REPO="${HOMEPAGE_REPO:-/root/.local/share/novum-hm/repos/homepage}"
-UPSTREAM="${HOMEPAGE_UPSTREAM:-https://github.com/novum-lab-kr/homepage.git}"
+UPSTREAM="${HOMEPAGE_UPSTREAM:-https://github.com/novum-lab-kr/novum-web.git}"
 REF=refs/remotes/upstream/main   # nhm 이 운영 레포 base 를 두는 자리와 같다
 
 cd "$REPO"
