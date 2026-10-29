@@ -41,4 +41,12 @@ jobs:
           printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy && chmod 600 ~/.ssh/deploy
           printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
           # 서버에서 이 키는 deploy/remote.sh(복사본) 하나만 돌게 묶여 있다 — 여기서 보내는 명령은 무시된다
-          ssh -i ~/.ssh/deploy -o IdentitiesOnly=yes -o BatchMode=yes "root@$HOST" deploy
+          # 연결이 안 될 때(ssh 255)만 30초 쉬고 다시, 최대 3번. 배포 스크립트 자체가 실패하면 다시 하지 않는다
+          #   2026-10-29 실행 40798464540: 연결 시간 초과(255) 한 번, 다시 돌리니 성공
+          for n in 1 2 3; do
+            rc=0
+            ssh -i ~/.ssh/deploy -o IdentitiesOnly=yes -o BatchMode=yes -o ConnectTimeout=20 "root@$HOST" deploy || rc=$?
+            [ "$rc" -ne 255 ] && exit "$rc"
+            echo "ssh 연결 실패($n/3)"; [ "$n" -lt 3 ] && sleep 30
+          done
+          exit 255
