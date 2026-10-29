@@ -1,13 +1,13 @@
 name: check-and-deploy
 
-# main 에 머지되면 athena/ 를 검사하고 서버(athena.novum-lab.com)에 반영한다. PR 은 검사만.
+# main 에 머지되면 athena/ · chagok/ 를 검사하고 서버(athena.novum-lab.com · chagok.novum-lab.com)에 반영한다. PR 은 검사만.
 # site/(novum-lab.com)는 아직 자동 반영이 없다.
 on:
   push:
     branches: [main]
-    paths: ['athena/**', 'deploy/**', '.github/workflows/deploy.yml']
+    paths: ['athena/**', 'chagok/**', 'deploy/**', '.github/workflows/deploy.yml']
   pull_request:
-    paths: ['athena/**', 'deploy/**', '.github/workflows/deploy.yml']
+    paths: ['athena/**', 'chagok/**', 'deploy/**', '.github/workflows/deploy.yml']
   workflow_dispatch:
 
 # main 배포는 한 줄로 차례대로, PR 검사는 PR 마다 따로(슝 deploy.yml 과 같은 방식)
@@ -24,6 +24,7 @@ jobs:
         with:
           node-version: 22
       - run: node deploy/check-athena.mjs
+      - run: node deploy/check-chagok.mjs
 
   deploy:
     needs: check
