@@ -19,9 +19,11 @@
   });
   edges.push({ from: 'merge', to: 'agents', kind: 'n' }, { from: 'notes', to: 'athena', kind: 'n' }, { from: 'agents', to: 'you', kind: 'q' });
 
+  // 카드 위치는 등장 효과(transform)에 영향받지 않는 레이아웃 좌표로 잰다
   function rect(node) {
-    var r = node.firstElementChild.getBoundingClientRect(), b = board.getBoundingClientRect();
-    return { l: r.left - b.left, r: r.right - b.left, t: r.top - b.top, b: r.bottom - b.top, cx: (r.left + r.right) / 2 - b.left, cy: (r.top + r.bottom) / 2 - b.top };
+    var x = 0, y = 0, el = node, w = node.offsetWidth, h = node.offsetHeight;
+    while (el && el !== board) { x += el.offsetLeft; y += el.offsetTop; el = el.offsetParent; }
+    return { l: x, r: x + w, t: y, b: y + h, cx: x + w / 2, cy: y + h / 2 };
   }
   // 꺾이는 곳을 둥글게 깎은 꺾은선
   function round(pts, rad) {
