@@ -869,3 +869,90 @@ main, footer { position: relative; }
 /* 받기 카드의 버전(.dl-ver 와 같은 자동 읽기 값) */
 .dl .dl-card-ver { font: 500 12px/1.5 var(--mono); color: var(--dim); margin-top: 8px; }
 .dl .dl-card-ver span { color: inherit; font: inherit; }
+
+/* ── 메인 흐름 그림(2026-10-29): 카드 + 연결선, 올리거나 눌러 연결을 따라가 본다(assets/flow.js · 메인 전용 — 문서의 .flowd 와 별개) ── */
+.hf { margin: 36px 0 0; padding: 0; position: relative; }
+.hf-board {
+  position: relative; padding: 36px 44px 32px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, .07);
+  background:
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, .05) 1px, transparent 1.4px) 0 0 / 22px 22px,
+    radial-gradient(ellipse 70% 55% at 50% 0%, rgba(217, 181, 111, .06), transparent 70%),
+    #121518;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .04);
+}
+.hf ol, .hf ul { list-style: none; margin: 0; padding: 0; }
+.hf-lanes { position: relative; z-index: 1; display: grid; gap: 64px; }
+.hf-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 44px; }
+.hf-wires { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; overflow: visible; pointer-events: none; }
+.hf-node { position: relative; min-width: 0; transition: opacity .25s ease; }
+.hf-node button {
+  --c: 255, 255, 255; position: relative; display: block; width: 100%; height: 100%; min-height: 92px; text-align: left; cursor: pointer;
+  padding: 16px 16px 14px 18px; font: inherit; color: var(--text); border-radius: 14px; border: 1px solid rgba(var(--c), .16);
+  background: linear-gradient(160deg, rgba(var(--c), .08), rgba(var(--c), .02) 60%), #1a1d22; box-shadow: 0 8px 20px rgba(0, 0, 0, .32);
+  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease, background .22s ease;
+}
+.hf-node button::before { content: ""; position: absolute; left: 0; top: 14px; bottom: 14px; width: 3px; border-radius: 0 3px 3px 0; background: rgb(var(--c)); opacity: .85; }
+.hf-you button { --c: 217, 181, 111; }
+.hf-lead button { --c: 255, 255, 255; background: linear-gradient(160deg, rgba(255, 255, 255, .12), rgba(255, 255, 255, .03) 60%), #23272d; }
+.hf-agent button { --c: 127, 178, 255; }
+.hf-rev button { --c: 176, 148, 255; }
+.hf-learn button { --c: 111, 207, 151; }
+.hf-stack button { box-shadow: 7px 7px 0 -1px #161a22, 7px 7px 0 0 rgba(127, 178, 255, .3), 14px 14px 0 -1px #14181f, 14px 14px 0 0 rgba(127, 178, 255, .18), 0 8px 20px rgba(0, 0, 0, .32); }
+.hf-num { position: absolute; top: 12px; right: 14px; font: 600 12px/1 var(--mono); color: rgba(var(--c), .7); }
+.hf-t { display: block; padding-right: 22px; font-size: 17px; line-height: 1.3; font-weight: 650; letter-spacing: -.01em; }
+.hf-s { display: block; margin-top: 6px; font-size: 14px; line-height: 1.45; color: var(--muted); }
+.hf-node button:hover, .hf-node.is-on button { transform: translateY(-3px); border-color: rgba(var(--c), .75); box-shadow: 0 0 0 1px rgba(var(--c), .35), 0 14px 30px rgba(0, 0, 0, .45), 0 0 26px rgba(var(--c), .16); }
+.hf-stack.is-on button, .hf-stack button:hover { box-shadow: 7px 7px 0 -1px #161a22, 7px 7px 0 0 rgba(127, 178, 255, .5), 14px 14px 0 -1px #14181f, 14px 14px 0 0 rgba(127, 178, 255, .3), 0 14px 30px rgba(0, 0, 0, .45), 0 0 26px rgba(var(--c), .16); }
+.hf-node.is-pin button { background: linear-gradient(160deg, rgba(var(--c), .2), rgba(var(--c), .05) 60%), #1a1d22; }
+.hf-node button:focus-visible { outline: 2px solid var(--gold-2); outline-offset: 3px; }
+.hf-board.has-focus .hf-node:not(.is-on) { opacity: .38; }
+.hf-board.has-focus .hf-w:not(.is-on) { opacity: .2; }
+
+/* 연결선 */
+.hf-w { fill: none; stroke: #6d7681; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; transition: opacity .25s ease, stroke .25s ease; }
+.hf-wn { stroke: #7a838d; stroke-width: 1.5; stroke-dasharray: 2 6; }
+.hf-wq { stroke: var(--gold); stroke-dasharray: 6 5; }
+.hf-w.is-on { stroke: var(--gold-2); stroke-width: 2.2; }
+.hf-w.is-on:not(.hf-wn):not(.hf-wq) { stroke-dasharray: 8 7; animation: hf-flow .9s linear infinite; }
+.hf-wn.is-on, .hf-wq.is-on { animation: hf-flow-d 1.2s linear infinite; }
+@keyframes hf-flow { to { stroke-dashoffset: -30; } }
+@keyframes hf-flow-d { to { stroke-dashoffset: -16; } }
+.hf-head { fill: #6d7681; } .hf-head-n { fill: #7a838d; } .hf-head-q { fill: var(--gold); } .hf-head-on { fill: var(--gold-2); }
+
+/* 처음 보일 때 카드가 차례로 올라오고 선이 그려진다(스크립트가 있을 때만 숨긴다) */
+.hf-js .hf-node { opacity: 0; transform: translateY(10px); }
+.hf-js.hf-in .hf-node { opacity: 1; transform: none; transition: opacity .5s ease calc(var(--i) * .08s), transform .5s ease calc(var(--i) * .08s); }
+.hf-js.hf-in .hf-board.has-focus .hf-node:not(.is-on) { opacity: .38; }
+.hf-js .hf-w { opacity: 0; }
+.hf-js.hf-in .hf-w { opacity: 1; transition: opacity .5s ease .9s; }
+
+/* 선 뜻풀이 */
+.hf-keys { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 28px; margin: 22px 0 0; font-size: 14px; color: var(--muted); }
+.hf-keys li { display: inline-flex; align-items: center; gap: 10px; }
+.hf-keys i { width: 30px; height: 0; border-top: 2px dashed; }
+.hf-key-q i { border-color: var(--gold); }
+.hf-key-n i { border-top-style: dotted; border-color: #7a838d; }
+.hf-key-q span { color: var(--gold-2); font-weight: 600; }
+.hf .fd-legend { margin-top: 16px; }
+.hf figcaption { margin-top: 12px; font-size: 14px; color: var(--muted); text-align: center; }
+
+@media (max-width: 1020px) { .hf-board { padding: 30px 30px 28px; } .hf-row { gap: 28px; } .hf-t { font-size: 16px; } }
+/* 좁은 화면: 번호 순서대로 카드를 2열 지그재그로 놓고 웹처럼 선으로 잇는다(한 줄로 늘어놓으면 너무 길어진다) */
+@media (max-width: 760px) {
+  .hf-lanes { display: contents; }
+  .hf-lane, .hf-row { display: contents; }
+  .hf-board { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 28px; padding: 22px 18px; }
+  .hf-node button { min-height: 0; padding: 12px 10px 11px 14px; border-radius: 12px; }
+  .hf-node button::before { top: 10px; bottom: 10px; }
+  .hf-num { top: 9px; right: 10px; font-size: 11px; }
+  .hf-t { padding-right: 16px; font-size: 14.5px; }
+  .hf-s { margin-top: 4px; font-size: 12.5px; line-height: 1.4; }
+  .hf-stack button { box-shadow: 4px 4px 0 -1px #161a22, 4px 4px 0 0 rgba(127, 178, 255, .3), 0 8px 20px rgba(0, 0, 0, .32); }
+  .hf-node:nth-child(odd):not(:last-child)::after, .hf-lane .hf-node::after { content: none; }
+  .hf-board.has-focus .hf-node:not(.is-on) { opacity: .55; }
+  .hf-keys { flex-direction: column; align-items: flex-start; padding: 0 6px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hf-node, .hf-node button, .hf-w { transition: none !important; animation: none !important; }
+  .hf-js .hf-node, .hf-js .hf-w { opacity: 1; transform: none; }
+}
