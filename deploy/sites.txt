@@ -1,0 +1,4 @@
+# 서비스 폴더와 서버 폴더(deploy/site.sh 가 읽는다). 한 줄에 "<레포 안 폴더> <서버 폴더>" — 서버 폴더는 절대 경로
+# main 에 합쳐지면 바뀐 서비스만 반영된다. 새 서비스를 더할 때 서버 폴더 · Caddy 블록은 서버 창이 먼저 만든다
+athena  /var/www/athena-landing
+chagok  /var/www/chagok-site

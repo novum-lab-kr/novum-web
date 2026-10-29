@@ -1,5 +1,5 @@
 #!/bin/sh
-# 홈페이지 레포 hook: main 이 움직이면(nhm push 로 합칠 때 등) athena.novum-lab.com · chagok.novum-lab.com 을 반영한다.
+# 홈페이지 레포 hook: main 이 움직이면(nhm push 로 합칠 때 등) deploy/sites.txt 의 서비스(athena · chagok …) 가운데 바뀐 것만 반영한다.
 # 설치: 원본 레포 .git/hooks/reference-transaction 로 복사하고 실행 권한(서버 창이 한다).
 # 워크트리 커밋(refs/heads/hermes/...)은 건드리지 않고, main 이 실제로 바뀐 뒤(committed)에만 돈다.
 [ "${1:-}" = committed ] || exit 0
@@ -10,15 +10,11 @@ while read -r old new ref; do
 done
 [ -n "$moved" ] || exit 0
 
-# 반영 스크립트도 main 커밋에서 꺼내 쓴다(워크트리마다 다른 사본을 쓰지 않게). 머지를 붙잡지 않게 뒤에서 돌린다
+# 반영 스크립트도 main 커밋에서 꺼내 쓴다(워크트리마다 다른 사본을 쓰지 않게) — Actions 쪽 remote.sh 와 같은 실행기(deploy/site.sh --all).
+# 머지를 붙잡지 않게 뒤에서 돌린다
 common="$(git rev-parse --path-format=absolute --git-common-dir)"
-script="$common/deploy-athena.run.sh"
-git show main:deploy/athena.sh >"$script" 2>/dev/null || exit 0
+script="$common/deploy-site.run.sh"
+git show main:deploy/site.sh >"$script" 2>/dev/null || exit 0
 # hook 이 받은 GIT_DIR · 인덱스 같은 환경은 워크트리 것일 수 있어 지우고, 공용 저장소를 바로 가리킨다
-( cd "$common" && env -u GIT_WORK_TREE -u GIT_INDEX_FILE -u GIT_PREFIX GIT_DIR="$common" nohup sh "$script" main >/dev/null 2>&1 & )
-
-# chagok.novum-lab.com 도 같은 방식으로(main 에 deploy/chagok.sh 가 없으면 건너뜀)
-script="$common/deploy-chagok.run.sh"
-git show main:deploy/chagok.sh >"$script" 2>/dev/null || exit 0
-( cd "$common" && env -u GIT_WORK_TREE -u GIT_INDEX_FILE -u GIT_PREFIX GIT_DIR="$common" nohup sh "$script" main >/dev/null 2>&1 & )
+( cd "$common" && env -u GIT_WORK_TREE -u GIT_INDEX_FILE -u GIT_PREFIX GIT_DIR="$common" nohup sh "$script" --all main >/dev/null 2>&1 & )
 exit 0

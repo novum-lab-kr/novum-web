@@ -3,7 +3,7 @@
 차곡차곡 앱의 소개(랜딩) · 고객 지원 · 이용약관 · 개인정보 처리방침 사이트. 파일은 이 레포 `chagok/` 에 있다.
 앱은 약관 · 처리방침(`/{terms,privacy}/`)을 앱 안 시트로 열고, 판 정보는 `versions.json` 을 읽는다. 앱이 이 주소(`https://chagok.novum-lab.com`)를 보게 하는 변경은 앱 레포 `chore/policy-url-vps` 에 있고, 2026-10-29 앱 `main` 은 아직 옛 주소 `https://chagok-app-terms.netlify.app` 을 읽는다(앱 `src/policy/urls.ts`).
 
-이전 기록은 GitHub `novum-lab-kr/chagok-app-policy`(보관)에 있다 — 2026-10-29 그 레포 `main`(ca97b05)의 사이트 파일만 옮겨 왔다. 옮긴 뒤 원본과 달라진 곳: ⓐ 운영자 줄 — `terms/v1/index.html` 의 HTML 주석(통신판매업 신고 면제 반영)과, `terms/v1/index.html` · `support/index.html` 에 더한 사업장 주소 · 전화번호 ⓑ 2026-10-29 법률 검토 2차 반영 — 랜딩 문구 2곳(로그인 없이 쓰는 범위 · 광고), 약관 1판 제8조 제1항 · 제11조 제3항 · 제12조 제1항, 처리방침 1판 5절 7~9항(지운 기록의 서버 표식 · 카카오 연결 해제 실패 기록 · 서버 운영 기록 90일). 출시 전이라 판 번호와 날짜(`versions.json`)는 그대로다.
+이전 기록은 GitHub `novum-lab-kr/chagok-app-policy`(보관)에 있다 — 2026-10-29 그 레포 `main`(ca97b05)의 사이트 파일만 옮겨 왔다. 옮긴 뒤 원본과 달라진 곳: ⓐ 운영자 줄 — `terms/v1/index.html` 의 HTML 주석(통신판매업 신고 면제 반영)과, `terms/v1/index.html` · `support/index.html` 에 더한 사업장 주소 · 전화번호 ⓑ 2026-10-29 법률 검토 2차 반영 — 랜딩 문구 2곳(로그인 없이 쓰는 범위 · 광고), 약관 1판 제8조 제1항 · 제11조 제3항 · 제12조 제1항, 처리방침 1판 5절 1항 · 7~11항(지운 기록의 서버 표식 · 카카오 연결 해제 실패 기록 · 로그인 기록과 인증 감사 기록 3개월 · 서버 운영 기록 3개월 · 삭제 처리 기록 1년 — 보관 기간은 2026-10-29 결정). 출시 전이라 판 번호와 날짜(`versions.json`)는 그대로다.
 
 | 경로 | 내용 | 검색 노출 |
 |---|---|---|
@@ -45,8 +45,10 @@
 
 athena.novum-lab.com 과 같은 길이다. **`main` 에 합치는 순간 운영 반영**이다.
 
-- `main` 에 push(머지)되면 `.github/workflows/deploy.yml` 이 검사(`deploy/check-chagok.mjs`) 뒤 서버에 SSH → 서버 고정 명령(`deploy/remote.sh` 복사본)이 GitHub `main` 을 받아 그 커밋의 `deploy/chagok.sh` 로 `chagok/` 를 `/var/www/chagok-site` 에 맞춘다(rsync `--delete` · 기록 서버 레포 `.git/deploy-chagok.log`)
-- 서버 레포 안에서 `main` 이 움직여도 hook(`deploy/hooks/reference-transaction`)이 같은 반영을 돈다
+- 레포 공용 배포다(2026-10-29 은주 · minsoon 합의 — 서비스 폴더 단위). `deploy/sites.txt` 에 `chagok /var/www/chagok-site` 가 있다
+- `main` 에 push(머지)되면 `.github/workflows/deploy.yml` 이 검사(`deploy/check-*.mjs` 전부) 뒤 서버에 SSH → 서버 고정 명령(`deploy/remote.sh` 복사본)이 GitHub `main` 을 받아 그 커밋의 `deploy/site.sh --all` 을 돌린다. 마지막 배포 뒤로 `chagok/` 나 `deploy/site.sh` · `deploy/sites.txt` 가 바뀌었으면 `chagok/` 를 `/var/www/chagok-site` 에 맞춘다(rsync `--delete` · 기록 서버 레포 `.git/deploy-chagok.log` · 마지막 배포 커밋 `.git/deploy-chagok.last`). 다른 서비스가 실패해도 chagok 은 따로 반영된다
+- 손으로 다시 맞출 때(서버): `sh deploy/site.sh chagok main`
+- 서버 레포 안에서 `main` 이 움직여도 hook(`deploy/hooks/reference-transaction`)이 같은 실행기(`site.sh --all`)를 돈다
 - Caddy 블록 `chagok.novum-lab.com` 이 그 폴더를 낸다. 서버 · Caddy 는 서버 창 일이다
 
 지금은 운영 주소(`https://chagok.novum-lab.com`)에 올라가 있지만 **공식 게시 전**이라 랜딩(`/`)만 검색에 열어 둔다. 검색 차단은 서버 Caddy 블록이 `/` 를 뺀 모든 경로에 `X-Robots-Tag: noindex` 헤더를 붙여 한다(`@noindex` · 레포에는 없다).
