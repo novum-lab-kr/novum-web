@@ -13,6 +13,7 @@
 
 랜딩의 App Store 버튼은 출시 전이라 누를 수 없는 「곧 출시」다. 주소가 생기면 `chagok/index.html` 맨 위 주석대로 세 곳을 바꾼다.
 판 본문(`terms/v1` 등)의 사이트 안 링크는 `/delete-account/` 처럼 **사이트 기준 절대 경로**로 쓴다 — 같은 본문이 `/privacy/v1/` 과 `/privacy/`(끼워 넣기) 두 주소에서 보여 상대 경로는 한쪽에서 깨진다.
+문의 메일 링크(`terms/v1` · `privacy/v1` · `support` · `delete-account` 4곳)는 앱 설정 「문의하기」와 같은 제목 · 본문 틀을 `encodeURIComponent` 로 미리 인코딩해 `href` 에 넣었다(앱 `src/support/contactMail.ts` 의 `SUBJECT.question` · `BODY.question` — 사이트는 앱 버전 · OS 를 모르니 `---` 아래 앱 정보 줄은 뺀다). 앱 틀을 바꾸면 4곳도 같이 바꾼다.
 
 ## 개정하는 방법
 
