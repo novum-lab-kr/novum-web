@@ -186,7 +186,7 @@ window.ATHENA_I18N.ja = {
   "nav.issue": "問題を報告",
   "n.dl": "macOS 版をダウンロード",
   "n.note2": "無料 · macOS 13 以降 · Apple Silicon / Intel · Claude Code または Codex が必要",
-  "n.hero.alt": "作業中の Athena Studio:1 つの依頼がリポジトリごとのワークスペースで web・api・mobile-app の各エージェントに分かれて動き、下のモニターが埋まっていきます。api エージェントの質問に Work で答えると、Athena が結果をマージします。",
+  "n.hero.alt": "作業中の Athena Studio:1 つの依頼がリポジトリごとのワークスペースで web・api・mobile-app の各エージェントに分かれて動き、下のモニターが埋まっていきます。api エージェントの質問に [作業] で答えると、Athena が結果をマージします。",
   "n.q.alt": "[作業] で api エージェントのページサイズの質問に答えると、答えがエージェントの pane に入力され、作業が続きます。",
   "n.e.p2": "macOS 13 以降の Apple Silicon・Intel Mac で無料で使えます。",
   "n.d.lead2": "計画してリポジトリごとに分担",
