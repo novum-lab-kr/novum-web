@@ -20,7 +20,7 @@
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css?v=20261028i">
 <script src="/assets/analytics.js?v=20261029a" async></script>
-<script src="/assets/lang.js?v=20261028i"></script>
+<script src="/assets/lang.js?v=20261029a"></script>
 <script src="/assets/motion.js?v=20261028i" defer></script>
 </head>
 <body>
@@ -41,7 +41,60 @@
   <div class="wrap">
     <p class="eyebrow"><i></i><span data-t="nav.download">Download</span></p>
     <h1 class="grad" data-t="d.h1">Athena Studio for macOS</h1>
-    <p class="dl-ver" data-t="d.ver">Version 0.15.8 · October 28, 2026 · <a href="/releases/">What's new</a></p>
+    <p class="dl-ver" data-t="d.ver">Version <span data-rel-ver>0.19.2</span> · <span data-rel-date>October 29, 2026</span> · <a href="/releases/">What's new</a></p>
+    <script>
+/* 버전 줄을 최신 배포판으로(2026-10-29). latest.json 은 github.com 302 에 CORS 헤더가 없어 브라우저가 못 읽는다 —
+   GitHub REST API releases/latest(Access-Control-Allow-Origin: *)의 tag_name · published_at 을 쓴다.
+   로그인 없이 방문자 IP 당 시간 60회라 실패 · 4초 넘게 느리면 위에 적어 둔 값 그대로 둔다(새 배포판이 나오면 적어 둔 값도 고친다).
+   lang.js 가 언어를 바꾸며 이 줄의 innerHTML 을 갈아 끼우므로, 줄이 바뀔 때마다 다시 채운다 */
+(function () {
+  var line = document.querySelector('.dl-ver');
+  if (!line || !window.fetch || !window.MutationObserver) return;
+  var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  var latest = null;
+
+  // 날짜는 배포판(latest.json date)과 같은 한국 날짜로, 언어마다 사전과 같은 모양
+  function formatDate(iso, lang) {
+    var kst = new Date(new Date(iso).getTime() + 9 * 3600 * 1000);
+    var year = kst.getUTCFullYear(), month = kst.getUTCMonth() + 1, day = kst.getUTCDate();
+    if (lang === 'ko') return year + '년 ' + month + '월 ' + day + '일';
+    if (lang === 'ja' || lang === 'zh') return year + ' 年 ' + month + ' 月 ' + day + ' 日';
+    return MONTHS[month - 1] + ' ' + day + ', ' + year;
+  }
+
+  function fill() {
+    if (!latest) return;
+    var ver = line.querySelector('[data-rel-ver]'), date = line.querySelector('[data-rel-date]');
+    var lang = document.documentElement.getAttribute('data-lang') || 'en';
+    if (ver && ver.textContent !== latest.version) ver.textContent = latest.version;
+    if (date) {
+      var text = formatDate(latest.published, lang);
+      if (date.textContent !== text) date.textContent = text;
+    }
+  }
+
+  new MutationObserver(fill).observe(line, { childList: true });
+
+  // 4초 제한 — AbortController 가 없는 브라우저도 만료 뒤 온 응답은 버린다
+  var expired = false;
+  var ctrl = window.AbortController ? new AbortController() : null;
+  var timer = setTimeout(function () { expired = true; if (ctrl) ctrl.abort(); }, 4000);
+  fetch('https://api.github.com/repos/novum-lab-kr/athena-studio-releases/releases/latest', {
+    headers: { Accept: 'application/vnd.github+json' },
+    signal: ctrl ? ctrl.signal : undefined
+  }).then(function (res) {
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    return res.json();
+  }).then(function (rel) {
+    clearTimeout(timer);
+    if (expired) return;
+    var version = String(rel.tag_name || '').replace(/^v/, '');
+    if (!/^\d+\.\d+\.\d+$/.test(version) || isNaN(Date.parse(rel.published_at))) return;
+    latest = { version: version, published: rel.published_at };
+    fill();
+  }).catch(function () {});
+})();
+</script>
     <p class="lead" data-t="d.lead2">Free for macOS 13 Ventura or later. Signed and notarized by Apple.</p>
   </div>
 </div>
