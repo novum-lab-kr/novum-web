@@ -3,7 +3,7 @@
 차곡차곡 앱의 소개(랜딩) · 고객 지원 · 이용약관 · 개인정보 처리방침 사이트. 파일은 이 레포 `chagok/` 에 있다.
 앱은 약관 · 처리방침(`/{terms,privacy}/`)을 앱 안 시트로 열고, 판 정보는 `versions.json` 을 읽는다. 앱이 이 주소(`https://chagok.novum-lab.com`)를 보게 하는 변경은 앱 레포 `chore/policy-url-vps` 에 있고, 2026-10-29 앱 `main` 은 아직 옛 주소 `https://chagok-app-terms.netlify.app` 을 읽는다(앱 `src/policy/urls.ts`).
 
-이전 기록은 GitHub `novum-lab-kr/chagok-app-policy`(보관)에 있다 — 2026-10-29 그 레포 `main`(ca97b05)의 사이트 파일만 옮겨 왔다. 옮긴 뒤 원본과 다른 곳은 운영자 줄뿐이다 — `terms/v1/index.html` 의 HTML 주석(통신판매업 신고 면제 반영 · 2026-10-29 은주 결정)과, `terms/v1/index.html` · `support/index.html` 에 더한 사업장 주소 · 전화번호(2026-10-29).
+이전 기록은 GitHub `novum-lab-kr/chagok-app-policy`(보관)에 있다 — 2026-10-29 그 레포 `main`(ca97b05)의 사이트 파일만 옮겨 왔다. 옮긴 뒤 원본과 달라진 곳: ⓐ 운영자 줄 — `terms/v1/index.html` 의 HTML 주석(통신판매업 신고 면제 반영)과, `terms/v1/index.html` · `support/index.html` 에 더한 사업장 주소 · 전화번호 ⓑ 2026-10-29 법률 검토 2차 반영 — 랜딩 문구 2곳(로그인 없이 쓰는 범위 · 광고), 약관 1판 제8조 제1항 · 제11조 제3항 · 제12조 제1항, 처리방침 1판 5절 7~9항(지운 기록의 서버 표식 · 카카오 연결 해제 실패 기록 · 서버 운영 기록 90일). 출시 전이라 판 번호와 날짜(`versions.json`)는 그대로다.
 
 | 경로 | 내용 | 검색 노출 |
 |---|---|---|
