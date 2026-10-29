@@ -186,7 +186,7 @@ window.ATHENA_I18N.zh = {
   "nav.issue": "反馈问题",
   "n.dl": "下载 macOS 版",
   "n.note2": "免费 · macOS 13 及以上 · Apple Silicon / Intel · 需要 Claude Code 或 Codex",
-  "n.hero.alt": "工作中的 Athena Studio：Athena 与 web 智能体并排写代码，下方的智能体监视器不断记录进展。",
+  "n.hero.alt": "工作中的 Athena Studio：一个请求在各仓库的工作区中分给 web、api、mobile-app 三个智能体，下方监视器逐渐填满；在 Work 中回答 api 智能体的提问后，Athena 合并结果。",
   "n.q.alt": "在 [工作] 中回答 api 智能体关于每页条数的问题，答案会输入到智能体的 pane，工作随即继续。",
   "n.e.p2": "适用于 macOS 13 及以上的 Apple Silicon 和 Intel Mac，免费使用。",
   "n.d.lead2": "制定计划，按仓库分工",
