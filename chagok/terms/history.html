@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>차곡차곡 이용약관 판 목록</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><main>
+<h1>이용약관 판 목록</h1>
+<table><thead><tr><th>판</th><th>게시일</th><th>시행일</th><th>바뀐 점</th></tr></thead><tbody id="rows"></tbody></table>
+<nav><a href="./">지금 시행 중인 판</a></nav>
+</main>
+<script>
+fetch('../versions.json',{cache:'no-store'}).then(r=>r.json()).then(all=>{
+  const rows=document.getElementById('rows');
+  for(const v of [...all['terms']].sort((a,b)=>b.version-a.version)){
+    const tr=document.createElement('tr');
+    tr.innerHTML='<td><a href="v'+v.version+'/">제'+v.version+'판</a></td><td>'+v.postedAt+'</td><td>'+v.effectiveAt+'</td><td></td>';
+    tr.lastChild.textContent=v.summary;rows.append(tr);
+  }
+});
+</script>
+</body>
+</html>

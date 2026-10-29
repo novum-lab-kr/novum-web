@@ -1,13 +1,13 @@
 name: check-and-deploy
 
-# main 에 머지되면 athena/ 를 검사하고 서버(athena.novum-lab.com)에 반영한다. PR 은 검사만.
-# site/(novum-lab.com)는 아직 자동 반영이 없다.
+# main 에 머지되면 검사하고 서버에 반영한다 — 반영은 deploy/sites.txt 의 서비스(athena/ · chagok/ …) 가운데 바뀐 것만(서버의 deploy/site.sh 가 판단). PR 은 검사만.
+# site/(novum-lab.com)는 아직 자동 반영이 없다. site/ · docs/ · README.md 만 바뀐 push 는 돌지 않는다.
 on:
   push:
     branches: [main]
-    paths: ['athena/**', 'deploy/**', '.github/workflows/deploy.yml']
+    paths-ignore: ['site/**', 'docs/**', 'README.md']
   pull_request:
-    paths: ['athena/**', 'deploy/**', '.github/workflows/deploy.yml']
+    paths-ignore: ['site/**', 'docs/**', 'README.md']
   workflow_dispatch:
 
 # main 배포는 한 줄로 차례대로, PR 검사는 PR 마다 따로(슝 deploy.yml 과 같은 방식)
@@ -23,7 +23,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: node deploy/check-athena.mjs
+      # 서비스마다 deploy/check-<서비스>.mjs — 하나가 실패해도 나머지 결과까지 보고 실패로 끝낸다
+      - run: |
+          rc=0
+          for f in deploy/check-*.mjs; do
+            echo "== $f"
+            node "$f" || rc=1
+          done
+          exit "$rc"
 
   deploy:
     needs: check
