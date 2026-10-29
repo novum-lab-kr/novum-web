@@ -45,6 +45,7 @@ window.ATHENA_I18N.ja = {
   "n.e.h": "Mac で試してみてください。",
   "nav.terms": "利用規約",
   "c.made": "© 2026 Novum Lab. Athena Studio は Novum Lab が開発しています。",
+  "c.ga": "このサイトでは、訪問数とダウンロード数を数えるために Google Analytics の Cookie を使用しています。",
   "o.title": "ドキュメント — Athena Studio",
   "o.desc": "Athena Studio のはじめかた、キーボードショートカット、データとセキュリティ、比較、よくある質問。",
   "o.h1": "Athena Studio の使い方",
