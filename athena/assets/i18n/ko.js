@@ -186,7 +186,7 @@ window.ATHENA_I18N.ko = {
   "nav.issue": "문제 신고",
   "n.dl": "macOS용 다운로드",
   "n.note2": "무료 · macOS 13 이상 · Apple Silicon / Intel · Claude Code 또는 Codex 필요",
-  "n.hero.alt": "일하는 Athena Studio: Athena와 web 에이전트가 나란히 코드를 쓰고, 아래 에이전트 모니터에 기록이 쌓입니다.",
+  "n.hero.alt": "일하는 Athena Studio: 요청 하나가 레포별 작업 공간에서 web · api · mobile-app 에이전트로 나뉘어 일하고 아래 모니터가 채워지며, api 에이전트의 질문에 [작업]에서 답하면 Athena가 결과를 머지합니다.",
   "n.q.alt": "[작업]에서 api 에이전트의 페이지 크기 질문에 답하면, 답이 에이전트 pane에 입력되고 작업이 이어집니다.",
   "n.e.p2": "macOS 13 이상, Apple Silicon과 Intel 맥에서 무료로 쓸 수 있습니다.",
   "n.d.lead2": "계획하고 레포별로 나누기",
