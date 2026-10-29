@@ -18,9 +18,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=20261028i">
+<link rel="stylesheet" href="/assets/site.css?v=20261029a">
 <script src="/assets/analytics.js?v=20261029a" async></script>
-<script src="/assets/lang.js?v=20261029a"></script>
+<script src="/assets/lang.js?v=20261029b"></script>
 <script src="/assets/motion.js?v=20261028i" defer></script>
 </head>
 <body>
@@ -45,35 +45,40 @@
   </div>
 </div>
 
-<!-- athena-studio CHANGELOG.md 의 공개판 절(= GitHub Release 본문). 0.2 – 0.13 은 공개 전 개발판이라 한 줄로 줄였다.
-     공개판 사이의 비공개 판(0.16 · 0.17.7 · 0.18)은 그 변경이 처음 들어간 공개판 칸에 CHANGELOG 문장 그대로 묶는다
-     (v0.17.6 = 0.16 + 0.17(~v0.17.6) · v0.19.2 = 0.17 Fixed(v0.17.7) + 0.18 + 0.19) — 원문 athena-studio origin/main 4fe2804 -->
+<!-- 판마다 요약(2026-10-29 바꿈 — CHANGELOG 를 그대로 옮기지 않는다). 원문은 athena-studio CHANGELOG.md(= GitHub Release 본문).
+     판 하나 = ① 그 판을 한 줄로 말하는 제목(r.<판>t · 손님 말) ② 손님이 체감하는 핵심 2~4개(r.<판>k1… · 한 줄씩 짧게 · 태그 New/Improved/Fixed)
+     ③ 나머지는 "그 밖의 작은 고침 N개" 한 줄(r.<판>m)로 묶고 그 판 GitHub Release(releases/tag/vX.Y.Z) 링크.
+     핵심에 내부 용어(현황판 · pane 번호 · 계획서 · 결정 콘솔 등)를 넣지 않는다. 사실은 CHANGELOG 에 있는 것만 — 지어 넣지 않는다.
+     공개판 사이의 비공개 판은 그 변경이 처음 들어간 공개판에 묶는다(v0.17.6 = 0.16 + 0.17 · v0.19.2 = 0.17.7 + 0.18 + 0.19).
+     새 판: 맨 위에 같은 모양으로 더하고 키를 ko · ja · zh 사전에 모두 넣는다. 0.2 – 0.13 은 공개 전 개발판이라 한 줄(접힘) 그대로 -->
 <section style="padding-top:0">
   <div class="wrap">
-    <div class="rel"><div class="v"><b>0.19</b><span>v0.19.2<br><span data-t="r.d19">Oct 29, 2026</span></span></div><ul>
-      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.19a">Right-clicking a pane shows its number and name at the top of the menu, so you can find the pane a report mentions.</span></li>
-      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.19b">Drag the edges to resize the workspace list on the left, the Explorer on the right, and the monitor at the bottom.</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.19c">Resize handles no longer light up with a colored box; only the cursor changes.</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.19d">Dragging the border between panes is no longer blocked by the left pane's scrollbar.</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.19e">The details icon in a pane's header shows even when the board is not running.</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.19f">The Work and Settings buttons at the top right are no longer left disabled after leaving the start screen.</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.19g">Plans with sub-steps left are no longer completed automatically.</span></li>
-    </ul></div>
-    <div class="rel"><div class="v"><b>0.17</b><span>v0.17.6<br><span data-t="r.d17">Oct 29, 2026</span></span></div><ul>
-      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.17a">The Mac app updates itself from Settings (⚙): when a new version is out, press Update to download it, verify it, and restart. If anything fails, the current version keeps running and a short reason is shown.</span></li>
-      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.17b">Athena can watch a repository's open GitHub issues: when turned on, new issues are imported as work items and handed to Athena, and the agent monitor shows a line for each.</span></li>
-      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.17c">The Mac app's menu has a Third-Party Notices item with the license texts of the open-source software it includes.</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.17d">The license terms were updated.</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.17e">Work alerts show only things you need to decide. Status updates from automatic pull request reviews go to the Athena pane instead.</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.17f">New agent panes split the largest pane along its longer side.</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.17g">The Explorer opens for workspaces whose folder was deleted, using the pane's folder instead or saying the folder is gone.</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.17h">Choices from the decision console and repository picker are no longer lost when an agent is showing a question. They are sent once the question closes.</span></li>
-    </ul></div>
-    <div class="rel"><div class="v"><b>0.15</b><span>v0.15.8<br><span data-t="r.d15">Oct 28, 2026</span></span></div><ul>
-      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.15a">Athena Studio is available as a Mac app for Apple Silicon and Intel (macOS 13 Ventura or later). It is signed and notarized by Apple, so it opens without a security warning.</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.15b">Switching to a pack for the first time no longer shows the previous pack's state when an older list finishes loading late.</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.15c">Pane details keep the plan's title even when the plan has an empty title line.</span></li>
-    </ul></div>
+    <div class="rel"><div class="v"><b>0.19</b><span>v0.19.2<br><span data-t="r.d19">Oct 29, 2026</span></span></div><div>
+      <h3 class="rel-t" data-t="r.19t">Resize the panels around your work.</h3>
+      <ul>
+      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.19k1">Drag the edges to resize the workspace list, the Explorer, and the monitor.</span></li>
+      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.19k2">Dragging the border between panes is no longer blocked by a scrollbar.</span></li>
+      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.19k3">The Work and Settings buttons no longer stay disabled after the start screen.</span></li>
+      </ul>
+      <p class="rel-more" data-t="r.19m">4 more small changes and fixes · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.19.2">See everything in v0.19.2 on GitHub</a></p>
+    </div></div>
+    <div class="rel"><div class="v"><b>0.17</b><span>v0.17.6<br><span data-t="r.d17">Oct 29, 2026</span></span></div><div>
+      <h3 class="rel-t" data-t="r.17t">The Mac app now updates itself.</h3>
+      <ul>
+      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.17k1">Press Update in Settings (⚙) to download, verify, and restart. If it fails, your current version keeps running.</span></li>
+      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.17k2">Athena can watch a repository’s GitHub issues and pick up new ones as work.</span></li>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.17k3">Alerts show only the things you need to decide.</span></li>
+      </ul>
+      <p class="rel-more" data-t="r.17m">5 more small changes and fixes · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.17.6">See everything in v0.17.6 on GitHub</a></p>
+    </div></div>
+    <div class="rel"><div class="v"><b>0.15</b><span>v0.15.8<br><span data-t="r.d15">Oct 28, 2026</span></span></div><div>
+      <h3 class="rel-t" data-t="r.15t">The first public release, as a Mac app.</h3>
+      <ul>
+      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.15k1">Download for Apple Silicon or Intel Macs (macOS 13 Ventura or later).</span></li>
+      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.15k2">Signed and notarized by Apple, so it opens without a security warning.</span></li>
+      </ul>
+      <p class="rel-more" data-t="r.15m">2 more small fixes · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.15.8">See everything in v0.15.8 on GitHub</a></p>
+    </div></div>
     <details class="rel-old"><summary data-t="r.devsum">Development builds before the first public release (0.2 – 0.13)</summary>
     <div class="rel"><div class="v"><b>0.2 – 0.13</b><span data-t="r.dpre">Oct 26–28, 2026</span></div><ul>
       <li><span class="tag dev" data-t="r.dev">Dev builds</span><span data-t="r.pre">Development builds before the first public release. Along the way came automatic pull request review with Claude and Codex, a model choice for each role, the work board and pane details, the agent monitor, and repository names, images and logos.</span></li>

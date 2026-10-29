@@ -861,3 +861,11 @@ main, footer { position: relative; }
 .fd-toggle .i-play { display: none; fill: currentColor; stroke: none; }
 .fd-user-pause .fd-toggle .i-pause { display: none; }
 .fd-user-pause .fd-toggle .i-play { display: block; }
+
+/* 바뀐 것 — 판마다 한 줄 제목 · 핵심 몇 개 · 그 밖의 작은 고침 한 줄(2026-10-29) */
+.rel-t { margin: 0 0 18px; font-size: 20px; }
+.rel-more { margin: 16px 0 0; color: var(--muted); font-size: 14px; }
+.rel-more a { color: var(--gold-2); }
+/* 받기 카드의 버전(.dl-ver 와 같은 자동 읽기 값) */
+.dl .dl-card-ver { font: 500 12px/1.5 var(--mono); color: var(--dim); margin-top: 8px; }
+.dl .dl-card-ver span { color: inherit; font: inherit; }
