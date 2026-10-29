@@ -68,8 +68,9 @@
     if (!latest) return;
     var date = line.querySelector('[data-rel-date]');
     var lang = document.documentElement.getAttribute('data-lang') || 'en';
-    for (const ver of document.querySelectorAll('[data-rel-ver]')) {
-      if (ver.textContent !== latest.version) ver.textContent = latest.version;
+    var vers = document.querySelectorAll('[data-rel-ver]');
+    for (var index = 0; index < vers.length; index++) {
+      if (vers[index].textContent !== latest.version) vers[index].textContent = latest.version;
     }
     if (date) {
       var text = formatDate(latest.published, lang);
