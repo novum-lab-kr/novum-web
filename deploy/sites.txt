@@ -3,3 +3,4 @@
 athena  /var/www/athena-landing
 chagok  /var/www/chagok-site
 site    /var/www/novum-landing
+syung   /var/www/syung-landing
