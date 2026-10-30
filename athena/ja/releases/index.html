@@ -70,9 +70,21 @@
      ③ 나머지는 "그 밖의 작은 고침 N개" 한 줄(r.<판>m)로 묶고 그 판 GitHub Release(releases/tag/vX.Y.Z) 링크.
      핵심에 내부 용어(현황판 · pane 번호 · 계획서 · 결정 콘솔 등)를 넣지 않는다. 사실은 CHANGELOG 에 있는 것만 — 지어 넣지 않는다.
      공개판 사이의 비공개 판은 그 변경이 처음 들어간 공개판에 묶는다(v0.17.6 = 0.16 + 0.17 · v0.19.2 = 0.17.7 + 0.18 + 0.19 · v0.25.1 = 0.20 – 0.25 · v0.28.7 = 0.26 – 0.28).
-     새 판: 맨 위에 같은 모양으로 더하고 키를 ko · ja · zh 사전에 모두 넣는다. 0.2 – 0.13 은 공개 전 개발판이라 한 줄(접힘) 그대로 -->
+     새 판: 맨 위에 같은 모양으로 더하고 키를 ko · ja · zh 사전에 모두 넣는다. 0.2 – 0.13 은 공개 전 개발판이라 한 줄(접힘) 그대로
+     0.32 는 배포판 없이 내역만 먼저 올린 판(2026-10-30) — 문장은 athena-studio CHANGELOG 0.32 절 · src/changelog 그대로 7줄, 제목 · 버전 태그 · GitHub 링크 줄은 배포판이 나오면 채운다 -->
 <section style="padding-top:0">
   <div class="wrap">
+    <div class="rel"><div class="v"><b>0.32</b><span data-t="r.d32">2026 年 10 月 30 日</span></div><div>
+      <ul>
+      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.32k1">アテナのコアが更新されると、アプリ内ポップアップに以前と新しいバージョン、アップデート内容、更新結果が表示されます。作業中だったセッションはエージェント名で表示されます。</span></li>
+      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.32k2">Athena Studio リポジトリのないパックでアテナ自体のバグを報告すると、個人情報を隠した GitHub Issue の下書きになります。アテナが下書きを見せて GitHub で開くので、確認して自分で投稿します。</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.32k3">同じリポジトリのエージェント pane が待機中なら、新しい pane を開かずにその pane へ新しいタスクを続けて送ります。</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.32k4">エージェント pane を MCP サーバーなしで起動するため、返答ごとのトークンが減ります。レビュアー pane はそのまま使います。</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.32k5">設定の PR 自動化スイッチの名前が、オンにする内容そのままになりました:「自動 PR・レビュー」「承認されたらすぐマージ」。その下の警告行はなくなりました。</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.32k6">コミットメッセージが複数行のときや、パスに <code>~</code> や変数を使ったときに、コミットガードがアテナのコミットスクリプトを誤ってブロックしていた問題を修正しました。</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.32k7">自動マージをオンにしたリポジトリでは、エージェントが自分の開いた PR のマージを頼まなくなりました。自動レビューがマージまで進め、エージェントは PR の状態を報告します。</span></li>
+      </ul>
+    </div></div>
     <div class="rel"><div class="v"><b>0.28</b><span>v0.28.7<br><span data-t="r.d28">2026 年 10 月 29 日</span></span></div><div>
       <h3 class="rel-t" data-t="r.28t">エージェントの質問に、Work 画面からそのまま答えられます。</h3>
       <ul>
