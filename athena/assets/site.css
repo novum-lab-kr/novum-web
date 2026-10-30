@@ -638,6 +638,8 @@ html:lang(ko) .h3-sec h2, html:lang(ja) .h3-sec h2, html:lang(zh-Hans) .h3-sec h
 .h3-stack .h3-q { max-width: 1200px; justify-self: stretch; }
 @media (max-width: 900px) { .h3-panel.h3-stack { padding: 28px 16px; gap: 20px; } }
 .tag.dev { color: var(--muted); background: rgba(255, 255, 255, .06); }
+/* 기여자 표기(내역 항목 문장 뒤 — 이름이라 번역 키 없음 · 대문자로 바꾸지 않는다) */
+.tag.by { display: inline-block; margin-left: 6px; text-transform: none; letter-spacing: 0; color: var(--dim); background: transparent; box-shadow: inset 0 0 0 1px var(--line); white-space: nowrap; vertical-align: 1px; }
 .learn-card .d { font: 500 12px/1.5 var(--sans); color: var(--dim); margin: -4px 0 12px; }
 
 /* ── 배경: 첫 화면 · 페이지 머리에 옅은 격자, 앱 화면 뒤 약한 금빛, 끝 칸에 빛 한 점 ── */
