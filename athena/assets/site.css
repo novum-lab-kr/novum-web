@@ -693,10 +693,14 @@ main, footer { position: relative; }
 .h3-head h1 { font-size: clamp(36px, 4.1vw, 58px); text-wrap: balance; }
 /* 영어 첫 제목은 조금 더 크게(ko·ja·zh 는 위 규칙 그대로) */
 html:lang(en) .h3-head h1 { font-size: clamp(40px, 5vw, 70px); }
-/* 첫 제목 등장: 흐림이 걷히며 아래에서 떠오른다(모든 언어 · JS 없이 CSS 만) */
-@keyframes h1-in { from { opacity: 0; transform: translateY(16px); filter: blur(8px); } to { opacity: 1; transform: none; filter: blur(0); } }
-.h3-head h1 { animation: h1-in .9s cubic-bezier(.2, .7, .2, 1) .1s both; }
-@media (prefers-reduced-motion: reduce) { .h3-head h1 { animation: none; } }
+/* 첫 제목 등장: 금빛 점등 — 어두운 글자에 금빛이 왼→오로 지나가며 켜진다(assets/lang.js 가 글자를 나눈다) */
+.gl-ln { display: block; }
+.gl-w { display: inline-block; white-space: nowrap; }
+html:lang(ja) .gl-w, html:lang(zh-Hans) .gl-w { white-space: normal; }
+.gl-c { display: inline-block; white-space: pre; }
+@keyframes gl-lit { 0% { color: #3b3f44; } 40% { color: #f2d9a0; text-shadow: 0 0 18px rgba(242, 217, 160, .55); } 100% { color: var(--text, #f3f1ea); text-shadow: none; } }
+.gl .gl-c { color: #3b3f44; animation: gl-lit .9s ease-out both; animation-delay: calc(var(--i) * 30ms); }
+@media (prefers-reduced-motion: reduce) { .gl .gl-c { animation: none; color: inherit; } }
 .nw { white-space: nowrap; }
 
 /* 문서 · 첫 설정(팩 만들 때 Athena 가 하는 일) */
