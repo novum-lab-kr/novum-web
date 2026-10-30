@@ -70,9 +70,21 @@
      ③ 나머지는 "그 밖의 작은 고침 N개" 한 줄(r.<판>m)로 묶고 그 판 GitHub Release(releases/tag/vX.Y.Z) 링크.
      핵심에 내부 용어(현황판 · pane 번호 · 계획서 · 결정 콘솔 등)를 넣지 않는다. 사실은 CHANGELOG 에 있는 것만 — 지어 넣지 않는다.
      공개판 사이의 비공개 판은 그 변경이 처음 들어간 공개판에 묶는다(v0.17.6 = 0.16 + 0.17 · v0.19.2 = 0.17.7 + 0.18 + 0.19 · v0.25.1 = 0.20 – 0.25 · v0.28.7 = 0.26 – 0.28).
-     새 판: 맨 위에 같은 모양으로 더하고 키를 ko · ja · zh 사전에 모두 넣는다. 0.2 – 0.13 은 공개 전 개발판이라 한 줄(접힘) 그대로 -->
+     새 판: 맨 위에 같은 모양으로 더하고 키를 ko · ja · zh 사전에 모두 넣는다. 0.2 – 0.13 은 공개 전 개발판이라 한 줄(접힘) 그대로
+     0.32 는 배포판 없이 내역만 먼저 올린 판(2026-10-30) — 문장은 athena-studio CHANGELOG 0.32 절 · src/changelog 그대로 7줄, 제목 · 버전 태그 · GitHub 링크 줄은 배포판이 나오면 채운다 -->
 <section style="padding-top:0">
   <div class="wrap">
+    <div class="rel"><div class="v"><b>0.32</b><span data-t="r.d32">2026 年 10 月 30 日</span></div><div>
+      <ul>
+      <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.32k1">Athena 核心更新后，应用内弹窗会显示旧版本和新版本、更新内容以及更新结果。正在工作的会话以代理名称显示。</span></li>
+      <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.32k2">在没有 Athena Studio 仓库的包中报告 Athena 自身的 bug 时，会生成隐藏了个人信息的 GitHub issue 草稿。Athena 先展示草稿并在 GitHub 上打开，由你确认后自行提交。</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.32k3">同一仓库的代理 pane 空闲时，Athena 会把新任务继续发到那个 pane，而不是再打开新的 pane。</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.32k4">代理 pane 启动时不加载 MCP 服务器，每次回复使用的 token 更少。审查者 pane 保持不变。</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.32k5">设置中的 PR 自动化开关改为按开启的功能命名：“自动 PR · 审查”和“批准后立即合并”。下方的警告行已移除。</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.32k6">修复了提交信息有多行，或路径使用 <code>~</code> 或变量时，提交保护钩子错误拦截 Athena 自身提交脚本的问题。</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.32k7">在开启自动合并的仓库中，代理不再请你合并它打开的 PR。自动审查会完成合并，代理会报告 PR 状态。</span></li>
+      </ul>
+    </div></div>
     <div class="rel"><div class="v"><b>0.28</b><span>v0.28.7<br><span data-t="r.d28">2026 年 10 月 29 日</span></span></div><div>
       <h3 class="rel-t" data-t="r.28t">可直接在 Work 中回答智能体的提问。</h3>
       <ul>

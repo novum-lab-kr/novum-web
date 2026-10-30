@@ -70,9 +70,21 @@
      ③ 나머지는 "그 밖의 작은 고침 N개" 한 줄(r.<판>m)로 묶고 그 판 GitHub Release(releases/tag/vX.Y.Z) 링크.
      핵심에 내부 용어(현황판 · pane 번호 · 계획서 · 결정 콘솔 등)를 넣지 않는다. 사실은 CHANGELOG 에 있는 것만 — 지어 넣지 않는다.
      공개판 사이의 비공개 판은 그 변경이 처음 들어간 공개판에 묶는다(v0.17.6 = 0.16 + 0.17 · v0.19.2 = 0.17.7 + 0.18 + 0.19 · v0.25.1 = 0.20 – 0.25 · v0.28.7 = 0.26 – 0.28).
-     새 판: 맨 위에 같은 모양으로 더하고 키를 ko · ja · zh 사전에 모두 넣는다. 0.2 – 0.13 은 공개 전 개발판이라 한 줄(접힘) 그대로 -->
+     새 판: 맨 위에 같은 모양으로 더하고 키를 ko · ja · zh 사전에 모두 넣는다. 0.2 – 0.13 은 공개 전 개발판이라 한 줄(접힘) 그대로
+     0.32 는 배포판 없이 내역만 먼저 올린 판(2026-10-30) — 문장은 athena-studio CHANGELOG 0.32 절 · src/changelog 그대로 7줄, 제목 · 버전 태그 · GitHub 링크 줄은 배포판이 나오면 채운다 -->
 <section style="padding-top:0">
   <div class="wrap">
+    <div class="rel"><div class="v"><b>0.32</b><span data-t="r.d32">Oct 30, 2026</span></div><div>
+      <ul>
+      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.32k1">After Athena's core updates, an in-app popup shows the previous and new versions, what's new, and how the update went, with working sessions listed by agent name.</span></li>
+      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.32k2">In packs without the Athena Studio repository, a bug report about Athena itself becomes a GitHub issue draft with private details hidden. Athena shows you the draft and opens it on GitHub for you to review and submit.</span></li>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.32k3">Athena hands a new task to an idle agent pane for the same repository instead of opening another pane.</span></li>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.32k4">Agent panes start without MCP servers, so each reply uses fewer tokens. Reviewer panes keep them.</span></li>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.32k5">The PR automation switches in Settings are named for what they turn on: "Auto PR · review" and "Merge right after approval". The warning line under them is gone.</span></li>
+      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.32k6">The commit guard no longer wrongly blocks Athena's own commit script when the message spans several lines or the path uses <code>~</code> or a variable.</span></li>
+      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.32k7">In repositories with auto-merge on, agents no longer ask you to merge a pull request they opened. Automatic review merges it, and the agent reports its state.</span></li>
+      </ul>
+    </div></div>
     <div class="rel"><div class="v"><b>0.28</b><span>v0.28.7<br><span data-t="r.d28">Oct 29, 2026</span></span></div><div>
       <h3 class="rel-t" data-t="r.28t">Answer an agent's question right from Work.</h3>
       <ul>
