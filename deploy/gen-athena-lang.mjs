@@ -139,7 +139,12 @@ function metaContent(html, attrName, attrValue) {
 // 사이트 안 페이지 링크(/ · /features/ …, #절 포함)를 그 언어 주소로. /assets/ 같은 파일 주소는 그대로
 function localizeLinks(html, lang) {
   const routes = new Set(PAGES.map(([, route]) => route));
-  return html.replace(/(\shref=")(\/[^"#?]*)([^"]*")/g, (whole, head, route, tail) => (routes.has(route) ? head + '/' + lang + route + tail : whole));
+  const withHref = html.replace(/(\shref=")(\/[^"#?]*)([^"]*")/g, (whole, head, route, tail) => (routes.has(route) ? head + '/' + lang + route + tail : whole));
+  // 인라인 스크립트 안의 페이지 주소 문자열('/docs/#workflow' 같은 이동 주소)도 같은 언어로 — src 가 있는 스크립트는 건드리지 않는다
+  return withHref.replace(/(<script>)([\s\S]*?)(<\/script>)/g, (whole, open, code, close) => open + code.replace(
+    /(['"])(\/[^'"#?]*)([^'"]*)\1/g,
+    (literal, quote, route, rest) => (routes.has(route) ? quote + '/' + lang + route + rest + quote : literal),
+  ) + close);
 }
 
 // 언어 링크(data-set-lang)는 같은 페이지의 각 언어 주소 · 지금 언어에 aria-current
