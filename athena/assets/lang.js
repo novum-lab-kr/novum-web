@@ -1,6 +1,6 @@
 /* 언어 주소 · 언어 링크. 페이지는 언어마다 따로 있다 — 영어 / · /features/ …, 그 밖의 언어 /ko/ · /ja/ · /zh/ 아래 같은 경로.
    언어판은 deploy/gen-athena-lang.mjs 가 영어 페이지와 /assets/i18n/<언어>.js 사전으로 미리 만들어 둔다(브라우저에서 바꾸지 않는다).
-   언어 정하기: ?lang= 이 붙은 예전 링크 → 그 언어 주소로. 영어 주소에서는 이 브라우저에서 고른 언어(localStorage)가 있으면 그 주소로.
+   언어 정하기: ?lang= 이 붙은 예전 링크 → 그 언어를 기억하고 그 언어 주소로. 영어 주소에서는 이 브라우저에서 고른 언어(localStorage)가 있으면 그 주소로.
    언어 주소(/ko/ …)로 들어오면 그 언어 그대로. 브라우저 언어는 보지 않는다(덕배 2026-10-28, 처음은 늘 영어) */
 (function () {
   var LANGS = ['en', 'ko', 'ja', 'zh'];
@@ -24,7 +24,11 @@
   function wanted() {
     var q = null;
     try { q = new URLSearchParams(location.search).get('lang'); } catch (e) {}
-    if (LANGS.indexOf(q) >= 0) return q;
+    if (LANGS.indexOf(q) >= 0) {
+      // ?lang= 은 이동하면서 지우므로, 기억에도 남겨 옮겨 간 영어 주소에서 예전 기억 언어로 다시 보내지 않게
+      try { localStorage.setItem(KEY, q); } catch (e) {}
+      return q;
+    }
     if (page !== 'en') return page;
     try { var s = localStorage.getItem(KEY); if (LANGS.indexOf(s) >= 0) return s; } catch (e) {}
     return 'en';
