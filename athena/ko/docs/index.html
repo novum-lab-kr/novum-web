@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="ko" data-lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-t="o.title">문서 — Athena Studio</title>
+<meta name="description" data-ta="content:o.desc" content="Athena Studio 시작하기, 단축키, 데이터와 보안, 비교, 자주 묻는 질문.">
+<meta property="og:title" content="문서 — Athena Studio">
+<meta property="og:description" content="Athena Studio 시작하기, 단축키, 데이터와 보안, 비교, 자주 묻는 질문.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://athena.novum-lab.com/ko/docs/">
+<meta property="og:image" content="https://athena.novum-lab.com/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://athena.novum-lab.com/ko/docs/">
+<!-- seo:start · deploy/gen-athena-lang.mjs 가 만든다(손으로 고치지 않는다) -->
+<link rel="alternate" hreflang="en" href="https://athena.novum-lab.com/docs/">
+<link rel="alternate" hreflang="ko" href="https://athena.novum-lab.com/ko/docs/">
+<link rel="alternate" hreflang="ja" href="https://athena.novum-lab.com/ja/docs/">
+<link rel="alternate" hreflang="zh-Hans" href="https://athena.novum-lab.com/zh/docs/">
+<link rel="alternate" hreflang="x-default" href="https://athena.novum-lab.com/docs/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://novum-lab.com/#organization",
+      "name": "Novum Lab",
+      "url": "https://novum-lab.com"
+    },
+    {
+      "@type": "FAQPage",
+      "url": "https://athena.novum-lab.com/ko/docs/#faq",
+      "inLanguage": "ko",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "쓸 수 있는 맥",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "macOS 13 Ventura 이상이면 Apple Silicon · Intel 맥 모두 됩니다. 다운로드는 무료입니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "가격",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Athena Studio는 무료로 받아서 쓸 수 있습니다. 에이전트는 내 Claude Code나 Codex 요금제로 돌아서, 사용량은 평소처럼 그 회사가 청구합니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Claude Code나 Codex 필수 여부",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "네, 둘 중 하나 이상이 내 맥에 로그인돼 있어야 합니다. 에이전트는 어느 쪽으로도 돌아갑니다. PR 자동 리뷰는 Claude Code를 쓰고, Codex도 있으면 다른 모델의 리뷰어가 하나 더 붙습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "에이전트의 자동 머지 여부",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "내가 켰을 때만입니다. 자동 머지는 기본으로 꺼져 있고 레포마다 정합니다. 머지마다 마지막 클릭을 내가 하도록 둘 수도 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "앱을 닫은 뒤의 에이전트",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "네. 앱을 꺼도 터미널과 에이전트는 뒤에서 계속 돌아갑니다. 다시 열면 같은 탭 · 같은 배치로 돌아옵니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "여러 회사 · 프로젝트에서 쓰기",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "네. 회사마다 레포 · 에이전트 · 규칙을 담은 팩을 만듭니다. 팩을 바꿔도 다른 팩의 일은 멈추지 않고, 팩을 내보내 팀과 나눌 수 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "윈도우 · 리눅스 지원",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "지금은 맥 앱만 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "버그 신고와 제안",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GitHub에 이슈를 남겨 주십시오. 버그 신고나 기능 제안 양식을 고르면 됩니다."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- seo:end -->
+<meta name="theme-color" content="#09090b">
+<link rel="icon" type="image/png" href="/assets/favicon-white.png">
+<link rel="apple-touch-icon" href="/assets/app-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=20261030a">
+<script src="/assets/analytics.js?v=20261029a" async></script>
+<script src="/assets/lang.js?v=20261030b"></script>
+<script src="/assets/motion.js?v=20261028i" defer></script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/ko/"><img src="/assets/owl-white.png" alt="">Athena Studio</a>
+    <nav>
+      <a class="nav-x" href="/ko/features/" data-t="nav.features">기능</a>
+      <a class="nav-x" href="/ko/docs/" aria-current="page" data-t="nav.docs">문서</a>
+      <a class="nav-x" href="/ko/releases/" data-t="nav.releases">업데이트 내역</a>
+      <a class="btn sm gold" href="/ko/download/" data-t="nav.download">다운로드</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="page-head">
+  <div class="wrap">
+    <p class="eyebrow"><i></i><span data-t="nav.docs">문서</span></p>
+    <h1 class="grad" data-t="o.h1">Athena Studio 사용 안내</h1>
+    <p class="lead" data-t="doc.lead">앱을 설치하고, 첫 팩을 만들고, 첫 작업을 끝내기까지. 그 아래는 필요할 때 찾아보는 참고 자료입니다.</p>
+  </div>
+</div>
+
+<div class="wrap doc-wrap">
+  <nav class="doc-toc" aria-label="Docs">
+    <div class="doc-toc-in">
+        <a href="#before" data-t="doc.n.before">설치 전에</a>
+        <a href="#install" data-t="doc.n.install">설치하고 열기</a>
+        <a href="#setup" data-t="s.label">첫 설정</a>
+        <a href="#workflow" data-t="doc.n.workflow">첫 작업</a>
+        <a href="#app" data-t="doc.n.app">앱 둘러보기</a>
+        <a href="#settings" data-t="doc.n.settings">설정</a>
+        <a href="#shortcuts" data-t="f.k.label">단축키</a>
+        <a href="#update" data-t="doc.n.update">업데이트</a>
+        <a href="#security" data-t="h.s.label">데이터와 보안</a>
+        <a href="#troubleshooting" data-t="doc.n.trouble">문제 해결</a>
+        <a href="#faq">FAQ</a>
+    </div>
+  </nav>
+  <div class="doc-body">
+<span id="start"></span>
+<section class="doc-sec" id="before">
+  <p class="doc-label" data-t="doc.n.before">설치 전에</p>
+  <h2 data-t="doc.b.h">먼저 확인할 것</h2>
+  <p class="doc-p" data-t="doc.b.p">Athena Studio는 내 맥에서 돌고, 이미 쓰는 코딩 에이전트를 움직입니다.</p>
+  <ul class="req">
+      <li><b data-t="d.r1">macOS</b><span data-t="d.r1p">macOS 13 Ventura 이상</span></li>
+      <li><b data-t="d.r2">AI 에이전트</b><span data-t="d.r2p"><a href="https://docs.anthropic.com/en/docs/claude-code/setup" target="_blank" rel="noopener">Claude Code</a> 또는 <a href="https://github.com/openai/codex" target="_blank" rel="noopener">Codex</a>에 내 계정으로 로그인해 두십시오.</span></li>
+      <li><b data-t="d.r3">git · Python 3</b><span data-t="d.r3p">없으면 처음 켤 때 macOS가 설치를 띄워 줍니다. 미리 설치하려면 터미널에서 <code>xcode-select --install</code></span></li>
+      <li><b>Node.js</b><span data-t="d.r4p">Athena의 스크립트가 씁니다</span></li>
+      <li><b data-t="d.r5">GitHub</b><span data-t="d.r5p">내 레포에 접근할 수 있어야 합니다. PR 올리기와 자동 리뷰에는 <a href="https://cli.github.com" target="_blank" rel="noopener">gh CLI</a>가 필요합니다.</span></li>
+      </ul>
+</section>
+
+<section class="doc-sec" id="install">
+  <p class="doc-label" data-t="doc.n.install">설치하고 열기</p>
+  <h2 data-t="doc.i.h">Athena Studio 설치</h2>
+  <ol class="h3-steps-list">
+    <li data-t="doc.i1"><a href="/ko/download/">다운로드 페이지</a>에서 내 맥의 칩에 맞는 .dmg를 받습니다.</li>
+    <li data-t="d.s1p">받은 파일을 열고 Athena Studio를 응용 프로그램 폴더로 끌어다 놓습니다.</li>
+    <li data-t="doc.i3">Athena Studio를 엽니다. Apple의 서명 · 공증을 받아서 보안 경고 없이 열립니다. git이나 Python 3가 없으면 macOS가 Apple Command Line Tools 설치를 띄워 줍니다.</li>
+    <li data-t="doc.i4">처음 켜면 시작 화면에 [새 팩 만들기]와 [팩 가져오기]가 있습니다. 팩은 회사나 프로젝트 하나의 레포 · 에이전트 · 규칙 묶음입니다.</li>
+  </ol>
+</section>
+
+<section class="doc-sec" id="setup">
+  <p class="doc-label" data-t="s.label">첫 설정</p>
+  <h2 data-t="s.h">첫 설정: 레포를 익히는 Athena</h2>
+  <p class="doc-p" data-t="s.p">팩을 만들면 Athena가 설정을 대신 합니다. 코드는 읽기만 합니다.</p>
+  <div class="doc-three">
+    <div class="you"><b data-t="doc.su.you.h">내가 확인할 것</b><span data-t="doc.su.you.p">넣을 레포, 회사 이름, 에이전트 이름, 자동 리뷰를 켤 레포. 틀린 추측은 여기서 고칩니다.</span></div>
+    <div><b data-t="doc.su.ath.h">Athena가 준비하는 것</b><span data-t="doc.su.ath.p">레포마다 규칙 · 노트가 붙은 에이전트, 라우팅 표, QA 점검, 코드 기준점. 레포는 바꾸지 않고, 설치나 fetch는 먼저 물어봅니다.</span></div>
+    <div><b data-t="doc.su.end.h">끝나면</b><span data-t="doc.su.end.p">Athena가 만든 것과 아직 내가 볼 것을 보고합니다. 그다음 athena 작업 공간에서 첫 작업을 맡기면 됩니다.</span></div>
+  </div>
+  <figure class="flowd" aria-label="첫 설정 때 Athena가 하는 일" data-ta="aria-label:s.d.aria">
+      <svg class="flowd-wide" viewBox="0 0 1200 560" role="img" aria-hidden="true">
+        <defs>
+        <marker id="sah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1.2L9 5L1 8.8Q2.6 5 1 1.2z" class="fd-head"/></marker>
+        </defs>
+        <style>
+        .su-panel { fill: none; stroke: var(--line-2, #3a4048); stroke-width: 1.2; stroke-dasharray: 5 5; }
+        .su-h { fill: var(--muted, #9aa3ad); font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+        .su-t { fill: var(--text, #e8eaed); font-size: 15px; font-weight: 600; }
+        .su-s { fill: var(--muted, #9aa3ad); font-size: 13px; }
+        .su-i { fill: var(--text, #e8eaed); font-size: 13.5px; }
+        .su-dot { fill: #22262c; stroke: #8a939c; stroke-width: 1.5; }
+        .su-dot-you { fill: rgba(217,181,111,.12); stroke: rgba(217,181,111,.8); stroke-width: 1.5; }
+        .su-n { fill: var(--text, #e8eaed); font-size: 12px; font-weight: 700; }
+        .su-li { fill: #8a939c; }
+        </style>
+        <rect class="su-panel" x="20" y="40" width="240" height="420" rx="16"/>
+        <text class="su-h" x="40" y="70" data-t="s.d.mac">내 맥</text>
+        <g><rect class="fd-box" x="40" y="88" width="200" height="64" rx="12"/><text class="su-t" x="58" y="115" data-t="s.d.r1">web</text><text class="su-s" x="58" y="137" data-t="s.d.r1s">프런트엔드 · main</text></g>
+        <g><rect class="fd-box" x="40" y="166" width="200" height="64" rx="12"/><text class="su-t" x="58" y="193" data-t="s.d.r2">api</text><text class="su-s" x="58" y="215" data-t="s.d.r2s">백엔드 · main</text></g>
+        <g><rect class="fd-box" x="40" y="244" width="200" height="64" rx="12"/><text class="su-t" x="58" y="271" data-t="s.d.r3">mobile</text><text class="su-s" x="58" y="293" data-t="s.d.r3s">앱 · develop</text></g>
+        <g><rect class="fd-box" x="40" y="322" width="200" height="64" rx="12"/><text class="su-t" x="58" y="349" data-t="s.d.r4">ui-kit</text><text class="su-s" x="58" y="371" data-t="s.d.r4s">공용 패키지 · main</text></g>
+        <text class="su-s" x="140" y="430" text-anchor="middle" data-t="s.d.found">폴더 3단계 깊이까지 찾습니다</text>
+        <path class="fd-l" d="M260 250 H306" marker-end="url(#sah)"/>
+        <text class="fd-nl" x="283" y="240" text-anchor="middle" data-t="s.d.reads2">읽기</text>
+        <g><rect class="fd-box fd-lead" x="310" y="40" width="320" height="76" rx="14"/><text class="fd-t" x="470" y="72" text-anchor="middle">Athena</text><text class="fd-s" x="470" y="96" text-anchor="middle" data-t="s.d.lead">첫 설정 · 운영 브랜치 읽기</text></g>
+        <rect class="fd-box" x="310" y="132" width="320" height="328" rx="14"/>
+        <path d="M338 168 V412" stroke="#5d656e" stroke-width="1.4"/>
+        <g><circle class="su-dot" cx="338" cy="168" r="12"/><text class="su-n" x="338" y="172" text-anchor="middle">1</text><text class="su-i" x="362" y="173" data-t="s.d.st1">레포 찾기 · 종류와 브랜치 추측</text></g>
+        <g><circle class="su-dot-you" cx="338" cy="208" r="12"/><text class="su-n" x="338" y="212" text-anchor="middle">2</text><text class="su-i" x="362" y="213" data-t="s.d.st2">레포 · 이름 · 자동 리뷰를 내가 확인</text></g>
+        <g><circle class="su-dot" cx="338" cy="248" r="12"/><text class="su-n" x="338" y="252" text-anchor="middle">3</text><text class="su-i" x="362" y="253" data-t="s.d.st3">레포마다 에이전트 만들기</text></g>
+        <g><circle class="su-dot" cx="338" cy="288" r="12"/><text class="su-n" x="338" y="292" text-anchor="middle">4</text><text class="su-i" x="362" y="293" data-t="s.d.st4">코드를 읽고 채우기</text><text class="su-s" x="362" y="311" data-t="s.d.st4s">레포마다 작업자 하나씩, 동시에</text></g>
+        <g><circle class="su-dot" cx="338" cy="338" r="12"/><text class="su-n" x="338" y="342" text-anchor="middle">5</text><text class="su-i" x="362" y="343" data-t="s.d.st5">화면마다 QA 점검 초안</text></g>
+        <g><circle class="su-dot" cx="338" cy="376" r="12"/><text class="su-n" x="338" y="380" text-anchor="middle">6</text><text class="su-i" x="362" y="381" data-t="s.d.st6">점검 실행 · 코드 기준점 잡기</text></g>
+        <g><circle class="su-dot" cx="338" cy="414" r="12" style="stroke-dasharray:3 3"/><text class="su-n" x="338" y="418" text-anchor="middle">7</text><text class="su-i" x="362" y="419" data-t="s.d.st7">다이어그램 그리기(선택)</text></g>
+        <path class="fd-l" d="M630 250 H676" marker-end="url(#sah)"/>
+        <text class="fd-nl" x="653" y="240" text-anchor="middle" data-t="s.d.writes">쓰기</text>
+        <rect class="su-panel" x="680" y="40" width="500" height="420" rx="16"/>
+        <text class="su-h" x="700" y="70" data-t="s.d.pack">내 팩</text>
+        <text class="su-s" x="1160" y="70" text-anchor="end" data-t="s.d.packmore">+ 레포마다 에이전트 하나(ui-kit · …)</text>
+        <g>
+        <rect class="fd-box fd-agent" x="700" y="88" width="145" height="198" rx="12"/>
+        <text class="su-t" x="716" y="114" data-t="s.d.a1">web-fe</text><text class="su-s" x="716" y="133" data-t="s.d.a1s">web 담당 에이전트</text>
+        <circle class="su-li" cx="720" cy="160" r="2.5"/><text class="su-i" x="730" y="165" data-t="s.d.rules">규칙</text>
+        <circle class="su-li" cx="720" cy="184" r="2.5"/><text class="su-i" x="730" y="189" data-t="s.d.notes">구조 노트</text>
+        <circle class="su-li" cx="720" cy="208" r="2.5"/><text class="su-i" x="730" y="213" data-t="s.d.gotchas">주의할 점 노트</text>
+        <circle class="su-li" cx="720" cy="232" r="2.5"/><text class="su-i" x="730" y="237" data-t="s.d.check">점검 스크립트</text>
+        <circle class="su-li" cx="720" cy="256" r="2.5"/><text class="su-i" x="730" y="261" data-t="s.d.qa2">QA 점검</text>
+        </g>
+        <g>
+        <rect class="fd-box fd-agent" x="852" y="88" width="145" height="198" rx="12"/>
+        <text class="su-t" x="868" y="114" data-t="s.d.a2">api-be</text><text class="su-s" x="868" y="133" data-t="s.d.a2s">api 담당 에이전트</text>
+        <circle class="su-li" cx="872" cy="160" r="2.5"/><text class="su-i" x="882" y="165" data-t="s.d.rules">규칙</text>
+        <circle class="su-li" cx="872" cy="184" r="2.5"/><text class="su-i" x="882" y="189" data-t="s.d.notes">구조 노트</text>
+        <circle class="su-li" cx="872" cy="208" r="2.5"/><text class="su-i" x="882" y="213" data-t="s.d.gotchas">주의할 점 노트</text>
+        <circle class="su-li" cx="872" cy="232" r="2.5"/><text class="su-i" x="882" y="237" data-t="s.d.check">점검 스크립트</text>
+        <text class="su-s" x="868" y="261" data-t="s.d.noqa">화면이 없어 QA 없음</text>
+        </g>
+        <g>
+        <rect class="fd-box fd-agent" x="1004" y="88" width="145" height="198" rx="12"/>
+        <text class="su-t" x="1020" y="114" data-t="s.d.a3">mobile-app</text><text class="su-s" x="1020" y="133" data-t="s.d.a3s">mobile 담당 에이전트</text>
+        <circle class="su-li" cx="1024" cy="160" r="2.5"/><text class="su-i" x="1034" y="165" data-t="s.d.rules">규칙</text>
+        <circle class="su-li" cx="1024" cy="184" r="2.5"/><text class="su-i" x="1034" y="189" data-t="s.d.notes">구조 노트</text>
+        <circle class="su-li" cx="1024" cy="208" r="2.5"/><text class="su-i" x="1034" y="213" data-t="s.d.gotchas">주의할 점 노트</text>
+        <circle class="su-li" cx="1024" cy="232" r="2.5"/><text class="su-i" x="1034" y="237" data-t="s.d.check">점검 스크립트</text>
+        <text class="su-s" x="1020" y="261" data-t="s.d.apprules">앱 규칙(Expo)</text>
+        </g>
+        <g><rect class="fd-box fd-learn" x="700" y="302" width="460" height="46" rx="10"/><text class="su-i" x="718" y="330" data-t="s.d.route"><tspan style="font-weight:600">라우팅</tspan>: 어떤 요청이 어느 레포로 가는지</text></g>
+        <g><rect class="fd-box fd-learn" x="700" y="356" width="460" height="46" rx="10"/><text class="su-i" x="718" y="384" data-t="s.d.svc"><tspan style="font-weight:600">서비스 개요</tspan>: 앱마다 하는 일과 기술 스택</text></g>
+        <g><rect class="fd-box fd-learn" x="700" y="410" width="460" height="38" rx="10"/><text class="su-i" x="718" y="434" data-t="s.d.fp"><tspan style="font-weight:600">기준점</tspan>: 다음 동기화 때 바뀐 것만 고칩니다</text></g>
+        <path class="fd-l" d="M470 460 V490" marker-end="url(#sah)"/>
+        <g><rect class="fd-box fd-you" x="310" y="494" width="320" height="56" rx="12"/><text class="fd-t" x="470" y="518" text-anchor="middle" data-t="s.d.report">보고</text><text class="fd-s" x="470" y="539" text-anchor="middle" data-t="s.d.reports2">만든 것 · 아직 내가 볼 것</text></g>
+        <text class="fd-nl" x="920" y="526" text-anchor="middle" data-t="s.d.note">레포는 읽기만 합니다. 설치나 fetch는 먼저 물어봅니다.</text>
+      </svg>
+      <svg class="flowd-tall" viewBox="0 0 360 1210" role="img" aria-hidden="true">
+        <defs>
+        <marker id="sahm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1.2L9 5L1 8.8Q2.6 5 1 1.2z" class="fd-head"/></marker>
+        </defs>
+        <style>
+        .su-h { fill: var(--muted, #9aa3ad); font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+        .su-t { fill: var(--text, #e8eaed); font-size: 14px; font-weight: 600; }
+        .su-s { fill: var(--muted, #9aa3ad); font-size: 12px; }
+        .su-i { fill: var(--text, #e8eaed); font-size: 13px; }
+        .su-dot { fill: #22262c; stroke: #8a939c; stroke-width: 1.5; }
+        .su-dot-you { fill: rgba(217,181,111,.12); stroke: rgba(217,181,111,.8); stroke-width: 1.5; }
+        .su-n { fill: var(--text, #e8eaed); font-size: 11px; font-weight: 700; }
+        .su-li { fill: #8a939c; }
+        </style>
+        <text class="su-h" x="20" y="30" data-t="s.d.mac">내 맥</text>
+        <g><rect class="fd-box" x="20" y="44" width="155" height="56" rx="12"/><text class="su-t" x="36" y="68" data-t="s.d.r1">web</text><text class="su-s" x="36" y="88" data-t="s.d.r1s">프런트엔드 · main</text></g>
+        <g><rect class="fd-box" x="185" y="44" width="155" height="56" rx="12"/><text class="su-t" x="201" y="68" data-t="s.d.r2">api</text><text class="su-s" x="201" y="88" data-t="s.d.r2s">백엔드 · main</text></g>
+        <g><rect class="fd-box" x="20" y="108" width="155" height="56" rx="12"/><text class="su-t" x="36" y="132" data-t="s.d.r3">mobile</text><text class="su-s" x="36" y="152" data-t="s.d.r3s">앱 · develop</text></g>
+        <g><rect class="fd-box" x="185" y="108" width="155" height="56" rx="12"/><text class="su-t" x="201" y="132" data-t="s.d.r4">ui-kit</text><text class="su-s" x="201" y="152" data-t="s.d.r4sm">공용 패키지</text></g>
+        <text class="su-s" x="180" y="184" text-anchor="middle" data-t="s.d.found">폴더 3단계 깊이까지 찾습니다</text>
+        <path class="fd-l" d="M180 194 V224" marker-end="url(#sahm)"/>
+        <text class="fd-nl" x="192" y="214" style="font-size:12px" data-t="s.d.reads2">읽기</text>
+        <g><rect class="fd-box fd-lead" x="20" y="230" width="320" height="64" rx="14"/><text class="fd-t" x="180" y="257" text-anchor="middle">Athena</text><text class="fd-s" x="180" y="280" text-anchor="middle" data-t="s.d.lead">첫 설정 · 운영 브랜치 읽기</text></g>
+        <rect class="fd-box" x="20" y="304" width="320" height="300" rx="14"/>
+        <path d="M44 332 V582" stroke="#5d656e" stroke-width="1.4"/>
+        <g><circle class="su-dot" cx="44" cy="332" r="11"/><text class="su-n" x="44" y="336" text-anchor="middle">1</text><text class="su-i" x="66" y="337" data-t="s.d.st1">레포 찾기 · 종류와 브랜치 추측</text></g>
+        <g><circle class="su-dot-you" cx="44" cy="372" r="11"/><text class="su-n" x="44" y="376" text-anchor="middle">2</text><text class="su-i" x="66" y="377" data-t="s.d.st2">레포 · 이름 · 자동 리뷰를 내가 확인</text></g>
+        <g><circle class="su-dot" cx="44" cy="412" r="11"/><text class="su-n" x="44" y="416" text-anchor="middle">3</text><text class="su-i" x="66" y="417" data-t="s.d.st3">레포마다 에이전트 만들기</text></g>
+        <g><circle class="su-dot" cx="44" cy="452" r="11"/><text class="su-n" x="44" y="456" text-anchor="middle">4</text><text class="su-i" x="66" y="457" data-t="s.d.st4">코드를 읽고 채우기</text><text class="su-s" x="66" y="475" data-t="s.d.st4s">레포마다 작업자 하나씩, 동시에</text></g>
+        <g><circle class="su-dot" cx="44" cy="502" r="11"/><text class="su-n" x="44" y="506" text-anchor="middle">5</text><text class="su-i" x="66" y="507" data-t="s.d.st5">화면마다 QA 점검 초안</text></g>
+        <g><circle class="su-dot" cx="44" cy="542" r="11"/><text class="su-n" x="44" y="546" text-anchor="middle">6</text><text class="su-i" x="66" y="547" data-t="s.d.st6">점검 실행 · 코드 기준점 잡기</text></g>
+        <g><circle class="su-dot" cx="44" cy="582" r="11" style="stroke-dasharray:3 3"/><text class="su-n" x="44" y="586" text-anchor="middle">7</text><text class="su-i" x="66" y="587" data-t="s.d.st7">다이어그램 그리기(선택)</text></g>
+        <path class="fd-l" d="M180 604 V634" marker-end="url(#sahm)"/>
+        <text class="fd-nl" x="192" y="624" style="font-size:12px" data-t="s.d.writes">쓰기</text>
+        <text class="su-h" x="20" y="660" data-t="s.d.pack">내 팩</text>
+        <text class="su-s" x="340" y="660" text-anchor="end" data-t="s.d.packmore2">+ ui-kit · …</text>
+        <g>
+        <rect class="fd-box fd-agent" x="20" y="672" width="155" height="180" rx="12"/>
+        <text class="su-t" x="34" y="696" data-t="s.d.a1">web-fe</text><text class="su-s" x="34" y="714" data-t="s.d.a1s">web 담당 에이전트</text>
+        <circle class="su-li" cx="38" cy="736" r="2.3"/><text class="su-i" x="47" y="741" data-t="s.d.rules">규칙</text>
+        <circle class="su-li" cx="38" cy="758" r="2.3"/><text class="su-i" x="47" y="763" data-t="s.d.notes">구조 노트</text>
+        <circle class="su-li" cx="38" cy="780" r="2.3"/><text class="su-i" x="47" y="785" data-t="s.d.gotchas">주의할 점 노트</text>
+        <circle class="su-li" cx="38" cy="802" r="2.3"/><text class="su-i" x="47" y="807" data-t="s.d.check">점검 스크립트</text>
+        <circle class="su-li" cx="38" cy="824" r="2.3"/><text class="su-i" x="47" y="829" data-t="s.d.qa2">QA 점검</text>
+        </g>
+        <g>
+        <rect class="fd-box fd-agent" x="185" y="672" width="155" height="180" rx="12"/>
+        <text class="su-t" x="199" y="696" data-t="s.d.a2">api-be</text><text class="su-s" x="199" y="714" data-t="s.d.a2s">api 담당 에이전트</text>
+        <circle class="su-li" cx="203" cy="736" r="2.3"/><text class="su-i" x="212" y="741" data-t="s.d.rules">규칙</text>
+        <circle class="su-li" cx="203" cy="758" r="2.3"/><text class="su-i" x="212" y="763" data-t="s.d.notes">구조 노트</text>
+        <circle class="su-li" cx="203" cy="780" r="2.3"/><text class="su-i" x="212" y="785" data-t="s.d.gotchas">주의할 점 노트</text>
+        <circle class="su-li" cx="203" cy="802" r="2.3"/><text class="su-i" x="212" y="807" data-t="s.d.check">점검 스크립트</text>
+        <text class="su-s" x="199" y="829" data-t="s.d.noqa">화면이 없어 QA 없음</text>
+        </g>
+        <g><rect class="fd-box fd-agent" x="20" y="862" width="320" height="40" rx="10"/><text class="su-t" x="34" y="887" data-t="s.d.a3">mobile-app</text><text class="su-s" x="326" y="887" text-anchor="end" data-t="s.d.a3m">같은 노트 · 앱 규칙(Expo)</text></g>
+        <g><rect class="fd-box fd-learn" x="20" y="912" width="320" height="52" rx="10"/><text class="su-t" x="36" y="934" data-t="s.d.routet">라우팅</text><text class="su-s" x="36" y="953" data-t="s.d.routes">어떤 요청이 어느 레포로 가는지</text></g>
+        <g><rect class="fd-box fd-learn" x="20" y="972" width="320" height="52" rx="10"/><text class="su-t" x="36" y="994" data-t="s.d.svct">서비스 개요</text><text class="su-s" x="36" y="1013" data-t="s.d.svcs">앱마다 하는 일과 기술 스택</text></g>
+        <g><rect class="fd-box fd-learn" x="20" y="1032" width="320" height="52" rx="10"/><text class="su-t" x="36" y="1054" data-t="s.d.fpt">기준점</text><text class="su-s" x="36" y="1073" data-t="s.d.fps">다음 동기화 때 바뀐 것만 고칩니다</text></g>
+        <path class="fd-l" d="M180 1084 V1106" marker-end="url(#sahm)"/>
+        <g><rect class="fd-box fd-you" x="20" y="1110" width="320" height="56" rx="12"/><text class="fd-t" x="180" y="1134" text-anchor="middle" data-t="s.d.report">보고</text><text class="fd-s" x="180" y="1155" text-anchor="middle" data-t="s.d.reports2">만든 것 · 아직 내가 볼 것</text></g>
+        <text class="fd-nl" x="180" y="1192" text-anchor="middle" style="font-size:12px" data-t="s.d.notem">레포는 읽기만 합니다. 설치나 fetch는 먼저 물어봅니다.</text>
+      </svg>
+        <figcaption data-t="s.d.cap">첫 설정: Athena가 레포를 읽고 팩을 만들어 줍니다.</figcaption>
+  </figure>
+  <details class="doc-more">
+    <summary data-t="doc.su.more">Athena가 하는 일, 단계별로</summary>
+        <ol class="h3-steps-list">
+          <li data-t="s.1">내 맥에서 레포를 찾고, 레포마다 종류(프런트엔드 · 백엔드)와 운영 브랜치, PR 기준 브랜치를 추측합니다.</li>
+          <li data-t="s.2">어떤 레포를 넣을지, 회사 이름, 에이전트 이름, 자동 리뷰를 켤 레포를 나에게 확인받습니다. 틀린 추측은 이때 고칩니다.</li>
+          <li data-t="s.3">레포마다 에이전트를 만들고 규칙, 구조 노트, 주의할 점 노트, 점검 스크립트를 붙입니다.</li>
+          <li data-t="s.4">레포마다 운영 브랜치를 읽고 에이전트가 맡을 일, 꼭 지킬 규칙, 언어 · 타입 상태, 짧은 서비스 개요를 채웁니다. 어떤 요청을 어느 레포로 보낼지 정하는 라우팅 표는 Athena가 씁니다.</li>
+          <li data-t="s.5">앱 화면마다 QA 점검 초안을 씁니다.</li>
+          <li data-t="s.6">점검을 한 번 돌리고 코드 기준점을 잡아 둡니다. 그래서 다음 업데이트 때는 바뀐 부분만 손댑니다.</li>
+          <li data-t="s.7">원하면 서비스마다 구조, 화면 지도, 요청 흐름 다이어그램을 그립니다.</li>
+        </ol>
+  </details>
+  <p class="doc-note" data-t="doc.su.imp">팀에서 받은 팩이 있다면 [파일 → 팩 가져오기…]에서 압축 파일 · 팩 폴더 · git 레포를 고르십시오.</p>
+</section>
+
+<section class="doc-sec" id="workflow">
+  <p class="doc-label" data-t="doc.n.workflow">첫 작업</p>
+  <h2 data-t="doc.w.h">요청 하나가 머지되기까지</h2>
+  <p class="doc-p" data-t="doc.w.p">아래 데모 프로젝트는 web · api · mobile 레포가 있는 작은 가게입니다. 내 레포도 똑같이 흘러갑니다.</p>
+  <div class="doc-steps">
+    <div class="doc-step has-fig narrow" id="w-ask">
+      <div class="doc-step-txt">
+        <span class="n">01</span>
+        <h3 data-t="doc.w1.h">Athena에게 요청</h3>
+        <p data-t="doc.w1.p">athena 작업 공간에 바꾸고 싶은 내용과 관련 레포를 씁니다. 평소 말투로 쓰면 됩니다.</p>
+        <blockquote class="h3-quote"><span data-t="h.b1.q">장바구니에 담고 구매하지 않는 손님이 많아. web에 저장한 장바구니를 알려 주는 배너를 넣고, mobile에서도 쓸 수 있게 api의 주문 내역을 페이지로 나눠 줘.</span></blockquote>
+      </div>
+      <figure class="shot sm"><img src="/assets/shots/athena-pane.webp" width="1066" height="1290" loading="lazy" alt="Athena pane: 요청, 계획서 두 개, api-be와 web-fe에게 하나씩 맡김, 그리고 각 에이전트가 하는 일 요약." data-ta="alt:h.b1.alt"></figure>
+    </div>
+    <div class="doc-step has-fig" id="w-plan">
+      <div class="doc-step-txt">
+        <span class="n">02</span>
+        <h3 data-t="doc.w2.h">계획 확인</h3>
+        <p data-t="doc.w2.p">Athena가 레포마다 계획서를 쓰고 그 레포의 에이전트에게 맡깁니다. 에이전트는 새 pane에서 자기 브랜치로 일합니다. 계획에 고를 게 여러 개면 Athena가 옆 브라우저에 결정 콘솔을 열어 줍니다.</p>
+      </div>
+      <figure class="shot"><img src="/assets/shots/agents.webp" width="1600" height="1200" loading="lazy" alt="Athena와 web-fe가 나란히 일하고, 아래 에이전트 모니터에 두 에이전트의 작업 내역이 올라오는 화면." data-ta="alt:h.b2.alt2"></figure>
+    </div>
+    <div class="doc-step has-fig narrow" id="w-answer">
+      <div class="doc-step-txt">
+        <span class="n">03</span>
+        <h3 data-t="doc.w3.h">질문에 답하기</h3>
+        <p data-t="doc.w3.p">에이전트가 결정을 기다리면 오른쪽 위 [작업]에 점이 뜨고, 질문은 [나를 기다리는 것]에 있습니다. 눌러서 답을 고르고, 필요하면 메모를 붙여 보냅니다. 메뉴 막대 부엉이에도 빨간 점이 뜹니다.</p>
+      </div>
+      <figure class="shot sm"><img src="/assets/shots/answer-modal.webp" width="958" height="774" loading="lazy" alt="api 에이전트의 질문: 주문 내역 기본 페이지 크기, 20(추천) 또는 50, 그리고 [답 보내기] 버튼." data-ta="alt:h.b3.alt1"></figure>
+    </div>
+    <div class="doc-step" id="w-follow">
+      <div class="doc-step-txt">
+        <span class="n">04</span>
+        <h3 data-t="doc.w4.h">진행 보기</h3>
+        <p data-t="doc.w4.p">창 아래 에이전트 모니터에 에이전트마다 읽고 고치고 실행한 것이 올라옵니다. 에이전트 하나의 계획 · 막힌 것 · PR은 그 pane 머리 줄에서 상세를 열어 봅니다.</p>
+      </div>
+    </div>
+    <div class="doc-step has-fig" id="w-diff">
+      <div class="doc-step-txt">
+        <span class="n">05</span>
+        <h3 data-t="doc.w5.h">바뀐 코드 확인</h3>
+        <p data-t="doc.w5.p">에이전트는 draft PR을 열기 전에 테스트와 검사를 돌립니다. 오른쪽 Explorer에서 [변경]을 열고 파일을 누르면 터미널 옆에서 diff를 읽을 수 있습니다.</p>
+      </div>
+      <figure class="shot"><img src="/assets/shots/explorer-1200.webp" srcset="/assets/shots/explorer-1200.webp 1200w, /assets/shots/explorer.webp 2400w" sizes="(max-width: 900px) 100vw, 640px" width="1200" height="675" loading="lazy" alt="왼쪽은 테스트가 통과한 터미널, 오른쪽은 CartPage.tsx의 diff와 바뀐 파일 목록." data-ta="alt:h.b4.alt"></figure>
+    </div>
+    <div class="doc-step has-fig narrow" id="w-merge">
+      <div class="doc-step-txt">
+        <span class="n">06</span>
+        <h3 data-t="doc.w6.h">머지</h3>
+        <p data-t="doc.w6.p">PR 자동 머지를 켠 레포에서는 PR을 자동으로 리뷰하고 고칩니다. [머지 전에 확인 받기]를 켜 두면 머지는 내 클릭을 기다립니다. 다른 레포는 평소처럼 GitHub에서 머지합니다.</p>
+      </div>
+      <figure class="shot sm"><img src="/assets/shots/settings-pop.webp" width="706" height="600" loading="lazy" alt="설정: web과 api는 PR 자동 머지 켬, web은 머지 전에 확인 받기 켬, mobile은 꺼짐." data-ta="alt:h.b5.alt"></figure>
+    </div>
+    <div class="doc-step" id="w-learn">
+      <div class="doc-step-txt">
+        <span class="n">07</span>
+        <h3 data-t="doc.w7.h">배운 것 남기기</h3>
+        <p data-t="doc.w7.p">머지가 끝나면 학습 리뷰가 노트를 제안합니다. 일감(⌘2)을 열고 [학습]에서 남길 것을 고릅니다. 그 레포의 다음 작업이 이 노트를 읽습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="doc-sec" id="app">
+  <p class="doc-label" data-t="doc.n.app">앱 둘러보기</p>
+  <h2 data-t="doc.a.h">어디에 무엇이 있는지</h2>
+  <dl class="doc-dl">
+      <div><dt data-t="f.ws.label">작업 공간</dt><dd data-t="doc.a.ws">왼쪽 목록에 레포마다 작업 공간이 하나씩 있고, 그 안에 브랜치와 에이전트가 있습니다. 가운데는 탭과 분할 pane이고 pane마다 에이전트 하나입니다. ⌘1로 이 화면에 돌아옵니다.</dd></div>
+      <div><dt data-t="h.f.mon">에이전트 모니터</dt><dd data-t="doc.a.mon">창 맨 아래. 지금 일하는 에이전트만 보여 줍니다. ⌄로 접을 수 있습니다.</dd></div>
+      <div><dt data-t="h.f.work">작업</dt><dd data-t="doc.a.work">탭 줄 오른쪽 위. 나를 기다리는 질문, 진행 중인 일, 최근 24시간 안에 끝난 일.</dd></div>
+      <div><dt data-t="doc.a.boardt">일감(⌘2)</dt><dd data-t="doc.a.board">기본 브라우저로 열립니다. 이슈 · QA · 학습 · 지표 · 보관함. 지금은 한국어만 있습니다.</dd></div>
+      <div><dt data-t="h.f.det">pane 상세</dt><dd data-t="doc.a.det">에이전트 pane 머리 줄 오른쪽 아이콘. 계획 · 진행 · 막힌 것 · 토큰 · PR. Esc로 닫습니다.</dd></div>
+      <div><dt data-t="h.f.exp">Explorer</dt><dd data-t="doc.a.exp">오른쪽. 지금 작업 공간의 [파일]과 [변경]. 바뀐 파일은 diff로 열립니다.</dd></div>
+      <div><dt data-t="doc.a.brt">옆 브라우저</dt><dd data-t="doc.a.br">오른쪽 서랍(⌘⇧B). 계획서 · 결정 콘솔 · 로컬 테스트 화면을 엽니다. 로그인은 평소 브라우저와 따로입니다.</dd></div>
+      <div><dt data-t="h.f.bar">메뉴 막대</dt><dd data-t="doc.a.bar">맥 메뉴 막대의 부엉이. 빨간 점은 열린 질문이나 막힌 계획이 있다는 뜻입니다. 누르면 에이전트마다 상태가 보입니다.</dd></div>
+  </dl>
+</section>
+
+<section class="doc-sec" id="settings">
+  <p class="doc-label" data-t="doc.n.settings">설정</p>
+  <h2 data-t="doc.s.h">Athena Studio 설정 바꾸기</h2>
+  <dl class="doc-dl">
+      <div><dt data-t="doc.s.mt">PR 자동 머지</dt><dd data-t="doc.s.m">탭 줄 맨 오른쪽 ⚙. 레포마다 스위치가 있고, 그 아래에 [머지 전에 확인 받기]가 있습니다. 켜기 전까지는 꺼져 있습니다.</dd></div>
+      <div><dt data-t="doc.s.lt">언어</dt><dd data-t="doc.s.l">[보기 → 언어]. 앱과 에이전트가 같이 바뀝니다. 답 · 계획서 · 이슈 · 커밋 메시지까지.</dd></div>
+      <div><dt data-t="doc.s.nt">알림</dt><dd data-t="doc.s.n">메뉴 막대 부엉이 → [알림 일시 중지]. 1시간 또는 다음 날 아침 9시까지.</dd></div>
+      <div><dt data-t="doc.s.pt">팩</dt><dd data-t="doc.s.p">탭 줄 왼쪽의 팩 이름(⌘⇧P). 바꾸기 · 만들기 · 가져오기 · 내보내기. 다른 팩의 에이전트는 계속 일하고, 내보낼 때 에이전트 대화와 끝나지 않은 브랜치까지 담을 수 있습니다.</dd></div>
+      <div><dt data-t="doc.s.rt">레포 이름 · 이미지</dt><dd data-t="doc.s.r">왼쪽 목록에서 레포를 우클릭합니다. 이름과 이미지는 팩에 저장돼서 팀도 같이 봅니다.</dd></div>
+  </dl>
+</section>
+
+<section class="doc-sec" id="shortcuts">
+  <p class="doc-label" data-t="f.k.label">단축키</p>
+  <h2 data-t="h.k.h2">단축키</h2>
+  <p class="doc-p" data-t="f.k.p">터미널에서도 맥처럼 줄을 편집합니다.</p>
+  <table class="key-table doc-keys">
+        <tr class="kg"><th colspan="2" data-t="doc.k.g1">작업 공간 · pane</th></tr>
+        <tr><td><kbd>⌘</kbd><kbd>1</kbd></td><td data-t="k.work">작업 공간 · 터미널</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>2</kbd></td><td data-t="k.board">일감 열기</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>T</kbd></td><td data-t="k.tab">새 탭</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⇧</kbd><kbd>T</kbd></td><td data-t="k.space">새 작업 공간</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>D</kbd></td><td data-t="k.right">오른쪽으로 나누기</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⇧</kbd><kbd>D</kbd></td><td data-t="k.down">아래로 나누기</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⌥</kbd> <kbd>←</kbd><kbd>→</kbd><kbd>↑</kbd><kbd>↓</kbd></td><td data-t="k.move">pane 사이 이동</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>W</kbd></td><td data-t="k.close">pane 닫기</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⌥</kbd><kbd>W</kbd></td><td data-t="k.closetab">탭 닫기</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⇧</kbd><kbd>[</kbd> <kbd>⌘</kbd><kbd>⇧</kbd><kbd>]</kbd></td><td data-t="k.tabs">이전 · 다음 탭</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⇧</kbd><kbd>↑</kbd> <kbd>⌘</kbd><kbd>⇧</kbd><kbd>↓</kbd></td><td data-t="k.spaces">이전 · 다음 작업 공간</td></tr>
+        <tr class="kg"><th colspan="2" data-t="doc.k.g2">칸 · 팩</th></tr>
+        <tr><td><kbd>⌘</kbd><kbd>B</kbd></td><td data-t="k.left">왼쪽 목록 접기</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⌥</kbd><kbd>B</kbd></td><td data-t="k.rightp">오른쪽 칸 접기</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⇧</kbd><kbd>B</kbd></td><td data-t="k.browser">옆 브라우저</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⇧</kbd><kbd>P</kbd></td><td data-t="k.packs">팩 바꾸기</td></tr>
+        <tr class="kg"><th colspan="2" data-t="doc.k.g3">터미널 입력</th></tr>
+        <tr><td><kbd>⌘</kbd><kbd>←</kbd> <kbd>⌘</kbd><kbd>→</kbd></td><td data-t="k.line">줄 처음 · 줄 끝으로</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⌫</kbd></td><td data-t="k.del">줄 처음까지 지우기</td></tr>
+        <tr><td><kbd>⇧</kbd><kbd>↩</kbd></td><td data-t="k.nl">보내지 않고 줄 바꾸기</td></tr>
+        <tr class="kg"><th colspan="2" data-t="doc.k.g4">앱</th></tr>
+        <tr><td><kbd>⌘</kbd><kbd>Q</kbd></td><td data-t="k.quit">앱 끄기(에이전트는 뒤에서 계속 일합니다)</td></tr>
+  </table>
+</section>
+
+<section class="doc-sec" id="update">
+  <p class="doc-label" data-t="doc.n.update">업데이트</p>
+  <h2 data-t="doc.u.h">Athena Studio를 최신으로</h2>
+  <p class="doc-p" data-t="doc.u.app">0.17.6부터는 앱이 스스로 업데이트됩니다. 설정(⚙)을 열고 새 버전이 나와 있으면 [앱 업데이트] 줄의 [업데이트]를 누릅니다. 앱이 새 버전을 받아 확인하고 다시 켭니다. 중간에 실패하면 지금 버전이 그대로 돌고 짧은 이유가 보입니다.</p>
+  <p class="doc-p" data-t="doc.u.old">아직 0.15.8이라면 그 버전은 스스로 업데이트하지 못합니다. <a href="/ko/download/">다운로드 페이지</a>에서 새 .dmg를 한 번만 받아 Athena Studio를 응용 프로그램 폴더에 덮어씁니다. 팩과 작업은 그대로 남고, 그다음부터는 ⚙에서 업데이트하면 됩니다.</p>
+  <p class="doc-p" data-t="doc.u.core">앱에 들어 있는 Athena 코어는 새 버전을 열 때 업데이트됩니다. 에이전트가 일하는 중이어도 됩니다.</p>
+</section>
+
+<section class="doc-sec" id="security">
+  <p class="doc-label" data-t="h.s.label">데이터와 보안</p>
+  <h2 data-t="h.s.h2">맥에서 도는 것과 밖으로 나가는 것</h2>
+  <p class="doc-p" data-t="h.s.p">앱은 내 컴퓨터에서 돌아갑니다. 에이전트는 여전히 자기 AI 제공자에게 요청을 보내고, 코드는 푸시할 때 GitHub로 갑니다.</p>
+  <div class="sec-grid">
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><b data-t="h.s.1">내 맥에서 도는 앱</b><span data-t="h.s.1p">에이전트 · 터미널 · 일감이 모두 내 컴퓨터에서 돌아갑니다. 앱은 내 코드나 파일을 Novum Lab 서버로 보내지 않습니다.</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span><b data-t="h.s.2">내 AI 계정 그대로</b><span data-t="h.s.2p">에이전트는 내가 이미 로그인한 Claude Code나 Codex로, 그 회사 약관과 내 요금제 안에서 돌아갑니다.</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="12" r="2.5"/><path d="M6 8.5v7M8.3 7.2l7.5 3.6"/></svg></span><b data-t="h.s.3">브랜치에서 일하는 에이전트</b><span data-t="h.s.3p">에이전트마다 자기 브랜치 · 워크트리에서 일합니다. 자동 머지는 레포마다 내가 켜기 전까지 꺼져 있습니다.</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l8-4 8 4v6c0 4-3.5 7-8 8-4.5-1-8-4-8-8z"/><path d="M9 12l2 2 4-4"/></svg></span><b data-t="h.s.4">서명 · 공증</b><span data-t="h.s.4p">공개 배포판은 Apple Developer ID로 서명하고 Apple 공증을 받습니다.</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9"/></svg></span><b data-t="h.s.5">로그인을 따로 두는 브라우저</b><span data-t="h.s.5p">옆 브라우저는 샌드박스에서 http · https만 열고, 로그인은 평소 브라우저와 따로 보관합니다.</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg></span><b data-t="h.s.6">TypeSafe Jev 연동은 선택</b><span data-t="h.s.6p">내 TypeSafe Jev 키를 넣었을 때만 QA 오류 내용과 학습 노트를 TypeSafe Jev로 보냅니다. 키가 없으면 Jev로는 아무것도 보내지 않습니다.</span></div>
+  </div>
+</section>
+
+<section class="doc-sec" id="troubleshooting">
+  <p class="doc-label" data-t="doc.n.trouble">문제 해결</p>
+  <h2 data-t="doc.t.h">문제가 생기면</h2>
+  <dl class="doc-dl">
+      <div><dt data-t="doc.t1q">pane이 끊겼거나 반응이 없을 때</dt><dd data-t="doc.t1a">[보기 → 작업 창 다시 붙기]. pane과 에이전트는 그대로입니다.</dd></div>
+      <div><dt data-t="doc.t2q">다시 붙여도 안 될 때</dt><dd data-t="doc.t2a">[보기 → 작업 창 데몬 다시 띄우기]. 열린 pane과 에이전트가 모두 닫힙니다.</dd></div>
+      <div><dt data-t="doc.t3q">에이전트가 멈춘 것 같을 때</dt><dd data-t="doc.t3a">[작업]에 나를 기다리는 질문이 있는지, pane 상세에 막힌 것이 있는지 봅니다.</dd></div>
+      <div><dt data-t="doc.t4q">PR이 안 열릴 때</dt><dd data-t="doc.t4a">gh CLI가 설치 · 로그인돼 있는지(<code>gh auth login</code>), 레포에 GitHub 원격이 있는지 봅니다.</dd></div>
+      <div><dt data-t="doc.t5q">Claude Code · Codex · git · Python이 없다고 할 때</dt><dd data-t="doc.t5a">터미널에서 설치하고 로그인한 뒤(git · Python은 <code>xcode-select --install</code>) Athena Studio를 다시 엽니다.</dd></div>
+      <div><dt data-t="doc.t6q">그래도 안 될 때</dt><dd data-t="doc.t6a">[보기 → 스튜디오 초기화]는 모든 팩과 pane을 지우고 앱을 다시 켭니다. 레포 폴더는 그대로입니다. <a href="https://github.com/novum-lab-kr/athena-studio/issues/new/choose">문제를 신고</a>한 뒤 마지막에 쓰십시오.</dd></div>
+  </dl>
+  <p class="doc-note" data-t="doc.t.logs">로그는 <code>~/Library/Application Support/Athena Studio</code> 에 있습니다(daemon.log · board.log · pack.log). 문제를 신고할 때 붙여 주십시오.</p>
+</section>
+
+<section class="doc-sec" id="faq">
+  <p class="doc-label">FAQ</p>
+  <h2 data-t="h.q.h2">자주 묻는 질문</h2>
+  <div class="faq">
+      <details><summary data-t="h.q0">쓸 수 있는 맥</summary><p data-t="h.q0a">macOS 13 Ventura 이상이면 Apple Silicon · Intel 맥 모두 됩니다. <a href="/ko/download/">다운로드</a>는 무료입니다.</p></details>
+      <details><summary data-t="h.q2">가격</summary><p data-t="h.q2a">Athena Studio는 무료로 받아서 쓸 수 있습니다. 에이전트는 내 Claude Code나 Codex 요금제로 돌아서, 사용량은 평소처럼 그 회사가 청구합니다.</p></details>
+      <details><summary data-t="h.q3">Claude Code나 Codex 필수 여부</summary><p data-t="h.q3a">네, 둘 중 하나 이상이 내 맥에 로그인돼 있어야 합니다. 에이전트는 어느 쪽으로도 돌아갑니다. PR 자동 리뷰는 Claude Code를 쓰고, Codex도 있으면 다른 모델의 리뷰어가 하나 더 붙습니다.</p></details>
+      <details><summary data-t="h.q6">에이전트의 자동 머지 여부</summary><p data-t="h.q6a">내가 켰을 때만입니다. 자동 머지는 기본으로 꺼져 있고 레포마다 정합니다. 머지마다 마지막 클릭을 내가 하도록 둘 수도 있습니다.</p></details>
+      <details><summary data-t="h.q7">앱을 닫은 뒤의 에이전트</summary><p data-t="h.q7a">네. 앱을 꺼도 터미널과 에이전트는 뒤에서 계속 돌아갑니다. 다시 열면 같은 탭 · 같은 배치로 돌아옵니다.</p></details>
+      <details><summary data-t="h.q8">여러 회사 · 프로젝트에서 쓰기</summary><p data-t="h.q8a">네. 회사마다 레포 · 에이전트 · 규칙을 담은 팩을 만듭니다. 팩을 바꿔도 다른 팩의 일은 멈추지 않고, 팩을 내보내 팀과 나눌 수 있습니다.</p></details>
+      <details><summary data-t="h.q9">윈도우 · 리눅스 지원</summary><p data-t="h.q9a">지금은 맥 앱만 있습니다.</p></details>
+      <details><summary data-t="h.q11">버그 신고와 제안</summary><p data-t="h.q11a"><a href="https://github.com/novum-lab-kr/athena-studio/issues/new/choose">GitHub에 이슈를 남겨 주십시오</a>. 버그 신고나 기능 제안 양식을 고르면 됩니다.</p></details>
+  </div>
+</section>
+  </div>
+</div>
+<script>
+/* 목차: 지금 읽는 장을 표시 */
+(function () {
+  var links = [].slice.call(document.querySelectorAll('.doc-toc a'));
+  var secs = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function on() {
+    var cur = 0;
+    secs.forEach(function (s, i) { if (s && s.getBoundingClientRect().top < 140) cur = i; });
+    links.forEach(function (a, i) { a.classList.toggle('on', i === cur); });
+  }
+  window.addEventListener('scroll', on, { passive: true }); on();
+})();
+</script>
+</main>
+
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <a class="brand" href="/ko/"><img src="/assets/owl-white.png" alt="">Athena Studio</a>
+      <div class="links">
+        <a href="/ko/features/" data-t="nav.features">기능</a>
+        <a href="/ko/docs/" data-t="nav.docs">문서</a>
+        <a href="/ko/releases/" data-t="nav.releases">업데이트 내역</a>
+        <a href="/ko/download/" data-t="nav.download">다운로드</a>
+        <a href="/ko/terms/" data-t="nav.terms">약관</a>
+        <a href="https://github.com/novum-lab-kr/athena-studio/issues/new/choose" data-t="nav.issue">문제 신고</a>
+        <a href="https://novum-lab.com">novum-lab.com</a>
+      </div>
+    </div>
+    <div class="foot-lang" role="group" aria-label="Language"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><a href="/docs/" data-set-lang="en" lang="en" hreflang="en" aria-current="false">English</a><a href="/ko/docs/" data-set-lang="ko" lang="ko" hreflang="ko" aria-current="true">한국어</a><a href="/ja/docs/" data-set-lang="ja" lang="ja" hreflang="ja" aria-current="false">日本語</a><a href="/zh/docs/" data-set-lang="zh" lang="zh-Hans" hreflang="zh-Hans" aria-current="false">中文</a></div>
+    <div class="biz"><span data-t="c.made">© 2026 Novum Lab. Athena Studio는 Novum Lab이 만듭니다.</span><br>Novum Lab · CEO: Eunju Kim · Business Registration No. 496-37-01619 · Seoul, Republic of Korea · <a href="mailto:mcsung@novum-lab.com">mcsung@novum-lab.com</a><br><span data-t="c.ga">이 사이트는 방문 수와 다운로드 수를 세기 위해 Google Analytics 쿠키를 씁니다.</span></div>
+  </div>
+</footer>
+</body>
+</html>

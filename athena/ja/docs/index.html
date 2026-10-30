@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="ja" data-lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-t="o.title">ドキュメント — Athena Studio</title>
+<meta name="description" data-ta="content:o.desc" content="Athena Studio のはじめかた、キーボードショートカット、データとセキュリティ、比較、よくある質問。">
+<meta property="og:title" content="ドキュメント — Athena Studio">
+<meta property="og:description" content="Athena Studio のはじめかた、キーボードショートカット、データとセキュリティ、比較、よくある質問。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://athena.novum-lab.com/ja/docs/">
+<meta property="og:image" content="https://athena.novum-lab.com/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://athena.novum-lab.com/ja/docs/">
+<!-- seo:start · deploy/gen-athena-lang.mjs 가 만든다(손으로 고치지 않는다) -->
+<link rel="alternate" hreflang="en" href="https://athena.novum-lab.com/docs/">
+<link rel="alternate" hreflang="ko" href="https://athena.novum-lab.com/ko/docs/">
+<link rel="alternate" hreflang="ja" href="https://athena.novum-lab.com/ja/docs/">
+<link rel="alternate" hreflang="zh-Hans" href="https://athena.novum-lab.com/zh/docs/">
+<link rel="alternate" hreflang="x-default" href="https://athena.novum-lab.com/docs/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://novum-lab.com/#organization",
+      "name": "Novum Lab",
+      "url": "https://novum-lab.com"
+    },
+    {
+      "@type": "FAQPage",
+      "url": "https://athena.novum-lab.com/ja/docs/#faq",
+      "inLanguage": "ja",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "どの Mac で使えますか?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "macOS 13 Ventura 以降なら、Apple Silicon・Intel のどちらの Mac でも使えます。ダウンロードは無料です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "料金はかかりますか?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Athena Studio は無料でダウンロードして使えます。エージェントはご自身の Claude Code または Codex のプランで動くので、利用料はこれまでどおりその提供元から請求されます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Claude Code か Codex は必須ですか?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい。少なくともどちらかに、お使いの Mac でサインインしている必要があります。エージェントはどちらでも動きます。PR 自動レビューは Claude Code を使い、Codex もあれば別のモデルのレビュアーが加わります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "エージェントが勝手にマージしますか?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "オンにしたときだけです。自動マージは初期設定でオフ、リポジトリごとに設定します。マージのたびに最後のクリックをあなたが行うようにもできます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "アプリを閉じてもエージェントは動きますか?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい。ターミナルとエージェントはバックグラウンドで動き続けます。アプリを終了したあとでも、開き直せば同じタブ、同じレイアウトに戻ります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "複数の会社やプロジェクトで使えますか?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい。それぞれにパックを作ります。リポジトリ、エージェント、ルールをまとめたものです。パックを切り替えても別のパックの作業は止まらず、パックを書き出してチームと共有できます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Windows や Linux は?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "現在は Mac アプリのみです。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "バグを見つけた、または提案がありますか?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GitHub で issue を作成してください。バグ報告か機能提案のテンプレートを選べます。"
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- seo:end -->
+<meta name="theme-color" content="#09090b">
+<link rel="icon" type="image/png" href="/assets/favicon-white.png">
+<link rel="apple-touch-icon" href="/assets/app-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=20261030a">
+<script src="/assets/analytics.js?v=20261029a" async></script>
+<script src="/assets/lang.js?v=20261030b"></script>
+<script src="/assets/motion.js?v=20261028i" defer></script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/ja/"><img src="/assets/owl-white.png" alt="">Athena Studio</a>
+    <nav>
+      <a class="nav-x" href="/ja/features/" data-t="nav.features">機能</a>
+      <a class="nav-x" href="/ja/docs/" aria-current="page" data-t="nav.docs">ドキュメント</a>
+      <a class="nav-x" href="/ja/releases/" data-t="nav.releases">更新履歴</a>
+      <a class="btn sm gold" href="/ja/download/" data-t="nav.download">ダウンロード</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="page-head">
+  <div class="wrap">
+    <p class="eyebrow"><i></i><span data-t="nav.docs">ドキュメント</span></p>
+    <h1 class="grad" data-t="o.h1">Athena Studio の使い方</h1>
+    <p class="lead" data-t="doc.lead">アプリのインストール、最初のパック作成、最初の作業まで。その下は必要なときに見る参考資料です。</p>
+  </div>
+</div>
+
+<div class="wrap doc-wrap">
+  <nav class="doc-toc" aria-label="Docs">
+    <div class="doc-toc-in">
+        <a href="#before" data-t="doc.n.before">インストールの前に</a>
+        <a href="#install" data-t="doc.n.install">インストールして開く</a>
+        <a href="#setup" data-t="s.label">初回設定</a>
+        <a href="#workflow" data-t="doc.n.workflow">最初の作業</a>
+        <a href="#app" data-t="doc.n.app">アプリの各部</a>
+        <a href="#settings" data-t="doc.n.settings">設定</a>
+        <a href="#shortcuts" data-t="f.k.label">ショートカット</a>
+        <a href="#update" data-t="doc.n.update">アップデート</a>
+        <a href="#security" data-t="h.s.label">データとセキュリティ</a>
+        <a href="#troubleshooting" data-t="doc.n.trouble">トラブルシューティング</a>
+        <a href="#faq">FAQ</a>
+    </div>
+  </nav>
+  <div class="doc-body">
+<span id="start"></span>
+<section class="doc-sec" id="before">
+  <p class="doc-label" data-t="doc.n.before">インストールの前に</p>
+  <h2 data-t="doc.b.h">まず確認してください。</h2>
+  <p class="doc-p" data-t="doc.b.p">Athena Studio は Mac 上で動き、いつも使っているコーディングエージェントを動かします。</p>
+  <ul class="req">
+      <li><b data-t="d.r1">macOS</b><span data-t="d.r1p">macOS 13 Ventura 以降</span></li>
+      <li><b data-t="d.r2">AI エージェント</b><span data-t="d.r2p"><a href="https://docs.anthropic.com/en/docs/claude-code/setup" target="_blank" rel="noopener">Claude Code</a> または <a href="https://github.com/openai/codex" target="_blank" rel="noopener">Codex</a> に、ご自身のアカウントでサインインしてください。</span></li>
+      <li><b data-t="d.r3">git と Python 3</b><span data-t="d.r3p">ない場合は、最初の起動時に macOS がインストールを案内します。事前に入れるにはターミナルで <code>xcode-select --install</code></span></li>
+      <li><b>Node.js</b><span data-t="d.r4p">Athena のスクリプトが使います</span></li>
+      <li><b data-t="d.r5">GitHub</b><span data-t="d.r5p">リポジトリへのアクセス。プルリクエストと自動レビューには <a href="https://cli.github.com" target="_blank" rel="noopener">gh CLI</a> が必要です。</span></li>
+      </ul>
+</section>
+
+<section class="doc-sec" id="install">
+  <p class="doc-label" data-t="doc.n.install">インストールして開く</p>
+  <h2 data-t="doc.i.h">Athena Studio をインストールします。</h2>
+  <ol class="h3-steps-list">
+    <li data-t="doc.i1"><a href="/ja/download/">ダウンロードページ</a>から、Mac のチップに合った .dmg を入手します。</li>
+    <li data-t="d.s1p">ダウンロードしたファイルを開き、Athena Studio をアプリケーションへドラッグします。</li>
+    <li data-t="doc.i3">Athena Studio を開きます。Apple の署名・公証済みなので、セキュリティ警告なしで開きます。git や Python 3 がなければ、macOS が Apple の Command Line Tools のインストールを案内します。</li>
+    <li data-t="doc.i4">初回起動時のスタート画面に「新しいパック」と「パックを取り込む」があります。パックは、ひとつの会社やプロジェクトのリポジトリ・エージェント・ルールのまとまりです。</li>
+  </ol>
+</section>
+
+<section class="doc-sec" id="setup">
+  <p class="doc-label" data-t="s.label">初回設定</p>
+  <h2 data-t="s.h">初回設定: Athena がリポジトリを把握します</h2>
+  <p class="doc-p" data-t="s.p">パックを作ると、Athena が設定を代わりに進めます。コードは読むだけです。</p>
+  <div class="doc-three">
+    <div class="you"><b data-t="doc.su.you.h">あなたが確認すること</b><span data-t="doc.su.you.p">入れるリポジトリ、会社名、エージェント名、自動レビューを有効にするリポジトリ。推定の誤りはここで直します。</span></div>
+    <div><b data-t="doc.su.ath.h">Athena が用意するもの</b><span data-t="doc.su.ath.p">リポジトリごとのエージェント(ルール・ノート付き)、ルーティング表、QA チェック、コードのベースライン。リポジトリは変更せず、インストールや fetch の前には確認します。</span></div>
+    <div><b data-t="doc.su.end.h">終わったら</b><span data-t="doc.su.end.p">Athena が作ったものと、まだ確認が必要なものを報告します。そのあと athena ワークスペースで最初の作業を頼みます。</span></div>
+  </div>
+  <figure class="flowd" aria-label="初回設定で Athena がすること" data-ta="aria-label:s.d.aria">
+      <svg class="flowd-wide" viewBox="0 0 1200 560" role="img" aria-hidden="true">
+        <defs>
+        <marker id="sah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1.2L9 5L1 8.8Q2.6 5 1 1.2z" class="fd-head"/></marker>
+        </defs>
+        <style>
+        .su-panel { fill: none; stroke: var(--line-2, #3a4048); stroke-width: 1.2; stroke-dasharray: 5 5; }
+        .su-h { fill: var(--muted, #9aa3ad); font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+        .su-t { fill: var(--text, #e8eaed); font-size: 15px; font-weight: 600; }
+        .su-s { fill: var(--muted, #9aa3ad); font-size: 13px; }
+        .su-i { fill: var(--text, #e8eaed); font-size: 13.5px; }
+        .su-dot { fill: #22262c; stroke: #8a939c; stroke-width: 1.5; }
+        .su-dot-you { fill: rgba(217,181,111,.12); stroke: rgba(217,181,111,.8); stroke-width: 1.5; }
+        .su-n { fill: var(--text, #e8eaed); font-size: 12px; font-weight: 700; }
+        .su-li { fill: #8a939c; }
+        </style>
+        <rect class="su-panel" x="20" y="40" width="240" height="420" rx="16"/>
+        <text class="su-h" x="40" y="70" data-t="s.d.mac">あなたの Mac</text>
+        <g><rect class="fd-box" x="40" y="88" width="200" height="64" rx="12"/><text class="su-t" x="58" y="115" data-t="s.d.r1">web</text><text class="su-s" x="58" y="137" data-t="s.d.r1s">フロントエンド · main</text></g>
+        <g><rect class="fd-box" x="40" y="166" width="200" height="64" rx="12"/><text class="su-t" x="58" y="193" data-t="s.d.r2">api</text><text class="su-s" x="58" y="215" data-t="s.d.r2s">バックエンド · main</text></g>
+        <g><rect class="fd-box" x="40" y="244" width="200" height="64" rx="12"/><text class="su-t" x="58" y="271" data-t="s.d.r3">mobile</text><text class="su-s" x="58" y="293" data-t="s.d.r3s">アプリ · develop</text></g>
+        <g><rect class="fd-box" x="40" y="322" width="200" height="64" rx="12"/><text class="su-t" x="58" y="349" data-t="s.d.r4">ui-kit</text><text class="su-s" x="58" y="371" data-t="s.d.r4s">共有パッケージ · main</text></g>
+        <text class="su-s" x="140" y="430" text-anchor="middle" data-t="s.d.found">3 階層下のフォルダまで探します</text>
+        <path class="fd-l" d="M260 250 H306" marker-end="url(#sah)"/>
+        <text class="fd-nl" x="283" y="240" text-anchor="middle" data-t="s.d.reads2">読む</text>
+        <g><rect class="fd-box fd-lead" x="310" y="40" width="320" height="76" rx="14"/><text class="fd-t" x="470" y="72" text-anchor="middle">Athena</text><text class="fd-s" x="470" y="96" text-anchor="middle" data-t="s.d.lead">初回設定 · 本番ブランチを読む</text></g>
+        <rect class="fd-box" x="310" y="132" width="320" height="328" rx="14"/>
+        <path d="M338 168 V412" stroke="#5d656e" stroke-width="1.4"/>
+        <g><circle class="su-dot" cx="338" cy="168" r="12"/><text class="su-n" x="338" y="172" text-anchor="middle">1</text><text class="su-i" x="362" y="173" data-t="s.d.st1">リポジトリ検出・種類とブランチを推定</text></g>
+        <g><circle class="su-dot-you" cx="338" cy="208" r="12"/><text class="su-n" x="338" y="212" text-anchor="middle">2</text><text class="su-i" x="362" y="213" data-t="s.d.st2">リポジトリ・名前・自動レビューを確認</text></g>
+        <g><circle class="su-dot" cx="338" cy="248" r="12"/><text class="su-n" x="338" y="252" text-anchor="middle">3</text><text class="su-i" x="362" y="253" data-t="s.d.st3">リポジトリごとにエージェント作成</text></g>
+        <g><circle class="su-dot" cx="338" cy="288" r="12"/><text class="su-n" x="338" y="292" text-anchor="middle">4</text><text class="su-i" x="362" y="293" data-t="s.d.st4">コードを読んで書き込む</text><text class="su-s" x="362" y="311" data-t="s.d.st4s">リポジトリごとに 1 人ずつ並行で</text></g>
+        <g><circle class="su-dot" cx="338" cy="338" r="12"/><text class="su-n" x="338" y="342" text-anchor="middle">5</text><text class="su-i" x="362" y="343" data-t="s.d.st5">画面ごとに QA チェックの下書き</text></g>
+        <g><circle class="su-dot" cx="338" cy="376" r="12"/><text class="su-n" x="338" y="380" text-anchor="middle">6</text><text class="su-i" x="362" y="381" data-t="s.d.st6">チェック実行・コードの基準を記録</text></g>
+        <g><circle class="su-dot" cx="338" cy="414" r="12" style="stroke-dasharray:3 3"/><text class="su-n" x="338" y="418" text-anchor="middle">7</text><text class="su-i" x="362" y="419" data-t="s.d.st7">図を描く(任意)</text></g>
+        <path class="fd-l" d="M630 250 H676" marker-end="url(#sah)"/>
+        <text class="fd-nl" x="653" y="240" text-anchor="middle" data-t="s.d.writes">書く</text>
+        <rect class="su-panel" x="680" y="40" width="500" height="420" rx="16"/>
+        <text class="su-h" x="700" y="70" data-t="s.d.pack">あなたのパック</text>
+        <text class="su-s" x="1160" y="70" text-anchor="end" data-t="s.d.packmore">+ リポジトリごとにエージェント 1 つ(ui-kit · …)</text>
+        <g>
+        <rect class="fd-box fd-agent" x="700" y="88" width="145" height="198" rx="12"/>
+        <text class="su-t" x="716" y="114" data-t="s.d.a1">web-fe</text><text class="su-s" x="716" y="133" data-t="s.d.a1s">web 担当エージェント</text>
+        <circle class="su-li" cx="720" cy="160" r="2.5"/><text class="su-i" x="730" y="165" data-t="s.d.rules">ルール</text>
+        <circle class="su-li" cx="720" cy="184" r="2.5"/><text class="su-i" x="730" y="189" data-t="s.d.notes">構成メモ</text>
+        <circle class="su-li" cx="720" cy="208" r="2.5"/><text class="su-i" x="730" y="213" data-t="s.d.gotchas">注意点ノート</text>
+        <circle class="su-li" cx="720" cy="232" r="2.5"/><text class="su-i" x="730" y="237" data-t="s.d.check">チェックスクリプト</text>
+        <circle class="su-li" cx="720" cy="256" r="2.5"/><text class="su-i" x="730" y="261" data-t="s.d.qa2">QA チェック</text>
+        </g>
+        <g>
+        <rect class="fd-box fd-agent" x="852" y="88" width="145" height="198" rx="12"/>
+        <text class="su-t" x="868" y="114" data-t="s.d.a2">api-be</text><text class="su-s" x="868" y="133" data-t="s.d.a2s">api 担当エージェント</text>
+        <circle class="su-li" cx="872" cy="160" r="2.5"/><text class="su-i" x="882" y="165" data-t="s.d.rules">ルール</text>
+        <circle class="su-li" cx="872" cy="184" r="2.5"/><text class="su-i" x="882" y="189" data-t="s.d.notes">構成メモ</text>
+        <circle class="su-li" cx="872" cy="208" r="2.5"/><text class="su-i" x="882" y="213" data-t="s.d.gotchas">注意点ノート</text>
+        <circle class="su-li" cx="872" cy="232" r="2.5"/><text class="su-i" x="882" y="237" data-t="s.d.check">チェックスクリプト</text>
+        <text class="su-s" x="868" y="261" data-t="s.d.noqa">画面なし・QA なし</text>
+        </g>
+        <g>
+        <rect class="fd-box fd-agent" x="1004" y="88" width="145" height="198" rx="12"/>
+        <text class="su-t" x="1020" y="114" data-t="s.d.a3">mobile-app</text><text class="su-s" x="1020" y="133" data-t="s.d.a3s">mobile 担当エージェント</text>
+        <circle class="su-li" cx="1024" cy="160" r="2.5"/><text class="su-i" x="1034" y="165" data-t="s.d.rules">ルール</text>
+        <circle class="su-li" cx="1024" cy="184" r="2.5"/><text class="su-i" x="1034" y="189" data-t="s.d.notes">構成メモ</text>
+        <circle class="su-li" cx="1024" cy="208" r="2.5"/><text class="su-i" x="1034" y="213" data-t="s.d.gotchas">注意点ノート</text>
+        <circle class="su-li" cx="1024" cy="232" r="2.5"/><text class="su-i" x="1034" y="237" data-t="s.d.check">チェックスクリプト</text>
+        <text class="su-s" x="1020" y="261" data-t="s.d.apprules">アプリのルール(Expo)</text>
+        </g>
+        <g><rect class="fd-box fd-learn" x="700" y="302" width="460" height="46" rx="10"/><text class="su-i" x="718" y="330" data-t="s.d.route"><tspan style="font-weight:600">ルーティング</tspan>: どの依頼をどのリポジトリへ送るか</text></g>
+        <g><rect class="fd-box fd-learn" x="700" y="356" width="460" height="46" rx="10"/><text class="su-i" x="718" y="384" data-t="s.d.svc"><tspan style="font-weight:600">サービス概要</tspan>: 各アプリの役割と技術スタック</text></g>
+        <g><rect class="fd-box fd-learn" x="700" y="410" width="460" height="38" rx="10"/><text class="su-i" x="718" y="434" data-t="s.d.fp"><tspan style="font-weight:600">ベースライン</tspan>: 次の同期では変わった部分だけ更新</text></g>
+        <path class="fd-l" d="M470 460 V490" marker-end="url(#sah)"/>
+        <g><rect class="fd-box fd-you" x="310" y="494" width="320" height="56" rx="12"/><text class="fd-t" x="470" y="518" text-anchor="middle" data-t="s.d.report">報告</text><text class="fd-s" x="470" y="539" text-anchor="middle" data-t="s.d.reports2">作ったもの・まだ確認が必要なもの</text></g>
+        <text class="fd-nl" x="920" y="526" text-anchor="middle" data-t="s.d.note">リポジトリは読むだけ。インストールや fetch は先に確認します。</text>
+      </svg>
+      <svg class="flowd-tall" viewBox="0 0 360 1210" role="img" aria-hidden="true">
+        <defs>
+        <marker id="sahm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1.2L9 5L1 8.8Q2.6 5 1 1.2z" class="fd-head"/></marker>
+        </defs>
+        <style>
+        .su-h { fill: var(--muted, #9aa3ad); font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+        .su-t { fill: var(--text, #e8eaed); font-size: 14px; font-weight: 600; }
+        .su-s { fill: var(--muted, #9aa3ad); font-size: 12px; }
+        .su-i { fill: var(--text, #e8eaed); font-size: 13px; }
+        .su-dot { fill: #22262c; stroke: #8a939c; stroke-width: 1.5; }
+        .su-dot-you { fill: rgba(217,181,111,.12); stroke: rgba(217,181,111,.8); stroke-width: 1.5; }
+        .su-n { fill: var(--text, #e8eaed); font-size: 11px; font-weight: 700; }
+        .su-li { fill: #8a939c; }
+        </style>
+        <text class="su-h" x="20" y="30" data-t="s.d.mac">あなたの Mac</text>
+        <g><rect class="fd-box" x="20" y="44" width="155" height="56" rx="12"/><text class="su-t" x="36" y="68" data-t="s.d.r1">web</text><text class="su-s" x="36" y="88" data-t="s.d.r1s">フロントエンド · main</text></g>
+        <g><rect class="fd-box" x="185" y="44" width="155" height="56" rx="12"/><text class="su-t" x="201" y="68" data-t="s.d.r2">api</text><text class="su-s" x="201" y="88" data-t="s.d.r2s">バックエンド · main</text></g>
+        <g><rect class="fd-box" x="20" y="108" width="155" height="56" rx="12"/><text class="su-t" x="36" y="132" data-t="s.d.r3">mobile</text><text class="su-s" x="36" y="152" data-t="s.d.r3s">アプリ · develop</text></g>
+        <g><rect class="fd-box" x="185" y="108" width="155" height="56" rx="12"/><text class="su-t" x="201" y="132" data-t="s.d.r4">ui-kit</text><text class="su-s" x="201" y="152" data-t="s.d.r4sm">共有パッケージ</text></g>
+        <text class="su-s" x="180" y="184" text-anchor="middle" data-t="s.d.found">3 階層下のフォルダまで探します</text>
+        <path class="fd-l" d="M180 194 V224" marker-end="url(#sahm)"/>
+        <text class="fd-nl" x="192" y="214" style="font-size:12px" data-t="s.d.reads2">読む</text>
+        <g><rect class="fd-box fd-lead" x="20" y="230" width="320" height="64" rx="14"/><text class="fd-t" x="180" y="257" text-anchor="middle">Athena</text><text class="fd-s" x="180" y="280" text-anchor="middle" data-t="s.d.lead">初回設定 · 本番ブランチを読む</text></g>
+        <rect class="fd-box" x="20" y="304" width="320" height="300" rx="14"/>
+        <path d="M44 332 V582" stroke="#5d656e" stroke-width="1.4"/>
+        <g><circle class="su-dot" cx="44" cy="332" r="11"/><text class="su-n" x="44" y="336" text-anchor="middle">1</text><text class="su-i" x="66" y="337" data-t="s.d.st1">リポジトリ検出・種類とブランチを推定</text></g>
+        <g><circle class="su-dot-you" cx="44" cy="372" r="11"/><text class="su-n" x="44" y="376" text-anchor="middle">2</text><text class="su-i" x="66" y="377" data-t="s.d.st2">リポジトリ・名前・自動レビューを確認</text></g>
+        <g><circle class="su-dot" cx="44" cy="412" r="11"/><text class="su-n" x="44" y="416" text-anchor="middle">3</text><text class="su-i" x="66" y="417" data-t="s.d.st3">リポジトリごとにエージェント作成</text></g>
+        <g><circle class="su-dot" cx="44" cy="452" r="11"/><text class="su-n" x="44" y="456" text-anchor="middle">4</text><text class="su-i" x="66" y="457" data-t="s.d.st4">コードを読んで書き込む</text><text class="su-s" x="66" y="475" data-t="s.d.st4s">リポジトリごとに 1 人ずつ並行で</text></g>
+        <g><circle class="su-dot" cx="44" cy="502" r="11"/><text class="su-n" x="44" y="506" text-anchor="middle">5</text><text class="su-i" x="66" y="507" data-t="s.d.st5">画面ごとに QA チェックの下書き</text></g>
+        <g><circle class="su-dot" cx="44" cy="542" r="11"/><text class="su-n" x="44" y="546" text-anchor="middle">6</text><text class="su-i" x="66" y="547" data-t="s.d.st6">チェック実行・コードの基準を記録</text></g>
+        <g><circle class="su-dot" cx="44" cy="582" r="11" style="stroke-dasharray:3 3"/><text class="su-n" x="44" y="586" text-anchor="middle">7</text><text class="su-i" x="66" y="587" data-t="s.d.st7">図を描く(任意)</text></g>
+        <path class="fd-l" d="M180 604 V634" marker-end="url(#sahm)"/>
+        <text class="fd-nl" x="192" y="624" style="font-size:12px" data-t="s.d.writes">書く</text>
+        <text class="su-h" x="20" y="660" data-t="s.d.pack">あなたのパック</text>
+        <text class="su-s" x="340" y="660" text-anchor="end" data-t="s.d.packmore2">+ ui-kit · …</text>
+        <g>
+        <rect class="fd-box fd-agent" x="20" y="672" width="155" height="180" rx="12"/>
+        <text class="su-t" x="34" y="696" data-t="s.d.a1">web-fe</text><text class="su-s" x="34" y="714" data-t="s.d.a1s">web 担当エージェント</text>
+        <circle class="su-li" cx="38" cy="736" r="2.3"/><text class="su-i" x="47" y="741" data-t="s.d.rules">ルール</text>
+        <circle class="su-li" cx="38" cy="758" r="2.3"/><text class="su-i" x="47" y="763" data-t="s.d.notes">構成メモ</text>
+        <circle class="su-li" cx="38" cy="780" r="2.3"/><text class="su-i" x="47" y="785" data-t="s.d.gotchas">注意点ノート</text>
+        <circle class="su-li" cx="38" cy="802" r="2.3"/><text class="su-i" x="47" y="807" data-t="s.d.check">チェックスクリプト</text>
+        <circle class="su-li" cx="38" cy="824" r="2.3"/><text class="su-i" x="47" y="829" data-t="s.d.qa2">QA チェック</text>
+        </g>
+        <g>
+        <rect class="fd-box fd-agent" x="185" y="672" width="155" height="180" rx="12"/>
+        <text class="su-t" x="199" y="696" data-t="s.d.a2">api-be</text><text class="su-s" x="199" y="714" data-t="s.d.a2s">api 担当エージェント</text>
+        <circle class="su-li" cx="203" cy="736" r="2.3"/><text class="su-i" x="212" y="741" data-t="s.d.rules">ルール</text>
+        <circle class="su-li" cx="203" cy="758" r="2.3"/><text class="su-i" x="212" y="763" data-t="s.d.notes">構成メモ</text>
+        <circle class="su-li" cx="203" cy="780" r="2.3"/><text class="su-i" x="212" y="785" data-t="s.d.gotchas">注意点ノート</text>
+        <circle class="su-li" cx="203" cy="802" r="2.3"/><text class="su-i" x="212" y="807" data-t="s.d.check">チェックスクリプト</text>
+        <text class="su-s" x="199" y="829" data-t="s.d.noqa">画面なし・QA なし</text>
+        </g>
+        <g><rect class="fd-box fd-agent" x="20" y="862" width="320" height="40" rx="10"/><text class="su-t" x="34" y="887" data-t="s.d.a3">mobile-app</text><text class="su-s" x="326" y="887" text-anchor="end" data-t="s.d.a3m">同じノート · アプリのルール(Expo)</text></g>
+        <g><rect class="fd-box fd-learn" x="20" y="912" width="320" height="52" rx="10"/><text class="su-t" x="36" y="934" data-t="s.d.routet">ルーティング</text><text class="su-s" x="36" y="953" data-t="s.d.routes">どの依頼をどのリポジトリへ送るか</text></g>
+        <g><rect class="fd-box fd-learn" x="20" y="972" width="320" height="52" rx="10"/><text class="su-t" x="36" y="994" data-t="s.d.svct">サービス概要</text><text class="su-s" x="36" y="1013" data-t="s.d.svcs">各アプリの役割と技術スタック</text></g>
+        <g><rect class="fd-box fd-learn" x="20" y="1032" width="320" height="52" rx="10"/><text class="su-t" x="36" y="1054" data-t="s.d.fpt">ベースライン</text><text class="su-s" x="36" y="1073" data-t="s.d.fps">次の同期では変わった部分だけ更新</text></g>
+        <path class="fd-l" d="M180 1084 V1106" marker-end="url(#sahm)"/>
+        <g><rect class="fd-box fd-you" x="20" y="1110" width="320" height="56" rx="12"/><text class="fd-t" x="180" y="1134" text-anchor="middle" data-t="s.d.report">報告</text><text class="fd-s" x="180" y="1155" text-anchor="middle" data-t="s.d.reports2">作ったもの・まだ確認が必要なもの</text></g>
+        <text class="fd-nl" x="180" y="1192" text-anchor="middle" style="font-size:12px" data-t="s.d.notem">リポジトリは読むだけ。インストールや fetch は先に確認します。</text>
+      </svg>
+        <figcaption data-t="s.d.cap">初回設定: Athena がリポジトリを読み、パックを作ります。</figcaption>
+  </figure>
+  <details class="doc-more">
+    <summary data-t="doc.su.more">Athena がすること(手順ごと)</summary>
+        <ol class="h3-steps-list">
+          <li data-t="s.1">Mac 上のリポジトリを見つけ、それぞれの種類(フロントエンドかバックエンドか)、本番ブランチ、PR のベースを推定します。</li>
+          <li data-t="s.2">どのリポジトリを入れるか、会社名、エージェント名、自動レビューをどこで有効にするかを確認します。推定の誤りもここで直します。</li>
+          <li data-t="s.3">リポジトリごとにエージェントを作り、ルール・構成メモ・注意点ノート・チェックスクリプトを用意します。</li>
+          <li data-t="s.4">各リポジトリの本番ブランチを読み、エージェントの担当範囲、必ず守るルール、言語と型の状況、短いサービス概要を書き込みます。どの依頼をどのリポジトリに送るかを決めるルーティング表は Athena が書きます。</li>
+          <li data-t="s.5">アプリの画面ごとに QA チェックの下書きを作ります。</li>
+          <li data-t="s.6">チェックを一度実行し、コードの基準を記録します。以後の更新では変わった部分だけを扱います。</li>
+          <li data-t="s.7">必要ならサービスごとに構成図・画面マップ・リクエストの流れの図を描きます。</li>
+        </ol>
+  </details>
+  <p class="doc-note" data-t="doc.su.imp">チームから受け取ったパックがあれば、[ファイル → パックを取り込む…] でアーカイブ・パックフォルダ・git リポジトリを選びます。</p>
+</section>
+
+<section class="doc-sec" id="workflow">
+  <p class="doc-label" data-t="doc.n.workflow">最初の作業</p>
+  <h2 data-t="doc.w.h">ひとつの依頼がマージされるまで。</h2>
+  <p class="doc-p" data-t="doc.w.p">以下のデモプロジェクトは、web・api・mobile のリポジトリを持つ小さなショップです。自分のリポジトリでも同じ流れです。</p>
+  <div class="doc-steps">
+    <div class="doc-step has-fig narrow" id="w-ask">
+      <div class="doc-step-txt">
+        <span class="n">01</span>
+        <h3 data-t="doc.w1.h">Athena に頼む</h3>
+        <p data-t="doc.w1.p">athena ワークスペースに、変えたい内容と関係するリポジトリを書きます。普段の言葉で大丈夫です。</p>
+        <blockquote class="h3-quote"><span data-t="h.b1.q">カートの放棄が多い。web に保存済みカートのリマインダーを追加して、mobile でも使えるように api の注文履歴をページ分割して。</span></blockquote>
+      </div>
+      <figure class="shot sm"><img src="/assets/shots/athena-pane.webp" width="1066" height="1290" loading="lazy" alt="Athena の pane。依頼、2 つの計画書、api-be と web-fe への割り振り、各エージェントの作業の要約。" data-ta="alt:h.b1.alt"></figure>
+    </div>
+    <div class="doc-step has-fig" id="w-plan">
+      <div class="doc-step-txt">
+        <span class="n">02</span>
+        <h3 data-t="doc.w2.h">計画を確認</h3>
+        <p data-t="doc.w2.p">Athena がリポジトリごとに計画書を書き、そのリポジトリのエージェントに任せます。エージェントは新しい pane で専用ブランチを使って作業します。選択肢が多い計画では、Athena がサイドブラウザに決定コンソールを開きます。</p>
+      </div>
+      <figure class="shot"><img src="/assets/shots/agents.webp" width="1600" height="1200" loading="lazy" alt="Athena と web-fe が並んで作業し、下のエージェントモニターが全エージェントを追いかける画面。" data-ta="alt:h.b2.alt2"></figure>
+    </div>
+    <div class="doc-step has-fig narrow" id="w-answer">
+      <div class="doc-step-txt">
+        <span class="n">03</span>
+        <h3 data-t="doc.w3.h">質問に答える</h3>
+        <p data-t="doc.w3.p">エージェントが判断を待っていると、右上の [作業] に点が付き、質問は [あなた待ち] に入ります。クリックして答えを選び、必要ならメモを添えて送ります。メニューバーのフクロウにも赤い点が付きます。</p>
+      </div>
+      <figure class="shot sm"><img src="/assets/shots/answer-modal.webp" width="958" height="774" loading="lazy" alt="api エージェントからの質問。注文履歴のデフォルトのページサイズは 20(推奨)か 50 か、と「回答を送る」ボタン。" data-ta="alt:h.b3.alt1"></figure>
+    </div>
+    <div class="doc-step" id="w-follow">
+      <div class="doc-step-txt">
+        <span class="n">04</span>
+        <h3 data-t="doc.w4.h">進み具合を見る</h3>
+        <p data-t="doc.w4.p">ウィンドウ下部のエージェントモニターに、各エージェントが読んだもの・編集したもの・実行したものが流れます。1 つのエージェントの計画・ブロッカー・プルリクエストは、その pane のタイトルバーから詳細を開いて確認します。</p>
+      </div>
+    </div>
+    <div class="doc-step has-fig" id="w-diff">
+      <div class="doc-step-txt">
+        <span class="n">05</span>
+        <h3 data-t="doc.w5.h">変更を確認</h3>
+        <p data-t="doc.w5.p">エージェントは draft プルリクエストを開く前にテストとチェックを実行します。右側の Explorer で [変更] を開き、ファイルをクリックすると、ターミナルの横で diff を読めます。</p>
+      </div>
+      <figure class="shot"><img src="/assets/shots/explorer-1200.webp" srcset="/assets/shots/explorer-1200.webp 1200w, /assets/shots/explorer.webp 2400w" sizes="(max-width: 900px) 100vw, 640px" width="1200" height="675" loading="lazy" alt="左はテストが通ったターミナル、右は CartPage.tsx の diff と変更ファイルの一覧。" data-ta="alt:h.b4.alt"></figure>
+    </div>
+    <div class="doc-step has-fig narrow" id="w-merge">
+      <div class="doc-step-txt">
+        <span class="n">06</span>
+        <h3 data-t="doc.w6.h">マージ</h3>
+        <p data-t="doc.w6.p">PR 自動マージを有効にしたリポジトリでは、プルリクエストが自動でレビュー・修正されます。[マージ前に確認] をオンにしていれば、マージはあなたのクリックを待ちます。ほかのリポジトリでは、いつもどおり GitHub でマージします。</p>
+      </div>
+      <figure class="shot sm"><img src="/assets/shots/settings-pop.webp" width="706" height="600" loading="lazy" alt="設定。web と api は PR 自動マージがオン、web はマージ前に確認がオン、mobile はオフ。" data-ta="alt:h.b5.alt"></figure>
+    </div>
+    <div class="doc-step" id="w-learn">
+      <div class="doc-step-txt">
+        <span class="n">07</span>
+        <h3 data-t="doc.w7.h">学んだことを残す</h3>
+        <p data-t="doc.w7.p">マージ後、学習レビューがノートを提案します。作業リスト(⌘2)を開き、[学習] で残すものを選びます。そのリポジトリの次の作業がこのノートを読みます。作業リストは今のところ韓国語のみです。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="doc-sec" id="app">
+  <p class="doc-label" data-t="doc.n.app">アプリの各部</p>
+  <h2 data-t="doc.a.h">どこに何があるか。</h2>
+  <dl class="doc-dl">
+      <div><dt data-t="f.ws.label">ワークスペース</dt><dd data-t="doc.a.ws">左のリストにはリポジトリごとのワークスペースがあり、その中にブランチとエージェントがあります。中央はタブと分割 pane で、pane ごとにエージェントが 1 つです。⌘1 でこの画面に戻ります。</dd></div>
+      <div><dt data-t="h.f.mon">エージェントモニター</dt><dd data-t="doc.a.mon">ウィンドウの一番下。いま作業中のエージェントだけを表示します。⌄ で折りたためます。</dd></div>
+      <div><dt data-t="h.f.work">作業</dt><dd data-t="doc.a.work">タブバーの右上。あなた待ちの質問、進行中の作業、直近 24 時間に終わった作業。</dd></div>
+      <div><dt data-t="doc.a.boardt">作業リスト(⌘2)</dt><dd data-t="doc.a.board">既定のブラウザで開きます。課題・QA・学習・指標・アーカイブ。今のところ韓国語のみです。</dd></div>
+      <div><dt data-t="h.f.det">pane の詳細</dt><dd data-t="doc.a.det">エージェント pane のタイトルバー右のアイコン。計画・進捗・ブロッカー・トークン・プルリクエスト。Esc で閉じます。</dd></div>
+      <div><dt data-t="h.f.exp">Explorer</dt><dd data-t="doc.a.exp">右側。現在のワークスペースの [ファイル] と [変更]。変更されたファイルは diff で開きます。</dd></div>
+      <div><dt data-t="doc.a.brt">サイドブラウザ</dt><dd data-t="doc.a.br">右側の引き出し(⌘⇧B)。計画書・決定コンソール・ローカルのテスト画面を開きます。ログインは普段のブラウザとは別です。</dd></div>
+      <div><dt data-t="h.f.bar">メニューバー</dt><dd data-t="doc.a.bar">Mac のメニューバーのフクロウ。赤い点は未回答の質問か止まっている計画があるという意味です。クリックすると各エージェントの状態が見られます。</dd></div>
+  </dl>
+</section>
+
+<section class="doc-sec" id="settings">
+  <p class="doc-label" data-t="doc.n.settings">設定</p>
+  <h2 data-t="doc.s.h">Athena Studio の設定を変える。</h2>
+  <dl class="doc-dl">
+      <div><dt data-t="doc.s.mt">PR 自動マージ</dt><dd data-t="doc.s.m">タブバー右端の ⚙。リポジトリごとにスイッチがあり、その下に [マージ前に確認] があります。オンにするまではオフです。</dd></div>
+      <div><dt data-t="doc.s.lt">言語</dt><dd data-t="doc.s.l">[表示 → 言語]。アプリとエージェントが一緒に切り替わります。返答・計画書・課題・コミットメッセージまで。</dd></div>
+      <div><dt data-t="doc.s.nt">通知</dt><dd data-t="doc.s.n">メニューバーのフクロウ → [通知を一時停止]。1 時間、または翌朝 9 時まで。</dd></div>
+      <div><dt data-t="doc.s.pt">パック</dt><dd data-t="doc.s.p">タブバー左のパック名(⌘⇧P)。切り替え・作成・取り込み・書き出し。ほかのパックのエージェントは作業を続け、書き出しにはエージェントの会話や未完了のブランチも含められます。</dd></div>
+      <div><dt data-t="doc.s.rt">リポジトリ名と画像</dt><dd data-t="doc.s.r">左のリストでリポジトリを右クリックします。名前と画像はパックに保存されるので、チームにも表示されます。</dd></div>
+  </dl>
+</section>
+
+<section class="doc-sec" id="shortcuts">
+  <p class="doc-label" data-t="f.k.label">ショートカット</p>
+  <h2 data-t="h.k.h2">キーボードショートカット</h2>
+  <p class="doc-p" data-t="f.k.p">ターミナルでも Mac らしい行編集ができます。</p>
+  <table class="key-table doc-keys">
+        <tr class="kg"><th colspan="2" data-t="doc.k.g1">ワークスペースと pane</th></tr>
+        <tr><td><kbd>⌘</kbd><kbd>1</kbd></td><td data-t="k.work">ワークスペースとターミナル</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>2</kbd></td><td data-t="k.board">作業リストを開く</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>T</kbd></td><td data-t="k.tab">新しいタブ</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⇧</kbd><kbd>T</kbd></td><td data-t="k.space">新しいワークスペース</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>D</kbd></td><td data-t="k.right">右に分割</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⇧</kbd><kbd>D</kbd></td><td data-t="k.down">下に分割</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⌥</kbd> <kbd>←</kbd><kbd>→</kbd><kbd>↑</kbd><kbd>↓</kbd></td><td data-t="k.move">pane 間を移動</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>W</kbd></td><td data-t="k.close">pane を閉じる</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⌥</kbd><kbd>W</kbd></td><td data-t="k.closetab">タブを閉じる</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⇧</kbd><kbd>[</kbd> <kbd>⌘</kbd><kbd>⇧</kbd><kbd>]</kbd></td><td data-t="k.tabs">前・次のタブ</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⇧</kbd><kbd>↑</kbd> <kbd>⌘</kbd><kbd>⇧</kbd><kbd>↓</kbd></td><td data-t="k.spaces">前・次のワークスペース</td></tr>
+        <tr class="kg"><th colspan="2" data-t="doc.k.g2">パネルとパック</th></tr>
+        <tr><td><kbd>⌘</kbd><kbd>B</kbd></td><td data-t="k.left">左のリストを折りたたむ</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⌥</kbd><kbd>B</kbd></td><td data-t="k.rightp">右のパネルを折りたたむ</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⇧</kbd><kbd>B</kbd></td><td data-t="k.browser">サイドブラウザ</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⇧</kbd><kbd>P</kbd></td><td data-t="k.packs">パックを切り替え</td></tr>
+        <tr class="kg"><th colspan="2" data-t="doc.k.g3">ターミナルでの入力</th></tr>
+        <tr><td><kbd>⌘</kbd><kbd>←</kbd> <kbd>⌘</kbd><kbd>→</kbd></td><td data-t="k.line">行頭・行末へ</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⌫</kbd></td><td data-t="k.del">行頭まで削除</td></tr>
+        <tr><td><kbd>⇧</kbd><kbd>↩</kbd></td><td data-t="k.nl">送信せずに改行</td></tr>
+        <tr class="kg"><th colspan="2" data-t="doc.k.g4">アプリ</th></tr>
+        <tr><td><kbd>⌘</kbd><kbd>Q</kbd></td><td data-t="k.quit">アプリを終了。エージェントはバックグラウンドで動き続けます</td></tr>
+  </table>
+</section>
+
+<section class="doc-sec" id="update">
+  <p class="doc-label" data-t="doc.n.update">アップデート</p>
+  <h2 data-t="doc.u.h">Athena Studio を最新に保つ。</h2>
+  <p class="doc-p" data-t="doc.u.app">0.17.6 からはアプリが自分でアップデートします。設定(⚙)を開き、新しいバージョンが出ていれば「アプリのアップデート」行の「アップデート」を押します。アプリがダウンロード・検証して再起動します。途中で失敗しても今のバージョンがそのまま動き、短い理由が表示されます。</p>
+  <p class="doc-p" data-t="doc.u.old">まだ 0.15.8 の場合、そのバージョンは自分でアップデートできません。<a href="/ja/download/">ダウンロードページ</a>から新しい .dmg を一度だけ入手し、Athena Studio をアプリケーションフォルダに上書きします。パックと作業はそのまま残り、以後は ⚙ からアップデートできます。</p>
+  <p class="doc-p" data-t="doc.u.core">アプリに含まれる Athena コアは、新しいバージョンを開いたときに更新されます。エージェントが作業中でも構いません。</p>
+</section>
+
+<section class="doc-sec" id="security">
+  <p class="doc-label" data-t="h.s.label">データとセキュリティ</p>
+  <h2 data-t="h.s.h2">Mac で動くものと、外に送られるもの。</h2>
+  <p class="doc-p" data-t="h.s.p">アプリはあなたのコンピューターで動きます。エージェントは AI の提供元にリクエストを送り、コードはプッシュ時に GitHub へ送られます。</p>
+  <div class="sec-grid">
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><b data-t="h.s.1">Mac の上で動く</b><span data-t="h.s.1p">エージェント、ターミナル、作業リストはローカルで動きます。アプリがコードやファイルを Novum Lab のサーバーに送ることはありません。</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span><b data-t="h.s.2">あなた自身の AI アカウント</b><span data-t="h.s.2p">エージェントは、すでにサインインしている Claude Code や Codex として、その提供元の規約とあなたのプランの範囲で動きます。</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="12" r="2.5"/><path d="M6 8.5v7M8.3 7.2l7.5 3.6"/></svg></span><b data-t="h.s.3">エージェントはブランチで作業</b><span data-t="h.s.3p">エージェントはそれぞれ専用のブランチとワークツリーで作業します。自動マージは、リポジトリごとにあなたがオンにするまでオフです。</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l8-4 8 4v6c0 4-3.5 7-8 8-4.5-1-8-4-8-8z"/><path d="M9 12l2 2 4-4"/></svg></span><b data-t="h.s.4">署名と公証</b><span data-t="h.s.4p">公開配布版は Apple Developer ID で署名され、Apple の公証を受けています。</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9"/></svg></span><b data-t="h.s.5">サインインを分けて保存するブラウザ</b><span data-t="h.s.5p">サイドブラウザはサンドボックスで http と https だけを開き、サインイン情報はふだんのブラウザと分けて保存します。</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg></span><b data-t="h.s.6">TypeSafe Jev 連携は任意</b><span data-t="h.s.6p">ご自身の TypeSafe Jev キーを入れた場合にだけ、QA のエラー内容と学習ノートを TypeSafe Jev に送ります。キーがなければ Jev には何も送りません。</span></div>
+  </div>
+</section>
+
+<section class="doc-sec" id="troubleshooting">
+  <p class="doc-label" data-t="doc.n.trouble">トラブルシューティング</p>
+  <h2 data-t="doc.t.h">問題が起きたら。</h2>
+  <dl class="doc-dl">
+      <div><dt data-t="doc.t1q">pane が切れた、または反応しない</dt><dd data-t="doc.t1a">[表示 → 作業ウィンドウに再接続]。pane とエージェントはそのままです。</dd></div>
+      <div><dt data-t="doc.t2q">再接続しても直らない</dt><dd data-t="doc.t2a">[表示 → 作業ウィンドウのデーモンを再起動]。開いている pane とエージェントはすべて閉じます。</dd></div>
+      <div><dt data-t="doc.t3q">エージェントが止まっているようだ</dt><dd data-t="doc.t3a">[作業] にあなた待ちの質問がないか、pane の詳細にブロッカーがないか確認します。</dd></div>
+      <div><dt data-t="doc.t4q">プルリクエストが開かない</dt><dd data-t="doc.t4a">gh CLI がインストール・ログイン済みか(<code>gh auth login</code>)、リポジトリに GitHub のリモートがあるか確認します。</dd></div>
+      <div><dt data-t="doc.t5q">Claude Code・Codex・git・Python が見つからない</dt><dd data-t="doc.t5a">ターミナルでインストールしてログインし(git・Python は <code>xcode-select --install</code>)、Athena Studio を開き直します。</dd></div>
+      <div><dt data-t="doc.t6q">それでも直らない</dt><dd data-t="doc.t6a">[表示 → スタジオを初期化] はすべてのパックと pane を削除してアプリを再起動します。リポジトリのフォルダは残ります。<a href="https://github.com/novum-lab-kr/athena-studio/issues/new/choose">問題を報告</a>したうえで、最後の手段として使ってください。</dd></div>
+  </dl>
+  <p class="doc-note" data-t="doc.t.logs">ログは <code>~/Library/Application Support/Athena Studio</code> にあります(daemon.log・board.log・pack.log)。問題を報告するときに添付してください。</p>
+</section>
+
+<section class="doc-sec" id="faq">
+  <p class="doc-label">FAQ</p>
+  <h2 data-t="h.q.h2">よくある質問</h2>
+  <div class="faq">
+      <details><summary data-t="h.q0">どの Mac で使えますか?</summary><p data-t="h.q0a">macOS 13 Ventura 以降なら、Apple Silicon・Intel のどちらの Mac でも使えます。<a href="/ja/download/">ダウンロード</a>は無料です。</p></details>
+      <details><summary data-t="h.q2">料金はかかりますか?</summary><p data-t="h.q2a">Athena Studio は無料でダウンロードして使えます。エージェントはご自身の Claude Code または Codex のプランで動くので、利用料はこれまでどおりその提供元から請求されます。</p></details>
+      <details><summary data-t="h.q3">Claude Code か Codex は必須ですか?</summary><p data-t="h.q3a">はい。少なくともどちらかに、お使いの Mac でサインインしている必要があります。エージェントはどちらでも動きます。PR 自動レビューは Claude Code を使い、Codex もあれば別のモデルのレビュアーが加わります。</p></details>
+      <details><summary data-t="h.q6">エージェントが勝手にマージしますか?</summary><p data-t="h.q6a">オンにしたときだけです。自動マージは初期設定でオフ、リポジトリごとに設定します。マージのたびに最後のクリックをあなたが行うようにもできます。</p></details>
+      <details><summary data-t="h.q7">アプリを閉じてもエージェントは動きますか?</summary><p data-t="h.q7a">はい。ターミナルとエージェントはバックグラウンドで動き続けます。アプリを終了したあとでも、開き直せば同じタブ、同じレイアウトに戻ります。</p></details>
+      <details><summary data-t="h.q8">複数の会社やプロジェクトで使えますか?</summary><p data-t="h.q8a">はい。それぞれにパックを作ります。リポジトリ、エージェント、ルールをまとめたものです。パックを切り替えても別のパックの作業は止まらず、パックを書き出してチームと共有できます。</p></details>
+      <details><summary data-t="h.q9">Windows や Linux は?</summary><p data-t="h.q9a">現在は Mac アプリのみです。</p></details>
+      <details><summary data-t="h.q11">バグを見つけた、または提案がありますか?</summary><p data-t="h.q11a"><a href="https://github.com/novum-lab-kr/athena-studio/issues/new/choose">GitHub で issue を作成</a>してください。バグ報告か機能提案のテンプレートを選べます。</p></details>
+  </div>
+</section>
+  </div>
+</div>
+<script>
+/* 목차: 지금 읽는 장을 표시 */
+(function () {
+  var links = [].slice.call(document.querySelectorAll('.doc-toc a'));
+  var secs = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function on() {
+    var cur = 0;
+    secs.forEach(function (s, i) { if (s && s.getBoundingClientRect().top < 140) cur = i; });
+    links.forEach(function (a, i) { a.classList.toggle('on', i === cur); });
+  }
+  window.addEventListener('scroll', on, { passive: true }); on();
+})();
+</script>
+</main>
+
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <a class="brand" href="/ja/"><img src="/assets/owl-white.png" alt="">Athena Studio</a>
+      <div class="links">
+        <a href="/ja/features/" data-t="nav.features">機能</a>
+        <a href="/ja/docs/" data-t="nav.docs">ドキュメント</a>
+        <a href="/ja/releases/" data-t="nav.releases">更新履歴</a>
+        <a href="/ja/download/" data-t="nav.download">ダウンロード</a>
+        <a href="/ja/terms/" data-t="nav.terms">利用規約</a>
+        <a href="https://github.com/novum-lab-kr/athena-studio/issues/new/choose" data-t="nav.issue">問題を報告</a>
+        <a href="https://novum-lab.com">novum-lab.com</a>
+      </div>
+    </div>
+    <div class="foot-lang" role="group" aria-label="Language"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><a href="/docs/" data-set-lang="en" lang="en" hreflang="en" aria-current="false">English</a><a href="/ko/docs/" data-set-lang="ko" lang="ko" hreflang="ko" aria-current="false">한국어</a><a href="/ja/docs/" data-set-lang="ja" lang="ja" hreflang="ja" aria-current="true">日本語</a><a href="/zh/docs/" data-set-lang="zh" lang="zh-Hans" hreflang="zh-Hans" aria-current="false">中文</a></div>
+    <div class="biz"><span data-t="c.made">© 2026 Novum Lab. Athena Studio は Novum Lab が開発しています。</span><br>Novum Lab · CEO: Eunju Kim · Business Registration No. 496-37-01619 · Seoul, Republic of Korea · <a href="mailto:mcsung@novum-lab.com">mcsung@novum-lab.com</a><br><span data-t="c.ga">このサイトでは、訪問数とダウンロード数を数えるために Google Analytics の Cookie を使用しています。</span></div>
+  </div>
+</footer>
+</body>
+</html>

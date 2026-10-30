@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ja" data-lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-t="r.title">更新履歴 — Athena Studio</title>
+<meta name="description" data-ta="content:r.desc" content="Athena Studio の変更点、新しい順。">
+<meta property="og:title" content="更新履歴 — Athena Studio">
+<meta property="og:description" content="Athena Studio の変更点、新しい順。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://athena.novum-lab.com/ja/releases/">
+<meta property="og:image" content="https://athena.novum-lab.com/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://athena.novum-lab.com/ja/releases/">
+<!-- seo:start · deploy/gen-athena-lang.mjs 가 만든다(손으로 고치지 않는다) -->
+<link rel="alternate" hreflang="en" href="https://athena.novum-lab.com/releases/">
+<link rel="alternate" hreflang="ko" href="https://athena.novum-lab.com/ko/releases/">
+<link rel="alternate" hreflang="ja" href="https://athena.novum-lab.com/ja/releases/">
+<link rel="alternate" hreflang="zh-Hans" href="https://athena.novum-lab.com/zh/releases/">
+<link rel="alternate" hreflang="x-default" href="https://athena.novum-lab.com/releases/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://novum-lab.com/#organization",
+      "name": "Novum Lab",
+      "url": "https://novum-lab.com"
+    }
+  ]
+}
+</script>
+<!-- seo:end -->
+<meta name="theme-color" content="#09090b">
+<link rel="icon" type="image/png" href="/assets/favicon-white.png">
+<link rel="apple-touch-icon" href="/assets/app-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=20261030a">
+<script src="/assets/analytics.js?v=20261029a" async></script>
+<script src="/assets/lang.js?v=20261030b"></script>
+<script src="/assets/motion.js?v=20261028i" defer></script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/ja/"><img src="/assets/owl-white.png" alt="">Athena Studio</a>
+    <nav>
+      <a class="nav-x" href="/ja/features/" data-t="nav.features">機能</a>
+      <a class="nav-x" href="/ja/docs/" data-t="nav.docs">ドキュメント</a>
+      <a class="nav-x" href="/ja/releases/" aria-current="page" data-t="nav.releases">更新履歴</a>
+      <a class="btn sm gold" href="/ja/download/" data-t="nav.download">ダウンロード</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="page-head">
+  <div class="wrap">
+    <p class="eyebrow"><i></i><span data-t="r.eyebrow">更新履歴</span></p>
+    <h1 class="grad" data-t="r.h1">Athena Studio の新着情報</h1>
+    <p class="lead" data-t="r.lead2">Athena Studio の公開版ごとの変更点を新しい順に載せています。</p>
+  </div>
+</div>
+
+<!-- 판마다 요약(2026-10-29 바꿈 — CHANGELOG 를 그대로 옮기지 않는다). 원문은 athena-studio CHANGELOG.md(= GitHub Release 본문).
+     판 하나 = ① 그 판을 한 줄로 말하는 제목(r.<판>t · 손님 말) ② 손님이 체감하는 핵심 2~4개(r.<판>k1… · 한 줄씩 짧게 · 태그 New/Improved/Fixed)
+     ③ 나머지는 "그 밖의 작은 고침 N개" 한 줄(r.<판>m)로 묶고 그 판 GitHub Release(releases/tag/vX.Y.Z) 링크.
+     핵심에 내부 용어(현황판 · pane 번호 · 계획서 · 결정 콘솔 등)를 넣지 않는다. 사실은 CHANGELOG 에 있는 것만 — 지어 넣지 않는다.
+     공개판 사이의 비공개 판은 그 변경이 처음 들어간 공개판에 묶는다(v0.17.6 = 0.16 + 0.17 · v0.19.2 = 0.17.7 + 0.18 + 0.19 · v0.25.1 = 0.20 – 0.25 · v0.28.7 = 0.26 – 0.28).
+     새 판: 맨 위에 같은 모양으로 더하고 키를 ko · ja · zh 사전에 모두 넣는다. 0.2 – 0.13 은 공개 전 개발판이라 한 줄(접힘) 그대로 -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="rel"><div class="v"><b>0.28</b><span>v0.28.7<br><span data-t="r.d28">2026 年 10 月 29 日</span></span></div><div>
+      <h3 class="rel-t" data-t="r.28t">エージェントの質問に、Work 画面からそのまま答えられます。</h3>
+      <ul>
+      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.28k1">エージェントが pane で質問すると、Work にもリクエストとして表示され、そこで答えを選べます。</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.28k2">Athena pane への報告が 1 回で届きます。Athena pane が見つからなくても、報告は失われずリクエストとして残ります。</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.28k3">ボードや決定コンソールを開くとき、横のブラウザーが白く点滅しなくなりました。</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.28k4">Work のポップアップから決定コンソールを開くと、外部のブラウザーではなく横のブラウザーで開きます。</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.28k5">エージェントモニターで、Athena 自身のセッションがフォルダー名ではなく <code>athena</code> と表示されます。</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.28k6">横のブラウザーが開いていても、Work · 設定 · ボードのメニューポップアップが隠れなくなりました。</span></li>
+      </ul>
+      <p class="rel-more" data-t="r.28m">そのほかの小さな変更と修正 4 件 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.28.7">v0.28.7 のすべての変更を GitHub で見る</a></p>
+    </div></div>
+    <div class="rel"><div class="v"><b>0.25</b><span>v0.25.1<br><span data-t="r.d25">2026 年 10 月 29 日</span></span></div><div>
+      <h3 class="rel-t" data-t="r.25t">Finder からファイルをドラッグして、パスを入力できます。</h3>
+      <ul>
+      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.25k1">pane にファイルやフォルダーをドラッグすると、パスが入力行に貼り付けられます。Enter を押すまでは何も送信されません。</span></li>
+      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.25k2">PR を開くとき、追加したテストが変更なしでも通るかどうかを知らせます。PR を止めることはありません。</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.25k3">軽い作業はより軽いモデルで動き、「要修正」の後のレビューにはより強いモデルを使えます。</span></li>
+      </ul>
+      <p class="rel-more" data-t="r.25m">そのほかの小さな変更と修正 6 件 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.25.1">v0.25.1 のすべての変更を GitHub で見る</a></p>
+    </div></div>
+    <div class="rel"><div class="v"><b>0.19</b><span>v0.19.2<br><span data-t="r.d19">2026 年 10 月 29 日</span></span></div><div>
+      <h3 class="rel-t" data-t="r.19t">作業画面まわりのパネルのサイズを変えられます。</h3>
+      <ul>
+      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.19k1">端をドラッグして、ワークスペース一覧・Explorer・モニターのサイズを変えられます。</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.19k2">pane の境界をドラッグするとき、スクロールバーに妨げられなくなりました。</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.19k3">スタート画面を離れたあと、「作業」と「設定」ボタンが無効のまま残らなくなりました。</span></li>
+      </ul>
+      <p class="rel-more" data-t="r.19m">そのほかの小さな修正 4 件 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.19.2">v0.19.2 のすべての変更を GitHub で見る</a></p>
+    </div></div>
+    <div class="rel"><div class="v"><b>0.17</b><span>v0.17.6<br><span data-t="r.d17">2026 年 10 月 29 日</span></span></div><div>
+      <h3 class="rel-t" data-t="r.17t">Mac アプリが自分でアップデートするようになりました。</h3>
+      <ul>
+      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.17k1">設定(⚙)で「アップデート」を押すと、ダウンロード・検証・再起動まで行います。失敗しても今のバージョンがそのまま動きます。</span></li>
+      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.17k2">Athena がリポジトリの GitHub issue を見守り、新しい issue を作業として取り込みます。</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.17k3">通知には、あなたが決めることだけが表示されます。</span></li>
+      </ul>
+      <p class="rel-more" data-t="r.17m">そのほかの小さな修正 5 件 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.17.6">v0.17.6 のすべての変更を GitHub で見る</a></p>
+    </div></div>
+    <div class="rel"><div class="v"><b>0.15</b><span>v0.15.8<br><span data-t="r.d15">2026 年 10 月 28 日</span></span></div><div>
+      <h3 class="rel-t" data-t="r.15t">最初の公開版 — Mac アプリとして登場しました。</h3>
+      <ul>
+      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.15k1">Apple Silicon・Intel の Mac で入手できます(macOS 13 Ventura 以降)。</span></li>
+      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.15k2">Apple の署名・公証済みなので、セキュリティ警告なしで開きます。</span></li>
+      </ul>
+      <p class="rel-more" data-t="r.15m">そのほかの小さな修正 2 件 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.15.8">v0.15.8 のすべての変更を GitHub で見る</a></p>
+    </div></div>
+    <details class="rel-old"><summary data-t="r.devsum">最初の公開版より前の開発版(0.2 – 0.13)</summary>
+    <div class="rel"><div class="v"><b>0.2 – 0.13</b><span data-t="r.dpre">2026 年 10 月 26–28 日</span></div><ul>
+      <li><span class="tag dev" data-t="r.dev">開発版</span><span data-t="r.pre">最初の公開版より前の開発版です。この間に Claude・Codex によるプルリクエストの自動レビュー、役割ごとのモデル選択、作業リストと pane の詳細、エージェントモニター、リポジトリの名前・画像・ロゴが加わりました。</span></li>
+    </ul></div>
+    </details>
+  </div>
+</section>
+</main>
+
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <a class="brand" href="/ja/"><img src="/assets/owl-white.png" alt="">Athena Studio</a>
+      <div class="links">
+        <a href="/ja/features/" data-t="nav.features">機能</a>
+        <a href="/ja/docs/" data-t="nav.docs">ドキュメント</a>
+        <a href="/ja/releases/" data-t="nav.releases">更新履歴</a>
+        <a href="/ja/download/" data-t="nav.download">ダウンロード</a>
+        <a href="/ja/terms/" data-t="nav.terms">利用規約</a>
+        <a href="https://github.com/novum-lab-kr/athena-studio/issues/new/choose" data-t="nav.issue">問題を報告</a>
+        <a href="https://novum-lab.com">novum-lab.com</a>
+      </div>
+    </div>
+    <div class="foot-lang" role="group" aria-label="Language"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><a href="/releases/" data-set-lang="en" lang="en" hreflang="en" aria-current="false">English</a><a href="/ko/releases/" data-set-lang="ko" lang="ko" hreflang="ko" aria-current="false">한국어</a><a href="/ja/releases/" data-set-lang="ja" lang="ja" hreflang="ja" aria-current="true">日本語</a><a href="/zh/releases/" data-set-lang="zh" lang="zh-Hans" hreflang="zh-Hans" aria-current="false">中文</a></div>
+    <div class="biz"><span data-t="c.made">© 2026 Novum Lab. Athena Studio は Novum Lab が開発しています。</span><br>Novum Lab · CEO: Eunju Kim · Business Registration No. 496-37-01619 · Seoul, Republic of Korea · <a href="mailto:mcsung@novum-lab.com">mcsung@novum-lab.com</a><br><span data-t="c.ga">このサイトでは、訪問数とダウンロード数を数えるために Google Analytics の Cookie を使用しています。</span></div>
+  </div>
+</footer>
+</body>
+</html>

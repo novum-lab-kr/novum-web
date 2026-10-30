@@ -9,18 +9,59 @@
 <meta property="og:description" content="Download Athena Studio for macOS (Apple Silicon and Intel). Requirements and first steps.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://athena.novum-lab.com/download/">
-<meta property="og:image" content="https://athena.novum-lab.com/assets/shots/workspace-en-1200.webp">
+<meta property="og:image" content="https://athena.novum-lab.com/assets/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://athena.novum-lab.com/download/">
+<!-- seo:start · deploy/gen-athena-lang.mjs 가 만든다(손으로 고치지 않는다) -->
+<link rel="alternate" hreflang="en" href="https://athena.novum-lab.com/download/">
+<link rel="alternate" hreflang="ko" href="https://athena.novum-lab.com/ko/download/">
+<link rel="alternate" hreflang="ja" href="https://athena.novum-lab.com/ja/download/">
+<link rel="alternate" hreflang="zh-Hans" href="https://athena.novum-lab.com/zh/download/">
+<link rel="alternate" hreflang="x-default" href="https://athena.novum-lab.com/download/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://novum-lab.com/#organization",
+      "name": "Novum Lab",
+      "url": "https://novum-lab.com"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Athena Studio",
+      "url": "https://athena.novum-lab.com/",
+      "description": "Download Athena Studio for macOS (Apple Silicon and Intel). Requirements and first steps.",
+      "operatingSystem": "macOS 13 or later",
+      "processorRequirements": "Apple Silicon or Intel",
+      "applicationCategory": "DeveloperApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "downloadUrl": [
+        "https://github.com/novum-lab-kr/athena-studio-releases/releases/latest/download/Athena-Studio-mac-arm64.dmg",
+        "https://github.com/novum-lab-kr/athena-studio-releases/releases/latest/download/Athena-Studio-mac-x64.dmg"
+      ],
+      "publisher": {
+        "@id": "https://novum-lab.com/#organization"
+      }
+    }
+  ]
+}
+</script>
+<!-- seo:end -->
 <meta name="theme-color" content="#09090b">
 <link rel="icon" type="image/png" href="/assets/favicon-white.png">
 <link rel="apple-touch-icon" href="/assets/app-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=20261029a">
+<link rel="stylesheet" href="/assets/site.css?v=20261030a">
 <script src="/assets/analytics.js?v=20261029a" async></script>
-<script src="/assets/lang.js?v=20261029b"></script>
+<script src="/assets/lang.js?v=20261030b"></script>
 <script src="/assets/motion.js?v=20261028i" defer></script>
 </head>
 <body>
@@ -47,7 +88,7 @@
    GitHub REST API releases/latest(Access-Control-Allow-Origin: *)의 tag_name · published_at 을 쓴다.
    로그인 없이 방문자 IP 당 시간 60회라 실패 · 4초 넘게 느리면 적어 둔 값 그대로 둔다(새 배포판이 나오면 적어 둔 값도 고친다 —
    이 줄 · 받기 카드 두 곳의 data-rel-ver · 사전 ko · ja · zh 의 d.ver).
-   lang.js 가 언어를 바꾸며 이 줄의 innerHTML 을 갈아 끼우므로, 줄이 바뀔 때마다 다시 채운다 */
+   적어 둔 값을 고치면 node deploy/gen-athena-lang.mjs 로 언어판도 다시 만든다. 이 줄의 innerHTML 이 바뀌어도 다시 채우도록 지켜본다 */
 (function () {
   var line = document.querySelector('.dl-ver');
   if (!line || !window.fetch || !window.MutationObserver) return;
@@ -176,7 +217,7 @@
         <a href="https://novum-lab.com">novum-lab.com</a>
       </div>
     </div>
-    <div class="foot-lang" role="group" aria-label="Language"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><button type="button" data-set-lang="en" lang="en">English</button><button type="button" data-set-lang="ko" lang="ko">한국어</button><button type="button" data-set-lang="ja" lang="ja">日本語</button><button type="button" data-set-lang="zh" lang="zh-Hans">中文</button></div>
+    <div class="foot-lang" role="group" aria-label="Language"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><a href="/download/" data-set-lang="en" lang="en" hreflang="en" aria-current="true">English</a><a href="/ko/download/" data-set-lang="ko" lang="ko" hreflang="ko" aria-current="false">한국어</a><a href="/ja/download/" data-set-lang="ja" lang="ja" hreflang="ja" aria-current="false">日本語</a><a href="/zh/download/" data-set-lang="zh" lang="zh-Hans" hreflang="zh-Hans" aria-current="false">中文</a></div>
     <div class="biz"><span data-t="c.made">© 2026 Novum Lab. Athena Studio is made by Novum Lab.</span><br>Novum Lab · CEO: Eunju Kim · Business Registration No. 496-37-01619 · Seoul, Republic of Korea · <a href="mailto:mcsung@novum-lab.com">mcsung@novum-lab.com</a><br><span data-t="c.ga">This site uses Google Analytics cookies to count visits and downloads.</span></div>
   </div>
 </footer>

@@ -1,75 +1,46 @@
-/* 언어 고르기 · 바꾸기. 페이지는 영어 원문을 담고, data-t 키가 있는 곳만 /assets/i18n/<언어>.js 사전으로 바꾼다.
-   고르는 순서: ?lang= → 이 브라우저에서 고른 것(localStorage) → 영어. 브라우저 언어는 보지 않는다(덕배 2026-10-28, 처음은 늘 영어) */
+/* 언어 주소 · 언어 링크. 페이지는 언어마다 따로 있다 — 영어 / · /features/ …, 그 밖의 언어 /ko/ · /ja/ · /zh/ 아래 같은 경로.
+   언어판은 deploy/gen-athena-lang.mjs 가 영어 페이지와 /assets/i18n/<언어>.js 사전으로 미리 만들어 둔다(브라우저에서 바꾸지 않는다).
+   언어 정하기: ?lang= 이 붙은 예전 링크 → 그 언어 주소로. 영어 주소에서는 이 브라우저에서 고른 언어(localStorage)가 있으면 그 주소로.
+   언어 주소(/ko/ …)로 들어오면 그 언어 그대로. 브라우저 언어는 보지 않는다(덕배 2026-10-28, 처음은 늘 영어) */
 (function () {
   var LANGS = ['en', 'ko', 'ja', 'zh'];
-  var NAMES = { en: 'EN', ko: '한국어', ja: '日本語', zh: '中文' };
   var KEY = 'athena-lang';
-  var VER = '20261030a';
-  var root = document.documentElement;
-  var dicts = {};
+  var PREFIX = /^\/(ko|ja|zh)(\/|$)/;
+  var found = PREFIX.exec(location.pathname);
+  var page = found ? found[1] : 'en';
 
-  function pick() {
+  // 같은 페이지의 다른 언어 주소(?lang= 은 빼고 나머지 검색어 · #절은 그대로)
+  function urlFor(l) {
+    var rest = location.pathname.replace(PREFIX, '/');
+    var search = '';
+    try {
+      var params = new URLSearchParams(location.search);
+      params['delete']('lang');
+      search = params.toString();
+    } catch (e) {}
+    return (l === 'en' ? '' : '/' + l) + rest + (search ? '?' + search : '') + location.hash;
+  }
+
+  function wanted() {
     var q = null;
     try { q = new URLSearchParams(location.search).get('lang'); } catch (e) {}
     if (LANGS.indexOf(q) >= 0) return q;
+    if (page !== 'en') return page;
     try { var s = localStorage.getItem(KEY); if (LANGS.indexOf(s) >= 0) return s; } catch (e) {}
     return 'en';
   }
 
-  function setRoot(l) {
-    root.lang = l === 'zh' ? 'zh-Hans' : l;
-    root.setAttribute('data-lang', l);
-  }
-
-  function load(l, cb) {
-    if (l === 'en') return cb({});
-    if (dicts[l]) return cb(dicts[l]);
-    var s = document.createElement('script');
-    s.src = '/assets/i18n/' + l + '.js?v=' + VER;
-    s.onload = function () { dicts[l] = (window.ATHENA_I18N || {})[l] || {}; cb(dicts[l]); };
-    s.onerror = function () { cb({}); };
-    document.head.appendChild(s);
-  }
-
-  function apply(l, d) {
-    var i, el, k;
-    var ts = document.querySelectorAll('[data-t]');
-    for (i = 0; i < ts.length; i++) {
-      el = ts[i];
-      if (el._en == null) el._en = el.innerHTML;
-      k = el.getAttribute('data-t');
-      el.innerHTML = d[k] != null ? d[k] : el._en;
-    }
-    var as = document.querySelectorAll('[data-ta]');
-    for (i = 0; i < as.length; i++) {
-      el = as[i];
-      el._ena = el._ena || {};
-      var pairs = el.getAttribute('data-ta').split(',');
-      for (var j = 0; j < pairs.length; j++) {
-        var p = pairs[j].split(':'), attr = p[0].trim(), key = p[1].trim();
-        if (el._ena[attr] == null) el._ena[attr] = el.getAttribute(attr) || '';
-        el.setAttribute(attr, d[key] != null ? d[key] : el._ena[attr]);
-      }
-    }
-    // 화면 언어에 맞는 앱 스크린샷(workspace-<언어>)
-    var imgs = document.querySelectorAll('img[data-lang-src]');
-    for (i = 0; i < imgs.length; i++) setShot(imgs[i], imgs[i].getAttribute('data-lang-src').replace('{l}', l));
-    var cur = document.querySelectorAll('[data-set-lang]');
-    for (i = 0; i < cur.length; i++) cur[i].setAttribute('aria-current', cur[i].getAttribute('data-set-lang') === l ? 'true' : 'false');
-    var lab = document.querySelectorAll('[data-lang-label]');
-    for (i = 0; i < lab.length; i++) lab[i].textContent = NAMES[l];
-    var tabs = document.querySelectorAll('[data-tabs="lang"]');
-    for (i = 0; i < tabs.length; i++) selectTab(tabs[i], l);
+  var want = wanted();
+  if (want !== page) {
+    location.replace(urlFor(want));
+    return;
   }
 
   // 큰 제목 금빛 점등 — 처음 한 번만. 글자를 span 으로 나눠 CSS 가 왼→오로 차례로 켠다.
-  // 모션 줄이기 설정이면 나누지 않고 바로 보인다. 언어를 바꾸면 apply 가 문구를 새로 넣어 효과 없이 보인다.
-  var glowed = false;
-
+  // 모션 줄이기 설정이면 나누지 않고 바로 보인다.
   function glowTitle() {
     var el = document.querySelector('h1[data-t="n.h1"]');
-    if (!el || glowed) return;
-    glowed = true;
+    if (!el) return;
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     var plain = el.textContent;
     var lines = el.innerHTML.split(/<br\s*\/?>/i);
@@ -119,39 +90,21 @@
     for (var m = 0; m < im.length; m++) setShot(im[m], im[m].getAttribute('data-tab-src').replace('{l}', name));
   }
 
-  function change(l) {
-    try { localStorage.setItem(KEY, l); } catch (e) {}
-    load(l, function (d) {
-      setRoot(l);
-      apply(l, d);
-      var title = document.querySelector('h1[data-t="n.h1"]');
-      if (title) { title.classList.remove('gl'); title.removeAttribute('aria-label'); }
-    });
-  }
-
   function ready(fn) {
     if (document.readyState !== 'loading') fn();
     else document.addEventListener('DOMContentLoaded', fn);
   }
 
-  var lang = pick();
-  setRoot(lang);
-  if (lang !== 'en') {
-    root.classList.add('i18n-wait');
-    setTimeout(function () { root.classList.remove('i18n-wait'); }, 1500);
-  }
-  load(lang, function (d) {
-    ready(function () { apply(lang, d); root.classList.remove('i18n-wait'); glowTitle(); });
-  });
-
   ready(function () {
+    glowTitle();
     document.addEventListener('click', function (e) {
+      // 언어 링크: 고른 언어를 기억하고 같은 페이지의 그 언어 주소로(#절 유지). JS 가 없어도 href 로 간다
       var b = e.target.closest('[data-set-lang]');
       if (b) {
+        var l = b.getAttribute('data-set-lang');
+        try { localStorage.setItem(KEY, l); } catch (e2) {}
         e.preventDefault();
-        change(b.getAttribute('data-set-lang'));
-        var det = b.closest('details');
-        if (det) det.open = false;
+        if (l !== page) location.href = urlFor(l);
         return;
       }
       var t = e.target.closest('[data-tab]');

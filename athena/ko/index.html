@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="ko" data-lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-t="h.title">Athena Studio — AI 코딩 에이전트 팀을 맥에서</title>
+<meta name="description" data-ta="content:h.desc" content="Athena Studio는 AI 코딩 에이전트 팀을 실행하는 맥 앱입니다. 팀 리드가 계획을 세우고 레포마다 에이전트가 코드를 고칩니다. 터미널을 보면서 질문에 답하고 PR을 검토합니다.">
+<meta property="og:title" content="Athena Studio — AI 코딩 에이전트 팀을 맥에서">
+<meta property="og:description" content="Athena Studio는 AI 코딩 에이전트 팀을 실행하는 맥 앱입니다. 팀 리드가 계획을 세우고 레포마다 에이전트가 코드를 고칩니다. 터미널을 보면서 질문에 답하고 PR을 검토합니다.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://athena.novum-lab.com/ko/">
+<meta property="og:image" content="https://athena.novum-lab.com/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://athena.novum-lab.com/ko/">
+<!-- seo:start · deploy/gen-athena-lang.mjs 가 만든다(손으로 고치지 않는다) -->
+<link rel="alternate" hreflang="en" href="https://athena.novum-lab.com/">
+<link rel="alternate" hreflang="ko" href="https://athena.novum-lab.com/ko/">
+<link rel="alternate" hreflang="ja" href="https://athena.novum-lab.com/ja/">
+<link rel="alternate" hreflang="zh-Hans" href="https://athena.novum-lab.com/zh/">
+<link rel="alternate" hreflang="x-default" href="https://athena.novum-lab.com/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://novum-lab.com/#organization",
+      "name": "Novum Lab",
+      "url": "https://novum-lab.com"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Athena Studio",
+      "url": "https://athena.novum-lab.com/ko/",
+      "description": "Athena Studio는 AI 코딩 에이전트 팀을 실행하는 맥 앱입니다. 팀 리드가 계획을 세우고 레포마다 에이전트가 코드를 고칩니다. 터미널을 보면서 질문에 답하고 PR을 검토합니다.",
+      "operatingSystem": "macOS 13 or later",
+      "processorRequirements": "Apple Silicon or Intel",
+      "applicationCategory": "DeveloperApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "downloadUrl": [
+        "https://github.com/novum-lab-kr/athena-studio-releases/releases/latest/download/Athena-Studio-mac-arm64.dmg",
+        "https://github.com/novum-lab-kr/athena-studio-releases/releases/latest/download/Athena-Studio-mac-x64.dmg"
+      ],
+      "publisher": {
+        "@id": "https://novum-lab.com/#organization"
+      }
+    }
+  ]
+}
+</script>
+<!-- seo:end -->
+<meta name="theme-color" content="#09090b">
+<link rel="icon" type="image/png" href="/assets/favicon-white.png">
+<link rel="apple-touch-icon" href="/assets/app-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=20261030a">
+<script src="/assets/analytics.js?v=20261029a" async></script>
+<script src="/assets/lang.js?v=20261030b"></script>
+<script src="/assets/motion.js?v=20261028i" defer></script>
+<script src="/assets/flow.js?v=20261029a" defer></script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/ko/"><img src="/assets/owl-white.png" alt="">Athena Studio</a>
+    <nav>
+      <a class="nav-x" href="/ko/features/" data-t="nav.features">기능</a>
+      <a class="nav-x" href="/ko/docs/" data-t="nav.docs">문서</a>
+      <a class="nav-x" href="/ko/releases/" data-t="nav.releases">업데이트 내역</a>
+      <a class="btn sm gold" href="/ko/download/" data-t="nav.download">다운로드</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="h3-hero">
+  <div class="wrap">
+    <div class="h3-head">
+      <h1 data-t="n.h1">AI 에이전트를 조율하고,<br>더 나은 소프트웨어를 완성하다.</h1>
+      <div>
+        <p class="h3-lead" data-t="n.lead">Athena Studio는 AI 코딩 에이전트를 돌리는 맥 앱입니다. 팀 리드 Athena에게 할 일을 말하면 계획을 세워 레포마다 에이전트를 붙이고, 정할 게 생기면 나에게 묻습니다. 나는 diff를 보고 머지하면 됩니다.</p>
+        <div class="btns">
+          <a class="btn gold" href="/ko/download/" data-t="n.dl">macOS용 다운로드</a>
+          <a class="btn" href="#flow" data-t="n.cta2">사용 흐름 보기 ↓</a>
+        </div>
+        <p class="h3-note" data-t="n.note2">무료 · macOS 13 이상 · Apple Silicon / Intel · Claude Code 또는 Codex 필요</p>
+      </div>
+    </div>
+    <figure class="shot h3-shot h3-gif">
+      <picture>
+        <source media="(prefers-reduced-motion: reduce)" srcset="/assets/shots/workspace-en-1200.webp">
+        <img src="/assets/shots/flow.gif" width="1200" height="676" alt="일하는 Athena Studio: 요청 하나가 레포별 작업 공간에서 web · api · mobile-app 에이전트로 나뉘어 일하고 아래 모니터가 채워지며, api 에이전트의 질문에 [작업]에서 답하면 Athena가 결과를 머지합니다." data-ta="alt:n.hero.alt">
+      </picture>
+    </figure>
+    <p class="h3-steps"><span data-t="n.steps">설치 → 레포 연결 → Athena에게 요청 → 질문에 답하기 → PR 확인</span></p>
+  </div>
+</div>
+
+<section id="why" class="h3-sec why">
+  <div class="wrap">
+    <p class="h3-num" data-t="n.why.l">왜 Athena Studio입니까</p>
+    <div class="why-grid">
+      <div><span class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6h5v5H6zM13 6h5v5h-5zM6 13h5v5H6zM13 13h5v5h-5z"/></svg></span><h3 data-t="n.why1.t">레포 여러 개를 한 번에</h3><p data-t="n.why1.p">요청 하나가 web · api · mobile에 걸쳐도 됩니다. Athena가 나누고, 레포마다 에이전트가 자기 브랜치에서 동시에 일합니다.</p></div>
+      <div><span class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0-6 6c0 2.2 1.2 3.6 2.3 4.7.6.6.7 1.3.7 2.3h6c0-1 .1-1.7.7-2.3C16.8 12.6 18 11.2 18 9a6 6 0 0 0-6-6zM9.5 19h5M10.5 21.5h3"/></svg></span><h3 data-t="n.why2.t">나는 정할 때만</h3><p data-t="n.why2.p">에이전트의 질문은 [작업] 목록 하나로 모입니다. 누가 나를 기다리는지 터미널을 뒤질 필요가 없습니다.</p></div>
+      <div><span class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l4.5 4.5L20 7"/></svg></span><h3 data-t="n.why3.t">머지 전에 확인</h3><p data-t="n.why3.p">에이전트는 PR을 열기 전에 테스트를 돌립니다. 자동 리뷰를 켠 레포에서는 머지 전에 고칠 점을 받아 고칩니다.</p></div>
+      <div><span class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4.5h10a3 3 0 0 1 3 3v12H8a3 3 0 0 1-3-3zM5 16.5a3 3 0 0 1 3-3h10"/></svg></span><h3 data-t="n.why4.t">레포를 점점 알아 갑니다</h3><p data-t="n.why4.p">작업이 끝날 때 남긴 노트를 그 레포의 다음 작업이 읽습니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="flow" class="h3-sec">
+  <div class="wrap">
+    <p class="h3-num">01</p>
+    <h2 data-t="n.f.h">요청 하나를 레포마다 나누는 Athena</h2>
+    <p class="h3-p" data-t="n.f.p">Athena가 계획을 세우고 담당 에이전트에게 작업을 맡깁니다. 에이전트는 각자 브랜치에서 구현하고, 결정이 필요하면 질문을 남깁니다.</p>
+    <blockquote class="h3-quote"><span class="who" data-t="n.f.qwho">데모 요청(읽기 쉽게 다듬었습니다)</span><span data-t="h.b1.q">장바구니에 담고 구매하지 않는 손님이 많아. web에 저장한 장바구니를 알려 주는 배너를 넣고, mobile에서도 쓸 수 있게 api의 주문 내역을 페이지로 나눠 줘.</span></blockquote>
+
+    <figure class="hf" aria-label="요청이 처리되는 흐름" data-ta="aria-label:n.d.aria">
+      <div class="hf-board">
+        <svg class="hf-wires" aria-hidden="true" focusable="false"></svg>
+        <ol class="hf-lanes">
+          <li class="hf-lane"><ol class="hf-row">
+          <li class="hf-node hf-you" id="hf-you" data-next="athena"><button type="button" aria-pressed="false"><span class="hf-num" aria-hidden="true">1</span><span class="hf-t" data-t="m.r1">나</span><span class="hf-s" data-t="n.d.you">요청</span></button></li>
+          <li class="hf-node hf-lead" id="hf-athena" data-next="approve"><button type="button" aria-pressed="false"><span class="hf-num" aria-hidden="true">2</span><span class="hf-t">Athena</span><span class="hf-s" data-t="n.d.lead2">계획하고 레포별로 나누기</span></button></li>
+          <li class="hf-node hf-you" id="hf-approve" data-next="agents"><button type="button" aria-pressed="false"><span class="hf-num" aria-hidden="true">3</span><span class="hf-t" data-t="n.d.ok">내가 승인</span><span class="hf-s" data-t="n.d.oks">계획과 결정 사항</span></button></li>
+          </ol></li>
+          <li class="hf-lane"><ol class="hf-row">
+          <li class="hf-node hf-agent hf-stack" id="hf-agents" data-next="chk"><button type="button" aria-pressed="false"><span class="hf-num" aria-hidden="true">4</span><span class="hf-t" data-t="n.d.agents">레포별 에이전트</span><span class="hf-s" data-t="n.d.agentss">api · web · mobile</span></button></li>
+          <li class="hf-node hf-agent" id="hf-chk" data-next="rev"><button type="button" aria-pressed="false"><span class="hf-num" aria-hidden="true">5</span><span class="hf-t" data-t="n.d.chk">테스트 · 검사</span><span class="hf-s" data-t="n.d.pr2">자기 브랜치 · draft PR</span></button></li>
+          <li class="hf-node hf-rev" id="hf-rev" data-next="merge"><button type="button" aria-pressed="false"><span class="hf-num" aria-hidden="true">6</span><span class="hf-t" data-t="n.d.rv">자동 리뷰</span><span class="hf-s" data-t="n.d.rvs">켠 레포에서</span></button></li>
+          <li class="hf-node hf-you" id="hf-merge" data-next="lr"><button type="button" aria-pressed="false"><span class="hf-num" aria-hidden="true">7</span><span class="hf-t" data-t="n.d.mg2">머지</span><span class="hf-s" data-t="n.d.mgs2">내 확인은 선택</span></button></li>
+          </ol></li>
+          <li class="hf-lane"><ol class="hf-row">
+          <li class="hf-node hf-learn" id="hf-lr" data-next="pick"><button type="button" aria-pressed="false"><span class="hf-num" aria-hidden="true">8</span><span class="hf-t" data-t="n.d.lr">학습 리뷰</span><span class="hf-s" data-t="n.d.lrs">노트를 제안</span></button></li>
+          <li class="hf-node hf-you" id="hf-pick" data-next="notes"><button type="button" aria-pressed="false"><span class="hf-num" aria-hidden="true">9</span><span class="hf-t" data-t="n.d.pick">내가 고르기</span><span class="hf-s" data-t="n.d.picks">남길 것만</span></button></li>
+          <li class="hf-node hf-learn" id="hf-notes" data-next=""><button type="button" aria-pressed="false"><span class="hf-num" aria-hidden="true">10</span><span class="hf-t" data-t="n.d.learn2">학습 노트</span><span class="hf-s" data-t="n.d.learns">레포별</span></button></li>
+          </ol></li>
+        </ol>
+      </div>
+      <ul class="hf-keys">
+        <li class="hf-key-q"><i aria-hidden="true"></i><span data-t="n.d.q2">결정이 필요하면 어느 에이전트든 나에게 묻습니다([작업] → 나를 기다리는 것)</span></li>
+        <li class="hf-key-n"><i aria-hidden="true"></i><span data-t="n.d.after3">머지 뒤 다음 레포</span></li>
+        <li class="hf-key-n"><i aria-hidden="true"></i><span data-t="n.d.next">다음 작업에서 참고</span></li>
+      </ul>
+      <div class="fd-legend" aria-hidden="true"><span class="lg-you" data-t="n.lg.you">내가 결정</span><span class="lg-lead">Athena</span><span class="lg-agent" data-t="n.lg.ag">에이전트 작업 · 검사</span><span class="lg-rev" data-t="n.lg.rv">리뷰</span><span class="lg-learn" data-t="n.lg.ln">학습</span></div>
+      <figcaption data-t="n.d.cap">레포별 브랜치와 PR에서 작업합니다. 다른 레포의 변경에 의존하는 작업은 필요한 변경이 끝난 뒤 시작합니다. 자동 리뷰 · 머지는 레포마다 설정합니다.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="questions" class="h3-sec">
+  <div class="wrap">
+    <div class="h3-panel h3-stack">
+      <div class="h3-panel-txt">
+        <p class="h3-num">02 · <span data-t="n.q.tag">api · 주문 내역</span></p>
+        <h2 data-t="n.q.h">에이전트의 질문이 올라오는 [작업]</h2>
+        <p class="h3-p" data-t="n.q.p">주문 내역을 한 페이지에 20개씩 보여 주도록 하시겠습니까, 50개씩 보여 주도록 하시겠습니까? [작업]에서 질문에 답하면 에이전트가 이어서 진행합니다. 질문이 오면 메뉴 막대에 빨간 점도 뜹니다.</p>
+        <p class="h3-sum" data-t="n.q.sum">데모에서는 20개를 골랐습니다. 화면은 영어 데모입니다.</p>
+      </div>
+      <figure class="shot h3-q h3-gif">
+        <picture>
+          <source media="(prefers-reduced-motion: reduce)" srcset="/assets/shots/answer-modal.webp">
+          <img src="/assets/shots/answer.gif" width="1200" height="676" loading="lazy" alt="[작업]에서 api 에이전트의 페이지 크기 질문에 답하면, 답이 에이전트 pane에 입력되고 작업이 이어집니다." data-ta="alt:n.q.alt">
+        </picture>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="code" class="h3-sec">
+  <div class="wrap">
+    <p class="h3-num">03 · <span data-t="n.c.tag">web · 장바구니 알림</span></p>
+    <h2 data-t="n.c.h">바뀐 코드와 테스트 결과를 나란히</h2>
+    <p class="h3-p" data-t="n.c.p">터미널 옆에서 diff를 읽고 검증 결과를 확인한 뒤 머지합니다. PR 자동 리뷰 · 머지는 레포마다 설정하고, 머지 전 확인을 남겨 둘 수 있습니다.</p>
+    <figure class="shot h3-code">
+      <picture>
+        <source media="(max-width: 640px)" srcset="/assets/shots/code-diff-m.webp">
+        <img src="/assets/shots/code-wide.webp" width="2150" height="720" loading="lazy" alt="장바구니 테스트 6개 통과 결과와 CartPage.tsx의 diff." data-ta="alt:n.c.alt">
+      </picture>
+    </figure>
+    <figure class="shot h3-code-m"><img src="/assets/shots/code-test-m.webp" width="720" height="284" loading="lazy" alt="장바구니 테스트: 6개 통과." data-ta="alt:n.c.alt2"></figure>
+    <p class="h3-cap" data-t="n.c.cap">데모의 web 레포 장바구니 작업: 테스트 6개 통과와 CartPage.tsx 변경 내역.</p>
+  </div>
+</section>
+
+<section id="start" class="h3-sec">
+  <div class="wrap">
+    <p class="h3-num">04</p>
+    <h2 data-t="n.k.h">이미 쓰는 코딩 에이전트와 함께</h2>
+    <p class="h3-p" data-t="h.c.p">Athena Studio는 이미 쓰는 Claude Code나 Codex를 그대로 돌리고, 그 위에 팀 리드 · 계획서 · 리뷰를 얹습니다.</p>
+    <dl class="h3-facts">
+      <div><dt data-t="m.f2h">코드가 가는 곳</dt><dd data-t="n.x2">앱은 코드와 파일을 Novum Lab 서버로 보내지 않습니다. AI 요청은 쓰는 제공자에게 가고, 푸시는 내 GitHub로 갑니다. <a href="/ko/docs/#security">자세히</a></dd></div>
+      <div><dt data-t="m.f3h">비용</dt><dd data-t="m.f3">Athena Studio는 무료입니다. AI 사용료는 쓰는 Claude나 Codex 요금제대로 나갑니다.</dd></div>
+      <div><dt data-t="m.f4h">언어</dt><dd data-t="n.x4">영어 · 한국어 · 일본어 · 중국어. 앱과 에이전트에 같이 적용됩니다. 일감 화면(⌘2)은 아직 한국어만 있습니다.</dd></div>
+      <div><dt data-t="m.f1h">필요한 것</dt><dd data-t="n.x1">macOS 13 이상. PR 자동 리뷰에는 Claude Code가 필요합니다. <a href="/ko/download/">전체 조건</a></dd></div>
+    </dl>
+    <p class="h3-link"><a href="/ko/docs/#install" data-t="n.k.more">문서에서 설치 · 첫 설정 보기 →</a></p>
+  </div>
+</section>
+
+<section class="h3-end">
+  <div class="wrap">
+    <img src="/assets/owl-white.png" alt="" width="36" height="36">
+    <h2 data-t="n.e.h">맥에서 바로 써 보기</h2>
+    <p data-t="n.e.p2">macOS 13 이상, Apple Silicon과 Intel 맥에서 무료로 쓸 수 있습니다.</p>
+    <a class="btn gold" href="/ko/download/" data-t="n.dl">macOS용 다운로드</a>
+  </div>
+</section>
+</main>
+
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <a class="brand" href="/ko/"><img src="/assets/owl-white.png" alt="">Athena Studio</a>
+      <div class="links">
+        <a href="/ko/features/" data-t="nav.features">기능</a>
+        <a href="/ko/docs/" data-t="nav.docs">문서</a>
+        <a href="/ko/releases/" data-t="nav.releases">업데이트 내역</a>
+        <a href="/ko/download/" data-t="nav.download">다운로드</a>
+        <a href="/ko/terms/" data-t="nav.terms">약관</a>
+        <a href="https://github.com/novum-lab-kr/athena-studio/issues/new/choose" data-t="nav.issue">문제 신고</a>
+        <a href="https://novum-lab.com">novum-lab.com</a>
+      </div>
+    </div>
+    <div class="foot-lang" role="group" aria-label="Language"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><a href="/" data-set-lang="en" lang="en" hreflang="en" aria-current="false">English</a><a href="/ko/" data-set-lang="ko" lang="ko" hreflang="ko" aria-current="true">한국어</a><a href="/ja/" data-set-lang="ja" lang="ja" hreflang="ja" aria-current="false">日本語</a><a href="/zh/" data-set-lang="zh" lang="zh-Hans" hreflang="zh-Hans" aria-current="false">中文</a></div>
+    <div class="biz"><span data-t="c.made">© 2026 Novum Lab. Athena Studio는 Novum Lab이 만듭니다.</span><br>Novum Lab · CEO: Eunju Kim · Business Registration No. 496-37-01619 · Seoul, Republic of Korea · <a href="mailto:mcsung@novum-lab.com">mcsung@novum-lab.com</a><br><span data-t="c.ga">이 사이트는 방문 수와 다운로드 수를 세기 위해 Google Analytics 쿠키를 씁니다.</span></div>
+  </div>
+</footer>
+</body>
+</html>
