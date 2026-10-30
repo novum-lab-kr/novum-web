@@ -616,9 +616,6 @@ html:lang(ko) .h3-sec h2, html:lang(ja) .h3-sec h2, html:lang(zh-Hans) .h3-sec h
 .h3-end p { color: var(--muted); margin: 12px 0 24px; font-size: 17px; }
 
 /* ── 움직임 (assets/motion.js) ── */
-@keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
-.h3-head { animation: rise .6s ease both; }
-.h3-shot { animation: rise .9s ease .15s both; }
 .rv { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
 .rv.in { opacity: 1; transform: none; }
 .fd-wait g { opacity: 0; transform: translateY(6px); transition: opacity .45s ease, transform .45s ease; }
@@ -627,7 +624,7 @@ html:lang(ko) .h3-sec h2, html:lang(ja) .h3-sec h2, html:lang(zh-Hans) .h3-sec h
 .fd-play .fd-head, .fd-play .fd-headq, .fd-play .fd-q, .fd-play .fd-ql, .fd-play .fd-nl { opacity: 1; }
 .fd-play .fd-q { animation: fdq 1.6s linear infinite; }
 @keyframes fdq { to { stroke-dashoffset: -22; } }
-@media (prefers-reduced-motion: reduce) { .h3-head, .h3-shot, .fd-play .fd-q { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .fd-play .fd-q { animation: none; } }
 
 /* 언어 고르기: 꼬리 한 줄 */
 .foot-lang { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 16px; margin-top: 20px; font-size: 14px; }
