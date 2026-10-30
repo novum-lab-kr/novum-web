@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="zh-Hans" data-lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-t="r.title">更新日志 — Athena Studio</title>
+<meta name="description" data-ta="content:r.desc" content="Athena Studio 的变化，按时间倒序排列。">
+<meta property="og:title" content="更新日志 — Athena Studio">
+<meta property="og:description" content="Athena Studio 的变化，按时间倒序排列。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://athena.novum-lab.com/zh/releases/">
+<meta property="og:image" content="https://athena.novum-lab.com/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://athena.novum-lab.com/zh/releases/">
+<!-- seo:start · deploy/gen-athena-lang.mjs 가 만든다(손으로 고치지 않는다) -->
+<link rel="alternate" hreflang="en" href="https://athena.novum-lab.com/releases/">
+<link rel="alternate" hreflang="ko" href="https://athena.novum-lab.com/ko/releases/">
+<link rel="alternate" hreflang="ja" href="https://athena.novum-lab.com/ja/releases/">
+<link rel="alternate" hreflang="zh-Hans" href="https://athena.novum-lab.com/zh/releases/">
+<link rel="alternate" hreflang="x-default" href="https://athena.novum-lab.com/releases/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://novum-lab.com/#organization",
+      "name": "Novum Lab",
+      "url": "https://novum-lab.com"
+    }
+  ]
+}
+</script>
+<!-- seo:end -->
+<meta name="theme-color" content="#09090b">
+<link rel="icon" type="image/png" href="/assets/favicon-white.png">
+<link rel="apple-touch-icon" href="/assets/app-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=20261030a">
+<script src="/assets/analytics.js?v=20261029a" async></script>
+<script src="/assets/lang.js?v=20261030c"></script>
+<script src="/assets/motion.js?v=20261028i" defer></script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/zh/"><img src="/assets/owl-white.png" alt="">Athena Studio</a>
+    <nav>
+      <a class="nav-x" href="/zh/features/" data-t="nav.features">功能</a>
+      <a class="nav-x" href="/zh/docs/" data-t="nav.docs">文档</a>
+      <a class="nav-x" href="/zh/releases/" aria-current="page" data-t="nav.releases">更新日志</a>
+      <a class="btn sm gold" href="/zh/download/" data-t="nav.download">下载</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="page-head">
+  <div class="wrap">
+    <p class="eyebrow"><i></i><span data-t="r.eyebrow">更新日志</span></p>
+    <h1 class="grad" data-t="r.h1">Athena Studio 有哪些新变化</h1>
+    <p class="lead" data-t="r.lead2">按从新到旧列出 Athena Studio 每个公开版本的变化。</p>
+  </div>
+</div>
+
+<!-- 판마다 요약(2026-10-29 바꿈 — CHANGELOG 를 그대로 옮기지 않는다). 원문은 athena-studio CHANGELOG.md(= GitHub Release 본문).
+     판 하나 = ① 그 판을 한 줄로 말하는 제목(r.<판>t · 손님 말) ② 손님이 체감하는 핵심 2~4개(r.<판>k1… · 한 줄씩 짧게 · 태그 New/Improved/Fixed)
+     ③ 나머지는 "그 밖의 작은 고침 N개" 한 줄(r.<판>m)로 묶고 그 판 GitHub Release(releases/tag/vX.Y.Z) 링크.
+     핵심에 내부 용어(현황판 · pane 번호 · 계획서 · 결정 콘솔 등)를 넣지 않는다. 사실은 CHANGELOG 에 있는 것만 — 지어 넣지 않는다.
+     공개판 사이의 비공개 판은 그 변경이 처음 들어간 공개판에 묶는다(v0.17.6 = 0.16 + 0.17 · v0.19.2 = 0.17.7 + 0.18 + 0.19 · v0.25.1 = 0.20 – 0.25 · v0.28.7 = 0.26 – 0.28 · v0.32.4 = 0.29 – 0.32).
+     새 판: 맨 위에 같은 모양으로 더하고 키를 ko · ja · zh 사전에 모두 넣는다. 0.2 – 0.13 은 공개 전 개발판이라 한 줄(접힘) 그대로
+     0.32 는 내역을 먼저 올리고(2026-10-30) 공개판 v0.32.4 가 나온 뒤 제목 · 버전 태그 · GitHub 링크 줄을 채웠다 — 핵심 7줄이 v0.32.4 Release 본문 전부다 -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="rel"><div class="v"><b>0.32</b><span>v0.32.4<br><span data-t="r.d32">2026 年 10 月 30 日</span></span></div><div>
+      <h3 class="rel-t" data-t="r.32t">每次更新后，可在应用内直接查看变化。</h3>
+      <ul>
+      <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.32k1">Athena 核心更新后，应用内弹窗会显示旧版本和新版本、更新内容以及更新结果。正在工作的会话以代理名称显示。</span></li>
+      <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.32k2">在没有 Athena Studio 仓库的包中报告 Athena 自身的 bug 时，会生成隐藏了个人信息的 GitHub issue 草稿。Athena 先展示草稿并在 GitHub 上打开，由你确认后自行提交。</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.32k3">同一仓库的代理 pane 空闲时，Athena 会把新任务继续发到那个 pane，而不是再打开新的 pane。</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.32k4">代理 pane 启动时不加载 MCP 服务器，每次回复使用的 token 更少。审查者 pane 保持不变。</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.32k5">设置中的 PR 自动化开关改为按开启的功能命名：“自动 PR · 审查”和“批准后立即合并”。下方的警告行已移除。</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.32k6">修复了提交信息有多行，或路径使用 <code>~</code> 或变量时，提交保护钩子错误拦截 Athena 自身提交脚本的问题。</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.32k7">在开启自动合并的仓库中，代理不再请你合并它打开的 PR。自动审查会一路推进到合并，代理会报告 PR 状态。</span></li>
+      </ul>
+      <p class="rel-more" data-t="r.32m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.32.4">在 GitHub 上查看 v0.32.4 的全部变化</a></p>
+    </div></div>
+    <div class="rel"><div class="v"><b>0.28</b><span>v0.28.7<br><span data-t="r.d28">2026 年 10 月 29 日</span></span></div><div>
+      <h3 class="rel-t" data-t="r.28t">可直接在 Work 中回答智能体的提问。</h3>
+      <ul>
+      <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.28k1">智能体在 pane 中提问时,问题也会作为请求显示在 Work 中,你可以在那里选择答案。</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.28k2">发送到 Athena pane 的报告会一次送达。找不到 Athena pane 时,报告不会丢失,而是保留为请求。</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.28k3">打开看板或决定控制台时,侧边浏览器不再闪白。</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.28k4">从 Work 弹窗打开决定控制台时,现在会使用侧边浏览器,而不是外部浏览器。</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.28k5">在智能体监视器中,Athena 自己的会话显示为 <code>athena</code>,而不是文件夹名称。</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.28k6">侧边浏览器打开时,Work、设置和看板的菜单弹窗不再被遮挡。</span></li>
+      </ul>
+      <p class="rel-more" data-t="r.28m">其他小改动和修复 4 项 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.28.7">在 GitHub 上查看 v0.28.7 的全部变化</a></p>
+    </div></div>
+    <div class="rel"><div class="v"><b>0.25</b><span>v0.25.1<br><span data-t="r.d25">2026 年 10 月 29 日</span></span></div><div>
+      <h3 class="rel-t" data-t="r.25t">从 Finder 拖入文件,路径即可输入。</h3>
+      <ul>
+      <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.25k1">把文件或文件夹拖到 pane 上,路径会粘贴到输入行。按下 Enter 之前不会发送任何内容。</span></li>
+      <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.25k2">打开 PR 时,会提示新增的测试在没有这次改动时是否也能通过。不会阻止 PR。</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span><span data-t="r.25k3">轻量任务使用更轻的模型,“需要修改”之后的审查可以使用更强的模型。</span> <span class="tag by">by Regan</span></span></li>
+      </ul>
+      <p class="rel-more" data-t="r.25m">其他小改动和修复 6 项 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.25.1">在 GitHub 上查看 v0.25.1 的全部变化</a></p>
+    </div></div>
+    <div class="rel"><div class="v"><b>0.19</b><span>v0.19.2<br><span data-t="r.d19">2026 年 10 月 29 日</span></span></div><div>
+      <h3 class="rel-t" data-t="r.19t">工作界面四周的面板可以调整大小了。</h3>
+      <ul>
+      <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.19k1">拖动边缘即可调整工作区列表、Explorer 和监视器的大小。</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.19k2">拖动 pane 之间的边界时，不再被滚动条挡住。</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.19k3">离开开始画面后，“待办”和“设置”按钮不会再保持禁用。</span></li>
+      </ul>
+      <p class="rel-more" data-t="r.19m">其他小修复 4 项 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.19.2">在 GitHub 上查看 v0.19.2 的全部变化</a></p>
+    </div></div>
+    <div class="rel"><div class="v"><b>0.17</b><span>v0.17.6<br><span data-t="r.d17">2026 年 10 月 29 日</span></span></div><div>
+      <h3 class="rel-t" data-t="r.17t">Mac 应用现在可以自行更新。</h3>
+      <ul>
+      <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.17k1">在设置(⚙)中按“更新”，即可下载、校验并重启。若失败，当前版本会继续运行。</span></li>
+      <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.17k2">Athena 可以关注仓库的 GitHub issue，把新 issue 作为待办接手。</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.17k3">提醒只显示需要你决定的事项。</span></li>
+      </ul>
+      <p class="rel-more" data-t="r.17m">其他小修复 5 项 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.17.6">在 GitHub 上查看 v0.17.6 的全部变化</a></p>
+    </div></div>
+    <div class="rel"><div class="v"><b>0.15</b><span>v0.15.8<br><span data-t="r.d15">2026 年 10 月 28 日</span></span></div><div>
+      <h3 class="rel-t" data-t="r.15t">首个公开版本 — 以 Mac 应用推出。</h3>
+      <ul>
+      <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.15k1">支持 Apple Silicon 和 Intel 的 Mac(macOS 13 Ventura 及以上)。</span></li>
+      <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.15k2">已通过 Apple 签名和公证，打开时不会出现安全警告。</span></li>
+      </ul>
+      <p class="rel-more" data-t="r.15m">其他小修复 2 项 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.15.8">在 GitHub 上查看 v0.15.8 的全部变化</a></p>
+    </div></div>
+    <details class="rel-old"><summary data-t="r.devsum">首个公开版本之前的开发版(0.2 – 0.13)</summary>
+    <div class="rel"><div class="v"><b>0.2 – 0.13</b><span data-t="r.dpre">2026 年 10 月 26–28 日</span></div><ul>
+      <li><span class="tag dev" data-t="r.dev">开发版</span><span data-t="r.pre">首个公开版本之前的开发版。期间加入了 Claude 与 Codex 自动审查拉取请求、按角色选择模型、待办页面与 pane 详情、智能体监视器，以及仓库名称、图片和标志。</span></li>
+    </ul></div>
+    </details>
+  </div>
+</section>
+</main>
+
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <a class="brand" href="/zh/"><img src="/assets/owl-white.png" alt="">Athena Studio</a>
+      <div class="links">
+        <a href="/zh/features/" data-t="nav.features">功能</a>
+        <a href="/zh/docs/" data-t="nav.docs">文档</a>
+        <a href="/zh/releases/" data-t="nav.releases">更新日志</a>
+        <a href="/zh/download/" data-t="nav.download">下载</a>
+        <a href="/zh/terms/" data-t="nav.terms">条款</a>
+        <a href="https://github.com/novum-lab-kr/athena-studio/issues/new/choose" data-t="nav.issue">反馈问题</a>
+        <a href="https://novum-lab.com">novum-lab.com</a>
+      </div>
+    </div>
+    <div class="foot-lang" role="group" aria-label="Language"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><a href="/releases/" data-set-lang="en" lang="en" hreflang="en" aria-current="false">English</a><a href="/ko/releases/" data-set-lang="ko" lang="ko" hreflang="ko" aria-current="false">한국어</a><a href="/ja/releases/" data-set-lang="ja" lang="ja" hreflang="ja" aria-current="false">日本語</a><a href="/zh/releases/" data-set-lang="zh" lang="zh-Hans" hreflang="zh-Hans" aria-current="true">中文</a></div>
+    <div class="biz"><span data-t="c.made">© 2026 Novum Lab. Athena Studio 由 Novum Lab 打造。</span><br>Novum Lab · CEO: Eunju Kim · Business Registration No. 496-37-01619 · Seoul, Republic of Korea · <a href="mailto:mcsung@novum-lab.com">mcsung@novum-lab.com</a><br><span data-t="c.ga">本网站使用 Google Analytics Cookie 统计访问量和下载量。</span></div>
+  </div>
+</footer>
+</body>
+</html>

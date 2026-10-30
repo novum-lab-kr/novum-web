@@ -1,0 +1,24 @@
+{
+  // 관리 화면(src/) 타입 검사 — 빌드는 Vite(vite.config.mts)가 타입을 지운다 · 시험(node --test)은 Node 22.18+ 가 .mts 를 바로 읽는다
+  // 슝 레포 tsconfig.json 에서 옮겨 왔다(2026-10-30) — import 는 확장자까지(./x.mts) · Node 타입 지우기가 읽을 수 있는 문법만
+  // 화면 조각은 .tsx(Preact — JSX 는 preact/jsx-runtime). Node 시험은 .tsx 를 못 읽으니 순수 로직은 .mts 에 둔다
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "types": [],
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noEmit": true,
+    "erasableSyntaxOnly": true,
+    "verbatimModuleSyntax": true,
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
+  },
+  "include": ["src/**/*.mts", "src/**/*.tsx"],
+  "exclude": ["src/vendor"]
+}

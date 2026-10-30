@@ -1,13 +1,13 @@
 name: check-and-deploy
 
-# main 에 머지되면 검사하고 서버에 반영한다 — 반영은 deploy/sites.txt 의 서비스(athena/ · chagok/ …) 가운데 바뀐 것만(서버의 deploy/site.sh 가 판단). PR 은 검사만.
-# site/(novum-lab.com)는 아직 자동 반영이 없다. site/ · docs/ · README.md 만 바뀐 push 는 돌지 않는다.
+# main 에 머지되면 검사하고 서버에 반영한다 — 반영은 deploy/sites.txt 의 서비스(site/ · athena/ · chagok/ …) 가운데 바뀐 것만(서버의 deploy/site.sh 가 판단). PR 은 검사만.
+# docs/ · README.md 만 바뀐 push 는 돌지 않는다.
 on:
   push:
     branches: [main]
-    paths-ignore: ['site/**', 'docs/**', 'README.md']
+    paths-ignore: ['docs/**', 'README.md']
   pull_request:
-    paths-ignore: ['site/**', 'docs/**', 'README.md']
+    paths-ignore: ['docs/**', 'README.md']
   workflow_dispatch:
 
 # main 배포는 한 줄로 차례대로, PR 검사는 PR 마다 따로(슝 deploy.yml 과 같은 방식)

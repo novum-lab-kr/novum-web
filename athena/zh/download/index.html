@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="zh-Hans" data-lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-t="d.title">下载 — Athena Studio</title>
+<meta name="description" data-ta="content:d.desc" content="下载 macOS 版 Athena Studio（Apple Silicon 与 Intel）。系统要求和入门步骤。">
+<meta property="og:title" content="下载 — Athena Studio">
+<meta property="og:description" content="下载 macOS 版 Athena Studio（Apple Silicon 与 Intel）。系统要求和入门步骤。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://athena.novum-lab.com/zh/download/">
+<meta property="og:image" content="https://athena.novum-lab.com/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://athena.novum-lab.com/zh/download/">
+<!-- seo:start · deploy/gen-athena-lang.mjs 가 만든다(손으로 고치지 않는다) -->
+<link rel="alternate" hreflang="en" href="https://athena.novum-lab.com/download/">
+<link rel="alternate" hreflang="ko" href="https://athena.novum-lab.com/ko/download/">
+<link rel="alternate" hreflang="ja" href="https://athena.novum-lab.com/ja/download/">
+<link rel="alternate" hreflang="zh-Hans" href="https://athena.novum-lab.com/zh/download/">
+<link rel="alternate" hreflang="x-default" href="https://athena.novum-lab.com/download/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://novum-lab.com/#organization",
+      "name": "Novum Lab",
+      "url": "https://novum-lab.com"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Athena Studio",
+      "url": "https://athena.novum-lab.com/zh/",
+      "description": "下载 macOS 版 Athena Studio（Apple Silicon 与 Intel）。系统要求和入门步骤。",
+      "operatingSystem": "macOS 13 or later",
+      "processorRequirements": "Apple Silicon or Intel",
+      "applicationCategory": "DeveloperApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "downloadUrl": [
+        "https://github.com/novum-lab-kr/athena-studio-releases/releases/latest/download/Athena-Studio-mac-arm64.dmg",
+        "https://github.com/novum-lab-kr/athena-studio-releases/releases/latest/download/Athena-Studio-mac-x64.dmg"
+      ],
+      "publisher": {
+        "@id": "https://novum-lab.com/#organization"
+      }
+    }
+  ]
+}
+</script>
+<!-- seo:end -->
+<meta name="theme-color" content="#09090b">
+<link rel="icon" type="image/png" href="/assets/favicon-white.png">
+<link rel="apple-touch-icon" href="/assets/app-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=20261030a">
+<script src="/assets/analytics.js?v=20261029a" async></script>
+<script src="/assets/lang.js?v=20261030c"></script>
+<script src="/assets/motion.js?v=20261028i" defer></script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/zh/"><img src="/assets/owl-white.png" alt="">Athena Studio</a>
+    <nav>
+      <a class="nav-x" href="/zh/features/" data-t="nav.features">功能</a>
+      <a class="nav-x" href="/zh/docs/" data-t="nav.docs">文档</a>
+      <a class="nav-x" href="/zh/releases/" data-t="nav.releases">更新日志</a>
+      <a class="btn sm gold" href="/zh/download/" data-t="nav.download">下载</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="page-head">
+  <div class="wrap">
+    <p class="eyebrow"><i></i><span data-t="nav.download">下载</span></p>
+    <h1 class="grad" data-t="d.h1">macOS 版 Athena Studio</h1>
+    <p class="dl-ver" data-t="d.ver">版本 <span data-rel-ver>0.25.1</span> · <span data-rel-date>2026 年 10 月 29 日</span> · <a href="/zh/releases/">更新内容</a></p>
+    <script>
+/* 버전 줄을 최신 배포판으로(2026-10-29). latest.json 은 github.com 302 에 CORS 헤더가 없어 브라우저가 못 읽는다 —
+   GitHub REST API releases/latest(Access-Control-Allow-Origin: *)의 tag_name · published_at 을 쓴다.
+   로그인 없이 방문자 IP 당 시간 60회라 실패 · 4초 넘게 느리면 적어 둔 값 그대로 둔다(새 배포판이 나오면 적어 둔 값도 고친다 —
+   이 줄 · 받기 카드 두 곳의 data-rel-ver · 사전 ko · ja · zh 의 d.ver).
+   적어 둔 값을 고치면 node deploy/gen-athena-lang.mjs 로 언어판도 다시 만든다. 이 줄의 innerHTML 이 바뀌어도 다시 채우도록 지켜본다 */
+(function () {
+  var line = document.querySelector('.dl-ver');
+  if (!line || !window.fetch || !window.MutationObserver) return;
+  var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  var latest = null;
+
+  // 날짜는 배포판(latest.json date)과 같은 한국 날짜로, 언어마다 사전과 같은 모양
+  function formatDate(iso, lang) {
+    var kst = new Date(new Date(iso).getTime() + 9 * 3600 * 1000);
+    var year = kst.getUTCFullYear(), month = kst.getUTCMonth() + 1, day = kst.getUTCDate();
+    if (lang === 'ko') return year + '년 ' + month + '월 ' + day + '일';
+    if (lang === 'ja' || lang === 'zh') return year + ' 年 ' + month + ' 月 ' + day + ' 日';
+    return MONTHS[month - 1] + ' ' + day + ', ' + year;
+  }
+
+  // 버전은 이 줄과 받기 카드(.dl-card-ver) 모두에 — 같은 응답 하나로 채운다
+  function fill() {
+    if (!latest) return;
+    var date = line.querySelector('[data-rel-date]');
+    var lang = document.documentElement.getAttribute('data-lang') || 'en';
+    var vers = document.querySelectorAll('[data-rel-ver]');
+    for (var index = 0; index < vers.length; index++) {
+      if (vers[index].textContent !== latest.version) vers[index].textContent = latest.version;
+    }
+    if (date) {
+      var text = formatDate(latest.published, lang);
+      if (date.textContent !== text) date.textContent = text;
+    }
+  }
+
+  new MutationObserver(fill).observe(line, { childList: true });
+
+  // 4초 제한 — AbortController 가 없는 브라우저도 만료 뒤 온 응답은 버린다
+  var expired = false;
+  var ctrl = window.AbortController ? new AbortController() : null;
+  var timer = setTimeout(function () { expired = true; if (ctrl) ctrl.abort(); }, 4000);
+  fetch('https://api.github.com/repos/novum-lab-kr/athena-studio-releases/releases/latest', {
+    headers: { Accept: 'application/vnd.github+json' },
+    signal: ctrl ? ctrl.signal : undefined
+  }).then(function (res) {
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    return res.json();
+  }).then(function (rel) {
+    clearTimeout(timer);
+    if (expired) return;
+    var version = String(rel.tag_name || '').replace(/^v/, '');
+    if (!/^\d+\.\d+\.\d+$/.test(version) || isNaN(Date.parse(rel.published_at))) return;
+    latest = { version: version, published: rel.published_at };
+    fill();
+  }).catch(function () {});
+})();
+</script>
+    <p class="lead" data-t="d.lead2">适用于 macOS 13 Ventura 及以上，免费使用。已通过 Apple 签名和公证。</p>
+  </div>
+</div>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <!-- 주소는 athena-studio docs/release/homepage-handoff.md 의 고정 주소(늘 최신 배포판) -->
+    <div class="dl">
+      <div class="main" data-arch="arm64">
+        <small data-t="d.rec">2020 年以后的大多数 Mac</small>
+        <b>Apple Silicon</b>
+        <span data-t="d.arm">M1、M2、M3、M4 及更新机型</span>
+        <a class="btn gold" href="https://github.com/novum-lab-kr/athena-studio-releases/releases/latest/download/Athena-Studio-mac-arm64.dmg" data-dl="arm64"><span data-t="d.get">下载 .dmg</span></a>
+        <span class="dl-card-ver">v<span data-rel-ver>0.28.7</span></span>
+      </div>
+      <div data-arch="x64">
+        <small data-t="d.old">较早的 Mac</small>
+        <b>Intel</b>
+        <span data-t="d.x64">搭载 Intel 处理器的 Mac</span>
+        <a class="btn" href="https://github.com/novum-lab-kr/athena-studio-releases/releases/latest/download/Athena-Studio-mac-x64.dmg" data-dl="x64"><span data-t="d.get">下载 .dmg</span></a>
+        <span class="dl-card-ver">v<span data-rel-ver>0.28.7</span></span>
+      </div>
+    </div>
+    <script>
+/* 칩 감지: Chromium 은 UA-CH 로 x86 을 알려 준다. Safari 는 알 수 없어서 Apple Silicon 을 기본으로 둔다 */
+(function () {
+  var ua = navigator.userAgentData;
+  if (!ua || !ua.getHighEntropyValues) return;
+  ua.getHighEntropyValues(['architecture']).then(function (h) {
+    if (h.architecture !== 'x86') return;
+    var arm = document.querySelector('[data-arch="arm64"]'), x64 = document.querySelector('[data-arch="x64"]');
+    arm.classList.remove('main'); x64.classList.add('main');
+    arm.querySelector('.btn').classList.remove('gold'); x64.querySelector('.btn').classList.add('gold');
+    x64.parentNode.insertBefore(x64, arm);
+  }).catch(function () {});
+})();
+</script>
+    <p class="hint" data-t="d.which">不确定是哪一种？在  → 关于本机 中，显示“芯片：Apple M…”即为 Apple Silicon，显示“处理器：Intel”即为 Intel。</p>
+  </div>
+</section>
+
+<section class="rule">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label" data-t="h.n.label">你需要</div>
+      <h2 data-t="d.need.h">安装前请确认以下几项。</h2>
+    </div>
+    <ul class="req">
+      <li><b data-t="d.r1">macOS</b><span data-t="d.r1p">macOS 13 Ventura 或更高版本</span></li>
+      <li><b data-t="d.r2">AI 智能体</b><span data-t="d.r2p"><a href="https://docs.anthropic.com/en/docs/claude-code/setup" target="_blank" rel="noopener">Claude Code</a> 或 <a href="https://github.com/openai/codex" target="_blank" rel="noopener">Codex</a>，用你自己的账号登录。</span></li>
+      <li><b data-t="d.r3">git 和 Python 3</b><span data-t="d.r3p">如果没有，首次启动时 macOS 会提示安装。想提前安装，可在终端运行 <code>xcode-select --install</code></span></li>
+      <li><b>Node.js</b><span data-t="d.r4p">供 Athena 的脚本使用</span></li>
+      <li><b data-t="d.r5">GitHub</b><span data-t="d.r5p">需要能访问你的仓库。创建拉取请求和自动审查需要 <a href="https://cli.github.com" target="_blank" rel="noopener">gh CLI</a>。</span></li>
+    </ul>
+    <p class="hint" style="margin-top:28px" data-t="d.next">已经安装？<a href="/zh/docs/#start">文档中的入门</a>会带你完成第一个包和第一个请求。</p>
+    <p class="hint" data-t="d.eula">安装 Athena Studio 即表示你同意<a href="/zh/terms/">最终用户许可协议</a>。</p>
+  </div>
+</section>
+
+</main>
+
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <a class="brand" href="/zh/"><img src="/assets/owl-white.png" alt="">Athena Studio</a>
+      <div class="links">
+        <a href="/zh/features/" data-t="nav.features">功能</a>
+        <a href="/zh/docs/" data-t="nav.docs">文档</a>
+        <a href="/zh/releases/" data-t="nav.releases">更新日志</a>
+        <a href="/zh/download/" data-t="nav.download">下载</a>
+        <a href="/zh/terms/" data-t="nav.terms">条款</a>
+        <a href="https://github.com/novum-lab-kr/athena-studio/issues/new/choose" data-t="nav.issue">反馈问题</a>
+        <a href="https://novum-lab.com">novum-lab.com</a>
+      </div>
+    </div>
+    <div class="foot-lang" role="group" aria-label="Language"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><a href="/download/" data-set-lang="en" lang="en" hreflang="en" aria-current="false">English</a><a href="/ko/download/" data-set-lang="ko" lang="ko" hreflang="ko" aria-current="false">한국어</a><a href="/ja/download/" data-set-lang="ja" lang="ja" hreflang="ja" aria-current="false">日本語</a><a href="/zh/download/" data-set-lang="zh" lang="zh-Hans" hreflang="zh-Hans" aria-current="true">中文</a></div>
+    <div class="biz"><span data-t="c.made">© 2026 Novum Lab. Athena Studio 由 Novum Lab 打造。</span><br>Novum Lab · CEO: Eunju Kim · Business Registration No. 496-37-01619 · Seoul, Republic of Korea · <a href="mailto:mcsung@novum-lab.com">mcsung@novum-lab.com</a><br><span data-t="c.ga">本网站使用 Google Analytics Cookie 统计访问量和下载量。</span></div>
+  </div>
+</footer>
+</body>
+</html>

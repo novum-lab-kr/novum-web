@@ -7,7 +7,7 @@
 
 | 경로 | 내용 | 검색 노출 |
 |---|---|---|
-| `/` | 랜딩(`index.html`, 스타일 `assets/landing.css`, 그림 `assets/img`, 영상 `assets/vid`, 글꼴 `assets/fonts` — Pretendard, Neo둥근모 원본 그대로, SIL OFL 1.1, 폴더마다 `LICENSE.txt`) | 허용 |
+| `/` | 랜딩(`index.html`, 스타일 `assets/landing.css`, 그림 `assets/img`, 영상 `assets/vid`, 글꼴 `assets/fonts` — Neo둥근모 원본 그대로(모든 글자), SIL OFL 1.1, `LICENSE.txt`) | 허용 |
 | `/support/` | 문의, 자주 묻는 것, 운영자 정보 | 차단(공식 게시 전) |
 | `/terms/`, `/privacy/`, `/delete-account/`, `/versions.json` | 약관, 처리방침, 계정 삭제 안내, 판 목록 — **앱이 읽는 경로라 바꾸지 않는다** | 차단(공식 게시 전) |
 

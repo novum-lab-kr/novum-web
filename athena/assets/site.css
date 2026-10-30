@@ -32,9 +32,6 @@ body {
   font: 16px/1.6 var(--sans); -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
-/* 언어 사전을 불러오는 동안 영어가 깜빡이지 않게(최대 1.5초) */
-html.i18n-wait body { opacity: 0; }
-body { transition: opacity .15s; }
 /* 한국어만 어절 단위로 끊는다. 일 · 중에 keep-all 을 걸면 문장 전체가 한 덩어리가 된다 */
 html:lang(ko) body { word-break: keep-all; overflow-wrap: anywhere; }
 html:lang(ja) body, html:lang(zh-Hans) body { line-height: 1.75; line-break: strict; }
@@ -616,9 +613,6 @@ html:lang(ko) .h3-sec h2, html:lang(ja) .h3-sec h2, html:lang(zh-Hans) .h3-sec h
 .h3-end p { color: var(--muted); margin: 12px 0 24px; font-size: 17px; }
 
 /* ── 움직임 (assets/motion.js) ── */
-@keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
-.h3-head { animation: rise .6s ease both; }
-.h3-shot { animation: rise .9s ease .15s both; }
 .rv { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
 .rv.in { opacity: 1; transform: none; }
 .fd-wait g { opacity: 0; transform: translateY(6px); transition: opacity .45s ease, transform .45s ease; }
@@ -627,15 +621,15 @@ html:lang(ko) .h3-sec h2, html:lang(ja) .h3-sec h2, html:lang(zh-Hans) .h3-sec h
 .fd-play .fd-head, .fd-play .fd-headq, .fd-play .fd-q, .fd-play .fd-ql, .fd-play .fd-nl { opacity: 1; }
 .fd-play .fd-q { animation: fdq 1.6s linear infinite; }
 @keyframes fdq { to { stroke-dashoffset: -22; } }
-@media (prefers-reduced-motion: reduce) { .h3-head, .h3-shot, .fd-play .fd-q { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .fd-play .fd-q { animation: none; } }
 
 /* 언어 고르기: 꼬리 한 줄 */
 .foot-lang { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 16px; margin-top: 20px; font-size: 14px; }
 .foot-lang svg { width: 15px; height: 15px; color: var(--dim); }
-.foot-lang button { all: unset; cursor: pointer; color: var(--muted); }
-.foot-lang button:hover { color: var(--text); }
-.foot-lang button[aria-current="true"] { color: var(--text); text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--gold); }
-.foot-lang button:focus-visible { outline: 2px solid var(--gold-2); outline-offset: 2px; }
+.foot-lang a { all: unset; cursor: pointer; color: var(--muted); }
+.foot-lang a:hover { color: var(--text); }
+.foot-lang a[aria-current="true"] { color: var(--text); text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--gold); }
+.foot-lang a:focus-visible { outline: 2px solid var(--gold-2); outline-offset: 2px; }
 
 /* ── 2026-10-28 배포판 · 움직이는 그림 ── */
 .h3-gif { max-width: 1200px; margin-left: auto; margin-right: auto; }
@@ -644,6 +638,8 @@ html:lang(ko) .h3-sec h2, html:lang(ja) .h3-sec h2, html:lang(zh-Hans) .h3-sec h
 .h3-stack .h3-q { max-width: 1200px; justify-self: stretch; }
 @media (max-width: 900px) { .h3-panel.h3-stack { padding: 28px 16px; gap: 20px; } }
 .tag.dev { color: var(--muted); background: rgba(255, 255, 255, .06); }
+/* 기여자 표기(내역 항목 문장 뒤 — 이름이라 번역 키 없음 · 대문자로 바꾸지 않는다) */
+.tag.by { display: inline-block; margin-left: 6px; text-transform: none; letter-spacing: 0; color: var(--dim); background: transparent; box-shadow: inset 0 0 0 1px var(--line); white-space: nowrap; vertical-align: 1px; }
 .learn-card .d { font: 500 12px/1.5 var(--sans); color: var(--dim); margin: -4px 0 12px; }
 
 /* ── 배경: 첫 화면 · 페이지 머리에 옅은 격자, 앱 화면 뒤 약한 금빛, 끝 칸에 빛 한 점 ── */
@@ -691,6 +687,16 @@ main, footer { position: relative; }
 .key-table td:first-child { width: 1%; padding-right: 28px; }
 /* 첫 제목: 영어 두 줄이 셋째 줄로 넘치지 않게 조금 줄이고, 줄이 나뉘면 고르게 */
 .h3-head h1 { font-size: clamp(36px, 4.1vw, 58px); text-wrap: balance; }
+/* 영어 첫 제목은 조금 더 크게(ko·ja·zh 는 위 규칙 그대로) */
+html:lang(en) .h3-head h1 { font-size: clamp(40px, 5vw, 70px); }
+/* 첫 제목 등장: 금빛 점등 — 어두운 글자에 금빛이 왼→오로 지나가며 켜진다(assets/lang.js 가 글자를 나눈다) */
+.gl-ln { display: block; }
+.gl-w { display: inline-block; white-space: nowrap; }
+html:lang(ja) .gl-w, html:lang(zh-Hans) .gl-w { white-space: normal; }
+.gl-c { display: inline-block; white-space: pre; }
+@keyframes gl-lit { 0% { color: #3b3f44; } 40% { color: #f2d9a0; text-shadow: 0 0 18px rgba(242, 217, 160, .55); } 100% { color: var(--text, #f3f1ea); text-shadow: none; } }
+.gl .gl-c { color: #3b3f44; animation: gl-lit .9s ease-out both; animation-delay: calc(var(--i) * 30ms); }
+@media (prefers-reduced-motion: reduce) { .gl .gl-c { animation: none; color: inherit; } }
 .nw { white-space: nowrap; }
 
 /* 문서 · 첫 설정(팩 만들 때 Athena 가 하는 일) */
@@ -869,3 +875,90 @@ main, footer { position: relative; }
 /* 받기 카드의 버전(.dl-ver 와 같은 자동 읽기 값) */
 .dl .dl-card-ver { font: 500 12px/1.5 var(--mono); color: var(--dim); margin-top: 8px; }
 .dl .dl-card-ver span { color: inherit; font: inherit; }
+
+/* ── 메인 흐름 그림(2026-10-29): 카드 + 연결선, 올리거나 눌러 연결을 따라가 본다(assets/flow.js · 메인 전용 — 문서의 .flowd 와 별개) ── */
+.hf { margin: 36px 0 0; padding: 0; position: relative; }
+.hf-board {
+  position: relative; padding: 36px 44px 32px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, .07);
+  background:
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, .05) 1px, transparent 1.4px) 0 0 / 22px 22px,
+    radial-gradient(ellipse 70% 55% at 50% 0%, rgba(217, 181, 111, .06), transparent 70%),
+    #121518;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .04);
+}
+.hf ol, .hf ul { list-style: none; margin: 0; padding: 0; }
+.hf-lanes { position: relative; z-index: 1; display: grid; gap: 64px; }
+.hf-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 44px; }
+.hf-wires { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; overflow: visible; pointer-events: none; }
+.hf-node { position: relative; min-width: 0; transition: opacity .25s ease; }
+.hf-node button {
+  --c: 255, 255, 255; position: relative; display: block; width: 100%; height: 100%; min-height: 92px; text-align: left; cursor: pointer;
+  padding: 16px 16px 14px 18px; font: inherit; color: var(--text); border-radius: 14px; border: 1px solid rgba(var(--c), .16);
+  background: linear-gradient(160deg, rgba(var(--c), .08), rgba(var(--c), .02) 60%), #1a1d22; box-shadow: 0 8px 20px rgba(0, 0, 0, .32);
+  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease, background .22s ease;
+}
+.hf-node button::before { content: ""; position: absolute; left: 0; top: 14px; bottom: 14px; width: 3px; border-radius: 0 3px 3px 0; background: rgb(var(--c)); opacity: .85; }
+.hf-you button { --c: 217, 181, 111; }
+.hf-lead button { --c: 255, 255, 255; background: linear-gradient(160deg, rgba(255, 255, 255, .12), rgba(255, 255, 255, .03) 60%), #23272d; }
+.hf-agent button { --c: 127, 178, 255; }
+.hf-rev button { --c: 176, 148, 255; }
+.hf-learn button { --c: 111, 207, 151; }
+.hf-stack button { box-shadow: 7px 7px 0 -1px #161a22, 7px 7px 0 0 rgba(127, 178, 255, .3), 14px 14px 0 -1px #14181f, 14px 14px 0 0 rgba(127, 178, 255, .18), 0 8px 20px rgba(0, 0, 0, .32); }
+.hf-num { position: absolute; top: 12px; right: 14px; font: 600 12px/1 var(--mono); color: rgba(var(--c), .7); }
+.hf-t { display: block; padding-right: 22px; font-size: 17px; line-height: 1.3; font-weight: 650; letter-spacing: -.01em; }
+.hf-s { display: block; margin-top: 6px; font-size: 14px; line-height: 1.45; color: var(--muted); }
+.hf-node button:hover, .hf-node.is-on button { transform: translateY(-3px); border-color: rgba(var(--c), .75); box-shadow: 0 0 0 1px rgba(var(--c), .35), 0 14px 30px rgba(0, 0, 0, .45), 0 0 26px rgba(var(--c), .16); }
+.hf-stack.is-on button, .hf-stack button:hover { box-shadow: 7px 7px 0 -1px #161a22, 7px 7px 0 0 rgba(127, 178, 255, .5), 14px 14px 0 -1px #14181f, 14px 14px 0 0 rgba(127, 178, 255, .3), 0 14px 30px rgba(0, 0, 0, .45), 0 0 26px rgba(var(--c), .16); }
+.hf-node.is-pin button { background: linear-gradient(160deg, rgba(var(--c), .2), rgba(var(--c), .05) 60%), #1a1d22; }
+.hf-node button:focus-visible { outline: 2px solid var(--gold-2); outline-offset: 3px; }
+.hf-board.has-focus .hf-node:not(.is-on) { opacity: .38; }
+.hf-board.has-focus .hf-w:not(.is-on) { opacity: .2; }
+
+/* 연결선 */
+.hf-w { fill: none; stroke: #6d7681; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; transition: opacity .25s ease, stroke .25s ease; }
+.hf-wn { stroke: #7a838d; stroke-width: 1.5; stroke-dasharray: 2 6; }
+.hf-wq { stroke: var(--gold); stroke-dasharray: 6 5; }
+.hf-w.is-on { stroke: var(--gold-2); stroke-width: 2.2; }
+.hf-w.is-on:not(.hf-wn):not(.hf-wq) { stroke-dasharray: 8 7; animation: hf-flow .9s linear infinite; }
+.hf-wn.is-on, .hf-wq.is-on { animation: hf-flow-d 1.2s linear infinite; }
+@keyframes hf-flow { to { stroke-dashoffset: -30; } }
+@keyframes hf-flow-d { to { stroke-dashoffset: -16; } }
+.hf-head { fill: #6d7681; } .hf-head-n { fill: #7a838d; } .hf-head-q { fill: var(--gold); } .hf-head-on { fill: var(--gold-2); }
+
+/* 처음 보일 때 카드가 차례로 올라오고 선이 그려진다(스크립트가 있을 때만 숨긴다) */
+.hf-js .hf-node { opacity: 0; transform: translateY(10px); }
+.hf-js.hf-in .hf-node { opacity: 1; transform: none; transition: opacity .5s ease calc(var(--i) * .08s), transform .5s ease calc(var(--i) * .08s); }
+.hf-js.hf-in .hf-board.has-focus .hf-node:not(.is-on) { opacity: .38; }
+.hf-js .hf-w { opacity: 0; }
+.hf-js.hf-in .hf-w { opacity: 1; transition: opacity .5s ease .9s; }
+
+/* 선 뜻풀이 */
+.hf-keys { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 28px; margin: 22px 0 0; font-size: 14px; color: var(--muted); }
+.hf-keys li { display: inline-flex; align-items: center; gap: 10px; }
+.hf-keys i { width: 30px; height: 0; border-top: 2px dashed; }
+.hf-key-q i { border-color: var(--gold); }
+.hf-key-n i { border-top-style: dotted; border-color: #7a838d; }
+.hf-key-q span { color: var(--gold-2); font-weight: 600; }
+.hf .fd-legend { margin-top: 16px; }
+.hf figcaption { margin-top: 12px; font-size: 14px; color: var(--muted); text-align: center; }
+
+@media (max-width: 1020px) { .hf-board { padding: 30px 30px 28px; } .hf-row { gap: 28px; } .hf-t { font-size: 16px; } }
+/* 좁은 화면: 번호 순서대로 카드를 2열 지그재그로 놓고 웹처럼 선으로 잇는다(한 줄로 늘어놓으면 너무 길어진다) */
+@media (max-width: 760px) {
+  .hf-lanes { display: contents; }
+  .hf-lane, .hf-row { display: contents; }
+  .hf-board { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 28px; padding: 22px 18px; }
+  .hf-node button { min-height: 0; padding: 12px 10px 11px 14px; border-radius: 12px; }
+  .hf-node button::before { top: 10px; bottom: 10px; }
+  .hf-num { top: 9px; right: 10px; font-size: 11px; }
+  .hf-t { padding-right: 16px; font-size: 14.5px; }
+  .hf-s { margin-top: 4px; font-size: 12.5px; line-height: 1.4; }
+  .hf-stack button { box-shadow: 4px 4px 0 -1px #161a22, 4px 4px 0 0 rgba(127, 178, 255, .3), 0 8px 20px rgba(0, 0, 0, .32); }
+  .hf-node:nth-child(odd):not(:last-child)::after, .hf-lane .hf-node::after { content: none; }
+  .hf-board.has-focus .hf-node:not(.is-on) { opacity: .55; }
+  .hf-keys { flex-direction: column; align-items: flex-start; padding: 0 6px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hf-node, .hf-node button, .hf-w { transition: none !important; animation: none !important; }
+  .hf-js .hf-node, .hf-js .hf-w { opacity: 1; transform: none; }
+}
