@@ -389,9 +389,9 @@
       <div class="doc-step-txt">
         <span class="n">06</span>
         <h3 data-t="doc.w6.h">合并</h3>
-        <p data-t="doc.w6.p">在开启自动 PR · 审查的仓库中，拉取请求会自动审查并修正。若关闭“批准后立即合并”，合并会等待你点击。其他仓库照常在 GitHub 上合并。</p>
+        <p data-t="doc.w6.p">在开启自动 PR 的仓库中，Athena 会创建拉取请求；若同时开启自动审查，还会自动审查并修正。合并可选自动、确认后(在 [工作] 中询问你)或手动，选手动时合并会等待你点击。其他仓库照常在 GitHub 上合并。</p>
       </div>
-      <figure class="shot sm"><img src="/assets/shots/settings-pop.webp" width="705" height="670" loading="lazy" alt="设置：web 和 api 开启了自动 PR · 审查，web 关闭、api 开启了批准后立即合并，mobile 关闭。" data-ta="alt:h.b5.alt"></figure>
+      <figure class="shot sm"><img src="/assets/shots/settings-pop.webp?v=20261031" width="686" height="862" loading="lazy" alt="设置：web 开启了自动 PR 和自动审查，合并为“确认后”。api 两者都开启，合并为“自动”。mobile 关闭了自动 PR，合并为“手动”，只停在分支，不建 PR。" data-ta="alt:h.b5.alt"></figure>
     </div>
     <div class="doc-step" id="w-learn">
       <div class="doc-step-txt">
@@ -422,7 +422,7 @@
   <p class="doc-label" data-t="doc.n.settings">设置</p>
   <h2 data-t="doc.s.h">调整 Athena Studio 的设置。</h2>
   <dl class="doc-dl">
-      <div><dt data-t="doc.s.mt">PR 自动化</dt><dd data-t="doc.s.m">标签栏最右侧的 ⚙。每个仓库有“自动 PR · 审查”，下方是“批准后立即合并”。在你开启前一直是关闭的。</dd></div>
+      <div><dt data-t="doc.s.mt">PR 自动化</dt><dd data-t="doc.s.m">标签栏最右侧的 ⚙。每个仓库有“自动 PR”和“自动审查”，下方可把合并设为“自动”“确认后”或“手动”。在你开启前一直是关闭的。</dd></div>
       <div><dt data-t="doc.s.lt">语言</dt><dd data-t="doc.s.l">“显示 → 语言”。应用和智能体会一起切换，包括回复、计划、问题和提交信息。</dd></div>
       <div><dt data-t="doc.s.nt">通知</dt><dd data-t="doc.s.n">点击菜单栏的猫头鹰 → “暂停通知”，可暂停 1 小时或到次日早上 9 点。</dd></div>
       <div><dt data-t="doc.s.pt">包</dt><dd data-t="doc.s.p">标签栏左侧的包名称(⌘⇧P)：切换、新建、导入或导出。其他包的智能体会继续工作，导出时还可以包含智能体对话和未完成的分支。</dd></div>
@@ -466,7 +466,7 @@
   <h2 data-t="doc.u.h">让 Athena Studio 保持最新。</h2>
   <p class="doc-p" data-t="doc.u.app">从 0.17.6 起，应用可以自行更新：打开设置(⚙)，有新版本时在“应用更新”一行按“更新”。应用会下载、校验并重启。若中途失败，当前版本会继续运行，并显示简短原因。</p>
   <p class="doc-p" data-t="doc.u.old">还在用 0.15.8？该版本无法自行更新。请从<a href="/zh/download/">下载页面</a>获取一次新的 .dmg，把 Athena Studio 拖到“应用程序”中覆盖旧版本。包和工作内容会保留，之后即可在 ⚙ 中更新。</p>
-  <p class="doc-p" data-t="doc.u.core">应用自带的 Athena 核心会在你打开新版本时更新，即使智能体正在工作也没关系。</p>
+  <p class="doc-p" data-t="doc.u.core">应用自带的 Athena 核心会在你打开新版本时更新，即使智能体正在工作也没关系。更新后会弹出窗口，显示更新前后的版本、新增内容和更新结果。</p>
 </section>
 
 <section class="doc-sec" id="security">

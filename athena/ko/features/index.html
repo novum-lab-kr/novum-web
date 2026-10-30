@@ -87,7 +87,9 @@
           <li data-t="f.ws.l1">작업마다 탭, 탭 안은 pane으로 나눕니다</li>
           <li data-t="f.ws.l2">에이전트 pane은 에이전트 · 브랜치 이름, Athena pane은 계획 중인 일 이름</li>
           <li data-t="f.ws.l3">창을 닫아도 모두 계속 돌고, 다시 열면 같은 탭 · 같은 배치</li>
-          <li data-t="f.pn.l5">에이전트를 부르면 가장 큰 pane을 긴 쪽으로 나눠 자리를 잡습니다(다음 업데이트부터)</li>
+          <li data-t="f.pn.l5">같은 레포에서 쉬는 에이전트 pane이 있으면 새 pane 대신 그 pane으로 이어 보내고, 없으면 가장 큰 pane을 긴 쪽으로 나눠 자리를 잡습니다</li>
+          <li data-t="f.ws.l5">Finder에서 파일이나 폴더를 pane에 끌어다 놓으면 경로가 입력줄에 붙습니다. Enter를 누르기 전에는 아무것도 보내지 않습니다</li>
+          <li data-t="f.ws.l6">가장자리를 끌어 왼쪽 작업 공간 목록 · 오른쪽 Explorer · 아래 모니터의 크기를 바꿉니다</li>
           <li data-t="f.ws.l4">레포에 보여 줄 이름과 이미지를 붙이고, 팩으로 팀과 나눕니다</li>
         </ul>
       </div>
@@ -105,7 +107,7 @@
     </div>
     <div class="quad">
       <div><h3 data-t="h.f.mon">에이전트 모니터</h3><p data-t="f.mo.p">창 아래 피드에 각 에이전트가 읽고 고친 파일, 실행한 명령, 남긴 말이 올라옵니다. 어느 작업 공간에서도 보입니다.</p></div>
-      <div><h3 data-t="h.f.work">작업</h3><p data-t="f.wk.p">에이전트가 나를 찾으면 그 질문이나 결정이 [작업] 맨 위에 올라옵니다. 그 아래로 진행 중인 일과 지난 하루 동안 끝난 일이 있습니다. 거기서 답하면 에이전트가 멈춘 데서 이어서 합니다.</p></div>
+      <div><h3 data-t="h.f.work">작업</h3><p data-t="f.wk.p">에이전트가 나를 찾으면 그 질문이나 결정이 [작업] 맨 위에 올라옵니다. 그 아래로 진행 중인 일과 지난 하루 동안 끝난 일이 있습니다. 거기서 답하면 에이전트가 멈춘 데서 이어서 합니다.</p><p data-t="f.gi.p">레포의 열린 GitHub 이슈도 지켜볼 수 있습니다. 켜 두면 새 이슈가 작업으로 들어와 아테나에게 넘어가고, 에이전트 모니터에 이슈마다 한 줄이 뜹니다.</p></div>
       <div><h3 data-t="h.f.det">pane 상세</h3><p data-t="f.dt.p">에이전트 머리 줄에서 상세를 열면, 터미널 크기는 그대로 둔 채 창 위로 패널이 나옵니다. 에이전트가 나에게 바라는 것, 막힌 것, 계획서와 PR을 보여 줍니다.</p></div>
       <div><h3 data-t="h.f.bar">메뉴 막대</h3><p data-t="f.mb.p">맥 메뉴 막대에 Athena Studio 부엉이가 있습니다. 빨간 점이 뜨면 열린 질문이나 막힌 계획이 있다는 뜻입니다. 부엉이를 누르면 에이전트마다 지금 상태가 보입니다.</p></div>
     </div>
@@ -163,13 +165,14 @@
         <h3 data-t="f.rv.h">PR 자동 리뷰와 수정</h3>
         <p data-t="f.rv.p">자동 리뷰를 켠 레포에서는 에이전트가 푸시하면 그 레포 하나짜리 PR을 바로 리뷰합니다. 의견은 에이전트에게 돌아가고 최대 3라운드까지 고친 뒤 머지 단계로 넘어갑니다. 큰 diff는 코드부터 보고, 앞서 받은 승인은 이어집니다.</p>
         <ul>
-          <li data-t="f.rv.l1">기본은 꺼짐, 설정에서 레포마다 켭니다</li>
-          <li data-t="f.rv.l2">‘승인되면 바로 머지’를 꺼 두면 마지막 클릭은 내가</li>
+          <li data-t="f.rv.l1">기본은 꺼짐, 설정에서 레포마다 자동 PR · 자동 리뷰 · 머지 방식을 고릅니다</li>
+          <li data-t="f.rv.l2">머지는 자동 · 확인 후([작업]에서 묻습니다) · 직접(내가 머지) 중에서 고릅니다</li>
           <li data-t="f.rv.l3">에이전트 · 리뷰어처럼 역할마다 모델을 고릅니다</li>
           <li data-t="f.rv.l4">리뷰 결과와 머지는 계획서와 PR에 기록됩니다</li>
+          <li data-t="f.rv.l5">자동 PR을 끄면 PR과 리뷰 없이 작업 브랜치를 기준 브랜치에 바로 머지합니다. 머지 설정은 그대로 따릅니다</li>
         </ul>
       </div>
-      <figure class="shot sm mid"><img src="/assets/shots/settings-pop.webp" width="705" height="670" loading="lazy" alt="설정: web과 api는 자동 PR · 리뷰 켬, 승인되면 바로 머지는 web 끔 · api 켬, mobile은 꺼짐." data-ta="alt:h.b5.alt"></figure>
+      <figure class="shot sm mid"><img src="/assets/shots/settings-pop.webp?v=20261031" width="686" height="862" loading="lazy" alt="설정: web은 자동 PR · 자동 리뷰 켬, 머지는 확인 후. api는 둘 다 켬, 머지는 자동. mobile은 자동 PR 끔, 머지는 직접이며 PR 없이 브랜치까지만 둡니다." data-ta="alt:h.b5.alt"></figure>
     </div>
     <div class="grid flip-g">
       <div class="txt">
