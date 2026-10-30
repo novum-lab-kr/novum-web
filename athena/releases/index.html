@@ -69,11 +69,21 @@
      판 하나 = ① 그 판을 한 줄로 말하는 제목(r.<판>t · 손님 말) ② 손님이 체감하는 핵심 2~4개(r.<판>k1… · 한 줄씩 짧게 · 태그 New/Improved/Fixed)
      ③ 나머지는 "그 밖의 작은 고침 N개" 한 줄(r.<판>m)로 묶고 그 판 GitHub Release(releases/tag/vX.Y.Z) 링크.
      핵심에 내부 용어(현황판 · pane 번호 · 계획서 · 결정 콘솔 등)를 넣지 않는다. 사실은 CHANGELOG 에 있는 것만 — 지어 넣지 않는다.
-     공개판 사이의 비공개 판은 그 변경이 처음 들어간 공개판에 묶는다(v0.17.6 = 0.16 + 0.17 · v0.19.2 = 0.17.7 + 0.18 + 0.19 · v0.25.1 = 0.20 – 0.25 · v0.28.7 = 0.26 – 0.28 · v0.32.4 = 0.29 – 0.32 · v0.40.3 = 0.40).
+     공개판 사이의 비공개 판은 그 변경이 처음 들어간 공개판에 묶는다(v0.17.6 = 0.16 + 0.17 · v0.19.2 = 0.17.7 + 0.18 + 0.19 · v0.25.1 = 0.20 – 0.25 · v0.28.7 = 0.26 – 0.28 · v0.32.4 = 0.29 – 0.32 · v0.40.3 = 0.40 · v0.42.0 = 0.42).
      새 판: 맨 위에 같은 모양으로 더하고 키를 ko · ja · zh 사전에 모두 넣는다. 0.2 – 0.13 은 공개 전 개발판이라 한 줄(접힘) 그대로
+     0.42 는 공개판 v0.42.0 Release 본문 중 공개판 손님에게 해당하는 것만(개발 앱 전용 업데이트 변경은 뺌) — 핵심 3줄 + 나머지 2개.
      0.32 · 0.40 은 공개판(v0.32.4 · v0.40.3)이 나온 뒤 GitHub Release 본문과 맞췄다 — 0.32 는 핵심 7줄이 Release 본문 전부, 0.40 은 핵심 4줄 + 나머지 10개를 "그 밖의 작은 고침"으로 묶었다 -->
 <section style="padding-top:0">
   <div class="wrap">
+    <div class="rel"><div class="v"><b>0.42</b><span>v0.42.0<br><span data-t="r.d42">Oct 31, 2026</span></span></div><div>
+      <h3 class="rel-t" data-t="r.42t">Updates open the window first and finish in the background.</h3>
+      <ul>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.42k1">The window opens first on restart, and the core update runs in the background: the tab bar shows "core update in progress", and a result popup appears when it finishes. Pack commands, new agent panes and catch-up wait until the update is done.</span></li>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.42k2">The core update popup shows short kind chips, and an update that only changes the last version number now lists its recent changes too.</span></li>
+      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.42k3">Splitting a pane or closing one no longer resizes the neighbouring panes' terminals by a rough guess.</span></li>
+      </ul>
+      <p class="rel-more" data-t="r.42m">2 more small fixes · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.42.0">See everything in v0.42.0 on GitHub</a></p>
+    </div></div>
     <div class="rel"><div class="v"><b>0.40</b><span>v0.40.3<br><span data-t="r.d40">Oct 30, 2026</span></span></div><div>
       <h3 class="rel-t" data-t="r.40t">Choose per repository whether Athena opens the pull request.</h3>
       <ul>

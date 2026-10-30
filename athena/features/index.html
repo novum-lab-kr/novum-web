@@ -87,7 +87,9 @@
           <li data-t="f.ws.l1">A tab for each task, split into panes inside</li>
           <li data-t="f.ws.l2">Agent panes are named by agent and branch, Athena's by the task it's planning</li>
           <li data-t="f.ws.l3">Close the window and everything keeps running; reopen to the same tabs and layout</li>
-          <li data-t="f.pn.l5">Call an agent and it takes the largest pane, split along its longer side (from the next update)</li>
+          <li data-t="f.pn.l5">A new task goes to an idle agent pane for the same repository; otherwise the agent takes the largest pane, split along its longer side</li>
+          <li data-t="f.ws.l5">Drag files or folders from Finder onto a pane to paste their paths into its input line; nothing is sent until you press Enter</li>
+          <li data-t="f.ws.l6">Drag the edges to resize the workspace list, Explorer and monitor</li>
           <li data-t="f.ws.l4">Give repositories a display name and image, shared with your team through the pack</li>
         </ul>
       </div>
@@ -105,7 +107,7 @@
     </div>
     <div class="quad">
       <div><h3 data-t="h.f.mon">Agent monitor</h3><p data-t="f.mo.p">A live feed at the bottom of the window follows each agent tool by tool: files read and edited, commands run, and what it says along the way. It works across every workspace.</p></div>
-      <div><h3 data-t="h.f.work">Work</h3><p data-t="f.wk.p">When an agent needs you, its question or decision goes to the top of Work, above the tasks in progress and the ones that finished in the last day. Answer it there and the agent picks up where it stopped.</p></div>
+      <div><h3 data-t="h.f.work">Work</h3><p data-t="f.wk.p">When an agent needs you, its question or decision goes to the top of Work, above the tasks in progress and the ones that finished in the last day. Answer it there and the agent picks up where it stopped.</p><p data-t="f.gi.p">Athena can also watch a repository's open GitHub issues: when turned on, new issues are imported as work items and handed to Athena, and the agent monitor shows a line for each.</p></div>
       <div><h3 data-t="h.f.det">Pane details</h3><p data-t="f.dt.p">Open details from an agent's title bar and a panel slides in over the window, without resizing your terminals. It shows what the agent needs from you, what blocks it, its plan and its pull request.</p></div>
       <div><h3 data-t="h.f.bar">Menu bar</h3><p data-t="f.mb.p">Athena Studio has an owl icon in the Mac menu bar. A red dot on it means a question is open or a plan is blocked. Click the owl to see each agent and its status.</p></div>
     </div>
@@ -163,13 +165,14 @@
         <h3 data-t="f.rv.h">Automatic PR review</h3>
         <p data-t="f.rv.p">In a repository with automatic review on, a single-repository PR is reviewed as soon as the agent pushes. Comments go back to the agent for up to three rounds, then the PR moves to the merge step. Big diffs are reviewed code-first, and earlier approvals carry over.</p>
         <ul>
-          <li data-t="f.rv.l1">Off by default, switched on per repository in Settings</li>
-          <li data-t="f.rv.l2">Keep “Merge right after approval” off for one last click from you</li>
+          <li data-t="f.rv.l1">Off by default; in Settings, choose per repository Auto PR, Auto review and how to merge</li>
+          <li data-t="f.rv.l2">Merge can be Auto, Confirm (asks you in Work) or Manual (left to you)</li>
           <li data-t="f.rv.l3">Choose the model for each role, from agents to reviewers</li>
           <li data-t="f.rv.l4">Review results and merges are recorded on the plan and the pull request</li>
+          <li data-t="f.rv.l5">Turn Auto PR off to skip the pull request and review; the work branch then merges straight into the base branch, following your Merge setting</li>
         </ul>
       </div>
-      <figure class="shot sm mid"><img src="/assets/shots/settings-pop.webp" width="705" height="670" loading="lazy" alt="Settings: Auto PR · review on for web and api, Merge right after approval off for web and on for api, and off for mobile." data-ta="alt:h.b5.alt"></figure>
+      <figure class="shot sm mid"><img src="/assets/shots/settings-pop.webp?v=20261031" width="686" height="862" loading="lazy" alt="Settings: web has Auto PR and Auto review on, with Merge set to Confirm. api has both on, with Merge set to Auto. mobile has Auto PR off, Merge set to Manual, and stops at the branch with no PR." data-ta="alt:h.b5.alt"></figure>
     </div>
     <div class="grid flip-g">
       <div class="txt">

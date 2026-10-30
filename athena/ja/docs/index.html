@@ -389,9 +389,9 @@
       <div class="doc-step-txt">
         <span class="n">06</span>
         <h3 data-t="doc.w6.h">マージ</h3>
-        <p data-t="doc.w6.p">自動 PR・レビューを有効にしたリポジトリでは、プルリクエストが自動でレビュー・修正されます。[承認されたらすぐマージ] をオフにしていれば、マージはあなたのクリックを待ちます。ほかのリポジトリでは、いつもどおり GitHub でマージします。</p>
+        <p data-t="doc.w6.p">自動 PR をオンにしたリポジトリでは PR を開き、自動レビューをオンにしていればレビューと修正も自動で行います。マージは 自動・確認後([作業] で確認)・手動 から選べ、手動ならマージはあなたのクリックを待ちます。ほかのリポジトリでは、いつもどおり GitHub でマージします。</p>
       </div>
-      <figure class="shot sm"><img src="/assets/shots/settings-pop.webp" width="705" height="670" loading="lazy" alt="設定。web と api は自動 PR・レビューがオン、承認されたらすぐマージは web がオフ・api がオン、mobile はオフ。" data-ta="alt:h.b5.alt"></figure>
+      <figure class="shot sm"><img src="/assets/shots/settings-pop.webp?v=20261031" width="686" height="862" loading="lazy" alt="設定。web は自動 PR・自動レビューがオンで、マージは確認後。api は両方オンで、マージは自動。mobile は自動 PR がオフ、マージは手動で、PR なしでブランチまでで止まります。" data-ta="alt:h.b5.alt"></figure>
     </div>
     <div class="doc-step" id="w-learn">
       <div class="doc-step-txt">
@@ -422,7 +422,7 @@
   <p class="doc-label" data-t="doc.n.settings">設定</p>
   <h2 data-t="doc.s.h">Athena Studio の設定を変える。</h2>
   <dl class="doc-dl">
-      <div><dt data-t="doc.s.mt">PR 自動化</dt><dd data-t="doc.s.m">タブバー右端の ⚙。リポジトリごとに [自動 PR・レビュー] があり、その下に [承認されたらすぐマージ] があります。オンにするまではオフです。</dd></div>
+      <div><dt data-t="doc.s.mt">PR 自動化</dt><dd data-t="doc.s.m">タブバー右端の ⚙。リポジトリごとに [自動 PR] と [自動レビュー] があり、その下でマージを [自動]・[確認後]・[手動] から選びます。オンにするまではオフです。</dd></div>
       <div><dt data-t="doc.s.lt">言語</dt><dd data-t="doc.s.l">[表示 → 言語]。アプリとエージェントが一緒に切り替わります。返答・計画書・課題・コミットメッセージまで。</dd></div>
       <div><dt data-t="doc.s.nt">通知</dt><dd data-t="doc.s.n">メニューバーのフクロウ → [通知を一時停止]。1 時間、または翌朝 9 時まで。</dd></div>
       <div><dt data-t="doc.s.pt">パック</dt><dd data-t="doc.s.p">タブバー左のパック名(⌘⇧P)。切り替え・作成・取り込み・書き出し。ほかのパックのエージェントは作業を続け、書き出しにはエージェントの会話や未完了のブランチも含められます。</dd></div>
@@ -466,7 +466,7 @@
   <h2 data-t="doc.u.h">Athena Studio を最新に保つ。</h2>
   <p class="doc-p" data-t="doc.u.app">0.17.6 からはアプリが自分でアップデートします。設定(⚙)を開き、新しいバージョンが出ていれば「アプリのアップデート」行の「アップデート」を押します。アプリがダウンロード・検証して再起動します。途中で失敗しても今のバージョンがそのまま動き、短い理由が表示されます。</p>
   <p class="doc-p" data-t="doc.u.old">まだ 0.15.8 の場合、そのバージョンは自分でアップデートできません。<a href="/ja/download/">ダウンロードページ</a>から新しい .dmg を一度だけ入手し、Athena Studio をアプリケーションフォルダに上書きします。パックと作業はそのまま残り、以後は ⚙ からアップデートできます。</p>
-  <p class="doc-p" data-t="doc.u.core">アプリに含まれる Athena コアは、新しいバージョンを開いたときに更新されます。エージェントが作業中でも構いません。</p>
+  <p class="doc-p" data-t="doc.u.core">アプリに含まれる Athena コアは、新しいバージョンを開いたときに更新されます。エージェントが作業中でも構いません。更新後はポップアップで、前後のバージョン、新しくなった点、更新結果が表示されます。</p>
 </section>
 
 <section class="doc-sec" id="security">
