@@ -32,9 +32,6 @@ body {
   font: 16px/1.6 var(--sans); -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
-/* 언어 사전을 불러오는 동안 영어가 깜빡이지 않게(최대 1.5초) */
-html.i18n-wait body { opacity: 0; }
-body { transition: opacity .15s; }
 /* 한국어만 어절 단위로 끊는다. 일 · 중에 keep-all 을 걸면 문장 전체가 한 덩어리가 된다 */
 html:lang(ko) body { word-break: keep-all; overflow-wrap: anywhere; }
 html:lang(ja) body, html:lang(zh-Hans) body { line-height: 1.75; line-break: strict; }
@@ -629,10 +626,10 @@ html:lang(ko) .h3-sec h2, html:lang(ja) .h3-sec h2, html:lang(zh-Hans) .h3-sec h
 /* 언어 고르기: 꼬리 한 줄 */
 .foot-lang { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 16px; margin-top: 20px; font-size: 14px; }
 .foot-lang svg { width: 15px; height: 15px; color: var(--dim); }
-.foot-lang button { all: unset; cursor: pointer; color: var(--muted); }
-.foot-lang button:hover { color: var(--text); }
-.foot-lang button[aria-current="true"] { color: var(--text); text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--gold); }
-.foot-lang button:focus-visible { outline: 2px solid var(--gold-2); outline-offset: 2px; }
+.foot-lang a { all: unset; cursor: pointer; color: var(--muted); }
+.foot-lang a:hover { color: var(--text); }
+.foot-lang a[aria-current="true"] { color: var(--text); text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--gold); }
+.foot-lang a:focus-visible { outline: 2px solid var(--gold-2); outline-offset: 2px; }
 
 /* ── 2026-10-28 배포판 · 움직이는 그림 ── */
 .h3-gif { max-width: 1200px; margin-left: auto; margin-right: auto; }

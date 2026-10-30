@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="zh-Hans" data-lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-t="h.title">Athena Studio — 在 Mac 上运行 AI 编程智能体团队</title>
+<meta name="description" data-ta="content:h.desc" content="Athena Studio 是一款运行 AI 编程智能体团队的 Mac 应用：团队负责人制定计划，每个仓库由一个智能体修改代码。你可以查看它们的终端、回答问题并审查拉取请求。">
+<meta property="og:title" content="Athena Studio — 在 Mac 上运行 AI 编程智能体团队">
+<meta property="og:description" content="Athena Studio 是一款运行 AI 编程智能体团队的 Mac 应用：团队负责人制定计划，每个仓库由一个智能体修改代码。你可以查看它们的终端、回答问题并审查拉取请求。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://athena.novum-lab.com/zh/">
+<meta property="og:image" content="https://athena.novum-lab.com/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://athena.novum-lab.com/zh/">
+<!-- seo:start · deploy/gen-athena-lang.mjs 가 만든다(손으로 고치지 않는다) -->
+<link rel="alternate" hreflang="en" href="https://athena.novum-lab.com/">
+<link rel="alternate" hreflang="ko" href="https://athena.novum-lab.com/ko/">
+<link rel="alternate" hreflang="ja" href="https://athena.novum-lab.com/ja/">
+<link rel="alternate" hreflang="zh-Hans" href="https://athena.novum-lab.com/zh/">
+<link rel="alternate" hreflang="x-default" href="https://athena.novum-lab.com/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://novum-lab.com/#organization",
+      "name": "Novum Lab",
+      "url": "https://novum-lab.com"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Athena Studio",
+      "url": "https://athena.novum-lab.com/zh/",
+      "description": "Athena Studio 是一款运行 AI 编程智能体团队的 Mac 应用：团队负责人制定计划，每个仓库由一个智能体修改代码。你可以查看它们的终端、回答问题并审查拉取请求。",
+      "operatingSystem": "macOS 13 or later",
+      "processorRequirements": "Apple Silicon or Intel",
+      "applicationCategory": "DeveloperApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "downloadUrl": [
+        "https://github.com/novum-lab-kr/athena-studio-releases/releases/latest/download/Athena-Studio-mac-arm64.dmg",
+        "https://github.com/novum-lab-kr/athena-studio-releases/releases/latest/download/Athena-Studio-mac-x64.dmg"
+      ],
+      "publisher": {
+        "@id": "https://novum-lab.com/#organization"
+      }
+    }
+  ]
+}
+</script>
+<!-- seo:end -->
+<meta name="theme-color" content="#09090b">
+<link rel="icon" type="image/png" href="/assets/favicon-white.png">
+<link rel="apple-touch-icon" href="/assets/app-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=20261030a">
+<script src="/assets/analytics.js?v=20261029a" async></script>
+<script src="/assets/lang.js?v=20261030c"></script>
+<script src="/assets/motion.js?v=20261028i" defer></script>
+<script src="/assets/flow.js?v=20261029a" defer></script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/zh/"><img src="/assets/owl-white.png" alt="">Athena Studio</a>
+    <nav>
+      <a class="nav-x" href="/zh/features/" data-t="nav.features">功能</a>
+      <a class="nav-x" href="/zh/docs/" data-t="nav.docs">文档</a>
+      <a class="nav-x" href="/zh/releases/" data-t="nav.releases">更新日志</a>
+      <a class="btn sm gold" href="/zh/download/" data-t="nav.download">下载</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="h3-hero">
+  <div class="wrap">
+    <div class="h3-head">
+      <h1 data-t="n.h1">协调 AI 智能体，<br>打造更好的软件。</h1>
+      <div>
+        <p class="h3-lead" data-t="n.lead">Athena Studio 是一款运行 AI 编程智能体的 Mac 应用。把要做的事告诉团队负责人 Athena，它会写好计划，给每个仓库分配一个智能体，遇到需要决定的事再来问你。你只需看 diff、合并。</p>
+        <div class="btns">
+          <a class="btn gold" href="/zh/download/" data-t="n.dl">下载 macOS 版</a>
+          <a class="btn" href="#flow" data-t="n.cta2">查看使用流程 ↓</a>
+        </div>
+        <p class="h3-note" data-t="n.note2">免费 · macOS 13 及以上 · Apple Silicon / Intel · 需要 Claude Code 或 Codex</p>
+      </div>
+    </div>
+    <figure class="shot h3-shot h3-gif">
+      <picture>
+        <source media="(prefers-reduced-motion: reduce)" srcset="/assets/shots/workspace-en-1200.webp">
+        <img src="/assets/shots/flow.gif" width="1200" height="676" alt="工作中的 Athena Studio：一个请求在各仓库的工作区中分给 web、api、mobile-app 三个智能体，下方监视器逐渐填满；在 [工作] 中回答 api 智能体的提问后，Athena 合并结果。" data-ta="alt:n.hero.alt">
+      </picture>
+    </figure>
+    <p class="h3-steps"><span data-t="n.steps">安装 → 连接仓库 → 向 Athena 提需求 → 回答问题 → 检查 PR</span></p>
+  </div>
+</div>
+
+<section id="why" class="h3-sec why">
+  <div class="wrap">
+    <p class="h3-num" data-t="n.why.l">为什么选择 Athena Studio</p>
+    <div class="why-grid">
+      <div><span class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6h5v5H6zM13 6h5v5h-5zM6 13h5v5H6zM13 13h5v5h-5z"/></svg></span><h3 data-t="n.why1.t">同时处理多个仓库</h3><p data-t="n.why1.p">一个需求可以同时涉及 web、api 和 mobile。Athena 会拆分任务，每个仓库的智能体在各自的分支上同时工作。</p></div>
+      <div><span class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0-6 6c0 2.2 1.2 3.6 2.3 4.7.6.6.7 1.3.7 2.3h6c0-1 .1-1.7.7-2.3C16.8 12.6 18 11.2 18 9a6 6 0 0 0-6-6zM9.5 19h5M10.5 21.5h3"/></svg></span><h3 data-t="n.why2.t">只在需要决定时介入</h3><p data-t="n.why2.p">智能体的问题集中在一个 [工作] 列表里，不必翻遍终端去找谁在等你。</p></div>
+      <div><span class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l4.5 4.5L20 7"/></svg></span><h3 data-t="n.why3.t">合并前先检查</h3><p data-t="n.why3.p">智能体在打开拉取请求前会运行测试。在开启自动审查的仓库中，合并前会根据审查意见修正。</p></div>
+      <div><span class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4.5h10a3 3 0 0 1 3 3v12H8a3 3 0 0 1-3-3zM5 16.5a3 3 0 0 1 3-3h10"/></svg></span><h3 data-t="n.why4.t">逐渐熟悉每个仓库</h3><p data-t="n.why4.p">任务结束后保留的笔记，会被该仓库的下一项任务读取。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="flow" class="h3-sec">
+  <div class="wrap">
+    <p class="h3-num">01</p>
+    <h2 data-t="n.f.h">Athena 把一个需求按仓库拆开。</h2>
+    <p class="h3-p" data-t="n.f.p">Athena 制定计划并把工作交给负责的智能体。每个智能体在自己的分支上实现，需要决定时会留下问题。</p>
+    <blockquote class="h3-quote"><span class="who" data-t="n.f.qwho">在演示项目中实际发出的需求</span><span data-t="h.b1.q">顾客总是放弃购物车。在 web 上加一个已保存购物车的提醒，再把 api 的订单历史做成分页，让 mobile 也能用。</span></blockquote>
+
+    <figure class="hf" aria-label="需求的处理流程" data-ta="aria-label:n.d.aria">
+      <div class="hf-board">
+        <svg class="hf-wires" aria-hidden="true" focusable="false"></svg>
+        <ol class="hf-lanes">
+          <li class="hf-lane"><ol class="hf-row">
+          <li class="hf-node hf-you" id="hf-you" data-next="athena"><button type="button" aria-pressed="false"><span class="hf-num" aria-hidden="true">1</span><span class="hf-t" data-t="m.r1">你</span><span class="hf-s" data-t="n.d.you">提需求</span></button></li>
+          <li class="hf-node hf-lead" id="hf-athena" data-next="approve"><button type="button" aria-pressed="false"><span class="hf-num" aria-hidden="true">2</span><span class="hf-t">Athena</span><span class="hf-s" data-t="n.d.lead2">制定计划，按仓库分工</span></button></li>
+          <li class="hf-node hf-you" id="hf-approve" data-next="agents"><button type="button" aria-pressed="false"><span class="hf-num" aria-hidden="true">3</span><span class="hf-t" data-t="n.d.ok">你来批准</span><span class="hf-s" data-t="n.d.oks">计划及其中的决定</span></button></li>
+          </ol></li>
+          <li class="hf-lane"><ol class="hf-row">
+          <li class="hf-node hf-agent hf-stack" id="hf-agents" data-next="chk"><button type="button" aria-pressed="false"><span class="hf-num" aria-hidden="true">4</span><span class="hf-t" data-t="n.d.agents">各仓库的智能体</span><span class="hf-s" data-t="n.d.agentss">api · web · mobile</span></button></li>
+          <li class="hf-node hf-agent" id="hf-chk" data-next="rev"><button type="button" aria-pressed="false"><span class="hf-num" aria-hidden="true">5</span><span class="hf-t" data-t="n.d.chk">测试 · 检查</span><span class="hf-s" data-t="n.d.pr2">独立分支 · draft PR</span></button></li>
+          <li class="hf-node hf-rev" id="hf-rev" data-next="merge"><button type="button" aria-pressed="false"><span class="hf-num" aria-hidden="true">6</span><span class="hf-t" data-t="n.d.rv">自动审查</span><span class="hf-s" data-t="n.d.rvs">在你开启的仓库</span></button></li>
+          <li class="hf-node hf-you" id="hf-merge" data-next="lr"><button type="button" aria-pressed="false"><span class="hf-num" aria-hidden="true">7</span><span class="hf-t" data-t="n.d.mg2">合并</span><span class="hf-s" data-t="n.d.mgs2">你的确认可选</span></button></li>
+          </ol></li>
+          <li class="hf-lane"><ol class="hf-row">
+          <li class="hf-node hf-learn" id="hf-lr" data-next="pick"><button type="button" aria-pressed="false"><span class="hf-num" aria-hidden="true">8</span><span class="hf-t" data-t="n.d.lr">学习审查</span><span class="hf-s" data-t="n.d.lrs">提出笔记建议</span></button></li>
+          <li class="hf-node hf-you" id="hf-pick" data-next="notes"><button type="button" aria-pressed="false"><span class="hf-num" aria-hidden="true">9</span><span class="hf-t" data-t="n.d.pick">由你挑选</span><span class="hf-s" data-t="n.d.picks">只保留需要的</span></button></li>
+          <li class="hf-node hf-learn" id="hf-notes" data-next=""><button type="button" aria-pressed="false"><span class="hf-num" aria-hidden="true">10</span><span class="hf-t" data-t="n.d.learn2">学习笔记</span><span class="hf-s" data-t="n.d.learns">按仓库保存</span></button></li>
+          </ol></li>
+        </ol>
+      </div>
+      <ul class="hf-keys">
+        <li class="hf-key-q"><i aria-hidden="true"></i><span data-t="n.d.q2">需要决定时，任何智能体都会来问你([工作] → 等你处理)</span></li>
+        <li class="hf-key-n"><i aria-hidden="true"></i><span data-t="n.d.after3">合并后进入下一个仓库</span></li>
+        <li class="hf-key-n"><i aria-hidden="true"></i><span data-t="n.d.next">下一项任务参考</span></li>
+      </ul>
+      <div class="fd-legend" aria-hidden="true"><span class="lg-you" data-t="n.lg.you">由你决定</span><span class="lg-lead">Athena</span><span class="lg-agent" data-t="n.lg.ag">智能体编写与检查</span><span class="lg-rev" data-t="n.lg.rv">审查</span><span class="lg-learn" data-t="n.lg.ln">学习</span></div>
+      <figcaption data-t="n.d.cap">每个仓库在各自的分支和 PR 中工作。依赖其他仓库改动的工作会在那项改动完成后开始。自动审查与合并按仓库设置。</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="questions" class="h3-sec">
+  <div class="wrap">
+    <div class="h3-panel h3-stack">
+      <div class="h3-panel-txt">
+        <p class="h3-num">02 · <span data-t="n.q.tag">api · 订单历史</span></p>
+        <h2 data-t="n.q.h">智能体有问题时，会出现在 [工作] 里。</h2>
+        <p class="h3-p" data-t="n.q.p">订单历史每页显示 20 条还是 50 条？问题会出现在“工作”里，菜单栏会出现红点。发送答案后，智能体就会继续。</p>
+        <p class="h3-sum" data-t="n.q.sum">演示中选择了 20 条。界面为英文演示。</p>
+      </div>
+      <figure class="shot h3-q h3-gif">
+        <picture>
+          <source media="(prefers-reduced-motion: reduce)" srcset="/assets/shots/answer-modal.webp">
+          <img src="/assets/shots/answer.gif" width="1200" height="676" loading="lazy" alt="在 [工作] 中回答 api 智能体关于每页条数的问题，答案会输入到智能体的 pane，工作随即继续。" data-ta="alt:n.q.alt">
+        </picture>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="code" class="h3-sec">
+  <div class="wrap">
+    <p class="h3-num">03 · <span data-t="n.c.tag">web · 购物车提醒</span></p>
+    <h2 data-t="n.c.h">代码改动与测试结果并排查看。</h2>
+    <p class="h3-p" data-t="n.c.p">在终端旁阅读 diff，确认验证结果后再合并。PR 自动审查与合并按仓库设置，也可以保留合并前确认。</p>
+    <figure class="shot h3-code">
+      <picture>
+        <source media="(max-width: 640px)" srcset="/assets/shots/code-diff-m.webp">
+        <img src="/assets/shots/code-wide.webp" width="2150" height="720" loading="lazy" alt="购物车测试 6 项通过的结果和 CartPage.tsx 的 diff。" data-ta="alt:n.c.alt">
+      </picture>
+    </figure>
+    <figure class="shot h3-code-m"><img src="/assets/shots/code-test-m.webp" width="720" height="284" loading="lazy" alt="购物车测试：6 项通过。" data-ta="alt:n.c.alt2"></figure>
+    <p class="h3-cap" data-t="n.c.cap">演示中 web 仓库的购物车任务：6 项测试通过以及 CartPage.tsx 的改动。</p>
+  </div>
+</section>
+
+<section id="start" class="h3-sec">
+  <div class="wrap">
+    <p class="h3-num">04</p>
+    <h2 data-t="n.k.h">与你已在用的编程智能体配合使用。</h2>
+    <p class="h3-p" data-t="h.c.p">Athena Studio 直接运行你已在用的 Claude Code 或 Codex，并在其上加入团队负责人、书面计划和审查。</p>
+    <dl class="h3-facts">
+      <div><dt data-t="m.f2h">代码会去哪里</dt><dd data-t="n.x2">应用不会把你的代码或文件发送到 Novum Lab 的服务器。AI 请求发往你使用的服务商，推送发往你的 GitHub。<a href="/zh/docs/#security">详情</a></dd></div>
+      <div><dt data-t="m.f3h">费用</dt><dd data-t="m.f3">Athena Studio 本身免费。AI 用量按你的 Claude 或 Codex 套餐计费。</dd></div>
+      <div><dt data-t="m.f4h">语言</dt><dd data-t="n.x4">英语、韩语、日语或中文，同时用于应用和智能体。待办页面(⌘2)目前只有韩语。</dd></div>
+      <div><dt data-t="m.f1h">所需条件</dt><dd data-t="n.x1">macOS 13 或更高版本。PR 自动审查需要 Claude Code。<a href="/zh/download/">完整条件</a></dd></div>
+    </dl>
+    <p class="h3-link"><a href="/zh/docs/#install" data-t="n.k.more">在文档中查看安装与首次设置 →</a></p>
+  </div>
+</section>
+
+<section class="h3-end">
+  <div class="wrap">
+    <img src="/assets/owl-white.png" alt="" width="36" height="36">
+    <h2 data-t="n.e.h">在你的 Mac 上试试。</h2>
+    <p data-t="n.e.p2">适用于 macOS 13 及以上的 Apple Silicon 和 Intel Mac，免费使用。</p>
+    <a class="btn gold" href="/zh/download/" data-t="n.dl">下载 macOS 版</a>
+  </div>
+</section>
+</main>
+
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <a class="brand" href="/zh/"><img src="/assets/owl-white.png" alt="">Athena Studio</a>
+      <div class="links">
+        <a href="/zh/features/" data-t="nav.features">功能</a>
+        <a href="/zh/docs/" data-t="nav.docs">文档</a>
+        <a href="/zh/releases/" data-t="nav.releases">更新日志</a>
+        <a href="/zh/download/" data-t="nav.download">下载</a>
+        <a href="/zh/terms/" data-t="nav.terms">条款</a>
+        <a href="https://github.com/novum-lab-kr/athena-studio/issues/new/choose" data-t="nav.issue">反馈问题</a>
+        <a href="https://novum-lab.com">novum-lab.com</a>
+      </div>
+    </div>
+    <div class="foot-lang" role="group" aria-label="Language"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><a href="/" data-set-lang="en" lang="en" hreflang="en" aria-current="false">English</a><a href="/ko/" data-set-lang="ko" lang="ko" hreflang="ko" aria-current="false">한국어</a><a href="/ja/" data-set-lang="ja" lang="ja" hreflang="ja" aria-current="false">日本語</a><a href="/zh/" data-set-lang="zh" lang="zh-Hans" hreflang="zh-Hans" aria-current="true">中文</a></div>
+    <div class="biz"><span data-t="c.made">© 2026 Novum Lab. Athena Studio 由 Novum Lab 打造。</span><br>Novum Lab · CEO: Eunju Kim · Business Registration No. 496-37-01619 · Seoul, Republic of Korea · <a href="mailto:mcsung@novum-lab.com">mcsung@novum-lab.com</a><br><span data-t="c.ga">本网站使用 Google Analytics Cookie 统计访问量和下载量。</span></div>
+  </div>
+</footer>
+</body>
+</html>

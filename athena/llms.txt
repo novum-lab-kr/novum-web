@@ -1,0 +1,22 @@
+# Athena Studio
+
+> Athena Studio is a Mac app that runs a team of AI coding agents: a team lead that plans, and an agent per repository. Watch their terminals, answer their questions and review their pull requests.
+
+Free · macOS 13+ · Apple Silicon / Intel · Needs Claude Code or Codex. © 2026 Novum Lab. Athena Studio is made by Novum Lab.
+
+## Pages
+
+- [Home](https://athena.novum-lab.com/): Athena Studio is a Mac app that runs a team of AI coding agents: a team lead that plans, and an agent per repository. Watch their terminals, answer their questions and review their pull requests.
+- [Features](https://athena.novum-lab.com/features/): Workspaces, agent monitor, Work, pane details, decision console, Explorer, automatic PR review, menu bar, packs and four languages: everything in Athena Studio.
+- [Docs](https://athena.novum-lab.com/docs/): Getting started with Athena Studio, keyboard shortcuts, data and security, how it compares, and frequently asked questions.
+- [Download](https://athena.novum-lab.com/download/): Download Athena Studio for macOS (Apple Silicon and Intel). Requirements and first steps.
+- [Release notes](https://athena.novum-lab.com/releases/): What changed in Athena Studio, newest first.
+- [Terms](https://athena.novum-lab.com/terms/): Athena Studio End User License Agreement.
+
+## Other languages
+
+Every page is also published in Korean, Japanese and Chinese under /ko/, /ja/ and /zh/.
+
+- [한국어](https://athena.novum-lab.com/ko/): Athena Studio는 AI 코딩 에이전트 팀을 실행하는 맥 앱입니다. 팀 리드가 계획을 세우고 레포마다 에이전트가 코드를 고칩니다. 터미널을 보면서 질문에 답하고 PR을 검토합니다.
+- [日本語](https://athena.novum-lab.com/ja/): Athena Studio は AI コーディングエージェントのチームを動かす Mac アプリです。チームリードが計画し、リポジトリごとのエージェントがコードを直します。ターミナルを見ながら質問に答え、プルリクエストを確認できます。
+- [中文](https://athena.novum-lab.com/zh/): Athena Studio 是一款运行 AI 编程智能体团队的 Mac 应用：团队负责人制定计划，每个仓库由一个智能体修改代码。你可以查看它们的终端、回答问题并审查拉取请求。

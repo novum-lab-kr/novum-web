@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="zh-Hans" data-lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-t="o.title">文档 — Athena Studio</title>
+<meta name="description" data-ta="content:o.desc" content="Athena Studio 入门、键盘快捷键、数据与安全、对比以及常见问题。">
+<meta property="og:title" content="文档 — Athena Studio">
+<meta property="og:description" content="Athena Studio 入门、键盘快捷键、数据与安全、对比以及常见问题。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://athena.novum-lab.com/zh/docs/">
+<meta property="og:image" content="https://athena.novum-lab.com/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://athena.novum-lab.com/zh/docs/">
+<!-- seo:start · deploy/gen-athena-lang.mjs 가 만든다(손으로 고치지 않는다) -->
+<link rel="alternate" hreflang="en" href="https://athena.novum-lab.com/docs/">
+<link rel="alternate" hreflang="ko" href="https://athena.novum-lab.com/ko/docs/">
+<link rel="alternate" hreflang="ja" href="https://athena.novum-lab.com/ja/docs/">
+<link rel="alternate" hreflang="zh-Hans" href="https://athena.novum-lab.com/zh/docs/">
+<link rel="alternate" hreflang="x-default" href="https://athena.novum-lab.com/docs/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://novum-lab.com/#organization",
+      "name": "Novum Lab",
+      "url": "https://novum-lab.com"
+    },
+    {
+      "@type": "FAQPage",
+      "url": "https://athena.novum-lab.com/zh/docs/#faq",
+      "inLanguage": "zh-Hans",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "哪些 Mac 可以用？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "macOS 13 Ventura 及以上的 Apple Silicon 或 Intel Mac 都可以使用，免费下载。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "要花钱吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Athena Studio 可以免费下载和使用。智能体使用你自己的 Claude Code 或 Codex 套餐运行，用量照常由该服务商计费。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "必须要有 Claude Code 或 Codex 吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "是的，你的 Mac 上至少要登录其中一个。智能体用哪个都能运行。PR 自动审查使用 Claude Code；如果还有 Codex，会多一个来自不同模型的审查者。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "智能体会自己合并代码吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "只有在你开启时才会。自动合并默认关闭，按仓库设置，你也可以在每次合并前保留最后一次点击。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "关闭应用后，智能体还会继续工作吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "会。终端和智能体在后台继续运行。即使退出了应用，重新打开后也会回到同样的标签页和布局。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "可以用于多家公司或多个项目吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "可以。为每个创建一个包：包含其仓库、智能体和规则。切换包不会中断另一个包里的工作，你还可以导出包与团队共享。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "支持 Windows 或 Linux 吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "目前 Athena Studio 只有 Mac 版。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "发现问题或有建议？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "请在 GitHub 提交 issue，可选择错误报告或功能建议模板。"
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- seo:end -->
+<meta name="theme-color" content="#09090b">
+<link rel="icon" type="image/png" href="/assets/favicon-white.png">
+<link rel="apple-touch-icon" href="/assets/app-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=20261030a">
+<script src="/assets/analytics.js?v=20261029a" async></script>
+<script src="/assets/lang.js?v=20261030c"></script>
+<script src="/assets/motion.js?v=20261028i" defer></script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/zh/"><img src="/assets/owl-white.png" alt="">Athena Studio</a>
+    <nav>
+      <a class="nav-x" href="/zh/features/" data-t="nav.features">功能</a>
+      <a class="nav-x" href="/zh/docs/" aria-current="page" data-t="nav.docs">文档</a>
+      <a class="nav-x" href="/zh/releases/" data-t="nav.releases">更新日志</a>
+      <a class="btn sm gold" href="/zh/download/" data-t="nav.download">下载</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="page-head">
+  <div class="wrap">
+    <p class="eyebrow"><i></i><span data-t="nav.docs">文档</span></p>
+    <h1 class="grad" data-t="o.h1">Athena Studio 使用指南</h1>
+    <p class="lead" data-t="doc.lead">从安装应用、创建第一个包到完成第一项任务。下面是需要时随时查阅的参考资料。</p>
+  </div>
+</div>
+
+<div class="wrap doc-wrap">
+  <nav class="doc-toc" aria-label="Docs">
+    <div class="doc-toc-in">
+        <a href="#before" data-t="doc.n.before">安装之前</a>
+        <a href="#install" data-t="doc.n.install">安装并打开</a>
+        <a href="#setup" data-t="s.label">首次设置</a>
+        <a href="#workflow" data-t="doc.n.workflow">第一项任务</a>
+        <a href="#app" data-t="doc.n.app">应用各部分</a>
+        <a href="#settings" data-t="doc.n.settings">设置</a>
+        <a href="#shortcuts" data-t="f.k.label">快捷键</a>
+        <a href="#update" data-t="doc.n.update">更新</a>
+        <a href="#security" data-t="h.s.label">数据与安全</a>
+        <a href="#troubleshooting" data-t="doc.n.trouble">故障排除</a>
+        <a href="#faq">FAQ</a>
+    </div>
+  </nav>
+  <div class="doc-body">
+<span id="start"></span>
+<section class="doc-sec" id="before">
+  <p class="doc-label" data-t="doc.n.before">安装之前</p>
+  <h2 data-t="doc.b.h">请先确认以下几项。</h2>
+  <p class="doc-p" data-t="doc.b.p">Athena Studio 在你的 Mac 上运行，驱动你已在用的编程智能体。</p>
+  <ul class="req">
+      <li><b data-t="d.r1">macOS</b><span data-t="d.r1p">macOS 13 Ventura 或更高版本</span></li>
+      <li><b data-t="d.r2">AI 智能体</b><span data-t="d.r2p"><a href="https://docs.anthropic.com/en/docs/claude-code/setup" target="_blank" rel="noopener">Claude Code</a> 或 <a href="https://github.com/openai/codex" target="_blank" rel="noopener">Codex</a>，用你自己的账号登录。</span></li>
+      <li><b data-t="d.r3">git 和 Python 3</b><span data-t="d.r3p">如果没有，首次启动时 macOS 会提示安装。想提前安装，可在终端运行 <code>xcode-select --install</code></span></li>
+      <li><b>Node.js</b><span data-t="d.r4p">供 Athena 的脚本使用</span></li>
+      <li><b data-t="d.r5">GitHub</b><span data-t="d.r5p">需要能访问你的仓库。创建拉取请求和自动审查需要 <a href="https://cli.github.com" target="_blank" rel="noopener">gh CLI</a>。</span></li>
+      </ul>
+</section>
+
+<section class="doc-sec" id="install">
+  <p class="doc-label" data-t="doc.n.install">安装并打开</p>
+  <h2 data-t="doc.i.h">安装 Athena Studio。</h2>
+  <ol class="h3-steps-list">
+    <li data-t="doc.i1">在<a href="/zh/download/">下载页面</a>获取适合你 Mac 芯片的 .dmg。</li>
+    <li data-t="d.s1p">打开下载的文件，把 Athena Studio 拖到“应用程序”。</li>
+    <li data-t="doc.i3">打开 Athena Studio。它已通过 Apple 签名和公证，打开时不会出现安全警告。如果缺少 git 或 Python 3，macOS 会提示安装 Apple 的 Command Line Tools。</li>
+    <li data-t="doc.i4">首次启动时，开始画面会提供“新建包”和“导入包”。包是一家公司或一个项目的仓库、智能体和规则的集合。</li>
+  </ol>
+</section>
+
+<section class="doc-sec" id="setup">
+  <p class="doc-label" data-t="s.label">首次设置</p>
+  <h2 data-t="s.h">首次设置：Athena 熟悉你的仓库</h2>
+  <p class="doc-p" data-t="s.p">创建包时，Athena 会替你完成设置。它只读取你的代码。</p>
+  <div class="doc-three">
+    <div class="you"><b data-t="doc.su.you.h">由你确认</b><span data-t="doc.su.you.p">要加入的仓库、公司名称、智能体名称，以及哪些仓库开启自动审查。推测错误的地方在这里修正。</span></div>
+    <div><b data-t="doc.su.ath.h">Athena 负责准备</b><span data-t="doc.su.ath.p">为每个仓库配好规则和笔记的智能体、路由表、QA 检查和代码基线。不会修改你的仓库，安装或 fetch 前都会先询问。</span></div>
+    <div><b data-t="doc.su.end.h">完成之后</b><span data-t="doc.su.end.p">Athena 会报告已完成的内容和仍需你处理的事项。然后在 athena 工作区交代第一项任务即可。</span></div>
+  </div>
+  <figure class="flowd" aria-label="首次设置时 Athena 做的事" data-ta="aria-label:s.d.aria">
+      <svg class="flowd-wide" viewBox="0 0 1200 560" role="img" aria-hidden="true">
+        <defs>
+        <marker id="sah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1.2L9 5L1 8.8Q2.6 5 1 1.2z" class="fd-head"/></marker>
+        </defs>
+        <style>
+        .su-panel { fill: none; stroke: var(--line-2, #3a4048); stroke-width: 1.2; stroke-dasharray: 5 5; }
+        .su-h { fill: var(--muted, #9aa3ad); font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+        .su-t { fill: var(--text, #e8eaed); font-size: 15px; font-weight: 600; }
+        .su-s { fill: var(--muted, #9aa3ad); font-size: 13px; }
+        .su-i { fill: var(--text, #e8eaed); font-size: 13.5px; }
+        .su-dot { fill: #22262c; stroke: #8a939c; stroke-width: 1.5; }
+        .su-dot-you { fill: rgba(217,181,111,.12); stroke: rgba(217,181,111,.8); stroke-width: 1.5; }
+        .su-n { fill: var(--text, #e8eaed); font-size: 12px; font-weight: 700; }
+        .su-li { fill: #8a939c; }
+        </style>
+        <rect class="su-panel" x="20" y="40" width="240" height="420" rx="16"/>
+        <text class="su-h" x="40" y="70" data-t="s.d.mac">你的 Mac</text>
+        <g><rect class="fd-box" x="40" y="88" width="200" height="64" rx="12"/><text class="su-t" x="58" y="115" data-t="s.d.r1">web</text><text class="su-s" x="58" y="137" data-t="s.d.r1s">前端 · main</text></g>
+        <g><rect class="fd-box" x="40" y="166" width="200" height="64" rx="12"/><text class="su-t" x="58" y="193" data-t="s.d.r2">api</text><text class="su-s" x="58" y="215" data-t="s.d.r2s">后端 · main</text></g>
+        <g><rect class="fd-box" x="40" y="244" width="200" height="64" rx="12"/><text class="su-t" x="58" y="271" data-t="s.d.r3">mobile</text><text class="su-s" x="58" y="293" data-t="s.d.r3s">应用 · develop</text></g>
+        <g><rect class="fd-box" x="40" y="322" width="200" height="64" rx="12"/><text class="su-t" x="58" y="349" data-t="s.d.r4">ui-kit</text><text class="su-s" x="58" y="371" data-t="s.d.r4s">共享包 · main</text></g>
+        <text class="su-s" x="140" y="430" text-anchor="middle" data-t="s.d.found">最多向下查找 3 层文件夹</text>
+        <path class="fd-l" d="M260 250 H306" marker-end="url(#sah)"/>
+        <text class="fd-nl" x="283" y="240" text-anchor="middle" data-t="s.d.reads2">读取</text>
+        <g><rect class="fd-box fd-lead" x="310" y="40" width="320" height="76" rx="14"/><text class="fd-t" x="470" y="72" text-anchor="middle">Athena</text><text class="fd-s" x="470" y="96" text-anchor="middle" data-t="s.d.lead">首次设置 · 读取生产分支</text></g>
+        <rect class="fd-box" x="310" y="132" width="320" height="328" rx="14"/>
+        <path d="M338 168 V412" stroke="#5d656e" stroke-width="1.4"/>
+        <g><circle class="su-dot" cx="338" cy="168" r="12"/><text class="su-n" x="338" y="172" text-anchor="middle">1</text><text class="su-i" x="362" y="173" data-t="s.d.st1">查找仓库 · 推测类型和分支</text></g>
+        <g><circle class="su-dot-you" cx="338" cy="208" r="12"/><text class="su-n" x="338" y="212" text-anchor="middle">2</text><text class="su-i" x="362" y="213" data-t="s.d.st2">由你确认仓库、名称、自动审查</text></g>
+        <g><circle class="su-dot" cx="338" cy="248" r="12"/><text class="su-n" x="338" y="252" text-anchor="middle">3</text><text class="su-i" x="362" y="253" data-t="s.d.st3">为每个仓库创建智能体</text></g>
+        <g><circle class="su-dot" cx="338" cy="288" r="12"/><text class="su-n" x="338" y="292" text-anchor="middle">4</text><text class="su-i" x="362" y="293" data-t="s.d.st4">读代码并填写</text><text class="su-s" x="362" y="311" data-t="s.d.st4s">每个仓库一个执行者，同时进行</text></g>
+        <g><circle class="su-dot" cx="338" cy="338" r="12"/><text class="su-n" x="338" y="342" text-anchor="middle">5</text><text class="su-i" x="362" y="343" data-t="s.d.st5">为每个画面起草 QA 检查</text></g>
+        <g><circle class="su-dot" cx="338" cy="376" r="12"/><text class="su-n" x="338" y="380" text-anchor="middle">6</text><text class="su-i" x="362" y="381" data-t="s.d.st6">运行检查 · 建立代码基线</text></g>
+        <g><circle class="su-dot" cx="338" cy="414" r="12" style="stroke-dasharray:3 3"/><text class="su-n" x="338" y="418" text-anchor="middle">7</text><text class="su-i" x="362" y="419" data-t="s.d.st7">绘制图表(可选)</text></g>
+        <path class="fd-l" d="M630 250 H676" marker-end="url(#sah)"/>
+        <text class="fd-nl" x="653" y="240" text-anchor="middle" data-t="s.d.writes">写入</text>
+        <rect class="su-panel" x="680" y="40" width="500" height="420" rx="16"/>
+        <text class="su-h" x="700" y="70" data-t="s.d.pack">你的包</text>
+        <text class="su-s" x="1160" y="70" text-anchor="end" data-t="s.d.packmore">+ 每个仓库一个智能体(ui-kit · …)</text>
+        <g>
+        <rect class="fd-box fd-agent" x="700" y="88" width="145" height="198" rx="12"/>
+        <text class="su-t" x="716" y="114" data-t="s.d.a1">web-fe</text><text class="su-s" x="716" y="133" data-t="s.d.a1s">负责 web 的智能体</text>
+        <circle class="su-li" cx="720" cy="160" r="2.5"/><text class="su-i" x="730" y="165" data-t="s.d.rules">规则</text>
+        <circle class="su-li" cx="720" cy="184" r="2.5"/><text class="su-i" x="730" y="189" data-t="s.d.notes">结构笔记</text>
+        <circle class="su-li" cx="720" cy="208" r="2.5"/><text class="su-i" x="730" y="213" data-t="s.d.gotchas">注意事项笔记</text>
+        <circle class="su-li" cx="720" cy="232" r="2.5"/><text class="su-i" x="730" y="237" data-t="s.d.check">检查脚本</text>
+        <circle class="su-li" cx="720" cy="256" r="2.5"/><text class="su-i" x="730" y="261" data-t="s.d.qa2">QA 检查</text>
+        </g>
+        <g>
+        <rect class="fd-box fd-agent" x="852" y="88" width="145" height="198" rx="12"/>
+        <text class="su-t" x="868" y="114" data-t="s.d.a2">api-be</text><text class="su-s" x="868" y="133" data-t="s.d.a2s">负责 api 的智能体</text>
+        <circle class="su-li" cx="872" cy="160" r="2.5"/><text class="su-i" x="882" y="165" data-t="s.d.rules">规则</text>
+        <circle class="su-li" cx="872" cy="184" r="2.5"/><text class="su-i" x="882" y="189" data-t="s.d.notes">结构笔记</text>
+        <circle class="su-li" cx="872" cy="208" r="2.5"/><text class="su-i" x="882" y="213" data-t="s.d.gotchas">注意事项笔记</text>
+        <circle class="su-li" cx="872" cy="232" r="2.5"/><text class="su-i" x="882" y="237" data-t="s.d.check">检查脚本</text>
+        <text class="su-s" x="868" y="261" data-t="s.d.noqa">无画面，不做 QA</text>
+        </g>
+        <g>
+        <rect class="fd-box fd-agent" x="1004" y="88" width="145" height="198" rx="12"/>
+        <text class="su-t" x="1020" y="114" data-t="s.d.a3">mobile-app</text><text class="su-s" x="1020" y="133" data-t="s.d.a3s">负责 mobile 的智能体</text>
+        <circle class="su-li" cx="1024" cy="160" r="2.5"/><text class="su-i" x="1034" y="165" data-t="s.d.rules">规则</text>
+        <circle class="su-li" cx="1024" cy="184" r="2.5"/><text class="su-i" x="1034" y="189" data-t="s.d.notes">结构笔记</text>
+        <circle class="su-li" cx="1024" cy="208" r="2.5"/><text class="su-i" x="1034" y="213" data-t="s.d.gotchas">注意事项笔记</text>
+        <circle class="su-li" cx="1024" cy="232" r="2.5"/><text class="su-i" x="1034" y="237" data-t="s.d.check">检查脚本</text>
+        <text class="su-s" x="1020" y="261" data-t="s.d.apprules">应用规则(Expo)</text>
+        </g>
+        <g><rect class="fd-box fd-learn" x="700" y="302" width="460" height="46" rx="10"/><text class="su-i" x="718" y="330" data-t="s.d.route"><tspan style="font-weight:600">路由</tspan>: 哪个需求交给哪个仓库</text></g>
+        <g><rect class="fd-box fd-learn" x="700" y="356" width="460" height="46" rx="10"/><text class="su-i" x="718" y="384" data-t="s.d.svc"><tspan style="font-weight:600">服务概览</tspan>: 每个应用的用途和技术栈</text></g>
+        <g><rect class="fd-box fd-learn" x="700" y="410" width="460" height="38" rx="10"/><text class="su-i" x="718" y="434" data-t="s.d.fp"><tspan style="font-weight:600">基线</tspan>: 之后同步只更新有变化的部分</text></g>
+        <path class="fd-l" d="M470 460 V490" marker-end="url(#sah)"/>
+        <g><rect class="fd-box fd-you" x="310" y="494" width="320" height="56" rx="12"/><text class="fd-t" x="470" y="518" text-anchor="middle" data-t="s.d.report">报告</text><text class="fd-s" x="470" y="539" text-anchor="middle" data-t="s.d.reports2">已完成的内容 · 仍需你确认的事项</text></g>
+        <text class="fd-nl" x="920" y="526" text-anchor="middle" data-t="s.d.note">仓库只读取。安装或 fetch 前会先询问。</text>
+      </svg>
+      <svg class="flowd-tall" viewBox="0 0 360 1210" role="img" aria-hidden="true">
+        <defs>
+        <marker id="sahm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1.2L9 5L1 8.8Q2.6 5 1 1.2z" class="fd-head"/></marker>
+        </defs>
+        <style>
+        .su-h { fill: var(--muted, #9aa3ad); font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+        .su-t { fill: var(--text, #e8eaed); font-size: 14px; font-weight: 600; }
+        .su-s { fill: var(--muted, #9aa3ad); font-size: 12px; }
+        .su-i { fill: var(--text, #e8eaed); font-size: 13px; }
+        .su-dot { fill: #22262c; stroke: #8a939c; stroke-width: 1.5; }
+        .su-dot-you { fill: rgba(217,181,111,.12); stroke: rgba(217,181,111,.8); stroke-width: 1.5; }
+        .su-n { fill: var(--text, #e8eaed); font-size: 11px; font-weight: 700; }
+        .su-li { fill: #8a939c; }
+        </style>
+        <text class="su-h" x="20" y="30" data-t="s.d.mac">你的 Mac</text>
+        <g><rect class="fd-box" x="20" y="44" width="155" height="56" rx="12"/><text class="su-t" x="36" y="68" data-t="s.d.r1">web</text><text class="su-s" x="36" y="88" data-t="s.d.r1s">前端 · main</text></g>
+        <g><rect class="fd-box" x="185" y="44" width="155" height="56" rx="12"/><text class="su-t" x="201" y="68" data-t="s.d.r2">api</text><text class="su-s" x="201" y="88" data-t="s.d.r2s">后端 · main</text></g>
+        <g><rect class="fd-box" x="20" y="108" width="155" height="56" rx="12"/><text class="su-t" x="36" y="132" data-t="s.d.r3">mobile</text><text class="su-s" x="36" y="152" data-t="s.d.r3s">应用 · develop</text></g>
+        <g><rect class="fd-box" x="185" y="108" width="155" height="56" rx="12"/><text class="su-t" x="201" y="132" data-t="s.d.r4">ui-kit</text><text class="su-s" x="201" y="152" data-t="s.d.r4sm">共享包</text></g>
+        <text class="su-s" x="180" y="184" text-anchor="middle" data-t="s.d.found">最多向下查找 3 层文件夹</text>
+        <path class="fd-l" d="M180 194 V224" marker-end="url(#sahm)"/>
+        <text class="fd-nl" x="192" y="214" style="font-size:12px" data-t="s.d.reads2">读取</text>
+        <g><rect class="fd-box fd-lead" x="20" y="230" width="320" height="64" rx="14"/><text class="fd-t" x="180" y="257" text-anchor="middle">Athena</text><text class="fd-s" x="180" y="280" text-anchor="middle" data-t="s.d.lead">首次设置 · 读取生产分支</text></g>
+        <rect class="fd-box" x="20" y="304" width="320" height="300" rx="14"/>
+        <path d="M44 332 V582" stroke="#5d656e" stroke-width="1.4"/>
+        <g><circle class="su-dot" cx="44" cy="332" r="11"/><text class="su-n" x="44" y="336" text-anchor="middle">1</text><text class="su-i" x="66" y="337" data-t="s.d.st1">查找仓库 · 推测类型和分支</text></g>
+        <g><circle class="su-dot-you" cx="44" cy="372" r="11"/><text class="su-n" x="44" y="376" text-anchor="middle">2</text><text class="su-i" x="66" y="377" data-t="s.d.st2">由你确认仓库、名称、自动审查</text></g>
+        <g><circle class="su-dot" cx="44" cy="412" r="11"/><text class="su-n" x="44" y="416" text-anchor="middle">3</text><text class="su-i" x="66" y="417" data-t="s.d.st3">为每个仓库创建智能体</text></g>
+        <g><circle class="su-dot" cx="44" cy="452" r="11"/><text class="su-n" x="44" y="456" text-anchor="middle">4</text><text class="su-i" x="66" y="457" data-t="s.d.st4">读代码并填写</text><text class="su-s" x="66" y="475" data-t="s.d.st4s">每个仓库一个执行者，同时进行</text></g>
+        <g><circle class="su-dot" cx="44" cy="502" r="11"/><text class="su-n" x="44" y="506" text-anchor="middle">5</text><text class="su-i" x="66" y="507" data-t="s.d.st5">为每个画面起草 QA 检查</text></g>
+        <g><circle class="su-dot" cx="44" cy="542" r="11"/><text class="su-n" x="44" y="546" text-anchor="middle">6</text><text class="su-i" x="66" y="547" data-t="s.d.st6">运行检查 · 建立代码基线</text></g>
+        <g><circle class="su-dot" cx="44" cy="582" r="11" style="stroke-dasharray:3 3"/><text class="su-n" x="44" y="586" text-anchor="middle">7</text><text class="su-i" x="66" y="587" data-t="s.d.st7">绘制图表(可选)</text></g>
+        <path class="fd-l" d="M180 604 V634" marker-end="url(#sahm)"/>
+        <text class="fd-nl" x="192" y="624" style="font-size:12px" data-t="s.d.writes">写入</text>
+        <text class="su-h" x="20" y="660" data-t="s.d.pack">你的包</text>
+        <text class="su-s" x="340" y="660" text-anchor="end" data-t="s.d.packmore2">+ ui-kit · …</text>
+        <g>
+        <rect class="fd-box fd-agent" x="20" y="672" width="155" height="180" rx="12"/>
+        <text class="su-t" x="34" y="696" data-t="s.d.a1">web-fe</text><text class="su-s" x="34" y="714" data-t="s.d.a1s">负责 web 的智能体</text>
+        <circle class="su-li" cx="38" cy="736" r="2.3"/><text class="su-i" x="47" y="741" data-t="s.d.rules">规则</text>
+        <circle class="su-li" cx="38" cy="758" r="2.3"/><text class="su-i" x="47" y="763" data-t="s.d.notes">结构笔记</text>
+        <circle class="su-li" cx="38" cy="780" r="2.3"/><text class="su-i" x="47" y="785" data-t="s.d.gotchas">注意事项笔记</text>
+        <circle class="su-li" cx="38" cy="802" r="2.3"/><text class="su-i" x="47" y="807" data-t="s.d.check">检查脚本</text>
+        <circle class="su-li" cx="38" cy="824" r="2.3"/><text class="su-i" x="47" y="829" data-t="s.d.qa2">QA 检查</text>
+        </g>
+        <g>
+        <rect class="fd-box fd-agent" x="185" y="672" width="155" height="180" rx="12"/>
+        <text class="su-t" x="199" y="696" data-t="s.d.a2">api-be</text><text class="su-s" x="199" y="714" data-t="s.d.a2s">负责 api 的智能体</text>
+        <circle class="su-li" cx="203" cy="736" r="2.3"/><text class="su-i" x="212" y="741" data-t="s.d.rules">规则</text>
+        <circle class="su-li" cx="203" cy="758" r="2.3"/><text class="su-i" x="212" y="763" data-t="s.d.notes">结构笔记</text>
+        <circle class="su-li" cx="203" cy="780" r="2.3"/><text class="su-i" x="212" y="785" data-t="s.d.gotchas">注意事项笔记</text>
+        <circle class="su-li" cx="203" cy="802" r="2.3"/><text class="su-i" x="212" y="807" data-t="s.d.check">检查脚本</text>
+        <text class="su-s" x="199" y="829" data-t="s.d.noqa">无画面，不做 QA</text>
+        </g>
+        <g><rect class="fd-box fd-agent" x="20" y="862" width="320" height="40" rx="10"/><text class="su-t" x="34" y="887" data-t="s.d.a3">mobile-app</text><text class="su-s" x="326" y="887" text-anchor="end" data-t="s.d.a3m">相同笔记 · 应用规则(Expo)</text></g>
+        <g><rect class="fd-box fd-learn" x="20" y="912" width="320" height="52" rx="10"/><text class="su-t" x="36" y="934" data-t="s.d.routet">路由</text><text class="su-s" x="36" y="953" data-t="s.d.routes">哪个需求交给哪个仓库</text></g>
+        <g><rect class="fd-box fd-learn" x="20" y="972" width="320" height="52" rx="10"/><text class="su-t" x="36" y="994" data-t="s.d.svct">服务概览</text><text class="su-s" x="36" y="1013" data-t="s.d.svcs">每个应用的用途和技术栈</text></g>
+        <g><rect class="fd-box fd-learn" x="20" y="1032" width="320" height="52" rx="10"/><text class="su-t" x="36" y="1054" data-t="s.d.fpt">基线</text><text class="su-s" x="36" y="1073" data-t="s.d.fps">之后同步只更新有变化的部分</text></g>
+        <path class="fd-l" d="M180 1084 V1106" marker-end="url(#sahm)"/>
+        <g><rect class="fd-box fd-you" x="20" y="1110" width="320" height="56" rx="12"/><text class="fd-t" x="180" y="1134" text-anchor="middle" data-t="s.d.report">报告</text><text class="fd-s" x="180" y="1155" text-anchor="middle" data-t="s.d.reports2">已完成的内容 · 仍需你确认的事项</text></g>
+        <text class="fd-nl" x="180" y="1192" text-anchor="middle" style="font-size:12px" data-t="s.d.notem">仓库只读取。安装或 fetch 前会先询问。</text>
+      </svg>
+        <figcaption data-t="s.d.cap">首次设置：Athena 读取你的仓库并为你建好包。</figcaption>
+  </figure>
+  <details class="doc-more">
+    <summary data-t="doc.su.more">Athena 的工作步骤</summary>
+        <ol class="h3-steps-list">
+          <li data-t="s.1">在你的 Mac 上找到仓库，推测每个仓库的类型(前端或后端)、生产分支和 PR 基准分支。</li>
+          <li data-t="s.2">向你确认要加入哪些仓库、公司名称、智能体名称以及哪些仓库开启自动审查。推测错误的地方也在这一步修正。</li>
+          <li data-t="s.3">为每个仓库创建智能体，并配好规则、结构笔记、注意事项笔记和检查脚本。</li>
+          <li data-t="s.4">读取每个仓库的生产分支，填写智能体负责的内容、必须遵守的规则、语言与类型状况以及简短的服务概览。决定哪个需求交给哪个仓库的路由表由 Athena 编写。</li>
+          <li data-t="s.5">为每个应用的画面起草 QA 检查。</li>
+          <li data-t="s.6">先运行一次检查并建立代码基线，之后的更新只处理有变化的部分。</li>
+          <li data-t="s.7">如有需要，还会为每个服务绘制结构图、画面地图和请求流程图。</li>
+        </ol>
+  </details>
+  <p class="doc-note" data-t="doc.su.imp">如果有团队给你的包，请在“文件 → 导入包…”中选择压缩包、包文件夹或 git 仓库。</p>
+</section>
+
+<section class="doc-sec" id="workflow">
+  <p class="doc-label" data-t="doc.n.workflow">第一项任务</p>
+  <h2 data-t="doc.w.h">从一个需求到合并的拉取请求。</h2>
+  <p class="doc-p" data-t="doc.w.p">下面的演示项目是一家有 web、api、mobile 仓库的小商店。你自己的仓库也是同样的流程。</p>
+  <div class="doc-steps">
+    <div class="doc-step has-fig narrow" id="w-ask">
+      <div class="doc-step-txt">
+        <span class="n">01</span>
+        <h3 data-t="doc.w1.h">向 Athena 提需求</h3>
+        <p data-t="doc.w1.p">在 athena 工作区写下要改的内容和涉及的仓库，用平常的话写就行。</p>
+        <blockquote class="h3-quote"><span data-t="h.b1.q">顾客总是放弃购物车。在 web 上加一个已保存购物车的提醒，再把 api 的订单历史做成分页，让 mobile 也能用。</span></blockquote>
+      </div>
+      <figure class="shot sm"><img src="/assets/shots/athena-pane.webp" width="1066" height="1290" loading="lazy" alt="Athena 的 pane：需求、写好的两份计划、分别分派给 api-be 和 web-fe，以及每个智能体正在做什么的摘要。" data-ta="alt:h.b1.alt"></figure>
+    </div>
+    <div class="doc-step has-fig" id="w-plan">
+      <div class="doc-step-txt">
+        <span class="n">02</span>
+        <h3 data-t="doc.w2.h">确认计划</h3>
+        <p data-t="doc.w2.p">Athena 为每个仓库写好计划并交给该仓库的智能体，智能体在新的 pane 中用独立分支工作。计划里有多个选择时，Athena 会在侧边浏览器中打开决策控制台供你挑选。</p>
+      </div>
+      <figure class="shot"><img src="/assets/shots/agents.webp" width="1600" height="1200" loading="lazy" alt="Athena 与 web-fe 并排工作，下方的智能体监视器跟踪所有智能体。" data-ta="alt:h.b2.alt2"></figure>
+    </div>
+    <div class="doc-step has-fig narrow" id="w-answer">
+      <div class="doc-step-txt">
+        <span class="n">03</span>
+        <h3 data-t="doc.w3.h">回答问题</h3>
+        <p data-t="doc.w3.p">智能体等待决定时，右上角的 [工作] 会出现圆点，问题位于 [等你处理] 下。点开选择答案，需要时附上备注后发送。菜单栏的猫头鹰也会出现红点。</p>
+      </div>
+      <figure class="shot sm"><img src="/assets/shots/answer-modal.webp" width="958" height="774" loading="lazy" alt="来自 api 智能体的问题：订单历史的默认每页条数，20（推荐）或 50，以及“发送回复”按钮。" data-ta="alt:h.b3.alt1"></figure>
+    </div>
+    <div class="doc-step" id="w-follow">
+      <div class="doc-step-txt">
+        <span class="n">04</span>
+        <h3 data-t="doc.w4.h">查看进度</h3>
+        <p data-t="doc.w4.p">窗口底部的智能体监视器会显示每个智能体读取、修改和运行的内容。要看某个智能体的计划、阻塞和拉取请求，可从其 pane 标题栏打开详情。</p>
+      </div>
+    </div>
+    <div class="doc-step has-fig" id="w-diff">
+      <div class="doc-step-txt">
+        <span class="n">05</span>
+        <h3 data-t="doc.w5.h">检查改动</h3>
+        <p data-t="doc.w5.p">智能体在打开 draft 拉取请求前会运行测试和检查。在右侧 Explorer 中打开 [变更] 并点击文件，即可在终端旁阅读 diff。</p>
+      </div>
+      <figure class="shot"><img src="/assets/shots/explorer-1200.webp" srcset="/assets/shots/explorer-1200.webp 1200w, /assets/shots/explorer.webp 2400w" sizes="(max-width: 900px) 100vw, 640px" width="1200" height="675" loading="lazy" alt="左侧是测试通过的终端，右侧是 CartPage.tsx 的 diff 和改动文件列表。" data-ta="alt:h.b4.alt"></figure>
+    </div>
+    <div class="doc-step has-fig narrow" id="w-merge">
+      <div class="doc-step-txt">
+        <span class="n">06</span>
+        <h3 data-t="doc.w6.h">合并</h3>
+        <p data-t="doc.w6.p">在开启 PR 自动合并的仓库中，拉取请求会自动审查并修正。若开启“合并前确认”，合并会等待你点击。其他仓库照常在 GitHub 上合并。</p>
+      </div>
+      <figure class="shot sm"><img src="/assets/shots/settings-pop.webp" width="706" height="600" loading="lazy" alt="设置：web 和 api 开启了 PR 自动合并，web 开启了合并前确认，mobile 关闭。" data-ta="alt:h.b5.alt"></figure>
+    </div>
+    <div class="doc-step" id="w-learn">
+      <div class="doc-step-txt">
+        <span class="n">07</span>
+        <h3 data-t="doc.w7.h">保留经验</h3>
+        <p data-t="doc.w7.p">合并后，学习审查会提出笔记建议。打开待办页面(⌘2)，在 [学习] 中挑选要保留的内容。该仓库的下一项任务会读取这些笔记。待办页面目前只有韩语。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="doc-sec" id="app">
+  <p class="doc-label" data-t="doc.n.app">应用各部分</p>
+  <h2 data-t="doc.a.h">各功能的位置。</h2>
+  <dl class="doc-dl">
+      <div><dt data-t="f.ws.label">工作区</dt><dd data-t="doc.a.ws">左侧列表中每个仓库对应一个工作区，里面有分支和智能体。中间是标签页和拆分的 pane，每个 pane 一个智能体。按 ⌘1 回到这里。</dd></div>
+      <div><dt data-t="h.f.mon">智能体监视器</dt><dd data-t="doc.a.mon">位于窗口底部，只显示正在工作的智能体，可用 ⌄ 收起。</dd></div>
+      <div><dt data-t="h.f.work">工作</dt><dd data-t="doc.a.work">标签栏右上角。等你处理的问题、进行中的工作，以及最近 24 小时完成的工作。</dd></div>
+      <div><dt data-t="doc.a.boardt">待办页面(⌘2)</dt><dd data-t="doc.a.board">在默认浏览器中打开：问题、QA、学习、指标和归档。目前只有韩语。</dd></div>
+      <div><dt data-t="h.f.det">pane 详情</dt><dd data-t="doc.a.det">智能体 pane 标题栏右侧的图标。显示计划、进度、阻塞、token 和拉取请求，按 Esc 关闭。</dd></div>
+      <div><dt data-t="h.f.exp">Explorer</dt><dd data-t="doc.a.exp">右侧。当前工作区的 [文件] 和 [变更]，有改动的文件以 diff 打开。</dd></div>
+      <div><dt data-t="doc.a.brt">侧边浏览器</dt><dd data-t="doc.a.br">右侧抽屉(⌘⇧B)，用于打开计划、决策控制台和本地测试页面。登录信息与常用浏览器分开保存。</dd></div>
+      <div><dt data-t="h.f.bar">菜单栏</dt><dd data-t="doc.a.bar">Mac 菜单栏里的猫头鹰。红点表示有待回答的问题或受阻的计划，点击可查看每个智能体的状态。</dd></div>
+  </dl>
+</section>
+
+<section class="doc-sec" id="settings">
+  <p class="doc-label" data-t="doc.n.settings">设置</p>
+  <h2 data-t="doc.s.h">调整 Athena Studio 的设置。</h2>
+  <dl class="doc-dl">
+      <div><dt data-t="doc.s.mt">PR 自动合并</dt><dd data-t="doc.s.m">标签栏最右侧的 ⚙。每个仓库一个开关，下方是“合并前确认”。在你开启前一直是关闭的。</dd></div>
+      <div><dt data-t="doc.s.lt">语言</dt><dd data-t="doc.s.l">“显示 → 语言”。应用和智能体会一起切换，包括回复、计划、问题和提交信息。</dd></div>
+      <div><dt data-t="doc.s.nt">通知</dt><dd data-t="doc.s.n">点击菜单栏的猫头鹰 → “暂停通知”，可暂停 1 小时或到次日早上 9 点。</dd></div>
+      <div><dt data-t="doc.s.pt">包</dt><dd data-t="doc.s.p">标签栏左侧的包名称(⌘⇧P)：切换、新建、导入或导出。其他包的智能体会继续工作，导出时还可以包含智能体对话和未完成的分支。</dd></div>
+      <div><dt data-t="doc.s.rt">仓库名称和图片</dt><dd data-t="doc.s.r">在左侧列表中右键点击仓库。名称和图片保存在包中，团队成员也能看到。</dd></div>
+  </dl>
+</section>
+
+<section class="doc-sec" id="shortcuts">
+  <p class="doc-label" data-t="f.k.label">快捷键</p>
+  <h2 data-t="h.k.h2">键盘快捷键</h2>
+  <p class="doc-p" data-t="f.k.p">在终端里也能像在 Mac 上一样编辑一行文字。</p>
+  <table class="key-table doc-keys">
+        <tr class="kg"><th colspan="2" data-t="doc.k.g1">工作区和 pane</th></tr>
+        <tr><td><kbd>⌘</kbd><kbd>1</kbd></td><td data-t="k.work">工作区与终端</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>2</kbd></td><td data-t="k.board">打开待办</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>T</kbd></td><td data-t="k.tab">新建标签页</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⇧</kbd><kbd>T</kbd></td><td data-t="k.space">新建工作区</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>D</kbd></td><td data-t="k.right">向右拆分</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⇧</kbd><kbd>D</kbd></td><td data-t="k.down">向下拆分</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⌥</kbd> <kbd>←</kbd><kbd>→</kbd><kbd>↑</kbd><kbd>↓</kbd></td><td data-t="k.move">在 pane 之间移动</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>W</kbd></td><td data-t="k.close">关闭 pane</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⌥</kbd><kbd>W</kbd></td><td data-t="k.closetab">关闭标签页</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⇧</kbd><kbd>[</kbd> <kbd>⌘</kbd><kbd>⇧</kbd><kbd>]</kbd></td><td data-t="k.tabs">上一个 / 下一个标签页</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⇧</kbd><kbd>↑</kbd> <kbd>⌘</kbd><kbd>⇧</kbd><kbd>↓</kbd></td><td data-t="k.spaces">上一个 / 下一个工作区</td></tr>
+        <tr class="kg"><th colspan="2" data-t="doc.k.g2">面板和包</th></tr>
+        <tr><td><kbd>⌘</kbd><kbd>B</kbd></td><td data-t="k.left">收起左侧列表</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⌥</kbd><kbd>B</kbd></td><td data-t="k.rightp">收起右侧面板</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⇧</kbd><kbd>B</kbd></td><td data-t="k.browser">侧边浏览器</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⇧</kbd><kbd>P</kbd></td><td data-t="k.packs">切换包</td></tr>
+        <tr class="kg"><th colspan="2" data-t="doc.k.g3">在终端中输入</th></tr>
+        <tr><td><kbd>⌘</kbd><kbd>←</kbd> <kbd>⌘</kbd><kbd>→</kbd></td><td data-t="k.line">跳到行首或行尾</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>⌫</kbd></td><td data-t="k.del">删除到行首</td></tr>
+        <tr><td><kbd>⇧</kbd><kbd>↩</kbd></td><td data-t="k.nl">换行而不发送</td></tr>
+        <tr class="kg"><th colspan="2" data-t="doc.k.g4">应用</th></tr>
+        <tr><td><kbd>⌘</kbd><kbd>Q</kbd></td><td data-t="k.quit">退出应用，智能体在后台继续运行</td></tr>
+  </table>
+</section>
+
+<section class="doc-sec" id="update">
+  <p class="doc-label" data-t="doc.n.update">更新</p>
+  <h2 data-t="doc.u.h">让 Athena Studio 保持最新。</h2>
+  <p class="doc-p" data-t="doc.u.app">从 0.17.6 起，应用可以自行更新：打开设置(⚙)，有新版本时在“应用更新”一行按“更新”。应用会下载、校验并重启。若中途失败，当前版本会继续运行，并显示简短原因。</p>
+  <p class="doc-p" data-t="doc.u.old">还在用 0.15.8？该版本无法自行更新。请从<a href="/zh/download/">下载页面</a>获取一次新的 .dmg，把 Athena Studio 拖到“应用程序”中覆盖旧版本。包和工作内容会保留，之后即可在 ⚙ 中更新。</p>
+  <p class="doc-p" data-t="doc.u.core">应用自带的 Athena 核心会在你打开新版本时更新，即使智能体正在工作也没关系。</p>
+</section>
+
+<section class="doc-sec" id="security">
+  <p class="doc-label" data-t="h.s.label">数据与安全</p>
+  <h2 data-t="h.s.h2">哪些在你的 Mac 上运行，哪些会发往别处。</h2>
+  <p class="doc-p" data-t="h.s.p">应用在你的电脑上运行。智能体仍会向其 AI 服务商发送请求，推送时代码会发到 GitHub。</p>
+  <div class="sec-grid">
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><b data-t="h.s.1">在你的 Mac 上运行</b><span data-t="h.s.1p">智能体、终端和待办都在本地运行。应用不会把你的代码或文件发送到 Novum Lab 的服务器。</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span><b data-t="h.s.2">使用你自己的 AI 账号</b><span data-t="h.s.2p">智能体以你已登录的 Claude Code 或 Codex 身份运行，遵循该服务商的条款和你的套餐。</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="12" r="2.5"/><path d="M6 8.5v7M8.3 7.2l7.5 3.6"/></svg></span><b data-t="h.s.3">智能体在分支上工作</b><span data-t="h.s.3p">每个智能体在自己的分支和工作树上工作。在你为某个仓库开启之前，自动合并一直是关闭的。</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l8-4 8 4v6c0 4-3.5 7-8 8-4.5-1-8-4-8-8z"/><path d="M9 12l2 2 4-4"/></svg></span><b data-t="h.s.4">签名与公证</b><span data-t="h.s.4p">公开发布版使用 Apple Developer ID 签名并经过 Apple 公证。</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9"/></svg></span><b data-t="h.s.5">单独保存登录信息的浏览器</b><span data-t="h.s.5p">侧边浏览器运行在沙盒中，只打开 http 和 https，登录信息与你的常用浏览器分开保存。</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg></span><b data-t="h.s.6">TypeSafe Jev 集成是可选的</b><span data-t="h.s.6p">只有在你填入自己的 TypeSafe Jev 密钥时，才会把 QA 错误详情和学习笔记发送到 TypeSafe Jev。没有密钥就不会向它发送任何内容。</span></div>
+  </div>
+</section>
+
+<section class="doc-sec" id="troubleshooting">
+  <p class="doc-label" data-t="doc.n.trouble">故障排除</p>
+  <h2 data-t="doc.t.h">遇到问题时。</h2>
+  <dl class="doc-dl">
+      <div><dt data-t="doc.t1q">pane 断开或没有反应</dt><dd data-t="doc.t1a">“显示 → 重新连接工作窗口”。pane 和智能体保持不变。</dd></div>
+      <div><dt data-t="doc.t2q">重新连接也无效</dt><dd data-t="doc.t2a">“显示 → 重启工作窗口守护进程”。这会关闭所有打开的 pane 及其智能体。</dd></div>
+      <div><dt data-t="doc.t3q">智能体好像卡住了</dt><dd data-t="doc.t3a">看看 [工作] 中是否有等你处理的问题，以及 pane 详情里是否有阻塞。</dd></div>
+      <div><dt data-t="doc.t4q">拉取请求没有打开</dt><dd data-t="doc.t4a">确认已安装并登录 gh CLI(<code>gh auth login</code>)，且仓库设置了 GitHub 远程。</dd></div>
+      <div><dt data-t="doc.t5q">提示缺少 Claude Code、Codex、git 或 Python</dt><dd data-t="doc.t5a">在终端中安装并登录(git 和 Python 用 <code>xcode-select --install</code>)，然后重新打开 Athena Studio。</dd></div>
+      <div><dt data-t="doc.t6q">还是不行</dt><dd data-t="doc.t6a">“显示 → 重置工作室”会删除所有包和 pane 并重启应用，仓库文件夹会保留。请先<a href="https://github.com/novum-lab-kr/athena-studio/issues/new/choose">反馈问题</a>，最后再使用。</dd></div>
+  </dl>
+  <p class="doc-note" data-t="doc.t.logs">日志位于 <code>~/Library/Application Support/Athena Studio</code>(daemon.log、board.log、pack.log)。反馈问题时请附上。</p>
+</section>
+
+<section class="doc-sec" id="faq">
+  <p class="doc-label">FAQ</p>
+  <h2 data-t="h.q.h2">常见问题</h2>
+  <div class="faq">
+      <details><summary data-t="h.q0">哪些 Mac 可以用？</summary><p data-t="h.q0a">macOS 13 Ventura 及以上的 Apple Silicon 或 Intel Mac 都可以使用，<a href="/zh/download/">免费下载</a>。</p></details>
+      <details><summary data-t="h.q2">要花钱吗？</summary><p data-t="h.q2a">Athena Studio 可以免费下载和使用。智能体使用你自己的 Claude Code 或 Codex 套餐运行，用量照常由该服务商计费。</p></details>
+      <details><summary data-t="h.q3">必须要有 Claude Code 或 Codex 吗？</summary><p data-t="h.q3a">是的，你的 Mac 上至少要登录其中一个。智能体用哪个都能运行。PR 自动审查使用 Claude Code；如果还有 Codex，会多一个来自不同模型的审查者。</p></details>
+      <details><summary data-t="h.q6">智能体会自己合并代码吗？</summary><p data-t="h.q6a">只有在你开启时才会。自动合并默认关闭，按仓库设置，你也可以在每次合并前保留最后一次点击。</p></details>
+      <details><summary data-t="h.q7">关闭应用后，智能体还会继续工作吗？</summary><p data-t="h.q7a">会。终端和智能体在后台继续运行。即使退出了应用，重新打开后也会回到同样的标签页和布局。</p></details>
+      <details><summary data-t="h.q8">可以用于多家公司或多个项目吗？</summary><p data-t="h.q8a">可以。为每个创建一个包：包含其仓库、智能体和规则。切换包不会中断另一个包里的工作，你还可以导出包与团队共享。</p></details>
+      <details><summary data-t="h.q9">支持 Windows 或 Linux 吗？</summary><p data-t="h.q9a">目前 Athena Studio 只有 Mac 版。</p></details>
+      <details><summary data-t="h.q11">发现问题或有建议？</summary><p data-t="h.q11a">请<a href="https://github.com/novum-lab-kr/athena-studio/issues/new/choose">在 GitHub 提交 issue</a>，可选择错误报告或功能建议模板。</p></details>
+  </div>
+</section>
+  </div>
+</div>
+<script>
+/* 목차: 지금 읽는 장을 표시 */
+(function () {
+  var links = [].slice.call(document.querySelectorAll('.doc-toc a'));
+  var secs = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function on() {
+    var cur = 0;
+    secs.forEach(function (s, i) { if (s && s.getBoundingClientRect().top < 140) cur = i; });
+    links.forEach(function (a, i) { a.classList.toggle('on', i === cur); });
+  }
+  window.addEventListener('scroll', on, { passive: true }); on();
+})();
+</script>
+</main>
+
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <a class="brand" href="/zh/"><img src="/assets/owl-white.png" alt="">Athena Studio</a>
+      <div class="links">
+        <a href="/zh/features/" data-t="nav.features">功能</a>
+        <a href="/zh/docs/" data-t="nav.docs">文档</a>
+        <a href="/zh/releases/" data-t="nav.releases">更新日志</a>
+        <a href="/zh/download/" data-t="nav.download">下载</a>
+        <a href="/zh/terms/" data-t="nav.terms">条款</a>
+        <a href="https://github.com/novum-lab-kr/athena-studio/issues/new/choose" data-t="nav.issue">反馈问题</a>
+        <a href="https://novum-lab.com">novum-lab.com</a>
+      </div>
+    </div>
+    <div class="foot-lang" role="group" aria-label="Language"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><a href="/docs/" data-set-lang="en" lang="en" hreflang="en" aria-current="false">English</a><a href="/ko/docs/" data-set-lang="ko" lang="ko" hreflang="ko" aria-current="false">한국어</a><a href="/ja/docs/" data-set-lang="ja" lang="ja" hreflang="ja" aria-current="false">日本語</a><a href="/zh/docs/" data-set-lang="zh" lang="zh-Hans" hreflang="zh-Hans" aria-current="true">中文</a></div>
+    <div class="biz"><span data-t="c.made">© 2026 Novum Lab. Athena Studio 由 Novum Lab 打造。</span><br>Novum Lab · CEO: Eunju Kim · Business Registration No. 496-37-01619 · Seoul, Republic of Korea · <a href="mailto:mcsung@novum-lab.com">mcsung@novum-lab.com</a><br><span data-t="c.ga">本网站使用 Google Analytics Cookie 统计访问量和下载量。</span></div>
+  </div>
+</footer>
+</body>
+</html>

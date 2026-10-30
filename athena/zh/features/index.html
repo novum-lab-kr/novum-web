@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="zh-Hans" data-lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-t="f.title">功能 — Athena Studio</title>
+<meta name="description" data-ta="content:f.desc" content="工作区、智能体监视器、工作、pane 详情、决策控制台、Explorer、PR 自动审查、菜单栏、包和四种语言：Athena Studio 的全部功能。">
+<meta property="og:title" content="功能 — Athena Studio">
+<meta property="og:description" content="工作区、智能体监视器、工作、pane 详情、决策控制台、Explorer、PR 自动审查、菜单栏、包和四种语言：Athena Studio 的全部功能。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://athena.novum-lab.com/zh/features/">
+<meta property="og:image" content="https://athena.novum-lab.com/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://athena.novum-lab.com/zh/features/">
+<!-- seo:start · deploy/gen-athena-lang.mjs 가 만든다(손으로 고치지 않는다) -->
+<link rel="alternate" hreflang="en" href="https://athena.novum-lab.com/features/">
+<link rel="alternate" hreflang="ko" href="https://athena.novum-lab.com/ko/features/">
+<link rel="alternate" hreflang="ja" href="https://athena.novum-lab.com/ja/features/">
+<link rel="alternate" hreflang="zh-Hans" href="https://athena.novum-lab.com/zh/features/">
+<link rel="alternate" hreflang="x-default" href="https://athena.novum-lab.com/features/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://novum-lab.com/#organization",
+      "name": "Novum Lab",
+      "url": "https://novum-lab.com"
+    }
+  ]
+}
+</script>
+<!-- seo:end -->
+<meta name="theme-color" content="#09090b">
+<link rel="icon" type="image/png" href="/assets/favicon-white.png">
+<link rel="apple-touch-icon" href="/assets/app-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=20261030a">
+<script src="/assets/analytics.js?v=20261029a" async></script>
+<script src="/assets/lang.js?v=20261030c"></script>
+<script src="/assets/motion.js?v=20261028i" defer></script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/zh/"><img src="/assets/owl-white.png" alt="">Athena Studio</a>
+    <nav>
+      <a class="nav-x" href="/zh/features/" aria-current="page" data-t="nav.features">功能</a>
+      <a class="nav-x" href="/zh/docs/" data-t="nav.docs">文档</a>
+      <a class="nav-x" href="/zh/releases/" data-t="nav.releases">更新日志</a>
+      <a class="btn sm gold" href="/zh/download/" data-t="nav.download">下载</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="page-head">
+  <div class="wrap">
+    <p class="eyebrow"><i></i><span data-t="nav.features">功能</span></p>
+    <h1 class="grad" data-t="f.h1">Athena Studio 功能一览</h1>
+    <p class="lead" data-t="f.lead2">应用各部分的作用。分步骤的用法请看<a href="/zh/docs/#workflow">文档</a>。</p>
+    <div class="toc">
+      <a href="#workspaces" data-t="f.ws.label">工作区</a>
+      <a href="#status" data-t="f.g2.l">进度与问题</a>
+      <a href="#decisions" data-t="f.g3.l">决策与代码</a>
+      <a href="#review" data-t="f.g4.l">审查与学习</a>
+      <a href="#packs" data-t="f.g5.l">包与语言</a>
+    </div>
+  </div>
+</div>
+<script>
+/* 예전 하루 흐름(#day 등)은 문서의 첫 작업으로 옮겼다 */
+(function () { var h = location.hash.slice(1); if (['day', 'ask', 'plan', 'decide', 'build', 'merge', 'learn'].indexOf(h) >= 0) location.replace('/zh/docs/#workflow'); })();
+</script>
+
+<section class="feat full" id="workspaces"><span id="panes" class="anchor"></span>
+  <div class="wrap">
+    <div class="grid">
+      <div class="txt">
+        <div class="label" data-t="f.ws.label">工作区</div>
+        <h2 data-t="f.g1.h">每个仓库都有自己的工作区。</h2>
+        <p data-t="f.ws.p">左侧列出你的仓库，以及在其中工作的分支和智能体。中间是标签页和拆分终端，每个智能体都有自己命名的 pane。右侧是 Explorer。</p>
+        <ul>
+          <li data-t="f.ws.l1">每个任务一个标签页，标签页内可拆分 pane</li>
+          <li data-t="f.ws.l2">智能体 pane 以智能体和分支命名，Athena 的 pane 以它正在规划的任务命名</li>
+          <li data-t="f.ws.l3">关闭窗口，一切照常运行；重新打开还是同样的标签页和布局</li>
+          <li data-t="f.pn.l5">调用智能体时，会把最大的 pane 沿长边拆分来安放它(下次更新起)</li>
+          <li data-t="f.ws.l4">为仓库设置显示名称和图片，通过包与团队共享</li>
+        </ul>
+      </div>
+      <figure class="shot"><img data-lang-src="/assets/shots/workspace-{l}" src="/assets/shots/workspace-zh.webp" srcset="/assets/shots/workspace-zh-1200.webp 1200w, /assets/shots/workspace-zh.webp 2400w" sizes="(max-width: 1180px) 100vw, 1140px" width="2400" height="1350" alt="Athena Studio 窗口：左侧是工作区，中间 Athena 与网页智能体并排工作，下方是智能体监视器。" data-ta="alt:h.hero.alt"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="feat" id="status">
+  <span id="monitor" class="anchor"></span><span id="work" class="anchor"></span><span id="details" class="anchor"></span><span id="menubar" class="anchor"></span>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label" data-t="f.g2.l">进度与问题</div>
+      <h2 data-t="f.g2.h">看到每个智能体在做什么，以及需要你做什么。</h2>
+    </div>
+    <div class="quad">
+      <div><h3 data-t="h.f.mon">智能体监视器</h3><p data-t="f.mo.p">窗口底部的实时动态逐个工具地跟踪每个智能体：读过和改过的文件、运行的命令，以及过程中说的话。在每个工作区都能看到。</p></div>
+      <div><h3 data-t="h.f.work">工作</h3><p data-t="f.wk.p">智能体需要你时，问题或决定会出现在 [工作] 最上方，下面是进行中的任务和最近一天完成的任务。在那里回答后，智能体会从停下的地方继续。</p></div>
+      <div><h3 data-t="h.f.det">pane 详情</h3><p data-t="f.dt.p">从智能体的标题栏打开详情，一个面板会从窗口上方滑出，不会改变终端的大小。它显示智能体需要你做什么、被什么卡住、它的计划和拉取请求。</p></div>
+      <div><h3 data-t="h.f.bar">菜单栏</h3><p data-t="f.mb.p">Mac 菜单栏里有 Athena Studio 的猫头鹰图标。出现红点表示有待回答的问题或受阻的计划。点击猫头鹰即可看到每个智能体的状态。</p></div>
+    </div>
+    <figure class="shot sm g2-mon"><img src="/assets/shots/monitor.webp" width="2160" height="340" loading="lazy" alt="智能体监视器：web、api、athena 智能体的标签，以及编辑、测试运行和消息的实时动态。" data-ta="alt:h.b2.alt"></figure>
+    <div class="pair g2-pair">
+      <figure class="shot sm"><img src="/assets/shots/work-pop.webp" width="800" height="1034" loading="lazy" alt="“工作”弹窗。" data-ta="alt:f.wk.alt1"></figure>
+      <figure class="shot sm narrow"><img src="/assets/shots/detail-panel.webp" width="880" height="1710" loading="lazy" alt="api-be 的 pane 详情：给你的问题、受阻提示、状态和 token、拉取请求以及计划进度。" data-ta="alt:f.dt.alt"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="feat" id="decisions">
+  <span id="console" class="anchor"></span>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label" data-t="f.g3.l">决策与代码</div>
+      <h2 data-t="f.g3.h">做出决定，再看代码。</h2>
+    </div>
+    <div class="grid">
+      <div class="txt">
+        <h3 data-t="f.co.h">需要做多个决定时，整理成决策控制台。</h3>
+        <p data-t="f.co.p">当一份计划有多个需要决定的事项时，Athena 会把它们整理成决策控制台：每个选项都附有利弊和推荐。它在智能体旁边的侧边浏览器中打开，你做出选择后，智能体就会继续。</p>
+        <ul>
+          <li data-t="f.co.l1">必选和可选的决定，标出推荐选项</li>
+          <li data-t="f.co.l2">侧边浏览器（<kbd>⌘</kbd><kbd>⇧</kbd><kbd>B</kbd>）用于计划、决策控制台和本地测试页面</li>
+          <li data-t="f.co.l3">独立的登录信息，沙盒运行，只支持 http 和 https</li>
+        </ul>
+      </div>
+      <figure class="shot"><img src="/assets/shots/browser-1200.webp" srcset="/assets/shots/browser-1200.webp 1200w, /assets/shots/browser.webp 2400w" sizes="(max-width: 900px) 100vw, 680px" width="1200" height="675" loading="lazy" alt="在 api 智能体终端旁边、于侧边浏览器中打开的决策控制台。" data-ta="alt:f.co.alt"></figure>
+    </div>
+    <div class="grid flip-g" id="explorer">
+      <div class="txt">
+        <h3 data-t="f.ex.h">在终端旁边阅读工作成果。</h3>
+        <p data-t="f.ex.p">浏览当前工作区的文件和 git 改动，并在终端旁边打开。改动过的文件以 diff 形式打开。</p>
+        <ul>
+          <li data-t="f.ex.l1">带 git 状态（M · U · A · D · R）的文件树和改动列表</li>
+          <li data-t="f.ex.l2">语法高亮、行号和图片</li>
+          <li data-t="f.ex.l3">只读取工作区文件夹内的内容；按 <kbd>Esc</kbd> 关闭查看器</li>
+        </ul>
+      </div>
+      <figure class="shot"><img src="/assets/shots/explorer-1200.webp" srcset="/assets/shots/explorer-1200.webp 1200w, /assets/shots/explorer.webp 2400w" sizes="(max-width: 900px) 100vw, 680px" width="1200" height="675" loading="lazy" alt="左侧是测试通过的终端，右侧是 CartPage.tsx 的 diff 和改动文件列表。" data-ta="alt:h.b4.alt"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="feat" id="review">
+  <span id="learn-notes" class="anchor"></span>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label" data-t="f.g4.l">审查与学习</div>
+      <h2 data-t="f.g4.h">拉取请求经过审查，经验得以保留。</h2>
+    </div>
+    <div class="grid">
+      <div class="txt">
+        <h3 data-t="f.rv.h">PR 自动审查与修复</h3>
+        <p data-t="f.rv.p">在开启自动审查的仓库里，智能体一推送就会审查只涉及该仓库的 PR。意见返回给智能体，最多修改 3 轮后进入合并环节。大的 diff 优先审查代码，之前的批准会保留。</p>
+        <ul>
+          <li data-t="f.rv.l1">默认关闭，在设置中按仓库开启</li>
+          <li data-t="f.rv.l2">开启“合并前确认”，把最后一次点击留给你</li>
+          <li data-t="f.rv.l3">为每个角色选择模型，从智能体到审查者</li>
+          <li data-t="f.rv.l4">审查结果和合并都会记录在计划和拉取请求上</li>
+        </ul>
+      </div>
+      <figure class="shot sm mid"><img src="/assets/shots/settings-pop.webp" width="706" height="600" loading="lazy" alt="设置：web 和 api 开启了 PR 自动合并，web 开启了合并前确认，mobile 关闭。" data-ta="alt:h.b5.alt"></figure>
+    </div>
+    <div class="grid flip-g">
+      <div class="txt">
+        <h3 data-t="h.b6.h">只把你选中的笔记带到下一项任务。</h3>
+        <p data-t="h.b6.p">合并后，学习审查会根据过程中出现的内容(从审查意见到 QA 结果)提出笔记建议。只有你在 [学习] 中选中的才会保存为该仓库的学习笔记，智能体在下一项任务开始时读取。</p>
+      </div>
+      <div class="learn-card">
+          <div class="h"><img src="/assets/owl-white.png" alt="" width="18" height="18"><span data-t="h.b6.card">学习 · api</span></div>
+          <div class="d" data-t="h.b6.n0">学习审查建议 · 由你选定</div>
+          <div><span class="g">+</span> <span data-t="h.b6.n1">列表接口使用基于 createdAt 的游标分页，每页 20 条。</span></div>
+          <div><span class="g">+</span> <span data-t="h.b6.n2">响应结构：{ items, nextCursor }。mobile 读取同样的结构。</span></div>
+          <div class="y" style="margin-top:12px" data-t="h.b6.n3">→ 由 api 的下一项任务读取</div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="feat" id="packs" data-tab-scope>
+  <span id="language" class="anchor"></span>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label" data-t="f.g5.l">包与语言</div>
+      <h2 data-t="f.g5.h">每家公司一个包，用你工作的语言。</h2>
+    </div>
+    <div class="grid">
+      <div class="txt">
+                <h3 data-t="f.pk.h">每家公司一个包。</h3>
+        <p data-t="f.pk.p">一个包包含一家公司的仓库、智能体和路由规则。每个包独立运行，切换时不会中断另一个包里的工作。</p>
+        <ul>
+          <li data-t="f.pk.l1">用 Mac 上的仓库创建包，或从文件、文件夹或 git 仓库导入</li>
+          <li data-t="f.pk.l2">一键切换；另一个包里的智能体会在原处继续工作</li>
+          <li data-t="f.pk.l3">连同你的工作一起导出，包括智能体对话和未完成的分支，之后再恢复</li>
+        </ul>
+      </div>
+      <figure class="shot sm mid"><img src="/assets/shots/packs-modal.webp" width="958" height="710" loading="lazy" alt="“包”窗口：Demo Shop 和 Side Project，以及新建、导入和导出。" data-ta="alt:f.pk.alt"></figure>
+    </div>
+    <div class="grid flip-g">
+      <div class="txt">
+                <h3 data-t="h.l.h2">选择应用和智能体的语言。</h3>
+        <p data-t="f.lg.p">在“显示”菜单中选择英语、韩语、日语或中文。应用随之切换，智能体也一样：回复、计划、问题、学习笔记和提交信息都会跟着变。</p>
+        <div class="tabs" role="tablist" data-tabs="lang" style="margin-top:24px">
+          <button type="button" role="tab" data-tab="en" aria-selected="false">English</button>
+          <button type="button" role="tab" data-tab="ko" aria-selected="false" lang="ko">한국어</button>
+          <button type="button" role="tab" data-tab="ja" aria-selected="false" lang="ja">日本語</button>
+          <button type="button" role="tab" data-tab="zh" aria-selected="true" lang="zh-Hans">中文</button>
+        </div>
+      </div>
+      <figure class="shot"><img data-tab-src="/assets/shots/workspace-{l}" src="/assets/shots/workspace-zh-1200.webp" srcset="/assets/shots/workspace-zh-1200.webp 1200w, /assets/shots/workspace-zh.webp 2400w" sizes="(max-width: 900px) 100vw, 680px" width="1200" height="675" loading="lazy" alt="以所选语言显示的 Athena Studio。" data-ta="alt:h.l.alt"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="cta rule">
+  <div class="wrap">
+    <img class="owl" src="/assets/owl-white-512.png" alt="">
+    <h2 data-t="c.cta.h2">在 Mac 上试试 Athena Studio。</h2>
+    <p data-t="n.e.p2">适用于 macOS 13 及以上的 Apple Silicon 和 Intel Mac，免费使用。</p>
+    <div class="btns">
+      <a class="btn gold" href="/zh/download/" data-t="n.dl">下载 macOS 版</a>
+      <a class="btn" href="/zh/docs/" data-t="nav.docs">文档</a>
+    </div>
+  </div>
+</section>
+</main>
+
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <a class="brand" href="/zh/"><img src="/assets/owl-white.png" alt="">Athena Studio</a>
+      <div class="links">
+        <a href="/zh/features/" data-t="nav.features">功能</a>
+        <a href="/zh/docs/" data-t="nav.docs">文档</a>
+        <a href="/zh/releases/" data-t="nav.releases">更新日志</a>
+        <a href="/zh/download/" data-t="nav.download">下载</a>
+        <a href="/zh/terms/" data-t="nav.terms">条款</a>
+        <a href="https://github.com/novum-lab-kr/athena-studio/issues/new/choose" data-t="nav.issue">反馈问题</a>
+        <a href="https://novum-lab.com">novum-lab.com</a>
+      </div>
+    </div>
+    <div class="foot-lang" role="group" aria-label="Language"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><a href="/features/" data-set-lang="en" lang="en" hreflang="en" aria-current="false">English</a><a href="/ko/features/" data-set-lang="ko" lang="ko" hreflang="ko" aria-current="false">한국어</a><a href="/ja/features/" data-set-lang="ja" lang="ja" hreflang="ja" aria-current="false">日本語</a><a href="/zh/features/" data-set-lang="zh" lang="zh-Hans" hreflang="zh-Hans" aria-current="true">中文</a></div>
+    <div class="biz"><span data-t="c.made">© 2026 Novum Lab. Athena Studio 由 Novum Lab 打造。</span><br>Novum Lab · CEO: Eunju Kim · Business Registration No. 496-37-01619 · Seoul, Republic of Korea · <a href="mailto:mcsung@novum-lab.com">mcsung@novum-lab.com</a><br><span data-t="c.ga">本网站使用 Google Analytics Cookie 统计访问量和下载量。</span></div>
+  </div>
+</footer>
+</body>
+</html>
