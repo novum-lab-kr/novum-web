@@ -62,6 +62,48 @@
     for (i = 0; i < tabs.length; i++) selectTab(tabs[i], l);
   }
 
+  // 큰 제목 금빛 점등 — 처음 한 번만. 글자를 span 으로 나눠 CSS 가 왼→오로 차례로 켠다.
+  // 모션 줄이기 설정이면 나누지 않고 바로 보인다. 언어를 바꾸면 apply 가 문구를 새로 넣어 효과 없이 보인다.
+  var glowed = false;
+
+  function glowTitle() {
+    var el = document.querySelector('h1[data-t="n.h1"]');
+    if (!el || glowed) return;
+    glowed = true;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var plain = el.textContent;
+    var lines = el.innerHTML.split(/<br\s*\/?>/i);
+    var holder = document.createElement('span');
+    var index = 0;
+    holder.setAttribute('aria-hidden', 'true');
+    for (var i = 0; i < lines.length; i++) {
+      var line = document.createElement('span');
+      line.className = 'gl-ln';
+      var tmp = document.createElement('div');
+      tmp.innerHTML = lines[i];
+      var words = tmp.textContent.split(' ');
+      for (var w = 0; w < words.length; w++) {
+        var word = document.createElement('span');
+        word.className = 'gl-w';
+        var chars = Array.from(words[w]);
+        for (var c = 0; c < chars.length; c++) {
+          var ch = document.createElement('span');
+          ch.className = 'gl-c';
+          ch.style.setProperty('--i', index++);
+          ch.textContent = chars[c];
+          word.appendChild(ch);
+        }
+        line.appendChild(word);
+        if (w < words.length - 1) { line.appendChild(document.createTextNode(' ')); index++; }
+      }
+      holder.appendChild(line);
+    }
+    el.setAttribute('aria-label', plain);
+    el.textContent = '';
+    el.appendChild(holder);
+    el.classList.add('gl');
+  }
+
   function setShot(img, base) {
     img.src = base + '.webp';
     img.srcset = base + '-1200.webp 1200w, ' + base + '.webp 2400w';
@@ -79,7 +121,12 @@
 
   function change(l) {
     try { localStorage.setItem(KEY, l); } catch (e) {}
-    load(l, function (d) { setRoot(l); apply(l, d); });
+    load(l, function (d) {
+      setRoot(l);
+      apply(l, d);
+      var title = document.querySelector('h1[data-t="n.h1"]');
+      if (title) { title.classList.remove('gl'); title.removeAttribute('aria-label'); }
+    });
   }
 
   function ready(fn) {
@@ -94,7 +141,7 @@
     setTimeout(function () { root.classList.remove('i18n-wait'); }, 1500);
   }
   load(lang, function (d) {
-    ready(function () { apply(lang, d); root.classList.remove('i18n-wait'); });
+    ready(function () { apply(lang, d); root.classList.remove('i18n-wait'); glowTitle(); });
   });
 
   ready(function () {
