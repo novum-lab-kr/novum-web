@@ -62,49 +62,6 @@
     for (i = 0; i < tabs.length; i++) selectTab(tabs[i], l);
   }
 
-  // 큰 제목 타자 효과 — 처음 한 번만. 글자를 하나씩 찍고 <br> 는 한 칸으로 센다.
-  // 모션 줄이기 설정이면 효과 없이 바로 보인다. 찍는 도중 언어가 바뀌면 멈추고 그 문구를 바로 보인다.
-  var typed = false;
-  var typeTimer = null;
-
-  function stopTyping(el) {
-    if (typeTimer) clearTimeout(typeTimer);
-    typeTimer = null;
-    if (el) { el.style.minHeight = ''; el.removeAttribute('aria-label'); }
-  }
-
-  function typeTitle() {
-    var el = document.querySelector('h1[data-t="n.h1"]');
-    if (!el) return;
-    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (typed || reduce) { typed = true; return; }
-    typed = true;
-    var parts = el.innerHTML.split(/<br\s*\/?>/i);
-    var plain = el.textContent;
-    var line = 0, pos = 0;
-    el.setAttribute('aria-label', plain);
-    el.style.minHeight = el.offsetHeight + 'px';
-    function render() {
-      var html = '';
-      for (var i = 0; i <= line; i++) {
-        if (i > 0) html += '<br>';
-        html += i < line ? parts[i] : parts[i].slice(0, pos);
-      }
-      el.innerHTML = html;
-    }
-    function step() {
-      pos++;
-      if (pos > parts[line].length) {
-        if (line === parts.length - 1) { stopTyping(el); return; }
-        line++; pos = 0;
-      }
-      render();
-      typeTimer = setTimeout(step, 45);
-    }
-    el.innerHTML = '';
-    typeTimer = setTimeout(step, 300);
-  }
-
   function setShot(img, base) {
     img.src = base + '.webp';
     img.srcset = base + '-1200.webp 1200w, ' + base + '.webp 2400w';
@@ -121,7 +78,6 @@
   }
 
   function change(l) {
-    stopTyping(document.querySelector('h1[data-t="n.h1"]'));
     try { localStorage.setItem(KEY, l); } catch (e) {}
     load(l, function (d) { setRoot(l); apply(l, d); });
   }
@@ -138,7 +94,7 @@
     setTimeout(function () { root.classList.remove('i18n-wait'); }, 1500);
   }
   load(lang, function (d) {
-    ready(function () { apply(lang, d); root.classList.remove('i18n-wait'); typeTitle(); });
+    ready(function () { apply(lang, d); root.classList.remove('i18n-wait'); });
   });
 
   ready(function () {
