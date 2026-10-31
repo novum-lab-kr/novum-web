@@ -58,6 +58,7 @@ h1{font-size:clamp(40px,6vw,72px);line-height:1.05;letter-spacing:-.02em;font-we
 .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--ink)}
 .btn.primary{background:var(--ink);color:var(--bg)}
 .btn:hover{opacity:.85}
+.btn[aria-disabled="true"]{opacity:.55;cursor:default;pointer-events:none}
 .mark{position:relative;display:flex;justify-content:center}
 .mark::before{content:"";position:absolute;inset:10% 5%;background:radial-gradient(closest-side,var(--glow-soft),transparent);filter:blur(10px)}
 .mark svg{position:relative;width:min(440px,100%);height:auto}
@@ -1565,7 +1566,7 @@ footer .biz{margin-top:12px;font-size:12px;display:block}
         <div class="logo-art"><img src="img/athena-logo-white.png" width="180" height="180" alt="Athena logo"></div>
       </div>
       <div class="body">
-        <div class="tag"><i></i>Available · Free for macOS 13 or later</div>
+        <div class="tag soon"><i></i>Coming soon</div>
         <h3>Athena Studio</h3>
         <p class="kr">아테나 스튜디오 · Desktop app for Athena</p>
         <p>One desktop window for working with your Athena agent team: run the agents, follow every task and see what each agent is doing as it happens.</p>
@@ -1574,7 +1575,7 @@ footer .biz{margin-top:12px;font-size:12px;display:block}
           <li>Status board: plans, reviews and agent progress at a glance</li>
           <li>Agent monitor: a live feed of what each agent is working on</li>
         </ul>
-        <a class="btn primary" href="https://athena.novum-lab.com" target="_blank" rel="noopener">Open Athena →</a>
+        <a class="btn primary" aria-disabled="true">Coming soon</a>
       </div>
     </article>
   </div>
@@ -1594,7 +1595,7 @@ footer .biz{margin-top:12px;font-size:12px;display:block}
         <div class="logo-art"><img class="app-icon smooth" src="img/syung-icon.png" width="512" height="512" alt="Syung app icon"></div>
       </div>
       <div class="body">
-        <div class="tag"><i></i>Live · Built &amp; operated by our AI agent team</div>
+        <div class="tag soon"><i></i>Coming soon</div>
         <h3>Syung</h3>
         <p class="kr">슝 · Real-time Seoul metro map</p>
         <p>A live 3D map of the Seoul Metropolitan subway that shows every train moving along its track, so riders see where trains are right now instead of reading timetables.</p>
@@ -1603,7 +1604,7 @@ footer .biz{margin-top:12px;font-size:12px;display:block}
           <li>Monitored around the clock by our AI operations agent</li>
           <li>Turns public transit data into a product people check on the go</li>
         </ul>
-        <a class="btn primary" href="https://syung.novum-lab.com" target="_blank" rel="noopener">Open Syung →</a>
+        <a class="btn primary" aria-disabled="true">Coming soon</a>
       </div>
     </article>
     <article class="product chagok">
