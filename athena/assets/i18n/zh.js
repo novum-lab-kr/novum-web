@@ -181,7 +181,7 @@ window.ATHENA_I18N.zh = {
   "r.new": "新功能",
   "r.imp": "改进",
   "r.fix": "修复",
-  "r.sec": "安全",
+  "r.sec": "安全补丁",
   "t.title": "条款 — Athena Studio",
   "t.desc": "Athena Studio 最终用户许可协议。",
   "t.eyebrow": "法律信息",
