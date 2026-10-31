@@ -398,6 +398,7 @@ footer .biz { margin-top: 20px; font-size: 12px; line-height: 1.8; }
 .tag.new { color: var(--gold-2); background: rgba(217, 181, 111, .12); }
 .tag.imp { color: var(--blue); background: rgba(127, 178, 255, .1); }
 .tag.fix { color: var(--green); background: rgba(111, 207, 151, .1); }
+.tag.sec { color: #ff9a8a; background: rgba(255, 138, 128, .1); }
 
 /* 약관 */
 .prose { max-width: 760px; color: var(--muted); font-size: 16px; }

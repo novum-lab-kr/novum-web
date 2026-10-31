@@ -71,16 +71,17 @@
      핵심에 내부 용어(현황판 · pane 번호 · 계획서 · 결정 콘솔 등)를 넣지 않는다. 사실은 CHANGELOG 에 있는 것만 — 지어 넣지 않는다.
      공개판 사이의 비공개 판은 그 변경이 처음 들어간 공개판에 묶는다(v0.17.6 = 0.16 + 0.17 · v0.19.2 = 0.17.7 + 0.18 + 0.19 · v0.25.1 = 0.20 – 0.25 · v0.28.7 = 0.26 – 0.28 · v0.32.4 = 0.29 – 0.32 · v0.40.3 = 0.40 · v0.42.0 = 0.42).
      새 판: 맨 위에 같은 모양으로 더하고 키를 ko · ja · zh 사전에 모두 넣는다. 0.2 – 0.13 은 공개 전 개발판이라 한 줄(접힘) 그대로
-     0.42 는 공개판 v0.42.0 Release 본문 중 공개판 손님에게 해당하는 것만(개발 앱 전용 업데이트 변경은 뺌) — 핵심 3줄 + 나머지 2개.
+     0.42 는 공개판 v0.42.0 · v0.42.2 Release 본문 중 공개판 손님에게 해당하는 것만(개발 앱 전용 업데이트 변경은 뺌) — 핵심 3줄 + 보안 1줄 + 나머지 2개.
      0.32 · 0.40 은 공개판(v0.32.4 · v0.40.3)이 나온 뒤 GitHub Release 본문과 맞췄다 — 0.32 는 핵심 7줄이 Release 본문 전부, 0.40 은 핵심 4줄 + 나머지 10개를 "그 밖의 작은 고침"으로 묶었다 -->
 <section style="padding-top:0">
   <div class="wrap">
-    <div class="rel"><div class="v"><b>0.42</b><span>v0.42.0<br><span data-t="r.d42">2026년 10월 31일</span></span></div><div>
+    <div class="rel"><div class="v"><b>0.42</b><span>v0.42.2<br><span data-t="r.d42">2026년 10월 31일</span></span></div><div>
       <h3 class="rel-t" data-t="r.42t">업데이트 뒤에 창이 먼저 열리고, 코어 갱신은 뒤에서 끝나요.</h3>
       <ul>
       <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.42k1">다시 시작하면 창이 먼저 열리고 코어 업데이트는 뒤에서 진행돼요. 탭 줄에 "코어 업데이트 진행 중"이 보이고, 끝나면 결과 팝업이 떠요. 팩 명령 · 새 에이전트 pane · 이어받기는 업데이트가 끝날 때까지 기다려요.</span></li>
       <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.42k2">코어 업데이트 팝업에 짧은 종류 표시가 붙고, 마지막 버전 숫자만 바뀐 업데이트도 최근 변경을 보여 줘요.</span></li>
       <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.42k3">pane 을 나누거나 닫을 때 이웃 pane 의 터미널 크기를 대충 짐작으로 바꾸지 않아요.</span></li>
+      <li><span class="tag sec" data-t="r.sec">보안</span><span data-t="r.42k4">Electron 을 44.10.0 으로 올려, 앱에 들어 있는 Node 가 보안 릴리스 <a href="https://nodejs.org/en/blog/release/v24.22.1" target="_blank" rel="noopener">24.22.1</a> 이 됐어요.</span></li>
       </ul>
       <p class="rel-more" data-t="r.42m">그 밖의 작은 고침 2개 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.42.0">GitHub에서 v0.42.0 전체 보기</a></p>
     </div></div>
