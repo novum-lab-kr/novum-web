@@ -181,7 +181,7 @@ window.ATHENA_I18N.ja = {
   "r.new": "新機能",
   "r.imp": "改善",
   "r.fix": "修正",
-  "r.sec": "セキュリティ",
+  "r.sec": "セキュリティパッチ",
   "t.title": "利用規約 — Athena Studio",
   "t.desc": "Athena Studio エンドユーザー使用許諾契約。",
   "t.eyebrow": "法的情報",

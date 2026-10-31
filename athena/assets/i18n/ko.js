@@ -181,7 +181,7 @@ window.ATHENA_I18N.ko = {
   "r.new": "새 기능",
   "r.imp": "개선",
   "r.fix": "수정",
-  "r.sec": "보안",
+  "r.sec": "보안 패치",
   "t.title": "약관 — Athena Studio",
   "t.desc": "Athena Studio 최종 사용자 사용권 계약.",
   "t.eyebrow": "법적 고지",
