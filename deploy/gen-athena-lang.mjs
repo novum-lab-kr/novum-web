@@ -29,9 +29,13 @@ const SEO_START = '<!-- seo:start · deploy/gen-athena-lang.mjs 가 만든다(�
 const SEO_END = '<!-- seo:end -->';
 const SEO_BLOCK = /\n?<!-- seo:start[^\n]*-->[\s\S]*?<!-- seo:end -->/;
 
-// JSON-LD 에 넣는 사실 — 페이지에 적혀 있는 것만(무료 · macOS 13+ · Apple Silicon / Intel · Novum Lab — 받기 주소는 받기를 막아 둔 동안 넣지 않는다).
-// 버전 · 평점 · 사용자 수는 넣지 않는다
+// JSON-LD 에 넣는 사실 — 페이지에 적혀 있는 것만(무료 · macOS 13+ · Apple Silicon / Intel · Novum Lab · 받기 주소).
+// 버전 · 평점 · 사용자 수는 넣지 않는다(버전은 다운로드 페이지가 실행 중에 GitHub 에서 가져온다)
 const ORG = { '@type': 'Organization', '@id': 'https://novum-lab.com/#organization', name: 'Novum Lab', url: 'https://novum-lab.com' };
+const DMG = [
+  'https://github.com/novum-lab-kr/athena-studio-releases/releases/latest/download/Athena-Studio-mac-arm64.dmg',
+  'https://github.com/novum-lab-kr/athena-studio-releases/releases/latest/download/Athena-Studio-mac-x64.dmg',
+];
 const APP_PAGES = new Set(['/', '/download/']);
 
 export function pageUrl(lang, route) {
@@ -187,6 +191,7 @@ function seoBlock(html, lang, route) {
       processorRequirements: 'Apple Silicon or Intel',
       applicationCategory: 'DeveloperApplication',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+      downloadUrl: DMG,
       publisher: { '@id': ORG['@id'] },
     });
   }
