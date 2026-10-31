@@ -112,7 +112,7 @@ window.ATHENA_I18N.ko = {
   "d.r2p": "<a href=\"https://docs.anthropic.com/en/docs/claude-code/setup\" target=\"_blank\" rel=\"noopener\">Claude Code</a> 또는 <a href=\"https://github.com/openai/codex\" target=\"_blank\" rel=\"noopener\">Codex</a>에 내 계정으로 로그인해 두십시오.",
   "d.r3": "git · Python 3",
   "d.r3p": "없으면 처음 켤 때 macOS가 설치를 띄워 줍니다. 미리 설치하려면 터미널에서 <code>xcode-select --install</code>",
-  "d.r4p": "Athena의 스크립트가 씁니다. 설치한 Node 는 22.x 는 22.23.4, 24.x 는 24.22.1, 26.x 는 26.12.1 이상을 쓰세요. 앱에 들어 있는 Node 는 24.22.1 이에요.",
+  "d.r4p": "Athena의 스크립트가 써요. 보안 패치가 들어간 버전을 쓰세요: 22.x는 22.23.4 이상, 24.x는 24.22.1 이상, 26.x는 26.12.1 이상. 앱 안에 든 Node는 따로이고, 이미 패치된 24.22.1이에요.",
   "d.r5": "GitHub",
   "d.r5p": "내 레포에 접근할 수 있어야 합니다. PR 올리기와 자동 리뷰에는 <a href=\"https://cli.github.com\" target=\"_blank\" rel=\"noopener\">gh CLI</a>가 필요합니다.",
   "d.next": "설치하셨습니까? <a href=\"/docs/#start\">문서의 시작하기</a>에서 첫 팩과 첫 요청까지 안내합니다.",
