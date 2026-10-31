@@ -41,6 +41,10 @@
         "price": "0",
         "priceCurrency": "USD"
       },
+      "downloadUrl": [
+        "https://github.com/novum-lab-kr/athena-studio-releases/releases/latest/download/Athena-Studio-mac-arm64.dmg",
+        "https://github.com/novum-lab-kr/athena-studio-releases/releases/latest/download/Athena-Studio-mac-x64.dmg"
+      ],
       "publisher": {
         "@id": "https://novum-lab.com/#organization"
       }
@@ -79,26 +83,84 @@
     <p class="eyebrow"><i></i><span data-t="nav.download">다운로드</span></p>
     <h1 class="grad" data-t="d.h1">macOS용 Athena Studio</h1>
     <p class="dl-ver" data-t="d.ver">버전 <span data-rel-ver>0.42.0</span> · <span data-rel-date>2026년 10월 31일</span> · <a href="/ko/releases/">바뀐 것</a></p>
+    <script>
+/* 버전 줄을 최신 배포판으로(2026-10-29). latest.json 은 github.com 302 에 CORS 헤더가 없어 브라우저가 못 읽는다 —
+   GitHub REST API releases/latest(Access-Control-Allow-Origin: *)의 tag_name · published_at 을 쓴다.
+   로그인 없이 방문자 IP 당 시간 60회라 실패 · 4초 넘게 느리면 적어 둔 값 그대로 둔다(새 배포판이 나오면 적어 둔 값도 고친다 —
+   이 줄 · 받기 카드 두 곳의 data-rel-ver · 사전 ko · ja · zh 의 d.ver).
+   적어 둔 값을 고치면 node deploy/gen-athena-lang.mjs 로 언어판도 다시 만든다. 이 줄의 innerHTML 이 바뀌어도 다시 채우도록 지켜본다 */
+(function () {
+  var line = document.querySelector('.dl-ver');
+  if (!line || !window.fetch || !window.MutationObserver) return;
+  var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  var latest = null;
+
+  // 날짜는 배포판(latest.json date)과 같은 한국 날짜로, 언어마다 사전과 같은 모양
+  function formatDate(iso, lang) {
+    var kst = new Date(new Date(iso).getTime() + 9 * 3600 * 1000);
+    var year = kst.getUTCFullYear(), month = kst.getUTCMonth() + 1, day = kst.getUTCDate();
+    if (lang === 'ko') return year + '년 ' + month + '월 ' + day + '일';
+    if (lang === 'ja' || lang === 'zh') return year + ' 年 ' + month + ' 月 ' + day + ' 日';
+    return MONTHS[month - 1] + ' ' + day + ', ' + year;
+  }
+
+  // 버전은 이 줄과 받기 카드(.dl-card-ver) 모두에 — 같은 응답 하나로 채운다
+  function fill() {
+    if (!latest) return;
+    var date = line.querySelector('[data-rel-date]');
+    var lang = document.documentElement.getAttribute('data-lang') || 'en';
+    var vers = document.querySelectorAll('[data-rel-ver]');
+    for (var index = 0; index < vers.length; index++) {
+      if (vers[index].textContent !== latest.version) vers[index].textContent = latest.version;
+    }
+    if (date) {
+      var text = formatDate(latest.published, lang);
+      if (date.textContent !== text) date.textContent = text;
+    }
+  }
+
+  new MutationObserver(fill).observe(line, { childList: true });
+
+  // 4초 제한 — AbortController 가 없는 브라우저도 만료 뒤 온 응답은 버린다
+  var expired = false;
+  var ctrl = window.AbortController ? new AbortController() : null;
+  var timer = setTimeout(function () { expired = true; if (ctrl) ctrl.abort(); }, 4000);
+  fetch('https://api.github.com/repos/novum-lab-kr/athena-studio-releases/releases/latest', {
+    headers: { Accept: 'application/vnd.github+json' },
+    signal: ctrl ? ctrl.signal : undefined
+  }).then(function (res) {
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    return res.json();
+  }).then(function (rel) {
+    clearTimeout(timer);
+    if (expired) return;
+    var version = String(rel.tag_name || '').replace(/^v/, '');
+    if (!/^\d+\.\d+\.\d+$/.test(version) || isNaN(Date.parse(rel.published_at))) return;
+    latest = { version: version, published: rel.published_at };
+    fill();
+  }).catch(function () {});
+})();
+</script>
     <p class="lead" data-t="d.lead2">macOS 13 Ventura 이상에서 무료로 쓸 수 있습니다. Apple의 서명 · 공증을 받았습니다.</p>
   </div>
 </div>
 
 <section style="padding-top:0">
   <div class="wrap">
-    <!-- 받기는 막아 둠(Coming soon) — 버튼에 href 가 없다 -->
+    <!-- 주소는 athena-studio docs/release/homepage-handoff.md 의 고정 주소(늘 최신 배포판) -->
     <div class="dl">
       <div class="main" data-arch="arm64">
         <small data-t="d.rec">2020년 이후 대부분의 맥</small>
         <b>Apple Silicon</b>
         <span data-t="d.arm">M1 · M2 · M3 · M4 이후</span>
-        <a class="btn gold" aria-disabled="true" data-dl="arm64"><span data-t="d.get">Coming soon</span></a>
+        <a class="btn gold" href="https://github.com/novum-lab-kr/athena-studio-releases/releases/latest/download/Athena-Studio-mac-arm64.dmg" data-dl="arm64"><span data-t="d.get">.dmg 받기</span></a>
         <span class="dl-card-ver">v<span data-rel-ver>0.42.0</span></span>
       </div>
       <div data-arch="x64">
         <small data-t="d.old">예전 맥</small>
         <b>Intel</b>
         <span data-t="d.x64">Intel 프로세서 맥</span>
-        <a class="btn" aria-disabled="true" data-dl="x64"><span data-t="d.get">Coming soon</span></a>
+        <a class="btn" href="https://github.com/novum-lab-kr/athena-studio-releases/releases/latest/download/Athena-Studio-mac-x64.dmg" data-dl="x64"><span data-t="d.get">.dmg 받기</span></a>
         <span class="dl-card-ver">v<span data-rel-ver>0.42.0</span></span>
       </div>
     </div>
