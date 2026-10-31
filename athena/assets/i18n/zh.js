@@ -112,7 +112,7 @@ window.ATHENA_I18N.zh = {
   "d.r2p": "<a href=\"https://docs.anthropic.com/en/docs/claude-code/setup\" target=\"_blank\" rel=\"noopener\">Claude Code</a> 或 <a href=\"https://github.com/openai/codex\" target=\"_blank\" rel=\"noopener\">Codex</a>，用你自己的账号登录。",
   "d.r3": "git 和 Python 3",
   "d.r3p": "如果没有，首次启动时 macOS 会提示安装。想提前安装，可在终端运行 <code>xcode-select --install</code>",
-  "d.r4p": "供 Athena 的脚本使用。请使用包含安全补丁的版本：22.x 用 22.23.4 或更高，24.x 用 24.22.1 或更高，26.x 用 26.12.1 或更高。应用内的 Node 是独立的，已是打过补丁的 24.22.1。",
+  "d.r4p": "供 Athena 的脚本使用。应用内置的 Node 为 24.22.1。",
   "d.r5": "GitHub",
   "d.r5p": "需要能访问你的仓库。创建拉取请求和自动审查需要 <a href=\"https://cli.github.com\" target=\"_blank\" rel=\"noopener\">gh CLI</a>。",
   "d.next": "已经安装？<a href=\"/docs/#start\">文档中的入门</a>会带你完成第一个包和第一个请求。",
