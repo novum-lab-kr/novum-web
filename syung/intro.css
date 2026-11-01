@@ -1,13 +1,13 @@
 /* 슝 소개 사이트(syung.novum-lab.com/ · /en/) — 스크립트 없이 읽히는 한 장. 슝 앱을 쓸 때의 모양(토큰 · 승차권 · 시트 · 눌림 효과)을 그대로 옮겨 쓴다.
    원본: 슝 레포 origin/main 5ca85ae
-   - 토큰: web/tokens/tokens.css (색 · 글꼴 · 간격 · 둥글기 · 그림자 · 시간) — 값을 그대로 가져왔다. 어두운 화면 값은 같은 파일의 html[data-theme=dark] 를 prefers-color-scheme 로 옮겼다
+   - 토큰: web/tokens/tokens.css (색 · 글꼴 · 간격 · 둥글기 · 그림자 · 시간) — 값을 그대로 가져왔다. 소개 페이지는 라이트 전용이다(어두운 화면 값은 두지 않는다)
    - 버튼 눌림(.sy-btn): web/components/components.css
    - 승차권(.ticket · .tk-*): web/syung.css 의 "승차권" 절(앞면 · 뒷면 값 그대로 — 뒤집기 3D 만 뺐다. 앞뒤를 나란히 보인다) · web/components/ticket_card.tsx 의 마크업
    그림: shots/hero-*.webp · hero-*.mp4 · basic · route · city · joseon.(jpg|webp) 는 실제 지도 화면 캡처(map.syung.novum-lab.com, 밝은 화면). 지도 위 앱 띠 · 검색 · 단추는 가려 찍고 페이지 쪽 부품으로 대신했다
    shots/phone-*.webp 는 운영 웹 지도를 휴대폰 크기(390)로 찍은 실제 화면(밝은 화면 · 2026-11-01)
    shots/characters/*.webp 는 슝 레포 web/map/avatars/ 3D 캐릭터의 전신 이미지(tools/avatar_face/renders.sh 결과를 440px 로 줄임) */
 :root{
-  color-scheme:light dark;
+  color-scheme:light;
   --syung:#ffd400;--syung-deep:#f2c200;--syung-soft:#fff6c2;--syung-ink:#141414;
   --board:#fbfaf4;--paper:#fffdf6;--ink:#1d1f21;--secondary:#5d5a4e;--muted:#8a8676;--rule:#ece6cf;--control:#f5f1e1;--selected:#fff1a8;--focus:#141414;
   --round:"Jua","Noto Sans KR","Apple SD Gothic Neo",sans-serif;
@@ -17,10 +17,6 @@
   --shadow-edge-brand:0 3px 0 #e6c62f;
   --duration-120:.12s;--duration-150:.15s;--duration-600:.6s;
   --band:var(--syung-soft);
-}
-@media (prefers-color-scheme:dark){
-  :root{--board:#131416;--paper:#1a1c1f;--ink:#f1efe6;--secondary:#b9b5a6;--muted:#8f8b7d;--rule:#2b2d30;--control:#232529;--selected:rgba(255,212,0,.16);--focus:#ffd400;
-    --shadow:0 3px 0 rgba(0,0,0,.35),0 6px 18px rgba(0,0,0,.35);--band:#1d1c14}
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -147,7 +143,6 @@ h2{margin:0 0 8px;font-family:var(--round);font-weight:400;font-size:clamp(26px,
 .a-star{position:absolute;left:100%;top:-.5em;width:.95em;height:.95em;margin-left:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cfilter id='g' x='-5%25' y='-5%25' width='110%25' height='110%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.5' numOctaves='2' seed='3'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -3.2 2.45'/%3E%3CfeComposite in='SourceGraphic' operator='in'/%3E%3C/filter%3E%3Cg stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath filter='url%28%23g%29' fill='%23ef5a4c' fill-opacity='.75' d='M12 3L15 9.3 21.5 9.8 16.3 14 18 21 12 17.2 6 21.3 7.8 14 2.6 9.2 9.4 8.9Z'/%3E%3Cpath fill='none' stroke='%23d9362b' stroke-width='1.9' d='M11.2 1.8Q13.4 6 15.1 9.3 18.6 9.2 22.3 10 19.2 12 16.2 14.2 17.4 18 18.3 22 15 19.4 12 17.1 8.8 19.6 5.5 21.9 6.6 17.8 7.9 13.9 5 11.6 1.9 8.9 5.8 9 9.3 8.7 10.8 5.2 12.7 1.2'/%3E%3C/g%3E%3C/svg%3E") no-repeat center/contain;transform:rotate(45deg)}
 /* 색연필: 손으로 여러 번 그은 결을 글자 아래쪽 절반에 깐다. 줄이 바뀌면 줄마다 따로 그어진다 */
 .a-pen{padding:0 .3em 0 .2em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 24' preserveAspectRatio='none'%3E%3Cfilter id='g' x='-5%25' y='-5%25' width='110%25' height='110%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.09 .55' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -3.2 2.45'/%3E%3CfeComposite in='SourceGraphic' operator='in'/%3E%3C/filter%3E%3Cg filter='url%28%23g%29' fill='none' stroke='%23ffd400' stroke-width='6.5' stroke-linecap='round' stroke-opacity='.62'%3E%3Cpath d='M5 8C50 5 96 9 140 7S205 5 233 8'/%3E%3Cpath d='M10 13C60 10 110 14 160 12S215 11 238 14'/%3E%3Cpath d='M2 18C48 16 100 20 150 17S208 16 229 19'/%3E%3Cpath stroke-width='3' d='M28 11C90 13 150 9 224 11'/%3E%3C/g%3E%3C/svg%3E") no-repeat 0 60%/100% .95em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
-@media (prefers-color-scheme:dark){.a-pen{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 24' preserveAspectRatio='none'%3E%3Cfilter id='g' x='-5%25' y='-5%25' width='110%25' height='110%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.09 .55' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -3.2 2.45'/%3E%3CfeComposite in='SourceGraphic' operator='in'/%3E%3C/filter%3E%3Cg filter='url%28%23g%29' fill='none' stroke='%23ffd400' stroke-width='6.5' stroke-linecap='round' stroke-opacity='.36'%3E%3Cpath d='M5 8C50 5 96 9 140 7S205 5 233 8'/%3E%3Cpath d='M10 13C60 10 110 14 160 12S215 11 238 14'/%3E%3Cpath d='M2 18C48 16 100 20 150 17S208 16 229 19'/%3E%3Cpath stroke-width='3' d='M28 11C90 13 150 9 224 11'/%3E%3C/g%3E%3C/svg%3E")}}
 @media (max-width:700px){.a-sheet .a-app{display:block;margin-top:8px;padding-top:0;border-top:0;font-size:15px}}
 
 /* 캐릭터: 절 사이에 자기 칸을 가져 글 · 그림을 가리지 않는다. 움직임은 페이지 끝 스크립트가 스크롤에 맞춰 살짝(움직임 줄이기면 멈춤) */
