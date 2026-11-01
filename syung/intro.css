@@ -3,7 +3,9 @@
    - 토큰: web/tokens/tokens.css (색 · 글꼴 · 간격 · 둥글기 · 그림자 · 시간) — 값을 그대로 가져왔다. 어두운 화면 값은 같은 파일의 html[data-theme=dark] 를 prefers-color-scheme 로 옮겼다
    - 버튼 눌림(.sy-btn): web/components/components.css
    - 승차권(.ticket · .tk-*): web/syung.css 의 "승차권" 절(앞면 · 뒷면 값 그대로 — 뒤집기 3D 만 뺐다. 앞뒤를 나란히 보인다) · web/components/ticket_card.tsx 의 마크업
-   그림: shots/hero-*.webp · hero-*.mp4 · basic · route · city · joseon.(jpg|webp) 는 실제 지도 화면 캡처(map.syung.novum-lab.com, 밝은 화면). 지도 위 앱 띠 · 검색 · 단추는 가려 찍고 페이지 쪽 부품으로 대신했다 */
+   그림: shots/hero-*.webp · hero-*.mp4 · basic · route · city · joseon.(jpg|webp) 는 실제 지도 화면 캡처(map.syung.novum-lab.com, 밝은 화면). 지도 위 앱 띠 · 검색 · 단추는 가려 찍고 페이지 쪽 부품으로 대신했다
+   shots/phone-*.webp 는 운영 웹 지도를 휴대폰 크기(390)로 찍은 실제 화면(밝은 화면 · 2026-11-01)
+   shots/characters/*.webp 는 슝 레포 web/map/avatars/ 3D 캐릭터의 전신 이미지(tools/avatar_face/renders.sh 결과를 440px 로 줄임) */
 :root{
   color-scheme:light dark;
   --syung:#ffd400;--syung-deep:#f2c200;--syung-soft:#fff6c2;--syung-ink:#141414;
@@ -53,21 +55,22 @@ img{display:block;max-width:100%;height:auto}
 .a-hero{position:relative;height:calc(100svh - 64px);min-height:520px;max-height:960px;overflow:hidden;background:var(--control)}
 .a-hero picture,.a-hero img,.a-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:0;display:block}
 .a-vid{opacity:0;transition:opacity .5s}.a-vid.on{opacity:1}
-.a-sheet{position:absolute;left:24px;top:24px;width:min(400px,calc(100% - 48px));padding:22px 22px 24px;border-radius:26px;background:var(--paper);color:var(--ink);box-shadow:var(--shadow-edge),0 16px 40px rgba(0,0,0,.26)}
+.a-sheet{position:absolute;right:24px;bottom:112px;width:min(400px,calc(100% - 48px));padding:22px 22px 24px;border-radius:26px;background:var(--paper);color:var(--ink);box-shadow:var(--shadow-edge),0 16px 40px rgba(0,0,0,.26)}
 .a-sheet .tag{margin:0 0 12px}
 .a-sheet h1,.a-sheet h2{margin:0;font:400 clamp(26px,3.2vw,34px)/1.25 var(--round)}
 .a-sheet p{margin:10px 0 0;color:var(--secondary);font-size:16px}
-.a-sheet .cta{margin-top:16px;width:100%;justify-content:center;font-size:20px;padding:12px 26px}
-.a-chips{position:absolute;right:24px;bottom:24px;display:flex;flex-direction:column;gap:8px;align-items:flex-end;margin:0;padding:0;list-style:none}
+.a-chips{position:absolute;left:24px;top:24px;right:24px;display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
 .a-chips li{padding:8px 14px;border-radius:999px;background:var(--paper);box-shadow:var(--shadow-edge);font:400 17px/1 var(--round);color:var(--ink)}
 .a-chips li:first-child{background:var(--syung)}
+/* 카드는 새싹의 말풍선: 꼬리가 아래의 새싹을 가리킨다(휴대폰은 카드 위의 새싹) */
+.a-sheet::after{content:"";position:absolute;right:calc(154px + clamp(76px,9vw,130px)/2);bottom:-11px;width:24px;height:24px;border-radius:0 0 6px 0;background:var(--paper);box-shadow:3px 3px 0 rgba(0,0,0,.1);transform:rotate(45deg)}
 @media (max-width:700px){
   .a-hero{height:calc(100svh - 64px)}
-  .a-sheet{top:auto;bottom:14px;left:12px;width:calc(100% - 24px);padding:16px 16px 18px;border-radius:22px}
+  .a-sheet{right:12px;bottom:40px;width:calc(100% - 24px);padding:16px 16px 18px;border-radius:22px}
   .a-sheet .tag,.a-sheet p{display:none}
   .a-sheet h1{font-size:22px}
-  .a-sheet .cta{margin-top:12px;font-size:18px;padding:10px 20px}
-  .a-chips{right:auto;left:12px;top:12px;bottom:auto;flex-direction:row;flex-wrap:wrap}
+  .a-chips{left:12px;right:12px;top:12px}
+  .a-sheet::after{right:28px}
   .a-chips li{font-size:15px;padding:7px 12px}
 }
 
@@ -79,16 +82,21 @@ h2{margin:0 0 8px;font-family:var(--round);font-weight:400;font-size:clamp(26px,
 .pic{margin:0}
 .pic img{width:100%;border-radius:var(--radius-22);box-shadow:var(--shadow-edge),0 14px 30px rgba(60,50,0,.16);background:var(--paper)}
 .pic figcaption{margin-top:10px;font-size:14px;color:var(--muted)}
+/* 휴대폰 틀: 실제로 찍은 휴대폰 크기 화면을 CSS 로 그린 틀에 넣는다. 상태 표시줄 같은 가짜 화면은 그리지 않는다 */
+.pic-phone{justify-self:center;width:clamp(220px,62vw,280px);text-align:center}
+.pic-phone img{display:block;height:auto;padding:8px;border-radius:40px;background:#17181b;box-shadow:0 0 0 1px rgba(255,255,255,.08) inset,0 18px 36px rgba(60,50,0,.22)}
 
 /* 길찾기: 실제 길찾기 화면을 크게, 글은 짧게 */
 .find{padding:72px 0 64px;background:var(--board)}
 .find .wrap{display:grid;gap:28px;align-items:center}
-@media (min-width:900px){.find .wrap{grid-template-columns:1fr 1.6fr;gap:56px}}
+@media (min-width:900px){.find .wrap{grid-template-columns:1.25fr 1fr;gap:56px}}
+/* 길찾기 절: 넓은 화면에서는 휴대폰이 왼쪽, 글이 오른쪽 */
+@media (min-width:900px){#route .wrap{grid-template-columns:1fr 1.25fr}#route .pic-phone{order:-1}}
 .find h2{font-size:clamp(30px,4.4vw,44px);margin-bottom:12px}
 .find p{margin:0;font-size:18px;color:var(--secondary)}
 
 /* 승차권 절 */
-.band{padding:64px 0;background:var(--band);box-shadow:inset 0 3px 0 rgba(20,20,20,.05),inset 0 -3px 0 rgba(20,20,20,.05)}
+.band{padding:64px 0;background:var(--band)}
 .tickets-grid{display:grid;gap:36px;align-items:center}
 @media (min-width:900px){.tickets-grid{grid-template-columns:1fr 1fr}}
 .tk-stack{display:grid;gap:22px;justify-items:start}
@@ -100,7 +108,7 @@ h2{margin:0 0 8px;font-family:var(--round);font-weight:400;font-size:clamp(26px,
 .steps b{display:block;margin-bottom:2px;color:var(--ink);font-size:17px}
 
 /* 모드 고르기: 칩과 그림이 한 화면에 같이 보이는 크기(그림은 작게) — 칩은 가로로 밀 수 있다 */
-.modes{padding:56px 0 48px;background:var(--band);box-shadow:inset 0 3px 0 rgba(20,20,20,.05),inset 0 -3px 0 rgba(20,20,20,.05)}
+.modes{padding:56px 0 48px;background:var(--board)}
 .modes .wrap{max-width:1240px}
 .modes .lead{margin-bottom:20px}
 .stage{position:relative;margin:0}
@@ -134,15 +142,59 @@ h2{margin:0 0 8px;font-family:var(--round);font-weight:400;font-size:clamp(26px,
 }
 /* 앱 준비 중 표시: 지금 되는 기능과 구분한다 */
 .badge{display:inline-block;margin-right:10px;padding:3px 11px;border-radius:var(--radius-pill);background:var(--ink);color:var(--paper);font:400 14px/1.3 var(--round);vertical-align:1px}
-.soon{margin:22px 0 0;padding:14px 18px;border-radius:var(--radius-18);background:var(--paper);box-shadow:var(--shadow);color:var(--secondary);font-size:15px}
-.end-soon{margin:20px 0 0;font-size:16px;font-weight:700;color:var(--syung-ink)}
-.end-soon .badge{background:var(--syung-ink);color:var(--syung)}
-.more{padding:40px 0 56px;background:var(--board)}
+.a-sheet .a-app{margin-top:14px;padding-top:12px;border-top:1px dashed var(--rule);color:var(--ink);font:400 17px/1.7 var(--round)}
+.a-lead{position:relative;margin-right:.55em}
+.a-star{position:absolute;left:100%;top:-.5em;width:.95em;height:.95em;margin-left:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cfilter id='g' x='-5%25' y='-5%25' width='110%25' height='110%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.5' numOctaves='2' seed='3'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -3.2 2.45'/%3E%3CfeComposite in='SourceGraphic' operator='in'/%3E%3C/filter%3E%3Cg stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath filter='url%28%23g%29' fill='%23ef5a4c' fill-opacity='.75' d='M12 3L15 9.3 21.5 9.8 16.3 14 18 21 12 17.2 6 21.3 7.8 14 2.6 9.2 9.4 8.9Z'/%3E%3Cpath fill='none' stroke='%23d9362b' stroke-width='1.9' d='M11.2 1.8Q13.4 6 15.1 9.3 18.6 9.2 22.3 10 19.2 12 16.2 14.2 17.4 18 18.3 22 15 19.4 12 17.1 8.8 19.6 5.5 21.9 6.6 17.8 7.9 13.9 5 11.6 1.9 8.9 5.8 9 9.3 8.7 10.8 5.2 12.7 1.2'/%3E%3C/g%3E%3C/svg%3E") no-repeat center/contain;transform:rotate(45deg)}
+/* 색연필: 손으로 여러 번 그은 결을 글자 아래쪽 절반에 깐다. 줄이 바뀌면 줄마다 따로 그어진다 */
+.a-pen{padding:0 .3em 0 .2em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 24' preserveAspectRatio='none'%3E%3Cfilter id='g' x='-5%25' y='-5%25' width='110%25' height='110%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.09 .55' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -3.2 2.45'/%3E%3CfeComposite in='SourceGraphic' operator='in'/%3E%3C/filter%3E%3Cg filter='url%28%23g%29' fill='none' stroke='%23ffd400' stroke-width='6.5' stroke-linecap='round' stroke-opacity='.62'%3E%3Cpath d='M5 8C50 5 96 9 140 7S205 5 233 8'/%3E%3Cpath d='M10 13C60 10 110 14 160 12S215 11 238 14'/%3E%3Cpath d='M2 18C48 16 100 20 150 17S208 16 229 19'/%3E%3Cpath stroke-width='3' d='M28 11C90 13 150 9 224 11'/%3E%3C/g%3E%3C/svg%3E") no-repeat 0 60%/100% .95em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+@media (prefers-color-scheme:dark){.a-pen{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 24' preserveAspectRatio='none'%3E%3Cfilter id='g' x='-5%25' y='-5%25' width='110%25' height='110%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.09 .55' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -3.2 2.45'/%3E%3CfeComposite in='SourceGraphic' operator='in'/%3E%3C/filter%3E%3Cg filter='url%28%23g%29' fill='none' stroke='%23ffd400' stroke-width='6.5' stroke-linecap='round' stroke-opacity='.36'%3E%3Cpath d='M5 8C50 5 96 9 140 7S205 5 233 8'/%3E%3Cpath d='M10 13C60 10 110 14 160 12S215 11 238 14'/%3E%3Cpath d='M2 18C48 16 100 20 150 17S208 16 229 19'/%3E%3Cpath stroke-width='3' d='M28 11C90 13 150 9 224 11'/%3E%3C/g%3E%3C/svg%3E")}}
+@media (max-width:700px){.a-sheet .a-app{display:block;margin-top:8px;padding-top:0;border-top:0;font-size:15px}}
+
+/* 캐릭터: 절 사이에 자기 칸을 가져 글 · 그림을 가리지 않는다. 움직임은 페이지 끝 스크립트가 스크롤에 맞춰 살짝(움직임 줄이기면 멈춤) */
+.hop{position:relative;z-index:2;height:0;pointer-events:none}
+.hop .wrap{position:relative;height:0}
+.hop-spot{position:absolute;bottom:-12px;width:clamp(76px,9vw,130px);aspect-ratio:1}
+.hop-flip .hop-spot{transform:scaleX(-1)}
+/* 첫 화면 새싹: 지도와 노란 절 경계에 걸치고, 바로 위 말풍선 카드가 꼬리로 가리킨다 */
+.hop-hero .wrap{max-width:none;padding:0}
+.hop-hero .hop-spot{right:190px;bottom:-34px}
+@media (max-width:700px){.hop-hero .hop-spot{right:6px;bottom:-62px;width:92px}}
+/* 넓은 화면의 오른쪽 캐릭터는 절 경계에 걸친다(그 자리엔 글이 없다). 좁으면 윗절 아래 여백 안에 선다 */
+@media (min-width:900px){.hop-r .hop-spot{bottom:-66px}}
+/* 좁은 화면 선비 — 칩 글자를 가리지 않게 경계 아래로 더 내린다 */
+@media (max-width:899px){.hop-flip .hop-spot{bottom:-40px}}
+.hop-r .hop-spot{right:24px}
+.char{display:block;width:100%;height:100%;will-change:transform}
+/* 나들이 캐릭터: 풍선 때문에 그림 안 몸이 작다. 틀보다 크게 그려 몸 크기를 맞추고 발끝 자리는 그대로 둔다(풍선은 틀 위로 나오고, 오른쪽 빈 여백은 잘라 가로 넘침을 막는다) */
+.char-visitor{position:absolute;left:-23%;top:-32%;width:122%;height:145%;max-width:none;object-fit:cover;object-position:left}
+/* 건설 반장: 휴대폰 틀 왼쪽 위 모서리에 서서 화면을 내려다본다. 화면을 가리지 않게 스크롤 움직임 없이 고정 */
+.pic-phone{position:relative}
+.peek{--peek:clamp(76px,9vw,130px);position:absolute;left:calc(var(--peek)*-.5);top:calc(var(--peek)*-.78);width:var(--peek);aspect-ratio:1;pointer-events:none}
+.pic-phone .peek img{width:100%;height:100%;padding:0;border-radius:0;background:none;box-shadow:none;transform:rotate(6deg)}
+@media (max-width:899px){.find .pic-phone:has(.peek){margin-top:34px}}
+.live{background:var(--band)}
+.live .tag,.modes .tag{margin-bottom:12px}
+
+/* 내 캐릭터: 모드마다 지도 위 내 위치 캐릭터가 바뀐다 */
+.cast{display:grid;gap:18px;margin-top:28px;padding:24px;border-radius:var(--radius-22);background:var(--paper);box-shadow:var(--shadow)}
+.cast h3{margin:0;font:400 24px/1.3 var(--round)}
+.cast-head p{margin:6px 0 0;color:var(--secondary)}
+.cast ul{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:0;padding:0;list-style:none}
+.cast li{display:grid;justify-items:center;text-align:center}
+.cast-pic{position:relative;display:block;width:min(100%,132px);aspect-ratio:1}
+.cast b{margin-top:2px;font:400 16px/1.3 var(--round)}
+.cast small{font-size:13px;color:var(--muted)}
+@media (min-width:640px){.cast ul{grid-template-columns:repeat(4,1fr)}}
+/* 두 줄일 때 나들이 풍선이 윗줄 글자에 닿지 않게 줄 간격을 벌린다 */
+@media (max-width:639px){.cast ul{row-gap:32px}}
+@media (min-width:1000px){.cast{grid-template-columns:minmax(240px,1fr) 2.4fr;align-items:center}}
+
+.more{padding:40px 0 56px;background:var(--band)}
 .more h3{margin:0 0 6px;font-family:var(--round);font-weight:400;font-size:22px}
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 0;padding:0;list-style:none}
 .chips li{padding:8px 16px;border-radius:var(--radius-pill);background:var(--control);font-weight:700;font-size:15px;box-shadow:var(--shadow-edge)}
 .chips li:first-child{background:var(--syung);color:var(--syung-ink)}
-#faq{padding:56px 0 64px}
+#faq{padding:56px 0 64px;background:var(--board)}
 
 /* 승차권(web/syung.css 값 그대로) */
 .tk-demo{position:relative;height:158px;width:100%;max-width:380px}
@@ -187,6 +239,8 @@ h2{margin:0 0 8px;font-family:var(--round);font-weight:400;font-size:clamp(26px,
 
 /* 끝 */
 .end{padding:56px 0 64px;text-align:center;background:var(--syung);color:var(--syung-ink)}
+.end-soon{margin:20px 0 0;font-size:16px;font-weight:700;color:var(--syung-ink)}
+.end-soon .badge{background:var(--syung-ink);color:var(--syung)}
 .end h2{margin:0}
 .end .cta{background:var(--syung-ink);color:var(--syung);box-shadow:0 3px 0 #000,0 10px 22px rgba(20,20,20,.2);margin-top:22px}
 .end .cta:hover{background:#2a2a2a}

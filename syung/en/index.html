@@ -6,11 +6,11 @@
 <!-- 슝 소개 사이트(영어 · https://syung.novum-lab.com/en/). 한국어판 ../index.html 과 같은 내용 · 같은 구조로 같이 고친다.
      자주 묻는 질문을 고치면 아래 JSON-LD(FAQPage)의 같은 글도 고친다 -->
 <script>
-/* 옛 지도 주소의 해시 옵션으로 들어오면 지도 주소로 넘긴다 — 이 쪽의 절 이름(id tickets · features · faq — 절을 더하면 여기도)이 아닐 때만 */
-(function(){var h=location.hash.slice(1);if(h&&!/^(tickets|features|modes|faq)$/.test(h))location.replace('https://map.syung.novum-lab.com/'+location.hash)})();
+/* 옛 지도 주소의 해시 옵션으로 들어오면 지도 주소로 넘긴다 — 이 쪽의 절 이름(id app · features · route · tickets · modes · faq — 절을 더하면 여기도)이 아닐 때만 */
+(function(){var h=location.hash.slice(1);if(h&&!/^(features|route|tickets|modes|faq)$/.test(h))location.replace('https://map.syung.novum-lab.com/'+location.hash)})();
 </script>
 <title>Syung — Live Seoul Metro Train Positions · Ride Times with Tickets</title>
-<meta name="description" content="Syung is a live map that shows where every Seoul metropolitan subway train is right now, drawn on the real tracks. Save the trips you take often as tickets and see the route and transfers for your departure time at a glance.">
+<meta name="description" content="Syung is a live map that shows where every Seoul metropolitan subway train is right now, drawn on the real tracks. Save the trips you take often as tickets and see the route and transfers for your departure time at a glance. The app is on its way, and you can use it on the web right now.">
 <link rel="canonical" href="https://syung.novum-lab.com/en/">
 <link rel="alternate" hreflang="ko" href="https://syung.novum-lab.com/">
 <link rel="alternate" hreflang="en" href="https://syung.novum-lab.com/en/">
@@ -70,7 +70,11 @@
         {"@type": "Question", "name": "Where does the data come from?",
          "acceptedAnswer": {"@type": "Answer", "text": "Lines, stations and timetables come from the KTDB (Korea Transport Database, The Korea Transport Institute) public transit GTFS, live train positions and arrivals from the Seoul Open Data Plaza, and the base map and track shapes from OpenStreetMap contributors (ODbL) and OpenMapTiles."}},
         {"@type": "Question", "name": "Does it work on my phone?",
-         "acceptedAnswer": {"@type": "Answer", "text": "Yes. It opens right in the browser on phones and computers — nothing to install."}}
+         "acceptedAnswer": {"@type": "Answer", "text": "Yes. For now it opens right in the browser on phones and computers — nothing to install."}},
+        {"@type": "Question", "name": "Can I download the app?",
+         "acceptedAnswer": {"@type": "Answer", "text": "Not yet. iOS and Android apps are in the works and aren't in the app stores yet, so you can't download them today. Until then you can use the same map on the web."}},
+        {"@type": "Question", "name": "Will I have to remake my tickets in the app?",
+         "acceptedAnswer": {"@type": "Answer", "text": "No. Tickets are saved on the server, so they'll be there when you sign in to the app with the same account."}}
       ]
     }
   ]
@@ -83,7 +87,7 @@
     <a class="brand" href="./"><img src="../../brand/syung-light.svg" alt="" width="40" height="40"><b>Syung</b></a>
     <nav aria-label="Language · map">
       <a href="../" hreflang="ko" lang="ko">한국어</a>
-      <a class="open" href="https://map.syung.novum-lab.com/">Open the map</a>
+      <a class="open" href="https://map.syung.novum-lab.com/">Open on the web</a>
     </nav>
   </div>
 </header>
@@ -94,27 +98,38 @@
       <img src="../shots/hero-pc.webp" width="1920" height="910" alt="Syung map — a real screen that starts from the whole Seoul subway and bus network, zooms in while the scenery changes between modes such as Basic, SimCity and Joseon, and ends on a bus running along a road" fetchpriority="high">
     </picture>
     <video id="hero-vid" class="a-vid" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
-    <ul class="a-chips" aria-hidden="true"><li>Live trains</li><li>Route search</li><li>Tickets</li><li>3D city</li></ul>
+    <ul class="a-chips" aria-hidden="true"><li>#Live trains</li><li>#Route search</li><li>#Tickets</li><li>#3D city</li></ul>
     <div class="a-sheet">
       <span class="tag">Where's my train?</span>
       <h1>See where your train is, right on the map</h1>
-      <p>Watch trains move along the real tracks on the map. Train positions refresh every 15–25 seconds, and Syung draws the movement between updates along the tracks.</p>
-      <a class="cta" href="https://map.syung.novum-lab.com/"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg>Open the map</a>
+      <p class="a-app"><span class="a-pen"><span class="a-lead">App coming soon<span class="a-star" aria-hidden="true"></span></span> · You can use it on the web today</span></p>
     </div>
   </section>
+  <div class="hop hop-hero" aria-hidden="true"><div class="wrap"><span class="hop-spot"><img class="char" src="../shots/characters/sprout-left.webp" width="440" height="440" alt="" decoding="async"></span></div></div>
   <script>
 (function(){var v=document.getElementById('hero-vid');if(!v||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 var m=matchMedia('(max-width:700px)').matches;v.src=m?'https://media.novum-lab.com/hero-m-web.mp4':'https://media.novum-lab.com/hero-pc-web.mp4';
 v.addEventListener('playing',function(){v.classList.add('on')});v.play().catch(function(){});})();
 </script>
 
-  <section id="features" class="find">
+  <section id="features" class="find live">
+    <div class="wrap">
+      <div>
+        <span class="tag">Useful</span>
+        <h2>See where your train is right now</h2>
+        <p>Trains move along the real tracks. Positions refresh every 15–25 seconds, and Syung draws the movement between updates along the tracks. Tap a train to follow it.</p>
+      </div>
+      <figure class="pic pic-phone"><img src="../shots/phone-map.webp" width="640" height="1386" alt="Syung map — trains running on central Seoul subway lines" loading="lazy"><figcaption>A real map screen on the mobile web (the app is in Korean)</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="route" class="find">
     <div class="wrap">
       <div>
         <h2>Just choose where to go</h2>
         <p>Combines subway, bus and walking and shows the fastest routes first. Where live data is available, it also shows where the train you'll take is right now.</p>
       </div>
-      <figure class="pic"><img src="../shots/route.webp" width="1120" height="700" alt="Route search result — routes from Seoul Station to Gangnam Station, with 「실시간」 (live) tags on the legs" loading="lazy"><figcaption>A real route search screen (the app is in Korean)</figcaption></figure>
+      <figure class="pic pic-phone"><img src="../shots/phone-route.webp" width="640" height="1386" alt="Route search result — routes from Seoul Station to Gangnam Station, with 「실시간」 (live) tags on the legs" loading="lazy"><span class="peek" aria-hidden="true"><img src="../shots/characters/builder-right.webp" width="440" height="440" alt="" loading="lazy" decoding="async"></span><figcaption>A real route search screen on the mobile web (the app is in Korean)</figcaption></figure>
     </div>
   </section>
 
@@ -133,21 +148,26 @@ v.addEventListener('playing',function(){v.classList.add('on')});v.play().catch(f
           <figure><div class="tk-demo" role="img" aria-label="Example ticket, back — transfer from Gangnam to Gyodae, departure 08:00, riding Monday to Friday"><div class="tk-face tk-back" aria-hidden="true"><p class="tk-chain"><span>강남</span><em>→</em><span>교대</span><small>3분 뒤</small></p><p class="tk-time"><span>출발 시각</span><b>08:00</b></p><div class="tk-mag"></div><div class="tk-foot"><span>타는 날 월 화 수 목 금</span><span class="tk-acts"><span class="sy-btn sy-btn-secondary">지도에서 보기</span><span class="sy-btn sy-btn-primary">고치기 ›</span></span></div></div></div><figcaption>Back — transfers, departure time and riding days (example ticket)</figcaption></figure>
         </div>
       </div>
-      <p class="soon"><span class="badge">App coming soon</span>Subway and bus alerts arrive starting 5 minutes before you leave.</p>
       <p class="note">Tickets are available after you sign in.</p>
     </div>
   </section>
 
+  <div class="hop hop-r" aria-hidden="true"><div class="wrap"><span class="hop-spot"><img class="char char-visitor" src="../shots/characters/visitor-left.webp" width="440" height="440" alt="" loading="lazy" decoding="async"></span></div></div>
   <section id="modes" class="modes">
     <div class="wrap">
-      <h2>Many modes</h2>
-      <p class="lead">Tap a mode to preview how the map changes.</p>
+      <span class="tag">Fun</span>
+      <h2>Same Seoul, a different world</h2>
+      <p class="lead">Your commute map can turn into a tiled-roof village, a StarCraft city or a pixel game. Tap a mode to preview it.</p>
       <figure class="stage" id="mode-stage">
         <div class="stage-pic"><img class="on" id="mode-a" src="../shots/mode-simcity.webp" width="2400" height="1440" alt="3D city — Gangnam" decoding="async"><img id="mode-b" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="2400" height="1440" alt="" decoding="async"></div>
         <figcaption class="stage-cap" aria-live="polite"><span class="stage-name" id="mode-name">3D city</span><span class="stage-place" id="mode-place">Gangnam</span><span class="stage-text" id="mode-cap">SimCity mode — buildings stand up in 3D and a bus (route 146) runs along the road</span></figcaption>
       </figure>
-      <div class="mode-pick" role="group" aria-label="Map modes"><button type="button" aria-pressed="true" data-key="simcity" data-src="../shots/mode-simcity.webp" data-name="3D city" data-place="Gangnam" data-cap="SimCity mode — buildings stand up in 3D and a bus (route 146) runs along the road" data-alt="3D city — Gangnam"><img src="../shots/thumb-simcity.webp" width="360" height="216" alt="" loading="lazy" decoding="async"><span class="nm">3D city</span><span class="pl">Gangnam</span></button><button type="button" aria-pressed="false" data-key="joseon" data-src="../shots/mode-joseon.webp" data-name="Joseon" data-place="Gyeongbokgung" data-cap="Joseon mode — the area around Gyeongbokgung turns into a village of tiled-roof houses" data-alt="Joseon — Gyeongbokgung"><img src="../shots/thumb-joseon.webp" width="360" height="216" alt="" loading="lazy" decoding="async"><span class="nm">Joseon</span><span class="pl">Gyeongbokgung</span></button><button type="button" aria-pressed="false" data-key="sc-terran" data-src="../shots/mode-sc-terran.webp" data-name="StarCraft · Terran" data-place="Yongsan Station" data-cap="StarCraft (Terran) mode — Yongsan Station and the elevated track sit in a steel-grey city" data-alt="StarCraft · Terran — Yongsan Station"><img src="../shots/thumb-sc-terran.webp" width="360" height="216" alt="" loading="lazy" decoding="async"><span class="nm">StarCraft · Terran</span><span class="pl">Yongsan Station</span></button><button type="button" aria-pressed="false" data-key="sc-zerg" data-src="../shots/mode-sc-zerg.webp" data-name="StarCraft · Zerg" data-place="Jamsil" data-cap="StarCraft (Zerg) mode — Zerg structures rise around Lotte World Tower and Seokchon Lake" data-alt="StarCraft · Zerg — Jamsil"><img src="../shots/thumb-sc-zerg.webp" width="360" height="216" alt="" loading="lazy" decoding="async"><span class="nm">StarCraft · Zerg</span><span class="pl">Jamsil</span></button><button type="button" aria-pressed="false" data-key="sc-protoss" data-src="../shots/mode-sc-protoss.webp" data-name="StarCraft · Protoss" data-place="Yeouido" data-cap="StarCraft (Protoss) mode — a subway line crosses a golden Yeouido" data-alt="StarCraft · Protoss — Yeouido"><img src="../shots/thumb-sc-protoss.webp" width="360" height="216" alt="" loading="lazy" decoding="async"><span class="nm">StarCraft · Protoss</span><span class="pl">Yeouido</span></button><button type="button" aria-pressed="false" data-key="retro" data-src="../shots/mode-retro.webp" data-name="Retro" data-place="Hongik Univ. Station" data-cap="Retro mode — the area around Hongik Univ. Station turns bright like a pixel game" data-alt="Retro — Hongik Univ. Station"><img src="../shots/thumb-retro.webp" width="360" height="216" alt="" loading="lazy" decoding="async"><span class="nm">Retro</span><span class="pl">Hongik Univ. Station</span></button><button type="button" aria-pressed="false" data-key="nation-greece" data-src="../shots/mode-nation-greece.webp" data-name="World tour · Greece" data-place="Seoul Station" data-cap="World tour (Greece) — Seoul Station and its tracks turn into white walls and blue roofs" data-alt="World tour · Greece — Seoul Station"><img src="../shots/thumb-nation-greece.webp" width="360" height="216" alt="" loading="lazy" decoding="async"><span class="nm">World tour · Greece</span><span class="pl">Seoul Station</span></button><button type="button" aria-pressed="false" data-key="nation-netherlands" data-src="../shots/mode-nation-netherlands.webp" data-name="World tour · Netherlands" data-place="Seongsu" data-cap="World tour (Netherlands) — a bus passes on a viaduct among red-brick buildings" data-alt="World tour · Netherlands — Seongsu"><img src="../shots/thumb-nation-netherlands.webp" width="360" height="216" alt="" loading="lazy" decoding="async"><span class="nm">World tour · Netherlands</span><span class="pl">Seongsu</span></button><button type="button" aria-pressed="false" data-key="nation-paris" data-src="../shots/mode-nation-paris.webp" data-name="World tour · Paris" data-place="Dongdaemun" data-cap="World tour (Paris) — two buses run among beige-walled buildings" data-alt="World tour · Paris — Dongdaemun"><img src="../shots/thumb-nation-paris.webp" width="360" height="216" alt="" loading="lazy" decoding="async"><span class="nm">World tour · Paris</span><span class="pl">Dongdaemun</span></button><button type="button" aria-pressed="false" data-key="nation-egypt" data-src="../shots/mode-nation-egypt.webp" data-name="World tour · Egypt" data-place="Banpo Hangang Park" data-cap="World tour (Egypt) — the city beside the Han River and Banpo Hangang Park turns sand-coloured" data-alt="World tour · Egypt — Banpo Hangang Park"><img src="../shots/thumb-nation-egypt.webp" width="360" height="216" alt="" loading="lazy" decoding="async"><span class="nm">World tour · Egypt</span><span class="pl">Banpo Hangang Park</span></button><button type="button" aria-pressed="false" data-key="coaster" data-src="../shots/mode-coaster.webp" data-name="Roller coaster" data-place="near Irwon Station (Line 3)" data-cap="Roller coaster mode — a first-person seat at the front of the train, looking over the city from the track" data-alt="Roller coaster — near Irwon Station (Line 3)"><img src="../shots/thumb-coaster.webp" width="360" height="216" alt="" loading="lazy" decoding="async"><span class="nm">Roller coaster</span><span class="pl">near Irwon Station (Line 3)</span></button></div>
-      <noscript><p class="note">3D city (SimCity) · Joseon · StarCraft (Terran · Zerg · Protoss) · Retro · World tour (Greece · Netherlands · Paris · Egypt) · Roller coaster</p><style>.mode-pick{display:none}</style></noscript>
+      <div class="mode-pick" role="group" aria-label="Map modes"><button type="button" aria-pressed="true" data-key="simcity" data-src="../shots/mode-simcity.webp" data-name="3D city" data-place="Gangnam" data-cap="SimCity mode — buildings stand up in 3D and a bus (route 146) runs along the road" data-alt="3D city — Gangnam"><img src="../shots/thumb-simcity.webp" width="360" height="216" alt="" loading="lazy" decoding="async"><span class="nm">3D city</span><span class="pl">Gangnam</span></button><button type="button" aria-pressed="false" data-key="joseon" data-src="../shots/mode-joseon.webp" data-name="Joseon" data-place="Gyeongbokgung" data-cap="Joseon mode — the area around Gyeongbokgung turns into a village of tiled-roof houses" data-alt="Joseon — Gyeongbokgung"><img src="../shots/thumb-joseon.webp" width="360" height="216" alt="" loading="lazy" decoding="async"><span class="nm">Joseon</span><span class="pl">Gyeongbokgung</span></button><button type="button" aria-pressed="false" data-key="sc-terran" data-src="../shots/mode-sc-terran.webp" data-name="StarCraft · Terran" data-place="Yongsan Station" data-cap="StarCraft (Terran) mode — Yongsan Station and the elevated track sit in a steel-grey city" data-alt="StarCraft · Terran — Yongsan Station"><img src="../shots/thumb-sc-terran.webp" width="360" height="216" alt="" loading="lazy" decoding="async"><span class="nm">StarCraft · Terran</span><span class="pl">Yongsan Station</span></button><button type="button" aria-pressed="false" data-key="sc-zerg" data-src="../shots/mode-sc-zerg.webp" data-name="StarCraft · Zerg" data-place="Jamsil" data-cap="StarCraft (Zerg) mode — Zerg structures rise around Lotte World Tower and Seokchon Lake" data-alt="StarCraft · Zerg — Jamsil"><img src="../shots/thumb-sc-zerg.webp" width="360" height="216" alt="" loading="lazy" decoding="async"><span class="nm">StarCraft · Zerg</span><span class="pl">Jamsil</span></button><button type="button" aria-pressed="false" data-key="sc-protoss" data-src="../shots/mode-sc-protoss.webp" data-name="StarCraft · Protoss" data-place="Yeouido" data-cap="StarCraft (Protoss) mode — a subway line crosses a golden Yeouido" data-alt="StarCraft · Protoss — Yeouido"><img src="../shots/thumb-sc-protoss.webp" width="360" height="216" alt="" loading="lazy" decoding="async"><span class="nm">StarCraft · Protoss</span><span class="pl">Yeouido</span></button><button type="button" aria-pressed="false" data-key="retro" data-src="../shots/mode-retro.webp" data-name="Retro" data-place="Hongik Univ. Station" data-cap="Retro mode — the area around Hongik Univ. Station turns bright like a pixel game" data-alt="Retro — Hongik Univ. Station"><img src="../shots/thumb-retro.webp" width="360" height="216" alt="" loading="lazy" decoding="async"><span class="nm">Retro</span><span class="pl">Hongik Univ. Station</span></button><button type="button" aria-pressed="false" data-key="coaster" data-src="../shots/mode-coaster.webp" data-name="Roller coaster" data-place="near Irwon Station (Line 3)" data-cap="Roller coaster mode — a first-person seat at the front of the train, looking over the city from the track" data-alt="Roller coaster — near Irwon Station (Line 3)"><img src="../shots/thumb-coaster.webp" width="360" height="216" alt="" loading="lazy" decoding="async"><span class="nm">Roller coaster</span><span class="pl">near Irwon Station (Line 3)</span></button></div>
+      <noscript><p class="note">3D city (SimCity) · Joseon · StarCraft (Terran · Zerg · Protoss) · Retro · Roller coaster</p><style>.mode-pick{display:none}</style></noscript>
+      <div class="cast">
+        <div class="cast-head"><h3>Your character changes too</h3><p>Zoom in and a character stands where you are. Switch modes and the character changes with the map.</p></div>
+        <ul><li><span class="cast-pic"><img class="char" src="../shots/characters/sprout-left.webp" width="440" height="440" alt="" loading="lazy" decoding="async"></span><b>Sprout Hoodie</b><small>Basic</small></li><li><span class="cast-pic"><img class="char" src="../shots/characters/builder-right.webp" width="440" height="440" alt="" loading="lazy" decoding="async"></span><b>Little Site Boss</b><small>SimCity</small></li><li><span class="cast-pic"><img class="char" src="../shots/characters/seonbi-right.webp" width="440" height="440" alt="" loading="lazy" decoding="async"></span><b>Little Scholar</b><small>Joseon</small></li><li><span class="cast-pic"><img class="char char-visitor" src="../shots/characters/visitor-left.webp" width="440" height="440" alt="" loading="lazy" decoding="async"></span><b>Day Out</b><small>Roller coaster</small></li></ul>
+      </div>
     </div>
   </section>
 <script>
@@ -176,6 +196,7 @@ button.addEventListener('keydown',event=>{const step={ArrowRight:1,ArrowLeft:-1}
     </div>
   </section>
 
+  <div class="hop hop-r hop-flip" aria-hidden="true"><div class="wrap"><span class="hop-spot"><img class="char" src="../shots/characters/seonbi-right.webp" width="440" height="440" alt="" loading="lazy" decoding="async"></span></div></div>
   <section id="faq">
     <div class="wrap">
       <h2>Frequently asked questions</h2>
@@ -184,7 +205,9 @@ button.addEventListener('keydown',event=>{const step={ArrowRight:1,ArrowLeft:-1}
         <details><summary>What is a ticket?</summary><p>A ticket is a saved trip you take often. Pick a start, a destination, a departure time and the days you ride, and Syung finds routes for that time on your next riding day; the route you choose is kept on the ticket. Flip the ticket to see where you transfer and when you leave, and tickets for today are marked "Today".</p></details>
         <details><summary>Do I need to sign in?</summary><p>No. The map and route search work without signing in. Only features that save things for you, such as tickets, need you to sign in.</p></details>
         <details><summary>Where does the data come from?</summary><p>Lines, stations and timetables come from the KTDB (Korea Transport Database, The Korea Transport Institute) public transit GTFS, live train positions and arrivals from the Seoul Open Data Plaza, and the base map and track shapes from OpenStreetMap contributors (ODbL) and OpenMapTiles.</p></details>
-        <details><summary>Does it work on my phone?</summary><p>Yes. It opens right in the browser on phones and computers — nothing to install.</p></details>
+        <details><summary>Does it work on my phone?</summary><p>Yes. For now it opens right in the browser on phones and computers — nothing to install.</p></details>
+        <details><summary>Can I download the app?</summary><p>Not yet. iOS and Android apps are in the works and aren't in the app stores yet, so you can't download them today. Until then you can use the same map on the web.</p></details>
+        <details><summary>Will I have to remake my tickets in the app?</summary><p>No. Tickets are saved on the server, so they'll be there when you sign in to the app with the same account.</p></details>
       </div>
     </div>
   </section>
@@ -192,11 +215,20 @@ button.addEventListener('keydown',event=>{const step={ArrowRight:1,ArrowLeft:-1}
   <div class="end">
     <div class="wrap">
       <h2>Want to see where your train is right now?</h2>
-      <a class="cta" href="https://map.syung.novum-lab.com/"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg>Open the map</a>
-      <p class="end-soon"><span class="badge">App coming soon</span>iOS and Android apps coming soon — with departure alerts and widgets too</p>
+      <a class="cta" href="https://map.syung.novum-lab.com/"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg>Open on the web now</a>
+      <p class="end-soon"><span class="badge">App in the works</span>iOS and Android apps are in the works</p>
     </div>
   </div>
 </main>
+<script>
+/* 캐릭터는 스크롤할 때만 살짝 움직인다 — 화면에 보이는 것만 계산하고, 움직임 줄이기면 돌지 않는다 */
+(()=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+const visible=new Set();let queued=false;
+const draw=()=>{queued=false;visible.forEach(item=>{const box=item.parentElement.getBoundingClientRect();const progress=(box.top+box.height/2)/innerHeight-.5;item.style.transform=`translateY(${(progress*22).toFixed(1)}px) rotate(${(progress*-6).toFixed(2)}deg)`})};
+const watcher=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting)visible.add(entry.target);else visible.delete(entry.target)});draw()},{rootMargin:'80px'});
+document.querySelectorAll('.char').forEach(item=>watcher.observe(item));
+addEventListener('scroll',()=>{if(!queued){queued=true;requestAnimationFrame(draw)}},{passive:true})})();
+</script>
 <footer>
   <div class="wrap">
     <span>Syung</span>
