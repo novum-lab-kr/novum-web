@@ -963,3 +963,33 @@ html:lang(ja) .gl-w, html:lang(zh-Hans) .gl-w { white-space: normal; }
   .hf-node, .hf-node button, .hf-w { transition: none !important; animation: none !important; }
   .hf-js .hf-node, .hf-js .hf-w { opacity: 1; transform: none; }
 }
+
+/* 랜딩 에이전트 모니터 — 앱 AGENT MONITOR 칸의 줄 모양(시각 · 라벨 · 아이콘 · 모델 · 내용)을 사이트 토큰으로 */
+.mon { margin: 32px 0 0; border: 1px solid var(--line-2); border-radius: 10px; background: var(--bg-2); box-shadow: 0 12px 40px rgba(0, 0, 0, .35); overflow: hidden; font: 500 13px/1.9 var(--mono); }
+.mon-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+.mon-title { color: var(--muted); font-size: 11px; letter-spacing: .06em; margin-right: 4px; }
+.mon-chip { display: inline-flex; align-items: center; gap: 6px; padding: 0 10px; border: 1px solid var(--line-2); border-radius: 999px; font-size: 12px; line-height: 24px; color: var(--text); }
+.mon-chip::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.mon-chip.b::before { background: var(--blue); }
+.mon-chip.g::before { background: var(--gold); }
+.mon-chip i { font-style: normal; color: var(--muted); }
+.mon-feed { padding: 10px 14px; }
+.mon-row { display: flex; gap: 10px; white-space: nowrap; }
+.mon-row .t { flex: none; color: var(--muted); }
+.mon-row .l { flex: none; }
+.mon-row .l.b { color: var(--blue); }
+.mon-row .l.g { color: var(--gold); }
+.mon-row .i { flex: none; width: 18px; text-align: center; }
+.mon-row .m { flex: none; color: var(--muted); font-size: 11px; }
+.mon-row .x { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; color: var(--text); }
+.mon-row.say .x { color: var(--muted); }
+/* 좁은 화면 — 시각 · 라벨 한 줄, 아이콘 · 모델 · 내용 한 줄 */
+@media (max-width: 760px) {
+  .mon-row:nth-child(-n+3) { display: none; } /* 세로로 길어져 최근 4줄만 */
+  .mon-row { flex-wrap: wrap; gap: 0 8px; padding: 6px 0; line-height: 1.6; font-size: 12px; }
+  .mon-row .l { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+  .mon-row .i { order: 3; }
+  .mon-row .m { order: 3; }
+  .mon-row .x { order: 4; flex-basis: 100%; white-space: normal; overflow-wrap: anywhere; }
+  .mon-row .l { flex-basis: calc(100% - 80px); }
+}

@@ -59,7 +59,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=20261030a">
+<link rel="stylesheet" href="/assets/site.css?v=20261101a">
 <script src="/assets/analytics.js?v=20261029a" async></script>
 <script src="/assets/lang.js?v=20261030c"></script>
 <script src="/assets/motion.js?v=20261028i" defer></script>
@@ -154,11 +154,32 @@
   </div>
 </section>
 
+<section id="monitor" class="h3-sec">
+  <div class="wrap">
+    <p class="h3-num">02</p>
+    <h2 data-t="n.m.h">Watch your agents work, line by line.</h2>
+    <p class="h3-p" data-t="n.m.p">The agent monitor at the bottom of the window shows each agent's log as it happens: files read and edited, commands run and what it says along the way. Every line has the time to the second and the model that wrote it.</p>
+    <figure class="mon" role="img" aria-label="Agent monitor: chips for the web, api and athena agents above a live log. Each line shows the time in seconds, the repository and branch, and the model name, then the file, command or message." data-ta="aria-label:n.m.alt">
+      <div class="mon-head"><span class="mon-title">AGENT MONITOR</span><span class="mon-chip b">web·feat/cart-reminder <i>10 · just now</i></span><span class="mon-chip g">api·feat/orders-pagination <i>6 · just now</i></span><span class="mon-chip b">athena·main <i>5 · just now</i></span></div>
+      <div class="mon-feed">
+          <div class="mon-row say"><span class="t">14:15:02</span><span class="l b">[web·feat/cart-reminder]</span><span class="i">💬</span><span class="m">Sonnet 5.5</span><span class="x">Banner renders for returning shoppers. Now handling the empty-cart case.</span></div>
+          <div class="mon-row"><span class="t">14:15:31</span><span class="l b">[web·feat/cart-reminder]</span><span class="i">📖</span><span class="m">Sonnet 5.5</span><span class="x">src/features/cart/CartLine.tsx</span></div>
+          <div class="mon-row"><span class="t">14:17:04</span><span class="l b">[athena·main]</span><span class="i">⚙</span><span class="m">Opus 5.5</span><span class="x">Check open requests</span></div>
+          <div class="mon-row say"><span class="t">14:17:12</span><span class="l g">[api·feat/orders-pagination]</span><span class="i">💬</span><span class="m">Sonnet 5.5</span><span class="x">Still waiting for the page-size answer. Tests for the cursor are ready.</span></div>
+          <div class="mon-row"><span class="t">14:17:26</span><span class="l b">[web·feat/cart-reminder]</span><span class="i">✏️</span><span class="m">Sonnet 5.5</span><span class="x">src/features/cart/CartReminder.tsx</span></div>
+          <div class="mon-row"><span class="t">14:17:43</span><span class="l b">[web·feat/cart-reminder]</span><span class="i">📝</span><span class="m">Sonnet 5.5</span><span class="x">src/features/cart/CartReminder.test.tsx</span></div>
+          <div class="mon-row"><span class="t">14:17:58</span><span class="l b">[web·feat/cart-reminder]</span><span class="i">⚙</span><span class="m">Sonnet 5.5</span><span class="x">Run the cart tests</span></div>
+      </div>
+    </figure>
+    <p class="h3-cap" data-t="n.m.cap">Demo log. Click a chip to see only that agent's lines. The monitor shows Claude Code agents; Codex agents don't appear in it.</p>
+  </div>
+</section>
+
 <section id="questions" class="h3-sec">
   <div class="wrap">
     <div class="h3-panel h3-stack">
       <div class="h3-panel-txt">
-        <p class="h3-num">02 · <span data-t="n.q.tag">api · order history</span></p>
+        <p class="h3-num">03 · <span data-t="n.q.tag">api · order history</span></p>
         <h2 data-t="n.q.h">When an agent has a question, it shows up in Work.</h2>
         <p class="h3-p" data-t="n.q.p">Should order history show 20 or 50 items per page? The question appears in Work and a red dot shows in the menu bar. Send your answer and the agent continues.</p>
         <p class="h3-sum" data-t="n.q.sum">In the demo, 20 was chosen. The screen is the English demo.</p>
@@ -175,7 +196,7 @@
 
 <section id="code" class="h3-sec">
   <div class="wrap">
-    <p class="h3-num">03 · <span data-t="n.c.tag">web · cart reminder</span></p>
+    <p class="h3-num">04 · <span data-t="n.c.tag">web · cart reminder</span></p>
     <h2 data-t="n.c.h">See the code change beside the test results.</h2>
     <p class="h3-p" data-t="n.c.p">Read the diff next to the terminal and check the results before you merge. Automatic PR review and merging are set per repository, with an option to confirm before each merge.</p>
     <figure class="shot h3-code">
@@ -191,7 +212,7 @@
 
 <section id="start" class="h3-sec">
   <div class="wrap">
-    <p class="h3-num">04</p>
+    <p class="h3-num">05</p>
     <h2 data-t="n.k.h">It works with the coding agent you already use.</h2>
     <p class="h3-p" data-t="h.c.p">Athena Studio runs the Claude Code or Codex you already use, and adds a team lead, written plans and reviews on top.</p>
     <dl class="h3-facts">

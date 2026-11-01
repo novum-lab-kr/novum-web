@@ -59,7 +59,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=20261030a">
+<link rel="stylesheet" href="/assets/site.css?v=20261101a">
 <script src="/assets/analytics.js?v=20261029a" async></script>
 <script src="/assets/lang.js?v=20261030c"></script>
 <script src="/assets/motion.js?v=20261028i" defer></script>
@@ -154,11 +154,32 @@
   </div>
 </section>
 
+<section id="monitor" class="h3-sec">
+  <div class="wrap">
+    <p class="h3-num">02</p>
+    <h2 data-t="n.m.h">一行一行看智能体在做什么。</h2>
+    <p class="h3-p" data-t="n.m.p">窗口底部的智能体监视器实时显示每个智能体的日志：读过和改过的文件、运行的命令，以及过程中说的话。每一行都带有精确到秒的时间和写下该行的模型名称。</p>
+    <figure class="mon" role="img" aria-label="智能体监视器：上方是 web、api、athena 智能体的标签，下方实时日志的每一行显示精确到秒的时间、仓库和分支、模型名称，以及文件、命令或消息。" data-ta="aria-label:n.m.alt">
+      <div class="mon-head"><span class="mon-title">AGENT MONITOR</span><span class="mon-chip b">web·feat/cart-reminder <i>10 · just now</i></span><span class="mon-chip g">api·feat/orders-pagination <i>6 · just now</i></span><span class="mon-chip b">athena·main <i>5 · just now</i></span></div>
+      <div class="mon-feed">
+          <div class="mon-row say"><span class="t">14:15:02</span><span class="l b">[web·feat/cart-reminder]</span><span class="i">💬</span><span class="m">Sonnet 5.5</span><span class="x">Banner renders for returning shoppers. Now handling the empty-cart case.</span></div>
+          <div class="mon-row"><span class="t">14:15:31</span><span class="l b">[web·feat/cart-reminder]</span><span class="i">📖</span><span class="m">Sonnet 5.5</span><span class="x">src/features/cart/CartLine.tsx</span></div>
+          <div class="mon-row"><span class="t">14:17:04</span><span class="l b">[athena·main]</span><span class="i">⚙</span><span class="m">Opus 5.5</span><span class="x">Check open requests</span></div>
+          <div class="mon-row say"><span class="t">14:17:12</span><span class="l g">[api·feat/orders-pagination]</span><span class="i">💬</span><span class="m">Sonnet 5.5</span><span class="x">Still waiting for the page-size answer. Tests for the cursor are ready.</span></div>
+          <div class="mon-row"><span class="t">14:17:26</span><span class="l b">[web·feat/cart-reminder]</span><span class="i">✏️</span><span class="m">Sonnet 5.5</span><span class="x">src/features/cart/CartReminder.tsx</span></div>
+          <div class="mon-row"><span class="t">14:17:43</span><span class="l b">[web·feat/cart-reminder]</span><span class="i">📝</span><span class="m">Sonnet 5.5</span><span class="x">src/features/cart/CartReminder.test.tsx</span></div>
+          <div class="mon-row"><span class="t">14:17:58</span><span class="l b">[web·feat/cart-reminder]</span><span class="i">⚙</span><span class="m">Sonnet 5.5</span><span class="x">Run the cart tests</span></div>
+      </div>
+    </figure>
+    <p class="h3-cap" data-t="n.m.cap">演示日志。点击标签可只看该智能体的日志行。监视器显示 Claude Code 智能体，不显示 Codex 智能体。</p>
+  </div>
+</section>
+
 <section id="questions" class="h3-sec">
   <div class="wrap">
     <div class="h3-panel h3-stack">
       <div class="h3-panel-txt">
-        <p class="h3-num">02 · <span data-t="n.q.tag">api · 订单历史</span></p>
+        <p class="h3-num">03 · <span data-t="n.q.tag">api · 订单历史</span></p>
         <h2 data-t="n.q.h">智能体有问题时，会出现在 [工作] 里。</h2>
         <p class="h3-p" data-t="n.q.p">订单历史每页显示 20 条还是 50 条？问题会出现在“工作”里，菜单栏会出现红点。发送答案后，智能体就会继续。</p>
         <p class="h3-sum" data-t="n.q.sum">演示中选择了 20 条。界面为英文演示。</p>
@@ -175,7 +196,7 @@
 
 <section id="code" class="h3-sec">
   <div class="wrap">
-    <p class="h3-num">03 · <span data-t="n.c.tag">web · 购物车提醒</span></p>
+    <p class="h3-num">04 · <span data-t="n.c.tag">web · 购物车提醒</span></p>
     <h2 data-t="n.c.h">代码改动与测试结果并排查看。</h2>
     <p class="h3-p" data-t="n.c.p">在终端旁阅读 diff，确认验证结果后再合并。PR 自动审查与合并按仓库设置，也可以保留合并前确认。</p>
     <figure class="shot h3-code">
@@ -191,7 +212,7 @@
 
 <section id="start" class="h3-sec">
   <div class="wrap">
-    <p class="h3-num">04</p>
+    <p class="h3-num">05</p>
     <h2 data-t="n.k.h">与你已在用的编程智能体配合使用。</h2>
     <p class="h3-p" data-t="h.c.p">Athena Studio 直接运行你已在用的 Claude Code 或 Codex，并在其上加入团队负责人、书面计划和审查。</p>
     <dl class="h3-facts">
