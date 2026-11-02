@@ -101,7 +101,18 @@
 
   ready(function () {
     glowTitle();
+    // 폰 헤더 메뉴(760px 이하에서만 보인다) — 열림은 header.top 의 .hm-open · 버튼 aria-expanded
+    const header = document.querySelector('header.top');
+    const menuButton = header?.querySelector('.hm-btn');
+    const setMenu = (open) => {
+      if (!menuButton) return;
+      header.classList.toggle('hm-open', open);
+      menuButton.setAttribute('aria-expanded', String(open));
+    };
     document.addEventListener('click', function (e) {
+      // 메뉴 버튼은 여닫고, 열린 메뉴 바깥을 누르면 닫는다
+      if (menuButton && menuButton.contains(e.target)) setMenu(!header.classList.contains('hm-open'));
+      else if (header?.classList.contains('hm-open') && !e.target.closest('.hm-panel')) setMenu(false);
       // 언어 링크: 고른 언어를 기억하고 같은 페이지의 그 언어 주소로(#절 유지). JS 가 없어도 href 로 간다
       var b = e.target.closest('[data-set-lang]');
       if (b) {
@@ -119,6 +130,12 @@
     });
     document.addEventListener('keydown', function (e) {
       if (e.key !== 'Escape') return;
+      if (header?.classList.contains('hm-open')) {
+        // 메뉴 안에 있던 포커스는 메뉴 버튼으로 돌려준다
+        const hadFocus = header.querySelector('.hm-panel').contains(document.activeElement);
+        setMenu(false);
+        if (hadFocus) menuButton.focus();
+      }
       var open = document.querySelectorAll('details.lang[open]');
       for (var i = 0; i < open.length; i++) {
         // 목록 안에 있던 키보드 포커스는 지구본 버튼으로 돌려준다(닫힌 목록에 갇히지 않게)

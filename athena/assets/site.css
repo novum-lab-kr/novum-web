@@ -122,6 +122,150 @@ header.top nav .btn.gold:focus-visible {
 .lang-menu a[aria-current="true"] { color: var(--text); }
 .lang-menu a[aria-current="true"]::after { content: "✓"; color: var(--gold); }
 
+/* 폰 헤더 메뉴(760px 이하) — 기능 · 문서 · 업데이트 내역 · 다운로드를 메뉴 버튼 아래 색인으로. 지구본은 헤더에 남는다.
+   2026-11-02 Codex 안 4 "우측 색인" 그대로(사용자 요청으로 헤더 메뉴 버튼 테두리 · 바탕색 뺌). 여닫기 · Esc · 바깥 클릭은 lang.js */
+@media (max-width: 760px) { header.top nav > .btn.gold { display: none; } }
+.hm-btn,
+.hm-panel {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  header.top .hm-btn {
+    appearance: none;
+    position: relative;
+    display: block;
+    flex: 0 0 34px;
+    width: 34px;
+    height: 34px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    color: var(--text);
+    cursor: pointer;
+  }
+
+  .hm-btn .hm-stroke {
+    position: absolute;
+    right: 7px;
+    height: 1px;
+    background: currentColor;
+    transform-origin: center;
+    transition: transform .16s ease, width .16s ease;
+  }
+
+  .hm-btn .hm-stroke:first-child {
+    top: 12px;
+    width: 18px;
+  }
+
+  .hm-btn .hm-stroke:last-child {
+    top: 20px;
+    width: 12px;
+  }
+
+  header.top.hm-open .hm-btn {
+    color: var(--gold);
+  }
+
+  header.top.hm-open .hm-btn .hm-stroke:first-child {
+    transform: translateY(4px) rotate(45deg);
+  }
+
+  header.top.hm-open .hm-btn .hm-stroke:last-child {
+    width: 18px;
+    transform: translateY(-4px) rotate(-45deg);
+  }
+
+  header.top .hm-panel {
+    position: absolute;
+    inset: calc(100% + 8px) 16px auto auto;
+    z-index: 51;
+    width: min(248px, calc(100vw - 32px));
+    max-height: calc(100vh - 84px);
+    max-height: calc(100dvh - 84px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 6px 14px;
+    border: 1px solid var(--line-2);
+    border-top: 2px solid var(--gold);
+    border-radius: 0;
+    background: var(--bg-2);
+    box-shadow: none;
+  }
+
+  header.top.hm-open .hm-panel {
+    display: block;
+  }
+
+  header.top .hm-links {
+    display: grid;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  header.top .hm-links > a {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    min-height: 52px;
+    margin: 0;
+    padding: 12px 6px;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    border-radius: 0;
+    background: none;
+    color: var(--text);
+    font: 500 14px/1.5 var(--mono);
+    text-decoration: none;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  header.top .hm-links > a:last-child {
+    border-bottom: 0;
+  }
+
+  header.top .hm-links > a.hm-dl-item {
+    color: var(--gold);
+  }
+
+  header.top .hm-links > a[aria-current="page"] {
+    padding-left: 12px;
+    box-shadow: inset 2px 0 var(--gold);
+  }
+
+  .hm-btn:focus-visible {
+    outline: 2px solid var(--gold-2);
+    outline-offset: 3px;
+  }
+
+  header.top .hm-links > a:focus-visible {
+    outline: 2px solid var(--gold-2);
+    outline-offset: -2px;
+    background: var(--panel-2);
+  }
+}
+
+@media (max-width: 760px) and (hover: hover) {
+  .hm-btn:hover {
+    color: var(--gold);
+  }
+
+  header.top .hm-links > a:hover {
+    background: var(--panel-2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hm-btn .hm-stroke {
+    transition: none;
+  }
+}
+
 /* 버튼 */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
