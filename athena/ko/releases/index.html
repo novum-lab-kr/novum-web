@@ -73,12 +73,17 @@
      항목의 버전 = 그 변경이 들어간 태그(athena-studio 태그마다 커밋 하나 — git log vA..vB). 여러 버전에 걸친 변경은 버전마다 나눠 적는다(2026-11-02 상세 버전으로 다시 씀).
      핵심에 내부 용어(현황판 · pane 번호 · 계획서 등)를 넣지 않는다. 사실은 CHANGELOG · 릴리스 본문 · 그 커밋에 있는 것만 — 지어 넣지 않는다.
      공개판 사이의 비공개 판은 그 변경이 처음 들어간 공개판에 묶는다(v0.15.8 = v0.15.0 – v0.15.8 · v0.17.6 = v0.15.9 – v0.17.6 · v0.19.2 = v0.17.7 – v0.19.2 · v0.25.1 = v0.19.3 – v0.25.1 · v0.28.7 = v0.25.2 – v0.28.7 · v0.32.4 = v0.28.8 – v0.32.4 · v0.40.3 = v0.32.5 – v0.40.3 · v0.42.2 = v0.40.4 – v0.42.2 · v0.46.4 = v0.42.3 – v0.46.4 · 0.47 = v0.47.0 –).
-     0.47 은 공개판 v0.47.19 뒤 v0.47.20 – v0.47.27 도 실었다(더 보기 링크는 공개판 v0.47.19 그대로).
+     0.47 은 공개판 v0.47.19 뒤 v0.47.20 – v0.47.28 도 실었다(더 보기 링크는 공개판 v0.47.19 그대로).
      새 버전: 그 묶음 맨 위에 같은 모양으로 더하고 키를 ko · ja · zh 사전에 모두 넣는다. 새 공개판이면 묶음을 맨 위에 더한다. 0.2 – 0.13 은 공개 전 개발판이라 한 줄(접힘) 그대로 -->
 <section style="padding-top:0">
   <div class="wrap">
-    <div class="rel"><div class="v"><b>0.47</b><span>v0.47.0 – v0.47.27<br><span data-t="r.d47">2026년 11월 1–2일</span></span></div><div>
+    <div class="rel"><div class="v"><b>0.47</b><span>v0.47.0 – v0.47.28<br><span data-t="r.d47">2026년 11월 1–2일</span></span></div><div>
       <h3 class="rel-t" data-t="r.47t">앱이나 코어를 업데이트해도 pane 이 닫히지 않습니다.</h3>
+      <div class="rel-ver"><h4 class="rel-vh">v0.47.28</h4>
+      <ul>
+      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.47k23">쉬는 에이전트 pane 에 새 일을 이어 보낼 때, 그 pane 이 실제로 일하던 작업 폴더에서 새 브랜치를 땁니다. 그 폴더가 레포의 원본 폴더(메인 체크아웃)면 거부합니다.</span></li>
+      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.47k24">다른 pane 이 대화로 대신 답한 질문은 묻던 pane 에 답이 들어갑니다.</span></li>
+      </ul></div>
       <div class="rel-ver"><h4 class="rel-vh">v0.47.27</h4>
       <ul>
       <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.47k22">pane 머리줄을 끌어 같은 탭의 다른 pane 위에 놓으면 그 자리로 옮겨집니다. 포인터에 가까운 위 · 아래 · 왼쪽 · 오른쪽에 들어가고, 놓을 자리를 미리 보여 줍니다. pane 안에서 돌던 프로그램은 끊기지 않고, Esc 로 취소할 수 있습니다.</span></li>
