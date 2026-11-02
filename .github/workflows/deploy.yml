@@ -8,6 +8,7 @@ on:
     paths-ignore: ['docs/**', 'README.md']
   pull_request:
     paths-ignore: ['docs/**', 'README.md']
+  # athena-handoff.yml 이 머지 뒤 여기로 부른다 — 기본 토큰으로 한 머지 push 는 위 push 를 시작하지 않는다
   workflow_dispatch:
 
 # main 배포는 한 줄로 차례대로, PR 검사는 PR 마다 따로(슝 deploy.yml 과 같은 방식)
