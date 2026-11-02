@@ -62,11 +62,11 @@ img{display:block;max-width:100%;height:auto}
 .a-sheet::after{content:"";position:absolute;right:calc(154px + clamp(76px,9vw,130px)/2);bottom:-11px;width:24px;height:24px;border-radius:0 0 6px 0;background:var(--paper);box-shadow:3px 3px 0 rgba(0,0,0,.1);transform:rotate(45deg)}
 @media (max-width:700px){
   .a-hero{height:calc(100svh - 64px)}
-  .a-sheet{right:12px;bottom:40px;width:calc(100% - 24px);padding:16px 16px 18px;border-radius:22px}
+  .a-sheet{right:12px;bottom:104px;width:calc(100% - 24px);padding:16px 16px 18px;border-radius:22px}
   .a-sheet .tag,.a-sheet p{display:none}
   .a-sheet h1{font-size:22px}
   .a-chips{left:12px;right:12px;top:12px}
-  .a-sheet::after{right:28px}
+  .a-sheet::after{right:40px}
   .a-chips li{font-size:15px;padding:7px 12px}
 }
 
@@ -153,7 +153,8 @@ h2{margin:0 0 8px;font-family:var(--round);font-weight:400;font-size:clamp(26px,
 /* 첫 화면 새싹: 지도와 노란 절 경계에 걸치고, 바로 위 말풍선 카드가 꼬리로 가리킨다 */
 .hop-hero .wrap{max-width:none;padding:0}
 .hop-hero .hop-spot{right:190px;bottom:-34px}
-@media (max-width:700px){.hop-hero .hop-spot{right:6px;bottom:-62px;width:92px}}
+/* 폰: 새싹이 지도 위(카드 아래 빈 자리)에 올라와 한 화면에 말풍선과 함께 보인다 */
+@media (max-width:700px){.hop-hero .hop-spot{right:6px;bottom:6px;width:92px}}
 /* 넓은 화면의 오른쪽 캐릭터는 절 경계에 걸친다(그 자리엔 글이 없다). 좁으면 윗절 아래 여백 안에 선다 */
 @media (min-width:900px){.hop-r .hop-spot{bottom:-66px}}
 /* 좁은 화면 선비 — 칩 글자를 가리지 않게 경계 아래로 더 내린다 */
