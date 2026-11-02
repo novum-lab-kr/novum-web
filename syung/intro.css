@@ -51,14 +51,14 @@ img{display:block;max-width:100%;height:auto}
 .a-hero{position:relative;height:calc(100svh - 64px);min-height:520px;max-height:960px;overflow:hidden;background:var(--control)}
 .a-hero picture,.a-hero img,.a-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:0;display:block}
 .a-vid{opacity:0;transition:opacity .5s}.a-vid.on{opacity:1}
-.a-sheet{position:absolute;right:24px;bottom:112px;width:min(400px,calc(100% - 48px));padding:22px 22px 24px;border-radius:26px;background:var(--paper);color:var(--ink);box-shadow:var(--shadow-edge),0 16px 40px rgba(0,0,0,.26)}
+.a-sheet{position:absolute;right:24px;bottom:calc(clamp(76px,9vw,130px) + 44px);width:min(400px,calc(100% - 48px));padding:22px 22px 24px;border-radius:26px;background:var(--paper);color:var(--ink);box-shadow:var(--shadow-edge),0 16px 40px rgba(0,0,0,.26)}
 .a-sheet .tag{margin:0 0 12px}
 .a-sheet h1,.a-sheet h2{margin:0;font:400 clamp(26px,3.2vw,34px)/1.25 var(--round)}
 .a-sheet p{margin:10px 0 0;color:var(--secondary);font-size:16px}
 .a-chips{position:absolute;left:24px;top:24px;right:24px;display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
 .a-chips li{padding:8px 14px;border-radius:999px;background:var(--paper);box-shadow:var(--shadow-edge);font:400 17px/1 var(--round);color:var(--ink)}
 .a-chips li:first-child{background:var(--syung)}
-/* 카드는 새싹의 말풍선: 꼬리가 아래의 새싹을 가리킨다(휴대폰은 카드 위의 새싹) */
+/* 카드는 새싹의 말풍선: 꼬리가 아래의 새싹을 가리킨다(카드 bottom 은 새싹 키 + 44px — 휴대폰은 아래 별도 값) */
 .a-sheet::after{content:"";position:absolute;right:calc(154px + clamp(76px,9vw,130px)/2);bottom:-11px;width:24px;height:24px;border-radius:0 0 6px 0;background:var(--paper);box-shadow:3px 3px 0 rgba(0,0,0,.1);transform:rotate(45deg)}
 @media (max-width:700px){
   .a-hero{height:calc(100svh - 64px)}
@@ -150,9 +150,9 @@ h2{margin:0 0 8px;font-family:var(--round);font-weight:400;font-size:clamp(26px,
 .hop .wrap{position:relative;height:0}
 .hop-spot{position:absolute;bottom:-12px;width:clamp(76px,9vw,130px);aspect-ratio:1}
 .hop-flip .hop-spot{transform:scaleX(-1)}
-/* 첫 화면 새싹: 지도와 노란 절 경계에 걸치고, 바로 위 말풍선 카드가 꼬리로 가리킨다 */
+/* 첫 화면 새싹: 지도 위(절 경계 바로 위)에 서고, 바로 위 말풍선 카드가 꼬리로 가리킨다 */
 .hop-hero .wrap{max-width:none;padding:0}
-.hop-hero .hop-spot{right:190px;bottom:-34px}
+.hop-hero .hop-spot{right:190px;bottom:6px}
 /* 폰: 새싹이 지도 위(카드 아래 빈 자리)에 올라와 한 화면에 말풍선과 함께 보인다 */
 @media (max-width:700px){.hop-hero .hop-spot{right:6px;bottom:6px;width:92px}}
 /* 넓은 화면의 오른쪽 캐릭터는 절 경계에 걸친다(그 자리엔 글이 없다). 좁으면 윗절 아래 여백 안에 선다 */
