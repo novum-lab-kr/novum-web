@@ -144,6 +144,7 @@
     <div class="doc-toc-in">
         <a href="#before" data-t="doc.n.before">インストールの前に</a>
         <a href="#install" data-t="doc.n.install">インストールして開く</a>
+        <a href="#pack" data-t="doc.pk.label">パックとは</a>
         <a href="#setup" data-t="s.label">初回設定</a>
         <a href="#workflow" data-t="doc.n.workflow">最初の作業</a>
         <a href="#app" data-t="doc.n.app">アプリの各部</a>
@@ -168,6 +169,14 @@
       <li><b>Node.js</b><span data-t="d.r4p">Athena アプリは Node 24.22.1 を使用します。</span></li>
       <li><b data-t="d.r5">GitHub</b><span data-t="d.r5p">リポジトリへのアクセス。プルリクエストと自動レビューには <a href="https://cli.github.com" target="_blank" rel="noopener">gh CLI</a> が必要です。</span></li>
       </ul>
+  <h3 class="doc-h3" data-t="doc.b.prep.h">最初の設定の前に準備するもの</h3>
+  <ol class="h3-steps-list">
+    <li data-t="doc.b.prep1"><b>エージェントにサインインします。</b> Claude Code か Codex をインストールし、ご自身のアカウントでサインインしておきます。Athena Studio は Claude Code があればそれを、なければ Codex を起動します。</li>
+    <li data-t="doc.b.prep2"><b>GitHub にサインインします。</b> gh CLI をインストールして <code>gh auth login</code> を実行します。これがないと Athena はプルリクエストを作れません。</li>
+    <li data-t="doc.b.prep3"><b>リポジトリを用意します。</b> ホームフォルダの下に clone しておきます。Athena は 3 階層下のフォルダまで探すので、チームや会社のフォルダにまとめていても大丈夫です。担当しないリポジトリはなくてもかまいません。</li>
+    <li data-t="doc.b.prep4"><b>nvm で Node を、そしてパッケージマネージャーをインストールします。</b> チェックは各リポジトリの <code>.nvmrc</code> にある Node のバージョンと、リポジトリの lock ファイルに合わせた npm・pnpm・yarn のいずれかで動きます。</li>
+    <li data-t="doc.b.prep5"><b>リポジトリごとに <code>.env</code> を作ります。</b> そのリポジトリの案内どおりに作ってください。Athena が作業ごとのワークツリーに <code>.env*</code> ファイルをコピーします。</li>
+  </ol>
 </section>
 
 <section class="doc-sec" id="install">
@@ -181,10 +190,41 @@
   </ol>
 </section>
 
+<section class="doc-sec" id="pack">
+  <p class="doc-label" data-t="doc.pk.label">パックとは</p>
+  <h2 data-t="doc.pk.h">パックには、Athena があなたのリポジトリについて知っていることが入ります。</h2>
+  <p class="doc-p" data-t="doc.pk.p">Athena 本体(コア)はアプリに含まれています。作業の流れ・フック・作業リスト・学習・共通ルールがここにあり、会社のことは知りません。あなたのリポジトリに関することはすべてパックに入ります。</p>
+  <h3 class="doc-h3" data-t="doc.pk.in.h">パックの中身</h3>
+  <dl class="doc-dl">
+      <div><dt data-t="doc.pk.i1t">リポジトリ一覧</dt><dd data-t="doc.pk.i1">リポジトリごとの本番ブランチと PR の向き先、PR の自動レビューなどの設定。</dd></div>
+      <div><dt data-t="doc.pk.i2t">ルーティング表</dt><dd data-t="doc.pk.i2">どの依頼をどのリポジトリ・エージェントに送るか、チェックのコマンド、会社のスキル。</dd></div>
+      <div><dt data-t="doc.pk.i3t">エージェント</dt><dd data-t="doc.pk.i3">リポジトリごとに担当エージェントのプロフィールが 1 つ。</dd></div>
+      <div><dt data-t="doc.pk.i4t">ナレッジ</dt><dd data-t="doc.pk.i4">リポジトリごとのノート(ルール・構造・パターン・作業手順・落とし穴)。会社の慣習と学習した内容も。</dd></div>
+      <div><dt data-t="doc.pk.i5t">チェックスクリプト</dt><dd data-t="doc.pk.i5">リポジトリごとに検証スクリプトが 1 つ。</dd></div>
+      <div><dt data-t="doc.pk.i6t">ドキュメントとアーカイブ</dt><dd data-t="doc.pk.i6">サービス概要、会社の案内文書とスクリプト、コードのベースライン、完了した作業。</dd></div>
+  </dl>
+  <div class="doc-three">
+    <div><b data-t="doc.pk.sep.h">コードとは別</b><span data-t="doc.pk.sep.p">リポジトリは元のフォルダにあり、パックはリンクするだけです。パックを削除するときは先にバックアップし、リポジトリのフォルダはそのまま残します。</span></div>
+    <div><b data-t="doc.pk.share.h">チームと共有</b><span data-t="doc.pk.share.p">パックを書き出すと、チームメンバーはアーカイブ・フォルダ・git リポジトリから取り込めます。あなたの Mac 上のリポジトリの場所は含まれません。</span></div>
+    <div><b data-t="doc.pk.many.h">複数のパック</b><span data-t="doc.pk.many.p">パックごとに Athena フォルダと作業リストが別にあるので、複数のパックを同時に開けます。別のパックを開いている間も、このパックのエージェントは作業を続け、パック同士は混ざりません。</span></div>
+  </div>
+  <p class="doc-note" data-t="doc.pk.note">切り替え・作成・取り込み・書き出しは、タブバー左のパック名(⌘⇧P)から行います。</p>
+</section>
+
 <section class="doc-sec" id="setup">
   <p class="doc-label" data-t="s.label">初回設定</p>
   <h2 data-t="s.h">初回設定: Athena がリポジトリを把握します</h2>
   <p class="doc-p" data-t="s.p">パックを作ると、Athena が設定を代わりに進めます。コードは読むだけです。</p>
+  <h3 class="doc-h3" data-t="doc.su.do.h">手順</h3>
+  <ol class="h3-steps-list">
+    <li data-t="doc.su.do1"><b>[新しいパックを作成] を押します。</b> スタート画面と、タブバー左のパックメニューにあります。入力する欄はありません。Athena Studio が空のパックとそのパック専用の Athena フォルダを作り、ウィンドウをそのパックに切り替えます。</li>
+    <li data-t="doc.su.do2"><b>Athena の起動を待ちます。</b> athena ワークスペースで Claude Code(なければ Codex)が起動し、最初の設定を自動で始めます。Claude Code では <code>/setup</code> と入力しても始められます。Codex は最初に、このフォルダとフックを信頼するかを一度だけ尋ねます。どちらもなければ、どちらかをインストールして athena ワークスペースで起動してください。</li>
+    <li data-t="doc.su.do3"><b>リポジトリを選びます。</b> Athena がこの Mac のリポジトリを探し、見つけた順にすべてコンソールに表示します。入れるものにチェックを付け(一番上の「すべて」で全部)、確定します。</li>
+    <li data-t="doc.su.do4"><b>いくつかの質問に答えます。</b> 会社名(英小文字。パックのフォルダ名になります)と、サービスやブランドを指す名前。リポジトリの本番ブランチ・PR の向き先・種類・層のうち推定が誤っているもの。エージェント名(既定はリポジトリ名に -fe か -be)。そして PR の自動レビューとマージを有効にするリポジトリ。既定ではどれも有効にせず、あとから設定で変えられます。</li>
+    <li data-t="doc.su.do5"><b>Athena が読むのを待ちます。</b> リポジトリごとにエージェントを用意し、それぞれの本番ブランチを読んで、ルール・構造ノート・ルーティング表・サービス概要を書きます。確認できなかったことは推測せず「要確認」として残します。</li>
+    <li data-t="doc.su.do6"><b>任意の質問が 2 つ。</b> サービスのフロー文書と QA チェックの下書きを今書くか、あとにするか。リポジトリに入るファイルなので、コミットはあなたが頼んだときだけです。もう 1 つは TypeSafe Jev キーがあるか。あれば開いた入力 pane に貼り付け、チャットには入れません。なくてもすべてそのまま動きます。</li>
+    <li data-t="doc.su.do7"><b>報告を読みます。</b> Athena が各リポジトリのチェックを一度実行し、コードのベースラインを取ったあと、作ったもの・チェック結果・まだ確認が必要なものを報告します。</li>
+  </ol>
   <div class="doc-three">
     <div class="you"><b data-t="doc.su.you.h">あなたが確認すること</b><span data-t="doc.su.you.p">入れるリポジトリ、会社名、エージェント名、自動レビューを有効にするリポジトリ。推定の誤りはここで直します。</span></div>
     <div><b data-t="doc.su.ath.h">Athena が用意するもの</b><span data-t="doc.su.ath.p">リポジトリごとのエージェント(ルール・ノート付き)、ルーティング表、QA チェック、コードのベースライン。リポジトリは変更せず、インストールや fetch の前には確認します。</span></div>
@@ -340,6 +380,22 @@
           <li data-t="s.7">必要ならサービスごとに構成図・画面マップ・リクエストの流れの図を描きます。</li>
         </ol>
   </details>
+  <h3 class="doc-h3" data-t="doc.su.no.h">最初の設定で Athena がしないこと</h3>
+  <ul class="doc-ul">
+    <li data-t="doc.su.no1">リポジトリを変更しません。本番ブランチを読むだけです。</li>
+    <li data-t="doc.su.no2">確認せずにインストールしません。コードのベースラインのために fetch するときも先に知らせます。</li>
+    <li data-t="doc.su.no3">選んでいないリポジトリで PR の自動レビューやマージを有効にしません。</li>
+    <li data-t="doc.su.no4">キーやトークンをチャットで受け取りません。</li>
+  </ul>
+  <h3 class="doc-h3" data-t="doc.su.first.h">最初の依頼</h3>
+  <p class="doc-p" data-t="doc.su.first.p">報告が届いたら、athena ワークスペースでしたいことを普段の言葉で書きます。まず「状況を教えて」と頼んでみてください。リポジトリごとのブランチと変更状況が表示されます。そのあと実際の作業を頼みます。その後の流れは<a href="#workflow">次の節</a>にあります。</p>
+  <h3 class="doc-h3" data-t="doc.su.stuck.h">最初の設定で詰まったら</h3>
+  <dl class="doc-dl">
+      <div><dt data-t="doc.su.st1q">リポジトリが見つからない</dt><dd data-t="doc.su.st1a">そのリポジトリがあるフォルダを Athena に伝えてください。その下 3 階層まで探します。</dd></div>
+      <div><dt data-t="doc.su.st2q">エージェントが pane に開かない</dt><dd data-t="doc.su.st2a">Athena Studio のウィンドウ内、athena ワークスペースで claude か codex を起動したか確認します。普通のターミナルでは、何を実行するかの案内だけになります。</dd></div>
+      <div><dt data-t="doc.su.st3q">チェックが ❌ またはスキップになる</dt><dd data-t="doc.su.st3a">最初の設定ではこれを合格とみなさず「要確認」として残します。依存関係をまだインストールしていない場合などです。インストールは Athena が先に確認します。</dd></div>
+      <div><dt data-t="doc.su.st4q">Node のバージョン警告が出る</dt><dd data-t="doc.su.st4a">そのリポジトリのフォルダで <code>nvm use</code> を実行します。</dd></div>
+  </dl>
   <p class="doc-note" data-t="doc.su.imp">チームから受け取ったパックがあれば、[ファイル → パックを取り込む…] でアーカイブ・パックフォルダ・git リポジトリを選びます。</p>
 </section>
 

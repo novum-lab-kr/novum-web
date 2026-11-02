@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title data-t="f.title">機能 — Athena Studio</title>
-<meta name="description" data-ta="content:f.desc" content="ワークスペース、エージェントモニター、作業、pane の詳細、決定コンソール、Explorer、PR 自動レビュー、メニューバー、パック、4 つの言語。Athena Studio のすべての機能。">
+<meta name="description" data-ta="content:f.desc" content="ワークスペース、エージェントの動き方(ルーティング・計画書・git ワークツリー・作業リスト・検証・保護フック)、エージェントモニター、作業、pane の詳細、決定コンソール、Explorer、PR 自動レビュー、メニューバー、パック、4 つの言語。">
 <meta property="og:title" content="機能 — Athena Studio">
-<meta property="og:description" content="ワークスペース、エージェントモニター、作業、pane の詳細、決定コンソール、Explorer、PR 自動レビュー、メニューバー、パック、4 つの言語。Athena Studio のすべての機能。">
+<meta property="og:description" content="ワークスペース、エージェントの動き方(ルーティング・計画書・git ワークツリー・作業リスト・検証・保護フック)、エージェントモニター、作業、pane の詳細、決定コンソール、Explorer、PR 自動レビュー、メニューバー、パック、4 つの言語。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://athena.novum-lab.com/ja/features/">
 <meta property="og:image" content="https://athena.novum-lab.com/assets/og.jpg">
@@ -67,6 +67,7 @@
     <p class="lead" data-t="f.lead2">アプリの各部分の役割です。手順ごとの使い方は<a href="/ja/docs/#workflow">ドキュメント</a>にあります。</p>
     <div class="toc">
       <a href="#workspaces" data-t="f.ws.label">ワークスペース</a>
+      <a href="#how" data-t="f.hw.l">エージェントの動き方</a>
       <a href="#status" data-t="f.g2.l">進捗と質問</a>
       <a href="#decisions" data-t="f.g3.l">決定とコード</a>
       <a href="#review" data-t="f.g4.l">レビューと学習</a>
@@ -97,6 +98,24 @@
         </ul>
       </div>
       <figure class="shot"><img data-lang-src="/assets/shots/workspace-{l}" src="/assets/shots/workspace-ja.webp" srcset="/assets/shots/workspace-ja-1200.webp 1200w, /assets/shots/workspace-ja.webp 2400w" sizes="(max-width: 1180px) 100vw, 1140px" width="2400" height="1350" alt="Athena Studio のウィンドウ。左にワークスペース、中央で Athena と Web エージェントが並んで作業し、下にエージェントモニター。" data-ta="alt:h.hero.alt"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="feat" id="how">
+  <span id="routing" class="anchor"></span><span id="plans" class="anchor"></span><span id="worktrees" class="anchor"></span><span id="board" class="anchor"></span><span id="checks" class="anchor"></span><span id="guards" class="anchor"></span>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label" data-t="f.hw.l">エージェントの動き方</div>
+      <h2 data-t="f.hw.h">依頼からマージまで、すべてのエージェントが守るルール。</h2>
+    </div>
+    <div class="quad q3">
+      <div><h3 data-t="f.hw.rt.h">ルーティングとリポジトリごとの担当エージェント</h3><p data-t="f.hw.rt.p">パックのルーティング表が、リポジトリごとの担当エージェントを決めます。Athena はこの表で依頼を分け、エージェントは始める前に自分のリポジトリのルール・構成・ノートを読みます。リポジトリをまたぐ作業は共有パッケージとバックエンドから順に、互いに関係のない作業は同時に進めます。</p></div>
+      <div><h3 data-t="f.hw.pl.h">すべての変更に計画書</h3><p data-t="f.hw.pl.p">計画書なしには何も変えません。依頼にやることがすべて書いてあれば、短い計画書で足ります。あなたが決めることがある、または複数のリポジトリをそろえる必要があるときは、Athena が決定コンソール付きの正式な計画書を書き、あなたが確定するまで待ちます。計画書ごとにチェックポイントがあり、新しいセッションは止まったところから続けます。</p></div>
+      <div><h3 data-t="f.hw.wt.h">作業ごとに git ワークツリー</h3><p data-t="f.hw.wt.p">エージェントが始める前に、Athena は基準ブランチから新しいブランチを切り、その作業専用のワークツリー、つまり切り離した作業フォルダで開きます。メインのチェックアウトとコミットしていない変更は、リポジトリが散らかっていてもそのまま残り、複数の作業が並んで進みます。</p></div>
+      <div><h3 data-t="f.hw.bd.h">作業リスト</h3><p data-t="f.hw.bd.p"><kbd>⌘</kbd><kbd>2</kbd> を押すとブラウザで作業リストが開きます。解決する課題(課題ごとに開始ボタン)、QA の結果、学習、指標、アーカイブがあります。計画書の PR がマージされると作業リストがその計画書を完了にし、終わった作業はアーカイブに移ります。作業リストは今のところ韓国語のみです。</p></div>
+      <div><h3 data-t="f.hw.ck.h">検証は最後に 1 回</h3><p data-t="f.hw.ck.p">作業中、エージェントは変えた部分だけを確かめます。全体の検証は作業をコミットするときに 1 回だけ回り、回っていない検証を通ったとは報告しません。リポジトリごとに、この検証を GitHub Actions に渡せます。検証 → 基準ブランチへマージ → デプロイまで進み、失敗するとその作業をしたエージェントに戻ります。</p></div>
+      <div><h3 data-t="f.hw.gd.h">保護フック</h3><p data-t="f.hw.gd.p">エージェントのセッションには、git commit・push・<code>gh pr create</code>・<code>git add -A</code> を直接実行させないフックがかかっています。コミットと push は、指定したファイルだけを扱う Athena のスクリプトからのみ行います。シークレットガードは、トークンやキーを出力するよくある方法も止めます。</p></div>
     </div>
   </div>
 </section>
@@ -172,6 +191,7 @@
           <li data-t="f.rv.l2">マージは 自動・確認後([作業] で確認)・手動(自分でマージ)から選べます</li>
           <li data-t="f.rv.l3">役割ごとにモデルを選択。エージェントからレビュアーまで</li>
           <li data-t="f.rv.l4">レビュー結果とマージは計画書とプルリクエストに記録</li>
+          <li data-t="f.rv.l6">Claude と Codex が並んでレビューし、両方が承認したときだけマージします。Codex がなければ Claude が別のモデルで 2 回見ます。小さな PR はレビュー 1 回で素早く済ませます</li>
           <li data-t="f.rv.l5">自動 PR をオフにすると、プルリクエストとレビューを省き、作業ブランチを基準ブランチへ直接マージします。マージ設定はそのまま従います</li>
         </ul>
       </div>

@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title data-t="f.title">Features — Athena Studio</title>
-<meta name="description" data-ta="content:f.desc" content="Workspaces, agent monitor, Work, pane details, decision console, Explorer, automatic PR review, menu bar, packs and four languages: everything in Athena Studio.">
+<meta name="description" data-ta="content:f.desc" content="Workspaces, how agents work (routing, plans, git worktrees, work board, checks, guard hooks), agent monitor, Work, pane details, decision console, Explorer, automatic PR review, menu bar, packs and four languages.">
 <meta property="og:title" content="Features — Athena Studio">
-<meta property="og:description" content="Workspaces, agent monitor, Work, pane details, decision console, Explorer, automatic PR review, menu bar, packs and four languages: everything in Athena Studio.">
+<meta property="og:description" content="Workspaces, how agents work (routing, plans, git worktrees, work board, checks, guard hooks), agent monitor, Work, pane details, decision console, Explorer, automatic PR review, menu bar, packs and four languages.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://athena.novum-lab.com/features/">
 <meta property="og:image" content="https://athena.novum-lab.com/assets/og.jpg">
@@ -67,6 +67,7 @@
     <p class="lead" data-t="f.lead2">What each part of the app does. For step-by-step use, see the <a href="/docs/#workflow">Docs</a>.</p>
     <div class="toc">
       <a href="#workspaces" data-t="f.ws.label">Workspaces</a>
+      <a href="#how" data-t="f.hw.l">How agents work</a>
       <a href="#status" data-t="f.g2.l">Progress and questions</a>
       <a href="#decisions" data-t="f.g3.l">Decisions and code</a>
       <a href="#review" data-t="f.g4.l">Review and learning</a>
@@ -97,6 +98,24 @@
         </ul>
       </div>
       <figure class="shot"><img data-lang-src="/assets/shots/workspace-{l}" src="/assets/shots/workspace-en.webp" srcset="/assets/shots/workspace-en-1200.webp 1200w, /assets/shots/workspace-en.webp 2400w" sizes="(max-width: 1180px) 100vw, 1140px" width="2400" height="1350" alt="Athena Studio window: workspaces on the left, Athena and a web agent working side by side, and the agent monitor below." data-ta="alt:h.hero.alt"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="feat" id="how">
+  <span id="routing" class="anchor"></span><span id="plans" class="anchor"></span><span id="worktrees" class="anchor"></span><span id="board" class="anchor"></span><span id="checks" class="anchor"></span><span id="guards" class="anchor"></span>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label" data-t="f.hw.l">How agents work</div>
+      <h2 data-t="f.hw.h">The rules every agent follows, from request to merge.</h2>
+    </div>
+    <div class="quad q3">
+      <div><h3 data-t="f.hw.rt.h">Routing and an agent per repository</h3><p data-t="f.hw.rt.p">The pack's routing table maps each repository to its agent. Athena uses it to split a request, and each agent reads its repository's rules, structure and notes before it starts. Work that crosses repositories goes in order, shared packages and the backend first; independent work runs at the same time.</p></div>
+      <div><h3 data-t="f.hw.pl.h">A plan for every change</h3><p data-t="f.hw.pl.p">Nothing changes without a plan file. A short plan is enough when your request already says what to do. When something is yours to decide, or several repositories must line up, Athena writes a full plan with a decision console and waits for you to confirm. Each plan keeps a checkpoint, so a new session picks up where the last one stopped.</p></div>
+      <div><h3 data-t="f.hw.wt.h">A git worktree for each task</h3><p data-t="f.hw.wt.p">Before an agent starts, Athena creates a new branch from your base branch in its own worktree: a separate working folder for that task. Your main checkout and its uncommitted changes stay as they are, even when the repository is messy, and several tasks run side by side.</p></div>
+      <div><h3 data-t="f.hw.bd.h">Work board</h3><p data-t="f.hw.bd.p">Press <kbd>⌘</kbd><kbd>2</kbd> to open the work board in your browser: issues to fix, each with a Start button, QA results, learning, metrics and the archive. When a plan's pull requests merge, the board marks it done, and finished work moves to the archive. The work board is in Korean for now.</p></div>
+      <div><h3 data-t="f.hw.ck.h">Checks once, at the end</h3><p data-t="f.hw.ck.p">While working, agents check only the parts they changed. The full verification runs once when the work is committed, and a check that didn't run is never reported as passed. A repository can hand that run to GitHub Actions: verify, merge into the base branch and deploy, with any failure sent back to the agent that did the work.</p></div>
+      <div><h3 data-t="f.hw.gd.h">Guard hooks</h3><p data-t="f.hw.gd.p">Agent sessions run with hooks that block a direct git commit, push, <code>gh pr create</code> and <code>git add -A</code>. Commits and pushes go only through Athena's scripts, which stage only the files named. A secret guard also stops the common ways of printing tokens and keys.</p></div>
     </div>
   </div>
 </section>
@@ -172,6 +191,7 @@
           <li data-t="f.rv.l2">Merge can be Auto, Confirm (asks you in Work) or Manual (left to you)</li>
           <li data-t="f.rv.l3">Choose the model for each role, from agents to reviewers</li>
           <li data-t="f.rv.l4">Review results and merges are recorded on the plan and the pull request</li>
+          <li data-t="f.rv.l6">Claude and Codex review side by side and both must approve; without Codex, Claude reviews twice with different models. Small PRs get one quick review</li>
           <li data-t="f.rv.l5">Turn Auto PR off to skip the pull request and review; the work branch then merges straight into the base branch, following your Merge setting</li>
         </ul>
       </div>

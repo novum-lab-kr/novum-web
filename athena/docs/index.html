@@ -144,6 +144,7 @@
     <div class="doc-toc-in">
         <a href="#before" data-t="doc.n.before">Before you install</a>
         <a href="#install" data-t="doc.n.install">Install and open</a>
+        <a href="#pack" data-t="doc.pk.label">What a pack is</a>
         <a href="#setup" data-t="s.label">First setup</a>
         <a href="#workflow" data-t="doc.n.workflow">Your first task</a>
         <a href="#app" data-t="doc.n.app">Around the app</a>
@@ -168,6 +169,14 @@
       <li><b>Node.js</b><span data-t="d.r4p">The Athena app uses Node 24.22.1.</span></li>
       <li><b data-t="d.r5">GitHub</b><span data-t="d.r5p">Access to your repositories. The gh CLI is needed for pull requests and automatic review.</span></li>
       </ul>
+  <h3 class="doc-h3" data-t="doc.b.prep.h">Get these ready before first setup</h3>
+  <ol class="h3-steps-list">
+    <li data-t="doc.b.prep1"><b>Sign in to your agent.</b> Install Claude Code or Codex and sign in with your own account. Athena Studio starts Claude Code if it finds it, otherwise Codex.</li>
+    <li data-t="doc.b.prep2"><b>Sign in to GitHub.</b> Install the gh CLI and run <code>gh auth login</code>. Without it, Athena can't open pull requests.</li>
+    <li data-t="doc.b.prep3"><b>Clone your repositories.</b> Put them under your home folder. Athena looks up to three folders deep, so team or company folders are fine. Repositories you don't work on can be left out.</li>
+    <li data-t="doc.b.prep4"><b>Install Node with nvm, and your package manager.</b> Checks use the Node version in each repository's <code>.nvmrc</code>, and npm, pnpm or yarn depending on the repository's lock file.</li>
+    <li data-t="doc.b.prep5"><b>Create each repository's <code>.env</code>.</b> Follow that repository's own instructions. Athena copies the <code>.env*</code> files into each task's worktree.</li>
+  </ol>
 </section>
 
 <section class="doc-sec" id="install">
@@ -181,10 +190,41 @@
   </ol>
 </section>
 
+<section class="doc-sec" id="pack">
+  <p class="doc-label" data-t="doc.pk.label">What a pack is</p>
+  <h2 data-t="doc.pk.h">A pack holds what Athena knows about your repositories.</h2>
+  <p class="doc-p" data-t="doc.pk.p">Athena itself, the core, comes with the app: the workflow, hooks, work board, learning and shared rules. It doesn't know your company. Everything about your repositories goes in a pack.</p>
+  <h3 class="doc-h3" data-t="doc.pk.in.h">What's inside</h3>
+  <dl class="doc-dl">
+      <div><dt data-t="doc.pk.i1t">Repository list</dt><dd data-t="doc.pk.i1">Each repository with its production branch and PR base, and settings such as automatic PR review.</dd></div>
+      <div><dt data-t="doc.pk.i2t">Routing table</dt><dd data-t="doc.pk.i2">Which request goes to which repository and agent, the check commands and company skills.</dd></div>
+      <div><dt data-t="doc.pk.i3t">Agents</dt><dd data-t="doc.pk.i3">One agent profile for each repository.</dd></div>
+      <div><dt data-t="doc.pk.i4t">Knowledge</dt><dd data-t="doc.pk.i4">Notes for each repository: rules, structure, patterns, workflows and gotchas. Also your company's conventions and what was learned.</dd></div>
+      <div><dt data-t="doc.pk.i5t">Check scripts</dt><dd data-t="doc.pk.i5">One verification script for each repository.</dd></div>
+      <div><dt data-t="doc.pk.i6t">Docs and archive</dt><dd data-t="doc.pk.i6">A service overview, company guides and scripts, the code baseline and finished work.</dd></div>
+  </dl>
+  <div class="doc-three">
+    <div><b data-t="doc.pk.sep.h">Separate from your code</b><span data-t="doc.pk.sep.p">Your repositories stay in their own folders, and the pack only links to them. Deleting a pack backs it up first and leaves your repository folders as they are.</span></div>
+    <div><b data-t="doc.pk.share.h">Share it with your team</b><span data-t="doc.pk.share.p">Export the pack and teammates import it from an archive, a folder or a git repository. Where the repositories sit on your Mac isn't included.</span></div>
+    <div><b data-t="doc.pk.many.h">Several packs</b><span data-t="doc.pk.many.p">Each pack has its own Athena folder and work board, so several can be open at once. Agents in one pack keep working while you open another, and packs don't mix.</span></div>
+  </div>
+  <p class="doc-note" data-t="doc.pk.note">Switch, create, import or export from the pack name at the left of the tab bar (⌘⇧P).</p>
+</section>
+
 <section class="doc-sec" id="setup">
   <p class="doc-label" data-t="s.label">First setup</p>
   <h2 data-t="s.h">First setup: Athena learns your repositories</h2>
   <p class="doc-p" data-t="s.p">When you create a pack, Athena sets it up for you. It only reads your code.</p>
+  <h3 class="doc-h3" data-t="doc.su.do.h">Step by step</h3>
+  <ol class="h3-steps-list">
+    <li data-t="doc.su.do1"><b>Click Create a new pack.</b> It's on the start screen, and in the pack menu at the left of the tab bar. There's nothing to fill in: Athena Studio makes an empty pack with its own Athena folder and switches the window to it.</li>
+    <li data-t="doc.su.do2"><b>Let Athena start.</b> Claude Code, or Codex, opens in the athena workspace and starts first setup by itself. In Claude Code you can also type <code>/setup</code>. Codex asks once whether to trust the folder and its hooks. If neither is installed, install one and start it in the athena workspace.</li>
+    <li data-t="doc.su.do3"><b>Pick your repositories.</b> Athena finds the repositories on your Mac and lists every one in a console, in the order found. Tick the ones to include, or All at the top, and confirm.</li>
+    <li data-t="doc.su.do4"><b>Answer a few questions.</b> The company name, in lowercase letters, which becomes the pack folder name, and the names people use for your services. Any wrong guess about a repository's production branch, PR base, type or layer. Agent names, by default the repository name with -fe or -be. And which repositories get automatic PR review and merge: none by default, and you can change it later in Settings.</li>
+    <li data-t="doc.su.do5"><b>Let Athena read.</b> It sets up an agent for each repository, reads each production branch, and writes rules, structure notes, the routing table and a service overview. Anything it can't confirm is marked for you to check, not guessed.</li>
+    <li data-t="doc.su.do6"><b>Two optional questions.</b> Whether to draft service flow docs and QA checks now or later. They go into your repositories, so committing them waits for you. And whether you have a TypeSafe Jev key: if you do, paste it into the input pane that opens, never into the chat. Everything works without one.</li>
+    <li data-t="doc.su.do7"><b>Read the report.</b> Athena runs each repository's checks once and takes a code baseline, then reports what it made, the check results and what still needs you.</li>
+  </ol>
   <div class="doc-three">
     <div class="you"><b data-t="doc.su.you.h">You confirm</b><span data-t="doc.su.you.p">Which repositories to include, the company name, agent names and where automatic review is on. Fix any wrong guesses here.</span></div>
     <div><b data-t="doc.su.ath.h">Athena prepares</b><span data-t="doc.su.ath.p">An agent for each repository with its rules and notes, the routing table, QA checks and a code baseline. Your repositories aren't changed, and it asks before installing or fetching anything.</span></div>
@@ -340,6 +380,22 @@
           <li data-t="s.7">If you want, draws diagrams for each service: structure, screen map and request flow.</li>
         </ol>
   </details>
+  <h3 class="doc-h3" data-t="doc.su.no.h">What Athena won't do during setup</h3>
+  <ul class="doc-ul">
+    <li data-t="doc.su.no1">Change your repositories. It only reads them, from the production branch.</li>
+    <li data-t="doc.su.no2">Install anything without asking you first. It also tells you before it fetches for the code baseline.</li>
+    <li data-t="doc.su.no3">Turn on automatic PR review or merge for a repository you didn't pick.</li>
+    <li data-t="doc.su.no4">Take a key or token through the chat.</li>
+  </ul>
+  <h3 class="doc-h3" data-t="doc.su.first.h">Your first request</h3>
+  <p class="doc-p" data-t="doc.su.first.p">When the report is in, stay in the athena workspace and say what you want in plain words. Try “Show me the status” first: each repository's branch and changes appear. Then ask for real work. <a href="#workflow">The next section</a> shows what follows.</p>
+  <h3 class="doc-h3" data-t="doc.su.stuck.h">If setup gets stuck</h3>
+  <dl class="doc-dl">
+      <div><dt data-t="doc.su.st1q">A repository isn't found</dt><dd data-t="doc.su.st1a">Tell Athena which folder it's in. Athena searches up to three folders deep under it.</dd></div>
+      <div><dt data-t="doc.su.st2q">Agents don't open in a pane</dt><dd data-t="doc.su.st2a">Start claude or codex inside an Athena Studio window, in the athena workspace. In a regular terminal, Athena only tells you what to run.</dd></div>
+      <div><dt data-t="doc.su.st3q">A check shows ❌ or skipped</dt><dd data-t="doc.su.st3a">Setup doesn't count it as passed and lists it for you to check, for example when dependencies aren't installed yet. Athena asks before installing.</dd></div>
+      <div><dt data-t="doc.su.st4q">A Node version warning</dt><dd data-t="doc.su.st4a">Run <code>nvm use</code> in that repository's folder.</dd></div>
+  </dl>
   <p class="doc-note" data-t="doc.su.imp">Have a pack from your team? Use File → Import Pack… and pick an archive, a pack folder or a git repository.</p>
 </section>
 

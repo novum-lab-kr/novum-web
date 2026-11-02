@@ -144,6 +144,7 @@
     <div class="doc-toc-in">
         <a href="#before" data-t="doc.n.before">설치 전에</a>
         <a href="#install" data-t="doc.n.install">설치하고 열기</a>
+        <a href="#pack" data-t="doc.pk.label">팩이란</a>
         <a href="#setup" data-t="s.label">첫 설정</a>
         <a href="#workflow" data-t="doc.n.workflow">첫 작업</a>
         <a href="#app" data-t="doc.n.app">앱 둘러보기</a>
@@ -168,6 +169,14 @@
       <li><b>Node.js</b><span data-t="d.r4p">Athena 앱은 Node 24.22.1을 사용합니다.</span></li>
       <li><b data-t="d.r5">GitHub</b><span data-t="d.r5p">내 레포에 접근할 수 있어야 합니다. PR 올리기와 자동 리뷰에는 <a href="https://cli.github.com" target="_blank" rel="noopener">gh CLI</a>가 필요합니다.</span></li>
       </ul>
+  <h3 class="doc-h3" data-t="doc.b.prep.h">첫 설정 전에 준비할 것</h3>
+  <ol class="h3-steps-list">
+    <li data-t="doc.b.prep1"><b>에이전트에 로그인합니다.</b> Claude Code나 Codex를 설치하고 내 계정으로 로그인해 둡니다. Athena Studio는 Claude Code가 있으면 그것을, 없으면 Codex를 켭니다.</li>
+    <li data-t="doc.b.prep2"><b>GitHub에 로그인합니다.</b> gh CLI를 설치하고 <code>gh auth login</code>을 실행합니다. 이게 없으면 Athena가 PR을 올리지 못합니다.</li>
+    <li data-t="doc.b.prep3"><b>레포를 받아 둡니다.</b> 홈 폴더 아래에 clone해 둡니다. Athena는 세 단계 아래 폴더까지 찾으므로 팀 · 회사 폴더로 묶여 있어도 됩니다. 내가 맡지 않는 레포는 없어도 됩니다.</li>
+    <li data-t="doc.b.prep4"><b>nvm으로 Node를, 그리고 패키지 매니저를 설치합니다.</b> 검증은 레포마다 <code>.nvmrc</code>에 적힌 Node 버전으로, 그리고 레포의 lock 파일에 맞춰 npm · pnpm · yarn 가운데 하나로 돕니다.</li>
+    <li data-t="doc.b.prep5"><b>레포마다 <code>.env</code>를 만듭니다.</b> 그 레포의 안내대로 만드십시오. Athena가 작업마다 워크트리에 <code>.env*</code> 파일을 복사합니다.</li>
+  </ol>
 </section>
 
 <section class="doc-sec" id="install">
@@ -181,10 +190,41 @@
   </ol>
 </section>
 
+<section class="doc-sec" id="pack">
+  <p class="doc-label" data-t="doc.pk.label">팩이란</p>
+  <h2 data-t="doc.pk.h">팩에는 Athena가 내 레포에 대해 아는 것이 담깁니다.</h2>
+  <p class="doc-p" data-t="doc.pk.p">Athena 자체(코어)는 앱이 들고 옵니다. 작업 흐름 · 훅 · 일감 · 학습 · 공통 규칙이 여기에 있고, 회사는 모릅니다. 내 레포에 관한 것은 모두 팩에 들어갑니다.</p>
+  <h3 class="doc-h3" data-t="doc.pk.in.h">팩 안에 있는 것</h3>
+  <dl class="doc-dl">
+      <div><dt data-t="doc.pk.i1t">레포 목록</dt><dd data-t="doc.pk.i1">레포마다 운영 브랜치와 PR 대상, PR 자동 리뷰 같은 설정.</dd></div>
+      <div><dt data-t="doc.pk.i2t">라우팅 표</dt><dd data-t="doc.pk.i2">어떤 요청을 어느 레포 · 에이전트로 보낼지, 검증 명령, 회사 스킬.</dd></div>
+      <div><dt data-t="doc.pk.i3t">에이전트</dt><dd data-t="doc.pk.i3">레포마다 담당 에이전트 프로필 하나.</dd></div>
+      <div><dt data-t="doc.pk.i4t">지식</dt><dd data-t="doc.pk.i4">레포마다 노트(규칙 · 구조 · 패턴 · 작업 절차 · 함정). 회사 관례와 학습한 내용도.</dd></div>
+      <div><dt data-t="doc.pk.i5t">검증 스크립트</dt><dd data-t="doc.pk.i5">레포마다 검증 스크립트 하나.</dd></div>
+      <div><dt data-t="doc.pk.i6t">문서 · 보관함</dt><dd data-t="doc.pk.i6">서비스 소개, 회사 안내 문서와 스크립트, 코드 기준점, 끝난 일.</dd></div>
+  </dl>
+  <div class="doc-three">
+    <div><b data-t="doc.pk.sep.h">내 코드와는 따로</b><span data-t="doc.pk.sep.p">레포는 원래 폴더에 그대로 있고 팩은 링크만 겁니다. 팩을 지우면 먼저 백업하고, 레포 폴더는 그대로 둡니다.</span></div>
+    <div><b data-t="doc.pk.share.h">팀과 나누기</b><span data-t="doc.pk.share.p">팩을 내보내면 팀원은 압축 파일 · 폴더 · git 레포에서 가져옵니다. 내 Mac에서 레포가 있는 위치는 담기지 않습니다.</span></div>
+    <div><b data-t="doc.pk.many.h">팩 여러 개</b><span data-t="doc.pk.many.p">팩마다 Athena 폴더와 일감이 따로 있어 여러 팩을 동시에 열 수 있습니다. 다른 팩을 여는 동안에도 이 팩의 에이전트는 계속 일하고, 팩끼리 섞이지 않습니다.</span></div>
+  </div>
+  <p class="doc-note" data-t="doc.pk.note">탭 줄 왼쪽의 팩 이름(⌘⇧P)에서 바꾸기 · 만들기 · 가져오기 · 내보내기를 합니다.</p>
+</section>
+
 <section class="doc-sec" id="setup">
   <p class="doc-label" data-t="s.label">첫 설정</p>
   <h2 data-t="s.h">첫 설정: 레포를 익히는 Athena</h2>
   <p class="doc-p" data-t="s.p">팩을 만들면 Athena가 설정을 대신 합니다. 코드는 읽기만 합니다.</p>
+  <h3 class="doc-h3" data-t="doc.su.do.h">단계별로</h3>
+  <ol class="h3-steps-list">
+    <li data-t="doc.su.do1"><b>[새 팩 만들기]를 누릅니다.</b> 시작 화면에 있고, 탭 줄 왼쪽의 팩 메뉴에도 있습니다. 입력할 칸은 없습니다. Athena Studio가 빈 팩과 그 팩 전용 Athena 폴더를 만들고 창을 그 팩으로 바꿉니다.</li>
+    <li data-t="doc.su.do2"><b>Athena가 켜지기를 기다립니다.</b> athena 작업 공간에서 Claude Code(없으면 Codex)가 켜지고 첫 설정을 알아서 시작합니다. Claude Code에서는 <code>/setup</code>을 직접 입력해도 됩니다. Codex는 처음에 이 폴더와 훅을 믿을지 한 번 묻습니다. 둘 다 없으면 하나를 설치한 뒤 athena 작업 공간에서 직접 켜십시오.</li>
+    <li data-t="doc.su.do3"><b>넣을 레포를 고릅니다.</b> Athena가 이 Mac에서 레포를 찾아, 찾은 순서 그대로 전부 콘솔에 띄웁니다. 넣을 레포를 체크하고(맨 위 '전체'는 모두) [이대로 진행]을 누릅니다.</li>
+    <li data-t="doc.su.do4"><b>몇 가지 질문에 답합니다.</b> 회사 이름(영문 소문자 · 팩 폴더 이름이 됩니다)과 서비스 · 브랜드를 가리키는 이름. 레포의 운영 브랜치 · PR 대상 · 종류 · 층 가운데 잘못 추측한 것. 에이전트 이름(기본은 레포 이름에 -fe나 -be). 그리고 PR 자동 리뷰 · 머지를 켤 레포. 기본은 아무것도 켜지 않고, 나중에 설정에서 바꿀 수 있습니다.</li>
+    <li data-t="doc.su.do5"><b>Athena가 읽는 동안 기다립니다.</b> 레포마다 에이전트를 만들고, 레포마다 운영 브랜치를 읽어 규칙 · 구조 노트 · 라우팅 표 · 서비스 개요를 씁니다. 확인하지 못한 것은 추측하지 않고 '확인 필요'로 남깁니다.</li>
+    <li data-t="doc.su.do6"><b>선택 질문 두 개.</b> 서비스 흐름 문서와 QA 점검 초안을 지금 쓸지 나중에 쓸지. 레포에 들어가는 파일이라 커밋은 내가 말할 때만 합니다. 그리고 TypeSafe Jev 키가 있는지. 있으면 열리는 입력 창에 붙여 넣고, 대화창에는 넣지 않습니다. 없어도 모두 그대로 돕니다.</li>
+    <li data-t="doc.su.do7"><b>보고를 읽습니다.</b> Athena가 레포마다 검증을 한 번 돌리고 코드 기준점을 잡은 뒤, 만든 것 · 검증 결과 · 아직 내가 볼 것을 보고합니다.</li>
+  </ol>
   <div class="doc-three">
     <div class="you"><b data-t="doc.su.you.h">내가 확인할 것</b><span data-t="doc.su.you.p">넣을 레포, 회사 이름, 에이전트 이름, 자동 리뷰를 켤 레포. 틀린 추측은 여기서 고칩니다.</span></div>
     <div><b data-t="doc.su.ath.h">Athena가 준비하는 것</b><span data-t="doc.su.ath.p">레포마다 규칙 · 노트가 붙은 에이전트, 라우팅 표, QA 점검, 코드 기준점. 레포는 바꾸지 않고, 설치나 fetch는 먼저 물어봅니다.</span></div>
@@ -340,6 +380,22 @@
           <li data-t="s.7">원하면 서비스마다 구조, 화면 지도, 요청 흐름 다이어그램을 그립니다.</li>
         </ol>
   </details>
+  <h3 class="doc-h3" data-t="doc.su.no.h">첫 설정에서 Athena가 하지 않는 일</h3>
+  <ul class="doc-ul">
+    <li data-t="doc.su.no1">레포를 바꾸지 않습니다. 운영 브랜치를 읽기만 합니다.</li>
+    <li data-t="doc.su.no2">묻지 않고 설치하지 않습니다. 코드 기준점을 잡으려고 fetch할 때도 먼저 알립니다.</li>
+    <li data-t="doc.su.no3">내가 고르지 않은 레포에 PR 자동 리뷰 · 머지를 켜지 않습니다.</li>
+    <li data-t="doc.su.no4">키나 토큰을 대화로 받지 않습니다.</li>
+  </ul>
+  <h3 class="doc-h3" data-t="doc.su.first.h">첫 요청</h3>
+  <p class="doc-p" data-t="doc.su.first.p">보고가 오면 athena 작업 공간에서 하고 싶은 일을 평소 말로 씁니다. 먼저 “현황 알려줘”라고 해 보십시오. 레포마다 브랜치와 변경 상태가 나옵니다. 그다음 실제 일을 맡기면 됩니다. 그 뒤 흐름은 <a href="#workflow">다음 절</a>에 있습니다.</p>
+  <h3 class="doc-h3" data-t="doc.su.stuck.h">첫 설정이 막힐 때</h3>
+  <dl class="doc-dl">
+      <div><dt data-t="doc.su.st1q">레포를 못 찾습니다</dt><dd data-t="doc.su.st1a">그 레포가 있는 폴더를 Athena에게 알려 주십시오. 그 아래 세 단계 폴더까지 찾습니다.</dd></div>
+      <div><dt data-t="doc.su.st2q">에이전트가 pane에 안 뜹니다</dt><dd data-t="doc.su.st2a">Athena Studio 창 안, athena 작업 공간에서 claude나 codex를 켰는지 봅니다. 일반 터미널에서는 무엇을 실행할지 안내만 합니다.</dd></div>
+      <div><dt data-t="doc.su.st3q">검증이 ❌이거나 건너뜀입니다</dt><dd data-t="doc.su.st3a">첫 설정은 이것을 통과로 치지 않고 '확인 필요'로 남깁니다. 의존성을 아직 설치하지 않았을 때 등입니다. 설치는 Athena가 먼저 묻습니다.</dd></div>
+      <div><dt data-t="doc.su.st4q">Node 버전 경고가 납니다</dt><dd data-t="doc.su.st4a">그 레포 폴더에서 <code>nvm use</code>를 실행합니다.</dd></div>
+  </dl>
   <p class="doc-note" data-t="doc.su.imp">팀에서 받은 팩이 있다면 [파일 → 팩 가져오기…]에서 압축 파일 · 팩 폴더 · git 레포를 고르십시오.</p>
 </section>
 

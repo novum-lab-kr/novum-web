@@ -117,6 +117,22 @@
   </div>
 </section>
 
+<section id="how" class="h3-sec">
+  <div class="wrap">
+    <p class="h3-num" data-t="n.hw.l">工作方式</p>
+    <h2 data-t="n.hw.h">每项任务都有计划书、独立的工作树，并在交付前完成检查。</h2>
+    <p class="h3-p" data-t="n.hw.p">在界面背后，每个需求都经过同样的五个步骤。</p>
+    <ol class="howto hw-steps">
+      <li><span class="n">1</span><b data-t="n.hw.1t">需求</b><span data-t="n.hw.1p">用平常的话提出需求。Athena 读取包里的路由表，确定需求涉及哪些仓库，以及每个仓库由哪个智能体负责。</span></li>
+      <li><span class="n">2</span><b data-t="n.hw.2t">计划书</b><span data-t="n.hw.2p">每次改动都从一份计划书开始。如果有需要你决定的事，或要协调多个仓库，计划书会附带决策控制台；在你确认之前不会分派任何工作。</span></li>
+      <li><span class="n">3</span><b data-t="n.hw.3t">每项任务一个工作树</b><span data-t="n.hw.3p">每项任务都在独立的工作文件夹(git 工作树)里开一个新分支。你的主检出保持不动，多项任务可以并行。</span></li>
+      <li><span class="n">4</span><b data-t="n.hw.4t">检查与审查</b><span data-t="n.hw.4p">智能体在工作中只检查改动的部分，最后统一跑一次完整验证：在你的 Mac 上，或在开启后交给 GitHub Actions。范围较大的改动还会交给审查智能体。</span></li>
+      <li><span class="n">5</span><b data-t="n.hw.5t">PR 与合并</b><span data-t="n.hw.5p">按各仓库的设置，分支会变成 draft PR，或直接合并到基准分支。自动审查可以要求修改，你也可以让每次合并前先经你确认。</span></li>
+    </ol>
+    <p class="h3-link"><a href="/zh/features/#how" data-t="n.hw.more">在功能页查看智能体如何工作 →</a></p>
+  </div>
+</section>
+
 <section id="flow" class="h3-sec">
   <div class="wrap">
     <p class="h3-num">01</p>

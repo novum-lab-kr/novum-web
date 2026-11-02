@@ -3,7 +3,7 @@
 //   1) 영어 페이지 head 의 seo 블록(hreflang · JSON-LD) — 블록 밖은 건드리지 않는다
 //   2) athena/<ko|ja|zh>/<페이지> — 영어 페이지의 data-t · data-ta 를 사전 문구로 바꾼 언어판(사전에 없는 키는 영어 그대로)
 //   3) athena/sitemap.xml — lastmod 는 그 페이지 원본 · 사전의 마지막 커밋 날짜(커밋 안 된 변경이 있으면 오늘)
-//   4) athena/llms.txt — AI 가 읽는 사이트 안내(페이지 제목 · description 문구 그대로)
+//   4) athena/llms.txt — AI 가 읽는 사이트 안내(홈 How it works 단계 · 기능 페이지 소제목과 설명 · 페이지 제목 · description 문구 그대로)
 // check-athena.mjs 가 같은 함수로 다시 만들어 파일과 같은지 본다(sitemap lastmod 는 날짜 모양만 — CI 는 얕은 clone 이라 커밋 날짜를 모른다).
 import fs from 'node:fs';
 import path from 'node:path';
@@ -245,6 +245,27 @@ function sitemap(lastmodFor) {
   return ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">', ...urls, '</urlset>', ''].join('\n');
 }
 
+// 페이지의 <section id="…"> 안쪽 HTML(없으면 빈 글)
+function sectionOf(html, id) {
+  return new RegExp(`<section\\b[^>]*\\sid="${id}"[^>]*>([\\s\\S]*?)</section>`).exec(html)?.[1] ?? '';
+}
+
+// 홈 "How it works"(#how) 단계 — 번호 · 제목 · 설명
+function homeSteps(home) {
+  return [...sectionOf(home, 'how').matchAll(/<li>\s*<span class="n">(\d+)<\/span>\s*<b\b[^>]*>([\s\S]*?)<\/b>\s*<span\b[^>]*>([\s\S]*?)<\/span>\s*<\/li>/g)]
+    .map(([, num, title, text]) => `${num}. ${plainText(title)}: ${plainText(text)}`);
+}
+
+// 기능 페이지 <main> 의 소제목(h3) · 바로 뒤 설명(p) · 그 아래 목록(ul) — 화면에 적힌 기능 설명 그대로
+function featureItems(features) {
+  const main = /<main>([\s\S]*?)<\/main>/.exec(features)?.[1] ?? '';
+  return [...main.matchAll(/<h3\b[^>]*>([\s\S]*?)<\/h3>\s*<p\b[^>]*>([\s\S]*?)<\/p>(?:\s*<ul>([\s\S]*?)<\/ul>)?/g)]
+    .flatMap(([, title, text, list]) => [
+      `- ${plainText(title).replace(/\.$/, '')}: ${plainText(text)}`,
+      ...[...(list ?? '').matchAll(/<li\b[^>]*>([\s\S]*?)<\/li>/g)].map(([, item]) => `  - ${plainText(item)}`),
+    ]);
+}
+
 function llms(sources, dicts) {
   const home = sources.get('/');
   const lines = [
@@ -253,6 +274,16 @@ function llms(sources, dicts) {
     `> ${metaContent(home, 'name', 'description')}`,
     '',
     `${plainText(innerOf(home, 'n.note2') ?? '')}. ${plainText(innerOf(home, 'c.made') ?? '')}`,
+    '',
+    `## ${plainText(innerOf(home, 'n.hw.l') ?? 'How it works')}`,
+    '',
+    plainText(innerOf(home, 'n.hw.h') ?? ''),
+    '',
+    ...homeSteps(home),
+    '',
+    '## Features',
+    '',
+    ...featureItems(sources.get('/features/')),
     '',
     '## Pages',
     '',

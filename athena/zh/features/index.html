@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title data-t="f.title">功能 — Athena Studio</title>
-<meta name="description" data-ta="content:f.desc" content="工作区、智能体监视器、工作、pane 详情、决策控制台、Explorer、PR 自动审查、菜单栏、包和四种语言：Athena Studio 的全部功能。">
+<meta name="description" data-ta="content:f.desc" content="工作区、智能体如何工作(路由、计划书、git 工作树、待办页面、检查、保护钩子)、智能体监视器、工作、pane 详情、决策控制台、Explorer、PR 自动审查、菜单栏、包和四种语言。">
 <meta property="og:title" content="功能 — Athena Studio">
-<meta property="og:description" content="工作区、智能体监视器、工作、pane 详情、决策控制台、Explorer、PR 自动审查、菜单栏、包和四种语言：Athena Studio 的全部功能。">
+<meta property="og:description" content="工作区、智能体如何工作(路由、计划书、git 工作树、待办页面、检查、保护钩子)、智能体监视器、工作、pane 详情、决策控制台、Explorer、PR 自动审查、菜单栏、包和四种语言。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://athena.novum-lab.com/zh/features/">
 <meta property="og:image" content="https://athena.novum-lab.com/assets/og.jpg">
@@ -67,6 +67,7 @@
     <p class="lead" data-t="f.lead2">应用各部分的作用。分步骤的用法请看<a href="/zh/docs/#workflow">文档</a>。</p>
     <div class="toc">
       <a href="#workspaces" data-t="f.ws.label">工作区</a>
+      <a href="#how" data-t="f.hw.l">智能体如何工作</a>
       <a href="#status" data-t="f.g2.l">进度与问题</a>
       <a href="#decisions" data-t="f.g3.l">决策与代码</a>
       <a href="#review" data-t="f.g4.l">审查与学习</a>
@@ -97,6 +98,24 @@
         </ul>
       </div>
       <figure class="shot"><img data-lang-src="/assets/shots/workspace-{l}" src="/assets/shots/workspace-zh.webp" srcset="/assets/shots/workspace-zh-1200.webp 1200w, /assets/shots/workspace-zh.webp 2400w" sizes="(max-width: 1180px) 100vw, 1140px" width="2400" height="1350" alt="Athena Studio 窗口：左侧是工作区，中间 Athena 与网页智能体并排工作，下方是智能体监视器。" data-ta="alt:h.hero.alt"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="feat" id="how">
+  <span id="routing" class="anchor"></span><span id="plans" class="anchor"></span><span id="worktrees" class="anchor"></span><span id="board" class="anchor"></span><span id="checks" class="anchor"></span><span id="guards" class="anchor"></span>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label" data-t="f.hw.l">智能体如何工作</div>
+      <h2 data-t="f.hw.h">从需求到合并，每个智能体都遵守的规则。</h2>
+    </div>
+    <div class="quad q3">
+      <div><h3 data-t="f.hw.rt.h">路由与每个仓库的负责智能体</h3><p data-t="f.hw.rt.p">包里的路由表为每个仓库指定负责的智能体。Athena 用它拆分需求，智能体在开始前先读取自己仓库的规则、结构和笔记。跨仓库的工作按顺序进行，先共享包和后端；互不相关的工作同时进行。</p></div>
+      <div><h3 data-t="f.hw.pl.h">每次改动都有计划书</h3><p data-t="f.hw.pl.p">没有计划书就不做任何改动。需求已经写清要做什么时，一份简短的计划书就够了。有需要你决定的事，或要协调多个仓库时，Athena 会写一份附带决策控制台的正式计划书，并等你确认。每份计划书都有检查点，新会话可以从上次停下的地方继续。</p></div>
+      <div><h3 data-t="f.hw.wt.h">每项任务一个 git 工作树</h3><p data-t="f.hw.wt.p">智能体开始之前，Athena 会从基准分支切出新分支，并在这项任务专用的工作树(即独立的工作文件夹)里打开。即使仓库很乱，你的主检出和未提交的改动也保持原样，多项任务可以并行。</p></div>
+      <div><h3 data-t="f.hw.bd.h">待办页面</h3><p data-t="f.hw.bd.p">按 <kbd>⌘</kbd><kbd>2</kbd> 在浏览器中打开待办页面：待解决的问题(每个都有开始按钮)、QA 结果、学习、指标和归档。计划书的 PR 合并后，待办页面会把它标为完成，做完的工作移入归档。待办页面目前只有韩语。</p></div>
+      <div><h3 data-t="f.hw.ck.h">最后只验证一次</h3><p data-t="f.hw.ck.p">工作中，智能体只检查改动的部分。完整验证在提交时跑一次，没跑过的检查绝不报告为通过。每个仓库都可以把这次验证交给 GitHub Actions：验证 → 合并到基准分支 → 部署，失败时会退回给做这项工作的智能体。</p></div>
+      <div><h3 data-t="f.hw.gd.h">保护钩子</h3><p data-t="f.hw.gd.p">智能体会话带有钩子，禁止直接执行 git commit、push、<code>gh pr create</code> 和 <code>git add -A</code>。提交和 push 只能通过 Athena 的脚本进行，脚本只处理指定的文件。密钥守卫还会拦下打印令牌和密钥的常见方式。</p></div>
     </div>
   </div>
 </section>
@@ -172,6 +191,7 @@
           <li data-t="f.rv.l2">合并可选自动、确认后(在 [工作] 中询问你)或手动(由你来合并)</li>
           <li data-t="f.rv.l3">为每个角色选择模型，从智能体到审查者</li>
           <li data-t="f.rv.l4">审查结果和合并都会记录在计划和拉取请求上</li>
+          <li data-t="f.rv.l6">Claude 和 Codex 并行审查，两者都批准才会合并；没有 Codex 时，Claude 用不同的模型审查两次。小的 PR 只快速审查一次</li>
           <li data-t="f.rv.l5">关闭自动 PR 后，不建拉取请求也不审查，工作分支会直接合并到基准分支，并遵循你的合并设置</li>
         </ul>
       </div>

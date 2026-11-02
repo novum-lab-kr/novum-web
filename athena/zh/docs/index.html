@@ -144,6 +144,7 @@
     <div class="doc-toc-in">
         <a href="#before" data-t="doc.n.before">安装之前</a>
         <a href="#install" data-t="doc.n.install">安装并打开</a>
+        <a href="#pack" data-t="doc.pk.label">什么是包</a>
         <a href="#setup" data-t="s.label">首次设置</a>
         <a href="#workflow" data-t="doc.n.workflow">第一项任务</a>
         <a href="#app" data-t="doc.n.app">应用各部分</a>
@@ -168,6 +169,14 @@
       <li><b>Node.js</b><span data-t="d.r4p">Athena 应用使用 Node 24.22.1。</span></li>
       <li><b data-t="d.r5">GitHub</b><span data-t="d.r5p">需要能访问你的仓库。创建拉取请求和自动审查需要 <a href="https://cli.github.com" target="_blank" rel="noopener">gh CLI</a>。</span></li>
       </ul>
+  <h3 class="doc-h3" data-t="doc.b.prep.h">首次设置前要准备的</h3>
+  <ol class="h3-steps-list">
+    <li data-t="doc.b.prep1"><b>登录智能体。</b> 安装 Claude Code 或 Codex，并用你自己的账号登录。Athena Studio 找到 Claude Code 就启动它，否则启动 Codex。</li>
+    <li data-t="doc.b.prep2"><b>登录 GitHub。</b> 安装 gh CLI 并运行 <code>gh auth login</code>。没有它，Athena 无法创建拉取请求。</li>
+    <li data-t="doc.b.prep3"><b>克隆你的仓库。</b> 放在主文件夹下。Athena 会向下查找三层文件夹，所以按团队或公司文件夹归类也没问题。你不负责的仓库可以不放。</li>
+    <li data-t="doc.b.prep4"><b>用 nvm 安装 Node，并安装包管理器。</b> 检查会使用每个仓库 <code>.nvmrc</code> 中的 Node 版本，并按仓库的 lock 文件选用 npm、pnpm 或 yarn。</li>
+    <li data-t="doc.b.prep5"><b>为每个仓库创建 <code>.env</code>。</b> 按该仓库自己的说明创建。Athena 会把 <code>.env*</code> 文件复制到每个任务的工作树中。</li>
+  </ol>
 </section>
 
 <section class="doc-sec" id="install">
@@ -181,10 +190,41 @@
   </ol>
 </section>
 
+<section class="doc-sec" id="pack">
+  <p class="doc-label" data-t="doc.pk.label">什么是包</p>
+  <h2 data-t="doc.pk.h">包里装着 Athena 对你的仓库所了解的一切。</h2>
+  <p class="doc-p" data-t="doc.pk.p">Athena 本身(核心)随应用一起提供：工作流程、钩子、待办页面、学习和通用规则都在其中，它并不了解你的公司。与你的仓库有关的一切都放在包里。</p>
+  <h3 class="doc-h3" data-t="doc.pk.in.h">包里有什么</h3>
+  <dl class="doc-dl">
+      <div><dt data-t="doc.pk.i1t">仓库列表</dt><dd data-t="doc.pk.i1">每个仓库的生产分支和 PR 目标分支，以及 PR 自动审查等设置。</dd></div>
+      <div><dt data-t="doc.pk.i2t">路由表</dt><dd data-t="doc.pk.i2">哪个需求交给哪个仓库和智能体、检查命令以及公司技能。</dd></div>
+      <div><dt data-t="doc.pk.i3t">智能体</dt><dd data-t="doc.pk.i3">每个仓库一个负责智能体的配置。</dd></div>
+      <div><dt data-t="doc.pk.i4t">知识</dt><dd data-t="doc.pk.i4">每个仓库的笔记：规则、结构、模式、工作流程和陷阱。还有公司惯例和学到的内容。</dd></div>
+      <div><dt data-t="doc.pk.i5t">检查脚本</dt><dd data-t="doc.pk.i5">每个仓库一个验证脚本。</dd></div>
+      <div><dt data-t="doc.pk.i6t">文档和归档</dt><dd data-t="doc.pk.i6">服务概览、公司说明文档和脚本、代码基线以及已完成的工作。</dd></div>
+  </dl>
+  <div class="doc-three">
+    <div><b data-t="doc.pk.sep.h">与代码分开</b><span data-t="doc.pk.sep.p">仓库仍留在原来的文件夹中，包只是链接到它们。删除包时会先备份，仓库文件夹保持不变。</span></div>
+    <div><b data-t="doc.pk.share.h">与团队共享</b><span data-t="doc.pk.share.p">导出包后，团队成员可以从压缩包、文件夹或 git 仓库导入。你的 Mac 上仓库所在的位置不会包含在内。</span></div>
+    <div><b data-t="doc.pk.many.h">多个包</b><span data-t="doc.pk.many.p">每个包都有自己的 Athena 文件夹和待办页面，因此可以同时打开多个包。打开另一个包时，这个包的智能体会继续工作，包与包之间不会混在一起。</span></div>
+  </div>
+  <p class="doc-note" data-t="doc.pk.note">在标签栏左侧的包名称(⌘⇧P)中切换、新建、导入或导出。</p>
+</section>
+
 <section class="doc-sec" id="setup">
   <p class="doc-label" data-t="s.label">首次设置</p>
   <h2 data-t="s.h">首次设置：Athena 熟悉你的仓库</h2>
   <p class="doc-p" data-t="s.p">创建包时，Athena 会替你完成设置。它只读取你的代码。</p>
+  <h3 class="doc-h3" data-t="doc.su.do.h">分步操作</h3>
+  <ol class="h3-steps-list">
+    <li data-t="doc.su.do1"><b>点击“新建包”。</b> 它在开始界面上，也在标签栏左侧的包菜单中。无需填写任何内容：Athena Studio 会创建一个空包及其专属的 Athena 文件夹，并把窗口切换到这个包。</li>
+    <li data-t="doc.su.do2"><b>等待 Athena 启动。</b> Claude Code(没有则用 Codex)会在 athena 工作区中启动，并自动开始首次设置。在 Claude Code 中也可以输入 <code>/setup</code>。Codex 第一次会询问是否信任该文件夹及其钩子。如果两者都没有安装，请安装其一，再在 athena 工作区中启动。</li>
+    <li data-t="doc.su.do3"><b>选择仓库。</b> Athena 会找出这台 Mac 上的仓库，按找到的顺序全部列在控制台中。勾选要加入的仓库(或顶部的“全部”)，然后确认。</li>
+    <li data-t="doc.su.do4"><b>回答几个问题。</b> 公司名称(小写英文字母，会成为包的文件夹名)以及指代你们服务和品牌的名称。仓库的生产分支、PR 目标分支、类型或层级中推测错误的部分。智能体名称(默认是仓库名加 -fe 或 -be)。以及哪些仓库开启 PR 自动审查和合并：默认都不开启，之后可以在设置中更改。</li>
+    <li data-t="doc.su.do5"><b>等待 Athena 读取。</b> 它为每个仓库配置智能体，读取每个仓库的生产分支，写下规则、结构笔记、路由表和服务概览。无法确认的内容不会去猜，而是标为“待确认”。</li>
+    <li data-t="doc.su.do6"><b>两个可选问题。</b> 现在还是以后起草服务流程文档和 QA 检查。这些文件会放进你的仓库，所以只有你开口才会提交。另一个是你是否有 TypeSafe Jev 密钥：如果有，请粘贴到打开的输入 pane 中，不要粘贴到对话里。没有也一切照常运行。</li>
+    <li data-t="doc.su.do7"><b>阅读报告。</b> Athena 会为每个仓库运行一次检查并建立代码基线，然后报告已创建的内容、检查结果以及仍需你处理的事项。</li>
+  </ol>
   <div class="doc-three">
     <div class="you"><b data-t="doc.su.you.h">由你确认</b><span data-t="doc.su.you.p">要加入的仓库、公司名称、智能体名称，以及哪些仓库开启自动审查。推测错误的地方在这里修正。</span></div>
     <div><b data-t="doc.su.ath.h">Athena 负责准备</b><span data-t="doc.su.ath.p">为每个仓库配好规则和笔记的智能体、路由表、QA 检查和代码基线。不会修改你的仓库，安装或 fetch 前都会先询问。</span></div>
@@ -340,6 +380,22 @@
           <li data-t="s.7">如有需要，还会为每个服务绘制结构图、画面地图和请求流程图。</li>
         </ol>
   </details>
+  <h3 class="doc-h3" data-t="doc.su.no.h">首次设置时 Athena 不会做的事</h3>
+  <ul class="doc-ul">
+    <li data-t="doc.su.no1">不会修改你的仓库，只读取生产分支。</li>
+    <li data-t="doc.su.no2">不会未经询问就安装任何东西。为建立代码基线而 fetch 时也会先告诉你。</li>
+    <li data-t="doc.su.no3">不会为你没选的仓库开启 PR 自动审查或合并。</li>
+    <li data-t="doc.su.no4">不会通过对话接收密钥或令牌。</li>
+  </ul>
+  <h3 class="doc-h3" data-t="doc.su.first.h">第一个请求</h3>
+  <p class="doc-p" data-t="doc.su.first.p">收到报告后，留在 athena 工作区，用平常的话说出你想做的事。先试试“告诉我现状”：会列出每个仓库的分支和改动。然后交代真正的工作。之后的流程见<a href="#workflow">下一节</a>。</p>
+  <h3 class="doc-h3" data-t="doc.su.stuck.h">首次设置卡住时</h3>
+  <dl class="doc-dl">
+      <div><dt data-t="doc.su.st1q">找不到某个仓库</dt><dd data-t="doc.su.st1a">告诉 Athena 它在哪个文件夹。Athena 会在其下查找三层。</dd></div>
+      <div><dt data-t="doc.su.st2q">智能体没有在 pane 中打开</dt><dd data-t="doc.su.st2a">确认是在 Athena Studio 窗口内的 athena 工作区中启动 claude 或 codex。在普通终端中，Athena 只会告诉你该运行什么。</dd></div>
+      <div><dt data-t="doc.su.st3q">检查显示 ❌ 或已跳过</dt><dd data-t="doc.su.st3a">首次设置不会把它算作通过，而是标为“待确认”，例如依赖还没有安装时。安装前 Athena 会先询问。</dd></div>
+      <div><dt data-t="doc.su.st4q">出现 Node 版本警告</dt><dd data-t="doc.su.st4a">在该仓库的文件夹中运行 <code>nvm use</code>。</dd></div>
+  </dl>
   <p class="doc-note" data-t="doc.su.imp">如果有团队给你的包，请在“文件 → 导入包…”中选择压缩包、包文件夹或 git 仓库。</p>
 </section>
 
