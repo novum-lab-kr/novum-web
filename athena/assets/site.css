@@ -55,26 +55,72 @@ header nav > a { text-decoration: none; color: var(--muted); font-size: 14px; fo
 header nav > a:hover, header nav > a[aria-current] { color: var(--text); }
 @media (max-width: 760px) { header nav > a.nav-x { display: none; } header.top .wrap { gap: 10px; } }
 
-/* 언어 고르기 */
-.lang { position: relative; }
+/* 헤더 다운로드 — 부엉이 눈 인장(2026-11-02 Codex 3차 안 5 그대로) */
+header.top nav .btn.gold {
+  box-sizing: border-box;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 34px;
+  padding: 0 10px;
+  border: 1px solid var(--gold);
+  border-radius: 2px;
+  background: var(--gold);
+  color: var(--gold-ink);
+  font: 600 13px/1 var(--mono);
+  letter-spacing: 0;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: none;
+  transform: none;
+  transition: background .15s, border-color .15s;
+}
+header.top nav .btn.gold > svg {
+  display: block;
+  flex: none;
+  width: 20px;
+  height: 16px;
+}
+header.top nav .btn.gold:hover {
+  background: var(--gold-2);
+  border-color: var(--gold-2);
+  color: var(--gold-ink);
+  box-shadow: none;
+  transform: none;
+}
+header.top nav .btn.gold:focus-visible {
+  outline: 2px solid var(--gold-2);
+  outline-offset: 3px;
+}
+@media (max-width: 760px) {
+  header.top nav .btn.gold {
+    gap: 6px;
+    padding: 0 8px;
+    font-size: 12px;
+  }
+}
+
+/* 언어 고르기 — 헤더 맨 끝 테두리 없는 지구본 · 펼치면 작은 목록(지금 언어에 ✓). 바깥 클릭 · Esc 로 닫기는 lang.js */
+.lang { position: relative; display: flex; align-items: center; margin: 0 -6px 0 6px; }
 .lang summary {
-  list-style: none; cursor: pointer; display: flex; align-items: center; gap: 6px;
-  font-size: 13px; font-weight: 600; color: var(--muted); padding: 7px 10px; border: 1px solid var(--line); border-radius: 8px;
+  list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; border-radius: 8px; color: var(--muted);
 }
 .lang summary::-webkit-details-marker { display: none; }
-.lang summary:hover, .lang[open] summary { color: var(--text); border-color: var(--line-2); }
-.lang summary svg { width: 15px; height: 15px; }
-.lang ul {
-  position: absolute; right: 0; top: calc(100% + 8px); margin: 0; padding: 6px; list-style: none; min-width: 150px;
+.lang summary:hover, .lang[open] summary { color: var(--text); background: rgba(255, 255, 255, .04); }
+.lang summary:focus-visible { outline: 2px solid var(--gold-2); outline-offset: 2px; }
+.lang summary svg { width: 18px; height: 18px; }
+.lang-menu {
+  position: absolute; right: 0; top: calc(100% + 10px); padding: 6px; min-width: 160px;
   background: var(--panel-2); border: 1px solid var(--line-2); border-radius: 10px; box-shadow: 0 16px 40px rgba(0, 0, 0, .5);
 }
-.lang li button {
-  all: unset; box-sizing: border-box; display: flex; justify-content: space-between; width: 100%; cursor: pointer;
-  padding: 8px 10px; border-radius: 6px; font-size: 14px; color: var(--muted);
-}
-.lang li button:hover, .lang li button:focus-visible { background: rgba(255, 255, 255, .06); color: var(--text); }
-.lang li button[aria-current="true"] { color: var(--text); }
-.lang li button[aria-current="true"]::after { content: "✓"; color: var(--gold); }
+.lang-menu a { display: flex; justify-content: space-between; padding: 8px 10px; border-radius: 6px; font-size: 14px; color: var(--muted); text-decoration: none; }
+.lang-menu a:hover, .lang-menu a:focus-visible { background: rgba(255, 255, 255, .06); color: var(--text); }
+.lang-menu a[aria-current="true"] { color: var(--text); }
+.lang-menu a[aria-current="true"]::after { content: "✓"; color: var(--gold); }
 
 /* 버튼 */
 .btn {
@@ -625,12 +671,6 @@ html:lang(ko) .h3-sec h2, html:lang(ja) .h3-sec h2, html:lang(zh-Hans) .h3-sec h
 @media (prefers-reduced-motion: reduce) { .fd-play .fd-q { animation: none; } }
 
 /* 언어 고르기: 꼬리 한 줄 */
-.foot-lang { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 16px; margin-top: 20px; font-size: 14px; }
-.foot-lang svg { width: 15px; height: 15px; color: var(--dim); }
-.foot-lang a { all: unset; cursor: pointer; color: var(--muted); }
-.foot-lang a:hover { color: var(--text); }
-.foot-lang a[aria-current="true"] { color: var(--text); text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--gold); }
-.foot-lang a:focus-visible { outline: 2px solid var(--gold-2); outline-offset: 2px; }
 
 /* ── 2026-10-28 배포판 · 움직이는 그림 ── */
 .h3-gif { max-width: 1200px; margin-left: auto; margin-right: auto; }

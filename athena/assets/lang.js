@@ -120,7 +120,12 @@
     document.addEventListener('keydown', function (e) {
       if (e.key !== 'Escape') return;
       var open = document.querySelectorAll('details.lang[open]');
-      for (var i = 0; i < open.length; i++) open[i].open = false;
+      for (var i = 0; i < open.length; i++) {
+        // 목록 안에 있던 키보드 포커스는 지구본 버튼으로 돌려준다(닫힌 목록에 갇히지 않게)
+        const hadFocus = open[i].contains(document.activeElement);
+        open[i].open = false;
+        if (hadFocus) open[i].querySelector('summary')?.focus();
+      }
     });
   });
 })();
