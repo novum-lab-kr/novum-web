@@ -873,9 +873,17 @@ html:lang(ja) .gl-w, html:lang(zh-Hans) .gl-w { white-space: normal; }
 .rel-t { margin: 0 0 18px; font-size: 20px; }
 .rel-more { margin: 16px 0 0; color: var(--muted); font-size: 14px; }
 .rel-more a { color: var(--gold-2); }
-/* 상세 버전 — 묶음 안에서 버전마다 제목(v0.47.3 처럼) 아래 그 버전 항목(2026-11-02) */
-.rel-ver + .rel-ver { margin-top: 18px; padding-top: 18px; border-top: 1px dashed var(--line); }
-.rel-vh { margin: 0 0 10px; font: 600 13px/1.2 var(--mono); letter-spacing: .01em; color: var(--gold-2); }
+/* 상세 버전 — 묶음 안에서 버전마다 제목(v0.47.3 처럼) 아래 그 버전 항목(2026-11-02)
+   세로 타임라인: 왼쪽 선 위에 버전마다 점, 맨 위(최신) 버전만 금빛. 버전 사이는 구분선 없이 간격으로 나눈다(2026-11-02 시안 B) */
+.rel-ver { position: relative; padding-left: 22px; }
+.rel-ver + .rel-ver { padding-top: 22px; }
+.rel-ver::before { content: ""; position: absolute; left: 3px; top: 0; bottom: -1px; width: 1px; background: var(--line-2); }
+.rel-ver:first-of-type::before { top: 6px; }
+.rel-ver:last-of-type::before { bottom: auto; height: 100%; background: linear-gradient(var(--line-2), transparent); }
+.rel-vh { position: relative; margin: 0 0 10px; font: 600 12.5px/1.2 var(--mono); letter-spacing: .01em; color: var(--muted); }
+.rel-vh::before { content: ""; position: absolute; left: -22px; top: 1px; width: 7px; height: 7px; border-radius: 50%; background: var(--dim); box-shadow: 0 0 0 3px var(--bg); }
+.rel-ver:first-of-type .rel-vh { color: var(--gold-2); }
+.rel-ver:first-of-type .rel-vh::before { background: var(--gold); box-shadow: 0 0 8px rgba(217, 181, 111, .6); }
 /* 일본어 'セキュリティパッチ' 태그가 96px 칸에서 두 줄로 깨져 일본어만 칸을 넓힌다(좁은 화면은 한 칸이라 그대로) */
 @media (min-width: 481px) { html:lang(ja) .rel li { grid-template-columns: 124px 1fr; } }
 /* 받기 카드의 버전(.dl-ver 와 같은 자동 읽기 값) */
