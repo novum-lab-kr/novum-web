@@ -54,7 +54,7 @@
           "name": "必须要有 Claude Code 或 Codex 吗？",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "是的，你的 Mac 上至少要登录其中一个。智能体用哪个都能运行。PR 自动审查使用 Claude Code；如果还有 Codex，会多一个来自不同模型的审查者。"
+            "text": "是的，你的 Mac 上至少要登录其中一个。智能体用哪个都能运行。PR 自动审查也只需其中一个：两者都有时，Claude 和 Codex 并行审查；只有一个时，由它用不同的模型审查两次。"
           }
         },
         {
@@ -171,7 +171,7 @@
       </ul>
   <h3 class="doc-h3" data-t="doc.b.prep.h">首次设置前要准备的</h3>
   <ol class="h3-steps-list">
-    <li data-t="doc.b.prep1"><b>登录智能体。</b> 安装 Claude Code 或 Codex，并用你自己的账号登录。Athena Studio 找到 Claude Code 就启动它，否则启动 Codex。</li>
+    <li data-t="doc.b.prep1"><b>登录智能体。</b> 安装 Claude Code 或 Codex，并用你自己的账号登录。如果只装了一个，Athena Studio 就启动它；两者都有时，会在第一次询问用哪个并记住。在 athena 工作区中启动另一个工具，记住的选择也会随之改变。</li>
     <li data-t="doc.b.prep2"><b>登录 GitHub。</b> 安装 gh CLI 并运行 <code>gh auth login</code>。没有它，Athena 无法创建拉取请求。</li>
     <li data-t="doc.b.prep3"><b>克隆你的仓库。</b> 放在主文件夹下。Athena 会向下查找三层文件夹，所以按团队或公司文件夹归类也没问题。你不负责的仓库可以不放。</li>
     <li data-t="doc.b.prep4"><b>用 nvm 安装 Node，并安装包管理器。</b> 检查会使用每个仓库 <code>.nvmrc</code> 中的 Node 版本，并按仓库的 lock 文件选用 npm、pnpm 或 yarn。</li>
@@ -218,7 +218,7 @@
   <h3 class="doc-h3" data-t="doc.su.do.h">分步操作</h3>
   <ol class="h3-steps-list">
     <li data-t="doc.su.do1"><b>点击“新建包”。</b> 它在开始界面上，也在标签栏左侧的包菜单中。无需填写任何内容：Athena Studio 会创建一个空包及其专属的 Athena 文件夹，并把窗口切换到这个包。</li>
-    <li data-t="doc.su.do2"><b>等待 Athena 启动。</b> Claude Code(没有则用 Codex)会在 athena 工作区中启动，并自动开始首次设置。在 Claude Code 中也可以输入 <code>/setup</code>。Codex 第一次会询问是否信任该文件夹及其钩子。如果两者都没有安装，请安装其一，再在 athena 工作区中启动。</li>
+    <li data-t="doc.su.do2"><b>等待 Athena 启动。</b> 你选择的工具会在 athena 工作区中启动，并自动开始首次设置。要手动开始，在 Claude Code 中输入 <code>/setup</code>，在 Codex 中输入 <code>$setup</code>。Codex 第一次会询问是否信任该文件夹及其钩子。如果两者都没有安装，请安装其一，再在 athena 工作区中启动。</li>
     <li data-t="doc.su.do3"><b>选择仓库。</b> Athena 会找出这台 Mac 上的仓库，按找到的顺序全部列在控制台中。勾选要加入的仓库(或顶部的“全部”)，然后确认。</li>
     <li data-t="doc.su.do4"><b>回答几个问题。</b> 公司名称(小写英文字母，会成为包的文件夹名)以及指代你们服务和品牌的名称。仓库的生产分支、PR 目标分支、类型或层级中推测错误的部分。智能体名称(默认是仓库名加 -fe 或 -be)。以及哪些仓库开启 PR 自动审查和合并：默认都不开启，之后可以在设置中更改。</li>
     <li data-t="doc.su.do5"><b>等待 Athena 读取。</b> 它为每个仓库配置智能体，读取每个仓库的生产分支，写下规则、结构笔记、路由表和服务概览。无法确认的内容不会去猜，而是标为“待确认”。</li>
@@ -562,7 +562,7 @@
   <div class="faq">
       <details><summary data-t="h.q0">哪些 Mac 可以用？</summary><p data-t="h.q0a">macOS 13 Ventura 及以上的 Apple Silicon 或 Intel Mac 都可以使用，<a href="/zh/download/">免费下载</a>。</p></details>
       <details><summary data-t="h.q2">要花钱吗？</summary><p data-t="h.q2a">Athena Studio 可以免费下载和使用。智能体使用你自己的 Claude Code 或 Codex 套餐运行，用量照常由该服务商计费。</p></details>
-      <details><summary data-t="h.q3">必须要有 Claude Code 或 Codex 吗？</summary><p data-t="h.q3a">是的，你的 Mac 上至少要登录其中一个。智能体用哪个都能运行。PR 自动审查使用 Claude Code；如果还有 Codex，会多一个来自不同模型的审查者。</p></details>
+      <details><summary data-t="h.q3">必须要有 Claude Code 或 Codex 吗？</summary><p data-t="h.q3a">是的，你的 Mac 上至少要登录其中一个。智能体用哪个都能运行。PR 自动审查也只需其中一个：两者都有时，Claude 和 Codex 并行审查；只有一个时，由它用不同的模型审查两次。</p></details>
       <details><summary data-t="h.q6">智能体会自己合并代码吗？</summary><p data-t="h.q6a">只有在你开启时才会。自动合并默认关闭，按仓库设置，你也可以在每次合并前保留最后一次点击。</p></details>
       <details><summary data-t="h.q7">关闭应用后，智能体还会继续工作吗？</summary><p data-t="h.q7a">会。终端和智能体在后台继续运行。即使退出了应用，重新打开后也会回到同样的标签页和布局。</p></details>
       <details><summary data-t="h.q8">可以用于多家公司或多个项目吗？</summary><p data-t="h.q8a">可以。为每个创建一个包：包含其仓库、智能体和规则。切换包不会中断另一个包里的工作，你还可以导出包与团队共享。</p></details>

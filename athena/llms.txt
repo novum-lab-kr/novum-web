@@ -39,7 +39,7 @@ Every task gets a plan, its own worktree and a check before it ships.
   - Merge can be Auto, Confirm (asks you in Work) or Manual (left to you)
   - Choose the model for each role, from agents to reviewers
   - Review results and merges are recorded on the plan and the pull request
-  - Claude and Codex review side by side and both must approve; without Codex, Claude reviews twice with different models. Small PRs get one quick review
+  - Claude and Codex review side by side and both must approve; without Codex, Claude reviews twice with different models, and without Claude, Codex does. Small PRs get one quick review
   - Turn Auto PR off to skip the pull request and review; the work branch then merges straight into the base branch, following your Merge setting
 - Notes you choose, for the next task: After a merge, the learning review suggests notes from what came up along the way, such as review comments and QA findings. Only the ones you pick in Learning are kept for that repository, and agents read them at the start of the next task.
 - A pack for each company you work with: A pack holds one company's repositories, agents and routing rules. Each pack runs on its own, so switching never stops work in another.

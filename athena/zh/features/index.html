@@ -191,7 +191,7 @@
           <li data-t="f.rv.l2">合并可选自动、确认后(在 [工作] 中询问你)或手动(由你来合并)</li>
           <li data-t="f.rv.l3">为每个角色选择模型，从智能体到审查者</li>
           <li data-t="f.rv.l4">审查结果和合并都会记录在计划和拉取请求上</li>
-          <li data-t="f.rv.l6">Claude 和 Codex 并行审查，两者都批准才会合并；没有 Codex 时，Claude 用不同的模型审查两次。小的 PR 只快速审查一次</li>
+          <li data-t="f.rv.l6">Claude 和 Codex 并行审查，两者都批准才会合并；没有 Codex 时由 Claude、没有 Claude 时由 Codex 用不同的模型审查两次。小的 PR 只快速审查一次</li>
           <li data-t="f.rv.l5">关闭自动 PR 后，不建拉取请求也不审查，工作分支会直接合并到基准分支，并遵循你的合并设置</li>
         </ul>
       </div>
