@@ -2,7 +2,7 @@
 
 > Athena Studio is a Mac app that runs a team of AI coding agents: a team lead that plans, and an agent per repository. Watch their terminals, answer their questions and review their pull requests.
 
-Free · macOS 13+ · Apple Silicon / Intel · Needs Claude Code or Codex. © 2026 Novum Lab. Athena Studio is made by Novum Lab.
+Free · macOS 13+ · Apple Silicon / Intel · Needs Claude Code or Codex. © 2026 Novum Lab
 
 ## How it works
 
