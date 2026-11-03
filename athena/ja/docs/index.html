@@ -54,7 +54,7 @@
           "name": "Claude Code か Codex は必須ですか?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "はい。少なくともどちらかに、お使いの Mac でサインインしている必要があります。エージェントはどちらでも動きます。PR 自動レビューは Claude Code を使い、Codex もあれば別のモデルのレビュアーが加わります。"
+            "text": "はい。少なくともどちらかに、お使いの Mac でサインインしている必要があります。エージェントはどちらでも動きます。PR 自動レビューもどちらか一つあれば使えます。両方あれば Claude と Codex が並んでレビューし、一つだけなら、そのツールが別のモデルで 2 回レビューします。"
           }
         },
         {
@@ -171,7 +171,7 @@
       </ul>
   <h3 class="doc-h3" data-t="doc.b.prep.h">最初の設定の前に準備するもの</h3>
   <ol class="h3-steps-list">
-    <li data-t="doc.b.prep1"><b>エージェントにサインインします。</b> Claude Code か Codex をインストールし、ご自身のアカウントでサインインしておきます。Athena Studio は Claude Code があればそれを、なければ Codex を起動します。</li>
+    <li data-t="doc.b.prep1"><b>エージェントにサインインします。</b> Claude Code か Codex をインストールし、ご自身のアカウントでサインインしておきます。Athena Studio は、片方だけならそれを起動し、両方あれば最初に一度だけどちらを使うか尋ねて記憶します。athena ワークスペースで別のツールを起動すると、記憶した選択も切り替わります。</li>
     <li data-t="doc.b.prep2"><b>GitHub にサインインします。</b> gh CLI をインストールして <code>gh auth login</code> を実行します。これがないと Athena はプルリクエストを作れません。</li>
     <li data-t="doc.b.prep3"><b>リポジトリを用意します。</b> ホームフォルダの下に clone しておきます。Athena は 3 階層下のフォルダまで探すので、チームや会社のフォルダにまとめていても大丈夫です。担当しないリポジトリはなくてもかまいません。</li>
     <li data-t="doc.b.prep4"><b>nvm で Node を、そしてパッケージマネージャーをインストールします。</b> チェックは各リポジトリの <code>.nvmrc</code> にある Node のバージョンと、リポジトリの lock ファイルに合わせた npm・pnpm・yarn のいずれかで動きます。</li>
@@ -218,7 +218,7 @@
   <h3 class="doc-h3" data-t="doc.su.do.h">手順</h3>
   <ol class="h3-steps-list">
     <li data-t="doc.su.do1"><b>[新しいパックを作成] を押します。</b> スタート画面と、タブバー左のパックメニューにあります。入力する欄はありません。Athena Studio が空のパックとそのパック専用の Athena フォルダを作り、ウィンドウをそのパックに切り替えます。</li>
-    <li data-t="doc.su.do2"><b>Athena の起動を待ちます。</b> athena ワークスペースで Claude Code(なければ Codex)が起動し、最初の設定を自動で始めます。Claude Code では <code>/setup</code> と入力しても始められます。Codex は最初に、このフォルダとフックを信頼するかを一度だけ尋ねます。どちらもなければ、どちらかをインストールして athena ワークスペースで起動してください。</li>
+    <li data-t="doc.su.do2"><b>Athena の起動を待ちます。</b> athena ワークスペースで選んだツールが起動し、最初の設定を自動で始めます。自分で始めるときは、Claude Code では <code>/setup</code>、Codex では <code>$setup</code> と入力します。Codex は最初に、このフォルダとフックを信頼するかを一度だけ尋ねます。どちらもなければ、どちらかをインストールして athena ワークスペースで起動してください。</li>
     <li data-t="doc.su.do3"><b>リポジトリを選びます。</b> Athena がこの Mac のリポジトリを探し、見つけた順にすべてコンソールに表示します。入れるものにチェックを付け(一番上の「すべて」で全部)、確定します。</li>
     <li data-t="doc.su.do4"><b>いくつかの質問に答えます。</b> 会社名(英小文字。パックのフォルダ名になります)と、サービスやブランドを指す名前。リポジトリの本番ブランチ・PR の向き先・種類・層のうち推定が誤っているもの。エージェント名(既定はリポジトリ名に -fe か -be)。そして PR の自動レビューとマージを有効にするリポジトリ。既定ではどれも有効にせず、あとから設定で変えられます。</li>
     <li data-t="doc.su.do5"><b>Athena が読むのを待ちます。</b> リポジトリごとにエージェントを用意し、それぞれの本番ブランチを読んで、ルール・構造ノート・ルーティング表・サービス概要を書きます。確認できなかったことは推測せず「要確認」として残します。</li>
@@ -562,7 +562,7 @@
   <div class="faq">
       <details><summary data-t="h.q0">どの Mac で使えますか?</summary><p data-t="h.q0a">macOS 13 Ventura 以降なら、Apple Silicon・Intel のどちらの Mac でも使えます。<a href="/ja/download/">ダウンロード</a>は無料です。</p></details>
       <details><summary data-t="h.q2">料金はかかりますか?</summary><p data-t="h.q2a">Athena Studio は無料でダウンロードして使えます。エージェントはご自身の Claude Code または Codex のプランで動くので、利用料はこれまでどおりその提供元から請求されます。</p></details>
-      <details><summary data-t="h.q3">Claude Code か Codex は必須ですか?</summary><p data-t="h.q3a">はい。少なくともどちらかに、お使いの Mac でサインインしている必要があります。エージェントはどちらでも動きます。PR 自動レビューは Claude Code を使い、Codex もあれば別のモデルのレビュアーが加わります。</p></details>
+      <details><summary data-t="h.q3">Claude Code か Codex は必須ですか?</summary><p data-t="h.q3a">はい。少なくともどちらかに、お使いの Mac でサインインしている必要があります。エージェントはどちらでも動きます。PR 自動レビューもどちらか一つあれば使えます。両方あれば Claude と Codex が並んでレビューし、一つだけなら、そのツールが別のモデルで 2 回レビューします。</p></details>
       <details><summary data-t="h.q6">エージェントが勝手にマージしますか?</summary><p data-t="h.q6a">オンにしたときだけです。自動マージは初期設定でオフ、リポジトリごとに設定します。マージのたびに最後のクリックをあなたが行うようにもできます。</p></details>
       <details><summary data-t="h.q7">アプリを閉じてもエージェントは動きますか?</summary><p data-t="h.q7a">はい。ターミナルとエージェントはバックグラウンドで動き続けます。アプリを終了したあとでも、開き直せば同じタブ、同じレイアウトに戻ります。</p></details>
       <details><summary data-t="h.q8">複数の会社やプロジェクトで使えますか?</summary><p data-t="h.q8a">はい。それぞれにパックを作ります。リポジトリ、エージェント、ルールをまとめたものです。パックを切り替えても別のパックの作業は止まらず、パックを書き出してチームと共有できます。</p></details>
