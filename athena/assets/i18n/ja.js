@@ -48,7 +48,7 @@ window.ATHENA_I18N.ja = {
   "n.x1": "macOS 13 以降。PR 自動レビューは Claude Code か Codex のどちらか一つで使えます。<a href=\"/download/\">すべての条件</a>",
   "n.e.h": "Mac で試してみてください。",
   "nav.terms": "利用規約",
-  "c.made": "© 2026 Novum Lab. Athena Studio は Novum Lab が開発しています。",
+  "c.made": "© 2026 Novum Lab",
   "c.ga": "このサイトでは、訪問数とダウンロード数を数えるために Google Analytics の Cookie を使用しています。",
   "o.title": "ドキュメント — Athena Studio",
   "o.desc": "Athena Studio のはじめかた、キーボードショートカット、データとセキュリティ、比較、よくある質問。",

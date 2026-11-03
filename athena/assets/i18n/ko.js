@@ -48,7 +48,7 @@ window.ATHENA_I18N.ko = {
   "n.x1": "macOS 13 이상. PR 자동 리뷰는 Claude Code나 Codex 하나만 있어도 됩니다. <a href=\"/download/\">전체 조건</a>",
   "n.e.h": "맥에서 바로 써 보기",
   "nav.terms": "약관",
-  "c.made": "© 2026 Novum Lab. Athena Studio는 Novum Lab이 만듭니다.",
+  "c.made": "© 2026 Novum Lab",
   "c.ga": "이 사이트는 방문 수와 다운로드 수를 세기 위해 Google Analytics 쿠키를 씁니다.",
   "o.title": "문서 — Athena Studio",
   "o.desc": "Athena Studio 시작하기, 단축키, 데이터와 보안, 비교, 자주 묻는 질문.",
