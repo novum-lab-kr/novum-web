@@ -76,12 +76,78 @@
      항목의 버전 = 그 변경이 들어간 태그(athena-studio 태그마다 커밋 하나 — git log vA..vB). 여러 버전에 걸친 변경은 버전마다 나눠 적는다(2026-11-02 상세 버전으로 다시 씀).
      핵심에 내부 용어(현황판 · pane 번호 · 계획서 등)를 넣지 않는다. 사실은 CHANGELOG · 릴리스 본문 · 그 커밋에 있는 것만 — 지어 넣지 않는다.
      공개판 사이의 비공개 판은 그 변경이 처음 들어간 공개판에 묶는다(v0.15.8 = v0.15.0 – v0.15.8 · v0.17.6 = v0.15.9 – v0.17.6 · v0.19.2 = v0.17.7 – v0.19.2 · v0.25.1 = v0.19.3 – v0.25.1 · v0.28.7 = v0.25.2 – v0.28.7 · v0.32.4 = v0.28.8 – v0.32.4 · v0.40.3 = v0.32.5 – v0.40.3 · v0.42.2 = v0.40.4 – v0.42.2 · v0.46.4 = v0.42.3 – v0.46.4 · 0.47 = v0.47.0 –).
-     0.47 은 공개판 v0.47.19 뒤 v0.47.20 – v0.47.28 도 실었다(더 보기 링크는 공개판 v0.47.19 그대로).
+     0.47 은 공개판 v0.47.19 · v0.47.34 · v0.47.52 까지 실었다(더 보기 링크는 최신 공개판 v0.47.52 · 그 밖의 N개 = 0.47 의 CHANGELOG 두 절에서 싣지 않은 항목 수).
      새 버전: 그 묶음 맨 위에 같은 모양으로 더하고 키를 ko · ja · zh 사전에 모두 넣는다. 새 공개판이면 묶음을 맨 위에 더한다. 0.2 – 0.13 은 공개 전 개발판이라 한 줄(접힘) 그대로 -->
 <section style="padding-top:0">
   <div class="wrap">
-    <div class="rel"><div class="v"><b>0.47</b><span>v0.47.0 – v0.47.28<br><span data-t="r.d47">Nov 1–2, 2026</span></span></div><div>
+    <div class="rel"><div class="v"><b>0.47</b><span>v0.47.0 – v0.47.52<br><span data-t="r.d47">Nov 1–3, 2026</span></span></div><div>
       <h3 class="rel-t" data-t="r.47t">Updating the app or core no longer closes your panes.</h3>
+      <div class="rel-ver"><h4 class="rel-vh">v0.47.51</h4>
+      <ul>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.47k42">When the Athena pane cannot take a message right away, for example while a question is open, agents' messages wait and are delivered in order once it is free, instead of turning into question requests.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.47.46</h4>
+      <ul>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.47k41">Spaces shows a pane as idle once Claude has finished, even if background shells are still running. Pane title bars show the pane number and a &gt;_ count of background shells.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.47.45</h4>
+      <ul>
+      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.47k39">Restoring a pack exported with your work history now reopens Codex conversations as well, when this computer has their Codex history.</span></li>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.47k40">The Board's Learning tab now shows personal memory from both Claude and Codex.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.47.44</h4>
+      <ul>
+      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.47k38">Codex started in the Athena folder now works as the team lead with the same rules as Claude.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.47.43</h4>
+      <ul>
+      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.47k37">Reviewer panes now close automatically after review when they run in Codex.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.47.42</h4>
+      <ul>
+      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.47k36">When Claude is not available, automatic pull request review and learning review run with Codex.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.47.41</h4>
+      <ul>
+      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.47k35">The update popup no longer shows notes from an earlier release.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.47.40</h4>
+      <ul>
+      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.47k34">Agent Monitor no longer leaves [?] labels on older rows.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.47.39</h4>
+      <ul>
+      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.47k33">Codex agent panes no longer break after you trust their hooks.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.47.38</h4>
+      <ul>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.47k32">Panes waiting at a question, permission, trust or model prompt now show as waiting for input in Spaces, Agent Monitor, the Board and the menu bar, and Athena does not reuse or close them while they wait.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.47.37</h4>
+      <ul>
+      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.47k31">Questions and permission prompts in Codex panes now appear in Work like Claude's, and answers to questions go back to that pane.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.47.36</h4>
+      <ul>
+      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.47k30">Text sent to a pane no longer stays in its input box unsent: Athena checks that it went through and presses Enter again if needed.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.47.35</h4>
+      <ul>
+      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.47k29">Agents and reviewers can now run as Codex panes in the repository's workspace.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.47.32</h4>
+      <ul>
+      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.47k28">When Claude and Codex are both signed in, Athena asks which tool to start and remembers your choice. Starting the other tool in the Athena workspace updates that choice.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.47.31</h4>
+      <ul>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.47k26">Codex sessions now use the same commit, secret and process protection hooks as Claude sessions.</span></li>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.47k27">Agent Monitor now shows Codex sessions alongside Claude sessions, including their model, tool activity and summaries.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.47.30</h4>
+      <ul>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.47k25">After automatic review reaches its round limit, the final fixes now get a short review of the changed code before merging. Blocking findings or a failed review stop the merge.</span></li>
+      </ul></div>
       <div class="rel-ver"><h4 class="rel-vh">v0.47.28</h4>
       <ul>
       <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.47k23">When Athena sends new work to an idle agent pane, the new branch now starts in the folder that pane is actually working in, and Athena refuses if that folder is the repository's main checkout.</span></li>
@@ -160,7 +226,7 @@
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.47k1">Updating the app or core no longer closes your panes: running panes switch to the new code and keep going.</span></li>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.47k2">If panes are running an older version that cannot switch, Athena lists the panes that would close and closes them only when you choose to. Otherwise you can keep using them as they are.</span></li>
       </ul></div>
-      <p class="rel-more" data-t="r.47m">6 more small changes and fixes · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.47.19">See everything in v0.47.19 on GitHub</a></p>
+      <p class="rel-more" data-t="r.47m">8 more small changes and fixes · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.47.52">See everything in v0.47.52 on GitHub</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.46</b><span>v0.42.3 – v0.46.4<br><span data-t="r.d46">Nov 1, 2026</span></span></div><div>
       <h3 class="rel-t" data-t="r.46t">Agents read your repository rules, and small pull requests take a fast path.</h3>
