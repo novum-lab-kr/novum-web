@@ -79,9 +79,79 @@
      0.48 은 공개판 v0.48.4 까지 실었다(CHANGELOG 0.48 절 항목 모두 · v0.48.3 은 문서 · v0.48.4 는 시험 고침뿐이라 제목 없음 · 더 보기 링크는 v0.48.4).
      0.47 은 공개판 v0.47.19 · v0.47.34 · v0.47.52 까지 실었다(더 보기 링크는 최신 공개판 v0.47.52 · 그 밖의 N개 = 0.47 의 CHANGELOG 두 절에서 싣지 않은 항목 수).
      0.49 = v0.48.5 – v0.49.3 · 0.50 = v0.50.0 – v0.50.3. 앱 공개 main e7479fc의 CHANGELOG 0.49/0.50 및 태그별 커밋 기준.
+     0.51 = v0.50.4 – v0.51.14. 앱 공개 main fce8bb1 의 CHANGELOG 0.51 절(New 3 · Improved 8 · Fixed 6 = 17줄 모두)을 태그별 커밋 기준으로 나눴다 — 여러 태그에 걸친 한 줄(그림 스킬 #234 #237 e43d71a · 훅 믿음 d6cfe2f 268aabf)은 마지막 태그 아래에(0.47 Codex 리드 줄과 같은 방식).
      새 버전: 그 묶음 맨 위에 같은 모양으로 더하고 키를 ko · ja · zh 사전에 모두 넣는다. 새 공개판이면 묶음을 맨 위에 더한다. 0.2 – 0.13 은 공개 전 개발판이라 한 줄(접힘) 그대로 -->
 <section style="padding-top:0">
   <div class="wrap">
+    <div class="rel"><div class="v"><b>0.51</b><span>v0.50.4 – v0.51.14<br><span data-t="r.d51">Nov 3–4, 2026</span></span></div><div>
+      <h3 class="rel-t" data-t="r.51t">Answer Codex approval requests in Work, and service diagrams are back.</h3>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.13</h4>
+      <ul>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k10">Setup now checks whether Codex trusts Athena's hooks and explains how to approve them, and Codex lead sessions receive the same full lead instructions as Claude.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.12</h4>
+      <ul>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k11">Merges handed off to GitHub Actions now use the plan title as the merge commit title.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.11</h4>
+      <ul>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k7">Metrics and pane token counts now include Codex sessions, and Agent Monitor lists Codex sub-agents as sub-agent rows.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.10</h4>
+      <ul>
+      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.51k3">Repositories that merge without pull requests now get an automatic review before merging when the change is wide (5 or more code files, 150 or more lines, or sensitive paths), including when the merge is handed off to GitHub Actions.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.9</h4>
+      <ul>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k9">Codex reviewers run in an isolated sandbox that can only write review results, not the code under review.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.8</h4>
+      <ul>
+      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.51k15">Codex approval notification titles no longer include the command text, one permission request now produces a single notification per pane, and Codex questions are no longer shown twice.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.7</h4>
+      <ul>
+      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.51k2">Service diagrams are back: the /diagram skill (Claude /diagram · Codex $diagram) generates diagrams in the same design as Athena's own flow diagrams, with an overall structure view, a user flow view and an affected-files view, plus a details panel that opens when a box is clicked.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.6</h4>
+      <ul>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k8">Pull request and learning reviews switch to Codex when Claude has hit its usage limit, follow the body's main tool for ordering, and record which engine made each review.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.4</h4>
+      <ul>
+      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.51k17">Review diffs no longer mask code values that only look like secrets, which caused reviewers to report syntax errors that did not exist.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.3</h4>
+      <ul>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k5">New pack windows open offset from the previous window instead of stacking exactly on top of it.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.2</h4>
+      <ul>
+      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.51k12">Finished-work notifications now ask GitHub for the pull request's actual state (open, draft, merged or closed) instead of showing an outdated plan value.</span></li>
+      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.51k13">Sending from an outdated decision console no longer silently confirms missing decisions; the console asks you to refresh instead.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.1</h4>
+      <ul>
+      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.51k16">Sequence diagram request labels are easier to read in both light and dark themes.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.0</h4>
+      <ul>
+      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.51k1">Codex approval requests — commands, file changes, extra permissions and choice-style questions — can now be answered directly in Work, in all four languages, keeping the original choices and scope.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.50.7</h4>
+      <ul>
+      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.51k14">Codex panes now run with their own server so a new pane keeps its own identifier, and agent reports are delivered only to the lead session they belong to.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.50.6</h4>
+      <ul>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k6">The Board's Metrics tab shows the time distribution as six time-of-day bars with counts, expands the full task list by default, and shows each task's total elapsed time and per-stage times.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.50.5</h4>
+      <ul>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k4">Codex Browser permission prompts and startup trust dialogs are now detected and announced in Work and the tray in the app's language, with a shortcut back to the pane.</span></li>
+      </ul></div>
+      <p class="rel-more" data-t="r.51m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.51.14">See everything in v0.51.14 on GitHub</a></p>
+    </div></div>
     <div class="rel"><div class="v"><b>0.50</b><span>v0.50.0 – v0.50.3<br><span data-t="r.d50">Nov 3, 2026</span></span></div><div>
       <h3 class="rel-t" data-t="r.50t">Average times for work, pull requests, reviews and verification at a glance.</h3>
       <div class="rel-ver"><h4 class="rel-vh">v0.50.2</h4>
