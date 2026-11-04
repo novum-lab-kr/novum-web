@@ -79,9 +79,79 @@
      0.48 은 공개판 v0.48.4 까지 실었다(CHANGELOG 0.48 절 항목 모두 · v0.48.3 은 문서 · v0.48.4 는 시험 고침뿐이라 제목 없음 · 더 보기 링크는 v0.48.4).
      0.47 은 공개판 v0.47.19 · v0.47.34 · v0.47.52 까지 실었다(더 보기 링크는 최신 공개판 v0.47.52 · 그 밖의 N개 = 0.47 의 CHANGELOG 두 절에서 싣지 않은 항목 수).
      0.49 = v0.48.5 – v0.49.3 · 0.50 = v0.50.0 – v0.50.3. 앱 공개 main e7479fc의 CHANGELOG 0.49/0.50 및 태그별 커밋 기준.
+     0.51 = v0.50.4 – v0.51.14. 앱 공개 main fce8bb1 의 CHANGELOG 0.51 절(New 3 · Improved 8 · Fixed 6 = 17줄 모두)을 태그별 커밋 기준으로 나눴다 — 여러 태그에 걸친 한 줄(그림 스킬 #234 #237 e43d71a · 훅 믿음 d6cfe2f 268aabf)은 마지막 태그 아래에(0.47 Codex 리드 줄과 같은 방식).
      새 버전: 그 묶음 맨 위에 같은 모양으로 더하고 키를 ko · ja · zh 사전에 모두 넣는다. 새 공개판이면 묶음을 맨 위에 더한다. 0.2 – 0.13 은 공개 전 개발판이라 한 줄(접힘) 그대로 -->
 <section style="padding-top:0">
   <div class="wrap">
+    <div class="rel"><div class="v"><b>0.51</b><span>v0.50.4 – v0.51.14<br><span data-t="r.d51">2026년 11월 3–4일</span></span></div><div>
+      <h3 class="rel-t" data-t="r.51t">Codex 승인 요청에 [작업]에서 바로 답하고, 서비스 그림이 돌아왔습니다.</h3>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.13</h4>
+      <ul>
+      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.51k10">설정 과정에서 Codex 가 아테나 훅을 믿는지 확인해 믿음 표시 방법을 안내하고, Codex 리드 세션도 Claude 와 같은 리드 지시 전문을 받아요.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.12</h4>
+      <ul>
+      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.51k11">GitHub Actions 로 넘긴 머지의 커밋 제목이 계획서 제목으로 들어가요.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.11</h4>
+      <ul>
+      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.51k7">지표와 pane 토큰 집계에 Codex 세션도 들어가고, 에이전트 모니터가 Codex 하위 에이전트를 서브에이전트 줄로 보여 줘요.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.10</h4>
+      <ul>
+      <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.51k3">PR 없이 바로 머지하는 레포에서 넓은 수정(코드 파일 5개 이상 · 150줄 이상 · 민감 경로)이면 머지 앞에 리뷰가 자동으로 끼어요. GitHub Actions 로 넘기는 머지도 같아요.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.9</h4>
+      <ul>
+      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.51k9">Codex 리뷰어는 리뷰 결과만 적을 수 있는 격리 샌드박스에서 돌아 리뷰 대상 코드를 고치지 못해요.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.8</h4>
+      <ul>
+      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.51k15">Codex 승인 알림 제목에 명령 원문이 나가던 것, 허락 한 건에 알림이 여러 번 나던 것, Codex 질문이 두 번 보이던 것을 고쳤어요.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.7</h4>
+      <ul>
+      <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.51k2">서비스 그림이 돌아왔어요. /diagram 스킬(Claude /diagram · Codex $diagram)이 아테나 작업 흐름 그림과 같은 디자인으로 전체 구조 · 사용자 동작 흐름 · 수정 파일과 영향 범위 세 관점의 그림을 만들고, 상자를 누르면 자세히 칸이 열려요.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.6</h4>
+      <ul>
+      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.51k8">PR 자동 리뷰와 학습 검토가 Claude 사용량 한도에 걸리면 Codex 로 넘어가고, 본체 주 도구 순서를 따르며, 어느 엔진이 리뷰했는지 기록해요.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.4</h4>
+      <ul>
+      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.51k17">리뷰 diff 에서 비밀값처럼 보이는 코드 값까지 가려 리뷰어가 없는 문법 오류를 지적하던 것을 고쳤어요.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.3</h4>
+      <ul>
+      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.51k5">새 팩 창이 앞에 있던 창에 정확히 겹치지 않고 오른쪽 아래로 한 칸 비켜 떠요.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.2</h4>
+      <ul>
+      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.51k12">작업 끝 알림이 계획서의 옛 값 대신 GitHub 에 PR 의 실제 상태(open · draft · merged · closed)를 물어 보여 주도록 고쳤어요.</span></li>
+      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.51k13">낡은 결정 콘솔에서 보내면 빠진 결정이 그냥 확정되던 것을 고쳤어요. 콘솔이 새로 고치라고 안내해요.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.1</h4>
+      <ul>
+      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.51k16">시퀀스 그림의 요청 라벨이 밝은 테마 · 어두운 테마 모두에서 또렷하게 보이도록 고쳤어요.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.0</h4>
+      <ul>
+      <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.51k1">Codex 의 승인 요청(명령 · 파일 변경 · 추가 권한 · 선택형 질문)에 [작업]에서 네 언어로 바로 답할 수 있어요. 원래 선택지와 범위는 그대로 보여 줘요.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.50.7</h4>
+      <ul>
+      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.51k14">Codex pane 이 각자 서버로 돌아 새 pane 이 자기 식별자를 유지하고, 에이전트 보고가 자기 리드 세션에만 전달되도록 고쳤어요.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.50.6</h4>
+      <ul>
+      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.51k6">현황판 [지표] 탭의 시간 분포를 여섯 시간대의 막대와 숫자로 보여 주고, 전체 작업 목록을 기본으로 펼쳐 작업마다 전체 경과와 단계별 소요 시간을 보여 줘요.</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.50.5</h4>
+      <ul>
+      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.51k4">Codex Browser 권한창과 시작 신뢰창을 알아채 [작업]과 트레이에 앱 언어로 알려 주고, 원래 pane 으로 바로 갈 수 있어요.</span></li>
+      </ul></div>
+      <p class="rel-more" data-t="r.51m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.51.14">GitHub에서 v0.51.14 전체 보기</a></p>
+    </div></div>
     <div class="rel"><div class="v"><b>0.50</b><span>v0.50.0 – v0.50.3<br><span data-t="r.d50">2026년 11월 3일</span></span></div><div>
       <h3 class="rel-t" data-t="r.50t">작업 · PR · 리뷰 · 검증의 평균 소요 시간을 한눈에 볼 수 있습니다.</h3>
       <div class="rel-ver"><h4 class="rel-vh">v0.50.2</h4>
