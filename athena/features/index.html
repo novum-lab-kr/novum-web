@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title data-t="f.title">Features — Athena Studio</title>
-<meta name="description" data-ta="content:f.desc" content="Workspaces, how agents work (routing, plans, git worktrees, work board, checks, guard hooks), agent monitor, Work, pane details, decision console, Explorer, automatic PR review, menu bar, packs and four languages.">
+<meta name="description" data-ta="content:f.desc" content="Workspaces, how agents work (routing, plans, git worktrees, Worklist, checks, guard hooks), agent monitor, Work, pane details, decision console, Explorer, automatic PR review, menu bar, packs and four languages.">
 <meta property="og:title" content="Features — Athena Studio">
-<meta property="og:description" content="Workspaces, how agents work (routing, plans, git worktrees, work board, checks, guard hooks), agent monitor, Work, pane details, decision console, Explorer, automatic PR review, menu bar, packs and four languages.">
+<meta property="og:description" content="Workspaces, how agents work (routing, plans, git worktrees, Worklist, checks, guard hooks), agent monitor, Work, pane details, decision console, Explorer, automatic PR review, menu bar, packs and four languages.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://athena.novum-lab.com/features/">
 <meta property="og:image" content="https://athena.novum-lab.com/assets/og.jpg">
@@ -94,6 +94,7 @@
           <li data-t="f.pn.l5">A new task goes to an idle agent pane for the same repository; otherwise the agent takes the largest pane, split along its longer side</li>
           <li data-t="f.ws.l5">Drag files or folders from Finder onto a pane to paste their paths into its input line; nothing is sent until you press Enter</li>
           <li data-t="f.ws.l6">Drag the edges to resize the workspace list, Explorer and monitor</li>
+          <li data-t="f.ws.l7">Drag a pane's title bar onto another pane in the same tab to move it; the pane keeps running and the new layout stays after a restart</li>
           <li data-t="f.ws.l4">Give repositories a display name and image, shared with your team through the pack</li>
         </ul>
       </div>
@@ -113,7 +114,7 @@
       <div><h3 data-t="f.hw.rt.h">Routing and an agent per repository</h3><p data-t="f.hw.rt.p">The pack's routing table maps each repository to its agent. Athena uses it to split a request, and each agent reads its repository's rules, structure and notes before it starts. Work that crosses repositories goes in order, shared packages and the backend first; independent work runs at the same time.</p></div>
       <div><h3 data-t="f.hw.pl.h">A plan for every change</h3><p data-t="f.hw.pl.p">Nothing changes without a plan file. A short plan is enough when your request already says what to do. When something is yours to decide, or several repositories must line up, Athena writes a full plan with a decision console and waits for you to confirm. Each plan keeps a checkpoint, so a new session picks up where the last one stopped.</p></div>
       <div><h3 data-t="f.hw.wt.h">A git worktree for each task</h3><p data-t="f.hw.wt.p">Before an agent starts, Athena creates a new branch from your base branch in its own worktree: a separate working folder for that task. Your main checkout and its uncommitted changes stay as they are, even when the repository is messy, and several tasks run side by side.</p></div>
-      <div><h3 data-t="f.hw.bd.h">Work board</h3><p data-t="f.hw.bd.p">Press <kbd>⌘</kbd><kbd>2</kbd> to open the work board in your browser: issues to fix, each with a Start button, QA results, learning, metrics and the archive. When a plan's pull requests merge, the board marks it done, and finished work moves to the archive. The work board is in Korean for now.</p></div>
+      <div><h3 data-t="f.hw.bd.h">Worklist</h3><p data-t="f.hw.bd.p">Press <kbd>⌘</kbd><kbd>2</kbd> to open the Worklist in your browser: issues to fix, each with a Start button, learning, metrics and the archive. Metrics shows average and median times for tasks, pull requests, reviews and checks. When a plan's pull requests merge, the Worklist marks it done, and finished work moves to the archive. It has a dark and a light mode, and is in Korean for now.</p></div>
       <div><h3 data-t="f.hw.ck.h">Checks once, at the end</h3><p data-t="f.hw.ck.p">While working, agents check only the parts they changed. The full verification runs once when the work is committed, and a check that didn't run is never reported as passed. A repository can hand that run to GitHub Actions: verify, merge into the base branch and deploy, with any failure sent back to the agent that did the work.</p></div>
       <div><h3 data-t="f.hw.gd.h">Guard hooks</h3><p data-t="f.hw.gd.p">Agent sessions run with hooks that block a direct git commit, push, <code>gh pr create</code> and <code>git add -A</code>. Commits and pushes go only through Athena's scripts, which stage only the files named. A secret guard also stops the common ways of printing tokens and keys.</p></div>
     </div>
@@ -129,7 +130,7 @@
     </div>
     <div class="quad">
       <div><h3 data-t="h.f.mon">Agent monitor</h3><p data-t="f.mo.p">A live feed at the bottom of the window follows each agent tool by tool: files read and edited, commands run, and what it says along the way. It works across every workspace.</p></div>
-      <div><h3 data-t="h.f.work">Work</h3><p data-t="f.wk.p">When an agent needs you, its question or decision goes to the top of Work, above the tasks in progress and the ones that finished in the last day. Answer it there and the agent picks up where it stopped.</p><p data-t="f.gi.p">Athena can also watch a repository's open GitHub issues: when turned on, new issues are imported as work items and handed to Athena, and the agent monitor shows a line for each.</p></div>
+      <div><h3 data-t="h.f.work">Work</h3><p data-t="f.wk.p">When an agent needs you, its question or decision goes to the top of Work, above the tasks in progress and the ones that finished in the last day. Answer it there and the agent picks up where it stopped.</p><p data-t="f.gi.p">Athena can also watch a repository's open GitHub issues: when turned on, new issues are imported as work items and handed to Athena, and the agent monitor shows a line for each.</p><p data-t="f.wk.ap">Permission prompts show up in Work too, with a shortcut back to the pane. Codex approval requests for commands, file changes, extra permissions and choice-style questions can be answered right there, with their original choices and scope. Codex Browser permission prompts and startup trust dialogs are announced in Work and the menu bar.</p></div>
       <div><h3 data-t="h.f.det">Pane details</h3><p data-t="f.dt.p">Open details from an agent's title bar and a panel slides in over the window, without resizing your terminals. It shows what the agent needs from you, what blocks it, its plan and its pull request.</p></div>
       <div><h3 data-t="h.f.bar">Menu bar</h3><p data-t="f.mb.p">Athena Studio has an owl icon in the Mac menu bar. A red dot on it means a question is open or a plan is blocked. Click the owl to see each agent and its status.</p></div>
     </div>
@@ -156,6 +157,7 @@
           <li data-t="f.co.l1">Required and optional decisions, with recommended options marked</li>
           <li data-t="f.co.l2">Side browser (<kbd>⌘</kbd><kbd>⇧</kbd><kbd>B</kbd>) for plans, consoles and your local test pages</li>
           <li data-t="f.co.l3">Its own sign-ins, sandboxed, http and https only</li>
+          <li data-t="f.co.l4">Ask for <code>/diagram</code> (<code>$diagram</code> in Codex) to draw a service as diagrams: overall structure, user flow and affected files. Click a box to open its details</li>
         </ul>
       </div>
       <figure class="shot"><img src="/assets/shots/browser-1200.webp" srcset="/assets/shots/browser-1200.webp 1200w, /assets/shots/browser.webp 2400w" sizes="(max-width: 900px) 100vw, 680px" width="1200" height="675" loading="lazy" alt="The decision console in the side browser, next to the api agent's terminal." data-ta="alt:f.co.alt"></figure>
@@ -192,7 +194,8 @@
           <li data-t="f.rv.l3">Choose the model for each role, from agents to reviewers</li>
           <li data-t="f.rv.l4">Review results and merges are recorded on the plan and the pull request</li>
           <li data-t="f.rv.l6">Claude and Codex review side by side and both must approve; without Codex, Claude reviews twice with different models, and without Claude, Codex does. Small PRs get one quick review</li>
-          <li data-t="f.rv.l5">Turn Auto PR off to skip the pull request and review; the work branch then merges straight into the base branch, following your Merge setting</li>
+          <li data-t="f.rv.l7">When Claude hits its usage limit, reviews switch to Codex, and each review records which engine made it. Codex reviewers run in a sandbox that can only write review results, not the code under review</li>
+          <li data-t="f.rv.l5">Turn Auto PR off to skip the pull request; the work branch merges straight into the base branch, following your Merge setting. A wide change (5 or more code files, 150 or more lines, or sensitive paths) still gets an automatic review before the merge, unless Merge is Manual</li>
         </ul>
       </div>
       <figure class="shot sm mid"><img src="/assets/shots/settings-pop.webp?v=20261031" width="686" height="862" loading="lazy" alt="Settings: web has Auto PR and Auto review on, with Merge set to Confirm. api has both on, with Merge set to Auto. mobile has Auto PR off, Merge set to Manual, and stops at the branch with no PR." data-ta="alt:h.b5.alt"></figure>
@@ -200,7 +203,7 @@
     <div class="grid flip-g">
       <div class="txt">
         <h3 data-t="h.b6.h">Notes you choose, for the next task.</h3>
-        <p data-t="h.b6.p">After a merge, the learning review suggests notes from what came up along the way, such as review comments and QA findings. Only the ones you pick in Learning are kept for that repository, and agents read them at the start of the next task.</p>
+        <p data-t="h.b6.p">After a merge, the learning review reads the plan, the conversation and the merged changes with their review comments, and suggests notes. Only the ones you pick in Learning are kept for that repository, and agents read them at the start of the next task.</p>
       </div>
       <div class="learn-card">
           <div class="h"><img src="/assets/owl-white.png" alt="" width="18" height="18"><span data-t="h.b6.card">Learning · api</span></div>

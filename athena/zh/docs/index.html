@@ -222,12 +222,12 @@
     <li data-t="doc.su.do3"><b>选择仓库。</b> Athena 会找出这台 Mac 上的仓库，按找到的顺序全部列在控制台中。勾选要加入的仓库(或顶部的“全部”)，然后确认。</li>
     <li data-t="doc.su.do4"><b>回答几个问题。</b> 公司名称(小写英文字母，会成为包的文件夹名)以及指代你们服务和品牌的名称。仓库的生产分支、PR 目标分支、类型或层级中推测错误的部分。智能体名称(默认是仓库名加 -fe 或 -be)。以及哪些仓库开启 PR 自动审查和合并：默认都不开启，之后可以在设置中更改。</li>
     <li data-t="doc.su.do5"><b>等待 Athena 读取。</b> 它为每个仓库配置智能体，读取每个仓库的生产分支，写下规则、结构笔记、路由表和服务概览。无法确认的内容不会去猜，而是标为“待确认”。</li>
-    <li data-t="doc.su.do6"><b>两个可选问题。</b> 现在还是以后起草服务流程文档和 QA 检查。这些文件会放进你的仓库，所以只有你开口才会提交。另一个是你是否有 TypeSafe Jev 密钥：如果有，请粘贴到打开的输入 pane 中，不要粘贴到对话里。没有也一切照常运行。</li>
+    <li data-t="doc.su.do6"><b>两个可选问题。</b> 现在还是以后起草服务流程文档。这些文件会放进你的仓库，所以只有你开口才会提交。另一个是你是否有 TypeSafe Jev 密钥：如果有，请粘贴到打开的输入 pane 中，不要粘贴到对话里。没有也一切照常运行。</li>
     <li data-t="doc.su.do7"><b>阅读报告。</b> Athena 会为每个仓库运行一次检查并建立代码基线，然后报告已创建的内容、检查结果以及仍需你处理的事项。</li>
   </ol>
   <div class="doc-three">
     <div class="you"><b data-t="doc.su.you.h">由你确认</b><span data-t="doc.su.you.p">要加入的仓库、公司名称、智能体名称，以及哪些仓库开启自动审查。推测错误的地方在这里修正。</span></div>
-    <div><b data-t="doc.su.ath.h">Athena 负责准备</b><span data-t="doc.su.ath.p">为每个仓库配好规则和笔记的智能体、路由表、QA 检查和代码基线。不会修改你的仓库，安装或 fetch 前都会先询问。</span></div>
+    <div><b data-t="doc.su.ath.h">Athena 负责准备</b><span data-t="doc.su.ath.p">为每个仓库配好规则和笔记的智能体、路由表、服务概览和代码基线。不会修改你的仓库，安装或 fetch 前都会先询问。</span></div>
     <div><b data-t="doc.su.end.h">完成之后</b><span data-t="doc.su.end.p">Athena 会报告已完成的内容和仍需你处理的事项。然后在 athena 工作区交代第一项任务即可。</span></div>
   </div>
   <figure class="flowd" aria-label="首次设置时 Athena 做的事" data-ta="aria-label:s.d.aria">
@@ -262,9 +262,9 @@
         <g><circle class="su-dot-you" cx="338" cy="208" r="12"/><text class="su-n" x="338" y="212" text-anchor="middle">2</text><text class="su-i" x="362" y="213" data-t="s.d.st2">由你确认仓库、名称、自动审查</text></g>
         <g><circle class="su-dot" cx="338" cy="248" r="12"/><text class="su-n" x="338" y="252" text-anchor="middle">3</text><text class="su-i" x="362" y="253" data-t="s.d.st3">为每个仓库创建智能体</text></g>
         <g><circle class="su-dot" cx="338" cy="288" r="12"/><text class="su-n" x="338" y="292" text-anchor="middle">4</text><text class="su-i" x="362" y="293" data-t="s.d.st4">读代码并填写</text><text class="su-s" x="362" y="311" data-t="s.d.st4s">每个仓库一个执行者，同时进行</text></g>
-        <g><circle class="su-dot" cx="338" cy="338" r="12"/><text class="su-n" x="338" y="342" text-anchor="middle">5</text><text class="su-i" x="362" y="343" data-t="s.d.st5">为每个画面起草 QA 检查</text></g>
+        <g><circle class="su-dot" cx="338" cy="338" r="12" style="stroke-dasharray:3 3"/><text class="su-n" x="338" y="342" text-anchor="middle">5</text><text class="su-i" x="362" y="343" data-t="s.d.st5">起草服务流程文档(可选)</text></g>
         <g><circle class="su-dot" cx="338" cy="376" r="12"/><text class="su-n" x="338" y="380" text-anchor="middle">6</text><text class="su-i" x="362" y="381" data-t="s.d.st6">运行检查 · 建立代码基线</text></g>
-        <g><circle class="su-dot" cx="338" cy="414" r="12" style="stroke-dasharray:3 3"/><text class="su-n" x="338" y="418" text-anchor="middle">7</text><text class="su-i" x="362" y="419" data-t="s.d.st7">绘制图表(可选)</text></g>
+        <g><circle class="su-dot" cx="338" cy="414" r="12" style="stroke-dasharray:3 3"/><text class="su-n" x="338" y="418" text-anchor="middle">7</text><text class="su-i" x="362" y="419" data-t="s.d.st7">登记 TypeSafe Jev 密钥(可选)</text></g>
         <path class="fd-l" d="M630 250 H676" marker-end="url(#sah)"/>
         <text class="fd-nl" x="653" y="240" text-anchor="middle" data-t="s.d.writes">写入</text>
         <rect class="su-panel" x="680" y="40" width="500" height="420" rx="16"/>
@@ -277,7 +277,6 @@
         <circle class="su-li" cx="720" cy="184" r="2.5"/><text class="su-i" x="730" y="189" data-t="s.d.notes">结构笔记</text>
         <circle class="su-li" cx="720" cy="208" r="2.5"/><text class="su-i" x="730" y="213" data-t="s.d.gotchas">注意事项笔记</text>
         <circle class="su-li" cx="720" cy="232" r="2.5"/><text class="su-i" x="730" y="237" data-t="s.d.check">检查脚本</text>
-        <circle class="su-li" cx="720" cy="256" r="2.5"/><text class="su-i" x="730" y="261" data-t="s.d.qa2">QA 检查</text>
         </g>
         <g>
         <rect class="fd-box fd-agent" x="852" y="88" width="145" height="198" rx="12"/>
@@ -286,7 +285,6 @@
         <circle class="su-li" cx="872" cy="184" r="2.5"/><text class="su-i" x="882" y="189" data-t="s.d.notes">结构笔记</text>
         <circle class="su-li" cx="872" cy="208" r="2.5"/><text class="su-i" x="882" y="213" data-t="s.d.gotchas">注意事项笔记</text>
         <circle class="su-li" cx="872" cy="232" r="2.5"/><text class="su-i" x="882" y="237" data-t="s.d.check">检查脚本</text>
-        <text class="su-s" x="868" y="261" data-t="s.d.noqa">无画面，不做 QA</text>
         </g>
         <g>
         <rect class="fd-box fd-agent" x="1004" y="88" width="145" height="198" rx="12"/>
@@ -333,9 +331,9 @@
         <g><circle class="su-dot-you" cx="44" cy="372" r="11"/><text class="su-n" x="44" y="376" text-anchor="middle">2</text><text class="su-i" x="66" y="377" data-t="s.d.st2">由你确认仓库、名称、自动审查</text></g>
         <g><circle class="su-dot" cx="44" cy="412" r="11"/><text class="su-n" x="44" y="416" text-anchor="middle">3</text><text class="su-i" x="66" y="417" data-t="s.d.st3">为每个仓库创建智能体</text></g>
         <g><circle class="su-dot" cx="44" cy="452" r="11"/><text class="su-n" x="44" y="456" text-anchor="middle">4</text><text class="su-i" x="66" y="457" data-t="s.d.st4">读代码并填写</text><text class="su-s" x="66" y="475" data-t="s.d.st4s">每个仓库一个执行者，同时进行</text></g>
-        <g><circle class="su-dot" cx="44" cy="502" r="11"/><text class="su-n" x="44" y="506" text-anchor="middle">5</text><text class="su-i" x="66" y="507" data-t="s.d.st5">为每个画面起草 QA 检查</text></g>
+        <g><circle class="su-dot" cx="44" cy="502" r="11" style="stroke-dasharray:3 3"/><text class="su-n" x="44" y="506" text-anchor="middle">5</text><text class="su-i" x="66" y="507" data-t="s.d.st5">起草服务流程文档(可选)</text></g>
         <g><circle class="su-dot" cx="44" cy="542" r="11"/><text class="su-n" x="44" y="546" text-anchor="middle">6</text><text class="su-i" x="66" y="547" data-t="s.d.st6">运行检查 · 建立代码基线</text></g>
-        <g><circle class="su-dot" cx="44" cy="582" r="11" style="stroke-dasharray:3 3"/><text class="su-n" x="44" y="586" text-anchor="middle">7</text><text class="su-i" x="66" y="587" data-t="s.d.st7">绘制图表(可选)</text></g>
+        <g><circle class="su-dot" cx="44" cy="582" r="11" style="stroke-dasharray:3 3"/><text class="su-n" x="44" y="586" text-anchor="middle">7</text><text class="su-i" x="66" y="587" data-t="s.d.st7">登记 TypeSafe Jev 密钥(可选)</text></g>
         <path class="fd-l" d="M180 604 V634" marker-end="url(#sahm)"/>
         <text class="fd-nl" x="192" y="624" style="font-size:12px" data-t="s.d.writes">写入</text>
         <text class="su-h" x="20" y="660" data-t="s.d.pack">你的包</text>
@@ -347,7 +345,6 @@
         <circle class="su-li" cx="38" cy="758" r="2.3"/><text class="su-i" x="47" y="763" data-t="s.d.notes">结构笔记</text>
         <circle class="su-li" cx="38" cy="780" r="2.3"/><text class="su-i" x="47" y="785" data-t="s.d.gotchas">注意事项笔记</text>
         <circle class="su-li" cx="38" cy="802" r="2.3"/><text class="su-i" x="47" y="807" data-t="s.d.check">检查脚本</text>
-        <circle class="su-li" cx="38" cy="824" r="2.3"/><text class="su-i" x="47" y="829" data-t="s.d.qa2">QA 检查</text>
         </g>
         <g>
         <rect class="fd-box fd-agent" x="185" y="672" width="155" height="180" rx="12"/>
@@ -356,7 +353,6 @@
         <circle class="su-li" cx="203" cy="758" r="2.3"/><text class="su-i" x="212" y="763" data-t="s.d.notes">结构笔记</text>
         <circle class="su-li" cx="203" cy="780" r="2.3"/><text class="su-i" x="212" y="785" data-t="s.d.gotchas">注意事项笔记</text>
         <circle class="su-li" cx="203" cy="802" r="2.3"/><text class="su-i" x="212" y="807" data-t="s.d.check">检查脚本</text>
-        <text class="su-s" x="199" y="829" data-t="s.d.noqa">无画面，不做 QA</text>
         </g>
         <g><rect class="fd-box fd-agent" x="20" y="862" width="320" height="40" rx="10"/><text class="su-t" x="34" y="887" data-t="s.d.a3">mobile-app</text><text class="su-s" x="326" y="887" text-anchor="end" data-t="s.d.a3m">相同笔记 · 应用规则(Expo)</text></g>
         <g><rect class="fd-box fd-learn" x="20" y="912" width="320" height="52" rx="10"/><text class="su-t" x="36" y="934" data-t="s.d.routet">路由</text><text class="su-s" x="36" y="953" data-t="s.d.routes">哪个需求交给哪个仓库</text></g>
@@ -375,9 +371,9 @@
           <li data-t="s.2">向你确认要加入哪些仓库、公司名称、智能体名称以及哪些仓库开启自动审查。推测错误的地方也在这一步修正。</li>
           <li data-t="s.3">为每个仓库创建智能体，并配好规则、结构笔记、注意事项笔记和检查脚本。</li>
           <li data-t="s.4">读取每个仓库的生产分支，填写智能体负责的内容、必须遵守的规则、语言与类型状况以及简短的服务概览。决定哪个需求交给哪个仓库的路由表由 Athena 编写。</li>
-          <li data-t="s.5">为每个应用的画面起草 QA 检查。</li>
+          <li data-t="s.5">如有需要，会在每个仓库起草服务流程文档。这些文件会放进你的仓库，所以只有你开口才会提交。</li>
           <li data-t="s.6">先运行一次检查并建立代码基线，之后的更新只处理有变化的部分。</li>
-          <li data-t="s.7">如有需要，还会为每个服务绘制结构图、画面地图和请求流程图。</li>
+          <li data-t="s.7">如果有 TypeSafe Jev 密钥，会在输入 pane 中登记，而不是在对话里。密钥只保存在这台 Mac 上。</li>
         </ol>
   </details>
   <h3 class="doc-h3" data-t="doc.su.no.h">首次设置时 Athena 不会做的事</h3>
@@ -448,7 +444,7 @@
       <div class="doc-step-txt">
         <span class="n">06</span>
         <h3 data-t="doc.w6.h">合并</h3>
-        <p data-t="doc.w6.p">在开启自动 PR 的仓库中，Athena 会创建拉取请求；若同时开启自动审查，还会自动审查并修正。合并可选自动、确认后(在 [工作] 中询问你)或手动，选手动时合并会等待你点击。关闭自动 PR 的仓库没有拉取请求和审查，按合并设置处理，选手动时则停留在工作分支。</p>
+        <p data-t="doc.w6.p">在开启自动 PR 的仓库中，Athena 会创建拉取请求；若同时开启自动审查，还会自动审查并修正。合并可选自动、确认后(在 [工作] 中询问你)或手动，选手动时合并会等待你点击。关闭自动 PR 的仓库不建拉取请求，按合并设置处理，选手动时则停留在工作分支。即便如此，范围较大的修改在合并前仍会自动审查。</p>
       </div>
       <figure class="shot sm"><img src="/assets/shots/settings-pop.webp?v=20261031" width="686" height="862" loading="lazy" alt="设置：web 开启了自动 PR 和自动审查，合并为“确认后”。api 两者都开启，合并为“自动”。mobile 关闭了自动 PR，合并为“手动”，只停在分支，不建 PR。" data-ta="alt:h.b5.alt"></figure>
     </div>
@@ -469,7 +465,7 @@
       <div><dt data-t="f.ws.label">工作区</dt><dd data-t="doc.a.ws">左侧列表中每个仓库对应一个工作区，里面有分支和智能体。中间是标签页和拆分的 pane，每个 pane 一个智能体。按 ⌘1 回到这里。</dd></div>
       <div><dt data-t="h.f.mon">智能体监视器</dt><dd data-t="doc.a.mon">位于窗口底部，只显示正在工作的智能体，可用 ⌄ 收起。</dd></div>
       <div><dt data-t="h.f.work">工作</dt><dd data-t="doc.a.work">标签栏右上角。等你处理的问题、进行中的工作，以及最近 24 小时完成的工作。</dd></div>
-      <div><dt data-t="doc.a.boardt">待办页面(⌘2)</dt><dd data-t="doc.a.board">在默认浏览器中打开：问题、QA、学习、指标和归档。目前只有韩语。</dd></div>
+      <div><dt data-t="doc.a.boardt">待办页面(⌘2)</dt><dd data-t="doc.a.board">在默认浏览器中打开：问题、学习、指标和归档。目前只有韩语。</dd></div>
       <div><dt data-t="h.f.det">pane 详情</dt><dd data-t="doc.a.det">智能体 pane 标题栏右侧的图标。显示计划、进度、阻塞、token 和拉取请求，按 Esc 关闭。</dd></div>
       <div><dt data-t="h.f.exp">Explorer</dt><dd data-t="doc.a.exp">右侧。当前工作区的 [文件] 和 [变更]，有改动的文件以 diff 打开。</dd></div>
       <div><dt data-t="doc.a.brt">侧边浏览器</dt><dd data-t="doc.a.br">右侧抽屉(⌘⇧B)，用于打开计划、决策控制台和本地测试页面。登录信息与常用浏览器分开保存。</dd></div>
@@ -538,7 +534,7 @@
       <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="12" r="2.5"/><path d="M6 8.5v7M8.3 7.2l7.5 3.6"/></svg></span><b data-t="h.s.3">智能体在分支上工作</b><span data-t="h.s.3p">每个智能体在自己的分支和工作树上工作。在你为某个仓库开启之前，自动合并一直是关闭的。</span></div>
       <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l8-4 8 4v6c0 4-3.5 7-8 8-4.5-1-8-4-8-8z"/><path d="M9 12l2 2 4-4"/></svg></span><b data-t="h.s.4">签名与公证</b><span data-t="h.s.4p">公开发布版使用 Apple Developer ID 签名并经过 Apple 公证。</span></div>
       <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9"/></svg></span><b data-t="h.s.5">单独保存登录信息的浏览器</b><span data-t="h.s.5p">侧边浏览器运行在沙盒中，只打开 http 和 https，登录信息与你的常用浏览器分开保存。</span></div>
-      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg></span><b data-t="h.s.6">TypeSafe Jev 集成是可选的</b><span data-t="h.s.6p">只有在你填入自己的 TypeSafe Jev 密钥时，才会把 QA 错误详情和学习笔记发送到 TypeSafe Jev。没有密钥就不会向它发送任何内容。</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg></span><b data-t="h.s.6">TypeSafe Jev 集成是可选的</b><span data-t="h.s.6p">只有在你填入自己的 TypeSafe Jev 密钥时，才会用它检查学习建议：查看是否与已有笔记重复，并对学习审查进行判定。判定时会发送已完成任务的计划书、已合并的修改及审查意见和工作对话，像密钥的值会先被遮盖。没有密钥时不会向 Jev 发送任何内容。</span></div>
   </div>
 </section>
 

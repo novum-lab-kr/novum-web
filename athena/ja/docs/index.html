@@ -222,12 +222,12 @@
     <li data-t="doc.su.do3"><b>リポジトリを選びます。</b> Athena がこの Mac のリポジトリを探し、見つけた順にすべてコンソールに表示します。入れるものにチェックを付け(一番上の「すべて」で全部)、確定します。</li>
     <li data-t="doc.su.do4"><b>いくつかの質問に答えます。</b> 会社名(英小文字。パックのフォルダ名になります)と、サービスやブランドを指す名前。リポジトリの本番ブランチ・PR の向き先・種類・層のうち推定が誤っているもの。エージェント名(既定はリポジトリ名に -fe か -be)。そして PR の自動レビューとマージを有効にするリポジトリ。既定ではどれも有効にせず、あとから設定で変えられます。</li>
     <li data-t="doc.su.do5"><b>Athena が読むのを待ちます。</b> リポジトリごとにエージェントを用意し、それぞれの本番ブランチを読んで、ルール・構造ノート・ルーティング表・サービス概要を書きます。確認できなかったことは推測せず「要確認」として残します。</li>
-    <li data-t="doc.su.do6"><b>任意の質問が 2 つ。</b> サービスのフロー文書と QA チェックの下書きを今書くか、あとにするか。リポジトリに入るファイルなので、コミットはあなたが頼んだときだけです。もう 1 つは TypeSafe Jev キーがあるか。あれば開いた入力 pane に貼り付け、チャットには入れません。なくてもすべてそのまま動きます。</li>
+    <li data-t="doc.su.do6"><b>任意の質問が 2 つ。</b> サービスのフロー文書の下書きを今書くか、あとにするか。リポジトリに入るファイルなので、コミットはあなたが頼んだときだけです。もう 1 つは TypeSafe Jev キーがあるか。あれば開いた入力 pane に貼り付け、チャットには入れません。なくてもすべてそのまま動きます。</li>
     <li data-t="doc.su.do7"><b>報告を読みます。</b> Athena が各リポジトリのチェックを一度実行し、コードのベースラインを取ったあと、作ったもの・チェック結果・まだ確認が必要なものを報告します。</li>
   </ol>
   <div class="doc-three">
     <div class="you"><b data-t="doc.su.you.h">あなたが確認すること</b><span data-t="doc.su.you.p">入れるリポジトリ、会社名、エージェント名、自動レビューを有効にするリポジトリ。推定の誤りはここで直します。</span></div>
-    <div><b data-t="doc.su.ath.h">Athena が用意するもの</b><span data-t="doc.su.ath.p">リポジトリごとのエージェント(ルール・ノート付き)、ルーティング表、QA チェック、コードのベースライン。リポジトリは変更せず、インストールや fetch の前には確認します。</span></div>
+    <div><b data-t="doc.su.ath.h">Athena が用意するもの</b><span data-t="doc.su.ath.p">リポジトリごとのエージェント(ルール・ノート付き)、ルーティング表、サービス概要、コードのベースライン。リポジトリは変更せず、インストールや fetch の前には確認します。</span></div>
     <div><b data-t="doc.su.end.h">終わったら</b><span data-t="doc.su.end.p">Athena が作ったものと、まだ確認が必要なものを報告します。そのあと athena ワークスペースで最初の作業を頼みます。</span></div>
   </div>
   <figure class="flowd" aria-label="初回設定で Athena がすること" data-ta="aria-label:s.d.aria">
@@ -262,9 +262,9 @@
         <g><circle class="su-dot-you" cx="338" cy="208" r="12"/><text class="su-n" x="338" y="212" text-anchor="middle">2</text><text class="su-i" x="362" y="213" data-t="s.d.st2">リポジトリ・名前・自動レビューを確認</text></g>
         <g><circle class="su-dot" cx="338" cy="248" r="12"/><text class="su-n" x="338" y="252" text-anchor="middle">3</text><text class="su-i" x="362" y="253" data-t="s.d.st3">リポジトリごとにエージェント作成</text></g>
         <g><circle class="su-dot" cx="338" cy="288" r="12"/><text class="su-n" x="338" y="292" text-anchor="middle">4</text><text class="su-i" x="362" y="293" data-t="s.d.st4">コードを読んで書き込む</text><text class="su-s" x="362" y="311" data-t="s.d.st4s">リポジトリごとに 1 人ずつ並行で</text></g>
-        <g><circle class="su-dot" cx="338" cy="338" r="12"/><text class="su-n" x="338" y="342" text-anchor="middle">5</text><text class="su-i" x="362" y="343" data-t="s.d.st5">画面ごとに QA チェックの下書き</text></g>
+        <g><circle class="su-dot" cx="338" cy="338" r="12" style="stroke-dasharray:3 3"/><text class="su-n" x="338" y="342" text-anchor="middle">5</text><text class="su-i" x="362" y="343" data-t="s.d.st5">サービスのフロー文書の下書き(任意)</text></g>
         <g><circle class="su-dot" cx="338" cy="376" r="12"/><text class="su-n" x="338" y="380" text-anchor="middle">6</text><text class="su-i" x="362" y="381" data-t="s.d.st6">チェック実行・コードの基準を記録</text></g>
-        <g><circle class="su-dot" cx="338" cy="414" r="12" style="stroke-dasharray:3 3"/><text class="su-n" x="338" y="418" text-anchor="middle">7</text><text class="su-i" x="362" y="419" data-t="s.d.st7">図を描く(任意)</text></g>
+        <g><circle class="su-dot" cx="338" cy="414" r="12" style="stroke-dasharray:3 3"/><text class="su-n" x="338" y="418" text-anchor="middle">7</text><text class="su-i" x="362" y="419" data-t="s.d.st7">TypeSafe Jev キーの登録(任意)</text></g>
         <path class="fd-l" d="M630 250 H676" marker-end="url(#sah)"/>
         <text class="fd-nl" x="653" y="240" text-anchor="middle" data-t="s.d.writes">書く</text>
         <rect class="su-panel" x="680" y="40" width="500" height="420" rx="16"/>
@@ -277,7 +277,6 @@
         <circle class="su-li" cx="720" cy="184" r="2.5"/><text class="su-i" x="730" y="189" data-t="s.d.notes">構成メモ</text>
         <circle class="su-li" cx="720" cy="208" r="2.5"/><text class="su-i" x="730" y="213" data-t="s.d.gotchas">注意点ノート</text>
         <circle class="su-li" cx="720" cy="232" r="2.5"/><text class="su-i" x="730" y="237" data-t="s.d.check">チェックスクリプト</text>
-        <circle class="su-li" cx="720" cy="256" r="2.5"/><text class="su-i" x="730" y="261" data-t="s.d.qa2">QA チェック</text>
         </g>
         <g>
         <rect class="fd-box fd-agent" x="852" y="88" width="145" height="198" rx="12"/>
@@ -286,7 +285,6 @@
         <circle class="su-li" cx="872" cy="184" r="2.5"/><text class="su-i" x="882" y="189" data-t="s.d.notes">構成メモ</text>
         <circle class="su-li" cx="872" cy="208" r="2.5"/><text class="su-i" x="882" y="213" data-t="s.d.gotchas">注意点ノート</text>
         <circle class="su-li" cx="872" cy="232" r="2.5"/><text class="su-i" x="882" y="237" data-t="s.d.check">チェックスクリプト</text>
-        <text class="su-s" x="868" y="261" data-t="s.d.noqa">画面なし・QA なし</text>
         </g>
         <g>
         <rect class="fd-box fd-agent" x="1004" y="88" width="145" height="198" rx="12"/>
@@ -333,9 +331,9 @@
         <g><circle class="su-dot-you" cx="44" cy="372" r="11"/><text class="su-n" x="44" y="376" text-anchor="middle">2</text><text class="su-i" x="66" y="377" data-t="s.d.st2">リポジトリ・名前・自動レビューを確認</text></g>
         <g><circle class="su-dot" cx="44" cy="412" r="11"/><text class="su-n" x="44" y="416" text-anchor="middle">3</text><text class="su-i" x="66" y="417" data-t="s.d.st3">リポジトリごとにエージェント作成</text></g>
         <g><circle class="su-dot" cx="44" cy="452" r="11"/><text class="su-n" x="44" y="456" text-anchor="middle">4</text><text class="su-i" x="66" y="457" data-t="s.d.st4">コードを読んで書き込む</text><text class="su-s" x="66" y="475" data-t="s.d.st4s">リポジトリごとに 1 人ずつ並行で</text></g>
-        <g><circle class="su-dot" cx="44" cy="502" r="11"/><text class="su-n" x="44" y="506" text-anchor="middle">5</text><text class="su-i" x="66" y="507" data-t="s.d.st5">画面ごとに QA チェックの下書き</text></g>
+        <g><circle class="su-dot" cx="44" cy="502" r="11" style="stroke-dasharray:3 3"/><text class="su-n" x="44" y="506" text-anchor="middle">5</text><text class="su-i" x="66" y="507" data-t="s.d.st5">サービスのフロー文書の下書き(任意)</text></g>
         <g><circle class="su-dot" cx="44" cy="542" r="11"/><text class="su-n" x="44" y="546" text-anchor="middle">6</text><text class="su-i" x="66" y="547" data-t="s.d.st6">チェック実行・コードの基準を記録</text></g>
-        <g><circle class="su-dot" cx="44" cy="582" r="11" style="stroke-dasharray:3 3"/><text class="su-n" x="44" y="586" text-anchor="middle">7</text><text class="su-i" x="66" y="587" data-t="s.d.st7">図を描く(任意)</text></g>
+        <g><circle class="su-dot" cx="44" cy="582" r="11" style="stroke-dasharray:3 3"/><text class="su-n" x="44" y="586" text-anchor="middle">7</text><text class="su-i" x="66" y="587" data-t="s.d.st7">TypeSafe Jev キーの登録(任意)</text></g>
         <path class="fd-l" d="M180 604 V634" marker-end="url(#sahm)"/>
         <text class="fd-nl" x="192" y="624" style="font-size:12px" data-t="s.d.writes">書く</text>
         <text class="su-h" x="20" y="660" data-t="s.d.pack">あなたのパック</text>
@@ -347,7 +345,6 @@
         <circle class="su-li" cx="38" cy="758" r="2.3"/><text class="su-i" x="47" y="763" data-t="s.d.notes">構成メモ</text>
         <circle class="su-li" cx="38" cy="780" r="2.3"/><text class="su-i" x="47" y="785" data-t="s.d.gotchas">注意点ノート</text>
         <circle class="su-li" cx="38" cy="802" r="2.3"/><text class="su-i" x="47" y="807" data-t="s.d.check">チェックスクリプト</text>
-        <circle class="su-li" cx="38" cy="824" r="2.3"/><text class="su-i" x="47" y="829" data-t="s.d.qa2">QA チェック</text>
         </g>
         <g>
         <rect class="fd-box fd-agent" x="185" y="672" width="155" height="180" rx="12"/>
@@ -356,7 +353,6 @@
         <circle class="su-li" cx="203" cy="758" r="2.3"/><text class="su-i" x="212" y="763" data-t="s.d.notes">構成メモ</text>
         <circle class="su-li" cx="203" cy="780" r="2.3"/><text class="su-i" x="212" y="785" data-t="s.d.gotchas">注意点ノート</text>
         <circle class="su-li" cx="203" cy="802" r="2.3"/><text class="su-i" x="212" y="807" data-t="s.d.check">チェックスクリプト</text>
-        <text class="su-s" x="199" y="829" data-t="s.d.noqa">画面なし・QA なし</text>
         </g>
         <g><rect class="fd-box fd-agent" x="20" y="862" width="320" height="40" rx="10"/><text class="su-t" x="34" y="887" data-t="s.d.a3">mobile-app</text><text class="su-s" x="326" y="887" text-anchor="end" data-t="s.d.a3m">同じノート · アプリのルール(Expo)</text></g>
         <g><rect class="fd-box fd-learn" x="20" y="912" width="320" height="52" rx="10"/><text class="su-t" x="36" y="934" data-t="s.d.routet">ルーティング</text><text class="su-s" x="36" y="953" data-t="s.d.routes">どの依頼をどのリポジトリへ送るか</text></g>
@@ -375,9 +371,9 @@
           <li data-t="s.2">どのリポジトリを入れるか、会社名、エージェント名、自動レビューをどこで有効にするかを確認します。推定の誤りもここで直します。</li>
           <li data-t="s.3">リポジトリごとにエージェントを作り、ルール・構成メモ・注意点ノート・チェックスクリプトを用意します。</li>
           <li data-t="s.4">各リポジトリの本番ブランチを読み、エージェントの担当範囲、必ず守るルール、言語と型の状況、短いサービス概要を書き込みます。どの依頼をどのリポジトリに送るかを決めるルーティング表は Athena が書きます。</li>
-          <li data-t="s.5">アプリの画面ごとに QA チェックの下書きを作ります。</li>
+          <li data-t="s.5">必要ならリポジトリごとにサービスのフロー文書の下書きを作ります。リポジトリに入るファイルなので、コミットはあなたが頼んだときだけです。</li>
           <li data-t="s.6">チェックを一度実行し、コードの基準を記録します。以後の更新では変わった部分だけを扱います。</li>
-          <li data-t="s.7">必要ならサービスごとに構成図・画面マップ・リクエストの流れの図を描きます。</li>
+          <li data-t="s.7">TypeSafe Jev キーがあれば、チャットではなく入力 pane で登録します。キーはこの Mac にだけ保存されます。</li>
         </ol>
   </details>
   <h3 class="doc-h3" data-t="doc.su.no.h">最初の設定で Athena がしないこと</h3>
@@ -448,7 +444,7 @@
       <div class="doc-step-txt">
         <span class="n">06</span>
         <h3 data-t="doc.w6.h">マージ</h3>
-        <p data-t="doc.w6.p">自動 PR をオンにしたリポジトリでは PR を開き、自動レビューをオンにしていればレビューと修正も自動で行います。マージは 自動・確認後([作業] で確認)・手動 から選べ、手動ならマージはあなたのクリックを待ちます。自動 PR をオフにしたリポジトリでは PR もレビューもなく、マージ設定に従い、手動なら作業ブランチに残ります。</p>
+        <p data-t="doc.w6.p">自動 PR をオンにしたリポジトリでは PR を開き、自動レビューをオンにしていればレビューと修正も自動で行います。マージは 自動・確認後([作業] で確認)・手動 から選べ、手動ならマージはあなたのクリックを待ちます。自動 PR をオフにしたリポジトリでは PR を作らずマージ設定に従い、手動なら作業ブランチに残ります。この場合も広い変更ならマージの前に自動レビューが入ります。</p>
       </div>
       <figure class="shot sm"><img src="/assets/shots/settings-pop.webp?v=20261031" width="686" height="862" loading="lazy" alt="設定。web は自動 PR・自動レビューがオンで、マージは確認後。api は両方オンで、マージは自動。mobile は自動 PR がオフ、マージは手動で、PR なしでブランチまでで止まります。" data-ta="alt:h.b5.alt"></figure>
     </div>
@@ -469,7 +465,7 @@
       <div><dt data-t="f.ws.label">ワークスペース</dt><dd data-t="doc.a.ws">左のリストにはリポジトリごとのワークスペースがあり、その中にブランチとエージェントがあります。中央はタブと分割 pane で、pane ごとにエージェントが 1 つです。⌘1 でこの画面に戻ります。</dd></div>
       <div><dt data-t="h.f.mon">エージェントモニター</dt><dd data-t="doc.a.mon">ウィンドウの一番下。いま作業中のエージェントだけを表示します。⌄ で折りたためます。</dd></div>
       <div><dt data-t="h.f.work">作業</dt><dd data-t="doc.a.work">タブバーの右上。あなた待ちの質問、進行中の作業、直近 24 時間に終わった作業。</dd></div>
-      <div><dt data-t="doc.a.boardt">作業リスト(⌘2)</dt><dd data-t="doc.a.board">既定のブラウザで開きます。課題・QA・学習・指標・アーカイブ。今のところ韓国語のみです。</dd></div>
+      <div><dt data-t="doc.a.boardt">作業リスト(⌘2)</dt><dd data-t="doc.a.board">既定のブラウザで開きます。課題・学習・指標・アーカイブ。今のところ韓国語のみです。</dd></div>
       <div><dt data-t="h.f.det">pane の詳細</dt><dd data-t="doc.a.det">エージェント pane のタイトルバー右のアイコン。計画・進捗・ブロッカー・トークン・プルリクエスト。Esc で閉じます。</dd></div>
       <div><dt data-t="h.f.exp">Explorer</dt><dd data-t="doc.a.exp">右側。現在のワークスペースの [ファイル] と [変更]。変更されたファイルは diff で開きます。</dd></div>
       <div><dt data-t="doc.a.brt">サイドブラウザ</dt><dd data-t="doc.a.br">右側の引き出し(⌘⇧B)。計画書・決定コンソール・ローカルのテスト画面を開きます。ログインは普段のブラウザとは別です。</dd></div>
@@ -538,7 +534,7 @@
       <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="12" r="2.5"/><path d="M6 8.5v7M8.3 7.2l7.5 3.6"/></svg></span><b data-t="h.s.3">エージェントはブランチで作業</b><span data-t="h.s.3p">エージェントはそれぞれ専用のブランチとワークツリーで作業します。自動マージは、リポジトリごとにあなたがオンにするまでオフです。</span></div>
       <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l8-4 8 4v6c0 4-3.5 7-8 8-4.5-1-8-4-8-8z"/><path d="M9 12l2 2 4-4"/></svg></span><b data-t="h.s.4">署名と公証</b><span data-t="h.s.4p">公開配布版は Apple Developer ID で署名され、Apple の公証を受けています。</span></div>
       <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9"/></svg></span><b data-t="h.s.5">サインインを分けて保存するブラウザ</b><span data-t="h.s.5p">サイドブラウザはサンドボックスで http と https だけを開き、サインイン情報はふだんのブラウザと分けて保存します。</span></div>
-      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg></span><b data-t="h.s.6">TypeSafe Jev 連携は任意</b><span data-t="h.s.6p">ご自身の TypeSafe Jev キーを入れた場合にだけ、QA のエラー内容と学習ノートを TypeSafe Jev に送ります。キーがなければ Jev には何も送りません。</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg></span><b data-t="h.s.6">TypeSafe Jev 連携は任意</b><span data-t="h.s.6p">ご自身の TypeSafe Jev キーを入れたときだけ、学習の提案のチェックに使います。既存のノートと重複していないかを確かめ、学習レビューを一緒に判定します。この判定には、終わった作業の計画書・マージされた変更とレビューの指摘・作業中の会話を送り、秘密情報に見える値は先に伏せます。キーがなければ Jev には何も送りません。</span></div>
   </div>
 </section>
 

@@ -94,6 +94,7 @@
           <li data-t="f.pn.l5">同一仓库里有空闲的智能体 pane 时，新任务直接交给它而不再新开；没有时，把最大的 pane 沿长边拆分来安放</li>
           <li data-t="f.ws.l5">把 Finder 中的文件或文件夹拖到 pane 上，路径会粘贴到其输入行；按下 Enter 前不会发送任何内容</li>
           <li data-t="f.ws.l6">拖动边缘可调整工作区列表、Explorer 和监视器的大小</li>
+          <li data-t="f.ws.l7">把 pane 的标题栏拖到同一标签页的另一个 pane 上即可移动；pane 会继续运行，新布局在重启后依然保留</li>
           <li data-t="f.ws.l4">为仓库设置显示名称和图片，通过包与团队共享</li>
         </ul>
       </div>
@@ -113,7 +114,7 @@
       <div><h3 data-t="f.hw.rt.h">路由与每个仓库的负责智能体</h3><p data-t="f.hw.rt.p">包里的路由表为每个仓库指定负责的智能体。Athena 用它拆分需求，智能体在开始前先读取自己仓库的规则、结构和笔记。跨仓库的工作按顺序进行，先共享包和后端；互不相关的工作同时进行。</p></div>
       <div><h3 data-t="f.hw.pl.h">每次改动都有计划书</h3><p data-t="f.hw.pl.p">没有计划书就不做任何改动。需求已经写清要做什么时，一份简短的计划书就够了。有需要你决定的事，或要协调多个仓库时，Athena 会写一份附带决策控制台的正式计划书，并等你确认。每份计划书都有检查点，新会话可以从上次停下的地方继续。</p></div>
       <div><h3 data-t="f.hw.wt.h">每项任务一个 git 工作树</h3><p data-t="f.hw.wt.p">智能体开始之前，Athena 会从基准分支切出新分支，并在这项任务专用的工作树(即独立的工作文件夹)里打开。即使仓库很乱，你的主检出和未提交的改动也保持原样，多项任务可以并行。</p></div>
-      <div><h3 data-t="f.hw.bd.h">待办页面</h3><p data-t="f.hw.bd.p">按 <kbd>⌘</kbd><kbd>2</kbd> 在浏览器中打开待办页面：待解决的问题(每个都有开始按钮)、QA 结果、学习、指标和归档。计划书的 PR 合并后，待办页面会把它标为完成，做完的工作移入归档。待办页面目前只有韩语。</p></div>
+      <div><h3 data-t="f.hw.bd.h">待办页面</h3><p data-t="f.hw.bd.p">按 <kbd>⌘</kbd><kbd>2</kbd> 在浏览器中打开待办页面：待解决的问题(每个都有开始按钮)、学习、指标和归档。指标中可以查看任务、PR、审查和检查所用时间的平均值与中位数。计划书的 PR 合并后，待办页面会把它标为完成，做完的工作移入归档。它有深色和浅色模式，目前只有韩语。</p></div>
       <div><h3 data-t="f.hw.ck.h">最后只验证一次</h3><p data-t="f.hw.ck.p">工作中，智能体只检查改动的部分。完整验证在提交时跑一次，没跑过的检查绝不报告为通过。每个仓库都可以把这次验证交给 GitHub Actions：验证 → 合并到基准分支 → 部署，失败时会退回给做这项工作的智能体。</p></div>
       <div><h3 data-t="f.hw.gd.h">保护钩子</h3><p data-t="f.hw.gd.p">智能体会话带有钩子，禁止直接执行 git commit、push、<code>gh pr create</code> 和 <code>git add -A</code>。提交和 push 只能通过 Athena 的脚本进行，脚本只处理指定的文件。密钥守卫还会拦下打印令牌和密钥的常见方式。</p></div>
     </div>
@@ -129,7 +130,7 @@
     </div>
     <div class="quad">
       <div><h3 data-t="h.f.mon">智能体监视器</h3><p data-t="f.mo.p">窗口底部的实时动态逐个工具地跟踪每个智能体：读过和改过的文件、运行的命令，以及过程中说的话。在每个工作区都能看到。</p></div>
-      <div><h3 data-t="h.f.work">工作</h3><p data-t="f.wk.p">智能体需要你时，问题或决定会出现在 [工作] 最上方，下面是进行中的任务和最近一天完成的任务。在那里回答后，智能体会从停下的地方继续。</p><p data-t="f.gi.p">还可以监视仓库中未关闭的 GitHub 议题：开启后，新议题会作为任务导入并交给 Athena，智能体监视器会为每个议题显示一行。</p></div>
+      <div><h3 data-t="h.f.work">工作</h3><p data-t="f.wk.p">智能体需要你时，问题或决定会出现在 [工作] 最上方，下面是进行中的任务和最近一天完成的任务。在那里回答后，智能体会从停下的地方继续。</p><p data-t="f.gi.p">还可以监视仓库中未关闭的 GitHub 议题：开启后，新议题会作为任务导入并交给 Athena，智能体监视器会为每个议题显示一行。</p><p data-t="f.wk.ap">权限确认也会出现在 [工作] 中，并可直接跳回对应的 pane。Codex 的批准请求(命令、文件修改、额外权限和选择式问题)可以在 [工作] 中直接回答，保留原有的选项和范围。Codex Browser 的权限窗口和启动时的信任窗口也会在 [工作] 和菜单栏中提示。</p></div>
       <div><h3 data-t="h.f.det">pane 详情</h3><p data-t="f.dt.p">从智能体的标题栏打开详情，一个面板会从窗口上方滑出，不会改变终端的大小。它显示智能体需要你做什么、被什么卡住、它的计划和拉取请求。</p></div>
       <div><h3 data-t="h.f.bar">菜单栏</h3><p data-t="f.mb.p">Mac 菜单栏里有 Athena Studio 的猫头鹰图标。出现红点表示有待回答的问题或受阻的计划。点击猫头鹰即可看到每个智能体的状态。</p></div>
     </div>
@@ -156,6 +157,7 @@
           <li data-t="f.co.l1">必选和可选的决定，标出推荐选项</li>
           <li data-t="f.co.l2">侧边浏览器（<kbd>⌘</kbd><kbd>⇧</kbd><kbd>B</kbd>）用于计划、决策控制台和本地测试页面</li>
           <li data-t="f.co.l3">独立的登录信息，沙盒运行，只支持 http 和 https</li>
+          <li data-t="f.co.l4">用 <code>/diagram</code>(Codex 中为 <code>$diagram</code>)把服务画成图：整体结构、用户流程和受影响的文件。点击方框即可打开详情</li>
         </ul>
       </div>
       <figure class="shot"><img src="/assets/shots/browser-1200.webp" srcset="/assets/shots/browser-1200.webp 1200w, /assets/shots/browser.webp 2400w" sizes="(max-width: 900px) 100vw, 680px" width="1200" height="675" loading="lazy" alt="在 api 智能体终端旁边、于侧边浏览器中打开的决策控制台。" data-ta="alt:f.co.alt"></figure>
@@ -192,7 +194,8 @@
           <li data-t="f.rv.l3">为每个角色选择模型，从智能体到审查者</li>
           <li data-t="f.rv.l4">审查结果和合并都会记录在计划和拉取请求上</li>
           <li data-t="f.rv.l6">Claude 和 Codex 并行审查，两者都批准才会合并；没有 Codex 时由 Claude、没有 Claude 时由 Codex 用不同的模型审查两次。小的 PR 只快速审查一次</li>
-          <li data-t="f.rv.l5">关闭自动 PR 后，不建拉取请求也不审查，工作分支会直接合并到基准分支，并遵循你的合并设置</li>
+          <li data-t="f.rv.l7">Claude 达到用量上限时，审查会切换到 Codex，并记录每次审查由哪个引擎完成。Codex 审查者在只能写入审查结果的隔离沙箱中运行，无法修改被审查的代码</li>
+          <li data-t="f.rv.l5">关闭自动 PR 后，不建拉取请求，工作分支会直接合并到基准分支，并遵循你的合并设置。若是范围较大的修改(5 个以上代码文件、150 行以上或敏感路径)，合并前仍会自动审查；合并设为手动时不审查</li>
         </ul>
       </div>
       <figure class="shot sm mid"><img src="/assets/shots/settings-pop.webp?v=20261031" width="686" height="862" loading="lazy" alt="设置：web 开启了自动 PR 和自动审查，合并为“确认后”。api 两者都开启，合并为“自动”。mobile 关闭了自动 PR，合并为“手动”，只停在分支，不建 PR。" data-ta="alt:h.b5.alt"></figure>
@@ -200,7 +203,7 @@
     <div class="grid flip-g">
       <div class="txt">
         <h3 data-t="h.b6.h">只把你选中的笔记带到下一项任务。</h3>
-        <p data-t="h.b6.p">合并后，学习审查会根据过程中出现的内容(从审查意见到 QA 结果)提出笔记建议。只有你在 [学习] 中选中的才会保存为该仓库的学习笔记，智能体在下一项任务开始时读取。</p>
+        <p data-t="h.b6.p">合并后，学习审查会阅读计划书、工作对话以及已合并的修改和审查意见，并提出笔记建议。只有你在 [学习] 中选中的才会保存为该仓库的学习笔记，智能体在下一项任务开始时读取。</p>
       </div>
       <div class="learn-card">
           <div class="h"><img src="/assets/owl-white.png" alt="" width="18" height="18"><span data-t="h.b6.card">学习 · api</span></div>

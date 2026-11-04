@@ -19,7 +19,7 @@ Every task gets a plan, its own worktree and a check before it ships.
 - Routing and an agent per repository: The pack's routing table maps each repository to its agent. Athena uses it to split a request, and each agent reads its repository's rules, structure and notes before it starts. Work that crosses repositories goes in order, shared packages and the backend first; independent work runs at the same time.
 - A plan for every change: Nothing changes without a plan file. A short plan is enough when your request already says what to do. When something is yours to decide, or several repositories must line up, Athena writes a full plan with a decision console and waits for you to confirm. Each plan keeps a checkpoint, so a new session picks up where the last one stopped.
 - A git worktree for each task: Before an agent starts, Athena creates a new branch from your base branch in its own worktree: a separate working folder for that task. Your main checkout and its uncommitted changes stay as they are, even when the repository is messy, and several tasks run side by side.
-- Work board: Press ⌘2 to open the work board in your browser: issues to fix, each with a Start button, QA results, learning, metrics and the archive. When a plan's pull requests merge, the board marks it done, and finished work moves to the archive. The work board is in Korean for now.
+- Worklist: Press ⌘2 to open the Worklist in your browser: issues to fix, each with a Start button, learning, metrics and the archive. Metrics shows average and median times for tasks, pull requests, reviews and checks. When a plan's pull requests merge, the Worklist marks it done, and finished work moves to the archive. It has a dark and a light mode, and is in Korean for now.
 - Checks once, at the end: While working, agents check only the parts they changed. The full verification runs once when the work is committed, and a check that didn't run is never reported as passed. A repository can hand that run to GitHub Actions: verify, merge into the base branch and deploy, with any failure sent back to the agent that did the work.
 - Guard hooks: Agent sessions run with hooks that block a direct git commit, push, gh pr create and git add -A. Commits and pushes go only through Athena's scripts, which stage only the files named. A secret guard also stops the common ways of printing tokens and keys.
 - Agent monitor: A live feed at the bottom of the window follows each agent tool by tool: files read and edited, commands run, and what it says along the way. It works across every workspace.
@@ -30,6 +30,7 @@ Every task gets a plan, its own worktree and a check before it ships.
   - Required and optional decisions, with recommended options marked
   - Side browser (⌘⇧B) for plans, consoles and your local test pages
   - Its own sign-ins, sandboxed, http and https only
+  - Ask for /diagram ($diagram in Codex) to draw a service as diagrams: overall structure, user flow and affected files. Click a box to open its details
 - Read the work beside the terminal: Browse the files and git changes of the current workspace and open them next to the terminal. Changed files open as a diff.
   - File tree with git status (M · U · A · D · R) and a list of changes
   - Syntax highlighting, line numbers and images
@@ -40,8 +41,9 @@ Every task gets a plan, its own worktree and a check before it ships.
   - Choose the model for each role, from agents to reviewers
   - Review results and merges are recorded on the plan and the pull request
   - Claude and Codex review side by side and both must approve; without Codex, Claude reviews twice with different models, and without Claude, Codex does. Small PRs get one quick review
-  - Turn Auto PR off to skip the pull request and review; the work branch then merges straight into the base branch, following your Merge setting
-- Notes you choose, for the next task: After a merge, the learning review suggests notes from what came up along the way, such as review comments and QA findings. Only the ones you pick in Learning are kept for that repository, and agents read them at the start of the next task.
+  - When Claude hits its usage limit, reviews switch to Codex, and each review records which engine made it. Codex reviewers run in a sandbox that can only write review results, not the code under review
+  - Turn Auto PR off to skip the pull request; the work branch merges straight into the base branch, following your Merge setting. A wide change (5 or more code files, 150 or more lines, or sensitive paths) still gets an automatic review before the merge, unless Merge is Manual
+- Notes you choose, for the next task: After a merge, the learning review reads the plan, the conversation and the merged changes with their review comments, and suggests notes. Only the ones you pick in Learning are kept for that repository, and agents read them at the start of the next task.
 - A pack for each company you work with: A pack holds one company's repositories, agents and routing rules. Each pack runs on its own, so switching never stops work in another.
   - Create a pack from the repositories on your Mac, or import one from a file, folder or git repository
   - Switch in one click; agents in the other pack keep working where you left them
@@ -51,7 +53,7 @@ Every task gets a plan, its own worktree and a check before it ships.
 ## Pages
 
 - [Home](https://athena.novum-lab.com/): Athena Studio is a Mac app that runs a team of AI coding agents: a team lead that plans, and an agent per repository. Watch their terminals, answer their questions and review their pull requests.
-- [Features](https://athena.novum-lab.com/features/): Workspaces, how agents work (routing, plans, git worktrees, work board, checks, guard hooks), agent monitor, Work, pane details, decision console, Explorer, automatic PR review, menu bar, packs and four languages.
+- [Features](https://athena.novum-lab.com/features/): Workspaces, how agents work (routing, plans, git worktrees, Worklist, checks, guard hooks), agent monitor, Work, pane details, decision console, Explorer, automatic PR review, menu bar, packs and four languages.
 - [Docs](https://athena.novum-lab.com/docs/): Getting started with Athena Studio, keyboard shortcuts, data and security, how it compares, and frequently asked questions.
 - [Download](https://athena.novum-lab.com/download/): Download Athena Studio for macOS (Apple Silicon and Intel). Requirements and first steps.
 - [Release notes](https://athena.novum-lab.com/releases/): What changed in Athena Studio, newest first.

@@ -193,7 +193,7 @@
 <section class="doc-sec" id="pack">
   <p class="doc-label" data-t="doc.pk.label">팩이란</p>
   <h2 data-t="doc.pk.h">팩에는 Athena가 내 레포에 대해 아는 것이 담깁니다.</h2>
-  <p class="doc-p" data-t="doc.pk.p">Athena 자체(코어)는 앱이 들고 옵니다. 작업 흐름 · 훅 · 일감 · 학습 · 공통 규칙이 여기에 있고, 회사는 모릅니다. 내 레포에 관한 것은 모두 팩에 들어갑니다.</p>
+  <p class="doc-p" data-t="doc.pk.p">Athena 자체(코어)는 앱이 들고 옵니다. 작업 흐름 · 훅 · 현황판 · 학습 · 공통 규칙이 여기에 있고, 회사는 모릅니다. 내 레포에 관한 것은 모두 팩에 들어갑니다.</p>
   <h3 class="doc-h3" data-t="doc.pk.in.h">팩 안에 있는 것</h3>
   <dl class="doc-dl">
       <div><dt data-t="doc.pk.i1t">레포 목록</dt><dd data-t="doc.pk.i1">레포마다 운영 브랜치와 PR 대상, PR 자동 리뷰 같은 설정.</dd></div>
@@ -206,7 +206,7 @@
   <div class="doc-three">
     <div><b data-t="doc.pk.sep.h">내 코드와는 따로</b><span data-t="doc.pk.sep.p">레포는 원래 폴더에 그대로 있고 팩은 링크만 겁니다. 팩을 지우면 먼저 백업하고, 레포 폴더는 그대로 둡니다.</span></div>
     <div><b data-t="doc.pk.share.h">팀과 나누기</b><span data-t="doc.pk.share.p">팩을 내보내면 팀원은 압축 파일 · 폴더 · git 레포에서 가져옵니다. 내 Mac에서 레포가 있는 위치는 담기지 않습니다.</span></div>
-    <div><b data-t="doc.pk.many.h">팩 여러 개</b><span data-t="doc.pk.many.p">팩마다 Athena 폴더와 일감이 따로 있어 여러 팩을 동시에 열 수 있습니다. 다른 팩을 여는 동안에도 이 팩의 에이전트는 계속 일하고, 팩끼리 섞이지 않습니다.</span></div>
+    <div><b data-t="doc.pk.many.h">팩 여러 개</b><span data-t="doc.pk.many.p">팩마다 Athena 폴더와 현황판이 따로 있어 여러 팩을 동시에 열 수 있습니다. 다른 팩을 여는 동안에도 이 팩의 에이전트는 계속 일하고, 팩끼리 섞이지 않습니다.</span></div>
   </div>
   <p class="doc-note" data-t="doc.pk.note">탭 줄 왼쪽의 팩 이름(⌘⇧P)에서 바꾸기 · 만들기 · 가져오기 · 내보내기를 합니다.</p>
 </section>
@@ -222,12 +222,12 @@
     <li data-t="doc.su.do3"><b>넣을 레포를 고릅니다.</b> Athena가 이 Mac에서 레포를 찾아, 찾은 순서 그대로 전부 콘솔에 띄웁니다. 넣을 레포를 체크하고(맨 위 '전체'는 모두) [이대로 진행]을 누릅니다.</li>
     <li data-t="doc.su.do4"><b>몇 가지 질문에 답합니다.</b> 회사 이름(영문 소문자 · 팩 폴더 이름이 됩니다)과 서비스 · 브랜드를 가리키는 이름. 레포의 운영 브랜치 · PR 대상 · 종류 · 층 가운데 잘못 추측한 것. 에이전트 이름(기본은 레포 이름에 -fe나 -be). 그리고 PR 자동 리뷰 · 머지를 켤 레포. 기본은 아무것도 켜지 않고, 나중에 설정에서 바꿀 수 있습니다.</li>
     <li data-t="doc.su.do5"><b>Athena가 읽는 동안 기다립니다.</b> 레포마다 에이전트를 만들고, 레포마다 운영 브랜치를 읽어 규칙 · 구조 노트 · 라우팅 표 · 서비스 개요를 씁니다. 확인하지 못한 것은 추측하지 않고 '확인 필요'로 남깁니다.</li>
-    <li data-t="doc.su.do6"><b>선택 질문 두 개.</b> 서비스 흐름 문서와 QA 점검 초안을 지금 쓸지 나중에 쓸지. 레포에 들어가는 파일이라 커밋은 내가 말할 때만 합니다. 그리고 TypeSafe Jev 키가 있는지. 있으면 열리는 입력 창에 붙여 넣고, 대화창에는 넣지 않습니다. 없어도 모두 그대로 돕니다.</li>
+    <li data-t="doc.su.do6"><b>선택 질문 두 개.</b> 서비스 흐름 문서 초안을 지금 쓸지 나중에 쓸지. 레포에 들어가는 파일이라 커밋은 내가 말할 때만 합니다. 그리고 TypeSafe Jev 키가 있는지. 있으면 열리는 입력 창에 붙여 넣고, 대화창에는 넣지 않습니다. 없어도 모두 그대로 돕니다.</li>
     <li data-t="doc.su.do7"><b>보고를 읽습니다.</b> Athena가 레포마다 검증을 한 번 돌리고 코드 기준점을 잡은 뒤, 만든 것 · 검증 결과 · 아직 내가 볼 것을 보고합니다.</li>
   </ol>
   <div class="doc-three">
     <div class="you"><b data-t="doc.su.you.h">내가 확인할 것</b><span data-t="doc.su.you.p">넣을 레포, 회사 이름, 에이전트 이름, 자동 리뷰를 켤 레포. 틀린 추측은 여기서 고칩니다.</span></div>
-    <div><b data-t="doc.su.ath.h">Athena가 준비하는 것</b><span data-t="doc.su.ath.p">레포마다 규칙 · 노트가 붙은 에이전트, 라우팅 표, QA 점검, 코드 기준점. 레포는 바꾸지 않고, 설치나 fetch는 먼저 물어봅니다.</span></div>
+    <div><b data-t="doc.su.ath.h">Athena가 준비하는 것</b><span data-t="doc.su.ath.p">레포마다 규칙 · 노트가 붙은 에이전트, 라우팅 표, 서비스 소개, 코드 기준점. 레포는 바꾸지 않고, 설치나 fetch는 먼저 물어봅니다.</span></div>
     <div><b data-t="doc.su.end.h">끝나면</b><span data-t="doc.su.end.p">Athena가 만든 것과 아직 내가 볼 것을 보고합니다. 그다음 athena 작업 공간에서 첫 작업을 맡기면 됩니다.</span></div>
   </div>
   <figure class="flowd" aria-label="첫 설정 때 Athena가 하는 일" data-ta="aria-label:s.d.aria">
@@ -262,9 +262,9 @@
         <g><circle class="su-dot-you" cx="338" cy="208" r="12"/><text class="su-n" x="338" y="212" text-anchor="middle">2</text><text class="su-i" x="362" y="213" data-t="s.d.st2">레포 · 이름 · 자동 리뷰를 내가 확인</text></g>
         <g><circle class="su-dot" cx="338" cy="248" r="12"/><text class="su-n" x="338" y="252" text-anchor="middle">3</text><text class="su-i" x="362" y="253" data-t="s.d.st3">레포마다 에이전트 만들기</text></g>
         <g><circle class="su-dot" cx="338" cy="288" r="12"/><text class="su-n" x="338" y="292" text-anchor="middle">4</text><text class="su-i" x="362" y="293" data-t="s.d.st4">코드를 읽고 채우기</text><text class="su-s" x="362" y="311" data-t="s.d.st4s">레포마다 작업자 하나씩, 동시에</text></g>
-        <g><circle class="su-dot" cx="338" cy="338" r="12"/><text class="su-n" x="338" y="342" text-anchor="middle">5</text><text class="su-i" x="362" y="343" data-t="s.d.st5">화면마다 QA 점검 초안</text></g>
+        <g><circle class="su-dot" cx="338" cy="338" r="12" style="stroke-dasharray:3 3"/><text class="su-n" x="338" y="342" text-anchor="middle">5</text><text class="su-i" x="362" y="343" data-t="s.d.st5">서비스 흐름 문서 초안(선택)</text></g>
         <g><circle class="su-dot" cx="338" cy="376" r="12"/><text class="su-n" x="338" y="380" text-anchor="middle">6</text><text class="su-i" x="362" y="381" data-t="s.d.st6">점검 실행 · 코드 기준점 잡기</text></g>
-        <g><circle class="su-dot" cx="338" cy="414" r="12" style="stroke-dasharray:3 3"/><text class="su-n" x="338" y="418" text-anchor="middle">7</text><text class="su-i" x="362" y="419" data-t="s.d.st7">다이어그램 그리기(선택)</text></g>
+        <g><circle class="su-dot" cx="338" cy="414" r="12" style="stroke-dasharray:3 3"/><text class="su-n" x="338" y="418" text-anchor="middle">7</text><text class="su-i" x="362" y="419" data-t="s.d.st7">TypeSafe Jev 키 등록(선택)</text></g>
         <path class="fd-l" d="M630 250 H676" marker-end="url(#sah)"/>
         <text class="fd-nl" x="653" y="240" text-anchor="middle" data-t="s.d.writes">쓰기</text>
         <rect class="su-panel" x="680" y="40" width="500" height="420" rx="16"/>
@@ -277,7 +277,6 @@
         <circle class="su-li" cx="720" cy="184" r="2.5"/><text class="su-i" x="730" y="189" data-t="s.d.notes">구조 노트</text>
         <circle class="su-li" cx="720" cy="208" r="2.5"/><text class="su-i" x="730" y="213" data-t="s.d.gotchas">주의할 점 노트</text>
         <circle class="su-li" cx="720" cy="232" r="2.5"/><text class="su-i" x="730" y="237" data-t="s.d.check">점검 스크립트</text>
-        <circle class="su-li" cx="720" cy="256" r="2.5"/><text class="su-i" x="730" y="261" data-t="s.d.qa2">QA 점검</text>
         </g>
         <g>
         <rect class="fd-box fd-agent" x="852" y="88" width="145" height="198" rx="12"/>
@@ -286,7 +285,6 @@
         <circle class="su-li" cx="872" cy="184" r="2.5"/><text class="su-i" x="882" y="189" data-t="s.d.notes">구조 노트</text>
         <circle class="su-li" cx="872" cy="208" r="2.5"/><text class="su-i" x="882" y="213" data-t="s.d.gotchas">주의할 점 노트</text>
         <circle class="su-li" cx="872" cy="232" r="2.5"/><text class="su-i" x="882" y="237" data-t="s.d.check">점검 스크립트</text>
-        <text class="su-s" x="868" y="261" data-t="s.d.noqa">화면이 없어 QA 없음</text>
         </g>
         <g>
         <rect class="fd-box fd-agent" x="1004" y="88" width="145" height="198" rx="12"/>
@@ -333,9 +331,9 @@
         <g><circle class="su-dot-you" cx="44" cy="372" r="11"/><text class="su-n" x="44" y="376" text-anchor="middle">2</text><text class="su-i" x="66" y="377" data-t="s.d.st2">레포 · 이름 · 자동 리뷰를 내가 확인</text></g>
         <g><circle class="su-dot" cx="44" cy="412" r="11"/><text class="su-n" x="44" y="416" text-anchor="middle">3</text><text class="su-i" x="66" y="417" data-t="s.d.st3">레포마다 에이전트 만들기</text></g>
         <g><circle class="su-dot" cx="44" cy="452" r="11"/><text class="su-n" x="44" y="456" text-anchor="middle">4</text><text class="su-i" x="66" y="457" data-t="s.d.st4">코드를 읽고 채우기</text><text class="su-s" x="66" y="475" data-t="s.d.st4s">레포마다 작업자 하나씩, 동시에</text></g>
-        <g><circle class="su-dot" cx="44" cy="502" r="11"/><text class="su-n" x="44" y="506" text-anchor="middle">5</text><text class="su-i" x="66" y="507" data-t="s.d.st5">화면마다 QA 점검 초안</text></g>
+        <g><circle class="su-dot" cx="44" cy="502" r="11" style="stroke-dasharray:3 3"/><text class="su-n" x="44" y="506" text-anchor="middle">5</text><text class="su-i" x="66" y="507" data-t="s.d.st5">서비스 흐름 문서 초안(선택)</text></g>
         <g><circle class="su-dot" cx="44" cy="542" r="11"/><text class="su-n" x="44" y="546" text-anchor="middle">6</text><text class="su-i" x="66" y="547" data-t="s.d.st6">점검 실행 · 코드 기준점 잡기</text></g>
-        <g><circle class="su-dot" cx="44" cy="582" r="11" style="stroke-dasharray:3 3"/><text class="su-n" x="44" y="586" text-anchor="middle">7</text><text class="su-i" x="66" y="587" data-t="s.d.st7">다이어그램 그리기(선택)</text></g>
+        <g><circle class="su-dot" cx="44" cy="582" r="11" style="stroke-dasharray:3 3"/><text class="su-n" x="44" y="586" text-anchor="middle">7</text><text class="su-i" x="66" y="587" data-t="s.d.st7">TypeSafe Jev 키 등록(선택)</text></g>
         <path class="fd-l" d="M180 604 V634" marker-end="url(#sahm)"/>
         <text class="fd-nl" x="192" y="624" style="font-size:12px" data-t="s.d.writes">쓰기</text>
         <text class="su-h" x="20" y="660" data-t="s.d.pack">내 팩</text>
@@ -347,7 +345,6 @@
         <circle class="su-li" cx="38" cy="758" r="2.3"/><text class="su-i" x="47" y="763" data-t="s.d.notes">구조 노트</text>
         <circle class="su-li" cx="38" cy="780" r="2.3"/><text class="su-i" x="47" y="785" data-t="s.d.gotchas">주의할 점 노트</text>
         <circle class="su-li" cx="38" cy="802" r="2.3"/><text class="su-i" x="47" y="807" data-t="s.d.check">점검 스크립트</text>
-        <circle class="su-li" cx="38" cy="824" r="2.3"/><text class="su-i" x="47" y="829" data-t="s.d.qa2">QA 점검</text>
         </g>
         <g>
         <rect class="fd-box fd-agent" x="185" y="672" width="155" height="180" rx="12"/>
@@ -356,7 +353,6 @@
         <circle class="su-li" cx="203" cy="758" r="2.3"/><text class="su-i" x="212" y="763" data-t="s.d.notes">구조 노트</text>
         <circle class="su-li" cx="203" cy="780" r="2.3"/><text class="su-i" x="212" y="785" data-t="s.d.gotchas">주의할 점 노트</text>
         <circle class="su-li" cx="203" cy="802" r="2.3"/><text class="su-i" x="212" y="807" data-t="s.d.check">점검 스크립트</text>
-        <text class="su-s" x="199" y="829" data-t="s.d.noqa">화면이 없어 QA 없음</text>
         </g>
         <g><rect class="fd-box fd-agent" x="20" y="862" width="320" height="40" rx="10"/><text class="su-t" x="34" y="887" data-t="s.d.a3">mobile-app</text><text class="su-s" x="326" y="887" text-anchor="end" data-t="s.d.a3m">같은 노트 · 앱 규칙(Expo)</text></g>
         <g><rect class="fd-box fd-learn" x="20" y="912" width="320" height="52" rx="10"/><text class="su-t" x="36" y="934" data-t="s.d.routet">라우팅</text><text class="su-s" x="36" y="953" data-t="s.d.routes">어떤 요청이 어느 레포로 가는지</text></g>
@@ -375,9 +371,9 @@
           <li data-t="s.2">어떤 레포를 넣을지, 회사 이름, 에이전트 이름, 자동 리뷰를 켤 레포를 나에게 확인받습니다. 틀린 추측은 이때 고칩니다.</li>
           <li data-t="s.3">레포마다 에이전트를 만들고 규칙, 구조 노트, 주의할 점 노트, 점검 스크립트를 붙입니다.</li>
           <li data-t="s.4">레포마다 운영 브랜치를 읽고 에이전트가 맡을 일, 꼭 지킬 규칙, 언어 · 타입 상태, 짧은 서비스 개요를 채웁니다. 어떤 요청을 어느 레포로 보낼지 정하는 라우팅 표는 Athena가 씁니다.</li>
-          <li data-t="s.5">앱 화면마다 QA 점검 초안을 씁니다.</li>
+          <li data-t="s.5">원하면 레포마다 서비스 흐름 문서 초안을 씁니다. 레포에 들어가는 파일이라 커밋은 내가 말할 때만 합니다.</li>
           <li data-t="s.6">점검을 한 번 돌리고 코드 기준점을 잡아 둡니다. 그래서 다음 업데이트 때는 바뀐 부분만 손댑니다.</li>
-          <li data-t="s.7">원하면 서비스마다 구조, 화면 지도, 요청 흐름 다이어그램을 그립니다.</li>
+          <li data-t="s.7">TypeSafe Jev 키가 있으면 대화창이 아닌 입력 창에서 등록합니다. 키는 이 맥에만 저장됩니다.</li>
         </ol>
   </details>
   <h3 class="doc-h3" data-t="doc.su.no.h">첫 설정에서 Athena가 하지 않는 일</h3>
@@ -448,7 +444,7 @@
       <div class="doc-step-txt">
         <span class="n">06</span>
         <h3 data-t="doc.w6.h">머지</h3>
-        <p data-t="doc.w6.p">자동 PR을 켠 레포에서는 PR을 열고, 자동 리뷰를 켜 두면 PR을 자동으로 리뷰하고 고칩니다. 머지는 자동 · 확인 후([작업]에서 묻습니다) · 직접 중에서 고르며, 직접이면 머지는 내 클릭을 기다립니다. 자동 PR을 끈 레포는 PR과 리뷰 없이 머지 설정을 따르며, 직접이면 작업 브랜치에 남습니다.</p>
+        <p data-t="doc.w6.p">자동 PR을 켠 레포에서는 PR을 열고, 자동 리뷰를 켜 두면 PR을 자동으로 리뷰하고 고칩니다. 머지는 자동 · 확인 후([작업]에서 묻습니다) · 직접 중에서 고르며, 직접이면 머지는 내 클릭을 기다립니다. 자동 PR을 끈 레포는 PR 없이 머지 설정을 따르며, 직접이면 작업 브랜치에 남습니다. 이때도 넓은 수정이면 머지 앞에 자동 리뷰가 들어갑니다.</p>
       </div>
       <figure class="shot sm"><img src="/assets/shots/settings-pop.webp?v=20261031" width="686" height="862" loading="lazy" alt="설정: web은 자동 PR · 자동 리뷰 켬, 머지는 확인 후. api는 둘 다 켬, 머지는 자동. mobile은 자동 PR 끔, 머지는 직접이며 PR 없이 브랜치까지만 둡니다." data-ta="alt:h.b5.alt"></figure>
     </div>
@@ -456,7 +452,7 @@
       <div class="doc-step-txt">
         <span class="n">07</span>
         <h3 data-t="doc.w7.h">배운 것 남기기</h3>
-        <p data-t="doc.w7.p">머지가 끝나면 학습 리뷰가 노트를 제안합니다. 일감(⌘2)을 열고 [학습]에서 남길 것을 고릅니다. 그 레포의 다음 작업이 이 노트를 읽습니다.</p>
+        <p data-t="doc.w7.p">머지가 끝나면 학습 리뷰가 노트를 제안합니다. 현황판(⌘2)을 열고 [학습]에서 남길 것을 고릅니다. 그 레포의 다음 작업이 이 노트를 읽습니다.</p>
       </div>
     </div>
   </div>
@@ -469,7 +465,7 @@
       <div><dt data-t="f.ws.label">작업 공간</dt><dd data-t="doc.a.ws">왼쪽 목록에 레포마다 작업 공간이 하나씩 있고, 그 안에 브랜치와 에이전트가 있습니다. 가운데는 탭과 분할 pane이고 pane마다 에이전트 하나입니다. ⌘1로 이 화면에 돌아옵니다.</dd></div>
       <div><dt data-t="h.f.mon">에이전트 모니터</dt><dd data-t="doc.a.mon">창 맨 아래. 지금 일하는 에이전트만 보여 줍니다. ⌄로 접을 수 있습니다.</dd></div>
       <div><dt data-t="h.f.work">작업</dt><dd data-t="doc.a.work">탭 줄 오른쪽 위. 나를 기다리는 질문, 진행 중인 일, 최근 24시간 안에 끝난 일.</dd></div>
-      <div><dt data-t="doc.a.boardt">일감(⌘2)</dt><dd data-t="doc.a.board">기본 브라우저로 열립니다. 이슈 · QA · 학습 · 지표 · 보관함. 지금은 한국어만 있습니다.</dd></div>
+      <div><dt data-t="doc.a.boardt">현황판(⌘2)</dt><dd data-t="doc.a.board">기본 브라우저로 열립니다. 이슈 · 학습 · 지표 · 아카이브. 지금은 한국어만 있습니다.</dd></div>
       <div><dt data-t="h.f.det">pane 상세</dt><dd data-t="doc.a.det">에이전트 pane 머리 줄 오른쪽 아이콘. 계획 · 진행 · 막힌 것 · 토큰 · PR. Esc로 닫습니다.</dd></div>
       <div><dt data-t="h.f.exp">Explorer</dt><dd data-t="doc.a.exp">오른쪽. 지금 작업 공간의 [파일]과 [변경]. 바뀐 파일은 diff로 열립니다.</dd></div>
       <div><dt data-t="doc.a.brt">옆 브라우저</dt><dd data-t="doc.a.br">오른쪽 서랍(⌘⇧B). 계획서 · 결정 콘솔 · 로컬 테스트 화면을 엽니다. 로그인은 평소 브라우저와 따로입니다.</dd></div>
@@ -496,7 +492,7 @@
   <table class="key-table doc-keys">
         <tr class="kg"><th colspan="2" data-t="doc.k.g1">작업 공간 · pane</th></tr>
         <tr><td><kbd>⌘</kbd><kbd>1</kbd></td><td data-t="k.work">작업 공간 · 터미널</td></tr>
-        <tr><td><kbd>⌘</kbd><kbd>2</kbd></td><td data-t="k.board">일감 열기</td></tr>
+        <tr><td><kbd>⌘</kbd><kbd>2</kbd></td><td data-t="k.board">현황판 열기</td></tr>
         <tr><td><kbd>⌘</kbd><kbd>T</kbd></td><td data-t="k.tab">새 탭</td></tr>
         <tr><td><kbd>⌘</kbd><kbd>⇧</kbd><kbd>T</kbd></td><td data-t="k.space">새 작업 공간</td></tr>
         <tr><td><kbd>⌘</kbd><kbd>D</kbd></td><td data-t="k.right">오른쪽으로 나누기</td></tr>
@@ -533,12 +529,12 @@
   <h2 data-t="h.s.h2">맥에서 도는 것과 밖으로 나가는 것</h2>
   <p class="doc-p" data-t="h.s.p">앱은 내 컴퓨터에서 돌아갑니다. 에이전트는 여전히 자기 AI 제공자에게 요청을 보내고, 코드는 푸시할 때 GitHub로 갑니다.</p>
   <div class="sec-grid">
-      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><b data-t="h.s.1">내 맥에서 도는 앱</b><span data-t="h.s.1p">에이전트 · 터미널 · 일감이 모두 내 컴퓨터에서 돌아갑니다. 앱은 내 코드나 파일을 Novum Lab 서버로 보내지 않습니다.</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><b data-t="h.s.1">내 맥에서 도는 앱</b><span data-t="h.s.1p">에이전트 · 터미널 · 현황판이 모두 내 컴퓨터에서 돌아갑니다. 앱은 내 코드나 파일을 Novum Lab 서버로 보내지 않습니다.</span></div>
       <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span><b data-t="h.s.2">내 AI 계정 그대로</b><span data-t="h.s.2p">에이전트는 내가 이미 로그인한 Claude Code나 Codex로, 그 회사 약관과 내 요금제 안에서 돌아갑니다.</span></div>
       <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="12" r="2.5"/><path d="M6 8.5v7M8.3 7.2l7.5 3.6"/></svg></span><b data-t="h.s.3">브랜치에서 일하는 에이전트</b><span data-t="h.s.3p">에이전트마다 자기 브랜치 · 워크트리에서 일합니다. 자동 머지는 레포마다 내가 켜기 전까지 꺼져 있습니다.</span></div>
       <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l8-4 8 4v6c0 4-3.5 7-8 8-4.5-1-8-4-8-8z"/><path d="M9 12l2 2 4-4"/></svg></span><b data-t="h.s.4">서명 · 공증</b><span data-t="h.s.4p">공개 배포판은 Apple Developer ID로 서명하고 Apple 공증을 받습니다.</span></div>
       <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9"/></svg></span><b data-t="h.s.5">로그인을 따로 두는 브라우저</b><span data-t="h.s.5p">옆 브라우저는 샌드박스에서 http · https만 열고, 로그인은 평소 브라우저와 따로 보관합니다.</span></div>
-      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg></span><b data-t="h.s.6">TypeSafe Jev 연동은 선택</b><span data-t="h.s.6p">내 TypeSafe Jev 키를 넣었을 때만 QA 오류 내용과 학습 노트를 TypeSafe Jev로 보냅니다. 키가 없으면 Jev로는 아무것도 보내지 않습니다.</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg></span><b data-t="h.s.6">TypeSafe Jev 연동은 선택</b><span data-t="h.s.6p">내 TypeSafe Jev 키를 넣었을 때만 학습 제안을 점검하는 데 씁니다. 이미 있는 노트와 겹치는지 보고, 학습 리뷰를 함께 판정합니다. 이 판정에는 끝난 작업의 계획서 · 머지된 변경과 리뷰 의견 · 작업 대화를 보내며, 비밀값처럼 보이는 값은 먼저 가립니다. 키가 없으면 Jev로는 아무것도 보내지 않습니다.</span></div>
   </div>
 </section>
 
