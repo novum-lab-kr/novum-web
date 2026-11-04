@@ -1,5 +1,4 @@
 // chagok/ 배포 전 검사(GitHub Actions · 손으로: node deploy/check-chagok.mjs)
-// 옛 레포 chagok-app-policy 검증과 같은 내용에, 사이트 안 파일 참조 검사를 더했다.
 // 1) versions.json — terms · privacy 판 목록, version 은 1 이상 정수 · 겹침 없음, postedAt · effectiveAt 은 YYYY-MM-DD · 게시일 <= 시행일,
 //    summary 있음, requiresConsent 는 true/false, <kind>/v<N>/index.html 이 있고 <main> 이 있다(assets/policy.js 가 그 <main> 을 가져와 보여 준다)
 // 2) assets/policy.js 문법(node --check)
