@@ -55,7 +55,7 @@ athena.novum-lab.com 과 같은 길이다. **`main` 에 합치는 순간 운영 
 - 서버 레포 안에서 `main` 이 움직여도 hook(`deploy/hooks/reference-transaction`)이 같은 실행기(`site.sh --all`)를 돈다
 - Caddy 블록 `chagok.novum-lab.com` 이 그 폴더를 낸다. 서버 · Caddy 는 서버 창 일이다
 
-2026-11-03 앱 1.0 출시로 공식 게시했다. 모든 경로를 검색에 연다. 출시 전에는 서버 Caddy 블록이 `/` 를 뺀 모든 경로에 `X-Robots-Tag: noindex` 헤더를 붙였다(`@noindex` · 레포에는 없다). 이 규칙은 공식 게시 PR 을 합칠 때 서버 창에서 지운다.
+2026-11-03 앱 1.0 출시로 공식 게시했다. 모든 경로를 검색에 연다. 출시 전에는 서버 Caddy 블록이 `/` 를 뺀 모든 경로에 `X-Robots-Tag: noindex` 헤더를 붙였다(`@noindex` · 레포에는 없다). 이 규칙은 2026-11-04 서버 Caddyfile 에서 지웠다(백업 `/etc/caddy/Caddyfile.bak-chagok-noindex-20261104`).
 검색용 파일: `chagok/robots.txt`(모두 허용, sitemap 주소), `chagok/sitemap.xml`(랜딩, 지원, 약관, 처리방침, 계정 삭제). 각 페이지 `<head>` 에 canonical 주소를 두고, 랜딩에는 iPhone Safari 앱 배너(`apple-itunes-app`, 앱 id 6824725721)를 둔다. 페이지를 더하거나 주소를 바꾸면 sitemap 도 고친다.
 
 `chagok/app-ads.txt` 는 AdMob 광고 판매자 확인용 한 줄이다(2026-10-29 출시 전에 미리 · `https://chagok.novum-lab.com/app-ads.txt`). 게시자 ID `pub-3557389923784580` 은 앱 `app.json` 의 iOS AdMob 앱 ID 앞부분이다(Android 쪽 `3940256099942544` 는 Google 테스트 ID 라 아니다). 앱 ID 나 AdMob 계정이 바뀌면 이 줄도 바꾼다. 검색 차단(noindex 헤더)과 상관없이 광고 크롤러가 읽는다.
