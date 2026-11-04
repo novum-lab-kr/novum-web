@@ -3,12 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Google 애널리틱스(처리방침 15절). 이 페이지에만 넣는다. 측정 ID 는 measurementId 한 곳에만 둔다. -->
 <script>
   const measurementId = 'G-DR15LTP1EW';
   window.dataLayer = window.dataLayer || [];
   function gtag() { dataLayer.push(arguments); }
-  // 동의 기본값은 태그를 읽기 전에 정한다. EEA 30개국 + 영국은 쿠키 없이 측정하고, 광고 항목은 모든 지역에서 끈다.
   gtag('consent', 'default', {
     analytics_storage: 'denied',
     region: ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB'],
@@ -19,7 +17,6 @@
     ad_personalization: 'denied',
   });
   gtag('js', new Date());
-  // 기본값 auto 는 쿠키를 .novum-lab.com 에 저장해 다른 서비스 주소까지 보내므로 이 주소로 고정한다.
   gtag('config', measurementId, {
     cookie_domain: 'chagok.novum-lab.com',
     allow_google_signals: false,
