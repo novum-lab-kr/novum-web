@@ -1,9 +1,10 @@
 {
   "terms": [
     { "version": 1, "postedAt": "2026-11-03", "effectiveAt": "2026-11-03", "summary": "최초 제정", "requiresConsent": true },
-    { "version": 2, "postedAt": "2026-11-04", "effectiveAt": "2026-12-04", "summary": "구독 추가, 무료로 만들 수 있는 목표를 5개로 제한", "requiresConsent": true }
+    { "version": 2, "postedAt": "2026-11-04", "effectiveAt": "2026-11-04", "summary": "구독 추가, 무료로 만들 수 있는 목표를 5개로 제한", "requiresConsent": true }
   ],
   "privacy": [
-    { "version": 1, "postedAt": "2026-11-03", "effectiveAt": "2026-11-03", "summary": "최초 제정", "requiresConsent": false }
+    { "version": 1, "postedAt": "2026-11-03", "effectiveAt": "2026-11-03", "summary": "최초 제정", "requiresConsent": false },
+    { "version": 2, "postedAt": "2026-11-04", "effectiveAt": "2026-11-04", "summary": "앱 오류 보고와 사용 기록 추가", "requiresConsent": false }
   ]
 }
