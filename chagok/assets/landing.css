@@ -47,24 +47,16 @@ p { margin: 0 0 14px; }
 	background: var(--mint); box-shadow: 6px 6px 0 var(--ink);
 }
 
-/* App Store 버튼 */
-.store {
-	display: inline-flex; align-items: center; gap: 12px;
-	background: var(--ink); color: #fff; text-decoration: none;
-	border: 3px solid var(--ink); border-radius: 12px;
-	padding: 10px 22px 10px 16px;
-	box-shadow: 5px 5px 0 var(--apricot);
-}
-.store svg { width: 26px; height: 26px; flex: none; fill: currentColor; }
-.store span { display: flex; flex-direction: column; line-height: 1.3; }
-.store small { font-size: 13px; opacity: .85; }
-.store b { font-size: 20px; }
-.store.sm { padding: 6px 14px 6px 10px; border-width: 2px; border-radius: 9px; box-shadow: 3px 3px 0 var(--apricot); gap: 8px; }
-.store.sm svg { width: 18px; height: 18px; }
-.store.sm b { font-size: 15px; }
-.store.soon { cursor: default; }
-.store .soon-tag { font-style: normal; font-size: 13px; background: var(--apricot); color: var(--ink); border-radius: 4px; padding: 0 6px; margin-left: 6px; }
-.store-note { font-size: 15px; color: var(--muted); margin-top: 14px; }
+/* App Store 배지 — Apple 공식 자산, 높이 40px 이상, 둘레 여백은 높이의 1/4 이상 */
+.store-badge { display: inline-block; line-height: 0; }
+.store-badge img { height: 56px; width: auto; }
+.store-badge.sm img { height: 40px; }
+/* 공식 배지는 그대로 두고(App Store 마케팅 지침: 고치지 않는다, 둘레에 배지 높이의 1/4 이상 비운다) 위에 도트 글꼴 한 줄을 붙인다 */
+.store-cap { display: flex; align-items: center; gap: 8px; margin: 0 0 14px; font-size: 17px; color: var(--ink); }
+.store-cap::before { content: ""; width: 8px; height: 8px; background: var(--apricot); flex: none; }
+.cta .store-cap, .m-end .store-cap { justify-content: center; }
+.cta .store-cap::before, .m-end .store-cap::before { background: var(--ink); }
+.m-end .store-cap { font-size: 15px; }
 
 nav.top {
 	position: sticky; top: 0; z-index: 10;
@@ -86,15 +78,12 @@ header.hero {
 	background-color: var(--ivory);
 	background-image: radial-gradient(var(--mint) 3px, transparent 3.5px);
 	background-size: 32px 32px;
-	border-bottom: 3px solid var(--ink); padding: 72px 0 96px; overflow: hidden;
+	border-bottom: 3px solid var(--ink); padding: 72px 0 96px; overflow: hidden; position: relative;
 }
 .hero-stage { position: relative; display: grid; grid-template-columns: 300px 1fr; gap: 72px; align-items: center; }
 .hero-phone { position: relative; z-index: 2; transform: rotate(-3deg); }
 .hero-phone video { width: 100%; }
 .hero-text { position: relative; z-index: 2; }
-.tile { position: absolute; z-index: 1; width: 230px; border: 3px solid var(--ink); border-radius: 10px; overflow: hidden; box-shadow: 4px 4px 0 var(--ink); }
-.tile.t1 { left: -70px; top: -30px; transform: rotate(-8deg); }
-.tile.t2 { left: 200px; bottom: -60px; transform: rotate(6deg); }
 .badge {
 	display: inline-flex; align-items: center; gap: 8px; font-size: 15px;
 	background: #fff; border: 2px solid var(--ink); border-radius: 999px; padding: 2px 14px;
@@ -111,8 +100,7 @@ header.hero {
 .lcd-intro { margin: 0 0 28px; color: #22402f; font-size: 18px; }
 .cells { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
 .cell { background: var(--paper); border: 3px solid var(--ink); border-radius: 10px; padding: 16px 18px 20px; }
-.cell img { border: 2px solid var(--ink); border-radius: 6px; margin-bottom: 14px; }
-.cell img.mascot { border: 0; height: 107px; width: auto; margin: 0 auto 14px; image-rendering: pixelated; }
+.cell > img, .cell > .mini { border: 2px solid var(--ink); border-radius: 6px; margin-bottom: 14px; }
 .cell b { display: block; font-size: 22px; color: var(--accent); margin-bottom: 4px; }
 .cell p { margin: 0; font-size: 16px; color: #1d3a32; }
 
@@ -135,13 +123,16 @@ header.hero {
 .num { position: absolute; top: -20px; left: 22px; font-size: 20px; background: var(--ink); color: #fff; padding: 0 12px; border-radius: 6px; box-shadow: 3px 3px 0 var(--apricot); line-height: 1.7; }
 .pop { position: absolute; right: -14px; bottom: -22px; font-size: 17px; background: var(--apricot); border: 2px solid var(--ink); border-radius: 8px; padding: 2px 12px; box-shadow: 3px 3px 0 var(--ink); transform: rotate(4deg); white-space: nowrap; }
 .stop.wide { background: var(--ink); color: #fff; border-radius: 12px; padding: 48px; box-shadow: 8px 8px 0 var(--apricot); z-index: 1; }
-.stop.wide .bubble { background: transparent; border: 0; box-shadow: none; padding: 26px 0 0; }
+.stop.wide .bubble { background: transparent; border: 0; box-shadow: none; padding: 0; }
+.stop.wide h3 { margin: 0 0 18px; }
+.stop.wide .bubble p + p { margin-top: 18px; }
 .stop.wide .bubble::before { display: none; }
 .stop.wide .bubble p { color: #d5e6dd; }
-.stop.wide .num { left: 0; top: -8px; background: var(--apricot); color: var(--ink); box-shadow: none; }
+.stop.wide .num { position: static; display: inline-block; margin-bottom: 16px; background: var(--apricot); color: var(--ink); box-shadow: none; }
 .stop.wide h3 { color: var(--lcd); }
 .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center; justify-self: end; width: 100%; max-width: 420px; }
-.duo .phone { border-color: #fff; box-shadow: 5px 5px 0 var(--apricot); transform: rotate(3deg); }
+.duo .wshot { grid-column: 1 / -1; }
+.duo .watch-face + .watch-face, .watches .watch-face + .watch-face { transform: rotate(4deg); }
 .watch-face { border-radius: 34px; overflow: hidden; border: 6px solid #33443f; outline: 3px solid #000; transform: rotate(-4deg); }
 
 /* 스티커 흐름 */
@@ -171,7 +162,6 @@ header.hero {
 .cta { margin-top: 112px; background: var(--apricot); border-top: 3px solid var(--ink); border-bottom: 3px solid var(--ink); padding: 80px 0; text-align: center; }
 .cta h2 { font-size: clamp(30px, 4.6vw, 48px); }
 .cta p { font-size: 19px; margin: 0 0 32px; }
-.cta .store { box-shadow: 5px 5px 0 #fff; }
 .cta-mascot { width: 96px; margin: 0 auto 20px; image-rendering: pixelated; }
 .cta .help { font-size: 17px; margin: 28px 0 0; }
 
@@ -180,15 +170,14 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 footer .links { display: flex; gap: 16px; flex-wrap: wrap; }
 footer .owner { width: 100%; color: var(--muted); font-size: 15px; margin: 0; }
 footer a { color: var(--muted); }
+footer .owner.info { display: flex; flex-wrap: wrap; gap: 2px 16px; }
+@media (max-width: 560px) { footer .owner.info { flex-direction: column; } }
 
 @media (max-width: 900px) {
 	.hero-stage { grid-template-columns: 1fr; gap: 56px; }
 	.hero-phone { width: 230px; margin: 0 auto; order: 2; }
-	.tile { width: 160px; }
-	.tile.t1 { left: -40px; top: auto; bottom: 280px; }
-	.tile.t2 { left: auto; right: -40px; bottom: -30px; }
 	.cells { grid-template-columns: minmax(0, 1fr); }
-	.cell img { max-width: min(100%, 320px); }
+	.cell > img, .cell > .mini { max-width: min(100%, 320px); }
 	.path::before { left: 22px; }
 	.stop, .stop.right { grid-template-columns: minmax(0, 1fr); gap: 36px; padding-left: 56px; }
 	.stop > .phone, .stop.right > .phone { order: 0; justify-self: start; width: 220px; }
@@ -257,4 +246,206 @@ footer a { color: var(--muted); }
 	/* 멈춘 상태 — 강조는 그대로, 스티커는 붙은 모습으로 */
 	.hl-goal, .tap-cell::before, .tap-cell img { animation: none; }
 	.tap-cell::before { opacity: 0; }
+}
+
+/* 휴대폰 전용 구성(560px 이하). 한 섹션이 휴대폰 한 화면 안에 들어가게 잡는다. 컴퓨터 화면은 위 규칙 그대로 */
+.m-only { display: none; }
+@media (max-width: 560px) {
+	.m-only { display: block; }
+	header.hero, #fun, #story, #stickers, #safe, .cta { display: none; }
+	.m-sec { padding: 40px 18px 44px; display: flex; flex-direction: column; gap: 16px; border-bottom: 3px solid var(--ink); }
+	.m-sec h2 { font-size: 26px; line-height: 1.35; margin: 0; }
+	.m-sec p { margin: 0; font-size: 16px; line-height: 1.7; color: #1d3a32; }
+	.m-note { color: var(--muted) !important; font-size: 15px !important; }
+	.m-shot { aspect-ratio: var(--ar); max-width: 100%; overflow: hidden; border: 3px solid var(--ink); border-radius: 14px; background: var(--mint); }
+	.m-shot img { width: var(--w, 100%); max-width: none; margin-top: var(--mt); margin-left: var(--ml, 0); }
+
+	.m-end .store-badge img { height: 52px; }
+
+	.m-how .m-shot { box-shadow: 4px 4px 0 var(--ink); }
+	.m-how ol { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 8px; }
+	.m-how li { display: flex; align-items: center; gap: 12px; font-size: 17px; }
+	.m-how li b { flex: none; width: 30px; height: 30px; display: grid; place-items: center; background: var(--ink); color: #fff; border-radius: 6px; font-size: 16px; }
+
+	.m-two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+	.m-two figure { margin: 0; display: grid; gap: 8px; }
+	.m-two figcaption { font-size: 14px; line-height: 1.5; color: #1d3a32; }
+	.m-two figcaption b { display: block; font-size: 18px; color: var(--accent); }
+	.m-boards { background: var(--mint-soft); }
+
+	.m-three { display: grid; grid-template-columns: 1.15fr 1fr; gap: 10px; align-items: start; }
+	.m-stack { display: grid; gap: 10px; }
+
+	.m-watch { background: var(--ink); color: #fff; }
+	.m-watch h2 { color: var(--lcd); }
+	.m-watch p { color: #d5e6dd; }
+	.watches { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; padding: 4px 8px; }
+	.m-watch .watch-face { transform: rotate(-4deg); }
+
+	.m-marquee { margin: 0 -18px; padding: 18px 0; }
+	.m-stickers { background: var(--paper); }
+
+	.m-end { background: var(--apricot); align-items: center; text-align: center; border-bottom: 0; }
+	.m-mascot { width: 72px; image-rendering: pixelated; }
+	.m-help { font-size: 15px !important; }
+	footer { border-top: 3px solid var(--ink); }
+}
+
+@media (max-width: 560px) {
+	.m-rows { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 12px; }
+	.m-rows li { display: grid; grid-template-columns: 128px 1fr; gap: 12px; align-items: center; background: var(--paper); border: 2px solid var(--ink); border-radius: 10px; padding: 10px 12px; font-size: 14px; line-height: 1.6; color: #1d3a32; }
+	.m-rows li > img, .m-rows li > .mini { width: 100%; border: 2px solid var(--ink); border-radius: 6px; }
+	.m-rows b { display: block; font-size: 17px; color: var(--accent); }
+	.m-fun { background: var(--lcd); }
+	.m-how ol li { align-items: flex-start; font-size: 14px; line-height: 1.6; color: #1d3a32; }
+	.m-how ol li strong { display: block; font-weight: normal; font-size: 17px; color: var(--ink); }
+	.m-ideas { display: flex; flex-wrap: wrap; gap: 8px; }
+	.m-ideas .idea { font-size: 14px; padding: 2px 12px; box-shadow: 2px 2px 0 var(--ink); }
+	.m-safe { background: var(--mint-soft); }
+	.m-safe ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+	.m-safe li { border-left: 4px solid var(--apricot); padding-left: 14px; font-size: 15px; line-height: 1.7; color: #1d3a32; }
+	.m-safe li span { display: block; color: var(--accent); font-size: 14px; }
+	.m-safe li b { display: block; font-size: 18px; color: var(--ink); }
+}
+
+@media (max-width: 560px) {
+	.m-how { background: var(--ivory); }
+	.m-record { background: var(--mint-soft); }
+}
+
+@media (max-width: 560px) {
+	/* 두 판 높이가 달라도 설명 줄은 같은 높이에 */
+	.m-how .m-two { grid-template-rows: auto auto; row-gap: 8px; }
+	.m-how .m-two figure { display: contents; }
+	.m-how .m-two figure:nth-child(1) .m-shot { grid-area: 1 / 1; }
+	.m-how .m-two figure:nth-child(2) .m-shot { grid-area: 1 / 2; }
+	.m-how .m-two figure:nth-child(1) figcaption { grid-area: 2 / 1; }
+	.m-how .m-two figure:nth-child(2) figcaption { grid-area: 2 / 2; }
+}
+
+@media (max-width: 560px) {
+	.m-sec { padding-left: 24px; padding-right: 24px; }
+	.m-marquee { margin: 0 -24px; }
+}
+
+@media (max-width: 560px) {
+	/* 첫 화면: App Store 헤더 그림처럼 차곡이와 제목 둘레에 앱 스티커를 흩뿌린다. 기기 화면 높이(상단 막대 62px 제외)를 꽉 채운다 */
+	.m-hero2 { position: relative; overflow: hidden; min-height: calc(100vh - 62px); min-height: calc(100svh - 62px); justify-content: center; align-items: center; text-align: center; gap: 14px;
+		background-color: var(--ivory); background-image: radial-gradient(var(--mint) 3px, transparent 3.5px); background-size: 32px 32px; }
+	.m-hero2 > :not(.st-layer) { position: relative; z-index: 2; }
+	/* 앱 스플래시 장면. 위쪽 12칸은 떨어지는 판 자리라 비어 있어 아래 여백을 당긴다 */
+	.m-hero2-splash { width: 140px; height: 180px; margin: -50px 0 -14px; overflow: visible; }
+	.m-hero2 h1 { font-size: 34px; line-height: 1.3; margin: 0; }
+	.m-hero2 h1 em { font-style: normal; background: var(--apricot); padding: 0 8px; }
+	.m-hero2 > p { font-size: 15px; max-width: 19em; }
+	.m-hero2 .badge { font-size: 14px; }
+}
+
+@media (max-width: 560px) {
+	/* 적립판과 달력판: 판 테두리 둘레 여백(원본 20px)을 같게 자르고, 판 높이가 같아지도록 칸 너비 비율을 맞춘다 */
+	.m-how .m-two { grid-template-columns: 1.104fr 1fr; }
+	/* 기록: 왼쪽 기록 화면이 줄 높이를 정하고, 오른쪽 두 장이 그 높이를 나눠 채운다. 세 장 모두 같은 위치(제목 줄 위)에서 시작 */
+	.m-three { align-items: stretch; }
+	.m-record .m-stack { contain: size; grid-template-rows: 1.3fr 1fr; }
+	.m-record .m-stack .m-shot { aspect-ratio: auto; min-height: 0; }
+}
+
+@keyframes st-stick {
+	0% { opacity: 0; transform: scale(1.35) rotate(var(--r)); animation-timing-function: cubic-bezier(.3, 0, .6, 1); }
+	12% { opacity: 1; }
+	45% { transform: scale(.93) rotate(var(--r)); animation-timing-function: ease-in-out; }
+	70% { transform: scale(1.03) rotate(var(--r)); animation-timing-function: ease-in-out; }
+	100% { opacity: 1; transform: scale(1) rotate(var(--r)); }
+}
+
+@keyframes st-tap {
+	0% { transform: scale(1.22) rotate(var(--r)); animation-timing-function: cubic-bezier(.3, 0, .6, 1); }
+	45% { transform: scale(.94) rotate(var(--r)); animation-timing-function: ease-in-out; }
+	70% { transform: scale(1.02) rotate(var(--r)); animation-timing-function: ease-in-out; }
+	100% { transform: scale(1) rotate(var(--r)); }
+}
+
+/* 첫 화면 둘레의 앱 스티커(컴퓨터와 휴대폰 공통). 첫 화면이 열리면 한 장씩 붙고(앱 칸에 붙일 때의 StickMotion: 1.35배에서 살짝 튕기며 제 크기로),
+   다 붙은 뒤에는 가끔 한 장만 다시 톡 붙는다(assets/hero-splash.js) */
+.st-layer { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.st { position: absolute; width: 58px; height: 58px; display: grid; place-items: center; background: #fff; border: 3px solid var(--ink); border-radius: 14px; box-shadow: 4px 4px 0 var(--ink); transform: rotate(var(--r)); }
+.st img { width: 40px; image-rendering: pixelated; }
+.hero .st-layer { z-index: 3; }
+.hero .st { width: 76px; height: 76px; border-radius: 16px; box-shadow: 5px 5px 0 var(--ink); }
+.hero .st img { width: 52px; }
+.st-burst .st { animation: st-stick 480ms linear both; animation-delay: calc(var(--i, 0) * 240ms); }
+.st-done .st.tap { animation: st-tap 480ms linear; }
+
+/* 「하나씩 채워 가는 재미」의 작은 판(앱 스티커 원본으로 그린 그림). 간식 묶음 그림과 같은 비율 */
+.mini { container-type: inline-size; aspect-ratio: 480 / 207; width: 100%; max-width: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: center; background: var(--mint); }
+.mini-board { display: grid; grid-template-columns: repeat(5, 13.5cqw); grid-auto-rows: 13.5cqw; gap: 2cqw; padding: 2cqw; background: var(--lcd); border: max(2px, .8cqw) solid var(--ink); border-radius: 2cqw; }
+.mini.full .mini-board { grid-template-columns: repeat(4, 13.5cqw); }
+.mc { position: relative; display: grid; place-items: center; border: max(1.5px, .6cqw) solid var(--ink); border-radius: 1.4cqw; }
+.mc img { width: 78%; image-rendering: pixelated; }
+.mc i { font-style: normal; font-family: var(--pixel); font-size: 4.5cqw; line-height: 1; color: var(--ink); }
+.mc .mpop { position: absolute; left: 11%; top: 11%; opacity: 0; animation: mini-pop-a 5s infinite; }
+.mc .mpop.b { animation-name: mini-pop-b; }
+.mini-mascot { width: 22cqw; margin-left: 3cqw; image-rendering: pixelated; }
+@keyframes mini-pop-a {
+	0%, 6% { opacity: 0; transform: scale(1.35); }
+	7% { opacity: 1; transform: scale(1.3); }
+	11% { transform: scale(.93); }
+	14% { transform: scale(1.03); }
+	17%, 88% { opacity: 1; transform: scale(1); }
+	94%, 100% { opacity: 0; transform: scale(1); }
+}
+@keyframes mini-pop-b {
+	0%, 25% { opacity: 0; transform: scale(1.35); }
+	26% { opacity: 1; transform: scale(1.3); }
+	30% { transform: scale(.93); }
+	33% { transform: scale(1.03); }
+	36%, 88% { opacity: 1; transform: scale(1); }
+	94%, 100% { opacity: 0; transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+	.mc .mpop { animation: none; opacity: 1; }
+}
+
+
+
+/* 홈 화면 위젯 캡처(두 줄 적립판, 앱 docs/readme/widget-tally.png). 마지막 빈칸(10)에 바로 왼쪽 칸(9)의 책을 그대로 옮겨 붙여
+   크기와 위치가 다른 칸과 같다. 좌표는 원본 1084×532 기준(cqw = 그림 너비의 1%): 빈칸 947~1034 × 268~356, 옮겨 올 칸은 왼쪽으로 90 */
+.wshot { container-type: inline-size; position: relative; aspect-ratio: 1084 / 532; max-width: 100%; overflow: hidden; border: 3px solid #fff; border-radius: 14px; box-shadow: 5px 5px 0 var(--apricot); }
+.wshot > img { display: block; width: 100%; max-width: none; }
+.wsprite { position: absolute; left: 87.362cqw; top: 24.723cqw; width: 8.026cqw; height: 8.118cqw;
+	background: url(img/widget-tally.jpg) no-repeat; background-size: 100cqw auto; background-position: -79.059cqw -24.723cqw;
+	opacity: 0; animation: wbook 5s infinite; }
+@keyframes wbook {
+	0%, 19% { opacity: 0; transform: scale(1.35); }
+	20% { opacity: 1; transform: scale(1.3); }
+	24% { transform: scale(.93); }
+	27% { transform: scale(1.03); }
+	30%, 90% { opacity: 1; transform: scale(1); }
+	96%, 100% { opacity: 0; transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+	.wsprite { animation: none; }
+}
+
+/* 첫 화면이 세로로 쌓이는 폭(561~900px): 글이 위 왼쪽을 차지하니, 별은 오른쪽 위 모서리로, 나머지는 아래 폰 둘레로 옮긴다
+   (DOM 순서: 별, 카메라, 펭귄, 달리기, 해, 도넛, 자전거, 하트) */
+@media (min-width: 561px) and (max-width: 900px) {
+	.hero .st:nth-child(1) { left: auto !important; right: 4% !important; top: 3% !important; }
+	.hero .st:nth-child(2) { left: auto !important; right: 8% !important; top: 57% !important; }
+	.hero .st:nth-child(3) { left: 6% !important; right: auto !important; top: 61% !important; }
+	.hero .st:nth-child(4) { left: auto !important; right: 18% !important; top: 71% !important; }
+	.hero .st:nth-child(5) { left: 3% !important; right: auto !important; top: 80% !important; }
+	.hero .st:nth-child(6) { left: auto !important; right: 3% !important; top: 84% !important; }
+	.hero .st:nth-child(7) { left: 15% !important; right: auto !important; top: 91% !important; }
+	.hero .st:nth-child(8) { left: auto !important; right: 14% !important; top: 93% !important; }
+}
+
+/* 좁은 컴퓨터 화면(901~1180px)에서는 폰이 왼쪽 끝에 붙어, 별이 폰 화면 글자를 가리지 않게 모서리로 올린다 */
+@media (min-width: 901px) and (max-width: 1180px) {
+	.hero .st:nth-child(1) { left: 1% !important; top: 1% !important; }
+}
+
+/* 넓은 컴퓨터 화면에서만 글 오른쪽 빈자리에 두 장을 더한다(좁으면 글과 겹친다) */
+@media (max-width: 1180px) {
+	.hero .st.wide-only { display: none; }
 }
