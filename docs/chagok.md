@@ -6,8 +6,8 @@
 | 경로 | 내용 | 검색 노출 |
 |---|---|---|
 | `/` | 랜딩(`index.html`, 스타일 `assets/landing.css`, 그림 `assets/img`, 영상 `assets/vid`, 글꼴 `assets/fonts` — Neo둥근모 원본 그대로(모든 글자), SIL OFL 1.1, `LICENSE.txt`) | 허용 |
-| `/support/` | 문의, 자주 묻는 것, 운영자 정보 | 차단(공식 게시 전) |
-| `/terms/`, `/privacy/`, `/delete-account/`, `/versions.json` | 약관, 처리방침, 계정 삭제 안내, 판 목록 — **앱이 읽는 경로라 바꾸지 않는다** | 차단(공식 게시 전) |
+| `/support/` | 문의, 자주 묻는 것, 운영자 정보 | 허용 |
+| `/terms/`, `/privacy/`, `/delete-account/`, `/versions.json` | 약관, 처리방침, 계정 삭제 안내, 판 목록 — **앱이 읽는 경로라 바꾸지 않는다** | 허용 (`/versions.json` 은 sitemap 에 넣지 않는다) |
 
 랜딩(`/`)에만 Google 애널리틱스(측정 ID `G-DR15LTP1EW`, 속성 「차곡차곡 랜딩」)를 넣는다. 처리방침 1판 15절이 이 설정을 설명하므로, 아래를 바꾸면 15절도 같이 고친다. 페이지 소스는 누구나 보므로 GA 코드에 주석을 달지 않고 이유는 여기에 적는다.
 - 동의 기본값은 태그를 읽기 전에 정한다. EEA 30개국과 영국은 `analytics_storage: 'denied'`(쿠키 없이 측정), 광고 항목 셋은 모든 지역에서 `denied`.
@@ -44,9 +44,9 @@
 
 고친 뒤 `node deploy/check-chagok.mjs` 로 검사한다(Actions 도 같은 검사를 돌린다 — `versions.json` 형식 · 판 파일 · `policy.js` 문법 · 페이지가 부르는 사이트 안 파일).
 
-## 게시 전 채울 것
+## 게시 때 채운 것
 
-판 날짜. 최종 문안은 법률 검토를 받는다.
+판 날짜는 앱 1.0 출시일(2026-11-03)로 맞췄다(`versions.json`, 약관 · 처리방침 1판 맨 위). 판 번호는 그대로라 앱 동의 기록에는 영향이 없다. 최종 문안은 법률 검토를 받는다.
 
 사업장 주소(2026-10-29 사업자등록증 사업장소재지 그대로)와 전화번호(050-6994-4416 · 2026-10-29 은주)는 약관 끝 · 지원 페이지 운영자 줄에 넣었다(전자상거래법 10조 · 13조 표시 · 랜딩은 짧게 — 푸터의 「고객 지원」 링크로 이어진다).
 
@@ -62,7 +62,7 @@ athena.novum-lab.com 과 같은 길이다. **`main` 에 합치는 순간 운영 
 - 서버 레포 안에서 `main` 이 움직여도 hook(`deploy/hooks/reference-transaction`)이 같은 실행기(`site.sh --all`)를 돈다
 - Caddy 블록 `chagok.novum-lab.com` 이 그 폴더를 낸다. 서버 · Caddy 는 서버 창 일이다
 
-지금은 운영 주소(`https://chagok.novum-lab.com`)에 올라가 있지만 **공식 게시 전**이라 랜딩(`/`)만 검색에 열어 둔다. 검색 차단은 서버 Caddy 블록이 `/` 를 뺀 모든 경로에 `X-Robots-Tag: noindex` 헤더를 붙여 한다(`@noindex` · 레포에는 없다).
-공식 게시 때: 위 「게시 전 채울 것」을 채우고, 판 날짜(`versions.json`, 각 판 상단)를 게시하는 날로 맞추고, Caddy 블록의 noindex 규칙을 지운다(서버 창).
+2026-11-03 앱 1.0 출시로 공식 게시했다. 모든 경로를 검색에 연다. 출시 전에는 서버 Caddy 블록이 `/` 를 뺀 모든 경로에 `X-Robots-Tag: noindex` 헤더를 붙였다(`@noindex` · 레포에는 없다). 이 규칙은 2026-11-04 서버 Caddyfile 에서 지웠다(백업 `/etc/caddy/Caddyfile.bak-chagok-noindex-20261104`).
+검색용 파일: `chagok/robots.txt`(모두 허용, sitemap 주소), `chagok/sitemap.xml`(랜딩, 지원, 약관, 처리방침, 계정 삭제). 각 페이지 `<head>` 에 canonical 주소를 두고, 랜딩에는 iPhone Safari 앱 배너(`apple-itunes-app`, 앱 id 6824725721)를 둔다. 페이지를 더하거나 주소를 바꾸면 sitemap 도 고친다.
 
 `chagok/app-ads.txt` 는 AdMob 광고 판매자 확인용 한 줄이다(2026-10-29 출시 전에 미리 · `https://chagok.novum-lab.com/app-ads.txt`). 게시자 ID `pub-3557389923784580` 은 앱 `app.json` 의 iOS AdMob 앱 ID 앞부분이다(Android 쪽 `3940256099942544` 는 Google 테스트 ID 라 아니다). 앱 ID 나 AdMob 계정이 바뀌면 이 줄도 바꾼다. 검색 차단(noindex 헤더)과 상관없이 광고 크롤러가 읽는다.
