@@ -14,7 +14,14 @@
 - `cookie_domain` 을 `chagok.novum-lab.com` 으로 고정한다. 기본값 `auto` 는 쿠키를 `.novum-lab.com` 에 저장해 다른 서비스 주소까지 보낸다.
 - `allow_google_signals`, `allow_ad_personalization_signals` 는 `false`. 콘솔의 데이터 보관은 2개월(2026-11-04 확인).
 
-랜딩의 App Store 버튼은 출시 전이라 누를 수 없는 「곧 출시」다. 주소가 생기면 `chagok/index.html` 맨 위 주석대로 세 곳을 바꾼다.
+랜딩의 App Store 배지 세 곳(위 막대, 첫 화면, 맨 아래)은 2026-11-04부터 한국 App Store 앱 페이지로 연결한다(앱 1.0 출시 2026-11-03). 배지는 Apple 공식 자산 `assets/img/app-store-badge-ko.svg`(검은색, 한국어) 그대로이고, 화면 높이 40px 이상으로 둔다(App Store 마케팅 지침). 휴대폰 화면에는 첫 화면 배지가 없고 위 막대와 맨 아래 두 곳이다. 배지 그림은 고치지 않고, 도트 글꼴 느낌은 배지 위 「무료로 받을 수 있어요」 한 줄(`.store-cap`)로 낸다. 배지에 Apple 로고를 따로 넣은 버튼을 직접 만들지 않는다(같은 지침: Apple 로고 단독 사용 금지).
+
+휴대폰 폭(560px 이하)에서는 컴퓨터용 구역을 숨기고 `index.html` 의 `<main id="m" class="m-only">` 를 보여 준다(2026-11-04). 휴대폰 한 화면을 한 섹션으로 짠 별도 구성이라, **랜딩 문구를 고치면 컴퓨터용 구역과 `#m` 두 곳을 같이 고친다.**
+- 첫 화면(`.m-hero2`)은 기기 화면 높이(위 막대 62px 제외)를 채운다. 차곡이는 앱 스플래시(앱 `src/design-system/splash.tsx`)의 판 받기 장면을 `assets/hero-splash.js` 가 같은 도트 그림(앱 `docs/design/character/character-data.json` 의 `splashLayers`)과 타이밍으로 한 번 그린다(색 채우기와 글자 치기는 뺐다). 스크립트가 없어도 판 세 장을 인 마지막 장면이 HTML에 들어 있다.
+- 첫 화면 둘레의 스티커(`assets/img/st-*.png`, 앱 `assets/widget-art/color-*.png` 원본)은 컴퓨터와 휴대폰 첫 화면에 모두 있다. 두 화면 모두 첫 화면 전체 폭에 흩뿌려 모서리와 가장자리에 반쯤 걸치게 놓는다. 컴퓨터는 1181px 이상에서 글 오른쪽에 두 장(`.wide-only`)을 더하고, 첫 화면이 세로로 쌓이는 561~900px에서는 글을 가리지 않게 자리를 따로 정한다. 첫 화면이 열리면 한 장씩 붙고(앱 `StickMotion` 과 같은 느낌), 그 뒤 첫 화면이 보이는 동안 4.5초마다 한 장만 다시 톡 붙는다(`assets/hero-splash.js`). 동작 줄이기 설정이면 움직이지 않는다.
+- 「하나씩 채워 가는 재미」의 붙이는 재미와 완성하는 재미 그림은 앱 화면 캡처가 아니라 앱 스티커 원본과 차곡이 그림(`mascot-excited.png`)으로 HTML에서 그린 작은 판(`.mini`)이다. 붙이는 재미 판은 빈칸 두 곳에 스티커가 차례로 붙는 장면을 반복한다.
+- 앱의 스플래시나 붙이기 모션을 바꾸면 여기도 맞춘다.
+
 판 본문(`terms/v1` 등)의 사이트 안 링크는 `/delete-account/` 처럼 **사이트 기준 절대 경로**로 쓴다 — 같은 본문이 `/privacy/v1/` 과 `/privacy/`(끼워 넣기) 두 주소에서 보여 상대 경로는 한쪽에서 깨진다.
 문의 메일 링크(랜딩 footer `index.html` · `terms/v1` · `privacy/v1` · `support` · `delete-account` 5곳)는 앱 설정 「문의하기」와 같은 제목 · 본문 틀을 `encodeURIComponent` 로 미리 인코딩해 `href` 에 넣었다(앱 `src/support/contactMail.ts` 의 `SUBJECT.question` · `BODY.question` — 사이트는 앱 버전 · OS 를 모르니 `---` 아래 앱 정보 줄은 뺀다). 앱 틀을 바꾸면 5곳도 같이 바꾼다.
 
