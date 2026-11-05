@@ -145,3 +145,40 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 })();
+
+/* 설명 줄 ↔ 그림 자리(#status): ✓ 목록 줄(data-box="x,y,w,h" — 그림 기준 %)에 마우스를 올리거나 포커스하면
+   그림(img aria-describedby = 목록 id)의 그 자리에 금색 상자(.hl)를 켠다. 누르면(휴대폰) 켠 채로 고정 · 다시 누르면 끈다.
+   동작 줄이기여도 켠다(움직임만 CSS 에서 끈다) — 그래서 위 함수와 따로 둔다 */
+(() => {
+  const lists = document.querySelectorAll('ul.spots[id]');
+  lists.forEach((list) => {
+    const img = document.querySelector(`img[aria-describedby="${list.id}"]`);
+    const box = img?.parentElement?.querySelector('.hl');
+    if (!box) return;
+    const items = [...list.querySelectorAll('li[data-box]')];
+    let pinned = null;
+
+    const show = (item) => {
+      const [left, top, width, height] = item.dataset.box.split(',').map(Number);
+      Object.assign(box.style, { left: `${left}%`, top: `${top}%`, width: `${width}%`, height: `${height}%` });
+      box.classList.add('on');
+      items.forEach((other) => other.classList.toggle('on', other === item));
+    };
+    const settle = () => {
+      if (pinned) { show(pinned); return; }
+      box.classList.remove('on');
+      items.forEach((other) => other.classList.remove('on'));
+    };
+
+    items.forEach((item) => {
+      item.addEventListener('mouseenter', () => show(item));
+      item.addEventListener('mouseleave', settle);
+      item.addEventListener('focus', () => show(item));
+      item.addEventListener('blur', settle);
+      item.addEventListener('click', () => {
+        pinned = pinned === item ? null : item;
+        settle();
+      });
+    });
+  });
+})();

@@ -38,10 +38,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=20261102d">
+<link rel="stylesheet" href="/assets/site.css?v=20261105a">
 <script src="/assets/analytics.js?v=20261029a" async></script>
 <script src="/assets/lang.js?v=20261102d"></script>
-<script src="/assets/motion.js?v=20261028i" defer></script>
+<script src="/assets/motion.js?v=20261105a" defer></script>
 </head>
 <body>
 <header class="top">
@@ -122,24 +122,68 @@
 </section>
 
 <section class="feat" id="status">
-  <span id="monitor" class="anchor"></span><span id="work" class="anchor"></span><span id="details" class="anchor"></span><span id="menubar" class="anchor"></span>
   <div class="wrap">
     <div class="sec-head">
       <div class="label" data-t="f.g2.l">进度与问题</div>
       <h2 data-t="f.g2.h">看到每个智能体在做什么，以及需要你做什么。</h2>
     </div>
-    <div class="quad">
-      <div><h3 data-t="h.f.mon">智能体监视器</h3><p data-t="f.mo.p">窗口底部的实时动态逐个工具地跟踪每个智能体：读过和改过的文件、运行的命令，以及过程中说的话。在每个工作区都能看到。</p></div>
-      <div><h3 data-t="h.f.work">工作</h3><p data-t="f.wk.p">智能体需要你时，问题或决定会出现在 [工作] 最上方，下面是进行中的任务和最近一天完成的任务。在那里回答后，智能体会从停下的地方继续。</p><p data-t="f.gi.p">还可以监视仓库中未关闭的 GitHub 议题：开启后，新议题会作为任务导入并交给 Athena，智能体监视器会为每个议题显示一行。</p><p data-t="f.wk.ap">权限确认也会出现在 [工作] 中，并可直接跳回对应的 pane。Codex 的批准请求(命令、文件修改、额外权限和选择式问题)可以在 [工作] 中直接回答，保留原有的选项和范围。Codex Browser 的权限窗口和启动时的信任窗口也会在 [工作] 和菜单栏中提示。</p></div>
-      <div><h3 data-t="h.f.det">pane 详情</h3><p data-t="f.dt.p">从智能体的标题栏打开详情，一个面板会从窗口上方滑出，不会改变终端的大小。它显示智能体需要你做什么、被什么卡住、它的计划和拉取请求。</p></div>
-      <div><h3 data-t="h.f.bar">菜单栏</h3><p data-t="f.mb.p">Mac 菜单栏里有 Athena Studio 的猫头鹰图标。出现红点表示有待回答的问题或受阻的计划。点击猫头鹰即可看到每个智能体的状态、最近 3 天（今天、昨天和前天）智能体工作时长的山形图，以及最近 7 天按天显示的 Token 用量柱状图。智能体工作期间，猫头鹰的眼睛会发出绿光。</p></div>
+    <div class="grid" id="monitor">
+      <div class="txt">
+        <h3 data-t="h.f.mon">智能体监视器</h3>
+        <p data-t="f.mo.p">窗口底部的实时动态逐个工具地跟踪每个智能体：读过和改过的文件、运行的命令，以及过程中说的话。在每个工作区都能看到。</p>
+        <ul class="spots" id="mk-monitor">
+          <li data-t="f.mo.m1" data-box="16,1.2,78,6.8" tabindex="0">每个正在工作的智能体都有一个标签，显示用过的工具次数和最后一次动作。点击标签只看这个智能体的行，再点一次回到全部。</li>
+          <li data-t="f.mo.m2" data-box="1,10.2,79,88.8" tabindex="0">每一步一行：时间、[智能体 · 分支]、工具，以及涉及的文件或命令。</li>
+          <li data-t="f.mo.m3" data-box="1,37.6,97.5,5.8" tabindex="0">💬 行是智能体在过程中说的话。智能体名称与所在工作区的颜色相同。</li>
+          <li data-t="f.mo.m4" data-box="94.6,1.2,3.8,6.6" tabindex="0">折叠或展开监视器。拖动上边缘可调整高度，双击恢复默认高度。</li>
+        </ul>
+      </div>
+      <figure class="shot part" style="--ar:calc(1156/650)"><div class="part-in"><img aria-describedby="mk-monitor" src="/assets/shots/monitor.webp?v=20261105" width="1156" height="650" loading="lazy" alt="智能体监视器：web、api、athena 智能体的标签，以及编辑、测试运行和消息的实时动态。" data-ta="alt:h.b2.alt"><span class="hl" aria-hidden="true"></span></div></figure>
     </div>
-    <figure class="shot sm g2-mon"><img src="/assets/shots/monitor.webp" width="2160" height="340" loading="lazy" alt="智能体监视器：web、api、athena 智能体的标签，以及编辑、测试运行和消息的实时动态。" data-ta="alt:h.b2.alt"></figure>
-    <div class="pair g2-pair">
-      <figure class="shot sm"><img src="/assets/shots/work-pop.webp" width="800" height="1034" loading="lazy" alt="“工作”弹窗。" data-ta="alt:f.wk.alt1"></figure>
-      <figure class="shot sm narrow"><img src="/assets/shots/detail-panel.webp" width="880" height="1710" loading="lazy" alt="api-be 的 pane 详情：给你的问题、受阻提示、状态和 token、拉取请求以及计划进度。" data-ta="alt:f.dt.alt"></figure>
+    <div class="grid flip-g" id="work">
+      <div class="txt">
+        <h3 data-t="h.f.work">工作</h3>
+        <p data-t="f.wk.p">智能体需要你时，问题或决定会出现在 [工作] 最上方，下面是进行中的任务和最近一天完成的任务。在那里回答后，智能体会从停下的地方继续。</p>
+        <p data-t="f.gi.p">还可以监视仓库中未关闭的 GitHub 议题：开启后，新议题会作为任务导入并交给 Athena，智能体监视器会为每个议题显示一行。</p>
+        <p data-t="f.wk.ap">权限确认也会出现在 [工作] 中，并可直接跳回对应的 pane。Codex 的批准请求(命令、文件修改、额外权限和选择式问题)可以在 [工作] 中直接回答，保留原有的选项和范围。Codex Browser 的权限窗口和启动时的信任窗口也会在 [工作] 和菜单栏中提示。</p>
+        <ul class="spots" id="mk-work">
+          <li data-t="f.wk.m1" data-box="1.5,8.6,97,14.6" tabindex="0">等你处理：问题和决定会连同已等待的时间一起列出。点击即可就地回答。</li>
+          <li data-t="f.wk.m2" data-box="2,27,96,34.3" tabindex="0">进行中：每个计划一行，显示受阻原因或状态备注、下一步，以及 3/5 这样的进度。</li>
+          <li data-t="f.wk.m3" data-box="71.5,33.6,26.5,26.5" tabindex="0">状态为 等你回复、工作中、受阻、空闲 之一。点击任务可查看原因、已定事项、进度、验证、结果和下一步，并可从那里打开计划、决策控制台或前往 pane。</li>
+          <li data-t="f.wk.m4" data-box="2,65.4,96,24" tabindex="0">最近完成：最多显示最近 24 小时内完成的 5 个任务。</li>
+          <li data-t="f.wk.m5" data-box="66,93.6,31.5,5.6" tabindex="0">打开待办页面（问题、学习、指标、归档）。</li>
+        </ul>
+      </div>
+      <figure class="shot part" style="--ar:calc(800/998)"><div class="part-in"><img aria-describedby="mk-work" src="/assets/shots/work-pop.webp?v=20261105" width="800" height="998" loading="lazy" alt="“工作”弹窗。" data-ta="alt:f.wk.alt1"><span class="hl" aria-hidden="true"></span></div></figure>
     </div>
-    <figure class="shot sm narrow g2-bar"><img src="/assets/shots/menubar.webp?v=20261105" width="690" height="1216" loading="lazy" alt="菜单栏面板：智能体及其状态、最近 3 天工作时长山形图、最近 7 天 Token 柱状图。" data-ta="alt:f.mb.alt"></figure>
+    <div class="grid" id="details">
+      <div class="txt">
+        <h3 data-t="h.f.det">pane 详情</h3>
+        <p data-t="f.dt.p">从智能体的标题栏打开详情，一个面板会从窗口上方滑出，不会改变终端的大小。它显示智能体需要你做什么、被什么卡住、它的计划和拉取请求。</p>
+        <ul class="spots" id="mk-details">
+          <li data-t="f.dt.m1" data-box="3,6,94,16" tabindex="0">最上方是需要你做的事：待回答的请求（点击即可回答）和计划中的受阻说明。</li>
+          <li data-t="f.dt.m2" data-box="3,22.8,94,19.2" tabindex="0">一览：状态、持续时间、开始时间、Token（缓存单独显示）、当前在做的事、下一步和 PR 链接。</li>
+          <li data-t="f.dt.m3" data-box="3,43.8,94,9" tabindex="0">发现 · 结果：按屏幕原文显示智能体的最后一份报告。内容较长时会折叠，点 [更多] 展开。</li>
+          <li data-t="f.dt.m4" data-box="3,55,94,5.5" tabindex="0">PR · 自动评审：拉取请求链接和自动评审结果。</li>
+          <li data-t="f.dt.m5" data-box="2,62.8,96,37" tabindex="0">计划书：请求、进度（✓ 已完成、○ 未完成）、下一步和验证。点击标题打开计划。面板打开期间每 3 秒刷新一次。</li>
+        </ul>
+      </div>
+      <figure class="shot part" style="--ar:calc(880/1710)"><div class="part-in"><img aria-describedby="mk-details" src="/assets/shots/detail-panel.webp" width="880" height="1710" loading="lazy" alt="api-be 的 pane 详情：给你的问题、受阻提示、状态和 token、拉取请求以及计划进度。" data-ta="alt:f.dt.alt"><span class="hl" aria-hidden="true"></span></div></figure>
+    </div>
+    <div class="grid flip-g" id="menubar">
+      <div class="txt">
+        <h3 data-t="h.f.bar">菜单栏</h3>
+        <p data-t="f.mb.p">Mac 菜单栏里有 Athena Studio 的猫头鹰图标。出现红点表示有待回答的问题或受阻的计划。点击猫头鹰即可看到每个智能体的状态、最近 3 天（今天、昨天和前天）智能体工作时长的山形图，以及最近 7 天按天显示的 Token 用量柱状图。智能体工作期间，猫头鹰的眼睛会发出绿光。</p>
+        <ul class="spots" id="mk-menubar">
+          <li data-t="f.mb.m1" data-box="2.5,7,95,21.8" tabindex="0">智能体：工作中和空闲的数量，以及每个智能体一行（[pane]分支和状态）。点击一行即可跳到该 pane。</li>
+          <li data-t="f.mb.m2" data-box="2.5,30.3,95,21.2" tabindex="0">工作时长 · 3 天：前面的山是今天，后面是昨天和前天。高度表示每 10 分钟内智能体的工作量，右侧显示今天的合计。</li>
+          <li data-t="f.mb.m3" data-box="2.5,53.3,95,22.6" tabindex="0">用量：Claude 和 Codex 在每个窗口（如 5 小时、每周）的使用比例和重置时间。达到 80% 及以上时数字变红。</li>
+          <li data-t="f.mb.m4" data-box="2.5,78.3,95,19.8" tabindex="0">Token · 最近 7 天：每天一根柱子，下面是 Claude，上面是 Codex，并显示今天和 7 天的合计。</li>
+          <li data-t="f.mb.m5" data-box="90.5,1.4,6,4.4" tabindex="0">☰ 菜单：打开 Athena、打开待办、暂停通知（1 小时或到明天早上 9 点）、退出 Athena。</li>
+        </ul>
+      </div>
+      <figure class="shot part" style="--ar:calc(618/1188)"><div class="part-in"><img aria-describedby="mk-menubar" src="/assets/shots/menubar.webp?v=20261105b" width="618" height="1188" loading="lazy" alt="菜单栏面板：智能体及其状态、最近 3 天工作时长山形图、最近 7 天 Token 柱状图。" data-ta="alt:f.mb.alt"><span class="hl" aria-hidden="true"></span></div></figure>
+    </div>
   </div>
 </section>
 

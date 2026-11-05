@@ -964,6 +964,33 @@ html:lang(ja) .gl-w, html:lang(zh-Hans) .gl-w { white-space: normal; }
 .feat .grid.flip-g { grid-template-columns: 7fr 5fr; }
 .feat .grid.flip-g > .txt { order: 2; }
 @media (max-width: 900px) { .feat .grid.flip-g { grid-template-columns: 1fr; } .feat .grid.flip-g > .txt { order: 0; } .feat .grid + .grid { margin-top: 48px; } }
+/* 부품 그림 틀(#status) — #decisions .shot 과 같은 테두리 · 그림자, 네 줄 같은 비율(4:3). 안은 점 무늬 판(.flowd 와 같은 배경)
+   부품 그림은 가운데에 통째로(--ar = 그림 가로/세로) · 강조 상자는 그림(.part-in) 기준 % 라 틀 크기가 바뀌어도 그림의 같은 곳 */
+.shot.part {
+  aspect-ratio: 4 / 3; padding: 28px; display: flex; align-items: center; justify-content: center; container-type: size;
+  background:
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, .055) 1px, transparent 1.4px) 0 0 / 22px 22px,
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255, 255, 255, .03), transparent 70%),
+    #121518;
+}
+.part-in { position: relative; width: min(100cqw, 100cqh * var(--ar)); flex: none; }
+.part-in img { display: block; width: 100%; height: auto; border-radius: 8px; box-shadow: 0 12px 32px rgba(0, 0, 0, .5); }
+@media (max-width: 900px) {
+  .shot.part { aspect-ratio: auto; padding: 20px; container-type: normal; }
+  .part-in { width: min(100%, 420px); }
+}
+/* 설명 줄(✓ 목록 · data-box)에 올리거나 포커스 · 누르면 그림의 그 자리에 얇은 금색 상자 — 평소엔 그림 위에 아무것도 없다(assets/motion.js 끝) */
+.part-in .hl {
+  position: absolute; border: 1.5px solid var(--gold); border-radius: 6px; pointer-events: none; opacity: 0;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .55), 0 0 14px rgba(217, 181, 111, .35);
+  transition: opacity .18s ease, left .18s ease, top .18s ease, width .18s ease, height .18s ease;
+}
+.part-in .hl.on { opacity: 1; }
+.feat ul.spots li { cursor: default; border-radius: 4px; transition: color .15s ease; }
+.feat ul.spots li.on { color: var(--text); }
+.feat ul.spots li:focus { outline: none; }
+.feat ul.spots li:focus-visible { outline: 1px solid var(--gold-2); outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) { .part-in .hl, .feat ul.spots li { transition: none; } }
 .quad { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin: 8px 0 36px; }
 .quad h3 { font-size: 17px; margin: 0; }
 .quad p { font-size: 15px; margin-top: 8px; line-height: 1.6; }
@@ -973,11 +1000,6 @@ html:lang(ja) .gl-w, html:lang(zh-Hans) .gl-w { white-space: normal; }
 .quad code { white-space: nowrap; }
 @media (max-width: 1000px) { .quad.q3 { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .quad.q3 { grid-template-columns: 1fr; gap: 20px; } }
-.g2-mon { margin-bottom: 16px; }
-.g2-pair { grid-template-columns: 1fr 1fr; }
-.g2-pair .shot:last-child { margin-top: 0; }
-.g2-pair .shot { max-height: 560px; overflow: hidden; }
-.feat .g2-bar { margin-top: 16px; }
 /* 문서: 왼쪽 목차 + 본문 */
 .doc-wrap { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 56px; align-items: start; padding-bottom: 96px; }
 .doc-toc { position: sticky; top: 88px; }
