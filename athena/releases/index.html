@@ -69,9 +69,9 @@
 </div>
 
 <!-- 판마다 요약(2026-10-29 바꿈 — CHANGELOG 를 그대로 옮기지 않는다). 원문은 athena-studio CHANGELOG.md(= GitHub Release 본문)와 각 태그의 커밋.
-     묶음 하나 = 공개판 하나. 왼쪽은 묶음 번호 · 든 상세 버전 범위 · 날짜, 오른쪽은 ① 묶음을 한 줄로 말하는 제목(r.<판>t · 손님 말)
-     ② 상세 버전(rel-ver · 제목 rel-vh 에 vX.Y.Z — 번역하지 않는다)마다 그 버전에서 손님이 체감하는 것(r.<판>k… · 한 줄씩 짧게 · 태그 New/Improved/Fixed/Security)
-     ③ 나머지는 "그 밖의 작은 고침 N개" 한 줄(r.<판>m)로 묶고 그 판 GitHub Release(athena-studio-releases releases/tag/vX.Y.Z) 링크.
+     묶음 하나 = 공개판 하나. 왼쪽은 묶음 번호 · 든 상세 버전 범위 · 날짜, 오른쪽은
+     ① 상세 버전(rel-ver · 제목 rel-vh 에 vX.Y.Z — 번역하지 않는다)마다 그 버전에서 손님이 체감하는 것(r.<판>k… · 한 줄씩 짧게 · 태그 New/Improved/Fixed/Security)
+     ② 나머지는 "그 밖의 작은 고침 N개" 한 줄(r.<판>m)로 묶고 그 판 GitHub Release(athena-studio-releases releases/tag/vX.Y.Z) 링크.
      상세 버전은 최신 순 · 한 버전 안은 New → Improved → Fixed. 실린 항목이 없는 버전은 제목도 두지 않는다.
      항목의 버전 = 그 변경이 들어간 태그(athena-studio 태그마다 커밋 하나 — git log vA..vB). 여러 버전에 걸친 변경은 버전마다 나눠 적는다(2026-11-02 상세 버전으로 다시 씀).
      핵심에 내부 용어(현황판 · pane 번호 · 계획서 등)를 넣지 않는다. 사실은 CHANGELOG · 릴리스 본문 · 그 커밋에 있는 것만 — 지어 넣지 않는다.
@@ -80,11 +80,10 @@
      0.47 은 공개판 v0.47.19 · v0.47.34 · v0.47.52 까지 실었다(더 보기 링크는 최신 공개판 v0.47.52 · 그 밖의 N개 = 0.47 의 CHANGELOG 두 절에서 싣지 않은 항목 수).
      0.49 = v0.48.5 – v0.49.3 · 0.50 = v0.50.0 – v0.50.3. 앱 공개 main e7479fc의 CHANGELOG 0.49/0.50 및 태그별 커밋 기준.
      0.51 = v0.50.4 – v0.51.29. 앱 공개 v0.51.22(81b73cd)의 CHANGELOG 0.51 절(New 5 · Improved 12 · Fixed 6 = 23줄 모두 · v0.51.16 · v0.51.19 · v0.51.20 은 메뉴 이름 · 문서 · 번역뿐 · v0.51.22 는 변경 기록뿐이라 제목 없음)을 태그별 커밋 기준으로 나눴다 — 여러 태그에 걸친 한 줄(그림 스킬 #234 #237 e43d71a 01b078d · 훅 믿음 d6cfe2f 268aabf)은 마지막 태그 아래에(0.47 Codex 리드 줄과 같은 방식). v0.51.23 은 앱 공개 전 아테나가 넘긴 변경 내용(2026-11-05 · 트레이 산 그래프 높이 기준 · 비탈 모양) 기준 한 줄. v0.51.24 – v0.51.29 는 CHANGELOG 에 아직 없어 태그별 커밋(git log v0.51.23..v0.51.29 · 태그마다 커밋 하나 — 3047304 · c077320 · 917ead3 · 5d4019e · 7574c43 · 2c5b69c) 기준(2026-11-05).
-     새 버전: 그 묶음 맨 위에 같은 모양으로 더하고 키를 ko · ja · zh 사전에 모두 넣는다. 새 공개판이면 묶음을 맨 위에 더한다. 0.2 – 0.13 은 공개 전 개발판이라 한 줄(접힘) 그대로 -->
+     새 버전: 그 묶음 맨 위에 같은 모양으로 더하고(묶음 한 줄 제목은 2026-11-05 뺐다 — 다시 두지 않는다) 키를 ko · ja · zh 사전에 모두 넣는다. 새 공개판이면 묶음을 맨 위에 더한다. 0.2 – 0.13 은 공개 전 개발판이라 한 줄(접힘) 그대로 -->
 <section style="padding-top:0">
   <div class="wrap">
     <div class="rel"><div class="v"><b>0.51</b><span>v0.50.4 – v0.51.29<br><span data-t="r.d51">Nov 3–5, 2026</span></span></div><div>
-      <h3 class="rel-t" data-t="r.51t">Answer Codex approval requests in Work, and service diagrams are back.</h3>
       <div class="rel-ver"><h4 class="rel-vh">v0.51.29</h4>
       <ul>
       <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k25">The Worklist, decision consoles and Athena's messages (session start notices, permission requests in Work and choice questions) now follow the app's language: English, Korean, Japanese or Chinese.</span></li>
@@ -197,7 +196,6 @@
       <p class="rel-more" data-t="r.51m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.51.29">See everything in v0.51.29 on GitHub</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.50</b><span>v0.50.0 – v0.50.3<br><span data-t="r.d50">Nov 3, 2026</span></span></div><div>
-      <h3 class="rel-t" data-t="r.50t">Average times for work, pull requests, reviews and verification at a glance.</h3>
       <div class="rel-ver"><h4 class="rel-vh">v0.50.2</h4>
       <ul>
       <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.50k3">Instructions to agents now follow the repository's current review and merge settings, including whether merging needs confirmation.</span></li>
@@ -213,7 +211,6 @@
       <p class="rel-more" data-t="r.50m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.50.3">See everything in v0.50.3 on GitHub</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.49</b><span>v0.48.5 – v0.49.3<br><span data-t="r.d49">Nov 3, 2026</span></span></div><div>
-      <h3 class="rel-t" data-t="r.49t">Charts, clearer tool summaries and more reliable updates.</h3>
       <div class="rel-ver"><h4 class="rel-vh">v0.49.2</h4>
       <ul>
       <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.49k2">Agent Monitor now shows concise summaries of Codex code-mode tool calls in the app's language.</span></li>
@@ -235,7 +232,6 @@
       <p class="rel-more" data-t="r.49m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.49.3">See everything in v0.49.3 on GitHub</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.48</b><span>v0.47.53 – v0.48.4<br><span data-t="r.d48">Nov 3, 2026</span></span></div><div>
-      <h3 class="rel-t" data-t="r.48t">Learning review can now suggest a guard instead of a memory note.</h3>
       <div class="rel-ver"><h4 class="rel-vh">v0.48.2</h4>
       <ul>
       <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.48k3">Athena Studio no longer shows a macOS notification for a permission prompt in the pane you are looking at. The prompt still appears in Work.</span></li>
@@ -259,7 +255,6 @@
       <p class="rel-more" data-t="r.48m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.48.4">See everything in v0.48.4 on GitHub</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.47</b><span>v0.47.0 – v0.47.52<br><span data-t="r.d47">Nov 1–3, 2026</span></span></div><div>
-      <h3 class="rel-t" data-t="r.47t">Updating the app or core no longer closes your panes.</h3>
       <div class="rel-ver"><h4 class="rel-vh">v0.47.51</h4>
       <ul>
       <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.47k42">When the Athena pane cannot take a message right away, for example while a question is open, agents' messages wait and are delivered in order once it is free, instead of turning into question requests.</span></li>
@@ -407,7 +402,6 @@
       <p class="rel-more" data-t="r.47m">8 more small changes and fixes · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.47.52">See everything in v0.47.52 on GitHub</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.46</b><span>v0.42.3 – v0.46.4<br><span data-t="r.d46">Nov 1, 2026</span></span></div><div>
-      <h3 class="rel-t" data-t="r.46t">Agents read your repository rules, and small pull requests take a fast path.</h3>
       <div class="rel-ver"><h4 class="rel-vh">v0.46.1</h4>
       <ul>
       <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.46k4">Automatic merge no longer goes ahead if the pull request's base changed while it was waiting.</span></li>
@@ -427,7 +421,6 @@
       <p class="rel-more" data-t="r.46m">6 more small changes and fixes · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.46.4">See everything in v0.46.4 on GitHub</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.42</b><span>v0.40.4 – v0.42.2<br><span data-t="r.d42">Oct 31, 2026</span></span></div><div>
-      <h3 class="rel-t" data-t="r.42t">Updates open the window first and finish in the background.</h3>
       <div class="rel-ver"><h4 class="rel-vh">v0.42.1</h4>
       <ul>
       <li><span class="tag sec" data-t="r.sec">Security patch</span><span data-t="r.42k4">Updated Electron to 44.10.0, so the Node built into the app is now the security release <a href="https://nodejs.org/en/blog/release/v24.22.1" target="_blank" rel="noopener">24.22.1</a>.</span></li>
@@ -447,7 +440,6 @@
       <p class="rel-more" data-t="r.42m">2 more small fixes · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.42.0">See everything in v0.42.0 on GitHub</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.40</b><span>v0.32.5 – v0.40.3<br><span data-t="r.d40">Oct 30, 2026</span></span></div><div>
-      <h3 class="rel-t" data-t="r.40t">Choose per repository whether Athena opens the pull request.</h3>
       <div class="rel-ver"><h4 class="rel-vh">v0.40.0</h4>
       <ul>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.40k1">Turning auto PR off for a repository skips the pull request and review and merges the work branch straight into the base branch once verification passes.</span></li>
@@ -475,7 +467,6 @@
       <p class="rel-more" data-t="r.40m">10 more small changes and fixes · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.40.3">See everything in v0.40.3 on GitHub</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.32</b><span>v0.28.8 – v0.32.4<br><span data-t="r.d32">Oct 30, 2026</span></span></div><div>
-      <h3 class="rel-t" data-t="r.32t">See what changed, right in the app after each update.</h3>
       <div class="rel-ver"><h4 class="rel-vh">v0.32.0</h4>
       <ul>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.32k1">After Athena's core updates, an in-app popup shows the previous and new versions, what's new, and how the update went.</span></li>
@@ -515,7 +506,6 @@
       <p class="rel-more" data-t="r.32m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.32.4">See everything in v0.32.4 on GitHub</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.28</b><span>v0.25.2 – v0.28.7<br><span data-t="r.d28">Oct 29, 2026</span></span></div><div>
-      <h3 class="rel-t" data-t="r.28t">Answer an agent's question right from Work.</h3>
       <div class="rel-ver"><h4 class="rel-vh">v0.28.6</h4>
       <ul>
       <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.28k6">Work, Settings, and Board menu popups are no longer hidden while the side browser is open.</span></li>
@@ -543,7 +533,6 @@
       <p class="rel-more" data-t="r.28m">4 more small changes and fixes · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.28.7">See everything in v0.28.7 on GitHub</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.25</b><span>v0.19.3 – v0.25.1<br><span data-t="r.d25">Oct 29, 2026</span></span></div><div>
-      <h3 class="rel-t" data-t="r.25t">Drag files in from Finder to enter their paths.</h3>
       <div class="rel-ver"><h4 class="rel-vh">v0.24.0</h4>
       <ul>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.25k2">When a pull request is opened, Athena warns if the tests added in it would also pass without the change. It never blocks the PR.</span></li>
@@ -559,7 +548,6 @@
       <p class="rel-more" data-t="r.25m">6 more small changes and fixes · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.25.1">See everything in v0.25.1 on GitHub</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.19</b><span>v0.17.7 – v0.19.2<br><span data-t="r.d19">Oct 29, 2026</span></span></div><div>
-      <h3 class="rel-t" data-t="r.19t">Resize the panels around your work.</h3>
       <div class="rel-ver"><h4 class="rel-vh">v0.18.3</h4>
       <ul>
       <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.19k3">The Work and Settings buttons no longer stay disabled after the start screen.</span></li>
@@ -575,7 +563,6 @@
       <p class="rel-more" data-t="r.19m">4 more small changes and fixes · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.19.2">See everything in v0.19.2 on GitHub</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.17</b><span>v0.15.9 – v0.17.6<br><span data-t="r.d17">Oct 29, 2026</span></span></div><div>
-      <h3 class="rel-t" data-t="r.17t">The Mac app now updates itself.</h3>
       <div class="rel-ver"><h4 class="rel-vh">v0.17.2</h4>
       <ul>
       <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.17k3">Alerts show only the things you need to decide.</span></li>
@@ -591,7 +578,6 @@
       <p class="rel-more" data-t="r.17m">5 more small changes and fixes · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.17.6">See everything in v0.17.6 on GitHub</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.15</b><span>v0.15.0 – v0.15.8<br><span data-t="r.d15">Oct 28, 2026</span></span></div><div>
-      <h3 class="rel-t" data-t="r.15t">The first public release, as a Mac app.</h3>
       <div class="rel-ver"><h4 class="rel-vh">v0.15.0</h4>
       <ul>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.15k1">Download for Apple Silicon or Intel Macs (macOS 13 Ventura or later).</span></li>

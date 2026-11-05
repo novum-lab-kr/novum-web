@@ -1081,8 +1081,7 @@ html:lang(ja) .gl-w, html:lang(zh-Hans) .gl-w { white-space: normal; }
 .fd-user-pause .fd-toggle .i-pause { display: none; }
 .fd-user-pause .fd-toggle .i-play { display: block; }
 
-/* 바뀐 것 — 판마다 한 줄 제목 · 핵심 몇 개 · 그 밖의 작은 고침 한 줄(2026-10-29) */
-.rel-t { margin: 0 0 18px; font-size: 20px; }
+/* 바뀐 것 — 판마다 핵심 몇 개 · 그 밖의 작은 고침 한 줄(2026-10-29 · 한 줄 제목은 2026-11-05 뺌) */
 .rel-more { margin: 16px 0 0; color: var(--muted); font-size: 14px; }
 .rel-more a { color: var(--gold-2); }
 /* 상세 버전 — 묶음 안에서 버전마다 제목(v0.47.3 처럼) 아래 그 버전 항목(2026-11-02)
