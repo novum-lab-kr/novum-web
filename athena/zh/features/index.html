@@ -104,7 +104,7 @@
 </section>
 
 <section class="feat" id="how">
-  <span id="routing" class="anchor"></span><span id="plans" class="anchor"></span><span id="worktrees" class="anchor"></span><span id="board" class="anchor"></span><span id="checks" class="anchor"></span><span id="guards" class="anchor"></span>
+  <span id="routing" class="anchor"></span><span id="plans" class="anchor"></span><span id="worktrees" class="anchor"></span><span id="checks" class="anchor"></span><span id="guards" class="anchor"></span>
   <div class="wrap">
     <div class="sec-head">
       <div class="label" data-t="f.hw.l">智能体如何工作</div>
@@ -114,9 +114,36 @@
       <div><h3 data-t="f.hw.rt.h">路由与每个仓库的负责智能体</h3><p data-t="f.hw.rt.p">包里的路由表为每个仓库指定负责的智能体。Athena 用它拆分需求，智能体在开始前先读取自己仓库的规则、结构和笔记。跨仓库的工作按顺序进行，先共享包和后端；互不相关的工作同时进行。</p></div>
       <div><h3 data-t="f.hw.pl.h">每次改动都有计划书</h3><p data-t="f.hw.pl.p">没有计划书就不做任何改动。需求已经写清要做什么时，一份简短的计划书就够了。有需要你决定的事，或要协调多个仓库时，Athena 会写一份附带决策控制台的正式计划书，并等你确认。每份计划书都有检查点，新会话可以从上次停下的地方继续。</p></div>
       <div><h3 data-t="f.hw.wt.h">每项任务一个 git 工作树</h3><p data-t="f.hw.wt.p">智能体开始之前，Athena 会从基准分支切出新分支，并在这项任务专用的工作树(即独立的工作文件夹)里打开。即使仓库很乱，你的主检出和未提交的改动也保持原样，多项任务可以并行。</p></div>
-      <div><h3 data-t="f.hw.bd.h">待办页面</h3><p data-t="f.hw.bd.p">按 <kbd>⌘</kbd><kbd>2</kbd> 在浏览器中打开待办页面：待解决的问题(每个都有开始按钮)、学习、指标和归档。指标中可以查看任务、PR、审查和检查所用时间的平均值与中位数。计划书的 PR 合并后，待办页面会把它标为完成，做完的工作移入归档。它有深色和浅色模式。</p></div>
       <div><h3 data-t="f.hw.ck.h">最后只验证一次</h3><p data-t="f.hw.ck.p">工作中，智能体只检查改动的部分。完整验证在提交时跑一次，没跑过的检查绝不报告为通过。每个仓库都可以把这次验证交给 GitHub Actions：验证 → 合并到基准分支 → 部署，失败时会退回给做这项工作的智能体。</p></div>
       <div><h3 data-t="f.hw.gd.h">保护钩子</h3><p data-t="f.hw.gd.p">智能体会话带有钩子，禁止直接执行 git commit、push、<code>gh pr create</code> 和 <code>git add -A</code>。提交和 push 只能通过 Athena 的脚本进行，脚本只处理指定的文件。密钥守卫还会拦下打印令牌和密钥的常见方式。</p></div>
+    </div>
+    <div class="grid" id="board">
+      <div class="txt">
+        <h3 data-t="f.hw.bd.h">待办页面</h3>
+        <p data-t="f.hw.bd.p">按 <kbd>⌘</kbd><kbd>2</kbd> 在浏览器中打开待办页面。待解决的问题按仓库分组，每个问题都有开始工作按钮，旁边是学习、归档和指标标签页。计划书的 PR 合并后，待办页面会把它标为完成，做完的工作移入归档。它有深色和浅色模式，并跟随应用的语言。</p>
+      </div>
+      <figure class="shot part" style="--ar:calc(2880/1064)"><div class="part-in"><img src="/assets/shots/board-issues.webp" width="2880" height="1064" loading="lazy" alt="待办页面的问题标签页：按 web 和 api 分组的问题，两个进行中的问题及负责的代理，其余问题带有开始工作按钮。" data-ta="alt:f.bd.alt1"></div></figure>
+    </div>
+    <div class="grid flip-g">
+      <div class="txt">
+        <h3 data-t="f.bd.lh">学习</h3>
+        <p data-t="f.bd.lp">学习标签页汇集代理在工作中发现的陷阱作为学习候选，并按要写入的仓库笔记分批。可以逐条查看内容、修改或删除，再把勾选的整批加入。加入的内容会写进该仓库的笔记，代理在开始工作前会读取，并通过 git 与团队共享。在个人记忆中，可以只读查看 Claude 和 Codex 从对话中记住的内容。</p>
+      </div>
+      <figure class="shot part" style="--ar:calc(2880/1868)"><div class="part-in"><img src="/assets/shots/board-learning.webp" width="2880" height="1868" loading="lazy" alt="待办页面的学习标签页：按 web 和 api 笔记分批的学习候选及整批加入按钮，以及按仓库列出的已学习的内容。" data-ta="alt:f.bd.alt3"></div></figure>
+    </div>
+    <div class="grid">
+      <div class="txt">
+        <h3 data-t="f.bd.ah">归档</h3>
+        <p data-t="f.bd.ap">归档标签页按日期保存已完成的问题和计划书。可以按类型、仓库和负责人筛选，按标题、摘要和提交搜索，或选择年、月、日查看。每一项都显示仓库、状态和提交数，点击即可打开完整记录。</p>
+      </div>
+      <figure class="shot part" style="--ar:calc(2880/1520)"><div class="part-in"><img src="/assets/shots/board-archive.webp" width="2880" height="1520" loading="lazy" alt="待办页面的归档标签页：筛选和搜索、日期树，以及按日期分组的已完成工作及其仓库、状态和提交。" data-ta="alt:f.bd.alt4"></div></figure>
+    </div>
+    <div class="grid flip-g">
+      <div class="txt">
+        <h3 data-t="f.bd.mh">指标</h3>
+        <p data-t="f.bd.mp">在指标标签页中，可以选择最近 1、7、30 天或从某个开始日期起的时段，对比上一时段查看任务、PR、审查和检查所用时间的平均值、中位数和 p75。图表显示各项工作耗时的分布、每天完成的工作、检查结果以及各阶段所用时间。</p>
+      </div>
+      <figure class="shot part" style="--ar:calc(2880/1870)"><div class="part-in"><img src="/assets/shots/board-metrics.webp" width="2880" height="1870" loading="lazy" alt="待办页面的指标标签页：与上一时段对比的任务、PR、审查和检查平均时间，各项工作耗时分布，当前状态，以及 88% 的检查通过率。" data-ta="alt:f.bd.alt2"></div></figure>
     </div>
   </div>
 </section>

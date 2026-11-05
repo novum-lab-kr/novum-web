@@ -104,7 +104,7 @@
 </section>
 
 <section class="feat" id="how">
-  <span id="routing" class="anchor"></span><span id="plans" class="anchor"></span><span id="worktrees" class="anchor"></span><span id="board" class="anchor"></span><span id="checks" class="anchor"></span><span id="guards" class="anchor"></span>
+  <span id="routing" class="anchor"></span><span id="plans" class="anchor"></span><span id="worktrees" class="anchor"></span><span id="checks" class="anchor"></span><span id="guards" class="anchor"></span>
   <div class="wrap">
     <div class="sec-head">
       <div class="label" data-t="f.hw.l">에이전트가 일하는 방식</div>
@@ -114,9 +114,36 @@
       <div><h3 data-t="f.hw.rt.h">라우팅과 레포마다 담당 에이전트</h3><p data-t="f.hw.rt.p">팩의 라우팅 표가 레포마다 담당 에이전트를 정합니다. Athena는 이 표로 요청을 나누고, 에이전트는 시작하기 전에 자기 레포의 규칙 · 구조 · 노트를 읽습니다. 레포를 넘는 일은 공유 패키지와 백엔드부터 차례로, 서로 상관없는 일은 동시에 돌립니다.</p></div>
       <div><h3 data-t="f.hw.pl.h">모든 변경에 계획서</h3><p data-t="f.hw.pl.p">계획서 없이는 아무것도 바꾸지 않습니다. 요청에 할 일이 이미 다 있으면 짧은 계획서로 충분합니다. 내가 정할 것이 있거나 여러 레포를 맞춰야 하면 Athena가 결정 콘솔이 딸린 정식 계획서를 쓰고 내가 확정할 때까지 기다립니다. 계획서마다 체크포인트가 있어서 새 세션이 멈춘 자리부터 이어 갑니다.</p></div>
       <div><h3 data-t="f.hw.wt.h">작업마다 git 워크트리</h3><p data-t="f.hw.wt.p">에이전트가 시작하기 전에 Athena가 기준 브랜치에서 새 브랜치를 따서 그 작업만의 워크트리, 곧 따로 떼어 낸 작업 폴더에 엽니다. 메인 체크아웃과 커밋 안 한 변경은 레포가 어수선해도 그대로 남고, 여러 작업이 나란히 돌아갑니다.</p></div>
-      <div><h3 data-t="f.hw.bd.h">현황판</h3><p data-t="f.hw.bd.p"><kbd>⌘</kbd><kbd>2</kbd>를 누르면 브라우저에 현황판이 열립니다. 해결할 이슈(이슈마다 시작 버튼) · 학습 · 지표 · 아카이브가 있고, 지표에서는 작업 · PR · 리뷰 · 검증에 걸린 평균과 중앙값 시간을 봅니다. 계획서의 PR이 머지되면 현황판이 그 계획서를 완료로 옮기고, 끝난 일은 아카이브로 갑니다. 다크 · 라이트 모드가 있습니다.</p></div>
       <div><h3 data-t="f.hw.ck.h">검증은 끝에 한 번</h3><p data-t="f.hw.ck.p">일하는 동안 에이전트는 고친 부분만 확인합니다. 전체 검증은 작업을 커밋할 때 한 번 돌고, 돌지 않은 검증을 통과했다고 보고하지 않습니다. 레포마다 이 검증을 GitHub Actions에 넘길 수 있습니다. 검증 → 기준 브랜치에 머지 → 배포까지 돌고, 실패하면 그 일을 한 에이전트에게 돌아갑니다.</p></div>
       <div><h3 data-t="f.hw.gd.h">보호 훅</h3><p data-t="f.hw.gd.p">에이전트 세션에는 git commit · push · <code>gh pr create</code> · <code>git add -A</code>를 직접 하지 못하게 막는 훅이 걸려 있습니다. 커밋과 push는 지정한 파일만 올리는 Athena 스크립트로만 합니다. 비밀값 가드는 토큰 · 키를 출력하는 흔한 방법도 막습니다.</p></div>
+    </div>
+    <div class="grid" id="board">
+      <div class="txt">
+        <h3 data-t="f.hw.bd.h">현황판</h3>
+        <p data-t="f.hw.bd.p"><kbd>⌘</kbd><kbd>2</kbd>를 누르면 브라우저에 현황판이 열립니다. 해결할 이슈가 레포별로 묶여 있고 이슈마다 작업 시작 버튼이 있으며, 옆에 학습 · 아카이브 · 지표 탭이 있습니다. 계획서의 PR이 머지되면 현황판이 그 계획서를 완료로 옮기고, 끝난 일은 아카이브로 갑니다. 다크 · 라이트 모드가 있고 앱 언어를 따릅니다.</p>
+      </div>
+      <figure class="shot part" style="--ar:calc(2880/1064)"><div class="part-in"><img src="/assets/shots/board-issues.webp" width="2880" height="1064" loading="lazy" alt="현황판 이슈 탭: web · api 로 묶인 이슈, 진행 중인 2개와 맡은 에이전트, 나머지 이슈의 작업 시작 버튼." data-ta="alt:f.bd.alt1"></div></figure>
+    </div>
+    <div class="grid flip-g">
+      <div class="txt">
+        <h3 data-t="f.bd.lh">학습</h3>
+        <p data-t="f.bd.lp">학습 탭에는 에이전트가 일하다 알게 된 함정이 학습 후보로 모이고, 들어갈 레포 공책별로 묶입니다. 하나씩 내용 보기 · 수정 · 삭제하고, 체크한 것을 묶음으로 넣습니다. 넣은 것은 그 레포 공책에 들어가고, 에이전트가 작업 전에 읽으며 git 으로 팀과 공유됩니다. 개인 메모리에서는 Claude 와 Codex 가 대화에서 기억한 내용을 읽기 전용으로 봅니다.</p>
+      </div>
+      <figure class="shot part" style="--ar:calc(2880/1868)"><div class="part-in"><img src="/assets/shots/board-learning.webp" width="2880" height="1868" loading="lazy" alt="현황판 학습 탭: web · api 공책별로 묶인 학습 후보와 묶음 넣기 버튼, 레포별로 모인 학습한 내용." data-ta="alt:f.bd.alt3"></div></figure>
+    </div>
+    <div class="grid">
+      <div class="txt">
+        <h3 data-t="f.bd.ah">아카이브</h3>
+        <p data-t="f.bd.ap">아카이브 탭에는 끝난 이슈와 계획서가 날짜별로 남습니다. 종류 · 레포 · 작업자로 거르고 제목 · 요약 · 커밋으로 찾거나 연 · 월 · 일을 골라 봅니다. 항목마다 레포 · 상태 · 커밋 수가 보이고, 누르면 전체 기록이 열립니다.</p>
+      </div>
+      <figure class="shot part" style="--ar:calc(2880/1520)"><div class="part-in"><img src="/assets/shots/board-archive.webp" width="2880" height="1520" loading="lazy" alt="현황판 아카이브 탭: 필터와 검색, 날짜 트리, 날짜별로 묶인 끝난 일과 각 항목의 레포 · 상태 · 커밋." data-ta="alt:f.bd.alt4"></div></figure>
+    </div>
+    <div class="grid flip-g">
+      <div class="txt">
+        <h3 data-t="f.bd.mh">지표</h3>
+        <p data-t="f.bd.mp">지표 탭에서는 최근 1 · 7 · 30일이나 시작 날짜부터의 기간을 골라 작업 · PR · 리뷰 · 검증에 걸린 평균 · 중앙값 · p75 시간을 이전 기간과 비교해 봅니다. 그래프로 작업별 걸린 시간 분포, 날짜별 끝낸 작업, 검증 결과, 단계별 걸린 시간을 보여 줍니다.</p>
+      </div>
+      <figure class="shot part" style="--ar:calc(2880/1870)"><div class="part-in"><img src="/assets/shots/board-metrics.webp" width="2880" height="1870" loading="lazy" alt="현황판 지표 탭: 이전 기간과 비교한 작업 · PR · 리뷰 · 검증 평균 시간, 작업별 걸린 시간 분포, 현재 상태, 검증 통과 88%." data-ta="alt:f.bd.alt2"></div></figure>
     </div>
   </div>
 </section>
