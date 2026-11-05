@@ -1,0 +1,71 @@
+# 아테나 사이트 다운로드 · 릴리스 화면을 공개 저장소(athena-studio-releases) 최신 공개판에 맞춰 main 에 커밋하고 배포를 부른다(2026-11-06).
+# 시작: athena-studio release-mac.yml 이 공개 직후 `gh workflow run athena-release-sync.yml -R novum-lab-kr/novum-web -f version=vX.Y.Z` 로 부른다.
+#       손으로도 Actions 화면 [Run workflow] 로 부를 수 있다(version 을 비우면 공개 저장소 latest).
+# 맞추기는 deploy/sync-athena-release.mjs — 늘 공개 저장소 latest 를 다시 읽는다. 이미 같은 버전이면 커밋 없이 끝난다.
+# Secret ANTHROPIC_API_KEY 가 없으면 버전 · 날짜 · 링크만 맞추고 릴리스 글은 건너뛴다(경고 한 줄). 공개 레포라 로그가 누구에게나 보인다 — 키는 그 단계 env 로만 넘기고 출력하지 않는다.
+name: athena-release-sync
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: '공개판 태그(예 v0.51.39) — 비우면 공개 저장소 latest'
+        required: false
+        default: ''
+permissions:
+  contents: read
+# 공개가 몰려도 하나씩 — 대기 중인 것은 GitHub 이 하나만 남기지만 맞추기는 늘 latest 를 다시 읽으니 잃는 판은 없다
+concurrency:
+  group: athena-release-sync
+  cancel-in-progress: false
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      actions: write
+    steps:
+      # sitemap lastmod 가 커밋 날짜를 읽으니 얕은 clone 으로 하지 않는다
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: 공개판에 맞추기
+        id: sync
+        env:
+          INPUT_VERSION: ${{ inputs.version }}
+          GH_TOKEN: ${{ github.token }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node deploy/sync-athena-release.mjs --version "$INPUT_VERSION"
+      - name: 언어판 만들기 · 검사
+        if: steps.sync.outputs.changed == 'true'
+        run: |
+          node deploy/gen-athena-lang.mjs
+          node deploy/check-athena.mjs
+      - name: main 에 커밋
+        if: steps.sync.outputs.changed == 'true'
+        env:
+          VERSION: ${{ steps.sync.outputs.version }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- athena
+          if git diff --cached --quiet; then echo '바뀐 파일 없음'; exit 0; fi
+          git commit --quiet -m "athena: 소개 사이트 다운로드 · 릴리스 내역을 공개판 $VERSION 에 맞추기(자동)" -m 'athena-release-sync.yml · deploy/sync-athena-release.mjs'
+          # 앞선 머지와 겹치면 거부된다 — 다시 얹어 본다(맞춘 파일은 이 workflow 만 고치니 보통 충돌이 없다)
+          for attempt in 1 2 3 4 5; do
+            if git push --quiet origin HEAD:main; then echo "커밋함 @$(git rev-parse --short HEAD)"; exit 0; fi
+            echo "push 거부 — 다시 얹어 본다($attempt/5)"
+            git pull --quiet --rebase origin main || { echo '::error::main 과 충돌 — 손으로 다시 부른다'; exit 1; }
+            sleep "$((attempt * 5))"
+          done
+          echo '::error::main 에 push 하지 못했다'; exit 1
+      # 기본 토큰으로 한 push 는 deploy.yml 의 push 를 시작하지 않는다 — workflow_dispatch 로 직접 부른다(athena-handoff.yml 과 같은 방식)
+      - name: 배포 시작
+        if: steps.sync.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy.yml --repo "$GITHUB_REPOSITORY" --ref main
