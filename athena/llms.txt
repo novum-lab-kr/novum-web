@@ -25,7 +25,7 @@ Every task gets a plan, its own worktree and a check before it ships.
 - Agent monitor: A live feed at the bottom of the window follows each agent tool by tool: files read and edited, commands run, and what it says along the way. It works across every workspace.
 - Work: When an agent needs you, its question or decision goes to the top of Work, above the tasks in progress and the ones that finished in the last day. Answer it there and the agent picks up where it stopped.
 - Pane details: Open details from an agent's title bar and a panel slides in over the window, without resizing your terminals. It shows what the agent needs from you, what blocks it, its plan and its pull request.
-- Menu bar: Athena Studio has an owl icon in the Mac menu bar. A red dot on it means a question is open or a plan is blocked. Click the owl to see each agent and its status.
+- Menu bar: Athena Studio has an owl icon in the Mac menu bar. A red dot on it means a question is open or a plan is blocked. Click the owl to see each agent and its status, a mountain graph of the hours agents worked over the last 3 days (today, yesterday and the day before), and token usage for the last 7 days as daily bars. While agents are working, the owl's eyes glow green.
 - A decision console for plans with several choices: When a plan has several decisions to make, Athena writes them up as a decision console: each choice with its trade-offs and a recommendation. It opens in the side browser next to the agent, and the agent continues once you've chosen.
   - Required and optional decisions, with recommended options marked
   - Side browser (⌘⇧B) for plans, consoles and your local test pages

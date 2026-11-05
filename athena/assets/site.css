@@ -977,6 +977,7 @@ html:lang(ja) .gl-w, html:lang(zh-Hans) .gl-w { white-space: normal; }
 .g2-pair { grid-template-columns: 1fr 1fr; }
 .g2-pair .shot:last-child { margin-top: 0; }
 .g2-pair .shot { max-height: 560px; overflow: hidden; }
+.feat .g2-bar { margin-top: 16px; }
 /* 문서: 왼쪽 목차 + 본문 */
 .doc-wrap { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 56px; align-items: start; padding-bottom: 96px; }
 .doc-toc { position: sticky; top: 88px; }
