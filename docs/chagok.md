@@ -7,11 +7,14 @@
 |---|---|---|
 | `/` | 랜딩(`index.html`, 스타일 `assets/landing.css`, 그림 `assets/img`, 영상 `assets/vid`, 글꼴 `assets/fonts` — Neo둥근모 원본 그대로(모든 글자), SIL OFL 1.1, `LICENSE.txt`) | 허용 |
 | `/support/` | 문의, 자주 묻는 것, 운영자 정보 | 허용 |
+| `/en/`, `/en/support/` | 랜딩과 고객 지원 영어판(2026-11-06, 앱 1.1.0). 그림은 `assets/img/en/` | 허용 |
 | `/terms/`, `/privacy/`, `/delete-account/`, `/versions.json` | 약관, 처리방침, 계정 삭제 안내, 판 목록 — **앱이 읽는 경로라 바꾸지 않는다** | 허용 (`/versions.json` 은 sitemap 에 넣지 않는다) |
 | `/invite/<코드>` | 함께 목표 초대 페이지(`invite/index.html`, `assets/invite/`). 앱이 없거나 앱이 열리지 않을 때 보인다 | 차단(페이지의 `noindex`) |
 | `/.well-known/apple-app-site-association` | 앱이 `/invite/*` 링크를 바로 여는 유니버설 링크 설정. 출시 앱(`com.novumlab.chagok`)과 개발 앱(`.dev`) | — |
 
-랜딩(`/`)에만 Google 애널리틱스(측정 ID `G-DR15LTP1EW`, 속성 「차곡차곡 랜딩」)를 넣는다. 처리방침 1판 15절이 이 설정을 설명하므로, 아래를 바꾸면 15절도 같이 고친다. 페이지 소스는 누구나 보므로 GA 코드에 주석을 달지 않고 이유는 여기에 적는다.
+**언어(2026-11-06):** 랜딩과 고객 지원은 `assets/lang.js`가 약관(`assets/policy.js`)과 같은 규칙으로 언어를 고른다: `?lang=ko|en` → 이 브라우저에 기억한 값(`chagok-policy-lang`, 약관과 같은 이름) → 브라우저 첫 언어(한국어면 한국어, 나머지는 영어). 짝 페이지는 `<html data-alt>`의 상대 주소라 개발 사이트에서도 같은 사이트 안으로 옮긴다. 고른 적 없는 검색엔진과 미리보기 로봇은 옮기지 않는다. 각 페이지에 `hreflang`(ko, en, x-default=en)을 두고 `sitemap.xml`에도 짝을 적는다. 영어 문구는 앱 `src/i18n/en.ts`(slots, Tally board, Calendar board, Finished, Own boards, One board)와 영어 스토어 스크린샷 문구에 맞춘다. 영어판 App Store 링크는 지역 없는 `https://apps.apple.com/app/id6824725721`, 배지는 Apple 공식 US-UK 검은색(`assets/img/app-store-badge-en.svg`, developer.apple.com 원본 그대로). 영어판 운영자 주소는 약관 영어판과 같은 영문 표기다. 영어판의 워치와 위젯은 영상 대신 영어 캡처 그림이고, 첫 화면 휴대폰도 영상 대신 목표 탭 캡처다(스플래시 영상 끝에 한국어 화면이 나와서). **랜딩 문구를 고치면 영어판(`en/index.html`)도 같이 고친다.**
+
+랜딩(`/`)에만 Google 애널리틱스(측정 ID `G-DR15LTP1EW`, 속성 「차곡차곡 랜딩」)를 넣는다. 영어판(`/en/`)에는 넣지 않는다(처리방침 2판 15절이 「웹사이트 첫 화면(https://chagok.novum-lab.com/)에만」이라고 적었다). 언어를 옮기는 중이면(`window.chagokLangRedirect`) 태그를 부르지 않는다. 처리방침 1판 15절이 이 설정을 설명하므로, 아래를 바꾸면 15절도 같이 고친다. 페이지 소스는 누구나 보므로 GA 코드에 주석을 달지 않고 이유는 여기에 적는다.
 - 동의 기본값은 태그를 읽기 전에 정한다. EEA 30개국과 영국은 `analytics_storage: 'denied'`(쿠키 없이 측정), 광고 항목 셋은 모든 지역에서 `denied`.
 - `cookie_domain` 을 `chagok.novum-lab.com` 으로 고정한다. 기본값 `auto` 는 쿠키를 `.novum-lab.com` 에 저장해 다른 서비스 주소까지 보낸다.
 - `allow_google_signals`, `allow_ad_personalization_signals` 는 `false`. 콘솔의 데이터 보관은 2개월(2026-11-04 확인).
@@ -59,7 +62,7 @@
 
 판 날짜는 앱 1.0 출시일(2026-11-03)로 맞췄다(`versions.json`, 약관 · 처리방침 1판 맨 위). 판 번호는 그대로라 앱 동의 기록에는 영향이 없다. 최종 문안은 법률 검토를 받는다.
 
-사업장 주소(2026-10-29 사업자등록증 사업장소재지 그대로)와 전화번호(050-6994-4416 · 2026-10-29 은주)는 약관 끝 · 지원 페이지 운영자 줄에 넣었다(전자상거래법 10조 · 13조 표시 · 랜딩은 짧게 — 푸터의 「고객 지원」 링크로 이어진다).
+사업장 주소(2026-10-29 사업자등록증 사업장소재지 그대로)와 전화번호(050-6994-4416 · 2026-10-29 은주)는 약관 끝 · 지원 페이지 운영자 줄에 넣었다(전자상거래법 10조 · 13조 표시). 2026-11-06부터 랜딩 하단(한국어, 영어)에도 같은 주소와 전화를 둔다(앱 1.1.0 구독 판매).
 
 통신판매업 신고번호는 **면제 조건이 맞는 동안은 칸을 두지 않는다** — 직전년도 거래 50회 미만이거나 간이과세자면 신고 면제다(공정위 「통신판매업 신고 면제 기준에 대한 고시」 2조 · 앱 레포 `docs/LEGAL-REVIEW.md`). 지금은 면제 기간이라 신고하지 않았다(2026-10-28 은주). **조건이 바뀌면 신고한 뒤 번호를 넣는다** — 법률 점검(`docs/LEGAL-REVIEW.md` 2절)에서 조건이 아직 맞는지 본다.
 
@@ -74,7 +77,7 @@ athena.novum-lab.com 과 같은 길이다. **`main` 에 합치는 순간 운영 
 - Caddy 블록 `chagok.novum-lab.com` 이 그 폴더를 낸다. 서버 · Caddy 는 서버 창 일이다
 
 2026-11-03 앱 1.0 출시로 공식 게시했다. 모든 경로를 검색에 연다. 출시 전에는 서버 Caddy 블록이 `/` 를 뺀 모든 경로에 `X-Robots-Tag: noindex` 헤더를 붙였다(`@noindex` · 레포에는 없다). 이 규칙은 2026-11-04 서버 Caddyfile 에서 지웠다(백업 `/etc/caddy/Caddyfile.bak-chagok-noindex-20261104`).
-검색용 파일: `chagok/robots.txt`(모두 허용, sitemap 주소), `chagok/sitemap.xml`(랜딩, 지원, 약관, 처리방침, 계정 삭제). 각 페이지 `<head>` 에 canonical 주소를 두고, 랜딩에는 iPhone Safari 앱 배너(`apple-itunes-app`, 앱 id 6824725721)를 둔다. 페이지를 더하거나 주소를 바꾸면 sitemap 도 고친다.
+검색용 파일: `chagok/robots.txt`(모두 허용, sitemap 주소), `chagok/sitemap.xml`(랜딩, 지원, 약관, 처리방침의 한국어와 영어, 계정 삭제). 각 페이지 `<head>` 에 canonical 주소를 두고, 랜딩에는 iPhone Safari 앱 배너(`apple-itunes-app`, 앱 id 6824725721)를 둔다. 페이지를 더하거나 주소를 바꾸면 sitemap 도 고친다.
 
 `chagok/app-ads.txt` 는 AdMob 광고 판매자 확인용 한 줄이다(2026-10-29 출시 전에 미리 · `https://chagok.novum-lab.com/app-ads.txt`). 게시자 ID `pub-3557389923784580` 은 앱 `app.json` 의 iOS AdMob 앱 ID 앞부분이다(Android 쪽 `3940256099942544` 는 Google 테스트 ID 라 아니다). 앱 ID 나 AdMob 계정이 바뀌면 이 줄도 바꾼다. 검색 차단(noindex 헤더)과 상관없이 광고 크롤러가 읽는다.
 ## 개발 사이트 (2026-11-06)
@@ -106,3 +109,10 @@ git push   # 그다음 PR #64를 main에 합친다
 - 날짜는 게시일과 시행일이 같다(1.0 이용자가 사실상 없어 미리 알릴 대상이 없다, 2026-11-06 결정).
 - 날짜를 바꾸지 않고 합치면 PR에 적힌 날짜(지금 2026-11-06)로 게시된다.
 - 시행일을 미래 날짜로 두고 합치면 그날까지 1판이 보이고 「바뀌어요」 안내가 붙는다.
+
+## 랜딩 캡처 (앱 1.1.0)
+
+- 판 화면 두 장 `assets/img/shot-tally.jpg`(적립판, 자기 전 책 10쪽 15칸 중 11칸)와 `shot-mood.jpg`, 함께 목표 두 장 `shot-together-each.jpg`, `shot-together-one.jpg`는 앱 저장소 `docs/design/proposals-2026-10/store-shots/raw8/`(1320×2868)을 너비 540으로 줄인 것이다. 영어판은 같은 폴더의 `raw8-en/`에서 만든다(`assets/img/en/`).
+- 2단계 톡 붙는 칸(`.tap-cell`)은 원본의 12번째 칸(855~1148 × 1623~1844)이고, 붙는 그림 `tap-book.png`는 11번째 칸 안쪽을 자른 것이다. 휴대폰 화면의 판 자르기(`--ar`, `--mt`)는 판 테두리 둘레 여백 20px(540 기준) 그대로다. 캡처를 바꾸면 이 값들을 다시 잰다.
+- 함께 목표 캡처는 상태 막대와 아래 빈 바탕을 잘라(`.phone.crop`, 휴대폰은 `--ar:540/690`) 판이 있는 부분만 보인다.
+- 영어판 홈(`en/shot-home.jpg`)은 「Read 10 pages」가 66%라 판(73%)과 한 칸 어긋난다. 스토어 사진을 다시 찍으면 같이 바꾼다. 한국어 `shot-home.jpg`도 같다.
