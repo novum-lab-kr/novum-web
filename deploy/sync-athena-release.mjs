@@ -3,10 +3,11 @@
 // 하는 일(영어 페이지 + 사전 ko · ja · zh — 언어판은 그 뒤 deploy/gen-athena-lang.mjs 가 만든다)
 //   1) 다운로드 페이지 버전 줄 · 받기 카드 두 곳(data-rel-ver · data-rel-date)과 사전 d.ver
 //   2) 릴리스 페이지 맨 위 묶음의 범위 끝 · 날짜 · GitHub 링크(r.<판>m). minor 가 바뀌면 묶음을 새로 만든다
-//   3) 릴리스 항목 글 — 지난 공개판 ↔ 새 공개판 사이 소스 태그별 커밋 제목과 Release 본문(CHANGELOG minor 절)의 새 줄을
-//      Claude API(Messages API)로 지난 항목 말투 · 길이에 맞춰 요약 · 번역. 응답은 JSON 스키마로 받아 검사한 뒤에만 쓰고 HTML 이스케이프한다
+//   3) 릴리스 항목 글 — athena-studio docs/site-release-notes.json({ "<minor>": [{ tag, en, ko, ja, zh }] })을 지난 공개판 태그와
+//      새 공개판 태그에서 읽어(contents API · ref=태그) 새 태그에만 있는 줄(en 기준)을 새 판 항목으로 붙인다. 지난 태그에 파일이 없으면
+//      새 판 minor 줄 전부. 줄은 CHANGELOG 를 쓸 때 같이 쓴다(2026-11-06 — 유료 API 를 쓰지 않는다). 검사(validateNotes)를 마친 뒤에만 쓰고 HTML 이스케이프한다
 // 버전 = 공개 저장소 releases/latest 의 태그(입력은 확인용 — 늘 latest 를 다시 읽는다). 이미 같은 버전이거나 사이트보다 낮으면 아무것도 안 한다.
-// ANTHROPIC_API_KEY 가 없거나 API · 응답 검사가 실패하면 1) 2) 만 하고 글은 건너뛴다(경고 한 줄). 키 값은 어디에도 출력하지 않는다.
+// 글 파일을 못 읽거나 형식이 틀리면 1) 2) 만 하고 글은 건너뛴다(경고 한 줄).
 // 릴리스 페이지 머리 주석의 규칙(한 줄씩 짧게 · 태그 New/Improved/Fixed/Security · 버전 최신 순)을 따른다.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -17,10 +18,9 @@ export const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url
 const RELEASES_REPO = 'novum-lab-kr/athena-studio-releases';
 const SOURCE_REPO = 'novum-lab-kr/athena-studio';
 const GITHUB_API = 'https://api.github.com';
-// Messages API — 공식 문서 platform.claude.com/docs/en/api/messages · structured-outputs(2026-11-06 확인)
-const CLAUDE_URL = 'https://api.anthropic.com/v1/messages';
-const CLAUDE_VERSION = '2026-10-21';
-const CLAUDE_MODEL = 'claude-sonnet-5-5';
+// 사이트 글 파일(athena-studio) — 태그 이름은 new · improved · fixed · security(페이지 태그 new · imp · fix · sec 로 바꾼다)
+const NOTES_FILE = 'docs/site-release-notes.json';
+const FILE_TAGS = { new: 'new', improved: 'imp', fixed: 'fix', security: 'sec' };
 const LANGS = ['ko', 'ja', 'zh'];
 const FILES = {
   download: 'athena/download/index.html',
@@ -31,9 +31,7 @@ const FILES = {
 const TAG_LABELS = { new: 'New', imp: 'Improved', fix: 'Fixed', sec: 'Security' };
 const TAG_ORDER = Object.keys(TAG_LABELS);
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-const MAX_ITEMS_PER_VERSION = 8;
 const MAX_TEXT_LENGTH = 500;
-const EXAMPLE_COUNT = 12;
 
 // ---- 버전 · 날짜 ----
 
@@ -153,23 +151,6 @@ const groupIdOf = (version) => {
   return major === 0 ? String(minor) : `${major}-${minor}`;
 };
 
-// 맨 위 묶음의 지난 항목(예시로 Claude 에게 준다) — 영어는 페이지, 나머지는 사전
-export function recentExamples(site, count = EXAMPLE_COUNT) {
-  const dicts = Object.fromEntries(LANGS.map((lang) => [lang, readDict(site[lang], lang)]));
-  const examples = [];
-  const blocks = site.releases.split('<div class="rel-ver">').slice(1);
-  for (const block of blocks) {
-    const version = /<h4 class="rel-vh">v([\d.]+)<\/h4>/.exec(block)?.[1];
-    for (const item of block.matchAll(/<span class="tag (\w+)" data-t="r\.\w+">[^<]*<\/span><span data-t="([^"]+)">([^<]*)<\/span>/g)) {
-      const [, tag, key, en] = item;
-      if (!dicts.ko[key]) continue;
-      examples.push({ version, tag, en: en.replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&'), ...Object.fromEntries(LANGS.map((lang) => [lang, dicts[lang][key]])) });
-      if (examples.length >= count) return examples;
-    }
-  }
-  return examples;
-}
-
 function versionBlocks(notes, keyFor) {
   return notes.map(({ version, items }) => [
     `      <div class="rel-ver"><h4 class="rel-vh">v${version}</h4>`,
@@ -262,7 +243,7 @@ export function applyRelease(site, { version, published, firstVersion, notes }) 
   return { site: next, warnings };
 }
 
-// ---- Claude 응답 검사 ----
+// ---- 글 검사 ----
 
 export function validateNotes(raw, versions) {
   const data = typeof raw === 'string' ? JSON.parse(raw) : raw;
@@ -276,7 +257,6 @@ export function validateNotes(raw, versions) {
     if (seen.has(version)) throw new Error(`버전 ${version} 이 두 번 나온다`);
     seen.add(version);
     if (!Array.isArray(entry.items)) throw new Error(`${version} 에 items 배열이 없다`);
-    if (entry.items.length > MAX_ITEMS_PER_VERSION) throw new Error(`${version} 항목이 ${entry.items.length}개 — ${MAX_ITEMS_PER_VERSION}개까지`);
     const items = entry.items.map((item) => {
       const tag = String(item?.tag ?? '').toLowerCase();
       if (!TAG_ORDER.includes(tag)) throw new Error(`${version} 의 태그 ${item?.tag} 를 모른다`);
@@ -296,58 +276,7 @@ export function validateNotes(raw, versions) {
   return notes;
 }
 
-const NOTES_SCHEMA = (versions) => {
-  const text = { type: 'string' };
-  return {
-    type: 'object',
-    properties: {
-      versions: {
-        type: 'array',
-        items: {
-          type: 'object',
-          properties: {
-            version: { type: 'string', enum: versions },
-            items: {
-              type: 'array',
-              items: {
-                type: 'object',
-                properties: { tag: { type: 'string', enum: TAG_ORDER }, en: text, ko: text, ja: text, zh: text },
-                required: ['tag', 'en', 'ko', 'ja', 'zh'],
-                additionalProperties: false,
-              },
-            },
-          },
-          required: ['version', 'items'],
-          additionalProperties: false,
-        },
-      },
-    },
-    required: ['versions'],
-    additionalProperties: false,
-  };
-};
-
-const SYSTEM_PROMPT = `You write release notes for the Athena Studio website (a macOS app that runs a team of AI coding agents).
-For each listed version, turn its source commits (and, for the newest version, the new CHANGELOG lines) into the changes a user of the app would notice.
-Rules:
-- One short line per change, in the same tone and length as the examples. Plain text only: no HTML, no Markdown, no line breaks.
-- Write every line in English (en), Korean (ko), Japanese (ja) and Simplified Chinese (zh), matching the wording style of the examples in each language.
-- tag: "new" for a new feature, "imp" for an improvement, "fix" for a bug fix, "sec" for a security fix.
-- Only state facts found in the commits or CHANGELOG lines. Do not invent details.
-- Skip changes users cannot notice: tests, CI, build, release chores, internal docs. A version with nothing user-visible gets an empty items list.
-- Put a change under the version whose commits contain it. Do not repeat a change that is already in the examples.
-- Return only versions from the input list.`;
-
-export function buildPrompt({ changes, newLines, latest, examples }) {
-  return JSON.stringify({
-    examples,
-    versions: changes.map(({ version, commits }) => ({ version, commits })),
-    newest_version: latest,
-    new_changelog_lines_for_newest_version: newLines,
-  }, null, 2);
-}
-
-// ---- 바깥 읽기(GitHub · Claude) ----
+// ---- 바깥 읽기(GitHub) ----
 
 function githubHeaders(env) {
   const headers = { Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'novum-web-athena-release-sync' };
@@ -365,67 +294,52 @@ async function githubJson(fetchImpl, env, route) {
   return res.json();
 }
 
-const bulletLines = (body) => String(body ?? '').split('\n').filter((line) => /^\s*[-*] /.test(line)).map((line) => line.replace(/^\s*[-*] /, '').trim());
+// 글 파일 글자 → { "<minor>": [줄…] }. 모양이 틀리면 던진다(줄 하나하나는 validateNotes 가 본다)
+export function parseNotesFile(text, version) {
+  const data = JSON.parse(text);
+  if (!data || typeof data !== 'object' || Array.isArray(data)) throw new Error(`${NOTES_FILE}@v${version} 이 { minor: [줄…] } 모양이 아니다`);
+  for (const [minor, items] of Object.entries(data)) {
+    if (!/^\d+\.\d+$/.test(minor) || !Array.isArray(items)) throw new Error(`${NOTES_FILE}@v${version} 의 ${minor} 가 "X.Y": [줄…] 모양이 아니다`);
+  }
+  return data;
+}
 
-// 사이트 버전 ↔ 새 공개판 사이 소스 태그마다 커밋 제목, Release 본문의 새 줄
-export async function collectChanges({ fetchImpl, env, fromVersion, toVersion, latestBody }) {
-  const compare = await githubJson(fetchImpl, env, `/repos/${SOURCE_REPO}/compare/v${fromVersion}...v${toVersion}`);
-  const tagBySha = new Map();
+// 소스 태그 v<version> 의 글 파일 — 그 태그에 파일이 없으면(404) null
+export async function readNotesFile({ fetchImpl, env, version }) {
+  let data;
+  try {
+    data = await githubJson(fetchImpl, env, `/repos/${SOURCE_REPO}/contents/${NOTES_FILE}?ref=v${version}`);
+  } catch (error) {
+    if (error.status === 404) return null;
+    throw error;
+  }
+  if (data?.encoding !== 'base64' || typeof data.content !== 'string') throw new Error(`${NOTES_FILE}@v${version} 내용을 받지 못했다`);
+  return parseNotesFile(Buffer.from(data.content, 'base64').toString('utf8'), version);
+}
+
+const enOf = (item) => String(item?.en ?? '').trim();
+
+// 지난 공개판 파일(어느 minor 든)에 없는 새 판 minor 의 줄(en 기준). 지난 파일이 없으면(null) 그 minor 줄 전부. 태그는 페이지 이름으로
+export function newNoteItems(previous, latest, version) {
+  const [major, minor] = parseVersion(version);
+  const known = new Set(Object.values(previous ?? {}).flat().map(enOf));
+  return (latest[`${major}.${minor}`] ?? [])
+    .filter((item) => !known.has(enOf(item)))
+    .map((item) => ({ ...item, tag: FILE_TAGS[String(item?.tag ?? '').toLowerCase()] ?? item?.tag }));
+}
+
+// 사이트 판 다음 첫 소스 태그(새 묶음 범위의 시작) — 없으면 새 판
+export async function firstVersionAfter({ fetchImpl, env, fromVersion, toVersion }) {
+  let first = toVersion;
   for (let page = 1; page <= 5; page++) {
     const tags = await githubJson(fetchImpl, env, `/repos/${SOURCE_REPO}/tags?per_page=100&page=${page}`);
-    for (const tag of tags) if (parseVersion(tag.name)) tagBySha.set(tag.commit.sha, bare(tag.name));
+    for (const tag of tags) {
+      if (parseVersion(tag.name) && compareVersions(tag.name, fromVersion) > 0 && compareVersions(tag.name, first) < 0) first = bare(tag.name);
+    }
     const oldest = tags.at(-1)?.name;
     if (tags.length < 100 || (parseVersion(oldest) && compareVersions(oldest, fromVersion) <= 0)) break;
   }
-  const changes = [];
-  let pending = [];
-  for (const commit of compare.commits ?? []) {
-    pending.push(String(commit.commit?.message ?? '').split('\n')[0].trim());
-    const tag = tagBySha.get(commit.sha);
-    if (tag && compareVersions(tag, fromVersion) > 0 && compareVersions(tag, toVersion) <= 0) {
-      changes.push({ version: tag, commits: pending.filter(Boolean) });
-      pending = [];
-    }
-  }
-  if (pending.length) {
-    const last = changes.at(-1);
-    if (last?.version === toVersion) last.commits.push(...pending.filter(Boolean));
-    else changes.push({ version: toVersion, commits: pending.filter(Boolean) });
-  }
-
-  // 지난 Release 본문 — 사이트 버전 이하 가운데 가장 높은 공개판(그 태그가 지워졌을 수 있다)
-  const releases = await githubJson(fetchImpl, env, `/repos/${RELEASES_REPO}/releases?per_page=30`);
-  const previous = releases
-    .filter((release) => !release.draft && parseVersion(release.tag_name) && compareVersions(release.tag_name, fromVersion) <= 0)
-    .sort((left, right) => compareVersions(right.tag_name, left.tag_name))[0];
-  const known = new Set(bulletLines(previous?.body));
-  const newLines = bulletLines(latestBody).filter((line) => !known.has(line));
-  return { changes, newLines, firstVersion: changes[0]?.version ?? toVersion };
-}
-
-export async function requestNotes({ fetchImpl, apiKey, prompt, versions }) {
-  const res = await fetchImpl(CLAUDE_URL, {
-    method: 'POST',
-    headers: { 'content-type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': CLAUDE_VERSION },
-    body: JSON.stringify({
-      model: CLAUDE_MODEL,
-      max_tokens: 8000,
-      system: SYSTEM_PROMPT,
-      messages: [{ role: 'user', content: prompt }],
-      output_config: { format: { type: 'json_schema', schema: NOTES_SCHEMA(versions) } },
-    }),
-    signal: AbortSignal.timeout(180000),
-  });
-  if (!res.ok) {
-    let type = '';
-    try { type = (await res.json())?.error?.type ?? ''; } catch { type = ''; }
-    throw new Error(`Claude API HTTP ${res.status}${type ? ` ${type}` : ''}`);
-  }
-  const data = await res.json();
-  if (data.stop_reason !== 'end_turn') throw new Error(`Claude 응답이 끝나지 않았다(stop_reason ${data.stop_reason})`);
-  const text = (data.content ?? []).find((block) => block.type === 'text')?.text;
-  if (!text) throw new Error('Claude 응답에 text 블록이 없다');
-  return validateNotes(text, versions);
+  return first;
 }
 
 // ---- 전체 ----
@@ -452,29 +366,28 @@ export async function sync({ root = REPO_ROOT, version = '', env = process.env, 
   if (compareVersions(target, current) === 0) { log(`이미 v${target} — 할 일 없음`); return { changed: false, version: target }; }
   if (compareVersions(target, current) < 0) { say(`공개 저장소 latest v${target} 이 사이트 v${current} 보다 낮다 — 건너뜀`); return { changed: false, version: target }; }
 
-  let collected = null;
+  let firstVersion = target;
   try {
-    collected = await collectChanges({ fetchImpl, env, fromVersion: current, toVersion: target, latestBody: latest.body });
+    firstVersion = await firstVersionAfter({ fetchImpl, env, fromVersion: current, toVersion: target });
   } catch (error) {
-    say(`v${current}…v${target} 변경을 읽지 못했다(${error.message}) — 릴리스 글은 건너뛴다`);
+    say(`v${current}…v${target} 태그를 읽지 못했다(${error.message}) — 새 묶음 범위는 v${target} 부터로 둔다`);
   }
 
   let notes = [];
-  if (!env.ANTHROPIC_API_KEY) {
-    say('ANTHROPIC_API_KEY 없음 — 버전 · 날짜 · 링크만 맞추고 릴리스 글은 건너뛴다');
-  } else if (collected) {
-    try {
-      const versions = collected.changes.map((change) => change.version);
-      const prompt = buildPrompt({ ...collected, latest: target, examples: recentExamples(site) });
-      notes = await requestNotes({ fetchImpl, apiKey: env.ANTHROPIC_API_KEY, prompt, versions });
-      log(`릴리스 글 ${notes.reduce((sum, note) => sum + note.items.length, 0)}줄(${notes.map((note) => `v${note.version}`).join(' · ') || '실을 것 없음'})`);
-    } catch (error) {
-      say(`릴리스 글을 만들지 못했다(${error.message}) — 버전 · 날짜 · 링크만 맞춘다`);
-      notes = [];
-    }
+  try {
+    const latestFile = await readNotesFile({ fetchImpl, env, version: target });
+    if (!latestFile) throw new Error(`v${target} 에 ${NOTES_FILE} 이 없다`);
+    const previousFile = await readNotesFile({ fetchImpl, env, version: current });
+    // 사이트 릴리스 페이지에 이미 있는 줄(en 기준 · 손으로 넣었거나 다시 돌린 경우)은 다시 붙이지 않는다
+    const items = newNoteItems(previousFile, latestFile, target).filter((item) => !site.releases.includes(`>${escapeHtml(enOf(item))}</span>`));
+    notes = validateNotes({ versions: [{ version: target, items }] }, [target]);
+    log(`릴리스 글 ${notes[0]?.items.length ?? 0}줄(v${target}${previousFile ? '' : ` · v${current} 에 파일이 없어 그 minor 줄 전부`})`);
+  } catch (error) {
+    say(`릴리스 글을 읽지 못했다(${error.message}) — 버전 · 날짜 · 링크만 맞춘다`);
+    notes = [];
   }
 
-  const { site: next, warnings } = applyRelease(site, { version: target, published: latest.published_at, firstVersion: collected?.firstVersion ?? target, notes });
+  const { site: next, warnings } = applyRelease(site, { version: target, published: latest.published_at, firstVersion, notes });
   for (const text of warnings) say(text);
   for (const [name, file] of Object.entries(FILES)) {
     if (next[name] !== site[name]) {
