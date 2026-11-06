@@ -138,15 +138,44 @@
     }
   }
 
+  // 기다리던 내용을 한 번만 보여 준다. 감춘 동안에는 크기를 잴 수 없어 테두리를 다시 그린다
+  var revealed = false, loadingTimer = null, stackTimer = null;
+  function reveal() {
+    if (revealed) return;
+    revealed = true;
+    clearTimeout(loadingTimer);
+    clearInterval(stackTimer);
+    $('loading').hidden = true;
+    document.documentElement.classList.remove('invite-wait');
+    frames();
+  }
+  // 0.6초 안에 답이 오면 로딩 없이 바로 보여 주고, 늦으면 차곡이가 블록 0→3개를 쌓으며 기다린다. 8초가 지나면 기본 안내를 보여 준다.
+  function showLoading() {
+    if (revealed) return;
+    $('loading').hidden = false;
+    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var step = 0, img = $('loading-mascot');
+    img.src = '/assets/invite/mascot-b0.svg';
+    stackTimer = setInterval(function () {
+      step = (step + 1) % 4;
+      img.src = '/assets/invite/mascot-b' + step + '.svg';
+    }, 350);
+  }
+  if (document.documentElement.classList.contains('invite-wait')) {
+    for (var f = 0; f < 4; f++) new Image().src = '/assets/invite/mascot-b' + f + '.svg'; // 바꿔 끼울 때 빈칸이 보이지 않게 미리 받는다
+    loadingTimer = setTimeout(showLoading, 600);
+    setTimeout(reveal, 8000);
+  }
+
   function start() {
     frames();
     if (ro) watch();
     var raw = decodeURIComponent((location.pathname.match(/\/invite\/([^/]+)\/?$/) || [])[1] || '');
     var code = raw.trim().toUpperCase();
-    if (!code) return; // 코드 없이 /invite/ 만 열면 기본 안내만 둔다
-    if (!CODE.test(code)) { showProblem('closed'); return; }
+    if (!code) { reveal(); return; } // 코드 없이 /invite/ 만 열면 기본 안내만 둔다
+    if (!CODE.test(code)) { showProblem('closed'); reveal(); return; }
     $('open-app').href = 'chagok://invite/' + code;
-    if (ANON_KEY.indexOf('__') === 0) return;
+    if (ANON_KEY.indexOf('__') === 0) { reveal(); return; }
     fetch(API + '/rest/v1/rpc/preview_invite', {
       method: 'POST',
       headers: { apikey: ANON_KEY, Authorization: 'Bearer ' + ANON_KEY, 'Content-Type': 'application/json' },
@@ -157,7 +186,7 @@
       else if (data.status === 'full') showProblem('full', data.max_members || 6);
       else if (data.status === 'rate_limited') showProblem('rate_limited');
       else showProblem('closed');
-    }).catch(function () { /* 서버에 닿지 못하면 기본 안내(앱 받기, 앱에서 열기)를 그대로 둔다 */ });
+    }).catch(function () { /* 서버에 닿지 못하면 기본 안내(앱 받기, 앱에서 열기)를 그대로 둔다 */ }).then(reveal);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(frames);
