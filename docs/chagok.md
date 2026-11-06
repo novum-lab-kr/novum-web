@@ -33,7 +33,7 @@
 - 페이지가 운영 서버 초대 미리보기(`preview_invite`, 로그인 없이)를 불러 목표 이름, 초대한 사람, 함께하는 사람 스티커를 넣는다. 공개 키(anon)는 앱에 들어 있는 것과 같다. 운영 서버 주소나 키가 바뀌면 `invite.js` 맨 위 두 줄을 바꾼다. 서버에 닿지 못하면 목표 이름 없이 기본 안내가 남는다.
 - 서버가 돌려주는 `closed`, `full`, `rate_limited`(없는 코드를 한 곳에서 1시간 30번, 앱 저장소 `supabase/migrations/20261106000001~3`)마다 차곡이 카드를 보여 준다.
 - 차곡이 그림과 스티커는 앱 저장소에서 만든다: `node deploy/build-chagok-invite-assets.mjs <chagok-app 경로>`.
-- **서버(Caddy)에 두 가지가 필요하다(서버 창 일):** `/invite/*`를 `/invite/index.html`로 보내기, `/.well-known/apple-app-site-association`을 `Content-Type: application/json`으로 내기. 그 전에는 `/invite/<코드>`가 404다.
+- **서버(Caddy) 설정은 끝났다(2026-11-06, 운영 서버):** `/invite/*`를 `/invite/index.html`로 보내고, `/.well-known/apple-app-site-association`을 `Content-Type: application/json`으로 낸다. 이 설정이 빠지면 `/invite/<코드>`가 404다.
 
 ## 개정하는 방법
 
