@@ -88,3 +88,20 @@ CHAGOK_DEPLOY_HOST=<서버 주소> sh deploy/chagok-dev.sh <chagok-app 저장소
 - 초대 페이지는 개발 서버를 읽고, [차곡차곡에서 열기]는 개발 앱(`chagok-dev://`)을 연다. 검색엔진은 막는다.
 - 개발 앱은 `.env.local`의 `EXPO_PUBLIC_INVITE_BASE`로 이 주소의 초대 링크를 만들고, 이 주소의 앱 링크만 받는다(앱 저장소 `app.config.js`).
 - 서버: `/var/www/chagok-site-dev`(chagok 계정), Caddy 블록 `chagok-dev.novum-lab.com`(백업 `/etc/caddy/Caddyfile.bak-20261106-chagok-dev`).
+
+## 약관과 처리방침 2판 게시 (앱 1.1.0)
+
+PR #64 하나에 2판(한국어, 영어), 해외 조항, 언어 자동 전환(`assets/policy.js`, `versions.json`의 `languages`), 초대 페이지 영어판, 개발 사이트 배포 스크립트가 모두 들어 있다. 머지하면 운영에 바로 반영된다.
+
+**게시 순서 (앱 1.1.0 심사가 끝난 날)**
+
+```sh
+node deploy/set-chagok-policy-date.mjs <심사 끝난 날 YYYY-MM-DD>
+node deploy/check-chagok.mjs
+git commit -am "chagok: post policy v2 on <날짜>"
+git push   # 그다음 PR #64를 main에 합친다
+```
+
+- 날짜는 게시일과 시행일이 같다(1.0 이용자가 사실상 없어 미리 알릴 대상이 없다, 2026-11-06 결정).
+- 날짜를 바꾸지 않고 합치면 PR에 적힌 날짜(지금 2026-11-06)로 게시된다.
+- 시행일을 미래 날짜로 두고 합치면 그날까지 1판이 보이고 「바뀌어요」 안내가 붙는다.
