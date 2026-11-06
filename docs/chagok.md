@@ -8,6 +8,8 @@
 | `/` | 랜딩(`index.html`, 스타일 `assets/landing.css`, 그림 `assets/img`, 영상 `assets/vid`, 글꼴 `assets/fonts` — Neo둥근모 원본 그대로(모든 글자), SIL OFL 1.1, `LICENSE.txt`) | 허용 |
 | `/support/` | 문의, 자주 묻는 것, 운영자 정보 | 허용 |
 | `/terms/`, `/privacy/`, `/delete-account/`, `/versions.json` | 약관, 처리방침, 계정 삭제 안내, 판 목록 — **앱이 읽는 경로라 바꾸지 않는다** | 허용 (`/versions.json` 은 sitemap 에 넣지 않는다) |
+| `/invite/<코드>` | 함께 목표 초대 페이지(`invite/index.html`, `assets/invite/`). 앱이 없거나 앱이 열리지 않을 때 보인다 | 차단(페이지의 `noindex`) |
+| `/.well-known/apple-app-site-association` | 앱이 `/invite/*` 링크를 바로 여는 유니버설 링크 설정. 출시 앱(`com.novumlab.chagok`)과 개발 앱(`.dev`) | — |
 
 랜딩(`/`)에만 Google 애널리틱스(측정 ID `G-DR15LTP1EW`, 속성 「차곡차곡 랜딩」)를 넣는다. 처리방침 1판 15절이 이 설정을 설명하므로, 아래를 바꾸면 15절도 같이 고친다. 페이지 소스는 누구나 보므로 GA 코드에 주석을 달지 않고 이유는 여기에 적는다.
 - 동의 기본값은 태그를 읽기 전에 정한다. EEA 30개국과 영국은 `analytics_storage: 'denied'`(쿠키 없이 측정), 광고 항목 셋은 모든 지역에서 `denied`.
@@ -24,6 +26,14 @@
 
 판 본문(`terms/v1` 등)의 사이트 안 링크는 `/delete-account/` 처럼 **사이트 기준 절대 경로**로 쓴다 — 같은 본문이 `/privacy/v1/` 과 `/privacy/`(끼워 넣기) 두 주소에서 보여 상대 경로는 한쪽에서 깨진다.
 문의 메일 링크(랜딩 footer `index.html` · `terms/v1` · `privacy/v1` · `support` · `delete-account` 5곳)는 앱 설정 「문의하기」와 같은 제목 · 본문 틀을 `encodeURIComponent` 로 미리 인코딩해 `href` 에 넣었다(앱 `src/support/contactMail.ts` 의 `SUBJECT.question` · `BODY.question` — 사이트는 앱 버전 · OS 를 모르니 `---` 아래 앱 정보 줄은 뺀다). 앱 틀을 바꾸면 5곳도 같이 바꾼다.
+
+## 초대 페이지 (2026-11-06)
+
+- 모양은 앱 디자인 시스템과 같다(앱 저장소 `docs/design/proposals-2026-10/invite-web-v2` C안). 계단 테두리는 `assets/invite/invite.js`가 앱 `PixelFrame`과 같은 계산으로 그린다.
+- 페이지가 운영 서버 초대 미리보기(`preview_invite`, 로그인 없이)를 불러 목표 이름, 초대한 사람, 함께하는 사람 스티커를 넣는다. 공개 키(anon)는 앱에 들어 있는 것과 같다. 운영 서버 주소나 키가 바뀌면 `invite.js` 맨 위 두 줄을 바꾼다. 서버에 닿지 못하면 목표 이름 없이 기본 안내가 남는다.
+- 서버가 돌려주는 `closed`, `full`, `rate_limited`(없는 코드를 한 곳에서 1시간 30번, 앱 저장소 `supabase/migrations/20261106000001~3`)마다 차곡이 카드를 보여 준다.
+- 차곡이 그림과 스티커는 앱 저장소에서 만든다: `node deploy/build-chagok-invite-assets.mjs <chagok-app 경로>`.
+- **서버(Caddy)에 두 가지가 필요하다(서버 창 일):** `/invite/*`를 `/invite/index.html`로 보내기, `/.well-known/apple-app-site-association`을 `Content-Type: application/json`으로 내기. 그 전에는 `/invite/<코드>`가 404다.
 
 ## 개정하는 방법
 
