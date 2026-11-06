@@ -38,10 +38,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=20261102d">
+<link rel="stylesheet" href="/assets/site.css?v=20261105a">
 <script src="/assets/analytics.js?v=20261029a" async></script>
 <script src="/assets/lang.js?v=20261102d"></script>
-<script src="/assets/motion.js?v=20261028i" defer></script>
+<script src="/assets/motion.js?v=20261105a" defer></script>
 </head>
 <body>
 <header class="top">
@@ -104,7 +104,7 @@
 </section>
 
 <section class="feat" id="how">
-  <span id="routing" class="anchor"></span><span id="plans" class="anchor"></span><span id="worktrees" class="anchor"></span><span id="board" class="anchor"></span><span id="checks" class="anchor"></span><span id="guards" class="anchor"></span>
+  <span id="routing" class="anchor"></span><span id="plans" class="anchor"></span><span id="worktrees" class="anchor"></span><span id="checks" class="anchor"></span><span id="guards" class="anchor"></span>
   <div class="wrap">
     <div class="sec-head">
       <div class="label" data-t="f.hw.l">エージェントの動き方</div>
@@ -114,30 +114,102 @@
       <div><h3 data-t="f.hw.rt.h">ルーティングとリポジトリごとの担当エージェント</h3><p data-t="f.hw.rt.p">パックのルーティング表が、リポジトリごとの担当エージェントを決めます。Athena はこの表で依頼を分け、エージェントは始める前に自分のリポジトリのルール・構成・ノートを読みます。リポジトリをまたぐ作業は共有パッケージとバックエンドから順に、互いに関係のない作業は同時に進めます。</p></div>
       <div><h3 data-t="f.hw.pl.h">すべての変更に計画書</h3><p data-t="f.hw.pl.p">計画書なしには何も変えません。依頼にやることがすべて書いてあれば、短い計画書で足ります。あなたが決めることがある、または複数のリポジトリをそろえる必要があるときは、Athena が決定コンソール付きの正式な計画書を書き、あなたが確定するまで待ちます。計画書ごとにチェックポイントがあり、新しいセッションは止まったところから続けます。</p></div>
       <div><h3 data-t="f.hw.wt.h">作業ごとに git ワークツリー</h3><p data-t="f.hw.wt.p">エージェントが始める前に、Athena は基準ブランチから新しいブランチを切り、その作業専用のワークツリー、つまり切り離した作業フォルダで開きます。メインのチェックアウトとコミットしていない変更は、リポジトリが散らかっていてもそのまま残り、複数の作業が並んで進みます。</p></div>
-      <div><h3 data-t="f.hw.bd.h">作業リスト</h3><p data-t="f.hw.bd.p"><kbd>⌘</kbd><kbd>2</kbd> を押すとブラウザで作業リストが開きます。解決する課題(課題ごとに開始ボタン)、学習、指標、アーカイブがあり、指標ではタスク・PR・レビュー・検証にかかった平均と中央値の時間を確認できます。計画書の PR がマージされると作業リストがその計画書を完了にし、終わった作業はアーカイブに移ります。ダーク・ライトモードがあり、今のところ韓国語のみです。</p></div>
       <div><h3 data-t="f.hw.ck.h">検証は最後に 1 回</h3><p data-t="f.hw.ck.p">作業中、エージェントは変えた部分だけを確かめます。全体の検証は作業をコミットするときに 1 回だけ回り、回っていない検証を通ったとは報告しません。リポジトリごとに、この検証を GitHub Actions に渡せます。検証 → 基準ブランチへマージ → デプロイまで進み、失敗するとその作業をしたエージェントに戻ります。</p></div>
       <div><h3 data-t="f.hw.gd.h">保護フック</h3><p data-t="f.hw.gd.p">エージェントのセッションには、git commit・push・<code>gh pr create</code>・<code>git add -A</code> を直接実行させないフックがかかっています。コミットと push は、指定したファイルだけを扱う Athena のスクリプトからのみ行います。シークレットガードは、トークンやキーを出力するよくある方法も止めます。</p></div>
+    </div>
+    <div class="grid" id="board">
+      <div class="txt">
+        <h3 data-t="f.hw.bd.h">作業リスト</h3>
+        <p data-t="f.hw.bd.p"><kbd>⌘</kbd><kbd>2</kbd> を押すとブラウザで作業リストが開きます。解決するイシューはリポジトリごとにまとまり、イシューごとに作業開始ボタンがあり、隣に学習・アーカイブ・指標のタブがあります。計画書の PR がマージされると作業リストがその計画書を完了にし、終わった作業はアーカイブに移ります。ダーク・ライトモードがあり、アプリの言語に従います。</p>
+      </div>
+      <figure class="shot part" style="--ar:calc(2880/1064)"><div class="part-in"><img src="/assets/shots/board-issues.webp" width="2880" height="1064" loading="lazy" alt="作業リストのイシュータブ: web・api ごとにまとまったイシュー、進行中の 2 件と担当エージェント、残りのイシューの作業開始ボタン。" data-ta="alt:f.bd.alt1"></div></figure>
+    </div>
+    <div class="grid flip-g">
+      <div class="txt">
+        <h3 data-t="f.bd.lh">学習</h3>
+        <p data-t="f.bd.lp">学習タブには、エージェントが作業中に気づいた落とし穴が学習候補として集まり、入れる先のリポジトリのノートごとにまとまります。1 件ずつ内容を見る・編集・削除し、チェックしたものをまとめて入れます。入れたものはそのリポジトリのノートに入り、エージェントが作業前に読み、git でチームと共有されます。個人メモリでは、Claude と Codex が会話から記憶した内容を読み取り専用で確認できます。</p>
+      </div>
+      <figure class="shot part" style="--ar:calc(2880/1868)"><div class="part-in"><img src="/assets/shots/board-learning.webp" width="2880" height="1868" loading="lazy" alt="作業リストの学習タブ: web・api のノートごとにまとまった学習候補とまとめて入れるボタン、リポジトリごとの学習した内容。" data-ta="alt:f.bd.alt3"></div></figure>
+    </div>
+    <div class="grid">
+      <div class="txt">
+        <h3 data-t="f.bd.ah">アーカイブ</h3>
+        <p data-t="f.bd.ap">アーカイブタブには、終わったイシューと計画書が日付ごとに残ります。種類・リポジトリ・作業者で絞り込み、タイトル・要約・コミットで検索したり、年・月・日を選んだりできます。項目ごとにリポジトリ・状態・コミット数が表示され、押すと記録全体が開きます。</p>
+      </div>
+      <figure class="shot part" style="--ar:calc(2880/1520)"><div class="part-in"><img src="/assets/shots/board-archive.webp" width="2880" height="1520" loading="lazy" alt="作業リストのアーカイブタブ: フィルターと検索、日付ツリー、日付ごとにまとまった終わった作業と各項目のリポジトリ・状態・コミット。" data-ta="alt:f.bd.alt4"></div></figure>
+    </div>
+    <div class="grid flip-g">
+      <div class="txt">
+        <h3 data-t="f.bd.mh">指標</h3>
+        <p data-t="f.bd.mp">指標タブでは、直近 1・7・30 日または開始日からの期間を選び、タスク・PR・レビュー・検証にかかった平均・中央値・p75 の時間を前の期間と比べて確認できます。グラフでは作業ごとの所要時間の分布、日ごとに終えた作業、検証結果、段階ごとの所要時間を表示します。</p>
+      </div>
+      <figure class="shot part" style="--ar:calc(2880/1870)"><div class="part-in"><img src="/assets/shots/board-metrics.webp" width="2880" height="1870" loading="lazy" alt="作業リストの指標タブ: 前の期間と比べたタスク・PR・レビュー・検証の平均時間、作業ごとの所要時間の分布、現在の状態、検証通過 88%。" data-ta="alt:f.bd.alt2"></div></figure>
     </div>
   </div>
 </section>
 
 <section class="feat" id="status">
-  <span id="monitor" class="anchor"></span><span id="work" class="anchor"></span><span id="details" class="anchor"></span><span id="menubar" class="anchor"></span>
   <div class="wrap">
     <div class="sec-head">
       <div class="label" data-t="f.g2.l">進捗と質問</div>
       <h2 data-t="f.g2.h">エージェントが何をしていて、あなたに何を求めているかが分かります。</h2>
     </div>
-    <div class="quad">
-      <div><h3 data-t="h.f.mon">エージェントモニター</h3><p data-t="f.mo.p">ウィンドウ下部のライブフィードが、各エージェントをツールごとに追いかけます。読んだファイル、編集したファイル、実行したコマンド、途中の発言まで。どのワークスペースでも表示されます。</p></div>
-      <div><h3 data-t="h.f.work">作業</h3><p data-t="f.wk.p">エージェントがあなたを必要とすると、その質問や決定が [作業] の一番上に出ます。その下に進行中の作業と、この 1 日で終わった作業が並びます。そこで答えると、エージェントは止まったところから続けます。</p><p data-t="f.gi.p">リポジトリの未解決の GitHub イシューを見張ることもできます。オンにすると、新しいイシューが作業として取り込まれて Athena に渡され、エージェントモニターにイシューごとに 1 行表示されます。</p><p data-t="f.wk.ap">権限の確認も [作業] に表示され、その pane にすぐ移動できます。Codex の承認リクエスト(コマンド・ファイル変更・追加の権限・選択式の質問)には、元の選択肢と範囲のまま [作業] から直接答えられます。Codex Browser の権限ダイアログと起動時の信頼ダイアログも [作業] とメニューバーに通知します。</p></div>
-      <div><h3 data-t="h.f.det">pane の詳細</h3><p data-t="f.dt.p">エージェントのタイトルバーから詳細を開くと、ターミナルのサイズはそのままにウィンドウの上へパネルが出てきます。エージェントがあなたに求めていること、止まっている理由、計画書、プルリクエストを表示します。</p></div>
-      <div><h3 data-t="h.f.bar">メニューバー</h3><p data-t="f.mb.p">Mac のメニューバーに Athena Studio のフクロウがいます。赤い点は、未回答の質問か止まっている計画があるという意味です。フクロウをクリックすると、エージェントごとの状態が見られます。</p></div>
+    <div class="grid" id="monitor">
+      <div class="txt">
+        <h3 data-t="h.f.mon">エージェントモニター</h3>
+        <p data-t="f.mo.p">ウィンドウ下部のライブフィードが、各エージェントをツールごとに追いかけます。読んだファイル、編集したファイル、実行したコマンド、途中の発言まで。どのワークスペースでも表示されます。</p>
+        <ul class="spots" id="mk-monitor">
+          <li data-t="f.mo.m1" data-box="16,1.2,78,6.8" tabindex="0">いま作業中のエージェントごとにチップが付き、ツールを使った回数と最後の動きが見えます。チップを押すとそのエージェントの行だけ、もう一度押すと全部に戻ります。</li>
+          <li data-t="f.mo.m2" data-box="1,10.2,79,88.8" tabindex="0">1 ステップが 1 行です。時刻・[エージェント・ブランチ]・ツール・扱ったファイルやコマンドの順に並びます。</li>
+          <li data-t="f.mo.m3" data-box="1,37.6,97.5,5.8" tabindex="0">💬 の行は、エージェントが途中で残した発言です。エージェント名はそのワークスペースと同じ色です。</li>
+          <li data-t="f.mo.m4" data-box="94.6,1.2,3.8,6.6" tabindex="0">モニターを折りたたむ・展開します。上の端をドラッグすると高さが変わり、ダブルクリックで標準の高さに戻ります。</li>
+        </ul>
+      </div>
+      <figure class="shot part" style="--ar:calc(1156/650)"><div class="part-in"><img aria-describedby="mk-monitor" src="/assets/shots/monitor.webp?v=20261105" width="1156" height="650" loading="lazy" alt="エージェントモニター。web · api · athena のエージェントのチップと、編集・テスト・メッセージが流れるライブフィード。" data-ta="alt:h.b2.alt"><span class="hl" aria-hidden="true"></span></div></figure>
     </div>
-    <figure class="shot sm g2-mon"><img src="/assets/shots/monitor.webp" width="2160" height="340" loading="lazy" alt="エージェントモニター。web · api · athena のエージェントのチップと、編集・テスト・メッセージが流れるライブフィード。" data-ta="alt:h.b2.alt"></figure>
-    <div class="pair g2-pair">
-      <figure class="shot sm"><img src="/assets/shots/work-pop.webp" width="800" height="1034" loading="lazy" alt="「作業」ポップアップ。" data-ta="alt:f.wk.alt1"></figure>
-      <figure class="shot sm narrow"><img src="/assets/shots/detail-panel.webp" width="880" height="1710" loading="lazy" alt="api-be の pane の詳細。あなたへの質問、ブロック表示、状態とトークン、プルリクエスト、計画書の進捗。" data-ta="alt:f.dt.alt"></figure>
+    <div class="grid flip-g" id="work">
+      <div class="txt">
+        <h3 data-t="h.f.work">作業</h3>
+        <p data-t="f.wk.p">エージェントがあなたを必要とすると、その質問や決定が [作業] の一番上に出ます。その下に進行中の作業と、この 1 日で終わった作業が並びます。そこで答えると、エージェントは止まったところから続けます。</p>
+        <p data-t="f.gi.p">リポジトリの未解決の GitHub イシューを見張ることもできます。オンにすると、新しいイシューが作業として取り込まれて Athena に渡され、エージェントモニターにイシューごとに 1 行表示されます。</p>
+        <p data-t="f.wk.ap">権限の確認も [作業] に表示され、その pane にすぐ移動できます。Codex の承認リクエスト(コマンド・ファイル変更・追加の権限・選択式の質問)には、元の選択肢と範囲のまま [作業] から直接答えられます。Codex Browser の権限ダイアログと起動時の信頼ダイアログも [作業] とメニューバーに通知します。</p>
+        <ul class="spots" id="mk-work">
+          <li data-t="f.wk.m1" data-box="1.5,8.6,97,14.6" tabindex="0">あなた待ち: 質問と決定が、待っている時間と一緒に並びます。押すとその場で答えられます。</li>
+          <li data-t="f.wk.m2" data-box="2,27,96,34.3" tabindex="0">進行中: 計画書ごとに 1 行で、止まっている理由か状態メモ・次の作業と、3/5 のような進み具合を表示します。</li>
+          <li data-t="f.wk.m3" data-box="71.5,33.6,26.5,26.5" tabindex="0">状態は 回答待ち・作業中・ブロック・待機中 のいずれかです。作業を押すと理由・決めたこと・進行・検証・結果・次が見え、そこから計画書・決定コンソール・pane へ移動できます。</li>
+          <li data-t="f.wk.m4" data-box="2,65.4,96,24" tabindex="0">最近完了したもの: 直近 24 時間に終わった作業を 5 件まで表示します。</li>
+          <li data-t="f.wk.m5" data-box="66,93.6,31.5,5.6" tabindex="0">作業リストのページ(イシュー・学習・指標・アーカイブ)へ移動します。</li>
+        </ul>
+      </div>
+      <figure class="shot part" style="--ar:calc(800/998)"><div class="part-in"><img aria-describedby="mk-work" src="/assets/shots/work-pop.webp?v=20261105" width="800" height="998" loading="lazy" alt="「作業」ポップアップ。" data-ta="alt:f.wk.alt1"><span class="hl" aria-hidden="true"></span></div></figure>
+    </div>
+    <div class="grid" id="details">
+      <div class="txt">
+        <h3 data-t="h.f.det">pane の詳細</h3>
+        <p data-t="f.dt.p">エージェントのタイトルバーから詳細を開くと、ターミナルのサイズはそのままにウィンドウの上へパネルが出てきます。エージェントがあなたに求めていること、止まっている理由、計画書、プルリクエストを表示します。</p>
+        <ul class="spots" id="mk-details">
+          <li data-t="f.dt.m1" data-box="3,6,94,16" tabindex="0">一番上はあなたの作業です。答えるべきリクエスト(押すとすぐ答えられます)と計画書のブロックが見えます。</li>
+          <li data-t="f.dt.m2" data-box="3,22.8,94,19.2" tabindex="0">ひと目でわかる要約: 状態・経過時間・開始時刻・トークン(キャッシュは別表示)・いまの作業・次の作業・PR リンク。</li>
+          <li data-t="f.dt.m3" data-box="3,43.8,94,9" tabindex="0">分かったこと・結果: エージェントの最後の報告を画面の文字のまま表示します。長いと折りたたまれ、[もっと見る] で広げます。</li>
+          <li data-t="f.dt.m4" data-box="3,55,94,5.5" tabindex="0">PR・自動レビュー: プルリクエストのリンクと自動レビューの結果です。</li>
+          <li data-t="f.dt.m5" data-box="2,62.8,96,37" tabindex="0">計画書: 依頼・進行(✓ 完了・○ 残り)・次・検証。タイトルを押すと計画書が開きます。パネルを開いている間は 3 秒ごとに読み直します。</li>
+        </ul>
+      </div>
+      <figure class="shot part" style="--ar:calc(880/1710)"><div class="part-in"><img aria-describedby="mk-details" src="/assets/shots/detail-panel.webp" width="880" height="1710" loading="lazy" alt="api-be の pane の詳細。あなたへの質問、ブロック表示、状態とトークン、プルリクエスト、計画書の進捗。" data-ta="alt:f.dt.alt"><span class="hl" aria-hidden="true"></span></div></figure>
+    </div>
+    <div class="grid flip-g" id="menubar">
+      <div class="txt">
+        <h3 data-t="h.f.bar">メニューバー</h3>
+        <p data-t="f.mb.p">Mac のメニューバーに Athena Studio のフクロウがいます。赤い点は、未回答の質問か止まっている計画があるという意味です。フクロウをクリックすると、エージェントごとの状態に加えて、直近 3 日(今日・昨日・一昨日)のエージェント稼働時間を描いた山グラフと、直近 7 日のトークン使用量の棒グラフが見られます。エージェントが作業している間は、フクロウの目が緑色に光ります。</p>
+        <ul class="spots" id="mk-menubar">
+          <li data-t="f.mb.m1" data-box="2.5,7,95,21.8" tabindex="0">エージェント: 作業中・待機中の数と、エージェントごとの 1 行([pane]ブランチ・状態)。行を押すとその pane へ移動します。</li>
+          <li data-t="f.mb.m2" data-box="2.5,30.3,95,21.2" tabindex="0">稼働時間・3 日: 手前の山が今日、奥が昨日と一昨日です。高さは 10 分ごとのエージェントの稼働量で、右に今日の合計が出ます。</li>
+          <li data-t="f.mb.m3" data-box="2.5,53.3,95,22.6" tabindex="0">使用量: Claude・Codex の枠(5 時間・週間など)ごとの使用率と、リセットされる時刻です。80% 以上で数字が赤くなります。</li>
+          <li data-t="f.mb.m4" data-box="2.5,78.3,95,19.8" tabindex="0">トークン・直近 7 日: 1 日 1 本の棒で、下が Claude、上が Codex。今日と 7 日間の合計も出ます。</li>
+          <li data-t="f.mb.m5" data-box="90.5,1.4,6,4.4" tabindex="0">☰ メニュー: Athena を開く・作業リストを開く・通知を一時停止(1 時間、または明朝 9 時まで)・Athena を終了。</li>
+        </ul>
+      </div>
+      <figure class="shot part" style="--ar:calc(618/1188)"><div class="part-in"><img aria-describedby="mk-menubar" src="/assets/shots/menubar.webp?v=20261105b" width="618" height="1188" loading="lazy" alt="メニューバーパネル。エージェントと状態、直近 3 日の稼働時間の山グラフ、直近 7 日のトークンの棒グラフ。" data-ta="alt:f.mb.alt"><span class="hl" aria-hidden="true"></span></div></figure>
     </div>
   </div>
 </section>
@@ -198,7 +270,7 @@
           <li data-t="f.rv.l5">自動 PR をオフにすると、プルリクエストを省いて作業ブランチを基準ブランチへ直接マージし、マージ設定にそのまま従います。広い変更(コードファイル 5 個以上・150 行以上・重要なパス)ならマージの前に自動レビューが入ります。マージが手動ならレビューしません</li>
         </ul>
       </div>
-      <figure class="shot sm mid"><img src="/assets/shots/settings-pop.webp?v=20261031" width="686" height="862" loading="lazy" alt="設定。web は自動 PR・自動レビューがオンで、マージは確認後。api は両方オンで、マージは自動。mobile は自動 PR がオフ、マージは手動で、PR なしでブランチまでで止まります。" data-ta="alt:h.b5.alt"></figure>
+      <figure class="shot part" style="--ar:calc(686/862)"><div class="part-in"><img src="/assets/shots/settings-pop.webp?v=20261031" width="686" height="862" loading="lazy" alt="設定。web は自動 PR・自動レビューがオンで、マージは確認後。api は両方オンで、マージは自動。mobile は自動 PR がオフ、マージは手動で、PR なしでブランチまでで止まります。" data-ta="alt:h.b5.alt"></div></figure>
     </div>
     <div class="grid flip-g">
       <div class="txt">
@@ -233,7 +305,7 @@
           <li data-t="f.pk.l3">エージェントの会話や未完了のブランチも含めて書き出し、あとで復元</li>
         </ul>
       </div>
-      <figure class="shot sm mid"><img src="/assets/shots/packs-modal.webp" width="958" height="710" loading="lazy" alt="「パック」ウィンドウ。Demo Shop と Side Project、新しく作る・取り込む・書き出す。" data-ta="alt:f.pk.alt"></figure>
+      <figure class="shot part" style="--ar:calc(958/710)"><div class="part-in"><img src="/assets/shots/packs-modal.webp" width="958" height="710" loading="lazy" alt="「パック」ウィンドウ。Demo Shop と Side Project、新しく作る・取り込む・書き出す。" data-ta="alt:f.pk.alt"></div></figure>
     </div>
     <div class="grid flip-g">
       <div class="txt">

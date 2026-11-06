@@ -1,0 +1,71 @@
+/* 초대 페이지. 색과 글씨 크기는 앱 디자인 시스템 토큰(docs/design/retro-pocket-v1/system/tokens.json)과 같다.
+   계단 테두리는 invite.js 가 앱 PixelFrame 과 같은 계산(pixelOutline)으로 SVG 를 그려 깐다. 스크립트가 없으면 아래 단순 테두리가 남는다. */
+@font-face { font-family: "NeoDunggeunmo"; src: url(/assets/fonts/neodgm/neodgm.woff2) format("woff2"); font-display: swap; }
+:root {
+  --mint: #AFE1CB; --lcd: #C7DE94; --ink: #06261C; --apricot: #FD855F; --ivory: #FEF1D1; --button-ink: #01241C;
+  --px: "NeoDunggeunmo", "Apple SD Gothic Neo", sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--mint); color: var(--ink); }
+body { font-family: var(--px); font-size: 16px; line-height: 24px; word-break: keep-all; overflow-wrap: anywhere; min-height: 100svh;
+  display: flex; flex-direction: column; padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+p, h1, ol { margin: 0; }
+
+.brand { display: flex; align-items: center; gap: 8px; height: 64px; width: 100%; max-width: 390px; margin: 0 auto; padding: 0 20px; }
+.brand img { border-radius: 7px; }
+main { flex: 1; display: flex; flex-direction: column; justify-content: center; width: 100%; max-width: 390px; margin: 0 auto; padding: 0 20px 64px; }
+.stack { display: flex; flex-direction: column; gap: 16px; }
+
+.title { font-size: 24px; line-height: 32px; font-weight: normal; text-align: center; text-wrap: balance; }
+.caption { font-size: 14px; line-height: 20px; color: var(--button-ink); }
+.center { text-align: center; }
+.mascot { image-rendering: pixelated; display: block; }
+.mascot-lg { width: 128px; height: 128px; }
+.mascot-sm { width: 96px; height: 96px; }
+
+.hero { display: flex; flex-direction: column; align-items: center; gap: 12px; padding-top: 8px; }
+.people { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: center; }
+.stickers { display: inline-flex; gap: 6px; }
+.stickers svg { width: 24px; height: 24px; display: block; }
+
+/* 패널: 앱 PixelPanel (안쪽 여백 28) */
+.px-panel { position: relative; padding: 28px; background: var(--lcd); outline: 3px solid var(--ink); }
+.px-framed.px-panel { background: none; outline: none; }
+.px-frame { position: absolute; inset: 0; pointer-events: none; overflow: visible; }
+.px-panel > :not(.px-frame), .px-button > :not(.px-frame), .px-badge > :not(.px-frame) { position: relative; }
+
+.steps { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.steps li { display: flex; gap: 10px; align-items: flex-start; }
+.steps li > span:last-child { flex: 1; }
+
+/* 배지: 앱 PixelBadge(ink) */
+.px-badge { position: relative; display: inline-block; flex: none; font-size: 12px; line-height: 18px; padding: 1px 6px; color: var(--lcd); background: var(--ink); margin-top: 2px; }
+.px-framed.px-badge { background: none; }
+.px-badge > .label { position: relative; }
+
+/* 버튼: 앱 PixelButton (높이 48, 그림자 2) */
+.px-button { position: relative; display: flex; align-items: center; justify-content: center; min-height: 50px; padding: 10px 16px 12px;
+  font-size: 16px; line-height: 24px; color: var(--button-ink); text-decoration: none; background: var(--apricot); outline: 3px solid var(--ink); }
+.px-button.secondary { background: var(--ivory); }
+.px-framed.px-button { background: none; outline: none; }
+.px-button:active .px-frame-surface, .px-button:active > .label { transform: translateY(2px); }
+.px-button:focus-visible { outline: 2px dashed var(--ink); outline-offset: 3px; }
+
+.download { display: flex; flex-direction: column; align-items: center; gap: 8px; padding-top: 24px; }
+.download .badge { display: block; height: 44px; width: auto; }
+.download a { padding: 0 11px; }
+
+/* 문제 카드: 앱 「초대 링크 로그인 전」처럼 차곡이가 패널 위에 걸터앉는다 */
+.card { display: flex; flex-direction: column; align-items: center; }
+.card .mascot { margin-bottom: -22px; position: relative; z-index: 1; }
+.card-panel { width: 100%; display: flex; flex-direction: column; gap: 20px; padding-top: 36px; }
+.card-panel .title { margin-bottom: -12px; }
+
+/* 서버 답을 기다리는 동안 (index.html head 의 스크립트, invite.js 의 reveal) */
+.invite-wait main { visibility: hidden; }
+.loading { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding-bottom: 64px; }
+
+@media (prefers-reduced-motion: reduce) { .px-button:active .px-frame-surface, .px-button:active > .label { transform: none; } }

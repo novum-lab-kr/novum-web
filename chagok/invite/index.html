@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>차곡차곡 초대</title>
+<!--
+  함께 목표 초대 페이지. 주소는 /invite/<코드>이고 서버(Caddy)가 /invite/* 를 이 파일로 보낸다.
+  앱이 깔린 폰은 유니버설 링크로 앱이 바로 열리고, 이 페이지는 앱이 없거나 앱이 열리지 않을 때 보인다.
+  시안: 앱 저장소 docs/design/proposals-2026-10/invite-web-v2 (C안 5회차, 2026-11-06). 모양은 앱의 PixelPanel, PixelButton, PixelBadge, 차곡이와 같다.
+  목표 이름과 함께하는 사람은 assets/invite/invite.js 가 운영 서버 초대 미리보기(preview_invite)에서 받아 넣는다.
+-->
+<meta name="robots" content="noindex">
+<meta name="description" content="같이 스티커 판을 채워요. 링크를 누르면 앱에서 열려요.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="차곡차곡">
+<meta property="og:title" content="친구가 차곡차곡에 초대했어요">
+<meta property="og:description" content="같이 스티커 판을 채워요. 링크를 누르면 앱에서 열려요.">
+<meta property="og:image" content="https://chagok.novum-lab.com/assets/invite/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://chagok.novum-lab.com/invite/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="apple-itunes-app" content="app-id=6824725721">
+<link rel="icon" href="/assets/img/icon.png">
+<link rel="stylesheet" href="/assets/invite/invite.css">
+<!-- 주소에 코드가 있으면 서버 답이 올 때까지 내용을 감춘다(기본 안내가 잠깐 보였다 바뀌지 않게). invite.js 가 답을 받거나 4초가 지나면 푼다. 스크립트가 없으면 감추지 않는다 -->
+<script>if (/\/invite\/[^/]+\/?$/.test(location.pathname)) document.documentElement.className += ' invite-wait';</script>
+</head>
+<body>
+<header class="brand"><img src="/assets/img/icon.png" alt="" width="28" height="28"><span>차곡차곡</span></header>
+<main id="main" aria-live="polite">
+  <!-- 같이 쌓기: 미리보기를 받기 전과 받지 못했을 때도 이 모양(목표 이름과 사람 줄만 빠진다) -->
+  <section id="join" class="stack">
+    <div class="hero">
+      <img class="mascot mascot-lg" src="/assets/invite/mascot-b3.svg" alt="" width="128" height="128">
+      <h1 class="title" id="join-title">친구가 같이<br>차곡차곡 쌓자고 해요</h1>
+      <p class="people" id="join-people" hidden><span class="stickers" id="join-stickers"></span><span class="caption" id="join-people-text"></span></p>
+    </div>
+    <div class="px-panel">
+      <ol class="steps">
+        <li><span class="px-badge">1</span><span>차곡차곡 앱을 받아요</span></li>
+        <li><span class="px-badge">2</span><span>이 초대 링크를 다시 눌러 차곡차곡에서 열어요</span></li>
+      </ol>
+    </div>
+    <a class="px-button" id="open-app" href="chagok://">차곡차곡에서 열기</a>
+    <div class="download">
+      <p class="caption">앱이 없다면 여기서 받아 주세요</p>
+      <a href="https://apps.apple.com/kr/app/id6824725721"><img class="badge" src="/assets/img/app-store-badge-ko.svg" alt="App Store에서 다운로드" width="143" height="44"></a>
+    </div>
+  </section>
+
+  <!-- 들어갈 수 없을 때, 자리가 다 찼을 때, 잠시 막혔을 때: 차곡이가 패널 위에 걸터앉은 카드 -->
+  <section id="problem" class="stack" hidden>
+    <div class="card">
+      <img class="mascot mascot-sm" id="problem-mascot" src="/assets/invite/mascot-curious.svg" alt="" width="96" height="96">
+      <div class="px-panel card-panel">
+        <h1 class="title center" id="problem-title"></h1>
+        <p class="caption center" id="problem-detail"></p>
+        <a class="px-button secondary" href="/">차곡차곡 알아보기</a>
+      </div>
+    </div>
+  </section>
+</main>
+<!-- 서버 답이 늦을 때: 차곡이가 머리 위에 블록을 하나씩 쌓으며 가져온다 (invite.js 가 0.6초 뒤에 띄운다) -->
+<div class="loading" id="loading" role="status" hidden>
+  <img class="mascot mascot-lg" id="loading-mascot" src="/assets/invite/mascot-b3.svg" alt="" width="128" height="128">
+  <p class="caption">초대를 가져오고 있어요</p>
+</div>
+<script src="/assets/invite/invite.js" defer></script>
+</body>
+</html>

@@ -69,9 +69,9 @@
 </div>
 
 <!-- 판마다 요약(2026-10-29 바꿈 — CHANGELOG 를 그대로 옮기지 않는다). 원문은 athena-studio CHANGELOG.md(= GitHub Release 본문)와 각 태그의 커밋.
-     묶음 하나 = 공개판 하나. 왼쪽은 묶음 번호 · 든 상세 버전 범위 · 날짜, 오른쪽은 ① 묶음을 한 줄로 말하는 제목(r.<판>t · 손님 말)
-     ② 상세 버전(rel-ver · 제목 rel-vh 에 vX.Y.Z — 번역하지 않는다)마다 그 버전에서 손님이 체감하는 것(r.<판>k… · 한 줄씩 짧게 · 태그 New/Improved/Fixed/Security)
-     ③ 나머지는 "그 밖의 작은 고침 N개" 한 줄(r.<판>m)로 묶고 그 판 GitHub Release(athena-studio-releases releases/tag/vX.Y.Z) 링크.
+     묶음 하나 = 공개판 하나. 왼쪽은 묶음 번호 · 든 상세 버전 범위 · 날짜, 오른쪽은
+     ① 상세 버전(rel-ver · 제목 rel-vh 에 vX.Y.Z — 번역하지 않는다)마다 그 버전에서 손님이 체감하는 것(r.<판>k… · 한 줄씩 짧게 · 태그 New/Improved/Fixed/Security)
+     ② 나머지는 "그 밖의 작은 고침 N개" 한 줄(r.<판>m)로 묶고 그 판 GitHub Release(athena-studio-releases releases/tag/vX.Y.Z) 링크.
      상세 버전은 최신 순 · 한 버전 안은 New → Improved → Fixed. 실린 항목이 없는 버전은 제목도 두지 않는다.
      항목의 버전 = 그 변경이 들어간 태그(athena-studio 태그마다 커밋 하나 — git log vA..vB). 여러 버전에 걸친 변경은 버전마다 나눠 적는다(2026-11-02 상세 버전으로 다시 씀).
      핵심에 내부 용어(현황판 · pane 번호 · 계획서 등)를 넣지 않는다. 사실은 CHANGELOG · 릴리스 본문 · 그 커밋에 있는 것만 — 지어 넣지 않는다.
@@ -79,12 +79,94 @@
      0.48 은 공개판 v0.48.4 까지 실었다(CHANGELOG 0.48 절 항목 모두 · v0.48.3 은 문서 · v0.48.4 는 시험 고침뿐이라 제목 없음 · 더 보기 링크는 v0.48.4).
      0.47 은 공개판 v0.47.19 · v0.47.34 · v0.47.52 까지 실었다(더 보기 링크는 최신 공개판 v0.47.52 · 그 밖의 N개 = 0.47 의 CHANGELOG 두 절에서 싣지 않은 항목 수).
      0.49 = v0.48.5 – v0.49.3 · 0.50 = v0.50.0 – v0.50.3. 앱 공개 main e7479fc의 CHANGELOG 0.49/0.50 및 태그별 커밋 기준.
-     0.51 = v0.50.4 – v0.51.20. 앱 공개 v0.51.20(ebdbe34)의 CHANGELOG 0.51 절(New 3 · Improved 10 · Fixed 6 = 19줄 모두 · v0.51.16 · v0.51.19 · v0.51.20 은 메뉴 이름 · 문서 · 번역뿐이라 제목 없음)을 태그별 커밋 기준으로 나눴다 — 여러 태그에 걸친 한 줄(그림 스킬 #234 #237 e43d71a 01b078d · 훅 믿음 d6cfe2f 268aabf)은 마지막 태그 아래에(0.47 Codex 리드 줄과 같은 방식).
-     새 버전: 그 묶음 맨 위에 같은 모양으로 더하고 키를 ko · ja · zh 사전에 모두 넣는다. 새 공개판이면 묶음을 맨 위에 더한다. 0.2 – 0.13 은 공개 전 개발판이라 한 줄(접힘) 그대로 -->
+     0.51 = v0.50.4 – v0.51.38. 앱 공개 v0.51.22(81b73cd)의 CHANGELOG 0.51 절(New 5 · Improved 12 · Fixed 6 = 23줄 모두 · v0.51.16 · v0.51.19 · v0.51.20 은 메뉴 이름 · 문서 · 번역뿐 · v0.51.22 는 변경 기록뿐이라 제목 없음)을 태그별 커밋 기준으로 나눴다 — 여러 태그에 걸친 한 줄(그림 스킬 #234 #237 e43d71a 01b078d · 훅 믿음 d6cfe2f 268aabf)은 마지막 태그 아래에(0.47 Codex 리드 줄과 같은 방식). v0.51.23 은 앱 공개 전 아테나가 넘긴 변경 내용(2026-11-05 · 트레이 산 그래프 높이 기준 · 비탈 모양) 기준 한 줄. v0.51.24 – v0.51.38 은 CHANGELOG 에 아직 없어 태그별 커밋(git log v0.51.23..v0.51.38 · 태그마다 커밋 하나 — 3047304 · c077320 · 917ead3 · 5d4019e · 7574c43 · 2c5b69c … e4039c2 · 1d0ebd3 · c937120 · b366cb2) 기준(2026-11-05). v0.51.36 은 시험 고침뿐이라 제목 없음.
+     새 버전: 그 묶음 맨 위에 같은 모양으로 더하고(묶음 한 줄 제목은 2026-11-05 뺐다 — 다시 두지 않는다) 키를 ko · ja · zh 사전에 모두 넣는다. 새 공개판이면 묶음을 맨 위에 더한다. 0.2 – 0.13 은 공개 전 개발판이라 한 줄(접힘) 그대로 -->
 <section style="padding-top:0">
   <div class="wrap">
-    <div class="rel"><div class="v"><b>0.51</b><span>v0.50.4 – v0.51.20<br><span data-t="r.d51">2026 年 11 月 3–4 日</span></span></div><div>
-      <h3 class="rel-t" data-t="r.51t">Codex の承認リクエストに [作業] から直接答えられ、サービス図が戻ってきました。</h3>
+    <div class="rel"><div class="v"><b>0.52</b><span>v0.52.0 – v0.52.1<br><span data-t="r.d52">2026 年 11 月 6 日</span></span></div><div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.52.1</h4>
+      <ul>
+      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.52k1">エージェントを起動する前に計画書の指示欄をチェックし、抜けや曖昧な点を警告します。ボードの指標タブではそのチェック結果を種類別にまとめて表示します。</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.52k2">ボードの表示がアプリの言語(英語・韓国語・日本語・中国語)に合わせて切り替わります。</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.52k3">ボードの課題一覧がリポジトリごとにまとまり、削除ボタンはその行にマウスを乗せるかフォーカスしたときだけ表示されます。</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.52k4">ダイアグラムメニューに、現在の流れに合わせて更新した Athena の作業フロー図が戻りました。</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.52k5">パックの読み込みエラーで、何を選んだか・何が足りないか・どうすればよいかを説明します。パックのエラー画面の折りたたみ詳細欄はなくなりました。</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.52k6">エージェントの作業中、メニューバーのフクロウアイコンの緑の目がほとんど見えなかった問題を修正しました。</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.52k7">新しいパックを作成したあと、Athena のペインでログインツールが自動で起動しなかった問題を修正しました。</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.52k8">初回起動時のリポジトリ検索が macOS の保護フォルダ(ミュージック・ムービー・ピクチャ・ライブラリ)を開いてアクセス許可の確認が出ることはなくなりました。</span></li>
+      </ul></div>
+      <p class="rel-more" data-t="r.52m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.52.1">v0.52.1 のすべての変更を GitHub で見る</a></p>
+    </div></div>
+    <div class="rel"><div class="v"><b>0.51</b><span>v0.50.4 – v0.51.38<br><span data-t="r.d51">2026 年 11 月 3–5 日</span></span></div><div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.38</h4>
+      <ul>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.51k40">広い修正の判定で HTML の画面コードをドキュメントとして数えていた問題を修正しました。</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.37</h4>
+      <ul>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k39">作業リストの［指標］タブの指示欄チェックのまとまりをグリッドにそろえ、色を付けました。</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.35</h4>
+      <ul>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k37">計画書テンプレートの指示欄を短く決まった欄に整理し、指示欄がその欄に従っていないときは止めずに警告だけ出すチェックスクリプトを追加しました。</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k38">作業リストの［指標］タブに指示欄チェックの数値（チェックした計画書・警告が出た計画書・停止通知・警告の種類）を表示します。</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.34</h4>
+      <ul>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k36">パックのエラーウィンドウから「詳細」の折りたたみ欄をなくしました。</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.33</h4>
+      <ul>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k35">パックの取り込みエラーの文言が、何を選んだか・何がないか・どうすればよいかを分かりやすく伝えます。</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.32</h4>
+      <ul>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.51k34">初回起動時のリポジトリ探索で、ミュージック・ムービー・写真・Library フォルダを開いて Mac のアクセス許可ダイアログが出ていた問題を防ぎました。</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.31</h4>
+      <ul>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.51k33">新しいパックを作成した後、Athena の欄で claude / codex が自動的に起動しなかった問題を修正しました。</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.30</h4>
+      <ul>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.51k32">アプリ設定の自動マージボタンにマウスを乗せると表示が崩れていた問題を修正しました。</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.29</h4>
+      <ul>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k25">作業リスト・決定コンソール・Athena が表示する案内(セッション開始の案内・[作業] の権限リクエスト・選択式の質問)が、アプリの言語(英語・韓国語・日本語・中国語)に従うようになりました。</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k26">ガイドメニューとその中の「はじめに」・構成説明の画面、/guide スキルを削除しました。ダイアグラムはアプリのダイアグラムボタンから開きます。</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.28</h4>
+      <ul>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k27">ダイアグラム一覧に、今の流れに合わせて描き直した Athena の作業フロー図が戻りました。軽量・正式の道を収めた 1 枚と compact 前後の自動保存の 1 枚で、アプリの言語で表示されます。</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.27</h4>
+      <ul>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k28">作業リストの [指標] タブで、詳細の数字を作業一覧の上に移して枠を揃え、作業一覧を 100 件ずつのページに分けました。</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.26</h4>
+      <ul>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k29">作業リストのイシュー一覧をリポジトリごとにまとめ、まとまりごとにリポジトリ名とイシュー数を上に表示し、削除ボタンは行にマウスを乗せたときだけ表示されます。</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.25</h4>
+      <ul>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.51k30">メニューバーのフクロウの緑の目がほとんど見えなかった問題を修正しました。エージェントが作業している間、目が塗りつぶした緑の円で点灯します。</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.24</h4>
+      <ul>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k31">メニューバーパネルの Usage で、Claude・Codex の前の色の点を、作業リストの右上と同じ Claude・Codex のロゴに変えました。</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.23</h4>
+      <ul>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k24">メニューバーパネルの稼働時間の山グラフで、高さの基準をエージェント 1 つが 10 分間ずっと作業した量に固定し、山の斜面を 30〜60° の自然な傾斜と少しごつごつした稜線で描くようにしました。</span></li>
+      </ul></div>
+      <div class="rel-ver"><h4 class="rel-vh">v0.51.21</h4>
+      <ul>
+      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.51k20">メニューバーパネルに「稼働時間 · 3 日」の山グラフが加わりました。今日・昨日・一昨日のエージェント稼働時間を 10 分ごとに重なった山の稜線で描き、06:00〜18:00 は雲が流れる昼の空、それ以外は星がまたたく夜の空になります。</span></li>
+      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.51k21">メニューバーパネルに直近 7 日のトークン使用量が、1 日 1 列の Claude・Codex 積み上げ棒で表示されます。この Mac の会話記録だけを読みます(入力 + キャッシュ作成 + 出力・キャッシュ読み取りは除く)。</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k22">エージェントが作業している間、メニューバーアイコンのフクロウの目が緑色にほのかに光り、ツールチップに作業中のエージェント数が表示されます。</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k23">メニューバーパネルをすっきりさせました。確認事項の一覧・カンバンの件数・完了 24h の行・接続表示をなくし(確認事項は[作業]で)、エージェントはペイン ID とブランチを 1 行で表示します。</span></li>
+      </ul></div>
       <div class="rel-ver"><h4 class="rel-vh">v0.51.18</h4>
       <ul>
       <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k18">Diagram ボタンは、パックにサービス図があるときだけ有効になり、図の一覧にはサービス図だけが表示されます。</span></li>
@@ -158,10 +240,9 @@
       <ul>
       <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k4">Codex Browser の権限ダイアログと起動時の信頼ダイアログを検知し、[作業] とトレイにアプリの言語で通知して、元の pane へすぐ移動できるようになりました。</span></li>
       </ul></div>
-      <p class="rel-more" data-t="r.51m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.51.20">v0.51.20 のすべての変更を GitHub で見る</a></p>
+      <p class="rel-more" data-t="r.51m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.51.38">v0.51.38 のすべての変更を GitHub で見る</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.50</b><span>v0.50.0 – v0.50.3<br><span data-t="r.d50">2026年11月3日</span></span></div><div>
-      <h3 class="rel-t" data-t="r.50t">作業・PR・レビュー・検証の平均所要時間をひと目で確認できます。</h3>
       <div class="rel-ver"><h4 class="rel-vh">v0.50.2</h4>
       <ul>
       <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.50k3">エージェントへの案内が、マージの確認が必要かどうかを含め、リポジトリの現在のレビュー・マージ設定に従うようにしました。</span></li>
@@ -177,7 +258,6 @@
       <p class="rel-more" data-t="r.50m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.50.3">v0.50.3 のすべての変更を GitHub で見る</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.49</b><span>v0.48.5 – v0.49.3<br><span data-t="r.d49">2026年11月3日</span></span></div><div>
-      <h3 class="rel-t" data-t="r.49t">指標グラフ・ツールの要約・更新の動作を改善しました。</h3>
       <div class="rel-ver"><h4 class="rel-vh">v0.49.2</h4>
       <ul>
       <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.49k2">エージェントモニターでCodexのcode-modeツール呼び出しをアプリの言語で簡潔に表示します。</span></li>
@@ -199,7 +279,6 @@
       <p class="rel-more" data-t="r.49m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.49.3">v0.49.3 のすべての変更を GitHub で見る</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.48</b><span>v0.47.53 – v0.48.4<br><span data-t="r.d48">2026 年 11 月 3 日</span></span></div><div>
-      <h3 class="rel-t" data-t="r.48t">学習レビューがメモ候補の代わりに整備候補を出せるようになりました。</h3>
       <div class="rel-ver"><h4 class="rel-vh">v0.48.2</h4>
       <ul>
       <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.48k3">今見ている pane の権限確認は macOS 通知を表示しません。作業にはそのまま表示されます。</span></li>
@@ -223,7 +302,6 @@
       <p class="rel-more" data-t="r.48m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.48.4">v0.48.4 のすべての変更を GitHub で見る</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.47</b><span>v0.47.0 – v0.47.52<br><span data-t="r.d47">2026 年 11 月 1–3 日</span></span></div><div>
-      <h3 class="rel-t" data-t="r.47t">アプリやコアを更新しても pane は閉じません。</h3>
       <div class="rel-ver"><h4 class="rel-vh">v0.47.51</h4>
       <ul>
       <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.47k42">Athena pane がすぐに受け取れないとき（質問画面が開いているときなど）、エージェントからのメッセージは質問リクエストにならず、受け取れるようになってから順番に届きます。</span></li>
@@ -371,7 +449,6 @@
       <p class="rel-more" data-t="r.47m">そのほかの小さな変更と修正 8 件 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.47.52">v0.47.52 のすべての変更を GitHub で見る</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.46</b><span>v0.42.3 – v0.46.4<br><span data-t="r.d46">2026 年 11 月 1 日</span></span></div><div>
-      <h3 class="rel-t" data-t="r.46t">エージェントがリポジトリのルールを読み、小さなプルリクエストは高速ルートを通ります。</h3>
       <div class="rel-ver"><h4 class="rel-vh">v0.46.1</h4>
       <ul>
       <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.46k4">自動マージの待機中にプルリクエストのベースが変わった場合、マージしなくなりました。</span></li>
@@ -391,7 +468,6 @@
       <p class="rel-more" data-t="r.46m">そのほかの小さな変更と修正 6 件 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.46.4">v0.46.4 のすべての変更を GitHub で見る</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.42</b><span>v0.40.4 – v0.42.2<br><span data-t="r.d42">2026 年 10 月 31 日</span></span></div><div>
-      <h3 class="rel-t" data-t="r.42t">アップデート後はウィンドウが先に開き、コアの更新は裏で終わります。</h3>
       <div class="rel-ver"><h4 class="rel-vh">v0.42.1</h4>
       <ul>
       <li><span class="tag sec" data-t="r.sec">セキュリティパッチ</span><span data-t="r.42k4">Electron を 44.10.0 に更新し、アプリ内蔵の Node がセキュリティリリースの <a href="https://nodejs.org/en/blog/release/v24.22.1" target="_blank" rel="noopener">24.22.1</a> になりました。</span></li>
@@ -411,7 +487,6 @@
       <p class="rel-more" data-t="r.42m">そのほかの小さな修正 2 件 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.42.0">v0.42.0 のすべての変更を GitHub で見る</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.40</b><span>v0.32.5 – v0.40.3<br><span data-t="r.d40">2026 年 10 月 30 日</span></span></div><div>
-      <h3 class="rel-t" data-t="r.40t">リポジトリごとに、アテナが PR を開くかどうかを選べます。</h3>
       <div class="rel-ver"><h4 class="rel-vh">v0.40.0</h4>
       <ul>
       <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.40k1">リポジトリの自動 PR をオフにすると、PR とレビューを省き、検証を通った作業ブランチをそのままベースブランチへマージします。</span></li>
@@ -439,7 +514,6 @@
       <p class="rel-more" data-t="r.40m">そのほかの小さな変更と修正 10 件 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.40.3">v0.40.3 のすべての変更を GitHub で見る</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.32</b><span>v0.28.8 – v0.32.4<br><span data-t="r.d32">2026 年 10 月 30 日</span></span></div><div>
-      <h3 class="rel-t" data-t="r.32t">アップデートのあと、変わったことをアプリの中ですぐ確かめられます。</h3>
       <div class="rel-ver"><h4 class="rel-vh">v0.32.0</h4>
       <ul>
       <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.32k1">アテナのコアが更新されると、アプリ内ポップアップに以前と新しいバージョン、アップデート内容、更新結果が表示されます。</span></li>
@@ -479,7 +553,6 @@
       <p class="rel-more" data-t="r.32m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.32.4">v0.32.4 のすべての変更を GitHub で見る</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.28</b><span>v0.25.2 – v0.28.7<br><span data-t="r.d28">2026 年 10 月 29 日</span></span></div><div>
-      <h3 class="rel-t" data-t="r.28t">エージェントの質問に、Work 画面からそのまま答えられます。</h3>
       <div class="rel-ver"><h4 class="rel-vh">v0.28.6</h4>
       <ul>
       <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.28k6">横のブラウザーが開いていても、Work · 設定 · ボードのメニューポップアップが隠れなくなりました。</span></li>
@@ -507,7 +580,6 @@
       <p class="rel-more" data-t="r.28m">そのほかの小さな変更と修正 4 件 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.28.7">v0.28.7 のすべての変更を GitHub で見る</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.25</b><span>v0.19.3 – v0.25.1<br><span data-t="r.d25">2026 年 10 月 29 日</span></span></div><div>
-      <h3 class="rel-t" data-t="r.25t">Finder からファイルをドラッグして、パスを入力できます。</h3>
       <div class="rel-ver"><h4 class="rel-vh">v0.24.0</h4>
       <ul>
       <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.25k2">PR を開くとき、追加したテストが変更なしでも通るかどうかを知らせます。PR を止めることはありません。</span></li>
@@ -523,7 +595,6 @@
       <p class="rel-more" data-t="r.25m">そのほかの小さな変更と修正 6 件 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.25.1">v0.25.1 のすべての変更を GitHub で見る</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.19</b><span>v0.17.7 – v0.19.2<br><span data-t="r.d19">2026 年 10 月 29 日</span></span></div><div>
-      <h3 class="rel-t" data-t="r.19t">作業画面まわりのパネルのサイズを変えられます。</h3>
       <div class="rel-ver"><h4 class="rel-vh">v0.18.3</h4>
       <ul>
       <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.19k3">スタート画面を離れたあと、「作業」と「設定」ボタンが無効のまま残らなくなりました。</span></li>
@@ -539,7 +610,6 @@
       <p class="rel-more" data-t="r.19m">そのほかの小さな修正 4 件 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.19.2">v0.19.2 のすべての変更を GitHub で見る</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.17</b><span>v0.15.9 – v0.17.6<br><span data-t="r.d17">2026 年 10 月 29 日</span></span></div><div>
-      <h3 class="rel-t" data-t="r.17t">Mac アプリが自分でアップデートするようになりました。</h3>
       <div class="rel-ver"><h4 class="rel-vh">v0.17.2</h4>
       <ul>
       <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.17k3">通知には、あなたが決めることだけが表示されます。</span></li>
@@ -555,7 +625,6 @@
       <p class="rel-more" data-t="r.17m">そのほかの小さな修正 5 件 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.17.6">v0.17.6 のすべての変更を GitHub で見る</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.15</b><span>v0.15.0 – v0.15.8<br><span data-t="r.d15">2026 年 10 月 28 日</span></span></div><div>
-      <h3 class="rel-t" data-t="r.15t">最初の公開版 — Mac アプリとして登場しました。</h3>
       <div class="rel-ver"><h4 class="rel-vh">v0.15.0</h4>
       <ul>
       <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.15k1">Apple Silicon・Intel の Mac で入手できます(macOS 13 Ventura 以降)。</span></li>

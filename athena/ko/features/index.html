@@ -38,10 +38,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=20261102d">
+<link rel="stylesheet" href="/assets/site.css?v=20261105a">
 <script src="/assets/analytics.js?v=20261029a" async></script>
 <script src="/assets/lang.js?v=20261102d"></script>
-<script src="/assets/motion.js?v=20261028i" defer></script>
+<script src="/assets/motion.js?v=20261105a" defer></script>
 </head>
 <body>
 <header class="top">
@@ -104,7 +104,7 @@
 </section>
 
 <section class="feat" id="how">
-  <span id="routing" class="anchor"></span><span id="plans" class="anchor"></span><span id="worktrees" class="anchor"></span><span id="board" class="anchor"></span><span id="checks" class="anchor"></span><span id="guards" class="anchor"></span>
+  <span id="routing" class="anchor"></span><span id="plans" class="anchor"></span><span id="worktrees" class="anchor"></span><span id="checks" class="anchor"></span><span id="guards" class="anchor"></span>
   <div class="wrap">
     <div class="sec-head">
       <div class="label" data-t="f.hw.l">에이전트가 일하는 방식</div>
@@ -114,30 +114,102 @@
       <div><h3 data-t="f.hw.rt.h">라우팅과 레포마다 담당 에이전트</h3><p data-t="f.hw.rt.p">팩의 라우팅 표가 레포마다 담당 에이전트를 정합니다. Athena는 이 표로 요청을 나누고, 에이전트는 시작하기 전에 자기 레포의 규칙 · 구조 · 노트를 읽습니다. 레포를 넘는 일은 공유 패키지와 백엔드부터 차례로, 서로 상관없는 일은 동시에 돌립니다.</p></div>
       <div><h3 data-t="f.hw.pl.h">모든 변경에 계획서</h3><p data-t="f.hw.pl.p">계획서 없이는 아무것도 바꾸지 않습니다. 요청에 할 일이 이미 다 있으면 짧은 계획서로 충분합니다. 내가 정할 것이 있거나 여러 레포를 맞춰야 하면 Athena가 결정 콘솔이 딸린 정식 계획서를 쓰고 내가 확정할 때까지 기다립니다. 계획서마다 체크포인트가 있어서 새 세션이 멈춘 자리부터 이어 갑니다.</p></div>
       <div><h3 data-t="f.hw.wt.h">작업마다 git 워크트리</h3><p data-t="f.hw.wt.p">에이전트가 시작하기 전에 Athena가 기준 브랜치에서 새 브랜치를 따서 그 작업만의 워크트리, 곧 따로 떼어 낸 작업 폴더에 엽니다. 메인 체크아웃과 커밋 안 한 변경은 레포가 어수선해도 그대로 남고, 여러 작업이 나란히 돌아갑니다.</p></div>
-      <div><h3 data-t="f.hw.bd.h">현황판</h3><p data-t="f.hw.bd.p"><kbd>⌘</kbd><kbd>2</kbd>를 누르면 브라우저에 현황판이 열립니다. 해결할 이슈(이슈마다 시작 버튼) · 학습 · 지표 · 아카이브가 있고, 지표에서는 작업 · PR · 리뷰 · 검증에 걸린 평균과 중앙값 시간을 봅니다. 계획서의 PR이 머지되면 현황판이 그 계획서를 완료로 옮기고, 끝난 일은 아카이브로 갑니다. 다크 · 라이트 모드가 있고, 지금은 한국어만 있습니다.</p></div>
       <div><h3 data-t="f.hw.ck.h">검증은 끝에 한 번</h3><p data-t="f.hw.ck.p">일하는 동안 에이전트는 고친 부분만 확인합니다. 전체 검증은 작업을 커밋할 때 한 번 돌고, 돌지 않은 검증을 통과했다고 보고하지 않습니다. 레포마다 이 검증을 GitHub Actions에 넘길 수 있습니다. 검증 → 기준 브랜치에 머지 → 배포까지 돌고, 실패하면 그 일을 한 에이전트에게 돌아갑니다.</p></div>
       <div><h3 data-t="f.hw.gd.h">보호 훅</h3><p data-t="f.hw.gd.p">에이전트 세션에는 git commit · push · <code>gh pr create</code> · <code>git add -A</code>를 직접 하지 못하게 막는 훅이 걸려 있습니다. 커밋과 push는 지정한 파일만 올리는 Athena 스크립트로만 합니다. 비밀값 가드는 토큰 · 키를 출력하는 흔한 방법도 막습니다.</p></div>
+    </div>
+    <div class="grid" id="board">
+      <div class="txt">
+        <h3 data-t="f.hw.bd.h">현황판</h3>
+        <p data-t="f.hw.bd.p"><kbd>⌘</kbd><kbd>2</kbd>를 누르면 브라우저에 현황판이 열립니다. 해결할 이슈가 레포별로 묶여 있고 이슈마다 작업 시작 버튼이 있으며, 옆에 학습 · 아카이브 · 지표 탭이 있습니다. 계획서의 PR이 머지되면 현황판이 그 계획서를 완료로 옮기고, 끝난 일은 아카이브로 갑니다. 다크 · 라이트 모드가 있고 앱 언어를 따릅니다.</p>
+      </div>
+      <figure class="shot part" style="--ar:calc(2880/1064)"><div class="part-in"><img src="/assets/shots/board-issues.webp" width="2880" height="1064" loading="lazy" alt="현황판 이슈 탭: web · api 로 묶인 이슈, 진행 중인 2개와 맡은 에이전트, 나머지 이슈의 작업 시작 버튼." data-ta="alt:f.bd.alt1"></div></figure>
+    </div>
+    <div class="grid flip-g">
+      <div class="txt">
+        <h3 data-t="f.bd.lh">학습</h3>
+        <p data-t="f.bd.lp">학습 탭에는 에이전트가 일하다 알게 된 함정이 학습 후보로 모이고, 들어갈 레포 공책별로 묶입니다. 하나씩 내용 보기 · 수정 · 삭제하고, 체크한 것을 묶음으로 넣습니다. 넣은 것은 그 레포 공책에 들어가고, 에이전트가 작업 전에 읽으며 git 으로 팀과 공유됩니다. 개인 메모리에서는 Claude 와 Codex 가 대화에서 기억한 내용을 읽기 전용으로 봅니다.</p>
+      </div>
+      <figure class="shot part" style="--ar:calc(2880/1868)"><div class="part-in"><img src="/assets/shots/board-learning.webp" width="2880" height="1868" loading="lazy" alt="현황판 학습 탭: web · api 공책별로 묶인 학습 후보와 묶음 넣기 버튼, 레포별로 모인 학습한 내용." data-ta="alt:f.bd.alt3"></div></figure>
+    </div>
+    <div class="grid">
+      <div class="txt">
+        <h3 data-t="f.bd.ah">아카이브</h3>
+        <p data-t="f.bd.ap">아카이브 탭에는 끝난 이슈와 계획서가 날짜별로 남습니다. 종류 · 레포 · 작업자로 거르고 제목 · 요약 · 커밋으로 찾거나 연 · 월 · 일을 골라 봅니다. 항목마다 레포 · 상태 · 커밋 수가 보이고, 누르면 전체 기록이 열립니다.</p>
+      </div>
+      <figure class="shot part" style="--ar:calc(2880/1520)"><div class="part-in"><img src="/assets/shots/board-archive.webp" width="2880" height="1520" loading="lazy" alt="현황판 아카이브 탭: 필터와 검색, 날짜 트리, 날짜별로 묶인 끝난 일과 각 항목의 레포 · 상태 · 커밋." data-ta="alt:f.bd.alt4"></div></figure>
+    </div>
+    <div class="grid flip-g">
+      <div class="txt">
+        <h3 data-t="f.bd.mh">지표</h3>
+        <p data-t="f.bd.mp">지표 탭에서는 최근 1 · 7 · 30일이나 시작 날짜부터의 기간을 골라 작업 · PR · 리뷰 · 검증에 걸린 평균 · 중앙값 · p75 시간을 이전 기간과 비교해 봅니다. 그래프로 작업별 걸린 시간 분포, 날짜별 끝낸 작업, 검증 결과, 단계별 걸린 시간을 보여 줍니다.</p>
+      </div>
+      <figure class="shot part" style="--ar:calc(2880/1870)"><div class="part-in"><img src="/assets/shots/board-metrics.webp" width="2880" height="1870" loading="lazy" alt="현황판 지표 탭: 이전 기간과 비교한 작업 · PR · 리뷰 · 검증 평균 시간, 작업별 걸린 시간 분포, 현재 상태, 검증 통과 88%." data-ta="alt:f.bd.alt2"></div></figure>
     </div>
   </div>
 </section>
 
 <section class="feat" id="status">
-  <span id="monitor" class="anchor"></span><span id="work" class="anchor"></span><span id="details" class="anchor"></span><span id="menubar" class="anchor"></span>
   <div class="wrap">
     <div class="sec-head">
       <div class="label" data-t="f.g2.l">진행과 질문</div>
       <h2 data-t="f.g2.h">에이전트별 진행 상황과 나에게 필요한 것</h2>
     </div>
-    <div class="quad">
-      <div><h3 data-t="h.f.mon">에이전트 모니터</h3><p data-t="f.mo.p">창 아래 피드에 각 에이전트가 읽고 고친 파일, 실행한 명령, 남긴 말이 올라옵니다. 어느 작업 공간에서도 보입니다.</p></div>
-      <div><h3 data-t="h.f.work">작업</h3><p data-t="f.wk.p">에이전트가 나를 찾으면 그 질문이나 결정이 [작업] 맨 위에 올라옵니다. 그 아래로 진행 중인 일과 지난 하루 동안 끝난 일이 있습니다. 거기서 답하면 에이전트가 멈춘 데서 이어서 합니다.</p><p data-t="f.gi.p">레포의 열린 GitHub 이슈도 지켜볼 수 있습니다. 켜 두면 새 이슈가 작업으로 들어와 아테나에게 넘어가고, 에이전트 모니터에 이슈마다 한 줄이 뜹니다.</p><p data-t="f.wk.ap">권한 확인도 [작업]에 올라오고, 그 pane으로 바로 갈 수 있습니다. Codex의 승인 요청(명령 · 파일 변경 · 추가 권한 · 선택형 질문)은 원래 선택지와 범위 그대로 [작업]에서 바로 답합니다. Codex Browser 권한창과 시작 신뢰창도 [작업]과 메뉴 막대에 알립니다.</p></div>
-      <div><h3 data-t="h.f.det">pane 상세</h3><p data-t="f.dt.p">에이전트 머리 줄에서 상세를 열면, 터미널 크기는 그대로 둔 채 창 위로 패널이 나옵니다. 에이전트가 나에게 바라는 것, 막힌 것, 계획서와 PR을 보여 줍니다.</p></div>
-      <div><h3 data-t="h.f.bar">메뉴 막대</h3><p data-t="f.mb.p">맥 메뉴 막대에 Athena Studio 부엉이가 있습니다. 빨간 점이 뜨면 열린 질문이나 막힌 계획이 있다는 뜻입니다. 부엉이를 누르면 에이전트마다 지금 상태가 보입니다.</p></div>
+    <div class="grid" id="monitor">
+      <div class="txt">
+        <h3 data-t="h.f.mon">에이전트 모니터</h3>
+        <p data-t="f.mo.p">창 아래 피드에 각 에이전트가 읽고 고친 파일, 실행한 명령, 남긴 말이 올라옵니다. 어느 작업 공간에서도 보입니다.</p>
+        <ul class="spots" id="mk-monitor">
+          <li data-t="f.mo.m1" data-box="16,1.2,78,6.8" tabindex="0">지금 일하는 에이전트마다 칩이 붙고, 도구를 쓴 횟수와 마지막 움직임이 보입니다. 칩을 누르면 그 에이전트 줄만, 다시 누르면 전체가 보입니다.</li>
+          <li data-t="f.mo.m2" data-box="1,10.2,79,88.8" tabindex="0">한 단계가 한 줄입니다. 시각 · [에이전트 · 브랜치] · 도구 · 다룬 파일이나 명령 순입니다.</li>
+          <li data-t="f.mo.m3" data-box="1,37.6,97.5,5.8" tabindex="0">💬 줄은 에이전트가 중간에 남긴 말입니다. 에이전트 이름은 그 작업 공간과 같은 색입니다.</li>
+          <li data-t="f.mo.m4" data-box="94.6,1.2,3.8,6.6" tabindex="0">모니터를 접고 폅니다. 위쪽 가장자리를 끌어 높이를 바꾸고, 두 번 누르면 기본 높이로 돌아갑니다.</li>
+        </ul>
+      </div>
+      <figure class="shot part" style="--ar:calc(1156/650)"><div class="part-in"><img aria-describedby="mk-monitor" src="/assets/shots/monitor.webp?v=20261105" width="1156" height="650" loading="lazy" alt="에이전트 모니터: web · api · athena 에이전트 칩과, 수정 · 테스트 · 메시지가 흐르는 실시간 피드." data-ta="alt:h.b2.alt"><span class="hl" aria-hidden="true"></span></div></figure>
     </div>
-    <figure class="shot sm g2-mon"><img src="/assets/shots/monitor.webp" width="2160" height="340" loading="lazy" alt="에이전트 모니터: web · api · athena 에이전트 칩과, 수정 · 테스트 · 메시지가 흐르는 실시간 피드." data-ta="alt:h.b2.alt"></figure>
-    <div class="pair g2-pair">
-      <figure class="shot sm"><img src="/assets/shots/work-pop.webp" width="800" height="1034" loading="lazy" alt="[작업] 팝업." data-ta="alt:f.wk.alt1"></figure>
-      <figure class="shot sm narrow"><img src="/assets/shots/detail-panel.webp" width="880" height="1710" loading="lazy" alt="api-be의 pane 상세: 나에게 온 질문, 막힘 표시, 상태와 토큰, PR, 계획서 진행." data-ta="alt:f.dt.alt"></figure>
+    <div class="grid flip-g" id="work">
+      <div class="txt">
+        <h3 data-t="h.f.work">작업</h3>
+        <p data-t="f.wk.p">에이전트가 나를 찾으면 그 질문이나 결정이 [작업] 맨 위에 올라옵니다. 그 아래로 진행 중인 일과 지난 하루 동안 끝난 일이 있습니다. 거기서 답하면 에이전트가 멈춘 데서 이어서 합니다.</p>
+        <p data-t="f.gi.p">레포의 열린 GitHub 이슈도 지켜볼 수 있습니다. 켜 두면 새 이슈가 작업으로 들어와 아테나에게 넘어가고, 에이전트 모니터에 이슈마다 한 줄이 뜹니다.</p>
+        <p data-t="f.wk.ap">권한 확인도 [작업]에 올라오고, 그 pane으로 바로 갈 수 있습니다. Codex의 승인 요청(명령 · 파일 변경 · 추가 권한 · 선택형 질문)은 원래 선택지와 범위 그대로 [작업]에서 바로 답합니다. Codex Browser 권한창과 시작 신뢰창도 [작업]과 메뉴 막대에 알립니다.</p>
+        <ul class="spots" id="mk-work">
+          <li data-t="f.wk.m1" data-box="1.5,8.6,97,14.6" tabindex="0">나를 기다리는 것: 질문과 결정이 기다린 시간과 함께 올라옵니다. 누르면 그 자리에서 답합니다.</li>
+          <li data-t="f.wk.m2" data-box="2,27,96,34.3" tabindex="0">진행 중: 계획서마다 한 줄로 막힌 이유나 상태 메모 · 다음 할 일과 3/5 같은 진행률을 보여 줍니다.</li>
+          <li data-t="f.wk.m3" data-box="71.5,33.6,26.5,26.5" tabindex="0">상태는 답 대기 · 작업 중 · 막힘 · 대기 가운데 하나입니다. 작업을 누르면 이유 · 정한 것 · 진행 · 검증 · 결과 · 다음이 보이고, 거기서 계획서 · 결정 콘솔 · pane 으로 갑니다.</li>
+          <li data-t="f.wk.m4" data-box="2,65.4,96,24" tabindex="0">최근 완료: 지난 24시간 안에 끝난 작업을 다섯 개까지 보여 줍니다.</li>
+          <li data-t="f.wk.m5" data-box="66,93.6,31.5,5.6" tabindex="0">현황판 페이지(이슈 · 학습 · 지표 · 아카이브)로 갑니다.</li>
+        </ul>
+      </div>
+      <figure class="shot part" style="--ar:calc(800/998)"><div class="part-in"><img aria-describedby="mk-work" src="/assets/shots/work-pop.webp?v=20261105" width="800" height="998" loading="lazy" alt="[작업] 팝업." data-ta="alt:f.wk.alt1"><span class="hl" aria-hidden="true"></span></div></figure>
+    </div>
+    <div class="grid" id="details">
+      <div class="txt">
+        <h3 data-t="h.f.det">pane 상세</h3>
+        <p data-t="f.dt.p">에이전트 머리 줄에서 상세를 열면, 터미널 크기는 그대로 둔 채 창 위로 패널이 나옵니다. 에이전트가 나에게 바라는 것, 막힌 것, 계획서와 PR을 보여 줍니다.</p>
+        <ul class="spots" id="mk-details">
+          <li data-t="f.dt.m1" data-box="3,6,94,16" tabindex="0">맨 위는 내가 할 일입니다. 답할 요청(누르면 바로 답합니다)과 계획서의 막힘이 보입니다.</li>
+          <li data-t="f.dt.m2" data-box="3,22.8,94,19.2" tabindex="0">한눈 요약: 상태 · 걸린 시간 · 시작 시각 · 토큰(캐시는 따로) · 지금 하는 일 · 다음 할 일 · PR 링크입니다.</li>
+          <li data-t="f.dt.m3" data-box="3,43.8,94,9" tabindex="0">찾은 것 · 결과: 에이전트의 마지막 보고를 화면 글 그대로 보여 줍니다. 길면 접히고 [더 보기]로 펼칩니다.</li>
+          <li data-t="f.dt.m4" data-box="3,55,94,5.5" tabindex="0">PR · 자동 리뷰: PR 링크와 자동 리뷰 결과입니다.</li>
+          <li data-t="f.dt.m5" data-box="2,62.8,96,37" tabindex="0">계획서: 요청 · 진행(✓ 끝남 · ○ 남음) · 다음 · 검증입니다. 제목을 누르면 계획서가 열립니다. 패널이 열려 있는 동안 3초마다 새로 읽습니다.</li>
+        </ul>
+      </div>
+      <figure class="shot part" style="--ar:calc(880/1710)"><div class="part-in"><img aria-describedby="mk-details" src="/assets/shots/detail-panel.webp" width="880" height="1710" loading="lazy" alt="api-be의 pane 상세: 나에게 온 질문, 막힘 표시, 상태와 토큰, PR, 계획서 진행." data-ta="alt:f.dt.alt"><span class="hl" aria-hidden="true"></span></div></figure>
+    </div>
+    <div class="grid flip-g" id="menubar">
+      <div class="txt">
+        <h3 data-t="h.f.bar">메뉴 막대</h3>
+        <p data-t="f.mb.p">맥 메뉴 막대에 Athena Studio 부엉이가 있습니다. 빨간 점이 뜨면 열린 질문이나 막힌 계획이 있다는 뜻입니다. 부엉이를 누르면 에이전트마다 지금 상태와 함께, 지난 3일(오늘 · 어제 · 그저께) 에이전트가 일한 시간을 그린 산 그래프와 최근 7일 토큰 사용량 막대가 보입니다. 에이전트가 일하는 동안에는 부엉이 눈이 초록으로 빛납니다.</p>
+        <ul class="spots" id="mk-menubar">
+          <li data-t="f.mb.m1" data-box="2.5,7,95,21.8" tabindex="0">에이전트: 작업 중 · 대기 수와 에이전트마다 한 줄([pane]브랜치 · 상태)입니다. 줄을 누르면 그 pane 으로 갑니다.</li>
+          <li data-t="f.mb.m2" data-box="2.5,30.3,95,21.2" tabindex="0">일한 시간 · 3일: 앞 산이 오늘, 뒤로 어제와 그저께입니다. 높이는 10분마다 에이전트가 일한 양이고, 오른쪽에 오늘 합계가 나옵니다.</li>
+          <li data-t="f.mb.m3" data-box="2.5,53.3,95,22.6" tabindex="0">사용량: Claude · Codex 의 창(5시간 · 주간 등)마다 쓴 비율과 다시 채워지는 시각입니다. 80% 이상이면 숫자가 빨개집니다.</li>
+          <li data-t="f.mb.m4" data-box="2.5,78.3,95,19.8" tabindex="0">토큰 · 최근 7일: 하루 한 막대로, 아래는 Claude 위는 Codex 이고 오늘과 7일 합계가 함께 나옵니다.</li>
+          <li data-t="f.mb.m5" data-box="90.5,1.4,6,4.4" tabindex="0">☰ 메뉴: Athena 열기 · 현황판 열기 · 알림 일시 중지(1시간 또는 내일 아침 9시까지) · Athena 종료.</li>
+        </ul>
+      </div>
+      <figure class="shot part" style="--ar:calc(618/1188)"><div class="part-in"><img aria-describedby="mk-menubar" src="/assets/shots/menubar.webp?v=20261105b" width="618" height="1188" loading="lazy" alt="메뉴 막대 패널: 에이전트와 상태, 지난 3일 일한 시간 산 그래프, 최근 7일 토큰 막대." data-ta="alt:f.mb.alt"><span class="hl" aria-hidden="true"></span></div></figure>
     </div>
   </div>
 </section>
@@ -198,7 +270,7 @@
           <li data-t="f.rv.l5">자동 PR을 끄면 PR 없이 작업 브랜치를 기준 브랜치에 바로 머지하고, 머지 설정을 그대로 따릅니다. 넓은 수정(코드 파일 5개 이상 · 150줄 이상 · 민감 경로)이면 머지 앞에 자동 리뷰가 들어갑니다. 머지가 직접이면 리뷰하지 않습니다</li>
         </ul>
       </div>
-      <figure class="shot sm mid"><img src="/assets/shots/settings-pop.webp?v=20261031" width="686" height="862" loading="lazy" alt="설정: web은 자동 PR · 자동 리뷰 켬, 머지는 확인 후. api는 둘 다 켬, 머지는 자동. mobile은 자동 PR 끔, 머지는 직접이며 PR 없이 브랜치까지만 둡니다." data-ta="alt:h.b5.alt"></figure>
+      <figure class="shot part" style="--ar:calc(686/862)"><div class="part-in"><img src="/assets/shots/settings-pop.webp?v=20261031" width="686" height="862" loading="lazy" alt="설정: web은 자동 PR · 자동 리뷰 켬, 머지는 확인 후. api는 둘 다 켬, 머지는 자동. mobile은 자동 PR 끔, 머지는 직접이며 PR 없이 브랜치까지만 둡니다." data-ta="alt:h.b5.alt"></div></figure>
     </div>
     <div class="grid flip-g">
       <div class="txt">
@@ -233,7 +305,7 @@
           <li data-t="f.pk.l3">에이전트 대화와 끝나지 않은 브랜치까지 내 작업과 함께 내보내고, 나중에 되살립니다</li>
         </ul>
       </div>
-      <figure class="shot sm mid"><img src="/assets/shots/packs-modal.webp" width="958" height="710" loading="lazy" alt="[팩] 창: Demo Shop과 Side Project, 그리고 새로 만들기 · 가져오기 · 내보내기." data-ta="alt:f.pk.alt"></figure>
+      <figure class="shot part" style="--ar:calc(958/710)"><div class="part-in"><img src="/assets/shots/packs-modal.webp" width="958" height="710" loading="lazy" alt="[팩] 창: Demo Shop과 Side Project, 그리고 새로 만들기 · 가져오기 · 내보내기." data-ta="alt:f.pk.alt"></div></figure>
     </div>
     <div class="grid flip-g">
       <div class="txt">
