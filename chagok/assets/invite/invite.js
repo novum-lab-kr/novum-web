@@ -97,6 +97,22 @@
     return svg;
   }
 
+  // ── 언어 (2026-11-06) ──
+  // 브라우저 첫 언어가 한국어가 아니면 영어로 보인다(앱과 같은 규칙: 한국어면 한국어, 나머지는 영어). ?lang=ko|en 으로 고를 수 있다.
+  var langParam = (location.search.match(/[?&]lang=(ko|en)\b/) || [])[1];
+  var browserLang = ((navigator.languages && navigator.languages[0]) || navigator.language || '').toLowerCase();
+  var EN = langParam ? langParam === 'en' : browserLang.indexOf('ko') !== 0;
+  function applyLanguage() {
+    if (!EN) return;
+    document.documentElement.lang = 'en';
+    Array.prototype.forEach.call(document.querySelectorAll('[data-en]'), function (el) {
+      setLines(el, el.getAttribute('data-en').replace(/<br>/g, '\n'));
+    });
+    $('store-ko').hidden = true;
+    $('store-en').hidden = false;
+    document.title = 'Chagok invite';
+  }
+
   // ── 화면 ──
   function showProblem(kind, max) {
     var copy = {
@@ -104,12 +120,17 @@
       full: ['shy', '자리가 다 찼어요', '이 목표는 ' + max + '명이 모두 함께하고 있어요.'],
       rate_limited: ['sleepy', '지금은 초대를\n확인할 수 없어요', '잠시 뒤에 이 초대 링크를 다시 열어 주세요.'],
     }[kind];
+    if (EN) copy = {
+      closed: ['curious', "You can't join\nthis goal", 'The goal was deleted or the invite link changed. Ask the friend who invited you for a new link.'],
+      full: ['shy', 'This goal is full', 'All ' + max + ' people have already joined this goal.'],
+      rate_limited: ['sleepy', "We can't check\nthis invite right now", 'Please open this invite link again in a little while.'],
+    }[kind];
     $('problem-mascot').src = '/assets/invite/mascot-' + copy[0] + '.svg';
     setLines($('problem-title'), copy[1]);
     $('problem-detail').textContent = copy[2];
     $('join').hidden = true;
     $('problem').hidden = false;
-    document.title = '차곡차곡 초대';
+    document.title = EN ? 'Chagok invite' : '차곡차곡 초대';
     frames();
   }
   function setLines(el, text) {
@@ -122,12 +143,14 @@
   function showOpen(data) {
     var name = data.goal && data.goal.name;
     if (name) {
-      setLines($('join-title'), '「' + name + '」\n같이 차곡차곡 쌓아요');
-      document.title = '「' + name + '」 차곡차곡 초대';
+      setLines($('join-title'), EN ? '\u201c' + name + '\u201d\nLet\'s fill it together' : '「' + name + '」\n같이 차곡차곡 쌓아요');
+      document.title = EN ? '\u201c' + name + '\u201d Chagok invite' : '「' + name + '」 차곡차곡 초대';
     }
     var owner = data.owner_name, n = data.member_count;
     if (owner && n >= 1) {
-      $('join-people-text').textContent = n > 1 ? owner + '님 외 ' + (n - 1) + '명이 함께해요' : owner + '님이 초대했어요';
+      $('join-people-text').textContent = EN
+        ? (n > 1 ? owner + ' and ' + (n - 1) + (n - 1 > 1 ? ' others are' : ' other is') + ' in' : owner + ' invited you')
+        : (n > 1 ? owner + '님 외 ' + (n - 1) + '명이 함께해요' : owner + '님이 초대했어요');
       $('join-people').hidden = false;
     }
     var ids = (data.taken_stickers || []).slice(0, 6);
@@ -168,6 +191,7 @@
   }
 
   function start() {
+    applyLanguage();
     frames();
     if (ro) watch();
     var raw = decodeURIComponent((location.pathname.match(/\/invite\/([^/]+)\/?$/) || [])[1] || '');

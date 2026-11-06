@@ -76,3 +76,15 @@ athena.novum-lab.com 과 같은 길이다. **`main` 에 합치는 순간 운영 
 검색용 파일: `chagok/robots.txt`(모두 허용, sitemap 주소), `chagok/sitemap.xml`(랜딩, 지원, 약관, 처리방침, 계정 삭제). 각 페이지 `<head>` 에 canonical 주소를 두고, 랜딩에는 iPhone Safari 앱 배너(`apple-itunes-app`, 앱 id 6824725721)를 둔다. 페이지를 더하거나 주소를 바꾸면 sitemap 도 고친다.
 
 `chagok/app-ads.txt` 는 AdMob 광고 판매자 확인용 한 줄이다(2026-10-29 출시 전에 미리 · `https://chagok.novum-lab.com/app-ads.txt`). 게시자 ID `pub-3557389923784580` 은 앱 `app.json` 의 iOS AdMob 앱 ID 앞부분이다(Android 쪽 `3940256099942544` 는 Google 테스트 ID 라 아니다). 앱 ID 나 AdMob 계정이 바뀌면 이 줄도 바꾼다. 검색 차단(noindex 헤더)과 상관없이 광고 크롤러가 읽는다.
+## 개발 사이트 (2026-11-06)
+
+`https://chagok-dev.novum-lab.com`은 개발 앱(`com.novumlab.chagok.dev`)과 개발 서버(Supabase chagok-dev)용이다. main 머지로 올라가지 않고, 손으로 올린다.
+
+```sh
+CHAGOK_DEPLOY_HOST=<서버 주소> sh deploy/chagok-dev.sh <chagok-app 저장소 경로>
+```
+
+- 지금 체크아웃의 `chagok/`를 올린다. 어느 브랜치든 공개 전에 미리 볼 수 있다.
+- 초대 페이지는 개발 서버를 읽고, [차곡차곡에서 열기]는 개발 앱(`chagok-dev://`)을 연다. 검색엔진은 막는다.
+- 개발 앱은 `.env.local`의 `EXPO_PUBLIC_INVITE_BASE`로 이 주소의 초대 링크를 만들고, 이 주소의 앱 링크만 받는다(앱 저장소 `app.config.js`).
+- 서버: `/var/www/chagok-site-dev`(chagok 계정), Caddy 블록 `chagok-dev.novum-lab.com`(백업 `/etc/caddy/Caddyfile.bak-20261106-chagok-dev`).
