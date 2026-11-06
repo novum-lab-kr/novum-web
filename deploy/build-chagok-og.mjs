@@ -1,6 +1,6 @@
 // 초대 링크 미리보기 그림(chagok/assets/invite/og.png, 1200×630, invite/index.html 의 og:image)을 만든다.
 //   node deploy/build-chagok-og.mjs
-// HTML 한 장(인라인 CSS, 사이트 도트 글꼴, 차곡이 SVG, stickers.json 스티커)을 쓰고 맥의 Chrome 헤드리스로 찍는다.
+// HTML 한 장(인라인 CSS, 사이트 도트 글꼴, 차곡이 SVG(기본 웃는 얼굴 mascot-smile, MASCOT=<이름>으로 바꿈), stickers.json 스티커)을 쓰고 맥의 Chrome 헤드리스로 찍는다.
 // 카카오톡은 미리보기 양옆을 조금 자르므로 차곡이와 글은 가운데에 두고, 스티커 타일은 글과 차곡이에서 40px 넘게,
 // 양옆 끝에서 60px 넘게 떨어뜨린다. 찍기 전에 같은 페이지를 한 번 더 열어 이 간격을 재고, 어기면 멈춘다.
 // Chrome 경로가 다르면 CHROME=<경로> 로 준다.
@@ -10,13 +10,13 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', 'chagok');
-const OUT = path.join(ROOT, 'assets', 'invite', 'og.png');
+const OUT = process.env.OUT ?? path.join(ROOT, 'assets', 'invite', 'og.png');
 const CHROME = process.env.CHROME ?? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const W = 1200, H = 630, GAP = 40, SIDE = 60;
 
 const ink = '#06261C', mint = '#AFE1CB', apricot = '#FD855F', ivory = '#FEF1D1';
 const font = fs.readFileSync(path.join(ROOT, 'assets/fonts/neodgm/neodgm.woff2')).toString('base64');
-const mascot = fs.readFileSync(path.join(ROOT, 'assets/invite/mascot-b3.svg'), 'utf8');
+const mascot = fs.readFileSync(path.join(ROOT, `assets/invite/mascot-${process.env.MASCOT ?? 'smile'}.svg`), 'utf8');
 const stickers = JSON.parse(fs.readFileSync(path.join(ROOT, 'assets/invite/stickers.json'), 'utf8'));
 
 // 타일: [스티커, 왼쪽, 위, 기울기]. 타일은 104px(그림자 8px 별도)
