@@ -4,6 +4,32 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="../assets/lang.js"></script>
+<script>
+if (!window.chagokLangRedirect) {
+  const measurementId = 'G-DR15LTP1EW';
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('consent', 'default', {
+    analytics_storage: 'denied',
+    region: ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB'],
+  });
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+  });
+  gtag('js', new Date());
+  gtag('config', measurementId, {
+    cookie_domain: 'chagok.novum-lab.com',
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false,
+  });
+  const googleTag = document.createElement('script');
+  googleTag.async = true;
+  googleTag.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+  document.head.append(googleTag);
+}
+</script>
 <title>Chagok - A sticker for what you did today</title>
 <meta name="description" content="On the days you do what you set out to do, tap an empty slot to place a sticker. A record app where your board fills up, one sticker at a time.">
 <meta property="og:type" content="website">

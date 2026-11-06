@@ -14,7 +14,7 @@
 
 **언어(2026-11-06):** 랜딩과 고객 지원은 `assets/lang.js`가 약관(`assets/policy.js`)과 같은 규칙으로 언어를 고른다: `?lang=ko|en` → 이 브라우저에 기억한 값(`chagok-policy-lang`, 약관과 같은 이름) → 브라우저 첫 언어(한국어면 한국어, 나머지는 영어). 짝 페이지는 `<html data-alt>`의 상대 주소라 개발 사이트에서도 같은 사이트 안으로 옮긴다. 고른 적 없는 검색엔진과 미리보기 로봇은 옮기지 않는다. 각 페이지에 `hreflang`(ko, en, x-default=en)을 두고 `sitemap.xml`에도 짝을 적는다. 영어 문구는 앱 `src/i18n/en.ts`(slots, Tally board, Calendar board, Finished, Own boards, One board)와 영어 스토어 스크린샷 문구에 맞춘다. 영어판 App Store 링크는 지역 없는 `https://apps.apple.com/app/id6824725721`, 배지는 Apple 공식 US-UK 검은색(`assets/img/app-store-badge-en.svg`, developer.apple.com 원본 그대로). 영어판 운영자 주소는 약관 영어판과 같은 영문 표기다. 영어판의 워치와 위젯은 영상 대신 영어 캡처 그림이고, 첫 화면 휴대폰도 영상 대신 목표 탭 캡처다(스플래시 영상 끝에 한국어 화면이 나와서). **랜딩 문구를 고치면 영어판(`en/index.html`)도 같이 고친다.**
 
-랜딩(`/`)에만 Google 애널리틱스(측정 ID `G-DR15LTP1EW`, 속성 「차곡차곡 랜딩」)를 넣는다. 영어판(`/en/`)에는 넣지 않는다(처리방침 2판 15절이 「웹사이트 첫 화면(https://chagok.novum-lab.com/)에만」이라고 적었다). 언어를 옮기는 중이면(`window.chagokLangRedirect`) 태그를 부르지 않는다. 처리방침 1판 15절이 이 설정을 설명하므로, 아래를 바꾸면 15절도 같이 고친다. 페이지 소스는 누구나 보므로 GA 코드에 주석을 달지 않고 이유는 여기에 적는다.
+랜딩 한국어(`/`)와 영어(`/en/`) 첫 화면에만 Google 애널리틱스(측정 ID `G-DR15LTP1EW`, 속성 「차곡차곡 랜딩」)를 넣는다. 해외 접근을 보려고 영어판에도 넣었고(2026-11-07 사용자), 처리방침 2판 15절도 두 주소를 적는다. 영어 지원 페이지 등 다른 페이지에는 넣지 않는다. 언어를 옮기는 중이면(`window.chagokLangRedirect`) 태그를 부르지 않는다. 처리방침 1판 15절이 이 설정을 설명하므로, 아래를 바꾸면 15절도 같이 고친다. 페이지 소스는 누구나 보므로 GA 코드에 주석을 달지 않고 이유는 여기에 적는다.
 - 동의 기본값은 태그를 읽기 전에 정한다. EEA 30개국과 영국은 `analytics_storage: 'denied'`(쿠키 없이 측정), 광고 항목 셋은 모든 지역에서 `denied`.
 - `cookie_domain` 을 `chagok.novum-lab.com` 으로 고정한다. 기본값 `auto` 는 쿠키를 `.novum-lab.com` 에 저장해 다른 서비스 주소까지 보낸다.
 - `allow_google_signals`, `allow_ad_personalization_signals` 는 `false`. 콘솔의 데이터 보관은 2개월(2026-11-04 확인).
