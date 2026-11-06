@@ -24,6 +24,8 @@
 <meta name="apple-itunes-app" content="app-id=6824725721">
 <link rel="icon" href="/assets/img/icon.png">
 <link rel="stylesheet" href="/assets/invite/invite.css">
+<!-- 주소에 코드가 있으면 서버 답이 올 때까지 내용을 감춘다(기본 안내가 잠깐 보였다 바뀌지 않게). invite.js 가 답을 받거나 4초가 지나면 푼다. 스크립트가 없으면 감추지 않는다 -->
+<script>if (/\/invite\/[^/]+\/?$/.test(location.pathname)) document.documentElement.className += ' invite-wait';</script>
 </head>
 <body>
 <header class="brand"><img src="/assets/img/icon.png" alt="" width="28" height="28"><span>차곡차곡</span></header>
@@ -60,6 +62,11 @@
     </div>
   </section>
 </main>
+<!-- 서버 답이 늦을 때: 차곡이가 머리 위에 블록을 하나씩 쌓으며 가져온다 (invite.js 가 0.6초 뒤에 띄운다) -->
+<div class="loading" id="loading" role="status" hidden>
+  <img class="mascot mascot-lg" id="loading-mascot" src="/assets/invite/mascot-b3.svg" alt="" width="128" height="128">
+  <p class="caption">초대를 가져오고 있어요</p>
+</div>
 <script src="/assets/invite/invite.js" defer></script>
 </body>
 </html>

@@ -64,4 +64,8 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: center; 
 .card-panel { width: 100%; display: flex; flex-direction: column; gap: 20px; padding-top: 36px; }
 .card-panel .title { margin-bottom: -12px; }
 
+/* 서버 답을 기다리는 동안 (index.html head 의 스크립트, invite.js 의 reveal) */
+.invite-wait main { visibility: hidden; }
+.loading { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding-bottom: 64px; }
+
 @media (prefers-reduced-motion: reduce) { .px-button:active .px-frame-surface, .px-button:active > .label { transform: none; } }

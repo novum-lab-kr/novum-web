@@ -14,7 +14,7 @@ const ink = '#06261C', lcd = '#C7DE94', apricot = '#FD855F', ivory = '#FEF1D1', 
 const cellColor = { '#': ink, g: lcd, o: apricot, w: ivory, m: mint };
 const source = JSON.parse(fs.readFileSync(path.join(app, 'docs/design/character/character-data.json'), 'utf8'));
 const art = { ...source.faces, ...source.variants, ...source.blockStates };
-for (const pose of ['b3', 'curious', 'shy', 'sleepy']) {
+for (const pose of ['b0', 'b1', 'b2', 'b3', 'curious', 'shy', 'sleepy']) {
   const rows = art[pose];
   const byCell = new Map();
   rows.forEach((row, y) => {
@@ -40,4 +40,4 @@ for (const m of ts.matchAll(/\{id:'([^']+)',label:'[^']*',pack:'[^']+',layers:\[
   stickers[m[1]] = [...m[2].matchAll(/\{color:'([^']+)',d:'([^']+)'\}/g)].map((l) => [l[1], l[2]]);
 }
 fs.writeFileSync(path.join(OUT, 'stickers.json'), JSON.stringify(stickers));
-console.log(`차곡이 4장, 스티커 ${Object.keys(stickers).length}종`);
+console.log(`차곡이 7장, 스티커 ${Object.keys(stickers).length}종`);
