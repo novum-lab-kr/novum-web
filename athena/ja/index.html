@@ -87,7 +87,7 @@
     <div class="h3-head">
       <h1 data-t="n.h1">AIエージェントを統率し、<br>より良いソフトウェアを完成させる。</h1>
       <div>
-        <p class="h3-lead" data-t="n.lead">Athena Studio は AI コーディングエージェントを動かす Mac アプリです。チームリードの Athena にやりたいことを伝えると、計画を立ててリポジトリごとにエージェントを割り当て、決めることがあればあなたに聞きます。あなたは diff を見てマージします。</p>
+        <p class="h3-lead" data-t="n.lead">Athena Studio は AI コーディングエージェントを動かす Mac アプリです。チームリードの Athena がまずリポジトリを読み、ルール・ノート・チェックスクリプトを備えた担当エージェントをリポジトリごとに作ります。そのあとやりたいことを伝えると、計画を立ててリポジトリごとの担当エージェントに任せ、決めることがあればあなたに聞きます。あなたは diff を見てマージします。</p>
         <div class="btns">
           <a class="btn gold" href="/ja/download/" data-t="n.dl">macOS 版をダウンロード</a>
           <a class="btn" href="#flow" data-t="n.cta2">使い方の流れ ↓</a>
@@ -101,7 +101,7 @@
         <img src="/assets/shots/flow.gif" width="1200" height="676" alt="作業中の Athena Studio:1 つの依頼がリポジトリごとのワークスペースで web・api・mobile-app の各エージェントに分かれて動き、下のモニターが埋まっていきます。api エージェントの質問に [作業] で答えると、Athena が結果をマージします。" data-ta="alt:n.hero.alt">
       </picture>
     </figure>
-    <p class="h3-steps"><span data-t="n.steps">インストール → リポジトリをつなぐ → Athena に依頼 → 質問に答える → PR を確認</span></p>
+    <p class="h3-steps"><span data-t="n.steps">インストール → リポジトリを読んでエージェントを作成 → Athena に依頼 → 質問に答える → PR を確認</span></p>
   </div>
 </div>
 
@@ -109,10 +109,10 @@
   <div class="wrap">
     <p class="h3-num" data-t="n.why.l">Athena Studio を選ぶ理由</p>
     <div class="why-grid">
+      <div><span class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4.5h10a3 3 0 0 1 3 3v12H8a3 3 0 0 1-3-3zM5 16.5a3 3 0 0 1 3-3h10"/></svg></span><h3 data-t="n.why0.t">リポジトリを知る担当エージェント</h3><p data-t="n.why0.p">Athena がリポジトリごとに読み、ルール・構成メモ・注意点ノート・チェックスクリプトを備えたエージェントを作ります。確認できなかったことは推測せず「要確認」として残します。作業後に残したノートは次の作業が読みます。</p></div>
       <div><span class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6h5v5H6zM13 6h5v5h-5zM6 13h5v5H6zM13 13h5v5h-5z"/></svg></span><h3 data-t="n.why1.t">複数のリポジトリを同時に</h3><p data-t="n.why1.p">ひとつの依頼が web・api・mobile にまたがっても大丈夫です。Athena が分け、リポジトリごとのエージェントがそれぞれのブランチで同時に作業します。</p></div>
       <div><span class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0-6 6c0 2.2 1.2 3.6 2.3 4.7.6.6.7 1.3.7 2.3h6c0-1 .1-1.7.7-2.3C16.8 12.6 18 11.2 18 9a6 6 0 0 0-6-6zM9.5 19h5M10.5 21.5h3"/></svg></span><h3 data-t="n.why2.t">あなたは決めるときだけ</h3><p data-t="n.why2.p">エージェントの質問はひとつの [作業] リストに集まります。誰があなたを待っているか、ターミナルを探し回る必要はありません。</p></div>
       <div><span class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l4.5 4.5L20 7"/></svg></span><h3 data-t="n.why3.t">マージ前に確認</h3><p data-t="n.why3.p">エージェントはプルリクエストを開く前にテストを実行します。自動レビューを有効にしたリポジトリでは、マージ前に指摘を受けて直します。</p></div>
-      <div><span class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4.5h10a3 3 0 0 1 3 3v12H8a3 3 0 0 1-3-3zM5 16.5a3 3 0 0 1 3-3h10"/></svg></span><h3 data-t="n.why4.t">リポジトリを覚えていく</h3><p data-t="n.why4.p">作業後に残したノートを、そのリポジトリの次の作業が読みます。</p></div>
     </div>
   </div>
 </section>
@@ -121,7 +121,10 @@
   <div class="wrap">
     <p class="h3-num" data-t="n.hw.l">しくみ</p>
     <h2 data-t="n.hw.h">作業ごとに計画書を書き、専用のワークツリーで進め、検証してから出します。</h2>
-    <p class="h3-p" data-t="n.hw.p">画面の裏では、どの依頼も同じ 5 つの段階を通ります。</p>
+    <p class="h3-p" data-t="n.hw.p">初回設定はパックを作るときに 1 回だけ行います。そのあとは画面の裏で、どの依頼も同じ 5 つの段階を通ります。</p>
+    <ol class="howto hw-steps" style="grid-template-columns:1fr">
+      <li><span class="n">0</span><b data-t="n.hw.0t">初回設定(1 回)</b><span data-t="n.hw.0p">Athena は各リポジトリの本番ブランチを変更せずに読むだけです。リポジトリごとにルール・構成メモ・注意点ノート・チェックスクリプトを備えた担当エージェントを作り、どの依頼をどのリポジトリに送るかを決めるルーティング表を書きます。確認できなかったことは推測せず「要確認」として残します。</span></li>
+    </ol>
     <ol class="howto hw-steps">
       <li><span class="n">1</span><b data-t="n.hw.1t">依頼</b><span data-t="n.hw.1p">ふだんの言葉で頼みます。Athena がパックのルーティング表を読み、どのリポジトリに関わるか、リポジトリごとにどのエージェントが担当するかを決めます。</span></li>
       <li><span class="n">2</span><b data-t="n.hw.2t">計画書</b><span data-t="n.hw.2p">すべての変更は計画書から始まります。あなたが決めることがある、または複数のリポジトリをそろえる必要があるときは決定コンソールが付き、あなたが確定するまで作業は渡されません。</span></li>

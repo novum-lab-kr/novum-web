@@ -87,7 +87,7 @@
     <div class="h3-head">
       <h1 data-t="n.h1">AI 에이전트를 조율하고,<br>더 나은 소프트웨어를 완성하다.</h1>
       <div>
-        <p class="h3-lead" data-t="n.lead">Athena Studio는 AI 코딩 에이전트를 돌리는 맥 앱입니다. 팀 리드 Athena에게 할 일을 말하면 계획을 세워 레포마다 에이전트를 붙이고, 정할 게 생기면 나에게 묻습니다. 나는 diff를 보고 머지하면 됩니다.</p>
+        <p class="h3-lead" data-t="n.lead">Athena Studio는 AI 코딩 에이전트를 돌리는 맥 앱입니다. 팀 리드 Athena가 먼저 내 레포를 읽고, 레포마다 규칙 · 노트 · 검증 스크립트를 갖춘 담당 에이전트를 만듭니다. 그다음 할 일을 말하면 계획을 세워 레포마다 담당 에이전트에게 맡기고, 정할 게 생기면 나에게 묻습니다. 나는 diff를 보고 머지하면 됩니다.</p>
         <div class="btns">
           <a class="btn gold" href="/ko/download/" data-t="n.dl">macOS용 다운로드</a>
           <a class="btn" href="#flow" data-t="n.cta2">사용 흐름 보기 ↓</a>
@@ -101,7 +101,7 @@
         <img src="/assets/shots/flow.gif" width="1200" height="676" alt="일하는 Athena Studio: 요청 하나가 레포별 작업 공간에서 web · api · mobile-app 에이전트로 나뉘어 일하고 아래 모니터가 채워지며, api 에이전트의 질문에 [작업]에서 답하면 Athena가 결과를 머지합니다." data-ta="alt:n.hero.alt">
       </picture>
     </figure>
-    <p class="h3-steps"><span data-t="n.steps">설치 → 레포 연결 → Athena에게 요청 → 질문에 답하기 → PR 확인</span></p>
+    <p class="h3-steps"><span data-t="n.steps">설치 → 레포 분석 · 레포마다 에이전트 생성 → Athena에게 요청 → 질문에 답하기 → PR 확인</span></p>
   </div>
 </div>
 
@@ -109,10 +109,10 @@
   <div class="wrap">
     <p class="h3-num" data-t="n.why.l">왜 Athena Studio입니까</p>
     <div class="why-grid">
+      <div><span class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4.5h10a3 3 0 0 1 3 3v12H8a3 3 0 0 1-3-3zM5 16.5a3 3 0 0 1 3-3h10"/></svg></span><h3 data-t="n.why0.t">레포를 아는 담당 에이전트</h3><p data-t="n.why0.p">Athena가 레포마다 읽고 규칙 · 구조 노트 · 주의할 점 노트 · 검증 스크립트를 갖춘 에이전트를 만듭니다. 확인하지 못한 것은 추측하지 않고 '확인 필요'로 남깁니다. 작업이 끝날 때 남긴 노트는 다음 작업이 읽습니다.</p></div>
       <div><span class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6h5v5H6zM13 6h5v5h-5zM6 13h5v5H6zM13 13h5v5h-5z"/></svg></span><h3 data-t="n.why1.t">레포 여러 개를 한 번에</h3><p data-t="n.why1.p">요청 하나가 web · api · mobile에 걸쳐도 됩니다. Athena가 나누고, 레포마다 에이전트가 자기 브랜치에서 동시에 일합니다.</p></div>
       <div><span class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0-6 6c0 2.2 1.2 3.6 2.3 4.7.6.6.7 1.3.7 2.3h6c0-1 .1-1.7.7-2.3C16.8 12.6 18 11.2 18 9a6 6 0 0 0-6-6zM9.5 19h5M10.5 21.5h3"/></svg></span><h3 data-t="n.why2.t">나는 정할 때만</h3><p data-t="n.why2.p">에이전트의 질문은 [작업] 목록 하나로 모입니다. 누가 나를 기다리는지 터미널을 뒤질 필요가 없습니다.</p></div>
       <div><span class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l4.5 4.5L20 7"/></svg></span><h3 data-t="n.why3.t">머지 전에 확인</h3><p data-t="n.why3.p">에이전트는 PR을 열기 전에 테스트를 돌립니다. 자동 리뷰를 켠 레포에서는 머지 전에 고칠 점을 받아 고칩니다.</p></div>
-      <div><span class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4.5h10a3 3 0 0 1 3 3v12H8a3 3 0 0 1-3-3zM5 16.5a3 3 0 0 1 3-3h10"/></svg></span><h3 data-t="n.why4.t">레포를 점점 알아 갑니다</h3><p data-t="n.why4.p">작업이 끝날 때 남긴 노트를 그 레포의 다음 작업이 읽습니다.</p></div>
     </div>
   </div>
 </section>
@@ -121,7 +121,10 @@
   <div class="wrap">
     <p class="h3-num" data-t="n.hw.l">작동 방식</p>
     <h2 data-t="n.hw.h">작업마다 계획서를 쓰고, 워크트리를 따로 떼고, 검증한 뒤에 내보냅니다.</h2>
-    <p class="h3-p" data-t="n.hw.p">화면 뒤에서는 모든 요청이 같은 다섯 단계를 거칩니다.</p>
+    <p class="h3-p" data-t="n.hw.p">첫 설정은 팩을 만들 때 한 번 합니다. 그다음부터는 화면 뒤에서 모든 요청이 같은 다섯 단계를 거칩니다.</p>
+    <ol class="howto hw-steps" style="grid-template-columns:1fr">
+      <li><span class="n">0</span><b data-t="n.hw.0t">첫 설정 (한 번)</b><span data-t="n.hw.0p">Athena가 레포마다 운영 브랜치를 바꾸지 않고 읽기만 합니다. 레포마다 규칙 · 구조 노트 · 주의할 점 노트 · 검증 스크립트를 갖춘 담당 에이전트를 만들고, 어떤 요청을 어느 레포로 보낼지 정하는 라우팅 표를 씁니다. 확인하지 못한 것은 추측하지 않고 '확인 필요'로 남깁니다.</span></li>
+    </ol>
     <ol class="howto hw-steps">
       <li><span class="n">1</span><b data-t="n.hw.1t">요청</b><span data-t="n.hw.1p">평소 말로 요청합니다. Athena가 팩의 라우팅 표를 읽고 어느 레포에 닿는 일인지, 레포마다 어느 에이전트가 맡는지 정합니다.</span></li>
       <li><span class="n">2</span><b data-t="n.hw.2t">계획서</b><span data-t="n.hw.2p">모든 변경은 계획서에서 시작합니다. 내가 정할 것이 있거나 여러 레포를 맞춰야 하면 결정 콘솔이 함께 오고, 내가 확정하기 전에는 일을 넘기지 않습니다.</span></li>

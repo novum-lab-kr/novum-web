@@ -67,6 +67,7 @@
     <p class="lead" data-t="f.lead2">What each part of the app does. For step-by-step use, see the <a href="/docs/#workflow">Docs</a>.</p>
     <div class="toc">
       <a href="#workspaces" data-t="f.ws.label">Workspaces</a>
+      <a href="#setup" data-t="f.su.l">Repositories to agents</a>
       <a href="#how" data-t="f.hw.l">How agents work</a>
       <a href="#status" data-t="f.g2.l">Progress and questions</a>
       <a href="#decisions" data-t="f.g3.l">Decisions and code</a>
@@ -99,6 +100,23 @@
         </ul>
       </div>
       <figure class="shot"><img data-lang-src="/assets/shots/workspace-{l}" src="/assets/shots/workspace-en.webp" srcset="/assets/shots/workspace-en-1200.webp 1200w, /assets/shots/workspace-en.webp 2400w" sizes="(max-width: 1180px) 100vw, 1140px" width="2400" height="1350" alt="Athena Studio window: workspaces on the left, Athena and a web agent working side by side, and the agent monitor below." data-ta="alt:h.hero.alt"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="feat" id="setup">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label" data-t="f.su.l">Repositories to agents</div>
+      <h2 data-t="f.su.h">Athena reads your repositories and makes an agent for each.</h2>
+    </div>
+    <div class="quad q3">
+      <div><h3 data-t="f.su.rd.h">Reads your repositories</h3><p data-t="f.su.rd.p">On first setup, Athena finds the repositories on your Mac and guesses each one's type, production branch and PR base. You confirm which to include and fix any wrong guesses. It reads each production branch and doesn't change your repositories.</p></div>
+      <div><h3 data-t="f.su.ag.h">An agent for each repository</h3><p data-t="f.su.ag.p">Each repository gets its own agent with rules, structure notes, a gotchas notebook and a check script. Athena fills in what the agent handles, the rules it must follow and the language and type status, and writes a short service overview.</p></div>
+      <div><h3 data-t="f.su.rt.h">A routing table</h3><p data-t="f.su.rt.p">Athena writes the routing table, which says which request goes to which repository. Later requests are split with it, and each part goes to that repository's agent.</p></div>
+      <div><h3 data-t="f.su.nc.h">Marked, not guessed</h3><p data-t="f.su.nc.p">Anything Athena can't confirm is marked for you to check. A check that fails or is skipped isn't counted as passed; it's listed for you.</p></div>
+      <div><h3 data-t="f.su.ask.h">Asks before it acts</h3><p data-t="f.su.ask.p">Athena asks before installing anything and tells you before it fetches for the code baseline. Automatic PR review and merge stay off for repositories you didn't pick, and keys never go through the chat.</p></div>
+      <div><h3 data-t="f.su.rp.h">Checked, then reported</h3><p data-t="f.su.rp.p">Athena runs each repository's checks once and takes a code baseline, so later updates only touch what changed. Then it reports what it made and what still needs you.</p></div>
     </div>
   </div>
 </section>

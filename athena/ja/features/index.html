@@ -67,6 +67,7 @@
     <p class="lead" data-t="f.lead2">アプリの各部分の役割です。手順ごとの使い方は<a href="/ja/docs/#workflow">ドキュメント</a>にあります。</p>
     <div class="toc">
       <a href="#workspaces" data-t="f.ws.label">ワークスペース</a>
+      <a href="#setup" data-t="f.su.l">リポジトリからエージェントへ</a>
       <a href="#how" data-t="f.hw.l">エージェントの動き方</a>
       <a href="#status" data-t="f.g2.l">進捗と質問</a>
       <a href="#decisions" data-t="f.g3.l">決定とコード</a>
@@ -99,6 +100,23 @@
         </ul>
       </div>
       <figure class="shot"><img data-lang-src="/assets/shots/workspace-{l}" src="/assets/shots/workspace-ja.webp" srcset="/assets/shots/workspace-ja-1200.webp 1200w, /assets/shots/workspace-ja.webp 2400w" sizes="(max-width: 1180px) 100vw, 1140px" width="2400" height="1350" alt="Athena Studio のウィンドウ。左にワークスペース、中央で Athena と Web エージェントが並んで作業し、下にエージェントモニター。" data-ta="alt:h.hero.alt"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="feat" id="setup">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label" data-t="f.su.l">リポジトリからエージェントへ</div>
+      <h2 data-t="f.su.h">Athena がリポジトリを読み、リポジトリごとに担当エージェントを作ります。</h2>
+    </div>
+    <div class="quad q3">
+      <div><h3 data-t="f.su.rd.h">リポジトリを読む</h3><p data-t="f.su.rd.p">初回設定で Athena は Mac 上のリポジトリを見つけ、それぞれの種類・本番ブランチ・PR のベースを推測します。含めるリポジトリはあなたが確認し、推測の誤りはここで直します。本番ブランチを読むだけで、リポジトリは変更しません。</p></div>
+      <div><h3 data-t="f.su.ag.h">リポジトリごとのエージェント</h3><p data-t="f.su.ag.p">リポジトリごとに、ルール・構成メモ・注意点ノート・チェックスクリプトを備えたエージェントができます。Athena がエージェントの担当範囲、必ず守るルール、言語と型の状況を書き込み、短いサービス概要を書きます。</p></div>
+      <div><h3 data-t="f.su.rt.h">ルーティング表</h3><p data-t="f.su.rt.p">どの依頼をどのリポジトリに送るかを決めるルーティング表は Athena が書きます。以降の依頼はこの表で分けられ、リポジトリごとの担当エージェントに渡ります。</p></div>
+      <div><h3 data-t="f.su.nc.h">推測せずに印を付ける</h3><p data-t="f.su.nc.p">Athena が確認できなかったことは「要確認」として残します。失敗したチェックやスキップしたチェックは合格扱いにせず、確認する一覧に載せます。</p></div>
+      <div><h3 data-t="f.su.ask.h">動く前に確認する</h3><p data-t="f.su.ask.p">確認せずにインストールせず、コードのベースラインのために fetch するときも先に知らせます。選んでいないリポジトリで自動 PR レビューやマージをオンにせず、キーをチャットで受け取ることもありません。</p></div>
+      <div><h3 data-t="f.su.rp.h">チェックしてから報告</h3><p data-t="f.su.rp.p">リポジトリごとにチェックを 1 回実行し、コードのベースラインを取るので、以降の更新は変わった部分だけです。そのうえで、作ったものとまだあなたが必要なことを報告します。</p></div>
     </div>
   </div>
 </section>

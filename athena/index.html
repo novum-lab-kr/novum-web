@@ -87,7 +87,7 @@
     <div class="h3-head">
       <h1 data-t="n.h1">Orchestrate Agents.<br>Ship Better Software.</h1>
       <div>
-        <p class="h3-lead" data-t="n.lead">Athena Studio is a Mac app for running AI coding agents. Tell Athena, the team lead, what you want. It writes a plan, puts an agent on each repository and asks you when something needs deciding. You read the diff and merge.</p>
+        <p class="h3-lead" data-t="n.lead">Athena Studio is a Mac app for running AI coding agents. Athena, the team lead, first reads your repositories and makes an agent for each one, with its rules, notes and check script. Then tell Athena what you want: it writes a plan, hands each part to that repository's agent and asks you when something needs deciding. You read the diff and merge.</p>
         <div class="btns">
           <a class="btn gold" href="/download/" data-t="n.dl">Download for macOS</a>
           <a class="btn" href="#flow" data-t="n.cta2">See the workflow ↓</a>
@@ -101,7 +101,7 @@
         <img src="/assets/shots/flow.gif" width="1200" height="676" alt="Athena Studio at work: a request becomes web, api and mobile-app agents in each repository's workspace while the monitor below fills up, then an api agent's question is answered in Work and Athena merges the result." data-ta="alt:n.hero.alt">
       </picture>
     </figure>
-    <p class="h3-steps"><span data-t="n.steps">Install → connect repositories → ask Athena → answer questions → review the PR</span></p>
+    <p class="h3-steps"><span data-t="n.steps">Install → Athena reads your repositories and makes their agents → ask Athena → answer questions → review the PR</span></p>
   </div>
 </div>
 
@@ -109,10 +109,10 @@
   <div class="wrap">
     <p class="h3-num" data-t="n.why.l">Why Athena Studio</p>
     <div class="why-grid">
+      <div><span class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4.5h10a3 3 0 0 1 3 3v12H8a3 3 0 0 1-3-3zM5 16.5a3 3 0 0 1 3-3h10"/></svg></span><h3 data-t="n.why0.t">An agent that knows each repository</h3><p data-t="n.why0.p">Athena reads each repository and makes its agent, with rules, structure notes, a gotchas notebook and a check script. Anything it can't confirm is marked for you to check, not guessed. Notes you keep after a task are read by the next one.</p></div>
       <div><span class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6h5v5H6zM13 6h5v5h-5zM6 13h5v5H6zM13 13h5v5h-5z"/></svg></span><h3 data-t="n.why1.t">Several repositories at once</h3><p data-t="n.why1.p">One request can touch web, api and mobile. Athena splits it, and an agent works on each repository at the same time, on its own branch.</p></div>
       <div><span class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0-6 6c0 2.2 1.2 3.6 2.3 4.7.6.6.7 1.3.7 2.3h6c0-1 .1-1.7.7-2.3C16.8 12.6 18 11.2 18 9a6 6 0 0 0-6-6zM9.5 19h5M10.5 21.5h3"/></svg></span><h3 data-t="n.why2.t">You step in only to decide</h3><p data-t="n.why2.p">Agents bring their questions to one Work list, so you don't scroll through terminals to find who is waiting on you.</p></div>
       <div><span class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l4.5 4.5L20 7"/></svg></span><h3 data-t="n.why3.t">Checked before it merges</h3><p data-t="n.why3.p">Agents run tests before they open a pull request. In repositories where you turn it on, automatic review asks for fixes before the merge.</p></div>
-      <div><span class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4.5h10a3 3 0 0 1 3 3v12H8a3 3 0 0 1-3-3zM5 16.5a3 3 0 0 1 3-3h10"/></svg></span><h3 data-t="n.why4.t">Learns each repository</h3><p data-t="n.why4.p">Notes you keep after a task are read by the next task in that repository.</p></div>
     </div>
   </div>
 </section>
@@ -121,7 +121,10 @@
   <div class="wrap">
     <p class="h3-num" data-t="n.hw.l">How it works</p>
     <h2 data-t="n.hw.h">Every task gets a plan, its own worktree and a check before it ships.</h2>
-    <p class="h3-p" data-t="n.hw.p">Behind the screens, every request goes through the same five steps.</p>
+    <p class="h3-p" data-t="n.hw.p">First setup runs once, when you create a pack. After that, every request goes through the same five steps behind the screens.</p>
+    <ol class="howto hw-steps" style="grid-template-columns:1fr">
+      <li><span class="n">0</span><b data-t="n.hw.0t">First setup, once</b><span data-t="n.hw.0p">Athena reads each repository's production branch without changing it. It makes an agent for each repository with its rules, structure notes, a gotchas notebook and a check script, and writes the routing table that says which request goes to which repository. Anything it can't confirm is marked for you to check, not guessed.</span></li>
+    </ol>
     <ol class="howto hw-steps">
       <li><span class="n">1</span><b data-t="n.hw.1t">Request</b><span data-t="n.hw.1p">Ask in plain words. Athena reads the pack's routing table to see which repositories the request touches and which agent handles each one.</span></li>
       <li><span class="n">2</span><b data-t="n.hw.2t">Plan</b><span data-t="n.hw.2p">Every change starts from a written plan. If something is yours to decide, or several repositories must line up, the plan comes with a decision console, and no work is handed out until you confirm.</span></li>

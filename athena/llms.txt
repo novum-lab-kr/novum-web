@@ -8,6 +8,7 @@ Free · macOS 13+ · Apple Silicon / Intel · Needs Claude Code or Codex. © 202
 
 Every task gets a plan, its own worktree and a check before it ships.
 
+0. First setup, once: Athena reads each repository's production branch without changing it. It makes an agent for each repository with its rules, structure notes, a gotchas notebook and a check script, and writes the routing table that says which request goes to which repository. Anything it can't confirm is marked for you to check, not guessed.
 1. Request: Ask in plain words. Athena reads the pack's routing table to see which repositories the request touches and which agent handles each one.
 2. Plan: Every change starts from a written plan. If something is yours to decide, or several repositories must line up, the plan comes with a decision console, and no work is handed out until you confirm.
 3. A worktree per task: Each task gets a new branch in its own git worktree, a separate working folder. Your main checkout stays untouched, and several tasks run side by side.
@@ -16,6 +17,12 @@ Every task gets a plan, its own worktree and a check before it ships.
 
 ## Features
 
+- Reads your repositories: On first setup, Athena finds the repositories on your Mac and guesses each one's type, production branch and PR base. You confirm which to include and fix any wrong guesses. It reads each production branch and doesn't change your repositories.
+- An agent for each repository: Each repository gets its own agent with rules, structure notes, a gotchas notebook and a check script. Athena fills in what the agent handles, the rules it must follow and the language and type status, and writes a short service overview.
+- A routing table: Athena writes the routing table, which says which request goes to which repository. Later requests are split with it, and each part goes to that repository's agent.
+- Marked, not guessed: Anything Athena can't confirm is marked for you to check. A check that fails or is skipped isn't counted as passed; it's listed for you.
+- Asks before it acts: Athena asks before installing anything and tells you before it fetches for the code baseline. Automatic PR review and merge stay off for repositories you didn't pick, and keys never go through the chat.
+- Checked, then reported: Athena runs each repository's checks once and takes a code baseline, so later updates only touch what changed. Then it reports what it made and what still needs you.
 - Routing and an agent per repository: The pack's routing table maps each repository to its agent. Athena uses it to split a request, and each agent reads its repository's rules, structure and notes before it starts. Work that crosses repositories goes in order, shared packages and the backend first; independent work runs at the same time.
 - A plan for every change: Nothing changes without a plan file. A short plan is enough when your request already says what to do. When something is yours to decide, or several repositories must line up, Athena writes a full plan with a decision console and waits for you to confirm. Each plan keeps a checkpoint, so a new session picks up where the last one stopped.
 - A git worktree for each task: Before an agent starts, Athena creates a new branch from your base branch in its own worktree: a separate working folder for that task. Your main checkout and its uncommitted changes stay as they are, even when the repository is messy, and several tasks run side by side.
