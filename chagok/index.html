@@ -1,9 +1,11 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko" data-alt="en/">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="assets/lang.js"></script>
 <script>
+if (!window.chagokLangRedirect) {
   const measurementId = 'G-DR15LTP1EW';
   window.dataLayer = window.dataLayer || [];
   function gtag() { dataLayer.push(arguments); }
@@ -26,6 +28,7 @@
   googleTag.async = true;
   googleTag.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
   document.head.append(googleTag);
+}
 </script>
 <title>차곡차곡 - 오늘 해낸 일에 스티커 한 장</title>
 <meta name="description" content="내가 정한 일을 해낸 날, 빈칸을 톡 눌러 스티커를 붙여요. 붙인 스티커만큼 판이 차곡차곡 채워지는 기록 앱.">
@@ -37,8 +40,12 @@
 <link rel="icon" href="assets/img/icon.png">
 <link rel="stylesheet" href="assets/landing.css">
 <link rel="canonical" href="https://chagok.novum-lab.com/">
+<link rel="alternate" hreflang="ko" href="https://chagok.novum-lab.com/">
+<link rel="alternate" hreflang="en" href="https://chagok.novum-lab.com/en/">
+<link rel="alternate" hreflang="x-default" href="https://chagok.novum-lab.com/en/">
 <meta name="apple-itunes-app" content="app-id=6824725721">
 <meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:site_name" content="차곡차곡">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -49,6 +56,7 @@
 <nav class="top">
   <div class="wrap">
     <a class="brand" href="#top"><img src="assets/img/icon.png" alt="">차곡차곡</a>
+    <a class="lang" href="en/?lang=en" hreflang="en" lang="en">English</a>
     <a class="store-badge sm" href="https://apps.apple.com/kr/app/%EC%B0%A8%EA%B3%A1%EC%B0%A8%EA%B3%A1-%EC%8A%A4%ED%8B%B0%EC%BB%A4%EB%A1%9C-%EC%8C%93%EB%8A%94-%EA%B8%B0%EB%A1%9D/id6824725721"><img src="assets/img/app-store-badge-ko.svg" alt="App Store에서 다운로드하기"></a>
   </div>
 </nav>
@@ -85,8 +93,8 @@
 <section class="m-sec m-how">
   <h2>판 하나가 채워지기까지</h2>
   <div class="m-two">
-    <figure><div class="m-shot" style="--ar:530/642;--mt:-32.453%;--w:101.887%;--ml:-0.943%"><img src="assets/img/shot-water.jpg" alt="적립판. 물 2L 마시기 12칸 중 8칸"></div><figcaption><b>적립판</b>칸 수를 정해 채워요</figcaption></figure>
-    <figure><div class="m-shot" style="--ar:530/709;--mt:-32.453%;--w:101.887%;--ml:-0.943%"><img src="assets/img/shot-mood.jpg" alt="달력판. 10월 날짜마다 하트"></div><figcaption><b>달력판</b>해낸 날짜에 붙여요</figcaption></figure>
+    <figure><div class="m-shot" style="--ar:530/744;--mt:-32.453%;--w:101.887%;--ml:-0.943%"><img src="assets/img/shot-tally.jpg" alt="적립판. 자기 전 책 10쪽 15칸 중 11칸"></div><figcaption><b>적립판</b>칸 수를 정해 채워요</figcaption></figure>
+    <figure><div class="m-shot" style="--ar:530/696;--mt:-32.453%;--w:101.887%;--ml:-0.943%"><img src="assets/img/shot-mood.jpg" alt="달력판. 10월 날짜마다 하트"></div><figcaption><b>달력판</b>해낸 날짜에 붙여요</figcaption></figure>
   </div>
   <ol>
     <li><b>1</b><div><strong>목표를 하나 정해요</strong>이름을 짓고 스티커를 골라요. 달력판은 끝나는 날을 정할 수도 있어요.</div></li>
@@ -119,6 +127,16 @@
   <p>앱을 열지 않아도 홈 화면 위젯에서 빈칸을 누르면 바로 붙어요. 목표 하나, 적립판, 이번 달 세 가지 위젯 중에 고르고, 바탕색도 골라요.</p>
 </section>
 
+<section class="m-sec m-together">
+  <h2>친구와 함께 채워요</h2>
+  <p>초대 링크를 보내면 친구가 같은 목표에 들어와요. 나를 포함해 6명까지 함께해요.</p>
+  <div class="m-two">
+    <figure><div class="m-shot" style="--ar:540/690;--mt:-15.74%"><img src="assets/img/shot-together-each.jpg" alt="각자 판. 하루 30분 걷기 내 판 아래에 친구 두 명의 판이 한 줄씩 놓여 있다"></div><figcaption><b>각자 판에</b>친구 판은 내 판 아래에 같이 봐요</figcaption></figure>
+    <figure><div class="m-shot" style="--ar:540/690;--mt:-15.74%"><img src="assets/img/shot-together-one.jpg" alt="한 판. 같이 물 마시기 판에 물방울과 고양이 스티커가 섞여 붙어 있다"></div><figcaption><b>한 판에 같이</b>칸마다 붙인 사람의 스티커가 보여요</figcaption></figure>
+  </div>
+  <p class="m-note">순위나 %로 비교하지 않아요. 사진과 메모는 나만 봐요. 친구와 함께하려면 로그인이 필요해요.</p>
+</section>
+
 <section class="m-sec m-stickers">
   <h2>한 칸씩 찍은 도트 스티커로 꾸며요</h2>
   <div class="marquee m-marquee" aria-hidden="true"><div class="track"><img src="assets/img/pack-sports.jpg" alt=""><img src="assets/img/pack-snack.jpg" alt=""><img src="assets/img/pack-objects.jpg" alt=""><img src="assets/img/pack-weather.jpg" alt=""><img src="assets/img/pack-sports.jpg" alt=""><img src="assets/img/pack-snack.jpg" alt=""><img src="assets/img/pack-objects.jpg" alt=""><img src="assets/img/pack-weather.jpg" alt=""></div></div>
@@ -129,8 +147,9 @@
 <section class="m-sec m-safe">
   <h2>내 기록은 내 것으로</h2>
   <ul>
-    <li><span>바로 시작</span><b>로그인 없이 모든 기록 기능</b>설치하고 바로 써요. 기록은 먼저 내 휴대폰에 저장돼요.</li>
+    <li><span>바로 시작</span><b>로그인 없이 바로 기록</b>설치하고 바로 써요. 혼자 채우는 목표는 로그인 없이 쓰고, 기록은 먼저 내 휴대폰에 저장돼요. 친구와 함께하려면 로그인이 필요해요.</li>
     <li><span>자동 백업</span><b>원할 때만 계정 연결</b>Apple, 카카오, Google 중 하나로 로그인해 두면 붙이고 고칠 때마다 알아서 백업돼요. 새 휴대폰에서도 그대로 돌아와요.</li>
+    <li><span>함께 목표</span><b>친구와 함께해도 사진과 메모는 나만 봐요</b>친구에게는 이름과 스티커, 판에 붙은 칸만 보여요.</li>
   </ul>
 </section>
 
@@ -138,6 +157,7 @@
   <img class="m-mascot" src="assets/img/mascot.png" alt="">
   <h2>오늘 해낸 일,<br>첫 스티커로 남겨 볼까요?</h2>
   <p class="store-cap">무료로 받을 수 있어요</p>
+  <p class="store-note">일부 스티커 묶음과 구독은 앱에서 살 수 있어요.</p>
   <a class="store-badge" href="https://apps.apple.com/kr/app/%EC%B0%A8%EA%B3%A1%EC%B0%A8%EA%B3%A1-%EC%8A%A4%ED%8B%B0%EC%BB%A4%EB%A1%9C-%EC%8C%93%EB%8A%94-%EA%B8%B0%EB%A1%9D/id6824725721"><img src="assets/img/app-store-badge-ko.svg" alt="App Store에서 다운로드하기"></a>
   <p class="m-help">궁금한 점은 <a href="support/">고객 지원</a>에 물어봐 주세요.</p>
 </section>
@@ -197,7 +217,7 @@
         </div>
       </li>
       <li class="stop right">
-        <div class="phone"><img src="assets/img/shot-water.jpg" alt="물 2L 마시기 적립판. 고래, 펭귄, 개구리, 거북이 스티커로 8칸이 채워져 있고 9번째 칸에 고래 스티커가 톡 붙는다"><span class="tap-cell" aria-hidden="true"><img src="assets/img/tap-whale.png" alt=""></span></div>
+        <div class="phone"><img src="assets/img/shot-tally.jpg" alt="자기 전 책 10쪽 적립판. 책과 별 스티커로 15칸 중 11칸이 채워져 있고 12번째 칸에 책 스티커가 톡 붙는다"><span class="tap-cell" aria-hidden="true"><img src="assets/img/tap-book.png" alt=""></span></div>
         <div class="bubble">
           <span class="num">2</span>
           <h3>해낸 날 톡 붙여요</h3>
@@ -250,6 +270,22 @@
   </div>
 </section>
 
+<section id="together">
+  <div class="wrap">
+    <h2 class="center">친구와 함께 채워요</h2>
+    <p class="intro center">초대 링크를 보내면 친구가 같은 목표에 들어와요. 나를 포함해 6명까지 함께해요.</p>
+    <div class="together">
+      <figure><div class="phone crop"><img src="assets/img/shot-together-each.jpg" alt="각자 판. 하루 30분 걷기 내 판 아래에 친구 두 명의 판이 한 줄씩 놓여 있다"></div><figcaption><b>각자 판에</b>같은 목표를 각자 판에 붙이고, 친구 판은 내 판 아래에 같이 봐요.</figcaption></figure>
+      <figure><div class="phone crop"><img src="assets/img/shot-together-one.jpg" alt="한 판. 같이 물 마시기 판에 물방울과 고양이 스티커가 섞여 붙어 있다"></div><figcaption><b>한 판에 같이</b>판 하나에 다 같이 붙여요. 칸마다 붙인 사람의 스티커가 보여요.</figcaption></figure>
+    </div>
+    <ul class="together-notes">
+      <li>순위나 %로 비교하지 않아요. 누가 붙였는지 알림도 보내지 않아요.</li>
+      <li>사진과 메모는 나만 봐요. 친구에게는 이름과 스티커, 판에 붙은 칸만 보여요.</li>
+      <li>친구와 함께하려면 로그인이 필요해요.</li>
+    </ul>
+  </div>
+</section>
+
 <section id="stickers">
   <div class="wrap center">
     <h2>한 칸씩 찍은 도트 스티커로 꾸며요</h2>
@@ -286,8 +322,9 @@
       <h2>내 기록은 내 것으로</h2>
       <p class="intro">설치하고 바로 시작해요. 쌓아 온 기록이 사라지지 않게 백업도 준비해 뒀어요.</p>
       <dl class="safe-list">
-        <div><dt><span class="tag">바로 시작</span>로그인 없이 모든 기록 기능</dt><dd>설치하고 바로 써요. 기록은 먼저 내 휴대폰에 저장돼요.</dd></div>
+        <div><dt><span class="tag">바로 시작</span>로그인 없이 바로 기록</dt><dd>설치하고 바로 써요. 혼자 채우는 목표는 로그인 없이 쓰고, 기록은 먼저 내 휴대폰에 저장돼요. 친구와 함께하려면 로그인이 필요해요.</dd></div>
         <div><dt><span class="tag">자동 백업</span>원할 때만 계정 연결</dt><dd>Apple, 카카오, Google 중 하나로 로그인해 두면 붙이고 고칠 때마다 알아서 백업돼요. 새 휴대폰에서도 그대로 돌아와요.</dd></div>
+        <div><dt><span class="tag">함께 목표</span>친구와 함께해도 사진과 메모는 나만 봐요</dt><dd>친구에게는 이름과 스티커, 판에 붙은 칸만 보여요.</dd></div>
       </dl>
     </div>
   </div>
@@ -299,6 +336,7 @@
     <img class="cta-mascot" src="assets/img/mascot.png" alt="">
     <h2>오늘 해낸 일,<br>첫 스티커로 남겨 볼까요?</h2>
     <p class="store-cap">무료로 받을 수 있어요</p>
+  <p class="store-note">일부 스티커 묶음과 구독은 앱에서 살 수 있어요.</p>
     <a class="store-badge" href="https://apps.apple.com/kr/app/%EC%B0%A8%EA%B3%A1%EC%B0%A8%EA%B3%A1-%EC%8A%A4%ED%8B%B0%EC%BB%A4%EB%A1%9C-%EC%8C%93%EB%8A%94-%EA%B8%B0%EB%A1%9D/id6824725721"><img src="assets/img/app-store-badge-ko.svg" alt="App Store에서 다운로드하기"></a>
     <p class="help">궁금한 점은 <a href="support/">고객 지원</a>에 물어봐 주세요.</p>
   </div>
@@ -307,7 +345,7 @@
 <footer>
   <div class="wrap">
     <span>차곡차곡</span>
-    <span class="links"><a href="support/">고객 지원</a><a href="terms/">이용약관</a><a href="privacy/">개인정보 처리방침</a></span>
+    <span class="links"><a href="support/">고객 지원</a><a href="terms/">이용약관</a><a href="privacy/">개인정보 처리방침</a><a href="en/?lang=en" hreflang="en" lang="en">English</a></span>
     <p class="owner info"><span>운영자 노붐랩(NOVUM-LAB)</span><span>대표 김은주</span><span>사업자등록번호 496-37-01619</span></p>
     <p class="owner">문의 <a href="mailto:chagok.app.help@gmail.com?subject=%5B%EB%AC%B8%EC%9D%98%5D%20%EC%B0%A8%EA%B3%A1%EC%B0%A8%EA%B3%A1&amp;body=%EA%B6%81%EA%B8%88%ED%95%9C%20%EC%A0%90%EC%9D%B4%EB%82%98%20%EB%B6%88%ED%8E%B8%ED%95%9C%20%EC%A0%90%EC%9D%84%20%EC%A0%81%EC%96%B4%20%EC%A3%BC%EC%84%B8%EC%9A%94.%0A%0A%0A">chagok.app.help@gmail.com</a></p>
   </div>

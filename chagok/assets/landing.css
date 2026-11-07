@@ -58,6 +58,10 @@ p { margin: 0 0 14px; }
 .cta .store-cap, .m-end .store-cap { justify-content: center; }
 .cta .store-cap::before, .m-end .store-cap::before { background: var(--ink); }
 .m-end .store-cap { font-size: 15px; }
+/* 무료 문구 아래, 앱 안 구입 안내 한 줄 */
+.store-note { margin: -8px 0 18px; font-size: 15px; color: var(--ink); }
+.cta p.store-note { margin: -16px 0 24px; font-size: 16px; }
+.m-end .store-note { font-size: 14px !important; margin: -10px 0 4px; }
 
 nav.top {
 	position: sticky; top: 0; z-index: 10;
@@ -68,6 +72,8 @@ nav.top {
 nav.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 60px; }
 nav.top .brand { font-size: 20px; white-space: nowrap; display: flex; align-items: center; gap: 8px; text-decoration: none; }
 nav.top .brand img { width: 28px; height: 28px; border-radius: 7px; }
+/* 언어 바꾸기(한국어 쪽은 English, 영어 쪽은 한국어). 배지 왼쪽에 둔다 */
+nav.top .lang { margin-left: auto; font-size: 15px; color: var(--muted); white-space: nowrap; }
 
 section { padding: 112px 0 0; }
 h2 { font-size: clamp(30px, 4.2vw, 44px); line-height: 1.35; margin: 0 0 20px; }
@@ -221,7 +227,7 @@ footer .owner.info { display: flex; flex-wrap: wrap; gap: 2px 16px; }
 	0%, 100% { box-shadow: 0 0 0 2px rgba(253, 133, 95, .25); }
 	50% { box-shadow: 0 0 0 7px rgba(253, 133, 95, .5); }
 }
-.tap-cell { position: absolute; left: 64.8%; top: 47.9%; width: 22.3%; height: 7.7%; }
+.tap-cell { position: absolute; left: 64.8%; top: 56.6%; width: 22.3%; height: 7.7%; }
 .tap-cell::before {
 	content: ""; position: absolute; inset: -2px;
 	border: 3px solid var(--apricot); border-radius: 6px;
@@ -253,7 +259,7 @@ footer .owner.info { display: flex; flex-wrap: wrap; gap: 2px 16px; }
 .m-only { display: none; }
 @media (max-width: 560px) {
 	.m-only { display: block; }
-	header.hero, #fun, #story, #stickers, #safe, .cta { display: none; }
+	header.hero, #fun, #story, #together, #stickers, #safe, .cta { display: none; }
 	.m-sec { padding: 40px 18px 44px; display: flex; flex-direction: column; gap: 16px; border-bottom: 3px solid var(--ink); }
 	.m-sec h2 { font-size: 26px; line-height: 1.35; margin: 0; }
 	.m-sec p { margin: 0; font-size: 16px; line-height: 1.7; color: #1d3a32; }
@@ -345,7 +351,7 @@ footer .owner.info { display: flex; flex-wrap: wrap; gap: 2px 16px; }
 
 @media (max-width: 560px) {
 	/* 적립판과 달력판: 판 테두리 둘레 여백(원본 20px)을 같게 자르고, 판 높이가 같아지도록 칸 너비 비율을 맞춘다 */
-	.m-how .m-two { grid-template-columns: 1.104fr 1fr; }
+	.m-how .m-two { grid-template-columns: 0.935fr 1fr; }
 	/* 기록: 왼쪽 기록 화면이 줄 높이를 정하고, 오른쪽 두 장이 그 높이를 나눠 채운다. 세 장 모두 같은 위치(제목 줄 위)에서 시작 */
 	.m-three { align-items: stretch; }
 	.m-record .m-stack { contain: size; grid-template-rows: 1.3fr 1fr; }
@@ -450,4 +456,24 @@ footer .owner.info { display: flex; flex-wrap: wrap; gap: 2px 16px; }
 /* 넓은 컴퓨터 화면에서만 글 오른쪽 빈자리에 두 장을 더한다(좁으면 글과 겹친다) */
 @media (max-width: 1180px) {
 	.hero .st.wide-only { display: none; }
+}
+
+/* 친구와 함께(함께 목표). 휴대폰 캡처는 상태 막대(원본 위 85px, 너비의 15.74%)와 아래 빈 바탕을 잘라 판이 있는 부분만 보인다 */
+.together { display: grid; grid-template-columns: repeat(2, minmax(0, 260px)); gap: 64px; justify-content: center; }
+.together figure { margin: 0; display: grid; gap: 24px; align-content: start; }
+.together figure:first-child .phone { transform: rotate(-2deg); }
+.together figure:last-child .phone { transform: rotate(2deg); }
+.together figcaption { font-size: 16px; line-height: 1.7; color: #1d3a32; }
+.together figcaption b { display: block; font-size: 22px; color: var(--accent); margin-bottom: 4px; }
+.phone.crop { aspect-ratio: 540 / 690; }
+.phone.crop img { margin-top: -15.74%; }
+.together-notes { list-style: none; padding: 0; margin: 56px auto 0; max-width: 640px; display: grid; gap: 12px; }
+.together-notes li { border-left: 4px solid var(--apricot); padding-left: 16px; color: #1d3a32; }
+@media (max-width: 900px) {
+	.together { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+}
+@media (max-width: 560px) {
+	.m-together { background: var(--ivory); }
+	.m-together .m-shot { box-shadow: 4px 4px 0 var(--ink); }
+	nav.top .lang { font-size: 14px; }
 }

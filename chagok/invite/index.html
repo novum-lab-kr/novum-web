@@ -11,11 +11,11 @@
   목표 이름과 함께하는 사람은 assets/invite/invite.js 가 운영 서버 초대 미리보기(preview_invite)에서 받아 넣는다.
 -->
 <meta name="robots" content="noindex">
-<meta name="description" content="같이 스티커 판을 채워요. 링크를 누르면 앱에서 열려요.">
+<meta name="description" content="같이 스티커 판을 채워요. 링크를 열고 [차곡차곡에서 열기]를 눌러 주세요.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="차곡차곡">
 <meta property="og:title" content="친구가 차곡차곡에 초대했어요">
-<meta property="og:description" content="같이 스티커 판을 채워요. 링크를 누르면 앱에서 열려요.">
+<meta property="og:description" content="같이 스티커 판을 채워요. 링크를 열고 [차곡차곡에서 열기]를 눌러 주세요.">
 <meta property="og:image" content="https://chagok.novum-lab.com/assets/invite/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -28,25 +28,29 @@
 <script>if (/\/invite\/[^/]+\/?$/.test(location.pathname)) document.documentElement.className += ' invite-wait';</script>
 </head>
 <body>
-<header class="brand"><img src="/assets/img/icon.png" alt="" width="28" height="28"><span>차곡차곡</span></header>
+<header class="brand"><img src="/assets/img/icon.png" alt="" width="28" height="28"><span data-en="Chagok">차곡차곡</span></header>
 <main id="main" aria-live="polite">
   <!-- 같이 쌓기: 미리보기를 받기 전과 받지 못했을 때도 이 모양(목표 이름과 사람 줄만 빠진다) -->
   <section id="join" class="stack">
     <div class="hero">
       <img class="mascot mascot-lg" src="/assets/invite/mascot-b3.svg" alt="" width="128" height="128">
-      <h1 class="title" id="join-title">친구가 같이<br>차곡차곡 쌓자고 해요</h1>
+      <h1 class="title" id="join-title" data-en="A friend wants to&lt;br&gt;stack stickers with you">친구가 같이<br>차곡차곡 쌓자고 해요</h1>
       <p class="people" id="join-people" hidden><span class="stickers" id="join-stickers"></span><span class="caption" id="join-people-text"></span></p>
     </div>
     <div class="px-panel">
       <ol class="steps">
-        <li><span class="px-badge">1</span><span>차곡차곡 앱을 받아요</span></li>
-        <li><span class="px-badge">2</span><span>이 초대 링크를 다시 눌러 차곡차곡에서 열어요</span></li>
+        <li><span class="px-badge">1</span><span data-en="Get the Chagok app">차곡차곡 앱을 받아요</span></li>
+        <li><span class="px-badge">2</span><span data-en="Tap this invite link again to open it in Chagok">이 초대 링크를 다시 눌러 차곡차곡에서 열어요</span></li>
       </ol>
     </div>
-    <a class="px-button" id="open-app" href="chagok://">차곡차곡에서 열기</a>
+    <a class="px-button" id="open-app" href="chagok://" data-en="Open in Chagok">차곡차곡에서 열기</a>
     <div class="download">
-      <p class="caption">앱이 없다면 여기서 받아 주세요</p>
-      <a href="https://apps.apple.com/kr/app/id6824725721"><img class="badge" src="/assets/img/app-store-badge-ko.svg" alt="App Store에서 다운로드" width="143" height="44"></a>
+      <p class="caption" data-en="No app yet? Get it here">앱이 없다면 여기서 받아 주세요</p>
+      <a id="store-ko" href="https://apps.apple.com/kr/app/id6824725721"><img class="badge" src="/assets/img/app-store-badge-ko.svg" alt="App Store에서 다운로드" width="143" height="44"></a>
+      <!-- 영어 화면: 영어 배지 파일이 없어 글자 버튼으로 스토어를 연다. 나라 없는 주소라 각 나라 스토어로 열린다 -->
+      <a class="px-button secondary" id="store-en" href="https://apps.apple.com/app/id6824725721" hidden>Get Chagok on the App Store</a>
+      <!-- 초대 링크를 열지 못하는 옛 앱을 쓰는 사람에게 업데이트를 안내한다 -->
+      <p class="caption center" data-en="If the app doesn't open or says the page can't be found, update Chagok from the App Store.">앱이 열리지 않거나 페이지를 찾을 수 없다고 나오면 App Store에서 차곡차곡을 업데이트해 주세요.</p>
     </div>
   </section>
 
@@ -57,7 +61,7 @@
       <div class="px-panel card-panel">
         <h1 class="title center" id="problem-title"></h1>
         <p class="caption center" id="problem-detail"></p>
-        <a class="px-button secondary" href="/">차곡차곡 알아보기</a>
+        <a class="px-button secondary" href="/" data-en="About Chagok">차곡차곡 알아보기</a>
       </div>
     </div>
   </section>
@@ -65,7 +69,7 @@
 <!-- 서버 답이 늦을 때: 차곡이가 머리 위에 블록을 하나씩 쌓으며 가져온다 (invite.js 가 0.6초 뒤에 띄운다) -->
 <div class="loading" id="loading" role="status" hidden>
   <img class="mascot mascot-lg" id="loading-mascot" src="/assets/invite/mascot-b3.svg" alt="" width="128" height="128">
-  <p class="caption">초대를 가져오고 있어요</p>
+  <p class="caption" data-en="Getting your invite">초대를 가져오고 있어요</p>
 </div>
 <script src="/assets/invite/invite.js" defer></script>
 </body>
