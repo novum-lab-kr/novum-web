@@ -347,7 +347,8 @@ footer .owner.info { display: flex; flex-wrap: wrap; gap: 2px 16px; }
 	.m-hero2-splash { width: 140px; height: 180px; margin: -50px 0 -14px; overflow: visible; }
 	.m-hero2 h1 { font-size: 34px; line-height: 1.3; margin: 0; }
 	.m-hero2 h1 em { font-style: normal; background: var(--apricot); padding: 0 8px; }
-	.m-hero2 h1:lang(en) { font-size: clamp(22px, 7.2vw, 30px); }
+	/* 휴대폰 영어 제목은 띠를 one sticker / at a time 두 줄로 나누고, 줄마다 띠 양끝 여백을 준다 */
+	.m-hero2 h1:lang(en) em { -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 	.m-hero2 > p { font-size: 15px; max-width: 19em; }
 	.m-hero2 .badge { font-size: 14px; }
 }
