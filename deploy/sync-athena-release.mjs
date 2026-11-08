@@ -179,7 +179,7 @@ export function applyRelease(site, { version, published, firstVersion, notes }) 
   // 2) · 3) 릴리스 페이지
   const group = GROUP_RE.exec(site.releases);
   if (!group) throw new Error(`${FILES.releases} 에서 맨 위 묶음 머리를 찾지 못했다`);
-  const [head, groupMinor, , , groupId, groupDate] = group;
+  const [head, groupMinor, groupRangeStart, groupLast, groupId, groupDate] = group;
   const [major, minor] = parseVersion(version);
   const newMinor = `${major}.${minor}`;
   const ordered = [...notes].sort((left, right) => compareVersions(right.version, left.version));
@@ -197,8 +197,10 @@ export function applyRelease(site, { version, published, firstVersion, notes }) 
 
     const start = parseRangeStart(groupDate);
     if (!start) warnings.push(`묶음 날짜 "${groupDate}" 를 읽지 못해 날짜는 그대로 둔다`);
+    // 묶음이 판 하나(범위 시작 없음)로 시작했으면 그 판을 범위 시작으로 남긴다 — 끝만 바꾸면 시작 판이 사라진다
+    const rangeStart = groupRangeStart ?? `v${groupLast} – `;
     const newHead = head
-      .replace(/v\d+\.\d+\.\d+<br>/, `v${version}<br>`)
+      .replace(/(v\d+\.\d+\.\d+ – )?v\d+\.\d+\.\d+<br>/, `${rangeStart}v${version}<br>`)
       .replace(/(<span data-t="r\.d[\w-]+">)[^<]*(<\/span>)/, (whole, open, close) => open + (start ? formatRange(start, day, 'en') : groupDate) + close);
     const groupAt = group.index;
     const afterHead = groupAt + head.length;

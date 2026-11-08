@@ -1,6 +1,6 @@
 // deploy/sync-athena-release.mjs 시험(GitHub Actions · 손으로: node deploy/check-athena-release-sync.mjs) — 네트워크 없이
 // 지금 사이트 파일을 임시 폴더에 복사하고 가짜 GitHub 응답(공개 저장소 · 소스 태그 · 태그별 docs/site-release-notes.json)으로 맞춰 본다. 실제 사이트 파일은 건드리지 않는다.
-//   다음 패치(앞 2줄 · 뒤 3줄 → 새 1줄) · 새 minor(지난 태그에 파일 없음 → 그 minor 줄 전부) · 새 줄 없음 · 사이트에 이미 있는 줄 · 파일 없음 · 파일 이상 · 같은 버전 · 낮은 버전 · 입력이 latest 보다 높음 · 이스케이프
+//   다음 패치(앞 2줄 · 뒤 3줄 → 새 1줄) · 새 minor(지난 태그에 파일 없음 → 그 minor 줄 전부) · 판 하나 묶음 → 다음 패치(범위 시작 남김) · 새 줄 없음 · 사이트에 이미 있는 줄 · 파일 없음 · 파일 이상 · 같은 버전 · 낮은 버전 · 입력이 latest 보다 높음 · 이스케이프
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -59,8 +59,7 @@ function fakeFetch({ latest, tags, notes }) {
   return { handler, calls };
 }
 
-async function run(name, { latest, tags, input = '', notes = {} }) {
-  const root = makeRoot();
+async function run(name, { latest, tags, input = '', notes = {}, root = makeRoot() }) {
   const logs = [];
   const fake = fakeFetch({ latest, tags, notes });
   let result;
@@ -163,6 +162,20 @@ for (const bad of [{}, { versions: [{ version: '9.9.9', items: [] }] }, { versio
     expect(Object.values(values).includes(`A new thing. ${lang}`), `새 minor: ${lang} 글`);
   }
   keysCovered(root, '새 minor');
+  fs.rmSync(root, { recursive: true, force: true });
+}
+
+// ---- 판 하나로 시작한 묶음 → 다음 패치(시작 판을 범위 시작으로 남긴다 · 2026-11-08 v0.56.0 → v0.56.1 때 시작 판이 사라졌다) ----
+{
+  const first = `${nextMinor}.0`;
+  const patch = `${nextMinor}.1`;
+  const { root, failure } = await run('판 하나 묶음', { latest: first, tags: [first], notes: { [first]: { [nextMinor]: NEW_MINOR_LINES } } });
+  expect(!failure, `판 하나 묶음: 새 minor 실패 ${failure?.message}`);
+  expect(read(root, 'athena/releases/index.html').includes(`<b>${nextMinor}</b><span>v${first}<br>`), '판 하나 묶음: 머리가 판 하나가 아니다');
+  const second = await run('판 하나 묶음 다음 패치', { root, latest: patch, tags: [patch, first], notes: { [first]: { [nextMinor]: NEW_MINOR_LINES }, [patch]: { [nextMinor]: [...NEW_MINOR_LINES, line('fixed', 'Patch fix.')] } } });
+  expect(!second.failure && second.result?.changed, `판 하나 묶음: 다음 패치 실패 ${second.failure?.message}`);
+  expect(read(root, 'athena/releases/index.html').includes(`<b>${nextMinor}</b><span>v${first} – v${patch}<br>`), '판 하나 묶음: 범위 시작 판이 사라졌다');
+  keysCovered(root, '판 하나 묶음');
   fs.rmSync(root, { recursive: true, force: true });
 }
 
