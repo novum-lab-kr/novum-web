@@ -22,6 +22,6 @@
   }
   if (chosen !== here && alt) {
     window.chagokLangRedirect = true;
-    location.replace(alt + location.hash);
+    location.replace(alt + location.search + location.hash); // ?utm_... 를 넘겨야 GA 유입 경로가 남는다
   }
 })();
