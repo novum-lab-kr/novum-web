@@ -9,6 +9,7 @@
 | `/support/` | 문의, 자주 묻는 것, 운영자 정보 | 허용 |
 | `/en/`, `/en/support/` | 랜딩과 고객 지원 영어판(2026-11-06, 앱 1.1.0). 그림은 `assets/img/en/` | 허용 |
 | `/terms/`, `/privacy/`, `/delete-account/`, `/versions.json` | 약관, 처리방침, 계정 삭제 안내, 판 목록 — **앱이 읽는 경로라 바꾸지 않는다** | 허용 (`/versions.json` 은 sitemap 에 넣지 않는다) |
+| `/threads/` | SNS 프로필용 짧은 주소(2026-11-08). `/?utm_source=threads&utm_medium=social&utm_content=profile` 로 넘겨 GA 에 threads / social 로 잡히게 한다. 이 페이지에는 GA 를 넣지 않는다. 새 SNS 는 폴더를 복사해 `utm_source` 만 바꾼다(소문자, 한 번 정한 이름은 바꾸지 않는다). 영어 브라우저는 `assets/lang.js` 가 꼬리표를 그대로 들고 `/en/` 으로 옮긴다 | 차단(페이지의 `noindex`) |
 | `/invite/<코드>` | 함께 목표 초대 페이지(`invite/index.html`, `assets/invite/`). 앱이 없거나 앱이 열리지 않을 때 보인다 | 차단(페이지의 `noindex`) |
 | `/.well-known/apple-app-site-association` | 앱이 `/invite/*` 링크를 바로 여는 유니버설 링크 설정. 출시 앱(`com.novumlab.chagok`)과 개발 앱(`.dev`) | — |
 
