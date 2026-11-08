@@ -70,7 +70,7 @@
 
 <!-- 판마다 요약(2026-10-29 바꿈 — CHANGELOG 를 그대로 옮기지 않는다). 원문은 athena-studio CHANGELOG.md(= GitHub Release 본문)와 각 태그의 커밋.
      묶음 하나 = 공개판 하나. 왼쪽은 묶음 번호 · 든 상세 버전 범위 · 날짜, 오른쪽은
-     ① 상세 버전(rel-ver · 제목 rel-vh 에 vX.Y.Z — 번역하지 않는다)마다 그 버전에서 손님이 체감하는 것(r.<판>k… · 한 줄씩 짧게 · 태그 New/Improved/Fixed/Security)
+     ① 묶음마다 rel-ver 하나(제목 rel-vh 에 그 묶음 줄이 든 최신 세부 버전 vX.Y.Z — 번역하지 않는다 · 2026-11-08 0.51 이하도 0.52 이상 모양으로 합침)에 손님이 체감하는 것(r.<판>k… · 한 줄씩 짧게 · 태그 New/Improved/Fixed/Security · New → Improved → Fixed 순)
      ② 나머지는 "그 밖의 작은 고침 N개" 한 줄(r.<판>m)로 묶고 그 판 GitHub Release(athena-studio-releases releases/tag/vX.Y.Z) 링크.
      상세 버전은 최신 순 · 한 버전 안은 New → Improved → Fixed. 실린 항목이 없는 버전은 제목도 두지 않는다.
      항목의 버전 = 그 변경이 들어간 태그(athena-studio 태그마다 커밋 하나 — git log vA..vB). 여러 버전에 걸친 변경은 버전마다 나눠 적는다(2026-11-02 상세 버전으로 다시 씀).
@@ -131,160 +131,55 @@
     <div class="rel"><div class="v"><b>0.51</b><span>v0.50.4 – v0.51.38<br><span data-t="r.d51">2026 年 11 月 3–5 日</span></span></div><div>
       <div class="rel-ver"><h4 class="rel-vh">v0.51.38</h4>
       <ul>
-      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.51k40">広範囲変更の判定で UI コードを含む HTML を文書扱いする問題を修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.37</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k39">指標タブの指示チェック欄をグリッドに揃えて色を追加</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.35</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k37">計画書テンプレートの指示欄を短い固定項目に整理 — チェックスクリプトはブロックせず警告</span></li>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k38">指標タブに指示チェックの数値を表示 — 確認した計画書・警告・停止通知・警告の種類</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.34</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k36">パックエラー画面の「詳細」折りたたみを削除</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.33</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k35">パックのインポートエラーを改善 — 選択対象・不足項目・対処法</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.32</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.51k34">初回起動時のリポジトリ検索が macOS 保護フォルダを開く問題を修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.31</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.51k33">新規パック作成後にアテナペインでサインインツールが起動しない問題を修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.30</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.51k32">設定の自動マージボタンのホバー時のスタイル崩れを修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.29</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k25">ボードをアプリの言語に連動(英語・韓国語・日本語・中国語)</span></li>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k26">ガイドメニュー・画面・/guide スキルを削除 — 図はダイアグラムボタンから</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.28</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k27">ダイアグラムメニューにアテナの作業フロー図を再追加</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.27</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k28">ボード指標タブを改善 — 全タスク一覧を 100 件ずつページ表示</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.26</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k29">ボードのイシュー一覧をリポジトリ別にグループ化</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.25</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.51k30">メニューバーの作業中表示が見えにくい問題を修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.24</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k31">メニューバーの使用量行に Claude・Codex ロゴを表示</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.23</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k24">メニューバーの作業時間グラフを固定スケールに変更</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.21</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.51k20">メニューバーパネルに 3 日間の作業時間グラフを追加</span></li>
       <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.51k21">メニューバーパネルに 7 日間のトークン使用量バーを追加(Claude・Codex)</span></li>
+      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.51k2">サービス図を復活 — /diagram スキル(Codex は $diagram)</span></li>
+      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.51k3">PR なしでマージするリポジトリの広範囲変更にマージ前自動レビューを追加</span></li>
+      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.51k1">Work で Codex の承認リクエストに応答 — コマンド・ファイル変更・権限・選択式の質問</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k39">指標タブの指示チェック欄をグリッドに揃えて色を追加</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k37">計画書テンプレートの指示欄を短い固定項目に整理 — チェックスクリプトはブロックせず警告</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k38">指標タブに指示チェックの数値を表示 — 確認した計画書・警告・停止通知・警告の種類</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k36">パックエラー画面の「詳細」折りたたみを削除</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k35">パックのインポートエラーを改善 — 選択対象・不足項目・対処法</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k25">ボードをアプリの言語に連動(英語・韓国語・日本語・中国語)</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k26">ガイドメニュー・画面・/guide スキルを削除 — 図はダイアグラムボタンから</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k27">ダイアグラムメニューにアテナの作業フロー図を再追加</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k28">ボード指標タブを改善 — 全タスク一覧を 100 件ずつページ表示</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k29">ボードのイシュー一覧をリポジトリ別にグループ化</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k31">メニューバーの使用量行に Claude・Codex ロゴを表示</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k24">メニューバーの作業時間グラフを固定スケールに変更</span></li>
       <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k22">エージェント作業中にメニューバーのフクロウの目を緑色に — ツールチップに作業数</span></li>
       <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k23">メニューバーパネルを簡素化 — エージェントごとに 1 行(ペイン ID・ブランチ)</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.18</h4>
-      <ul>
       <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k18">サービス図があるときのみダイアグラムボタンを有効化</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.17</h4>
-      <ul>
       <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k19">サービス図のスタイル選択を削除 — アテナ単一テーマ</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.15</h4>
-      <ul>
-      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.51k2">サービス図を復活 — /diagram スキル(Codex は $diagram)</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.13</h4>
-      <ul>
       <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k10">セットアップで Codex がアテナのフックを信頼しているか確認</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.12</h4>
-      <ul>
       <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k11">Actions 引き渡しのマージコミットタイトルに計画書タイトルを使用</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.11</h4>
-      <ul>
       <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k7">指標とペインのトークン数に Codex セッションを含める</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.10</h4>
-      <ul>
-      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.51k3">PR なしでマージするリポジトリの広範囲変更にマージ前自動レビューを追加</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.9</h4>
-      <ul>
       <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k9">Codex レビュアーを隔離サンドボックスで実行 — レビュー結果のみ書き込み可</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.8</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.51k15">Codex 承認通知と質問の重複表示を修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.6</h4>
-      <ul>
       <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k8">Claude の使用上限時に PR・学習レビューを Codex に切り替え</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.4</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.51k17">レビュー diff がシークレットに見えるだけのコード値を伏せる問題を修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.3</h4>
-      <ul>
       <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k5">新しいパックウィンドウを前のウィンドウからずらして表示</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.2</h4>
-      <ul>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k6">ボード指標タブに時間帯バーとタスク別の段階時間を表示</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k4">Codex ブラウザ権限プロンプトと起動時の信頼ダイアログを検知・通知</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.51k40">広範囲変更の判定で UI コードを含む HTML を文書扱いする問題を修正</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.51k34">初回起動時のリポジトリ検索が macOS 保護フォルダを開く問題を修正</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.51k33">新規パック作成後にアテナペインでサインインツールが起動しない問題を修正</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.51k32">設定の自動マージボタンのホバー時のスタイル崩れを修正</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.51k30">メニューバーの作業中表示が見えにくい問題を修正</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.51k15">Codex 承認通知と質問の重複表示を修正</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.51k17">レビュー diff がシークレットに見えるだけのコード値を伏せる問題を修正</span></li>
       <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.51k12">作業完了通知の PR 状態が古い値になる問題を修正</span></li>
       <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.51k13">古い決定コンソールが未決事項を黙って確定する問題を修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.1</h4>
-      <ul>
       <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.51k16">シーケンス図のラベルが読みにくい問題を修正(ライト・ダーク)</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.0</h4>
-      <ul>
-      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.51k1">Work で Codex の承認リクエストに応答 — コマンド・ファイル変更・権限・選択式の質問</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.50.7</h4>
-      <ul>
       <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.51k14">Codex ペイン ID と別のリードセッションへの報告配信を修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.50.6</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k6">ボード指標タブに時間帯バーとタスク別の段階時間を表示</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.50.5</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.51k4">Codex ブラウザ権限プロンプトと起動時の信頼ダイアログを検知・通知</span></li>
       </ul></div>
       <p class="rel-more" data-t="r.51m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.51.38">v0.51.38 のすべての変更を GitHub で見る</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.50</b><span>v0.50.0 – v0.50.3<br><span data-t="r.d50">2026年11月3日</span></span></div><div>
       <div class="rel-ver"><h4 class="rel-vh">v0.50.2</h4>
       <ul>
-      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.50k3">エージェント指示が現在のレビュー・マージ設定に従わない問題を修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.50.1</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.50k2">決定コンソールが古いペイン ID に送信する問題を修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.50.0</h4>
-      <ul>
       <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.50k1">ボード指標タブで平均時間を強調 — タスク・PR・レビュー・検証(タイムライン削除)</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.50k3">エージェント指示が現在のレビュー・マージ設定に従わない問題を修正</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.50k2">決定コンソールが古いペイン ID に送信する問題を修正</span></li>
       </ul></div>
       <p class="rel-more" data-t="r.50m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.50.3">v0.50.3 のすべての変更を GitHub で見る</a></p>
     </div></div>
@@ -293,18 +188,9 @@
       <ul>
       <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.49k2">Agent Monitor に Codex code-mode のツール呼び出し要約を表示</span></li>
       <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.49k3">ボードの QA タブとコア QA ランナーを削除</span></li>
-      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.49k5">再接続後のペインのスクロール入力を修正(マウストラッキングモード含む)</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.49.1</h4>
-      <ul>
       <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.49k4">ビジーでスキップした本体のコアアップデートを自動再試行</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.49.0</h4>
-      <ul>
       <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.49k1">ボード指標タブにチャートを追加 — 完了時間・作業状態・検証結果・完了推移</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.48.6</h4>
-      <ul>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.49k5">再接続後のペインのスクロール入力を修正(マウストラッキングモード含む)</span></li>
       <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.49k6">アテナに届かないメッセージが Work の質問になる問題を修正</span></li>
       </ul></div>
       <p class="rel-more" data-t="r.49m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.49.3">v0.49.3 のすべての変更を GitHub で見る</a></p>
@@ -312,20 +198,11 @@
     <div class="rel"><div class="v"><b>0.48</b><span>v0.47.53 – v0.48.4<br><span data-t="r.d48">2026 年 11 月 3 日</span></span></div><div>
       <div class="rel-ver"><h4 class="rel-vh">v0.48.2</h4>
       <ul>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.48k3">表示中のペインの権限プロンプトは macOS 通知を省略</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.48.1</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.48k4">ボード指示・レビュー通知・アテナ初回指示に確認付き配信を適用</span></li>
-      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.48k7">PR なしで main にマージするリポジトリのイシューがマージ後に完了待ちにならない問題を修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.48.0</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.48k1">学習レビューでガード提案を追加 — フック・検証スクリプト・テスト(ボードの 🔧 カード)</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.48k3">表示中のペインの権限プロンプトは macOS 通知を省略</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.48k4">ボード指示・レビュー通知・アテナ初回指示に確認付き配信を適用</span></li>
       <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.48k2">繰り返しのレビュー指摘にチェック追加箇所を提案</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.53</h4>
-      <ul>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.48k7">PR なしで main にマージするリポジトリのイシューがマージ後に完了待ちにならない問題を修正</span></li>
       <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.48k5">関連ペインが開いたまま計画書を自動完了する問題を修正</span></li>
       <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.48k6">最初の指示前にエージェントが完了通知を送る問題を修正</span></li>
       <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.48k8">スタートガイドと簡易フロー図の文字はみ出しを修正</span></li>
@@ -335,185 +212,68 @@
     <div class="rel"><div class="v"><b>0.47</b><span>v0.47.0 – v0.47.52<br><span data-t="r.d47">2026 年 11 月 1–3 日</span></span></div><div>
       <div class="rel-ver"><h4 class="rel-vh">v0.47.51</h4>
       <ul>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.47k42">アテナペインがビジーの間、エージェントのメッセージを順番に待機して配信</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.46</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.47k41">Claude 終了でペインをアイドル表示 — タイトルバーにバックグラウンドシェルの &gt;_ 数</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.45</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.47k39">作業履歴付きパックの復元時に Codex 会話も復元</span></li>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.47k40">ボードの学習タブに Claude・Codex の個人メモリを表示</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.44</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.47k38">Athena フォルダーで起動した Codex をチームリードとして実行 — Claude と同じルール</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.43</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.47k37">Codex レビュアーペインがレビュー後に閉じない問題を修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.42</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.47k36">Claude が使えないとき PR 自動レビュー・学習レビューを Codex で実行</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.41</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.47k35">アップデートポップアップに以前のリリースの内容が出る問題を修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.40</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.47k34">Agent Monitor の古い行に [?] ラベルが残る問題を修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.39</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.47k33">フックを信頼した後に Codex エージェントペインが壊れる問題を修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.38</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.47k32">質問・権限・信頼・モデルプロンプトで待機中のペインに入力待ち状態を表示</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.37</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.47k31">Codex ペインの質問・権限プロンプトを Work に表示</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.36</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.47k30">ペインに送ったテキストが入力欄に残り送信されない問題を修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.35</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.47k29">リポジトリのワークスペースでエージェント・レビュアーを Codex ペインとして実行</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.32</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.47k28">Claude・Codex 両方サインイン時に起動ツールを選択 — 選択を記憶</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.31</h4>
-      <ul>
+      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.47k22">ペインのヘッダーを同じタブの別のペインへドラッグして移動 — 配置プレビュー・Esc で取消</span></li>
+      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.47k21">全体検証・マージを GitHub Actions に引き渡し — ボードカードに状態表示</span></li>
+      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.47k19">ボードのダーク / ライトモードボタン(既定はシステム設定)</span></li>
+      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.47k10">ペインの権限プロンプトを Work に表示 — そのペインへ移動</span></li>
+      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.47k3">パックの <code>permissionsAllow</code> でコマンドを許可 — 権限プロンプトなしで実行</span></li>
+      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.47k1">アプリ・コアのアップデートでペインを維持 — 新しいコードに切り替え</span></li>
+      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.47k2">切り替えできない古いペインは選択したときのみ閉じる</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.47k42">アテナペインがビジーの間、エージェントのメッセージを順番に待機して配信</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.47k41">Claude 終了でペインをアイドル表示 — タイトルバーにバックグラウンドシェルの &gt;_ 数</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.47k40">ボードの学習タブに Claude・Codex の個人メモリを表示</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.47k32">質問・権限・信頼・モデルプロンプトで待機中のペインに入力待ち状態を表示</span></li>
       <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.47k26">Codex セッションにコミット・シークレット・プロセス保護フックを適用</span></li>
       <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.47k27">Agent Monitor に Codex セッションを表示 — モデル・ツール活動・要約</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.30</h4>
-      <ul>
       <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.47k25">自動レビューのラウンド上限後、最終修正に短いレビューを追加</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.28</h4>
-      <ul>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.47k18">ボード指標タブに開始から初回マージまでの時間・段階別内訳</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.47k17">全体検証をリクエストごとではなくコミット時に 1 回だけ実行</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.47k11">Agent Monitor に応答したモデルと秒単位の時刻を表示</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.47k12">表示中のアテナペインの質問も Work に表示</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.47k7">ペインのフォーカスショートカットを ⌘⇧I J K L に変更</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.47k37">Codex レビュアーペインがレビュー後に閉じない問題を修正</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.47k35">アップデートポップアップに以前のリリースの内容が出る問題を修正</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.47k34">Agent Monitor の古い行に [?] ラベルが残る問題を修正</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.47k33">フックを信頼した後に Codex エージェントペインが壊れる問題を修正</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.47k30">ペインに送ったテキストが入力欄に残り送信されない問題を修正</span></li>
       <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.47k23">エージェントペインでの作業継続がメインチェックアウトにブランチを作る問題を修正</span></li>
       <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.47k24">アテナが自分のペインで答えた回答がエージェントペインに届かない問題を修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.27</h4>
-      <ul>
-      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.47k22">ペインのヘッダーを同じタブの別のペインへドラッグして移動 — 配置プレビュー・Esc で取消</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.26</h4>
-      <ul>
-      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.47k21">全体検証・マージを GitHub Actions に引き渡し — ボードカードに状態表示</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.25</h4>
-      <ul>
       <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.47k20">メニューバーパネルのエージェント一覧の横スクロールバーを修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.24</h4>
-      <ul>
-      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.47k19">ボードのダーク / ライトモードボタン(既定はシステム設定)</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.23</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.47k18">ボード指標タブに開始から初回マージまでの時間・段階別内訳</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.22</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.47k17">全体検証をリクエストごとではなくコミット時に 1 回だけ実行</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.21</h4>
-      <ul>
       <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.47k16">ボードのメモリ表示が空になる問題を修正(誤ったフォルダ)</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.20</h4>
-      <ul>
       <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.47k15">サイドブラウザで決定コンソールが置き換わる問題を修正 — コンソールごとに 1 タブ</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.15</h4>
-      <ul>
       <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.47k14">ペイン切り替え時の右サイドバーのちらつきを修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.14</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.47k11">Agent Monitor に応答したモデルと秒単位の時刻を表示</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.13</h4>
-      <ul>
       <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.47k13">他のアプリが ⌘⇧J・⌘⇧K を使っているときに動かない問題を修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.12</h4>
-      <ul>
-      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.47k10">ペインの権限プロンプトを Work に表示 — そのペインへ移動</span></li>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.47k12">表示中のアテナペインの質問も Work に表示</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.8</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.47k7">ペインのフォーカスショートカットを ⌘⇧I J K L に変更</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.7</h4>
-      <ul>
       <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.47k8">自動 PR オフ時に誤って PR を開くのをブロック</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.6</h4>
-      <ul>
       <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.47k9">表示していないアテナペインの選択式質問が Work に届かない問題を修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.1</h4>
-      <ul>
-      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.47k3">パックの <code>permissionsAllow</code> でコマンドを許可 — 権限プロンプトなしで実行</span></li>
       <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.47k4">バックグラウンドコマンド終了前に完了通知が出る問題を修正</span></li>
       <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.47k5">待機中のリクエストがないオープン PR にレビュー修正を push できない問題を修正</span></li>
       <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.47k6">決定コンソールのない決定リクエストが決定として残らない問題を修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.0</h4>
-      <ul>
-      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.47k1">アプリ・コアのアップデートでペインを維持 — 新しいコードに切り替え</span></li>
-      <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.47k2">切り替えできない古いペインは選択したときのみ閉じる</span></li>
       </ul></div>
       <p class="rel-more" data-t="r.47m">そのほかの小さな変更と修正 8 件 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.47.52">v0.47.52 のすべての変更を GitHub で見る</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.46</b><span>v0.42.3 – v0.46.4<br><span data-t="r.d46">2026 年 11 月 1 日</span></span></div><div>
       <div class="rel-ver"><h4 class="rel-vh">v0.46.1</h4>
       <ul>
-      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.46k4">PR の base が変わった後も自動マージが進む問題を修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.46.0</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.46k1">リポジトリのルール文書をエージェントセッションに全文読み込み — パックで追加・除外</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.44.0</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.46k2">小さな PR に ⚡ ファストパスを追加 — レビュアー 1 人・レビュー 1 ラウンド</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.43.0</h4>
-      <ul>
       <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.46k3">ボード指標タブに段階別時間・レビューラウンド・マージあたりの修正数を表示</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.46k4">PR の base が変わった後も自動マージが進む問題を修正</span></li>
       </ul></div>
       <p class="rel-more" data-t="r.46m">そのほかの小さな変更と修正 6 件 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.46.4">v0.46.4 のすべての変更を GitHub で見る</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.42</b><span>v0.40.4 – v0.42.2<br><span data-t="r.d42">2026 年 10 月 31 日</span></span></div><div>
       <div class="rel-ver"><h4 class="rel-vh">v0.42.1</h4>
       <ul>
-      <li><span class="tag sec" data-t="r.sec">セキュリティパッチ</span><span data-t="r.42k4">Electron を 44.10.0 に更新 — 内蔵 Node をセキュリティリリース <a href="https://nodejs.org/en/blog/release/v24.22.1" target="_blank" rel="noopener">24.22.1</a> に</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.41.1</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.42k3">ペイン分割・クローズ時に隣のターミナルサイズを推測で変える問題を修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.41.0</h4>
-      <ul>
       <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.42k1">ウィンドウ表示後にバックグラウンドでコアアップデートを実行</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.40.9</h4>
-      <ul>
       <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.42k2">コアアップデートポップアップに種類チップ — パッチのみのアップデートも最近の変更を表示</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.42k3">ペイン分割・クローズ時に隣のターミナルサイズを推測で変える問題を修正</span></li>
+      <li><span class="tag sec" data-t="r.sec">セキュリティパッチ</span><span data-t="r.42k4">Electron を 44.10.0 に更新 — 内蔵 Node をセキュリティリリース <a href="https://nodejs.org/en/blog/release/v24.22.1" target="_blank" rel="noopener">24.22.1</a> に</span></li>
       </ul></div>
       <p class="rel-more" data-t="r.42m">そのほかの小さな修正 2 件 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.42.0">v0.42.0 のすべての変更を GitHub で見る</a></p>
     </div></div>
@@ -521,26 +281,11 @@
       <div class="rel-ver"><h4 class="rel-vh">v0.40.0</h4>
       <ul>
       <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.40k1">自動 PR オフのリポジトリは直接マージ — PR・レビューなしで検証通過後にマージ</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.36.1</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.40k6">重いコマンドの 2 枠目は CPU 負荷がコア数を下回るまでも待機</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.36.0</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.40k5">リポジトリ別の PR・自動レビュー・マージ設定 — マージは自動・Work で先に確認・手動から選択</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.35.2</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.40k4">エージェントの質問が Work ポップアップから消える問題を修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.35.0</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.40k3">ビルド・テストなど重いコマンドを 2 つ同時実行 — 2 枠目はメモリに余裕があるときのみ</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.33.0</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.40k2">委任エージェントのターン終了時にアテナへ自動通知</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.40k6">重いコマンドの 2 枠目は CPU 負荷がコア数を下回るまでも待機</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.40k3">ビルド・テストなど重いコマンドを 2 つ同時実行 — 2 枠目はメモリに余裕があるときのみ</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.40k4">エージェントの質問が Work ポップアップから消える問題を修正</span></li>
       </ul></div>
       <p class="rel-more" data-t="r.40m">そのほかの小さな変更と修正 10 件 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.40.3">v0.40.3 のすべての変更を GitHub で見る</a></p>
     </div></div>
@@ -548,37 +293,13 @@
       <div class="rel-ver"><h4 class="rel-vh">v0.32.0</h4>
       <ul>
       <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.32k1">アプリ内コアアップデートポップアップ — バージョン・変更内容・結果</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.31.3</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.32k8">設定の PR 自動化スイッチ下の警告行を削除</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.31.2</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.32k5">設定の PR 自動化スイッチの名称を変更</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.31.1</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.32k9">コアアップデートのポップアップで作業中セッションをエージェント名で表示</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.31.0</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.32k4">エージェントペインを MCP サーバーなしで起動 — 応答ごとのトークンを削減</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.30.0</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.32k2">アテナ自体のバグを個人情報を隠した GitHub イシュー下書きに</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.29.0</h4>
-      <ul>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.32k8">設定の PR 自動化スイッチ下の警告行を削除</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.32k5">設定の PR 自動化スイッチの名称を変更</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.32k9">コアアップデートのポップアップで作業中セッションをエージェント名で表示</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.32k4">エージェントペインを MCP サーバーなしで起動 — 応答ごとのトークンを削減</span></li>
       <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.32k3">同じリポジトリのアイドルなエージェントペインを再利用</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.28.9</h4>
-      <ul>
       <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.32k6">コミットガードが複数行メッセージ・<code>~</code>・変数パスをブロックする問題を修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.28.8</h4>
-      <ul>
       <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.32k7">自動マージのリポジトリでエージェントが PR のマージを頼む問題を修正</span></li>
       </ul></div>
       <p class="rel-more" data-t="r.32m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.32.4">v0.32.4 のすべての変更を GitHub で見る</a></p>
@@ -586,27 +307,12 @@
     <div class="rel"><div class="v"><b>0.28</b><span>v0.25.2 – v0.28.7<br><span data-t="r.d28">2026 年 10 月 29 日</span></span></div><div>
       <div class="rel-ver"><h4 class="rel-vh">v0.28.6</h4>
       <ul>
-      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.28k6">メニューポップアップがサイドブラウザに隠れる問題を修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.28.5</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.28k5">エージェントモニターでアテナのセッションがフォルダ名になる問題を修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.28.4</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.28k4">Work から開いた決定コンソールが外部ブラウザで開く問題を修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.28.0</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.28k2">アテナペインへの報告を 1 ステップで配信 — ペインがなければリクエストとして保管</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.27.1</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.28k3">サイドブラウザを開くときの白いちらつきを修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.26.0</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.28k1">エージェントペインの質問を Work のリクエストとして表示</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.28k2">アテナペインへの報告を 1 ステップで配信 — ペインがなければリクエストとして保管</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.28k6">メニューポップアップがサイドブラウザに隠れる問題を修正</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.28k5">エージェントモニターでアテナのセッションがフォルダ名になる問題を修正</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.28k4">Work から開いた決定コンソールが外部ブラウザで開く問題を修正</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.28k3">サイドブラウザを開くときの白いちらつきを修正</span></li>
       </ul></div>
       <p class="rel-more" data-t="r.28m">そのほかの小さな変更と修正 4 件 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.28.7">v0.28.7 のすべての変更を GitHub で見る</a></p>
     </div></div>
@@ -614,44 +320,26 @@
       <div class="rel-ver"><h4 class="rel-vh">v0.24.0</h4>
       <ul>
       <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.25k2">追加したテストが変更なしでも通る場合に警告(red-check)</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.22.0</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span><span data-t="r.25k3">パックの <code>models</code> 設定 — 軽いタスクは軽量モデル、再レビューは強力なモデル</span> <span class="tag by">by Regan</span></span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.21.0</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.25k1">Finder からペインにファイルをドラッグしてパスを貼り付け</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span><span data-t="r.25k3">パックの <code>models</code> 設定 — 軽いタスクは軽量モデル、再レビューは強力なモデル</span> <span class="tag by">by Regan</span></span></li>
       </ul></div>
       <p class="rel-more" data-t="r.25m">そのほかの小さな変更と修正 6 件 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.25.1">v0.25.1 のすべての変更を GitHub で見る</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.19</b><span>v0.17.7 – v0.19.2<br><span data-t="r.d19">2026 年 10 月 29 日</span></span></div><div>
       <div class="rel-ver"><h4 class="rel-vh">v0.18.3</h4>
       <ul>
-      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.19k3">スタート画面後に Work・設定ボタンが無効のままになる問題を修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.18.1</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.19k2">左ペインのスクロールバーが境界のドラッグを妨げる問題を修正</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.18.0</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.19k1">ワークスペース一覧・Explorer・モニターのサイズ調整(端をドラッグ)</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.19k3">スタート画面後に Work・設定ボタンが無効のままになる問題を修正</span></li>
+      <li><span class="tag fix" data-t="r.fix">修正</span><span data-t="r.19k2">左ペインのスクロールバーが境界のドラッグを妨げる問題を修正</span></li>
       </ul></div>
       <p class="rel-more" data-t="r.19m">そのほかの小さな修正 4 件 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.19.2">v0.19.2 のすべての変更を GitHub で見る</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.17</b><span>v0.15.9 – v0.17.6<br><span data-t="r.d17">2026 年 10 月 29 日</span></span></div><div>
       <div class="rel-ver"><h4 class="rel-vh">v0.17.2</h4>
       <ul>
-      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.17k3">Work の通知は判断が必要なものだけ — 自動レビューの状況はアテナペインへ</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.17.0</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.17k2">リポジトリの GitHub イシュー監視 — 新しいイシューを作業として取り込み</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.16.0</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新機能</span><span data-t="r.17k1">設定(⚙)からアプリ内アップデート — 失敗時は現在のバージョンを維持</span></li>
+      <li><span class="tag imp" data-t="r.imp">改善</span><span data-t="r.17k3">Work の通知は判断が必要なものだけ — 自動レビューの状況はアテナペインへ</span></li>
       </ul></div>
       <p class="rel-more" data-t="r.17m">そのほかの小さな修正 5 件 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.17.6">v0.17.6 のすべての変更を GitHub で見る</a></p>
     </div></div>

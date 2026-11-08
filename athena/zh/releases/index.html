@@ -70,7 +70,7 @@
 
 <!-- 판마다 요약(2026-10-29 바꿈 — CHANGELOG 를 그대로 옮기지 않는다). 원문은 athena-studio CHANGELOG.md(= GitHub Release 본문)와 각 태그의 커밋.
      묶음 하나 = 공개판 하나. 왼쪽은 묶음 번호 · 든 상세 버전 범위 · 날짜, 오른쪽은
-     ① 상세 버전(rel-ver · 제목 rel-vh 에 vX.Y.Z — 번역하지 않는다)마다 그 버전에서 손님이 체감하는 것(r.<판>k… · 한 줄씩 짧게 · 태그 New/Improved/Fixed/Security)
+     ① 묶음마다 rel-ver 하나(제목 rel-vh 에 그 묶음 줄이 든 최신 세부 버전 vX.Y.Z — 번역하지 않는다 · 2026-11-08 0.51 이하도 0.52 이상 모양으로 합침)에 손님이 체감하는 것(r.<판>k… · 한 줄씩 짧게 · 태그 New/Improved/Fixed/Security · New → Improved → Fixed 순)
      ② 나머지는 "그 밖의 작은 고침 N개" 한 줄(r.<판>m)로 묶고 그 판 GitHub Release(athena-studio-releases releases/tag/vX.Y.Z) 링크.
      상세 버전은 최신 순 · 한 버전 안은 New → Improved → Fixed. 실린 항목이 없는 버전은 제목도 두지 않는다.
      항목의 버전 = 그 변경이 들어간 태그(athena-studio 태그마다 커밋 하나 — git log vA..vB). 여러 버전에 걸친 변경은 버전마다 나눠 적는다(2026-11-02 상세 버전으로 다시 씀).
@@ -131,160 +131,55 @@
     <div class="rel"><div class="v"><b>0.51</b><span>v0.50.4 – v0.51.38<br><span data-t="r.d51">2026 年 11 月 3–5 日</span></span></div><div>
       <div class="rel-ver"><h4 class="rel-vh">v0.51.38</h4>
       <ul>
-      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.51k40">修复大范围变更判定将含 UI 代码的 HTML 视为文档的问题</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.37</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k39">指标页指令检查分组对齐网格并加上颜色</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.35</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k37">计划模板的指令部分整理为固定短字段 — 检查脚本只警告不拦截</span></li>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k38">指标页显示指令检查数字 — 已检查计划、警告、停止通知、警告类型</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.34</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k36">移除包错误窗口中的“详情”折叠</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.33</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k35">改进包导入错误提示 — 所选对象、缺失项、处理方法</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.32</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.51k34">修复首次运行仓库搜索打开 macOS 受保护文件夹的问题</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.31</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.51k33">修复新建包后 Athena 窗格未启动登录工具的问题</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.30</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.51k32">修复设置中自动合并按钮悬停时样式错乱</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.29</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k25">看板跟随应用语言（英语、韩语、日语、中文）</span></li>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k26">移除指南菜单、相关页面和 /guide 技能 — 图表从图表按钮打开</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.28</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k27">图表菜单重新加入 Athena 工作流程图</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.27</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k28">改进看板指标页 — 全部任务列表每页 100 条</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.26</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k29">看板 Issue 列表按仓库分组</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.25</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.51k30">修复菜单栏工作中标识不清晰的问题</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.24</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k31">菜单栏用量行显示 Claude · Codex 图标</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.23</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k24">菜单栏工作时长图改为固定刻度</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.21</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.51k20">菜单栏面板新增 3 天工作时长山形图</span></li>
       <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.51k21">菜单栏面板新增 7 天 Token 用量柱状图（Claude · Codex）</span></li>
+      <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.51k2">恢复服务图 — /diagram 技能（Codex 为 $diagram）</span></li>
+      <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.51k3">无 PR 合并的仓库在大范围变更时新增合并前自动审查</span></li>
+      <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.51k1">在 Work 中回复 Codex 审批请求 — 命令、文件变更、权限、选择题</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k39">指标页指令检查分组对齐网格并加上颜色</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k37">计划模板的指令部分整理为固定短字段 — 检查脚本只警告不拦截</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k38">指标页显示指令检查数字 — 已检查计划、警告、停止通知、警告类型</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k36">移除包错误窗口中的“详情”折叠</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k35">改进包导入错误提示 — 所选对象、缺失项、处理方法</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k25">看板跟随应用语言（英语、韩语、日语、中文）</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k26">移除指南菜单、相关页面和 /guide 技能 — 图表从图表按钮打开</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k27">图表菜单重新加入 Athena 工作流程图</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k28">改进看板指标页 — 全部任务列表每页 100 条</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k29">看板 Issue 列表按仓库分组</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k31">菜单栏用量行显示 Claude · Codex 图标</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k24">菜单栏工作时长图改为固定刻度</span></li>
       <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k22">代理工作时菜单栏猫头鹰眼睛变绿 — 提示中显示工作数量</span></li>
       <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k23">简化菜单栏面板 — 每个代理一行（窗格 ID、分支）</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.18</h4>
-      <ul>
       <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k18">仅当包含服务图时启用图表按钮</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.17</h4>
-      <ul>
       <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k19">移除服务图样式选择 — 统一 Athena 主题</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.15</h4>
-      <ul>
-      <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.51k2">恢复服务图 — /diagram 技能（Codex 为 $diagram）</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.13</h4>
-      <ul>
       <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k10">安装时检查 Codex 是否信任 Athena 的钩子</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.12</h4>
-      <ul>
       <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k11">Actions 交接的合并提交标题使用计划标题</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.11</h4>
-      <ul>
       <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k7">指标和窗格 Token 计数纳入 Codex 会话</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.10</h4>
-      <ul>
-      <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.51k3">无 PR 合并的仓库在大范围变更时新增合并前自动审查</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.9</h4>
-      <ul>
       <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k9">Codex 审查者在隔离沙箱中运行 — 仅可写入审查结果</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.8</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.51k15">修复 Codex 审批通知和问题重复显示</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.6</h4>
-      <ul>
       <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k8">Claude 达到用量上限时 PR 和学习审查切换到 Codex</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.4</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.51k17">修复审查 diff 遮蔽仅看似密钥的代码值的问题</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.3</h4>
-      <ul>
       <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k5">新包窗口与前一个窗口错开打开</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.2</h4>
-      <ul>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k6">看板指标页显示时段柱状图和各任务阶段耗时</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k4">检测并通知 Codex 浏览器权限提示和启动信任对话框</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.51k40">修复大范围变更判定将含 UI 代码的 HTML 视为文档的问题</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.51k34">修复首次运行仓库搜索打开 macOS 受保护文件夹的问题</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.51k33">修复新建包后 Athena 窗格未启动登录工具的问题</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.51k32">修复设置中自动合并按钮悬停时样式错乱</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.51k30">修复菜单栏工作中标识不清晰的问题</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.51k15">修复 Codex 审批通知和问题重复显示</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.51k17">修复审查 diff 遮蔽仅看似密钥的代码值的问题</span></li>
       <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.51k12">修复完成通知中 PR 状态过时的问题</span></li>
       <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.51k13">修复过时决策控制台静默确认缺失决策的问题</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.1</h4>
-      <ul>
       <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.51k16">修复时序图标签难以阅读的问题（浅色 · 深色）</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.0</h4>
-      <ul>
-      <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.51k1">在 Work 中回复 Codex 审批请求 — 命令、文件变更、权限、选择题</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.50.7</h4>
-      <ul>
       <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.51k14">修复 Codex 窗格标识及报告投递到错误负责人会话的问题</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.50.6</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k6">看板指标页显示时段柱状图和各任务阶段耗时</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.50.5</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.51k4">检测并通知 Codex 浏览器权限提示和启动信任对话框</span></li>
       </ul></div>
       <p class="rel-more" data-t="r.51m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.51.38">在 GitHub 上查看 v0.51.38 的全部变化</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.50</b><span>v0.50.0 – v0.50.3<br><span data-t="r.d50">2026 年 11 月 3 日</span></span></div><div>
       <div class="rel-ver"><h4 class="rel-vh">v0.50.2</h4>
       <ul>
-      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.50k3">修复代理指令未遵循当前审查和合并设置的问题</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.50.1</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.50k2">修复决策控制台向过时窗格 ID 发送的问题</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.50.0</h4>
-      <ul>
       <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.50k1">看板指标页突出平均耗时 — 任务、PR、审查、验证（移除时间线）</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.50k3">修复代理指令未遵循当前审查和合并设置的问题</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.50k2">修复决策控制台向过时窗格 ID 发送的问题</span></li>
       </ul></div>
       <p class="rel-more" data-t="r.50m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.50.3">在 GitHub 上查看 v0.50.3 的全部变化</a></p>
     </div></div>
@@ -293,18 +188,9 @@
       <ul>
       <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.49k2">Agent Monitor 显示 Codex code-mode 工具调用摘要</span></li>
       <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.49k3">移除看板 QA 页和核心 QA 运行器</span></li>
-      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.49k5">修复重连后窗格滚动输入（含鼠标跟踪模式）</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.49.1</h4>
-      <ul>
       <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.49k4">自动重试因忙碌跳过的本体核心更新</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.49.0</h4>
-      <ul>
       <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.49k1">看板指标页新增图表 — 完成时间、工作状态、验证结果、完成趋势</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.48.6</h4>
-      <ul>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.49k5">修复重连后窗格滚动输入（含鼠标跟踪模式）</span></li>
       <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.49k6">修复无法投递给 Athena 的消息在 Work 中生成问题的问题</span></li>
       </ul></div>
       <p class="rel-more" data-t="r.49m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.49.3">在 GitHub 上查看 v0.49.3 的全部变化</a></p>
@@ -312,20 +198,11 @@
     <div class="rel"><div class="v"><b>0.48</b><span>v0.47.53 – v0.48.4<br><span data-t="r.d48">2026 年 11 月 3 日</span></span></div><div>
       <div class="rel-ver"><h4 class="rel-vh">v0.48.2</h4>
       <ul>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.48k3">正在查看的窗格的权限提示不再发送 macOS 通知</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.48.1</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.48k4">看板指令、审查通知和 Athena 首条指令采用确认式投递</span></li>
-      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.48k7">修复无 PR 合并到 main 的仓库 Issue 合并后未显示可完成的问题</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.48.0</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.48k1">学习审查新增防护建议 — 钩子、验证脚本、测试（看板 🔧 卡片）</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.48k3">正在查看的窗格的权限提示不再发送 macOS 通知</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.48k4">看板指令、审查通知和 Athena 首条指令采用确认式投递</span></li>
       <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.48k2">重复审查问题时建议添加检查的位置</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.53</h4>
-      <ul>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.48k7">修复无 PR 合并到 main 的仓库 Issue 合并后未显示可完成的问题</span></li>
       <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.48k5">修复关联窗格仍打开时自动完成计划的问题</span></li>
       <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.48k6">修复代理在收到首条指令前发送完成通知的问题</span></li>
       <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.48k8">修复入门指南和简明流程图的文字溢出</span></li>
@@ -335,185 +212,68 @@
     <div class="rel"><div class="v"><b>0.47</b><span>v0.47.0 – v0.47.52<br><span data-t="r.d47">2026 年 11 月 1–3 日</span></span></div><div>
       <div class="rel-ver"><h4 class="rel-vh">v0.47.51</h4>
       <ul>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.47k42">Athena 窗格忙碌时代理消息按顺序排队投递</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.46</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.47k41">Claude 完成后窗格显示空闲 — 标题栏显示后台 Shell 的 &gt;_ 数量</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.45</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.47k39">恢复含工作记录的包时同时恢复 Codex 对话</span></li>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.47k40">看板学习页显示 Claude 和 Codex 的个人记忆</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.44</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.47k38">在 Athena 文件夹启动的 Codex 作为团队负责人运行 — 与 Claude 规则相同</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.43</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.47k37">修复 Codex 审查者窗格审查后未关闭的问题</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.42</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.47k36">Claude 不可用时 PR 自动审查和学习审查使用 Codex</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.41</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.47k35">修复更新弹窗显示旧版本说明的问题</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.40</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.47k34">修复 Agent Monitor 旧行残留 [?] 标签的问题</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.39</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.47k33">修复信任钩子后 Codex 代理窗格出错的问题</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.38</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.47k32">在问题、权限、信任或模型提示处等待的窗格显示等待输入状态</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.37</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.47k31">在 Work 中显示 Codex 窗格的问题和权限提示</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.36</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.47k30">修复发送到窗格的文本停留在输入框未发送的问题</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.35</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.47k29">在仓库工作区以 Codex 窗格运行代理和审查者</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.32</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.47k28">Claude 和 Codex 均已登录时选择启动工具 — 记住选择</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.31</h4>
-      <ul>
+      <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.47k22">将窗格标题拖到同一标签页的其他窗格上移动 — 显示放置预览，Esc 取消</span></li>
+      <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.47k21">支持将完整验证和合并交给 GitHub Actions — 看板卡片显示状态</span></li>
+      <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.47k19">看板深色 / 浅色模式按钮（默认跟随系统）</span></li>
+      <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.47k10">在 Work 中显示窗格权限提示 — 可跳转到该窗格</span></li>
+      <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.47k3">通过包的 <code>permissionsAllow</code> 允许指定命令 — 无需权限提示</span></li>
+      <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.47k1">应用和核心更新时保留窗格 — 切换到新代码</span></li>
+      <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.47k2">无法切换的旧窗格仅在你选择时关闭</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.47k42">Athena 窗格忙碌时代理消息按顺序排队投递</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.47k41">Claude 完成后窗格显示空闲 — 标题栏显示后台 Shell 的 &gt;_ 数量</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.47k40">看板学习页显示 Claude 和 Codex 的个人记忆</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.47k32">在问题、权限、信任或模型提示处等待的窗格显示等待输入状态</span></li>
       <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.47k26">Codex 会话启用提交、密钥和进程保护钩子</span></li>
       <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.47k27">Agent Monitor 显示 Codex 会话 — 模型、工具活动、摘要</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.30</h4>
-      <ul>
       <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.47k25">自动审查达到轮次上限后对最终修复进行简短审查</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.28</h4>
-      <ul>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.47k18">看板指标页显示从开始到首次合并的时间及各阶段拆分</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.47k17">完整验证改为仅在提交时运行一次，不再每次请求后运行</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.47k11">Agent Monitor 显示应答模型，时间精确到秒</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.47k12">正在查看的 Athena 窗格的问题也显示在 Work 中</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.47k7">窗格焦点快捷键改为 ⌘⇧I J K L</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.47k37">修复 Codex 审查者窗格审查后未关闭的问题</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.47k35">修复更新弹窗显示旧版本说明的问题</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.47k34">修复 Agent Monitor 旧行残留 [?] 标签的问题</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.47k33">修复信任钩子后 Codex 代理窗格出错的问题</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.47k30">修复发送到窗格的文本停留在输入框未发送的问题</span></li>
       <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.47k23">修复在代理窗格继续工作时在主检出中创建分支的问题</span></li>
       <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.47k24">修复 Athena 在自身窗格的回答未送达代理窗格的问题</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.27</h4>
-      <ul>
-      <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.47k22">将窗格标题拖到同一标签页的其他窗格上移动 — 显示放置预览，Esc 取消</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.26</h4>
-      <ul>
-      <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.47k21">支持将完整验证和合并交给 GitHub Actions — 看板卡片显示状态</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.25</h4>
-      <ul>
       <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.47k20">修复菜单栏面板代理列表的横向滚动条</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.24</h4>
-      <ul>
-      <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.47k19">看板深色 / 浅色模式按钮（默认跟随系统）</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.23</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.47k18">看板指标页显示从开始到首次合并的时间及各阶段拆分</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.22</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.47k17">完整验证改为仅在提交时运行一次，不再每次请求后运行</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.21</h4>
-      <ul>
       <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.47k16">修复看板记忆视图为空的问题（文件夹错误）</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.20</h4>
-      <ul>
       <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.47k15">修复侧边浏览器中决策控制台相互替换的问题 — 每个一个标签页</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.15</h4>
-      <ul>
       <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.47k14">修复切换窗格时右侧边栏闪烁</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.14</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.47k11">Agent Monitor 显示应答模型，时间精确到秒</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.13</h4>
-      <ul>
       <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.47k13">修复其他应用占用 ⌘⇧J 和 ⌘⇧K 时失效的问题</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.12</h4>
-      <ul>
-      <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.47k10">在 Work 中显示窗格权限提示 — 可跳转到该窗格</span></li>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.47k12">正在查看的 Athena 窗格的问题也显示在 Work 中</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.8</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.47k7">窗格焦点快捷键改为 ⌘⇧I J K L</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.7</h4>
-      <ul>
       <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.47k8">自动 PR 关闭时阻止误开 PR</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.6</h4>
-      <ul>
       <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.47k9">修复未查看的 Athena 窗格中的选项提问未进入 Work 的问题</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.1</h4>
-      <ul>
-      <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.47k3">通过包的 <code>permissionsAllow</code> 允许指定命令 — 无需权限提示</span></li>
       <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.47k4">修复后台命令完成前就发送完成通知的问题</span></li>
       <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.47k5">修复无等待请求时无法向打开的 PR 推送审查修复的问题</span></li>
       <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.47k6">修复无决策控制台的决策请求丢失决策类型的问题</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.0</h4>
-      <ul>
-      <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.47k1">应用和核心更新时保留窗格 — 切换到新代码</span></li>
-      <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.47k2">无法切换的旧窗格仅在你选择时关闭</span></li>
       </ul></div>
       <p class="rel-more" data-t="r.47m">其他小改动和修复 8 项 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.47.52">在 GitHub 上查看 v0.47.52 的全部变化</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.46</b><span>v0.42.3 – v0.46.4<br><span data-t="r.d46">2026 年 11 月 1 日</span></span></div><div>
       <div class="rel-ver"><h4 class="rel-vh">v0.46.1</h4>
       <ul>
-      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.46k4">修复 PR base 变更后仍自动合并的问题</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.46.0</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.46k1">将仓库规则文档全文加载到代理会话 — 可在包中添加或排除</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.44.0</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.46k2">小型 PR 新增 ⚡ 快速通道 — 一个审查者、一轮审查</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.43.0</h4>
-      <ul>
       <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.46k3">看板指标页显示各阶段耗时、审查轮次和每次合并的修复数</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.46k4">修复 PR base 变更后仍自动合并的问题</span></li>
       </ul></div>
       <p class="rel-more" data-t="r.46m">其他小改动和修复 6 项 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.46.4">在 GitHub 上查看 v0.46.4 的全部变化</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.42</b><span>v0.40.4 – v0.42.2<br><span data-t="r.d42">2026 年 10 月 31 日</span></span></div><div>
       <div class="rel-ver"><h4 class="rel-vh">v0.42.1</h4>
       <ul>
-      <li><span class="tag sec" data-t="r.sec">安全补丁</span><span data-t="r.42k4">Electron 升级到 44.10.0 — 内置 Node 为安全版本 <a href="https://nodejs.org/en/blog/release/v24.22.1" target="_blank" rel="noopener">24.22.1</a></span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.41.1</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.42k3">修复拆分或关闭窗格时按估算调整相邻终端大小的问题</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.41.0</h4>
-      <ul>
       <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.42k1">窗口打开后在后台运行核心更新</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.40.9</h4>
-      <ul>
       <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.42k2">核心更新弹窗显示类型标签 — 仅补丁更新也列出最近变更</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.42k3">修复拆分或关闭窗格时按估算调整相邻终端大小的问题</span></li>
+      <li><span class="tag sec" data-t="r.sec">安全补丁</span><span data-t="r.42k4">Electron 升级到 44.10.0 — 内置 Node 为安全版本 <a href="https://nodejs.org/en/blog/release/v24.22.1" target="_blank" rel="noopener">24.22.1</a></span></li>
       </ul></div>
       <p class="rel-more" data-t="r.42m">其他小修复 2 项 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.42.0">在 GitHub 上查看 v0.42.0 的全部变化</a></p>
     </div></div>
@@ -521,26 +281,11 @@
       <div class="rel-ver"><h4 class="rel-vh">v0.40.0</h4>
       <ul>
       <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.40k1">关闭自动 PR 的仓库直接合并 — 无 PR 和审查，验证通过后合并</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.36.1</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.40k6">重型命令第二个槽位还会等待 CPU 负载低于核心数</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.36.0</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.40k5">按仓库设置 PR、自动审查和合并 — 合并可选自动、先在 Work 确认或手动</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.35.2</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.40k4">修复代理问题从 Work 弹窗消失的问题</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.35.0</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.40k3">构建、测试等重型命令可同时运行两个 — 第二个槽位仅在内存空闲时开放</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.33.0</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.40k2">委派代理完成一轮时自动通知 Athena</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.40k6">重型命令第二个槽位还会等待 CPU 负载低于核心数</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.40k3">构建、测试等重型命令可同时运行两个 — 第二个槽位仅在内存空闲时开放</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.40k4">修复代理问题从 Work 弹窗消失的问题</span></li>
       </ul></div>
       <p class="rel-more" data-t="r.40m">其他小改动和修复 10 项 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.40.3">在 GitHub 上查看 v0.40.3 的全部变化</a></p>
     </div></div>
@@ -548,37 +293,13 @@
       <div class="rel-ver"><h4 class="rel-vh">v0.32.0</h4>
       <ul>
       <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.32k1">应用内核心更新弹窗 — 版本、更新内容、结果</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.31.3</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.32k8">移除设置中 PR 自动化开关下方的警告行</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.31.2</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.32k5">重命名设置中的 PR 自动化开关</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.31.1</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.32k9">核心更新弹窗按代理名称列出工作中的会话</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.31.0</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.32k4">代理窗格不加载 MCP 服务器启动 — 每次回复更省 Token</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.30.0</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.32k2">Athena 自身的 Bug 生成隐藏隐私信息的 GitHub Issue 草稿</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.29.0</h4>
-      <ul>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.32k8">移除设置中 PR 自动化开关下方的警告行</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.32k5">重命名设置中的 PR 自动化开关</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.32k9">核心更新弹窗按代理名称列出工作中的会话</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.32k4">代理窗格不加载 MCP 服务器启动 — 每次回复更省 Token</span></li>
       <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.32k3">复用同一仓库的空闲代理窗格</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.28.9</h4>
-      <ul>
       <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.32k6">修复提交守卫阻止多行消息及 <code>~</code> 或变量路径的问题</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.28.8</h4>
-      <ul>
       <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.32k7">修复自动合并仓库中代理要求你合并 PR 的问题</span></li>
       </ul></div>
       <p class="rel-more" data-t="r.32m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.32.4">在 GitHub 上查看 v0.32.4 的全部变化</a></p>
@@ -586,27 +307,12 @@
     <div class="rel"><div class="v"><b>0.28</b><span>v0.25.2 – v0.28.7<br><span data-t="r.d28">2026 年 10 月 29 日</span></span></div><div>
       <div class="rel-ver"><h4 class="rel-vh">v0.28.6</h4>
       <ul>
-      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.28k6">修复菜单弹窗被侧边浏览器遮挡的问题</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.28.5</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.28k5">修复代理监视器中 Athena 会话显示为文件夹名的问题</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.28.4</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.28k4">修复从 Work 打开的决策控制台在外部浏览器打开的问题</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.28.0</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.28k2">向 Athena 窗格的报告一步送达 — 找不到窗格时保留为请求</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.27.1</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.28k3">修复侧边浏览器打开时白屏闪烁</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.26.0</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.28k1">代理窗格的问题显示为 Work 中的请求</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.28k2">向 Athena 窗格的报告一步送达 — 找不到窗格时保留为请求</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.28k6">修复菜单弹窗被侧边浏览器遮挡的问题</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.28k5">修复代理监视器中 Athena 会话显示为文件夹名的问题</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.28k4">修复从 Work 打开的决策控制台在外部浏览器打开的问题</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.28k3">修复侧边浏览器打开时白屏闪烁</span></li>
       </ul></div>
       <p class="rel-more" data-t="r.28m">其他小改动和修复 4 项 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.28.7">在 GitHub 上查看 v0.28.7 的全部变化</a></p>
     </div></div>
@@ -614,44 +320,26 @@
       <div class="rel-ver"><h4 class="rel-vh">v0.24.0</h4>
       <ul>
       <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.25k2">新增测试在无变更时也能通过时发出警告（red-check）</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.22.0</h4>
-      <ul>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span><span data-t="r.25k3">包级 <code>models</code> 设置 — 轻量任务用轻量模型，复审用更强模型</span> <span class="tag by">by Regan</span></span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.21.0</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.25k1">从 Finder 拖动文件到窗格以粘贴路径</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span><span data-t="r.25k3">包级 <code>models</code> 设置 — 轻量任务用轻量模型，复审用更强模型</span> <span class="tag by">by Regan</span></span></li>
       </ul></div>
       <p class="rel-more" data-t="r.25m">其他小改动和修复 6 项 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.25.1">在 GitHub 上查看 v0.25.1 的全部变化</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.19</b><span>v0.17.7 – v0.19.2<br><span data-t="r.d19">2026 年 10 月 29 日</span></span></div><div>
       <div class="rel-ver"><h4 class="rel-vh">v0.18.3</h4>
       <ul>
-      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.19k3">修复离开开始画面后 Work 和设置按钮仍为禁用的问题</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.18.1</h4>
-      <ul>
-      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.19k2">修复左侧窗格滚动条阻挡边界拖动的问题</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.18.0</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.19k1">拖动边缘调整工作区列表、Explorer 和监视器大小</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.19k3">修复离开开始画面后 Work 和设置按钮仍为禁用的问题</span></li>
+      <li><span class="tag fix" data-t="r.fix">修复</span><span data-t="r.19k2">修复左侧窗格滚动条阻挡边界拖动的问题</span></li>
       </ul></div>
       <p class="rel-more" data-t="r.19m">其他小修复 4 项 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.19.2">在 GitHub 上查看 v0.19.2 的全部变化</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.17</b><span>v0.15.9 – v0.17.6<br><span data-t="r.d17">2026 年 10 月 29 日</span></span></div><div>
       <div class="rel-ver"><h4 class="rel-vh">v0.17.2</h4>
       <ul>
-      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.17k3">Work 提醒仅限需决策事项 — 自动审查状态发送到 Athena 窗格</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.17.0</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.17k2">监视仓库的 GitHub Issue — 将新 Issue 导入为工作项</span></li>
-      </ul></div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.16.0</h4>
-      <ul>
       <li><span class="tag new" data-t="r.new">新功能</span><span data-t="r.17k1">通过设置（⚙）应用内更新 — 失败时保留当前版本</span></li>
+      <li><span class="tag imp" data-t="r.imp">改进</span><span data-t="r.17k3">Work 提醒仅限需决策事项 — 自动审查状态发送到 Athena 窗格</span></li>
       </ul></div>
       <p class="rel-more" data-t="r.17m">其他小修复 5 项 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.17.6">在 GitHub 上查看 v0.17.6 的全部变化</a></p>
     </div></div>
