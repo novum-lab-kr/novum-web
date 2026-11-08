@@ -86,45 +86,45 @@
     <div class="rel"><div class="v"><b>0.57</b><span>v0.57.0<br><span data-t="r.d57">Nov 8, 2026</span></span></div><div>
       <div class="rel-ver"><h4 class="rel-vh">v0.57.0</h4>
       <ul>
-      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.57k1">Changes that touch command execution, file writes, login or permissions, secrets, external input or server access now get a read-only security review alongside the code review. A High finding stops shipping, auto-merge, direct merge and the Actions handoff until it is fixed and reviewed again, and merges wait until the latest commit has a security review result. The reviewer uses the Trail of Bits security plugins when they are installed and a built-in procedure otherwise.</span></li>
+      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.57k1">Add security review for sensitive changes — High findings block merge</span></li>
       </ul></div>
       <p class="rel-more" data-t="r.57m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.57.0">See everything in v0.57.0 on GitHub</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.56</b><span>v0.56.0 – v0.56.4<br><span data-t="r.d56">Nov 8, 2026</span></span></div><div>
       <div class="rel-ver"><h4 class="rel-vh">v0.56.0</h4>
       <ul>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.56k1">The file preview opened from the Explorer now sits in the pane layout like a terminal pane: drag its title bar to place it above, below, left or right of a pane, and drag the borders between them to change its width and height.</span></li>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.56k1">File preview as a pane in the layout — drag to place, drag borders to resize</span></li>
       </ul></div>
       <p class="rel-more" data-t="r.56m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.56.4">See everything in v0.56.4 on GitHub</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.55</b><span>v0.54.0 – v0.55.4<br><span data-t="r.d55">Nov 7–8, 2026</span></span></div><div>
       <div class="rel-ver"><h4 class="rel-vh">v0.55.2</h4>
       <ul>
-      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.55k1">The Mac app now downloads new versions in the background and installs them when you quit. When an update is ready, a popup in the lower-left corner of the window offers Later or Restart to Update, and after Later it does not appear again for the same version.</span></li>
-      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.55k2">Codex sessions also prepare for conversation compaction: they are reminded to write down what they learned, decided and plan to do next before the conversation is compacted, and after compaction they are pointed to the full conversation record so missing details can be searched instead of guessed.</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.55k3">The compaction reminder now comes at 70% of the point where compaction actually happens, for both Claude and Codex, asks to write things down before replying, and still arrives when a session's first response is recorded late. After compaction, the note also repeats your last 20 messages word for word, and for the Athena lead its open requests and running agent panes.</span></li>
+      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.55k1">Background auto-update for the Mac app (installs on quit)</span></li>
+      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.55k2">Compaction prep for Codex sessions — note-taking reminder before, transcript pointer after</span></li>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.55k3">Compaction reminder moved to 70% of the actual compaction point (Claude · Codex)</span></li>
       </ul></div>
       <p class="rel-more" data-t="r.55m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.55.4">See everything in v0.55.4 on GitHub</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.53</b><span>v0.53.0 – v0.53.7<br><span data-t="r.d53">Nov 6–7, 2026</span></span></div><div>
       <div class="rel-ver"><h4 class="rel-vh">v0.53.4</h4>
       <ul>
-      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.53k1">Claude sessions for the Athena lead and agents get a reminder at 80% of the auto-compaction window to write down what they learned, decided and plan to do next in the plan before the conversation is compacted, and the Athena lead keeps a short log of corrections, failures and decisions that is shown first after compaction.</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.53k2">After a conversation is compacted, the Athena lead pane also re-reads all of its in-progress plans and their linked issues, and the post-compaction note points to the full conversation record so missing details can be searched instead of guessed.</span></li>
+      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.53k1">Compaction reminder at 80% of the auto-compaction window for Claude sessions</span></li>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.53k2">Athena lead re-reads in-progress plans and linked issues after compaction</span></li>
       </ul></div>
       <p class="rel-more" data-t="r.53m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.53.7">See everything in v0.53.7 on GitHub</a></p>
     </div></div>
     <div class="rel"><div class="v"><b>0.52</b><span>v0.52.0 – v0.52.1<br><span data-t="r.d52">Nov 6, 2026</span></span></div><div>
       <div class="rel-ver"><h4 class="rel-vh">v0.52.1</h4>
       <ul>
-      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.52k1">Before an agent starts, Athena checks the plan's instructions and warns about missing or unclear parts, and the Board's Metrics tab summarizes these checks by kind.</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.52k2">The Board now follows the app's language (English, Korean, Japanese or Chinese).</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.52k3">The Board's issue list is grouped by repository, and an issue's delete button appears only when you hover over or focus its row.</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.52k4">The Diagram menu includes Athena's work-flow diagrams again, updated to the current flow.</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.52k5">Pack import errors explain what you chose, what is missing and what to do next, and the pack error dialog no longer hides the details in a collapsed section.</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.52k6">The green eyes of the menu bar owl icon were barely visible while agents were working.</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.52k7">After creating a new pack, the sign-in tool now starts automatically in the Athena pane.</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.52k8">The first-run repository search no longer opens macOS protected folders (Music, Movies, Pictures, Library) that trigger access prompts.</span></li>
+      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.52k1">Add plan instruction check before agent start — warns on missing or unclear parts</span></li>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.52k2">Board follows the app language (English, Korean, Japanese, Chinese)</span></li>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.52k3">Board issue list grouped by repository</span></li>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.52k4">Athena work-flow diagrams back in the Diagram menu</span></li>
+      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.52k5">Improve pack import errors — what you chose, what is missing, what to do</span></li>
+      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.52k6">Fix faint working indicator in the menu bar icon</span></li>
+      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.52k7">Fix sign-in tool not starting in the Athena pane after creating a pack</span></li>
+      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.52k8">Fix first-run repo search opening macOS protected folders</span></li>
       </ul></div>
       <p class="rel-more" data-t="r.52m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.52.1">See everything in v0.52.1 on GitHub</a></p>
     </div></div>
