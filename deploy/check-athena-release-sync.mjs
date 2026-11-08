@@ -1,6 +1,6 @@
 // deploy/sync-athena-release.mjs 시험(GitHub Actions · 손으로: node deploy/check-athena-release-sync.mjs) — 네트워크 없이
 // 지금 사이트 파일을 임시 폴더에 복사하고 가짜 GitHub 응답(공개 저장소 · 소스 태그 · 태그별 docs/site-release-notes.json)으로 맞춰 본다. 실제 사이트 파일은 건드리지 않는다.
-//   다음 패치(앞 2줄 · 뒤 3줄 → 새 1줄) · 새 minor(지난 태그에 파일 없음 → 그 minor 줄 전부) · 판 하나 묶음 → 다음 패치(범위 시작 남김) · 새 줄 없음 · 사이트에 이미 있는 줄 · 파일 없음 · 파일 이상 · 같은 버전 · 낮은 버전 · 입력이 latest 보다 높음 · 이스케이프
+//   다음 패치(앞 2줄 · 뒤 3줄 → 새 1줄) · 새 minor(지난 태그에 파일 없음 → 그 minor 줄 전부) · 최대 5줄(밀린 옛 줄은 페이지 · 사전에서 뺌) · 새 줄 없음 · 사이트에 이미 있는 줄 · 파일 없음 · 파일 이상 · 같은 버전 · 낮은 버전 · 입력이 latest 보다 높음 · 이스케이프
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -107,6 +107,15 @@ for (const bad of [{}, { versions: [{ version: '9.9.9', items: [] }] }, { versio
   expect(newNoteItems(null, { [nextMinor]: NEW_MINOR_LINES }, `${nextMinor}.0`).length === 2, 'newNoteItems: 지난 파일 없음 → 그 minor 줄 전부');
 }
 
+// 맨 위 판 블록 · 그 안 줄 수
+const topGroup = (releases) => {
+  const start = releases.indexOf('<div class="rel">');
+  return releases.slice(start, releases.indexOf('    </div></div>', start));
+};
+const lineCount = (group) => (group.match(/<li>/g) ?? []).length;
+const originalTop = topGroup(read(REPO_ROOT, 'athena/releases/index.html'));
+const titleOf = (version) => `<div class="v"><b>v${version}</b><span `;
+
 // ---- 다음 패치(지금 묶음에 더하기 · 앞 2줄 → 뒤 3줄이면 새 1줄만) ----
 {
   const between = `${current[0]}.${current[1]}.${current[2] + 1}`;
@@ -122,18 +131,15 @@ for (const bad of [{}, { versions: [{ version: '9.9.9', items: [] }] }, { versio
   for (const lang of LANGS) expect(dict(root, lang)['d.ver'].includes(`<span data-rel-ver>${next}</span>`), `다음 패치: ${lang} d.ver`);
   expect(dict(root, 'ko')['d.ver'].includes('2027년 1월 15일'), '다음 패치: ko d.ver 날짜');
   const releases = read(root, 'athena/releases/index.html');
-  const firstGroup = releases.slice(releases.indexOf('<div class="rel">'), releases.indexOf('<div class="rel">', releases.indexOf('<div class="rel">') + 1));
-  expect(firstGroup.includes(` – v${next}<br>`), '다음 패치: 묶음 범위 끝');
-  expect(firstGroup.includes(`<h4 class="rel-vh">v${next}</h4>`), '다음 패치: 새 버전 제목');
-  expect(!firstGroup.includes(`<h4 class="rel-vh">v${between}</h4>`), '다음 패치: 항목 없는 버전에 제목이 생겼다');
-  const block = firstGroup.slice(firstGroup.indexOf(`<h4 class="rel-vh">v${next}</h4>`));
-  const blockItems = block.slice(0, block.indexOf('</ul>')).match(/<li>/g) ?? [];
-  expect(blockItems.length === 1, `다음 패치: 새 판 항목이 ${blockItems.length}줄 — 1줄이어야`);
+  const firstGroup = topGroup(releases);
+  expect(firstGroup.includes(titleOf(next)), '다음 패치: 제목이 새 버전');
+  expect(!releases.includes(titleOf(between)) && !releases.includes(titleOf(currentVersion)), '다음 패치: 옛 버전 제목이 남았다');
+  expect(lineCount(firstGroup) === Math.min(lineCount(originalTop) + 1, 5), `다음 패치: 줄이 ${lineCount(firstGroup)}개 — 기존 + 새 1줄(최대 5)이어야`);
   expect(!releases.includes('Old line one.'), '다음 패치: 지난 줄이 다시 붙었다');
   expect(firstGroup.includes('<span class="tag fix" data-t="r.fix">Fixed</span>'), '다음 패치: fixed → fix 태그');
   expect(firstGroup.includes('Fixed &lt;b&gt;&quot;quotes&quot;&lt;/b&gt; &amp; tags.'), '다음 패치: 영어 글 이스케이프');
-  expect(firstGroup.includes(`releases/tag/v${next}">See everything in v${next}`), '다음 패치: GitHub 링크');
-  expect(/2027/.test(firstGroup.split('\n')[0]), '다음 패치: 묶음 날짜가 새 날짜까지');
+  expect(firstGroup.includes(`releases/tag/v${next}">See everything on GitHub`), '다음 패치: GitHub 링크');
+  expect(/<div class="v"><b>[^<]*<\/b><span[^>]*>[^<]*2027</.test(firstGroup), '다음 패치: 묶음 날짜가 새 날짜까지');
   expect(Object.values(dict(root, 'ko')).includes('따옴표 &quot;고침&quot; &lt;i&gt;'), '다음 패치: ko 글 이스케이프');
   keysCovered(root, '다음 패치');
   fs.rmSync(root, { recursive: true, force: true });
@@ -149,8 +155,9 @@ for (const bad of [{}, { versions: [{ version: '9.9.9', items: [] }] }, { versio
   expect(!warningsOf(logs).length, `새 minor: 경고가 나왔다 — ${logs.join(' / ')}`);
   const releases = read(root, 'athena/releases/index.html');
   const id = current[0] === 0 ? String(current[1] + 1) : `${current[0]}-${current[1] + 1}`;
-  expect(releases.includes(`<b>${nextMinor}</b><span>v${between} – v${next}<br><span data-t="r.d${id}">Jan 15, 2027</span>`), '새 minor: 묶음 머리');
-  expect(releases.indexOf(`<b>${nextMinor}</b>`) < releases.indexOf(`<b>${currentMinor}</b>`), '새 minor: 새 묶음이 맨 위');
+  expect(releases.includes(`${titleOf(next)}data-t="r.d${id}">Jan 15, 2027</span></div>`), '새 minor: 판 제목 · 날짜');
+  expect(topGroup(releases).includes(titleOf(next)), '새 minor: 새 판이 맨 위');
+  expect(releases.includes(titleOf(currentVersion)), '새 minor: 지난 판 제목이 바뀌었다');
   expect(releases.includes(`data-t="r.${id}m"`), '새 minor: 링크 줄');
   expect(releases.includes(`data-t="r.${id}k1"`) && releases.includes(`data-t="r.${id}k2"`) && !releases.includes(`data-t="r.${id}k3"`), '새 minor: 항목 키 2개');
   expect(!releases.includes('Old line one.'), '새 minor: 다른 minor 줄이 붙었다');
@@ -165,27 +172,38 @@ for (const bad of [{}, { versions: [{ version: '9.9.9', items: [] }] }, { versio
   fs.rmSync(root, { recursive: true, force: true });
 }
 
-// ---- 판 하나로 시작한 묶음 → 다음 패치(시작 판을 범위 시작으로 남긴다 · 2026-11-08 v0.56.0 → v0.56.1 때 시작 판이 사라졌다) ----
+// ---- 최대 5줄 — 새 줄과 옛 줄을 태그 순(같은 태그는 새 줄 먼저)으로 세워 5개만 · 밀린 옛 줄은 페이지 · 사전에서 뺀다 ----
 {
   const first = `${nextMinor}.0`;
   const patch = `${nextMinor}.1`;
-  const { root, failure } = await run('판 하나 묶음', { latest: first, tags: [first], notes: { [first]: { [nextMinor]: NEW_MINOR_LINES } } });
-  expect(!failure, `판 하나 묶음: 새 minor 실패 ${failure?.message}`);
-  expect(read(root, 'athena/releases/index.html').includes(`<b>${nextMinor}</b><span>v${first}<br>`), '판 하나 묶음: 머리가 판 하나가 아니다');
-  const second = await run('판 하나 묶음 다음 패치', { root, latest: patch, tags: [patch, first], notes: { [first]: { [nextMinor]: NEW_MINOR_LINES }, [patch]: { [nextMinor]: [...NEW_MINOR_LINES, line('fixed', 'Patch fix.')] } } });
-  expect(!second.failure && second.result?.changed, `판 하나 묶음: 다음 패치 실패 ${second.failure?.message}`);
-  expect(read(root, 'athena/releases/index.html').includes(`<b>${nextMinor}</b><span>v${first} – v${patch}<br>`), '판 하나 묶음: 범위 시작 판이 사라졌다');
-  keysCovered(root, '판 하나 묶음');
+  const { root, failure } = await run('최대 5줄', { latest: first, tags: [first], notes: { [first]: { [nextMinor]: NEW_MINOR_LINES } } });
+  expect(!failure, `최대 5줄: 새 minor 실패 ${failure?.message}`);
+  const patchLines = [line('new', 'P new one.'), line('new', 'P new two.'), line('improved', 'P improved.'), line('fixed', 'P fix one.'), line('fixed', 'P fix two.')];
+  const second = await run('최대 5줄 다음 패치', { root, latest: patch, tags: [patch, first], notes: { [first]: { [nextMinor]: NEW_MINOR_LINES }, [patch]: { [nextMinor]: [...NEW_MINOR_LINES, ...patchLines] } } });
+  expect(!second.failure && second.result?.changed, `최대 5줄: 다음 패치 실패 ${second.failure?.message}`);
+  const group = topGroup(read(root, 'athena/releases/index.html'));
+  expect(lineCount(group) === 5, `최대 5줄: 줄이 ${lineCount(group)}개`);
+  const order = ['P new one.', 'P new two.', 'A new thing.', 'P improved.', 'P fix one.'].map((text) => group.indexOf(`>${text}</span>`));
+  expect(order.every((at, index) => at > 0 && (index === 0 || at > order[index - 1])), `최대 5줄: 순서가 틀렸다 — ${order.join(',')}`);
+  expect(!group.includes('A fix in the new minor.') && !group.includes('P fix two.'), '최대 5줄: 밀린 줄이 남았다');
+  for (const lang of LANGS) {
+    const values = Object.values(dict(root, lang));
+    expect(!values.includes(`A fix in the new minor. ${lang}`), `최대 5줄: ${lang} 사전에 밀린 옛 줄이 남았다`);
+    expect(!values.includes(`P fix two. ${lang}`), `최대 5줄: ${lang} 사전에 싣지 않은 줄이 들어갔다`);
+  }
+  keysCovered(root, '최대 5줄');
   fs.rmSync(root, { recursive: true, force: true });
 }
 
-// ---- 새 줄 없음 → 버전만 · 경고 없음 ----
+// ---- 새 줄 없음 → 제목 버전 · 날짜만 · 경고 없음 ----
 {
   const next = `${current[0]}.${current[1]}.${current[2] + 1}`;
   const same = { [currentMinor]: OLD_LINES };
   const { root, result, failure, logs } = await run('새 줄 없음', { latest: next, tags: [next], notes: { [currentVersion]: same, [next]: same } });
   expect(!failure && result?.changed, `새 줄 없음: 실패 ${failure?.message}`);
-  expect(!read(root, 'athena/releases/index.html').includes(`<h4 class="rel-vh">v${next}</h4>`), '새 줄 없음: 빈 버전 제목이 생겼다');
+  const group = topGroup(read(root, 'athena/releases/index.html'));
+  expect(group.includes(titleOf(next)), '새 줄 없음: 제목 버전을 맞추지 않았다');
+  expect(lineCount(group) === lineCount(originalTop), '새 줄 없음: 줄 수가 바뀌었다');
   expect(!warningsOf(logs).length, `새 줄 없음: 경고가 나왔다 — ${logs.join(' / ')}`);
   fs.rmSync(root, { recursive: true, force: true });
 }
@@ -198,8 +216,7 @@ for (const bad of [{}, { versions: [{ version: '9.9.9', items: [] }] }, { versio
   expect(!failure && result?.changed, `이미 있는 줄: 실패 ${failure?.message}`);
   const releases = read(root, 'athena/releases/index.html');
   expect(releases.includes('>Only new.</span>'), '이미 있는 줄: 새 줄이 없다');
-  const block = releases.slice(releases.indexOf(`<h4 class="rel-vh">v${next}</h4>`));
-  expect((block.slice(0, block.indexOf('</ul>')).match(/<li>/g) ?? []).length === 1, '이미 있는 줄: 사이트에 있는 줄을 다시 붙였다');
+  expect(lineCount(topGroup(releases)) === Math.min(lineCount(originalTop) + 1, 5), '이미 있는 줄: 사이트에 있는 줄을 다시 붙였다');
   fs.rmSync(root, { recursive: true, force: true });
 }
 
@@ -216,7 +233,7 @@ for (const [name, latestFile] of [
   const { root, result, failure, logs } = await run(name, { latest: next, tags: [next], notes: { [currentVersion]: goodPrevious, [next]: latestFile } });
   expect(!failure && result?.changed, `${name}: 실패 ${failure?.message}`);
   expect(read(root, 'athena/download/index.html').includes(`<span data-rel-ver>${next}</span>`), `${name}: 버전을 맞추지 않았다`);
-  expect(!read(root, 'athena/releases/index.html').includes(`<h4 class="rel-vh">v${next}</h4>`), `${name}: 글이 들어갔다`);
+  expect(lineCount(topGroup(read(root, 'athena/releases/index.html'))) === lineCount(originalTop), `${name}: 글이 들어갔다`);
   expect(warningsOf(logs).length === 1, `${name}: 경고가 한 줄이 아니다 — ${logs.join(' / ')}`);
   keysCovered(root, name);
   fs.rmSync(root, { recursive: true, force: true });

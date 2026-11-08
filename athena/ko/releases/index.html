@@ -69,9 +69,11 @@
 </div>
 
 <!-- 판마다 요약(2026-10-29 바꿈 — CHANGELOG 를 그대로 옮기지 않는다). 원문은 athena-studio CHANGELOG.md(= GitHub Release 본문)와 각 태그의 커밋.
-     묶음 하나 = 공개판 하나. 왼쪽은 묶음 번호 · 든 상세 버전 범위 · 날짜, 오른쪽은
-     ① 묶음마다 rel-ver 하나(제목 rel-vh 에 그 묶음 줄이 든 최신 세부 버전 vX.Y.Z — 번역하지 않는다 · 2026-11-08 0.51 이하도 0.52 이상 모양으로 합침)에 손님이 체감하는 것(r.<판>k… · 한 줄씩 짧게 · 태그 New/Improved/Fixed/Security · New → Improved → Fixed 순)
-     ② 나머지는 "그 밖의 작은 고침 N개" 한 줄(r.<판>m)로 묶고 그 판 GitHub Release(athena-studio-releases releases/tag/vX.Y.Z) 링크.
+     묶음 하나 = 공개판 하나. 버전은 왼쪽 칸 한 곳만(2026-11-08 — 오른쪽 제목 · 범위 줄 없음)
+     ① 왼쪽 칸 .v 에 그 묶음의 마지막 공개 버전 vX.Y.Z(큰 글자 · 번역하지 않는다 = 링크 태그)와 날짜 r.d<판>(작게) · 오른쪽 ul 에 주요 줄만(r.<판>k… · 2026-11-08 추림)
+        — 판마다 최대 5줄 · 새 기능 먼저 → 사용자가 체감하는 개선 → 큰 수정. 내부 정리 · 작은 문구 · 표시 미세 조정은 싣지 않는다. 태그 New/Improved/Fixed/Security · 그 순서
+        — 같은 줄(영어 글이 같은 것)이 여러 판에 걸치면 처음 나온 판에만 둔다
+     ② 끝에 그 판 GitHub Release(athena-studio-releases releases/tag/vX.Y.Z) 링크 한 줄(r.<판>m · "GitHub에서 전체 보기" — 버전 번호 · 남은 줄 수를 적지 않는다).
      상세 버전은 최신 순 · 한 버전 안은 New → Improved → Fixed. 실린 항목이 없는 버전은 제목도 두지 않는다.
      항목의 버전 = 그 변경이 들어간 태그(athena-studio 태그마다 커밋 하나 — git log vA..vB). 여러 버전에 걸친 변경은 버전마다 나눠 적는다(2026-11-02 상세 버전으로 다시 씀).
      핵심에 내부 용어(현황판 · pane 번호 · 계획서 등)를 넣지 않는다. 사실은 CHANGELOG · 릴리스 본문 · 그 커밋에 있는 것만 — 지어 넣지 않는다.
@@ -83,281 +85,170 @@
      새 버전: 그 묶음 맨 위에 같은 모양으로 더하고(묶음 한 줄 제목은 2026-11-05 뺐다 — 다시 두지 않는다) 키를 ko · ja · zh 사전에 모두 넣는다. 새 공개판이면 묶음을 맨 위에 더한다. 0.2 – 0.13 은 공개 전 개발판이라 한 줄(접힘) 그대로 -->
 <section style="padding-top:0">
   <div class="wrap">
-    <div class="rel"><div class="v"><b>0.60</b><span>v0.58.0 – v0.60.0<br><span data-t="r.d60">2026년 11월 8일</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.60.0</h4>
+    <div class="rel"><div class="v"><b>v0.60.0</b><span data-t="r.d60">2026년 11월 8일</span></div><div>
       <ul>
       <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.60k1">SSH 서버 등록 간소화 — [등록] 하나, 편집 메뉴 입구, 기존 Host 고르기</span></li>
       <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.60k2">등록한 서버를 사이드바 레포 목록에 표시 — 등록 직후 분석은 선택</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.60m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.60.0">GitHub에서 v0.60.0 전체 보기</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.60m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.60.0">GitHub에서 전체 보기</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.57</b><span>v0.57.0<br><span data-t="r.d57">2026년 11월 8일</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.57.0</h4>
+    <div class="rel"><div class="v"><b>v0.57.0</b><span data-t="r.d57">2026년 11월 8일</span></div><div>
       <ul>
       <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.57k1">민감한 변경에 보안 리뷰 추가 — High 지적 시 머지 차단</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.57m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.57.0">GitHub에서 v0.57.0 전체 보기</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.57m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.57.0">GitHub에서 전체 보기</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.56</b><span>v0.56.0 – v0.56.4<br><span data-t="r.d56">2026년 11월 8일</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.56.0</h4>
+    <div class="rel"><div class="v"><b>v0.56.4</b><span data-t="r.d56">2026년 11월 8일</span></div><div>
       <ul>
       <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.56k1">파일 미리보기를 pane 배치에 통합 — 끌어서 배치, 경계로 크기 조절</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.56m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.56.4">GitHub에서 v0.56.4 전체 보기</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.56m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.56.4">GitHub에서 전체 보기</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.55</b><span>v0.54.0 – v0.55.4<br><span data-t="r.d55">2026년 11월 7–8일</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.55.2</h4>
+    <div class="rel"><div class="v"><b>v0.55.4</b><span data-t="r.d55">2026년 11월 7–8일</span></div><div>
       <ul>
       <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.55k1">맥 앱 백그라운드 자동 업데이트 (앱 종료 시 설치)</span></li>
       <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.55k2">Codex 세션 압축 대비 지원 — 압축 전 기록 알림, 압축 후 대화 원문 안내</span></li>
       <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.55k3">압축 알림을 실제 압축 지점의 70% 로 변경 (Claude · Codex)</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.55m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.55.4">GitHub에서 v0.55.4 전체 보기</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.55m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.55.4">GitHub에서 전체 보기</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.53</b><span>v0.53.0 – v0.53.7<br><span data-t="r.d53">2026년 11월 6–7일</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.53.4</h4>
+    <div class="rel"><div class="v"><b>v0.53.7</b><span data-t="r.d53">2026년 11월 6–7일</span></div><div>
       <ul>
       <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.53k1">Claude 세션에 자동 압축 창 80% 시점 압축 알림 추가</span></li>
       <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.53k2">압축 후 아테나 리드가 진행 중 계획서 · 연결 이슈 다시 읽기</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.53m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.53.7">GitHub에서 v0.53.7 전체 보기</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.53m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.53.7">GitHub에서 전체 보기</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.52</b><span>v0.52.0 – v0.52.1<br><span data-t="r.d52">2026년 11월 6일</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.52.1</h4>
+    <div class="rel"><div class="v"><b>v0.52.1</b><span data-t="r.d52">2026년 11월 6일</span></div><div>
       <ul>
       <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.52k1">에이전트 시작 전 계획서 지시 검사 추가 — 누락 · 모호한 부분 경고</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.52k2">현황판 앱 언어 연동 (영어 · 한국어 · 일본어 · 중국어)</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.52k3">현황판 이슈 목록 레포별 그룹</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.52k4">다이어그램 메뉴에 아테나 작업 흐름 그림 재추가</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.52k5">팩 가져오기 오류 메시지 개선 — 선택 대상 · 누락 항목 · 해결 방법</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.52k6">메뉴 막대 작업 중 표시가 흐리던 문제 수정</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.52k7">새 팩 생성 후 아테나 pane 에서 로그인 도구가 실행되지 않던 문제 수정</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.52k8">첫 실행 레포 탐색이 macOS 보호 폴더를 열던 문제 수정</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.52m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.52.1">GitHub에서 v0.52.1 전체 보기</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.52m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.52.1">GitHub에서 전체 보기</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.51</b><span>v0.50.4 – v0.51.38<br><span data-t="r.d51">2026년 11월 3–5일</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.38</h4>
+    <div class="rel"><div class="v"><b>v0.51.38</b><span data-t="r.d51">2026년 11월 3–5일</span></div><div>
       <ul>
       <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.51k20">메뉴 막대 패널에 3일 작업 시간 산 그래프 추가</span></li>
       <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.51k21">메뉴 막대 패널에 7일 토큰 사용량 막대 추가 (Claude · Codex)</span></li>
       <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.51k2">서비스 다이어그램 재지원 — /diagram 스킬 (Codex $diagram)</span></li>
       <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.51k3">PR 없이 머지하는 레포의 넓은 수정에 머지 전 자동 리뷰 추가</span></li>
       <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.51k1">Work 에서 Codex 승인 요청 응답 지원 — 명령 · 파일 변경 · 권한 · 선택형 질문</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.51k39">지표 탭 지시 검사 묶음 그리드 정렬 · 색 추가</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.51k37">계획서 템플릿 지시 절을 짧은 고정 칸으로 정리 — 검사 스크립트가 막지 않고 경고</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.51k38">지표 탭에 지시 검사 숫자 표시 — 검사한 계획서 · 경고 · 멈춤 알림 · 경고 종류</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.51k36">팩 오류 창의 "자세히" 접기 제거</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.51k35">팩 가져오기 오류 메시지 개선 — 선택 대상 · 누락 항목 · 해결 방법</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.51k25">현황판 앱 언어 연동 (영어 · 한국어 · 일본어 · 중국어)</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.51k26">가이드 메뉴 · 화면 · /guide 스킬 제거 — 다이어그램은 다이어그램 버튼에서</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.51k27">다이어그램 메뉴에 아테나 작업 흐름 그림 재추가</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.51k28">현황판 지표 탭 개선 — 전체 작업 목록 100개씩 페이지</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.51k29">현황판 이슈 목록 레포별 그룹</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.51k31">메뉴 막대 사용량 줄에 Claude · Codex 로고 표시</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.51k24">메뉴 막대 작업 시간 그래프 고정 눈금 적용</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.51k22">에이전트 작업 중 메뉴 막대 부엉이 눈 초록 표시 — 툴팁에 작업 수</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.51k23">메뉴 막대 패널 단순화 — 에이전트당 한 줄 (pane ID · 브랜치)</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.51k18">서비스 다이어그램이 있을 때만 다이어그램 버튼 활성화</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.51k19">서비스 다이어그램 스타일 선택 제거 — 아테나 단일 테마</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.51k10">설치 시 Codex 의 아테나 훅 신뢰 여부 확인</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.51k11">Actions 넘기기 머지 커밋 제목에 계획서 제목 사용</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.51k7">지표 · pane 토큰 수에 Codex 세션 포함</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.51k9">Codex 리뷰어 격리 샌드박스 실행 — 리뷰 결과만 쓰기 가능</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.51k8">Claude 사용량 한도 시 PR · 학습 리뷰를 Codex 로 전환</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.51k5">새 팩 창을 이전 창에서 비켜 열도록 개선</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.51k6">현황판 지표 탭 시간대 막대 · 작업별 단계 시간 표시</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.51k4">Codex 브라우저 권한 창 · 시작 신뢰 창 감지 및 알림</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.51k40">넓은 수정 판정에서 UI 코드가 든 HTML 을 문서로 보던 문제 수정</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.51k34">첫 실행 레포 탐색이 macOS 보호 폴더를 열던 문제 수정</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.51k33">새 팩 생성 후 아테나 pane 에서 로그인 도구가 실행되지 않던 문제 수정</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.51k32">설정 자동 머지 버튼 hover 시 스타일 깨짐 수정</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.51k30">메뉴 막대 작업 중 표시가 흐리던 문제 수정</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.51k15">Codex 승인 알림 · 질문 중복 표시 수정</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.51k17">리뷰 diff 가 비밀값처럼 보이는 코드를 가리던 문제 수정</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.51k12">작업 완료 알림의 PR 상태가 오래된 값으로 표시되던 문제 수정</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.51k13">오래된 결정 콘솔이 빠진 결정을 조용히 확정하던 문제 수정</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.51k16">시퀀스 다이어그램 라벨 가독성 수정 (라이트 · 다크)</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.51k14">Codex pane 식별자 · 다른 리드 세션으로 가던 보고 전달 수정</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.51m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.51.38">GitHub에서 v0.51.38 전체 보기</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.51m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.51.38">GitHub에서 전체 보기</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.50</b><span>v0.50.0 – v0.50.3<br><span data-t="r.d50">2026년 11월 3일</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.50.2</h4>
+    <div class="rel"><div class="v"><b>v0.50.3</b><span data-t="r.d50">2026년 11월 3일</span></div><div>
       <ul>
       <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.50k1">현황판 지표 탭 평균 시간 강조 — 작업 · PR · 리뷰 · 검증 (타임라인 제거)</span></li>
       <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.50k3">에이전트 지시가 현재 리뷰 · 머지 설정을 따르지 않던 문제 수정</span></li>
       <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.50k2">결정 콘솔이 오래된 pane ID 로 전송하던 문제 수정</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.50m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.50.3">GitHub에서 v0.50.3 전체 보기</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.50m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.50.3">GitHub에서 전체 보기</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.49</b><span>v0.48.5 – v0.49.3<br><span data-t="r.d49">2026년 11월 3일</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.49.2</h4>
+    <div class="rel"><div class="v"><b>v0.49.3</b><span data-t="r.d49">2026년 11월 3일</span></div><div>
       <ul>
       <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.49k2">Agent Monitor 에 Codex code-mode 도구 호출 요약 표시</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.49k3">현황판 QA 탭 · 코어 QA 러너 제거</span></li>
       <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.49k4">바빠서 건너뛴 본체의 코어 업데이트 자동 재시도</span></li>
       <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.49k1">현황판 지표 탭 차트 추가 — 완료 시간 · 작업 상태 · 검증 결과 · 완료 추이</span></li>
       <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.49k5">재접속 후 pane 스크롤 입력 수정 (마우스 추적 모드 포함)</span></li>
       <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.49k6">아테나에 못 보낸 메시지가 Work 질문으로 바뀌던 문제 수정</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.49m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.49.3">GitHub에서 v0.49.3 전체 보기</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.49m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.49.3">GitHub에서 전체 보기</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.48</b><span>v0.47.53 – v0.48.4<br><span data-t="r.d48">2026년 11월 3일</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.48.2</h4>
+    <div class="rel"><div class="v"><b>v0.48.4</b><span data-t="r.d48">2026년 11월 3일</span></div><div>
       <ul>
       <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.48k1">학습 리뷰 가드 제안 추가 — 훅 · 검증 스크립트 · 테스트 (현황판 🔧 카드)</span></li>
       <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.48k3">보고 있는 pane 의 권한 창은 macOS 알림 생략</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.48k4">현황판 지시 · 리뷰 알림 · 아테나 첫 지시에 확인된 전달 적용</span></li>
       <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.48k2">반복된 리뷰 지적에 검사 추가 위치 제안</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.48k7">PR 없이 main 에 머지하는 레포의 이슈가 머지 후 완료 대기로 안 보이던 문제 수정</span></li>
       <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.48k5">연결된 pane 이 열려 있는데 계획서를 자동 완료하던 문제 수정</span></li>
       <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.48k6">에이전트가 첫 지시 전에 완료 알림을 보내던 문제 수정</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.48k8">시작 가이드 · 간단 흐름도 글자 넘침 수정</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.48m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.48.4">GitHub에서 v0.48.4 전체 보기</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.48m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.48.4">GitHub에서 전체 보기</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.47</b><span>v0.47.0 – v0.47.52<br><span data-t="r.d47">2026년 11월 1–3일</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.51</h4>
+    <div class="rel"><div class="v"><b>v0.47.52</b><span data-t="r.d47">2026년 11월 1–3일</span></div><div>
       <ul>
-      <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.47k39">작업 기록 포함 팩 복원 시 Codex 대화도 복원</span></li>
       <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.47k38">아테나 폴더에서 켠 Codex 를 팀 리드로 실행 — Claude 와 같은 규칙</span></li>
-      <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.47k36">Claude 를 쓸 수 없을 때 PR 자동 리뷰 · 학습 리뷰를 Codex 로 실행</span></li>
-      <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.47k31">Codex pane 질문 · 권한 창을 Work 에 표시</span></li>
       <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.47k29">레포 작업 공간에서 에이전트 · 리뷰어를 Codex pane 으로 실행</span></li>
-      <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.47k28">Claude · Codex 둘 다 로그인 시 시작 도구 선택 — 선택 기억</span></li>
       <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.47k22">pane 머리를 같은 탭의 다른 pane 위로 끌어 이동 — 놓을 자리 미리보기 · Esc 로 취소</span></li>
       <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.47k21">전체 검증 · 머지를 GitHub Actions 로 넘기기 지원 — 현황판 카드에 상태 표시</span></li>
-      <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.47k19">현황판 다크 / 라이트 모드 버튼 (기본은 시스템 설정)</span></li>
-      <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.47k10">pane 권한 창을 Work 에 표시 — 해당 pane 으로 이동</span></li>
-      <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.47k3">팩 <code>permissionsAllow</code> 로 명령 허용 지원 — 권한 창 없이 실행</span></li>
       <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.47k1">앱 · 코어 업데이트 시 pane 유지 — 새 코드로 전환</span></li>
-      <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.47k2">전환할 수 없는 옛 pane 은 선택할 때만 닫기</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.47k42">아테나 pane 이 바쁠 때 에이전트 메시지를 순서대로 대기 후 전달</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.47k41">Claude 가 끝나면 pane 을 유휴로 표시 — 제목 막대에 백그라운드 셸 &gt;_ 개수</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.47k40">현황판 학습 탭에 Claude · Codex 개인 메모리 표시</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.47k32">질문 · 권한 · 신뢰 · 모델 창에서 기다리는 pane 에 입력 대기 상태 표시</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.47k26">Codex 세션에 커밋 · 비밀값 · 프로세스 보호 훅 적용</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.47k27">Agent Monitor 에 Codex 세션 표시 — 모델 · 도구 활동 · 요약</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.47k25">자동 리뷰 라운드 한도 후 마지막 수정에 짧은 리뷰 추가</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.47k18">현황판 지표 탭 시작 → 첫 머지 시간 · 단계별 분할</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.47k17">전체 검증을 요청마다가 아닌 커밋 시 한 번만 실행</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.47k11">Agent Monitor 에 답한 모델 · 초 단위 시간 표시</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.47k12">보고 있는 아테나 pane 의 질문도 Work 에 표시</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.47k7">pane 포커스 단축키를 ⌘⇧I J K L 로 변경</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.47k37">Codex 리뷰어 pane 이 리뷰 후 닫히지 않던 문제 수정</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.47k35">업데이트 팝업에 이전 판 내역이 나오던 문제 수정</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.47k34">Agent Monitor 옛 줄에 [?] 라벨이 남던 문제 수정</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.47k33">훅 신뢰 후 Codex 에이전트 pane 이 깨지던 문제 수정</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.47k30">pane 에 보낸 글이 입력칸에 남아 전송되지 않던 문제 수정</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.47k23">에이전트 pane 작업 이어 가기가 메인 체크아웃에 브랜치를 만들던 문제 수정</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.47k24">아테나가 자기 pane 에서 한 답이 에이전트 pane 에 전달되지 않던 문제 수정</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.47k20">메뉴 막대 패널 에이전트 목록 가로 스크롤 막대 수정</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.47k16">현황판 메모리 화면이 비어 보이던 문제 수정 (잘못된 폴더)</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.47k15">옆 브라우저에서 결정 콘솔이 서로 덮어쓰던 문제 수정 — 콘솔마다 탭 하나</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.47k14">pane 전환 시 오른쪽 사이드바 깜빡임 수정</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.47k13">다른 앱이 ⌘⇧J · ⌘⇧K 를 잡고 있을 때 동작하지 않던 문제 수정</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.47k8">자동 PR 이 꺼져 있을 때 실수로 PR 여는 것 차단</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.47k9">보고 있지 않은 아테나 pane 의 선택 질문이 Work 로 안 가던 문제 수정</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.47k4">백그라운드 명령이 끝나기 전에 완료 알림이 가던 문제 수정</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.47k5">대기 중인 요청이 없는 열린 PR 에 리뷰 수정 push 가 안 되던 문제 수정</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.47k6">결정 콘솔 없는 결정 요청이 결정으로 남지 않던 문제 수정</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.47m">그 밖의 작은 변경과 고침 8개 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.47.52">GitHub에서 v0.47.52 전체 보기</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.47m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.47.52">GitHub에서 전체 보기</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.46</b><span>v0.42.3 – v0.46.4<br><span data-t="r.d46">2026년 11월 1일</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.46.1</h4>
+    <div class="rel"><div class="v"><b>v0.46.4</b><span data-t="r.d46">2026년 11월 1일</span></div><div>
       <ul>
       <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.46k1">레포 규칙 문서를 에이전트 세션에 전문 로드 — 팩에서 추가 · 제외</span></li>
       <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.46k2">작은 PR 에 ⚡ 빠른 길 추가 — 리뷰어 하나 · 리뷰 1라운드</span></li>
       <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.46k3">현황판 지표 탭 단계별 시간 · 리뷰 라운드 · 머지당 수정 수 표시</span></li>
       <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.46k4">PR base 가 바뀐 뒤에도 자동 머지가 진행되던 문제 수정</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.46m">그 밖의 작은 변경과 고침 6개 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.46.4">GitHub에서 v0.46.4 전체 보기</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.46m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.46.4">GitHub에서 전체 보기</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.42</b><span>v0.40.4 – v0.42.2<br><span data-t="r.d42">2026년 10월 31일</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.42.1</h4>
+    <div class="rel"><div class="v"><b>v0.42.2</b><span data-t="r.d42">2026년 10월 31일</span></div><div>
       <ul>
       <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.42k1">창을 연 뒤 백그라운드에서 코어 업데이트 실행</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.42k2">코어 업데이트 팝업 종류 칩 — 끝자리만 오른 업데이트도 최근 변경 표시</span></li>
       <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.42k3">pane 분할 · 닫기 시 옆 터미널 크기를 어림으로 바꾸던 문제 수정</span></li>
       <li><span class="tag sec" data-t="r.sec">보안 패치</span><span data-t="r.42k4">Electron 44.10.0 업데이트 — 내장 Node 보안 릴리스 <a href="https://nodejs.org/en/blog/release/v24.22.1" target="_blank" rel="noopener">24.22.1</a></span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.42m">그 밖의 작은 고침 2개 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.42.0">GitHub에서 v0.42.0 전체 보기</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.42m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.42.0">GitHub에서 전체 보기</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.40</b><span>v0.32.5 – v0.40.3<br><span data-t="r.d40">2026년 10월 30일</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.40.0</h4>
+    <div class="rel"><div class="v"><b>v0.40.3</b><span data-t="r.d40">2026년 10월 30일</span></div><div>
       <ul>
       <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.40k1">자동 PR 을 끈 레포는 바로 머지 — PR · 리뷰 없이 검증 통과 시 머지</span></li>
       <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.40k5">레포별 PR · 자동 리뷰 · 머지 설정 — 머지는 자동 · Work 에서 먼저 확인 · 직접 중 선택</span></li>
       <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.40k2">위임 에이전트 턴 종료 시 아테나 자동 알림</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.40k6">무거운 명령 두 번째 자리는 CPU 부하가 코어 수 아래일 때까지도 대기</span></li>
       <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.40k3">빌드 · 테스트 같은 무거운 명령 2개 동시 실행 — 두 번째 자리는 메모리 여유가 있을 때만</span></li>
       <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.40k4">에이전트 질문이 Work 팝업에서 사라지던 문제 수정</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.40m">그 밖의 작은 변경과 고침 10개 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.40.3">GitHub에서 v0.40.3 전체 보기</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.40m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.40.3">GitHub에서 전체 보기</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.32</b><span>v0.28.8 – v0.32.4<br><span data-t="r.d32">2026년 10월 30일</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.32.0</h4>
+    <div class="rel"><div class="v"><b>v0.32.4</b><span data-t="r.d32">2026년 10월 30일</span></div><div>
       <ul>
       <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.32k1">앱 안 코어 업데이트 팝업 — 버전 · 변경 내역 · 결과</span></li>
       <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.32k2">아테나 자체 버그를 개인 정보 가린 GitHub 이슈 초안으로 작성</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.32k8">설정 PR 자동화 스위치 아래 경고 줄 제거</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.32k5">설정 PR 자동화 스위치 이름 변경</span></li>
-      <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.32k9">코어 업데이트 팝업의 작업 중 세션을 에이전트 이름으로 표시</span></li>
       <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.32k4">에이전트 pane 을 MCP 서버 없이 시작 — 응답당 토큰 절감</span></li>
       <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.32k3">같은 레포의 유휴 에이전트 pane 재사용</span></li>
       <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.32k6">커밋 가드가 여러 줄 메시지 · <code>~</code> · 변수 경로를 막던 문제 수정</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.32k7">자동 머지 레포에서 에이전트가 PR 머지를 요청하던 문제 수정</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.32m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.32.4">GitHub에서 v0.32.4 전체 보기</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.32m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.32.4">GitHub에서 전체 보기</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.28</b><span>v0.25.2 – v0.28.7<br><span data-t="r.d28">2026년 10월 29일</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.28.6</h4>
+    <div class="rel"><div class="v"><b>v0.28.7</b><span data-t="r.d28">2026년 10월 29일</span></div><div>
       <ul>
       <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.28k1">에이전트 pane 질문을 Work 요청으로 표시</span></li>
       <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.28k2">아테나 pane 보고 한 번에 전달 — pane 이 없으면 요청으로 보관</span></li>
       <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.28k6">옆 브라우저에 메뉴 팝업이 가려지던 문제 수정</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.28k5">에이전트 모니터에서 아테나 세션이 폴더 이름으로 보이던 문제 수정</span></li>
       <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.28k4">Work 에서 연 결정 콘솔이 외부 브라우저로 열리던 문제 수정</span></li>
-      <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.28k3">옆 브라우저가 열릴 때 흰 화면이 번쩍이던 문제 수정</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.28m">그 밖의 작은 변경과 고침 4개 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.28.7">GitHub에서 v0.28.7 전체 보기</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.28m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.28.7">GitHub에서 전체 보기</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.25</b><span>v0.19.3 – v0.25.1<br><span data-t="r.d25">2026년 10월 29일</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.24.0</h4>
+    <div class="rel"><div class="v"><b>v0.25.1</b><span data-t="r.d25">2026년 10월 29일</span></div><div>
       <ul>
       <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.25k2">추가한 테스트가 변경 없이도 통과하면 경고 (red-check)</span></li>
       <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.25k1">Finder 에서 pane 으로 파일을 끌어 경로 붙여넣기</span></li>
       <li><span class="tag imp" data-t="r.imp">개선</span><span><span data-t="r.25k3">팩 <code>models</code> 설정 — 가벼운 작업은 가벼운 모델, 재리뷰는 강한 모델</span> <span class="tag by">by Regan</span></span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.25m">그 밖의 작은 변경과 고침 6개 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.25.1">GitHub에서 v0.25.1 전체 보기</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.25m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.25.1">GitHub에서 전체 보기</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.19</b><span>v0.17.7 – v0.19.2<br><span data-t="r.d19">2026년 10월 29일</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.18.3</h4>
+    <div class="rel"><div class="v"><b>v0.19.2</b><span data-t="r.d19">2026년 10월 29일</span></div><div>
       <ul>
       <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.19k1">작업 공간 목록 · Explorer · 모니터 크기 조절 (가장자리 끌기)</span></li>
       <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.19k3">시작 화면 후 Work · 설정 버튼이 비활성으로 남던 문제 수정</span></li>
       <li><span class="tag fix" data-t="r.fix">수정</span><span data-t="r.19k2">왼쪽 pane 스크롤 막대가 경계 끌기를 막던 문제 수정</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.19m">그 밖의 작은 고침 4개 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.19.2">GitHub에서 v0.19.2 전체 보기</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.19m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.19.2">GitHub에서 전체 보기</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.17</b><span>v0.15.9 – v0.17.6<br><span data-t="r.d17">2026년 10월 29일</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.17.2</h4>
+    <div class="rel"><div class="v"><b>v0.17.6</b><span data-t="r.d17">2026년 10월 29일</span></div><div>
       <ul>
       <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.17k2">레포 GitHub 이슈 감시 — 새 이슈를 작업으로 가져오기</span></li>
       <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.17k1">설정(⚙) 앱 내 업데이트 — 실패 시 현재 버전 유지</span></li>
       <li><span class="tag imp" data-t="r.imp">개선</span><span data-t="r.17k3">Work 알림은 결정할 것만 — 자동 리뷰 상태는 아테나 pane 으로</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.17m">그 밖의 작은 고침 5개 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.17.6">GitHub에서 v0.17.6 전체 보기</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.17m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.17.6">GitHub에서 전체 보기</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.15</b><span>v0.15.0 – v0.15.8<br><span data-t="r.d15">2026년 10월 28일</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.15.0</h4>
+    <div class="rel"><div class="v"><b>v0.15.8</b><span data-t="r.d15">2026년 10월 28일</span></div><div>
       <ul>
       <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.15k1">Apple Silicon · Intel 맥용 다운로드 (macOS 13 Ventura 이상)</span></li>
       <li><span class="tag new" data-t="r.new">새 기능</span><span data-t="r.15k2">Apple 서명 · 공증 — 보안 경고 없이 열림</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.15m">그 밖의 작은 고침 2개 · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.15.8">GitHub에서 v0.15.8 전체 보기</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.15m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.15.8">GitHub에서 전체 보기</a></p>
     </div></div>
     <details class="rel-old"><summary data-t="r.devsum">첫 공개판 전 개발판(0.2 – 0.13)</summary>
     <div class="rel"><div class="v"><b>0.2 – 0.13</b><span data-t="r.dpre">2026년 10월 26–28일</span></div><ul>

@@ -2,7 +2,8 @@
 // .github/workflows/athena-release-sync.yml 이 부른다 — athena-studio release-mac.yml 이 공개 직후 workflow_dispatch(입력 version)로 깨운다.
 // 하는 일(영어 페이지 + 사전 ko · ja · zh — 언어판은 그 뒤 deploy/gen-athena-lang.mjs 가 만든다)
 //   1) 다운로드 페이지 버전 줄 · 받기 카드 두 곳(data-rel-ver · data-rel-date)과 사전 d.ver
-//   2) 릴리스 페이지 맨 위 묶음의 범위 끝 · 날짜 · GitHub 링크(r.<판>m). minor 가 바뀌면 묶음을 새로 만든다
+//   2) 릴리스 페이지 맨 위 묶음의 왼쪽 칸 버전 · 날짜 · GitHub 링크(r.<판>m). minor 가 바뀌면 묶음을 새로 만든다
+//      줄은 판마다 최대 MAX_LINES(태그 순 New → Improved → Fixed → Security · 같은 태그는 새 줄 먼저) — 밀려난 옛 줄은 페이지 · 사전에서 뺀다
 //   3) 릴리스 항목 글 — athena-studio docs/site-release-notes.json({ "<minor>": [{ tag, en, ko, ja, zh }] })을 지난 공개판 태그와
 //      새 공개판 태그에서 읽어(contents API · ref=태그) 새 태그에만 있는 줄(en 기준)을 새 판 항목으로 붙인다. 지난 태그에 파일이 없으면
 //      새 판 minor 줄 전부. 줄은 CHANGELOG 를 쓸 때 같이 쓴다(2026-11-06 — 유료 API 를 쓰지 않는다). 검사(validateNotes)를 마친 뒤에만 쓰고 HTML 이스케이프한다
@@ -144,24 +145,40 @@ export function siteVersion(site) {
   return match[1];
 }
 
-const GROUP_RE = /    <div class="rel"><div class="v"><b>(\d+\.\d+)<\/b><span>(v\d+\.\d+\.\d+ – )?v(\d+\.\d+\.\d+)<br><span data-t="r\.d([\w-]+)">([^<]*)<\/span><\/span><\/div><div>\n/;
+// 맨 위 판 블록 — 왼쪽 칸(마지막 공개 버전 큰 글자 + 날짜) · 오른쪽 줄들 · 끝 링크(2026-11-08 범위 줄 · 오른쪽 제목 없앰)
+const GROUP_RE = /    <div class="rel"><div class="v"><b>v(\d+\.\d+\.\d+)<\/b><span data-t="r\.d([\w-]+)">([^<]*)<\/span><\/div><div>\n      <ul>\n((?:      <li>.*<\/li>\n)*)      <\/ul>\n      <p class="rel-more" data-t="r\.\2m">.*<\/p>\n    <\/div><\/div>\n/;
+// 판마다 싣는 줄 수 상한(태그 순 New → Improved → Fixed → Security 로 앞에서부터)
+export const MAX_LINES = 5;
 
 const groupIdOf = (version) => {
   const [major, minor] = parseVersion(version);
   return major === 0 ? String(minor) : `${major}-${minor}`;
 };
 
-function versionBlocks(notes, keyFor) {
-  return notes.map(({ version, items }) => [
-    `      <div class="rel-ver"><h4 class="rel-vh">v${version}</h4>`,
-    '      <ul>',
-    ...items.map((item) => `      <li><span class="tag ${item.tag}" data-t="r.${item.tag}">${TAG_LABELS[item.tag]}</span><span data-t="${keyFor(item)}">${escapeHtml(item.en)}</span></li>`),
-    '      </ul></div>',
-  ].join('\n') + '\n').join('');
+const lineHtml = (item, key) => `      <li><span class="tag ${item.tag}" data-t="r.${item.tag}">${TAG_LABELS[item.tag]}</span><span data-t="${key}">${escapeHtml(item.en)}</span></li>\n`;
+
+function groupHtml({ version, groupId, date, lines, moreLink }) {
+  return `    <div class="rel"><div class="v"><b>v${version}</b><span data-t="r.d${groupId}">${date}</span></div><div>\n      <ul>\n`
+    + lines.join('') + '      </ul>\n'
+    + `      <p class="rel-more" data-t="r.${groupId}m">${moreLink}</p>\n    </div></div>\n`;
+}
+
+// 사전에서 key 줄을 지운다(추려서 빠진 줄)
+function removeDictLine(text, key) {
+  return text.replace(new RegExp(`\\n  ${escapeRegExp(JSON.stringify(key))}: "(?:[^"\\\\]|\\\\.)*",?`), '');
+}
+
+// 새 줄 + 기존 줄을 태그 순(같은 태그는 새 줄 먼저)으로 세워 MAX_LINES 개만 남긴다
+function pickLines(lines) {
+  return lines
+    .map((line, index) => ({ line, index }))
+    .sort((left, right) => (TAG_ORDER.indexOf(left.line.tag) - TAG_ORDER.indexOf(right.line.tag)) || (left.index - right.index))
+    .slice(0, MAX_LINES)
+    .map(({ line }) => line);
 }
 
 // notes: [{ version, items: [{ tag, en, ko, ja, zh }] }] — 검사를 마친 것(validateNotes). 비면 버전 · 날짜 · 링크만
-export function applyRelease(site, { version, published, firstVersion, notes }) {
+export function applyRelease(site, { version, published, notes }) {
   const next = { ...site };
   const day = kstDate(published);
 
@@ -179,67 +196,64 @@ export function applyRelease(site, { version, published, firstVersion, notes }) 
   // 2) · 3) 릴리스 페이지
   const group = GROUP_RE.exec(site.releases);
   if (!group) throw new Error(`${FILES.releases} 에서 맨 위 묶음 머리를 찾지 못했다`);
-  const [head, groupMinor, groupRangeStart, groupLast, groupId, groupDate] = group;
+  const [whole, groupLast, groupId, groupDate, groupLines] = group;
+  const moreLine = /      <p class="rel-more" data-t="r\.[\w-]+m">(.*)<\/p>\n/.exec(whole)[1];
   const [major, minor] = parseVersion(version);
+  const groupMinor = parseVersion(groupLast).slice(0, 2).join('.');
   const newMinor = `${major}.${minor}`;
-  const ordered = [...notes].sort((left, right) => compareVersions(right.version, left.version));
-  const chronological = [...ordered].reverse();
+  const items = [...notes].sort((left, right) => compareVersions(right.version, left.version)).flatMap((note) => note.items);
   const warnings = [];
+  const sameGroup = newMinor === groupMinor;
+  if (!sameGroup && compareVersions(`${newMinor}.0`, `${groupMinor}.0`) < 0) throw new Error(`새 공개판 ${version} 이 맨 위 묶음 ${groupMinor} 보다 낮다`);
 
-  if (newMinor === groupMinor) {
-    const moreRe = new RegExp(`      <p class="rel-more" data-t="r\\.${escapeRegExp(groupId)}m">.*</p>\n`);
-    const moreLine = moreRe.exec(site.releases.slice(group.index))?.[0];
-    if (!moreLine) throw new Error(`${FILES.releases} 에서 r.${groupId}m 줄을 찾지 못했다`);
-    const used = [...site.releases.matchAll(new RegExp(`data-t="r\\.${escapeRegExp(groupId)}k(\\d+)"`, 'g'))].map((match) => Number(match[1]));
-    let counter = used.length ? Math.max(...used) : 0;
-    const keys = new Map();
-    for (const { items } of chronological) for (const item of items) keys.set(item, `r.${groupId}k${++counter}`);
+  const targetId = sameGroup ? groupId : groupIdOf(version);
+  // 기존 줄(같은 판일 때만) — 글은 페이지 그대로 두고 키만 읽는다
+  const oldLines = sameGroup ? (groupLines.match(/      <li>.*<\/li>\n/g) ?? []).map((html) => ({
+    tag: /<span class="tag (\w+)"/.exec(html)?.[1],
+    key: new RegExp(`data-t="(r\\.${escapeRegExp(groupId)}k\\d+)"`).exec(html)?.[1],
+    html,
+  })) : [];
+  const used = oldLines.map((line) => Number(/k(\d+)$/.exec(line.key ?? '')?.[1] ?? 0));
+  let counter = used.length ? Math.max(...used) : 0;
+  const newLines = items.map((item) => ({ tag: item.tag, item, key: `r.${targetId}k${++counter}` }));
+  newLines.forEach((line) => { line.html = lineHtml(line.item, line.key); });
+  const kept = pickLines([...newLines, ...oldLines]);
+  const keptSet = new Set(kept);
+  const droppedOld = oldLines.filter((line) => !keptSet.has(line) && line.key);
+  const addedNew = newLines.filter((line) => keptSet.has(line));
 
-    const start = parseRangeStart(groupDate);
+  let start = day;
+  if (sameGroup) {
+    start = parseRangeStart(groupDate);
     if (!start) warnings.push(`묶음 날짜 "${groupDate}" 를 읽지 못해 날짜는 그대로 둔다`);
-    // 묶음이 판 하나(범위 시작 없음)로 시작했으면 그 판을 범위 시작으로 남긴다 — 끝만 바꾸면 시작 판이 사라진다
-    const rangeStart = groupRangeStart ?? `v${groupLast} – `;
-    const newHead = head
-      .replace(/(v\d+\.\d+\.\d+ – )?v\d+\.\d+\.\d+<br>/, `${rangeStart}v${version}<br>`)
-      .replace(/(<span data-t="r\.d[\w-]+">)[^<]*(<\/span>)/, (whole, open, close) => open + (start ? formatRange(start, day, 'en') : groupDate) + close);
-    const groupAt = group.index;
-    const afterHead = groupAt + head.length;
-    const moreAt = site.releases.indexOf(moreLine, afterHead);
-    next.releases = site.releases.slice(0, groupAt) + newHead + versionBlocks(ordered, (item) => keys.get(item))
-      + site.releases.slice(afterHead, moreAt) + setLinkVersion(moreLine, version) + site.releases.slice(moreAt + moreLine.length);
+  }
+  const block = groupHtml({
+    version,
+    groupId: targetId,
+    date: start ? formatRange(start, day, 'en') : groupDate,
+    lines: kept.map((line) => line.html),
+    moreLink: setLinkVersion(moreLine, version),
+  });
+  next.releases = sameGroup
+    ? site.releases.slice(0, group.index) + block + site.releases.slice(group.index + whole.length)
+    : site.releases.slice(0, group.index) + block + site.releases.slice(group.index);
 
-    for (const lang of LANGS) {
-      const dict = readDict(next[lang], lang);
+  for (const lang of LANGS) {
+    const dict = readDict(next[lang], lang);
+    const oldMore = dict[`r.${groupId}m`];
+    if (!oldMore) throw new Error(`사전 ${lang} 에 r.${groupId}m 이 없다`);
+    const lineEntries = addedNew.map((line) => [line.key, escapeHtml(line.item[lang])]);
+    if (sameGroup) {
       if (start) next[lang] = setDictValue(next[lang], `r.d${groupId}`, formatRange(start, day, lang));
-      next[lang] = setDictValue(next[lang], `r.${groupId}m`, setLinkVersion(dict[`r.${groupId}m`] ?? '', version));
-      const entries = chronological.flatMap(({ items }) => items.map((item) => [keys.get(item), escapeHtml(item[lang])]));
-      next[lang] = insertDictLines(next[lang], `r.${groupId}m`, entries);
-    }
-  } else {
-    if (compareVersions(`${newMinor}.0`, `${groupMinor}.0`) < 0) throw new Error(`새 공개판 ${version} 이 맨 위 묶음 ${groupMinor} 보다 낮다`);
-    const newId = groupIdOf(version);
-    const oldMore = new RegExp(`      <p class="rel-more" data-t="r\\.${escapeRegExp(groupId)}m">.*</p>\n`).exec(site.releases)?.[0];
-    if (!oldMore) throw new Error(`${FILES.releases} 에서 r.${groupId}m 줄을 찾지 못했다`);
-    let counter = 0;
-    const keys = new Map();
-    for (const { items } of chronological) for (const item of items) keys.set(item, `r.${newId}k${++counter}`);
-    const range = firstVersion && firstVersion !== version ? `v${firstVersion} – v${version}` : `v${version}`;
-    const block = `    <div class="rel"><div class="v"><b>${newMinor}</b><span>${range}<br><span data-t="r.d${newId}">${formatRange(day, day, 'en')}</span></span></div><div>\n`
-      + versionBlocks(ordered, (item) => keys.get(item))
-      + setLinkVersion(oldMore, version).replace(`data-t="r.${groupId}m"`, `data-t="r.${newId}m"`)
-      + '    </div></div>\n';
-    next.releases = site.releases.slice(0, group.index) + block + site.releases.slice(group.index);
-
-    for (const lang of LANGS) {
-      const dict = readDict(next[lang], lang);
-      const oldMoreValue = dict[`r.${groupId}m`];
-      if (!oldMoreValue) throw new Error(`사전 ${lang} 에 r.${groupId}m 이 없다`);
-      const entries = [
-        [`r.d${newId}`, formatRange(day, day, lang)],
-        ...chronological.flatMap(({ items }) => items.map((item) => [keys.get(item), escapeHtml(item[lang])])),
-        [`r.${newId}m`, setLinkVersion(oldMoreValue, version)],
-      ];
-      next[lang] = insertDictLines(next[lang], `r.d${groupId}`, entries);
+      next[lang] = setDictValue(next[lang], `r.${groupId}m`, setLinkVersion(oldMore, version));
+      for (const line of droppedOld) next[lang] = removeDictLine(next[lang], line.key);
+      next[lang] = insertDictLines(next[lang], `r.${groupId}m`, lineEntries);
+    } else {
+      next[lang] = insertDictLines(next[lang], `r.d${groupId}`, [
+        [`r.d${targetId}`, formatRange(day, day, lang)],
+        ...lineEntries,
+        [`r.${targetId}m`, setLinkVersion(oldMore, version)],
+      ]);
     }
   }
   return { site: next, warnings };
@@ -330,20 +344,6 @@ export function newNoteItems(previous, latest, version) {
     .map((item) => ({ ...item, tag: FILE_TAGS[String(item?.tag ?? '').toLowerCase()] ?? item?.tag }));
 }
 
-// 사이트 판 다음 첫 소스 태그(새 묶음 범위의 시작) — 없으면 새 판
-export async function firstVersionAfter({ fetchImpl, env, fromVersion, toVersion }) {
-  let first = toVersion;
-  for (let page = 1; page <= 5; page++) {
-    const tags = await githubJson(fetchImpl, env, `/repos/${SOURCE_REPO}/tags?per_page=100&page=${page}`);
-    for (const tag of tags) {
-      if (parseVersion(tag.name) && compareVersions(tag.name, fromVersion) > 0 && compareVersions(tag.name, first) < 0) first = bare(tag.name);
-    }
-    const oldest = tags.at(-1)?.name;
-    if (tags.length < 100 || (parseVersion(oldest) && compareVersions(oldest, fromVersion) <= 0)) break;
-  }
-  return first;
-}
-
 // ---- 전체 ----
 
 export async function sync({ root = REPO_ROOT, version = '', env = process.env, fetchImpl = fetch, sleep = (ms) => new Promise((done) => setTimeout(done, ms)), log = console.log, warn = console.warn } = {}) {
@@ -368,13 +368,6 @@ export async function sync({ root = REPO_ROOT, version = '', env = process.env, 
   if (compareVersions(target, current) === 0) { log(`이미 v${target} — 할 일 없음`); return { changed: false, version: target }; }
   if (compareVersions(target, current) < 0) { say(`공개 저장소 latest v${target} 이 사이트 v${current} 보다 낮다 — 건너뜀`); return { changed: false, version: target }; }
 
-  let firstVersion = target;
-  try {
-    firstVersion = await firstVersionAfter({ fetchImpl, env, fromVersion: current, toVersion: target });
-  } catch (error) {
-    say(`v${current}…v${target} 태그를 읽지 못했다(${error.message}) — 새 묶음 범위는 v${target} 부터로 둔다`);
-  }
-
   let notes = [];
   try {
     const latestFile = await readNotesFile({ fetchImpl, env, version: target });
@@ -389,7 +382,7 @@ export async function sync({ root = REPO_ROOT, version = '', env = process.env, 
     notes = [];
   }
 
-  const { site: next, warnings } = applyRelease(site, { version: target, published: latest.published_at, firstVersion, notes });
+  const { site: next, warnings } = applyRelease(site, { version: target, published: latest.published_at, notes });
   for (const text of warnings) say(text);
   for (const [name, file] of Object.entries(FILES)) {
     if (next[name] !== site[name]) {

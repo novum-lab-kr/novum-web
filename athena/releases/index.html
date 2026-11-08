@@ -69,9 +69,11 @@
 </div>
 
 <!-- 판마다 요약(2026-10-29 바꿈 — CHANGELOG 를 그대로 옮기지 않는다). 원문은 athena-studio CHANGELOG.md(= GitHub Release 본문)와 각 태그의 커밋.
-     묶음 하나 = 공개판 하나. 왼쪽은 묶음 번호 · 든 상세 버전 범위 · 날짜, 오른쪽은
-     ① 묶음마다 rel-ver 하나(제목 rel-vh 에 그 묶음 줄이 든 최신 세부 버전 vX.Y.Z — 번역하지 않는다 · 2026-11-08 0.51 이하도 0.52 이상 모양으로 합침)에 손님이 체감하는 것(r.<판>k… · 한 줄씩 짧게 · 태그 New/Improved/Fixed/Security · New → Improved → Fixed 순)
-     ② 나머지는 "그 밖의 작은 고침 N개" 한 줄(r.<판>m)로 묶고 그 판 GitHub Release(athena-studio-releases releases/tag/vX.Y.Z) 링크.
+     묶음 하나 = 공개판 하나. 버전은 왼쪽 칸 한 곳만(2026-11-08 — 오른쪽 제목 · 범위 줄 없음)
+     ① 왼쪽 칸 .v 에 그 묶음의 마지막 공개 버전 vX.Y.Z(큰 글자 · 번역하지 않는다 = 링크 태그)와 날짜 r.d<판>(작게) · 오른쪽 ul 에 주요 줄만(r.<판>k… · 2026-11-08 추림)
+        — 판마다 최대 5줄 · 새 기능 먼저 → 사용자가 체감하는 개선 → 큰 수정. 내부 정리 · 작은 문구 · 표시 미세 조정은 싣지 않는다. 태그 New/Improved/Fixed/Security · 그 순서
+        — 같은 줄(영어 글이 같은 것)이 여러 판에 걸치면 처음 나온 판에만 둔다
+     ② 끝에 그 판 GitHub Release(athena-studio-releases releases/tag/vX.Y.Z) 링크 한 줄(r.<판>m · "GitHub에서 전체 보기" — 버전 번호 · 남은 줄 수를 적지 않는다).
      상세 버전은 최신 순 · 한 버전 안은 New → Improved → Fixed. 실린 항목이 없는 버전은 제목도 두지 않는다.
      항목의 버전 = 그 변경이 들어간 태그(athena-studio 태그마다 커밋 하나 — git log vA..vB). 여러 버전에 걸친 변경은 버전마다 나눠 적는다(2026-11-02 상세 버전으로 다시 씀).
      핵심에 내부 용어(현황판 · pane 번호 · 계획서 등)를 넣지 않는다. 사실은 CHANGELOG · 릴리스 본문 · 그 커밋에 있는 것만 — 지어 넣지 않는다.
@@ -83,281 +85,170 @@
      새 버전: 그 묶음 맨 위에 같은 모양으로 더하고(묶음 한 줄 제목은 2026-11-05 뺐다 — 다시 두지 않는다) 키를 ko · ja · zh 사전에 모두 넣는다. 새 공개판이면 묶음을 맨 위에 더한다. 0.2 – 0.13 은 공개 전 개발판이라 한 줄(접힘) 그대로 -->
 <section style="padding-top:0">
   <div class="wrap">
-    <div class="rel"><div class="v"><b>0.60</b><span>v0.58.0 – v0.60.0<br><span data-t="r.d60">Nov 8, 2026</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.60.0</h4>
+    <div class="rel"><div class="v"><b>v0.60.0</b><span data-t="r.d60">Nov 8, 2026</span></div><div>
       <ul>
       <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.60k1">Simpler SSH server registration — one Register button, Edit menu entry, pick existing Hosts</span></li>
       <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.60k2">Registered servers in the sidebar repo list — analysis right after registering is optional</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.60m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.60.0">See everything in v0.60.0 on GitHub</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.60m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.60.0">See everything on GitHub</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.57</b><span>v0.57.0<br><span data-t="r.d57">Nov 8, 2026</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.57.0</h4>
+    <div class="rel"><div class="v"><b>v0.57.0</b><span data-t="r.d57">Nov 8, 2026</span></div><div>
       <ul>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.57k1">Add security review for sensitive changes — High findings block merge</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.57m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.57.0">See everything in v0.57.0 on GitHub</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.57m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.57.0">See everything on GitHub</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.56</b><span>v0.56.0 – v0.56.4<br><span data-t="r.d56">Nov 8, 2026</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.56.0</h4>
+    <div class="rel"><div class="v"><b>v0.56.4</b><span data-t="r.d56">Nov 8, 2026</span></div><div>
       <ul>
       <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.56k1">File preview as a pane in the layout — drag to place, drag borders to resize</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.56m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.56.4">See everything in v0.56.4 on GitHub</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.56m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.56.4">See everything on GitHub</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.55</b><span>v0.54.0 – v0.55.4<br><span data-t="r.d55">Nov 7–8, 2026</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.55.2</h4>
+    <div class="rel"><div class="v"><b>v0.55.4</b><span data-t="r.d55">Nov 7–8, 2026</span></div><div>
       <ul>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.55k1">Background auto-update for the Mac app (installs on quit)</span></li>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.55k2">Compaction prep for Codex sessions — note-taking reminder before, transcript pointer after</span></li>
       <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.55k3">Compaction reminder moved to 70% of the actual compaction point (Claude · Codex)</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.55m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.55.4">See everything in v0.55.4 on GitHub</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.55m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.55.4">See everything on GitHub</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.53</b><span>v0.53.0 – v0.53.7<br><span data-t="r.d53">Nov 6–7, 2026</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.53.4</h4>
+    <div class="rel"><div class="v"><b>v0.53.7</b><span data-t="r.d53">Nov 6–7, 2026</span></div><div>
       <ul>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.53k1">Compaction reminder at 80% of the auto-compaction window for Claude sessions</span></li>
       <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.53k2">Athena lead re-reads in-progress plans and linked issues after compaction</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.53m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.53.7">See everything in v0.53.7 on GitHub</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.53m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.53.7">See everything on GitHub</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.52</b><span>v0.52.0 – v0.52.1<br><span data-t="r.d52">Nov 6, 2026</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.52.1</h4>
+    <div class="rel"><div class="v"><b>v0.52.1</b><span data-t="r.d52">Nov 6, 2026</span></div><div>
       <ul>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.52k1">Add plan instruction check before agent start — warns on missing or unclear parts</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.52k2">Board follows the app language (English, Korean, Japanese, Chinese)</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.52k3">Board issue list grouped by repository</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.52k4">Athena work-flow diagrams back in the Diagram menu</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.52k5">Improve pack import errors — what you chose, what is missing, what to do</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.52k6">Fix faint working indicator in the menu bar icon</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.52k7">Fix sign-in tool not starting in the Athena pane after creating a pack</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.52k8">Fix first-run repo search opening macOS protected folders</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.52m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.52.1">See everything in v0.52.1 on GitHub</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.52m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.52.1">See everything on GitHub</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.51</b><span>v0.50.4 – v0.51.38<br><span data-t="r.d51">Nov 3–5, 2026</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.51.38</h4>
+    <div class="rel"><div class="v"><b>v0.51.38</b><span data-t="r.d51">Nov 3–5, 2026</span></div><div>
       <ul>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.51k20">Add 3-day work-time mountain graph to the menu bar panel</span></li>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.51k21">Add 7-day token usage bars to the menu bar panel (Claude · Codex)</span></li>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.51k2">Service diagrams are back — /diagram skill (Codex $diagram)</span></li>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.51k3">Add pre-merge auto review for no-PR repos on wide changes</span></li>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.51k1">Answer Codex approval requests in Work — commands, file changes, permissions, choices</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k39">Metrics tab instruction-check group aligned to the grid, with color</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k37">Plan template instruction section tidied into fixed short fields — check script warns without blocking</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k38">Instruction-check numbers in the Metrics tab — plans checked, warnings, stop notices, warning kinds</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k36">Remove the "details" fold from the pack error window</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k35">Improve pack import errors — what you chose, what is missing, what to do</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k25">Board follows the app language (English, Korean, Japanese, Chinese)</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k26">Remove the guide menu, its screens and the /guide skill — open diagrams from the Diagram button</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k27">Athena work-flow diagrams back in the Diagram menu</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k28">Improve Board Metrics tab — full task list paged 100 at a time</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k29">Board issue list grouped by repository</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k31">Show Claude · Codex logos in menu bar Usage rows</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k24">Fixed scale for the menu bar work-time graph</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k22">Green menu bar owl eyes while agents work — tooltip shows working count</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k23">Simpler menu bar panel — one row per agent (pane ID, branch)</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k18">Diagram button enabled only when the pack has service diagrams</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k19">Remove style picker from service diagrams — single Athena theme</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k10">Setup checks whether Codex trusts Athena's hooks</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k11">Use plan title as merge commit title for Actions handoffs</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k7">Codex sessions included in Metrics and pane token counts</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k9">Codex reviewers in an isolated sandbox — write access to review results only</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k8">PR and learning reviews fall back to Codex when Claude hits its usage limit</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k5">Offset new pack windows from the previous window</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k6">Board Metrics: time-of-day bars and per-stage task times</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.51k4">Detect Codex Browser permission prompts and startup trust dialogs</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.51k40">Fix wide-change detection counting HTML with UI code as docs</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.51k34">Fix first-run repo search opening macOS protected folders</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.51k33">Fix sign-in tool not starting in the Athena pane after creating a pack</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.51k32">Fix auto-merge button styling on hover in Settings</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.51k30">Fix faint working indicator in the menu bar icon</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.51k15">Fix duplicate Codex approval notifications and questions</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.51k17">Fix review diffs masking code values that only look like secrets</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.51k12">Fix outdated PR state in finished-work notifications</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.51k13">Fix outdated decision consoles silently confirming missing decisions</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.51k16">Fix hard-to-read sequence diagram labels (light · dark)</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.51k14">Fix Codex pane IDs and report delivery to the wrong lead session</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.51m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.51.38">See everything in v0.51.38 on GitHub</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.51m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.51.38">See everything on GitHub</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.50</b><span>v0.50.0 – v0.50.3<br><span data-t="r.d50">Nov 3, 2026</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.50.2</h4>
+    <div class="rel"><div class="v"><b>v0.50.3</b><span data-t="r.d50">Nov 3, 2026</span></div><div>
       <ul>
       <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.50k1">Board Metrics highlights average task, PR, review and verification times — task timeline removed</span></li>
       <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.50k3">Fix agent instructions ignoring current review and merge settings</span></li>
       <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.50k2">Fix decision consoles sending to an outdated pane ID</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.50m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.50.3">See everything in v0.50.3 on GitHub</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.50m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.50.3">See everything on GitHub</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.49</b><span>v0.48.5 – v0.49.3<br><span data-t="r.d49">Nov 3, 2026</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.49.2</h4>
+    <div class="rel"><div class="v"><b>v0.49.3</b><span data-t="r.d49">Nov 3, 2026</span></div><div>
       <ul>
       <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.49k2">Concise Codex code-mode tool call summaries in Agent Monitor</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.49k3">Remove Board QA tab and core QA runner</span></li>
       <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.49k4">Auto-retry core updates for bodies skipped while busy</span></li>
       <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.49k1">Board Metrics charts — completion time, status, verification, completed work</span></li>
       <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.49k5">Fix pane scroll input after reconnect, including mouse tracking modes</span></li>
       <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.49k6">Fix undeliverable Athena messages creating questions in Work</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.49m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.49.3">See everything in v0.49.3 on GitHub</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.49m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.49.3">See everything on GitHub</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.48</b><span>v0.47.53 – v0.48.4<br><span data-t="r.d48">Nov 3, 2026</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.48.2</h4>
+    <div class="rel"><div class="v"><b>v0.48.4</b><span data-t="r.d48">Nov 3, 2026</span></div><div>
       <ul>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.48k1">Learning review suggests guards (hook, verify script, test) — 🔧 cards on the Board</span></li>
       <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.48k3">No macOS notification for permission prompts in the pane you are viewing</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.48k4">Checked delivery for Board instructions, review notices and Athena's first instruction</span></li>
       <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.48k2">Repeated review findings suggest where to add a check</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.48k7">Fix no-PR repo issues not showing ready to complete after merge</span></li>
       <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.48k5">Fix Board auto-completing plans while a linked pane is open</span></li>
       <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.48k6">Fix agents sending a finished notification before their first instruction</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.48k8">Fix text overflow in the getting-started guide and compact diagram</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.48m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.48.4">See everything in v0.48.4 on GitHub</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.48m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.48.4">See everything on GitHub</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.47</b><span>v0.47.0 – v0.47.52<br><span data-t="r.d47">Nov 1–3, 2026</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.47.51</h4>
+    <div class="rel"><div class="v"><b>v0.47.52</b><span data-t="r.d47">Nov 1–3, 2026</span></div><div>
       <ul>
-      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.47k39">Restore Codex conversations from packs exported with work history</span></li>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.47k38">Codex started in the Athena folder works as team lead — same rules as Claude</span></li>
-      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.47k36">Auto PR review and learning review run with Codex when Claude is unavailable</span></li>
-      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.47k31">Codex pane questions and permission prompts in Work</span></li>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.47k29">Agents and reviewers as Codex panes in the repo's workspace</span></li>
-      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.47k28">Choose Claude or Codex at start when both are signed in — choice remembered</span></li>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.47k22">Drag a pane's header onto another pane in the tab to move it — drop preview, Esc cancels</span></li>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.47k21">Hand full verification and merging to GitHub Actions — status on the Board card</span></li>
-      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.47k19">Board dark / light mode button (follows system by default)</span></li>
-      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.47k10">Pane permission prompts in Work — jump to the pane</span></li>
-      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.47k3">Allow specific commands per pack with <code>permissionsAllow</code> — no permission prompt</span></li>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.47k1">App and core updates keep panes running — they switch to the new code</span></li>
-      <li><span class="tag new" data-t="r.new">New</span><span data-t="r.47k2">Older panes that cannot switch close only when you choose</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.47k42">Agent messages queue in order while the Athena pane is busy</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.47k41">Panes show idle once Claude finishes — &gt;_ count of background shells in the title bar</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.47k40">Board Learning tab shows personal memory from Claude and Codex</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.47k32">Waiting-for-input state for panes at a question, permission, trust or model prompt</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.47k26">Commit, secret and process protection hooks for Codex sessions</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.47k27">Codex sessions in Agent Monitor — model, tool activity, summaries</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.47k25">Short review of final fixes after the auto review round limit</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.47k18">Board Metrics: time from start to first merge, split by stage</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.47k17">Full verification runs once at commit instead of after every request</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.47k11">Agent Monitor shows the answering model, times include seconds</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.47k12">Athena pane questions also shown in Work while you view the pane</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.47k7">Pane focus shortcuts changed to ⌘⇧I J K L</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.47k37">Fix Codex reviewer panes not closing after review</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.47k35">Fix update popup showing notes from an earlier release</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.47k34">Fix leftover [?] labels on older Agent Monitor rows</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.47k33">Fix Codex agent panes breaking after trusting hooks</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.47k30">Fix text sent to a pane staying unsent in its input box</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.47k23">Fix continuing work in an agent pane creating a branch in the main checkout</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.47k24">Fix Athena's answers from its own pane not reaching the agent's pane</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.47k20">Fix horizontal scrollbar in the menu bar panel agent list</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.47k16">Fix empty Board memory view (wrong folder)</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.47k15">Fix decision consoles replacing each other in the side browser — one tab each</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.47k14">Fix right sidebar flashing on pane switch</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.47k13">Fix ⌘⇧J and ⌘⇧K when another app has claimed them</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.47k8">Block accidental PRs when auto PR is off</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.47k9">Fix option prompts in an unviewed Athena pane not reaching Work</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.47k4">Fix "done" notifications firing before background commands finish</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.47k5">Fix pushing review fixes to an open PR with no waiting request</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.47k6">Fix decision requests without a console losing their decision type</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.47m">8 more small changes and fixes · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.47.52">See everything in v0.47.52 on GitHub</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.47m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.47.52">See everything on GitHub</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.46</b><span>v0.42.3 – v0.46.4<br><span data-t="r.d46">Nov 1, 2026</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.46.1</h4>
+    <div class="rel"><div class="v"><b>v0.46.4</b><span data-t="r.d46">Nov 1, 2026</span></div><div>
       <ul>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.46k1">Load each repo's rule documents into agent sessions — add or exclude per pack</span></li>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.46k2">⚡ fast path for small PRs — one reviewer, one review round</span></li>
       <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.46k3">Board Metrics: time by stage, review rounds and fixes per merge</span></li>
       <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.46k4">Fix auto-merge proceeding after the PR base changed</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.46m">6 more small changes and fixes · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.46.4">See everything in v0.46.4 on GitHub</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.46m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.46.4">See everything on GitHub</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.42</b><span>v0.40.4 – v0.42.2<br><span data-t="r.d42">Oct 31, 2026</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.42.1</h4>
+    <div class="rel"><div class="v"><b>v0.42.2</b><span data-t="r.d42">Oct 31, 2026</span></div><div>
       <ul>
       <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.42k1">Core update runs in the background after the window opens</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.42k2">Core update popup kind chips — patch-only updates list recent changes</span></li>
       <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.42k3">Fix neighbouring terminals resized by guess on pane split or close</span></li>
       <li><span class="tag sec" data-t="r.sec">Security patch</span><span data-t="r.42k4">Update Electron to 44.10.0 — built-in Node security release <a href="https://nodejs.org/en/blog/release/v24.22.1" target="_blank" rel="noopener">24.22.1</a></span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.42m">2 more small fixes · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.42.0">See everything in v0.42.0 on GitHub</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.42m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.42.0">See everything on GitHub</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.40</b><span>v0.32.5 – v0.40.3<br><span data-t="r.d40">Oct 30, 2026</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.40.0</h4>
+    <div class="rel"><div class="v"><b>v0.40.3</b><span data-t="r.d40">Oct 30, 2026</span></div><div>
       <ul>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.40k1">Direct merge when auto PR is off — no PR or review, merged once verification passes</span></li>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.40k5">Per-repo PR, auto review and merge settings — merge automatically, ask first in Work, or leave to you</span></li>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.40k2">Athena notified when a delegated agent finishes a turn</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.40k6">Second heavy-command slot also waits for CPU load below the core count</span></li>
       <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.40k3">Heavy commands (builds, tests) run two at a time — second slot only when memory is free</span></li>
       <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.40k4">Fix agent questions disappearing from the Work popup</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.40m">10 more small changes and fixes · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.40.3">See everything in v0.40.3 on GitHub</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.40m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.40.3">See everything on GitHub</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.32</b><span>v0.28.8 – v0.32.4<br><span data-t="r.d32">Oct 30, 2026</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.32.0</h4>
+    <div class="rel"><div class="v"><b>v0.32.4</b><span data-t="r.d32">Oct 30, 2026</span></div><div>
       <ul>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.32k1">In-app core update popup — versions, what's new, result</span></li>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.32k2">Athena bug reports as GitHub issue drafts with private details hidden</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.32k8">Remove the warning line under the PR automation switches in Settings</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.32k5">Rename PR automation switches in Settings</span></li>
-      <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.32k9">Core update popup lists working sessions by agent name</span></li>
       <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.32k4">Agent panes start without MCP servers — fewer tokens per reply</span></li>
       <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.32k3">Reuse idle agent panes for the same repo</span></li>
       <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.32k6">Fix commit guard blocking multi-line messages and <code>~</code> or variable paths</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.32k7">Fix agents asking you to merge PRs in auto-merge repos</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.32m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.32.4">See everything in v0.32.4 on GitHub</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.32m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.32.4">See everything on GitHub</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.28</b><span>v0.25.2 – v0.28.7<br><span data-t="r.d28">Oct 29, 2026</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.28.6</h4>
+    <div class="rel"><div class="v"><b>v0.28.7</b><span data-t="r.d28">Oct 29, 2026</span></div><div>
       <ul>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.28k1">Agent pane questions shown as requests in Work</span></li>
       <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.28k2">One-step reports to the Athena pane — kept as a request if the pane is missing</span></li>
       <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.28k6">Fix menu popups hidden behind the side browser</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.28k5">Fix Athena session shown as a folder name in the agent monitor</span></li>
       <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.28k4">Fix decision consoles from Work opening in the outside browser</span></li>
-      <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.28k3">Fix side browser white flash on open</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.28m">4 more small changes and fixes · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.28.7">See everything in v0.28.7 on GitHub</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.28m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.28.7">See everything on GitHub</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.25</b><span>v0.19.3 – v0.25.1<br><span data-t="r.d25">Oct 29, 2026</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.24.0</h4>
+    <div class="rel"><div class="v"><b>v0.25.1</b><span data-t="r.d25">Oct 29, 2026</span></div><div>
       <ul>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.25k2">Warn when new tests also pass without the change (red-check)</span></li>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.25k1">Drag files from Finder onto a pane to paste their paths</span></li>
       <li><span class="tag imp" data-t="r.imp">Improved</span><span><span data-t="r.25k3">Per-pack <code>models</code> — lighter model for light tasks, stronger for re-review</span> <span class="tag by">by Regan</span></span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.25m">6 more small changes and fixes · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.25.1">See everything in v0.25.1 on GitHub</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.25m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.25.1">See everything on GitHub</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.19</b><span>v0.17.7 – v0.19.2<br><span data-t="r.d19">Oct 29, 2026</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.18.3</h4>
+    <div class="rel"><div class="v"><b>v0.19.2</b><span data-t="r.d19">Oct 29, 2026</span></div><div>
       <ul>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.19k1">Resize the workspace list, Explorer and monitor by dragging edges</span></li>
       <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.19k3">Fix Work and Settings buttons left disabled after the start screen</span></li>
       <li><span class="tag fix" data-t="r.fix">Fixed</span><span data-t="r.19k2">Fix pane border drag blocked by the left pane's scrollbar</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.19m">4 more small changes and fixes · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.19.2">See everything in v0.19.2 on GitHub</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.19m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.19.2">See everything on GitHub</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.17</b><span>v0.15.9 – v0.17.6<br><span data-t="r.d17">Oct 29, 2026</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.17.2</h4>
+    <div class="rel"><div class="v"><b>v0.17.6</b><span data-t="r.d17">Oct 29, 2026</span></div><div>
       <ul>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.17k2">Watch a repo's open GitHub issues — import new issues as work items</span></li>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.17k1">In-app update from Settings (⚙) — current version kept on failure</span></li>
       <li><span class="tag imp" data-t="r.imp">Improved</span><span data-t="r.17k3">Work alerts only for decisions — auto review status goes to the Athena pane</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.17m">5 more small changes and fixes · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.17.6">See everything in v0.17.6 on GitHub</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.17m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.17.6">See everything on GitHub</a></p>
     </div></div>
-    <div class="rel"><div class="v"><b>0.15</b><span>v0.15.0 – v0.15.8<br><span data-t="r.d15">Oct 28, 2026</span></span></div><div>
-      <div class="rel-ver"><h4 class="rel-vh">v0.15.0</h4>
+    <div class="rel"><div class="v"><b>v0.15.8</b><span data-t="r.d15">Oct 28, 2026</span></div><div>
       <ul>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.15k1">Download for Apple Silicon and Intel Macs (macOS 13 Ventura or later)</span></li>
       <li><span class="tag new" data-t="r.new">New</span><span data-t="r.15k2">Signed and notarized by Apple — opens without a security warning</span></li>
-      </ul></div>
-      <p class="rel-more" data-t="r.15m">2 more small fixes · <a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.15.8">See everything in v0.15.8 on GitHub</a></p>
+      </ul>
+      <p class="rel-more" data-t="r.15m"><a href="https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.15.8">See everything on GitHub</a></p>
     </div></div>
     <details class="rel-old"><summary data-t="r.devsum">Development builds before the first public release (0.2 – 0.13)</summary>
     <div class="rel"><div class="v"><b>0.2 – 0.13</b><span data-t="r.dpre">Oct 26–28, 2026</span></div><ul>
