@@ -90,6 +90,17 @@ h2{margin:0 0 8px;font-family:var(--round);font-weight:400;font-size:clamp(26px,
 @media (min-width:900px){#route .wrap{grid-template-columns:1fr 1.25fr}#route .pic-phone{order:-1}}
 .find h2{font-size:clamp(30px,4.4vw,44px);margin-bottom:12px}
 .find p{margin:0;font-size:18px;color:var(--secondary)}
+/* 타고 가기 절: 실제 화면 다섯 장을 휴대폰 틀 안에서 옆으로 넘긴다(손으로 밀기는 scroll-snap · 자동 넘김 · 점 표시는 절 아래 스크립트) */
+.ride-phone{padding:8px;border-radius:40px;background:#17181b;box-shadow:0 0 0 1px rgba(255,255,255,.08) inset,0 18px 36px rgba(60,50,0,.22)}
+.ride-track{position:relative;display:flex;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none;border-radius:32px;-webkit-overflow-scrolling:touch}
+.ride-track::-webkit-scrollbar{display:none}
+.ride-slide{flex:0 0 100%;margin:0;scroll-snap-align:start;scroll-snap-stop:always}
+.ride-show .ride-slide img{display:block;width:100%;height:auto;padding:0;border-radius:0;box-shadow:none;background:var(--control)}
+.ride-dots{display:flex;justify-content:center;gap:2px;margin-top:12px}
+.ride-dots button{display:grid;justify-items:center;gap:5px;padding:4px 6px;border:0;border-radius:var(--radius-8);background:none;color:var(--muted);font-family:inherit;font-size:12px;font-weight:700;line-height:1.2;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.ride-dots button::before{content:"";width:8px;height:8px;border-radius:var(--radius-circle);background:var(--rule);transition:background-color var(--duration-150),transform var(--duration-150)}
+.ride-dots button[aria-current="true"]{color:var(--ink)}
+.ride-dots button[aria-current="true"]::before{background:var(--syung-ink);transform:scale(1.25)}
 
 /* 승차권 절 */
 .band{padding:64px 0;background:var(--band)}
