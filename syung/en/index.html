@@ -154,7 +154,8 @@ const go=index=>track.scrollTo({left:slides[index].offsetLeft,behavior:still.mat
 const plan=()=>{clearTimeout(timer);if(still.matches||!inView||holding||document.hidden)return;timer=setTimeout(()=>go((current+1)%slides.length),Number(slides[current].dataset.hold)||1500)};
 track.addEventListener('scroll',()=>{const index=Math.round(track.scrollLeft/track.clientWidth);if(index!==current&&slides[index])mark(index);plan()},{passive:true});
 track.addEventListener('pointerdown',()=>{holding=true;plan()});
-addEventListener('pointerup',()=>{if(holding){holding=false;plan()}});
+// 손으로 밀면 브라우저가 스크롤을 맡으며 pointerup 대신 pointercancel 이 온다 — 둘 다 받아 자동 넘김을 되살린다
+const release=()=>{if(holding){holding=false;plan()}};addEventListener('pointerup',release);addEventListener('pointercancel',release);
 dots.forEach((dot,index)=>dot.addEventListener('click',()=>go(index)));
 new IntersectionObserver(([entry])=>{inView=entry.isIntersecting;plan()}).observe(show);
 document.addEventListener('visibilitychange',plan);still.addEventListener('change',plan)})();
