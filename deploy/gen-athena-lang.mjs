@@ -22,6 +22,9 @@ export const PAGES = [
   ['download/index.html', '/download/'],
   ['releases/index.html', '/releases/'],
   ['terms/index.html', '/terms/'],
+  ['terms/history/index.html', '/terms/history/'],
+  ['privacy/index.html', '/privacy/'],
+  ['privacy/history/index.html', '/privacy/history/'],
 ];
 const HTML_LANG = { en: 'en', ko: 'ko', ja: 'ja', zh: 'zh-Hans' };
 const LANG_NAMES = { en: 'English', ko: '한국어', ja: '日本語', zh: '中文' };

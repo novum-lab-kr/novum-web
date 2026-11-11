@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title data-t="t.title">利用規約 — Athena Studio</title>
-<meta name="description" data-ta="content:t.desc" content="Athena Studio エンドユーザー使用許諾契約。">
+<meta name="description" data-ta="content:t.desc" content="Athena 利用規約(Athena Studio エンドユーザー使用許諾契約)。">
 <meta property="og:title" content="利用規約 — Athena Studio">
-<meta property="og:description" content="Athena Studio エンドユーザー使用許諾契約。">
+<meta property="og:description" content="Athena 利用規約(Athena Studio エンドユーザー使用許諾契約)。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://athena.novum-lab.com/ja/terms/">
 <meta property="og:image" content="https://athena.novum-lab.com/assets/og.jpg">
@@ -42,6 +42,19 @@
 <script src="/assets/analytics.js?v=20261029a" async></script>
 <script src="/assets/lang.js?v=20261102d"></script>
 <script src="/assets/motion.js?v=20261028i" defer></script>
+<style>
+/* 법적 문서 페이지 — 한국어판(/ko/)은 한국어 본문, 나머지 언어판은 영어 본문을 보인다 */
+.only-ko { display: none; }
+html[data-lang="ko"] .only-ko { display: block; }
+html[data-lang="ko"] .not-ko { display: none; }
+.prose .meta { font-size: 14px; }
+.prose ol { padding-left: 22px; }
+.prose h3 { font-size: 16px; color: var(--text); margin: 28px 0 10px; }
+.legal-table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 0 0 16px; }
+.legal-table th, .legal-table td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+.legal-table th { color: var(--text); font-weight: 600; background: rgba(255, 255, 255, .03); }
+.legal-table tbody th { width: 30%; }
+</style>
 </head>
 <body>
 <header class="top">
@@ -63,63 +76,228 @@
 <div class="page-head">
   <div class="wrap">
     <p class="eyebrow"><i></i><span data-t="t.eyebrow">法的情報</span></p>
-    <h1 class="grad">Athena Studio End User License Agreement</h1>
+    <h1 class="grad" data-t="t.h1">Athena 利用規約</h1>
   </div>
 </div>
 
-<!-- athena-studio docs/release/EULA.md(무료판 · origin/main 55825d9 · Last updated 2026-10-28) 그대로 -->
 <section style="padding-top:0">
   <div class="wrap">
-    <p class="notice only-intl" data-t="t.intl">この契約は英語でのみ提供されます。以下の英語の原文が正本です。</p>
-    <div class="prose" lang="en">
-      <p>Last updated: October 28, 2026</p>
-      <p>This End User License Agreement (“Agreement”) is between you and Novum Lab (representative: Eunju Kim, Business Registration No. 496-37-01619, Seoul, Republic of Korea) (“Novum Lab”, “we”). By installing or using Athena Studio (“App”), you agree to this Agreement. If you do not agree, do not install or use the App.</p>
+    <!-- 이용약관 제2판(차곡차곡 약관 구조 · athena-studio docs/release/EULA.md 조항 유지). 한국어가 원문 · 영어는 번역. 시행 중인 판은 늘 이 주소다 — 새 판을 낼 때 이 본문을 /terms/v2/ 로 옮겨 보관하고 판 목록(/terms/history/)에 줄을 더한다. 시행된 판 본문은 고치지 않는다(오탈자만) -->
+    <div class="prose only-ko" lang="ko">
+      <p class="meta">제2판, 게시일 <mark>[올리는 날]</mark>, 시행일 <mark>[올리는 날]</mark> · <a href="/ja/terms/history/">이전 판 보기</a></p>
 
-      <h2>1. License</h2>
-      <p>Subject to this Agreement, we grant you a personal, non-exclusive, non-transferable, revocable license to install and use the App on Mac computers you own or control.</p>
+      <h2>제1조 (목적)</h2>
+      <p>이 약관은 노붐랩(Novum Lab)(대표 김은주, 이하 "운영자")이 제공하는 Athena Studio 맥 앱, Athena 모바일 앱과 관련 서비스(이하 "서비스")를 이용하는 조건과 절차, 운영자와 이용자의 권리와 의무를 정합니다. 이 약관은 Athena Studio 최종 사용자 사용권 계약(EULA)을 겸합니다.</p>
 
-      <h2>2. Restrictions</h2>
-      <p>You may not:</p>
-      <ul>
-        <li>copy, modify, or create derivative works of the App, except as allowed by law;</li>
-        <li>reverse engineer, decompile, or disassemble the App, except to the extent the law expressly permits despite this restriction;</li>
-        <li>rent, lease, resell, sublicense, or share or redistribute the App;</li>
-        <li>remove or bypass notices or security features.</li>
-      </ul>
+      <h2>제2조 (정의)</h2>
+      <ol>
+        <li>"이용자"는 이 약관에 따라 서비스를 이용하는 사람입니다.</li>
+        <li>"맥 앱"은 이용자의 Mac 컴퓨터에 설치해 쓰는 Athena Studio입니다.</li>
+        <li>"모바일 앱"은 이용자의 휴대 기기에 설치해 맥 앱과 연결하는 Athena 앱입니다.</li>
+        <li>"모바일 연결"은 모바일 앱에서 맥 앱의 작업 화면(터미널)을 보고 입력하는 기능입니다. 운영자의 중계 서버를 거칩니다.</li>
+        <li>"중계 서버"는 맥 앱과 모바일 앱 사이의 연결을 이어 주는 운영자의 서버입니다.</li>
+        <li>"계정"은 모바일 연결을 쓰려고 이용자가 Apple 또는 Google 계정으로 로그인해 만든 서비스 계정입니다.</li>
+        <li>"기기"는 같은 계정으로 로그인해 모바일 연결에 등록한 맥과 휴대 기기입니다.</li>
+      </ol>
 
-      <h2>3. Third-party services and your content</h2>
-      <ul>
-        <li>The App runs AI agents (for example Claude Code) and developer tools (for example git) on your computer. Your use of those services is governed by their own terms; you are responsible for your accounts with them and any fees they charge.</li>
-        <li>Optional: if you add your own TypeSafe Jev key, the App sends QA error details and learning notes to TypeSafe Jev (api.typesafe.ai). These may include parts of your code. Jev's own terms apply. Without a key, nothing is sent to TypeSafe Jev.</li>
-        <li>Your code, files, and repositories stay yours. The App does not send your code or files to Novum Lab servers.</li>
-        <li>You are responsible for reviewing changes, commits, and pull requests made by agents you run in the App.</li>
-      </ul>
+      <h2>제3조 (약관의 게시와 변경)</h2>
+      <ol>
+        <li>운영자는 이 약관을 이 웹페이지에 게시합니다.</li>
+        <li>운영자는 관련 법령을 어기지 않는 범위에서 약관을 바꿀 수 있습니다. 바꿀 때는 시행일과 바뀌는 내용을 시행일 7일 전부터 앱 안 알림이나 이메일, 그리고 이 웹페이지로 알립니다. 이용자에게 불리한 변경은 30일 전부터 알립니다.</li>
+        <li>이용자가 바뀐 약관에 동의하지 않으면 앱 사용을 멈추고 계정을 삭제해 이용 계약을 끝낼 수 있습니다.</li>
+      </ol>
 
-      <h2>4. Updates</h2>
-      <p>We may provide updates. Some updates may be required to keep using the App.</p>
+      <h2>제4조 (서비스의 내용)</h2>
+      <ol>
+        <li>맥 앱은 이용자의 컴퓨터에서 AI 에이전트(예: Claude Code)와 개발 도구(예: git)를 실행하고 관리하는 기능을 제공합니다. 맥 앱은 무료입니다.</li>
+        <li>모바일 연결은 이용자가 고르는 기능입니다. 모바일 연결을 쓰지 않으면 계정 없이 맥 앱을 쓸 수 있습니다.</li>
+        <li>모바일 연결을 켜면 맥 앱과 모바일 앱이 중계 서버를 거쳐 연결됩니다. 터미널 화면과 입력은 맥과 휴대 기기 사이에서 종단간 암호화되어, 중계 서버와 운영자는 그 내용을 읽을 수 없습니다.</li>
+        <li>모바일 연결은 맥이 켜져 있고 맥 앱이 실행 중일 때만 동작합니다.</li>
+        <li>모바일 앱은 에이전트가 확인을 요청하거나, 일을 끝내거나, 멈췄을 때 푸시 알림을 보냅니다. 알림에는 알림 종류와 에이전트 이름만 담습니다.</li>
+      </ol>
 
-      <h2>5. Ownership</h2>
-      <p>The App is licensed, not sold. We and our licensors keep all rights, title, and interest in the App. Third-party components are licensed under their own terms (see THIRD_PARTY_NOTICES in the App).</p>
+      <h2>제5조 (이용 허락)</h2>
+      <p>운영자는 이 약관에 따라 이용자에게 맥 앱을 이용자가 소유하거나 관리하는 Mac에, 모바일 앱을 이용자가 소유하거나 관리하는 휴대 기기에 설치해 쓸 수 있는 개인적이고, 독점적이지 않으며, 양도할 수 없고, 철회할 수 있는 권리를 줍니다.</p>
 
-      <h2>6. Disclaimer</h2>
-      <p class="caps">THE APP IS PROVIDED “AS IS” AND “AS AVAILABLE”, WITHOUT WARRANTIES OF ANY KIND, TO THE EXTENT PERMITTED BY LAW. WE DO NOT WARRANT THAT THE APP OR AI-GENERATED OUTPUT WILL BE ERROR-FREE, SECURE, OR SUITABLE FOR YOUR PURPOSE.</p>
+      <h2>제6조 (계정)</h2>
+      <ol>
+        <li>만 14세 미만은 서비스를 이용할 수 없습니다.</li>
+        <li>이용자는 자신의 Apple 또는 Google 계정과 등록한 기기를 스스로 관리해야 합니다. 기기를 잃어버렸거나 더 쓰지 않으면 그 기기의 연결을 해제해야 합니다.</li>
+      </ol>
 
-      <h2>7. Limitation of liability</h2>
-      <p class="caps">TO THE EXTENT PERMITTED BY LAW, NOVUM LAB IS NOT LIABLE FOR INDIRECT, INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES, OR FOR LOSS OF DATA, CODE, OR PROFITS. OUR TOTAL LIABILITY IS LIMITED TO USD 100.</p>
+      <h2>제7조 (금지 행위)</h2>
+      <p>이용자는 서비스를 이용하면서 다음 행위를 해서는 안 됩니다.</p>
+      <ol>
+        <li>법령이 허용하는 경우를 빼고 앱을 복제하거나, 고치거나, 2차적 저작물을 만드는 행위</li>
+        <li>법령이 이 제한에도 불구하고 명시적으로 허용하는 범위를 빼고 앱을 역설계, 디컴파일, 디스어셈블하는 행위</li>
+        <li>앱을 빌려주거나, 임대하거나, 다시 팔거나, 재허락하거나, 공유하거나, 다시 배포하는 행위</li>
+        <li>앱의 고지나 보안 기능을 지우거나 우회하는 행위</li>
+        <li>다른 사람의 계정이나 기기를 쓰는 행위</li>
+        <li>중계 서버에 허락 없이 접근하거나, 서비스와 서버의 정상적인 운영을 방해하는 행위</li>
+        <li>법령에 어긋나는 목적으로 서비스를 쓰는 행위</li>
+      </ol>
 
-      <h2>8. Termination</h2>
-      <p>This Agreement ends if you breach it or stop using the App. On termination you must stop using and delete the App. Sections 2, 5, 6, 7, and 9 survive.</p>
+      <h2>제8조 (제3자 서비스와 이용자의 콘텐츠)</h2>
+      <ol>
+        <li>맥 앱은 이용자의 컴퓨터에서 AI 에이전트(예: Claude Code)와 개발 도구(예: git)를 실행합니다. 그 서비스의 이용에는 각 서비스의 약관이 적용되며, 이용자는 그 서비스의 계정과 요금을 스스로 책임집니다.</li>
+        <li>이용자가 직접 TypeSafe Jev 키를 넣은 경우에만 맥 앱이 QA 오류 내용과 학습 노트를 TypeSafe Jev(api.typesafe.ai)로 보냅니다. 여기에는 코드의 일부가 들어갈 수 있고, Jev의 약관이 적용됩니다. 키가 없으면 TypeSafe Jev로 아무것도 보내지 않습니다.</li>
+        <li>이용자의 코드, 파일, 저장소의 권리는 이용자에게 있습니다. 운영자의 서버는 이용자의 코드나 파일을 받지 않습니다. 모바일 연결을 켜면 터미널 화면이 맥과 휴대 기기 사이에서 종단간 암호화된 채 중계 서버를 지나가며, 서버는 그 내용을 읽을 수 없습니다. 자세한 내용은 <a href="/ja/privacy/">개인정보 처리방침</a>에 적었습니다.</li>
+        <li>이용자는 앱에서 실행한 에이전트가 만든 변경, 커밋, 풀 리퀘스트를 스스로 검토할 책임이 있습니다.</li>
+      </ol>
 
-      <h2>9. Governing law</h2>
-      <p>This Agreement is governed by the laws of the Republic of Korea. Disputes will be resolved in the courts of Seoul Central District Court, unless consumer protection law in your country requires otherwise.</p>
+      <h2>제9조 (업데이트)</h2>
+      <p>운영자는 앱의 업데이트를 제공할 수 있습니다. 앱을 계속 쓰려면 일부 업데이트를 설치해야 할 수 있습니다.</p>
 
-      <h2>10. Changes</h2>
-      <p>We may update this Agreement. We will notify you of material changes in the App or by email. Continuing to use the App after changes take effect means you accept them.</p>
+      <h2>제10조 (권리의 귀속)</h2>
+      <p>앱은 판매하는 것이 아니라 이용을 허락하는 것입니다. 앱에 대한 모든 권리는 운영자와 운영자에게 이용을 허락한 자에게 있습니다. 앱에 들어 있는 제3자 구성 요소에는 각자의 이용 조건이 적용됩니다(앱 안의 THIRD_PARTY_NOTICES).</p>
 
-      <h2>11. Contact</h2>
-      <p>Novum Lab · <a href="mailto:mcsung@novum-lab.com">mcsung@novum-lab.com</a></p>
+      <h2>제11조 (서비스의 변경, 중단, 종료)</h2>
+      <ol>
+        <li>운영자는 기술상 또는 운영상 필요가 있으면 서비스의 내용을 바꿀 수 있고, 점검이나 장애 등으로 모바일 연결을 잠시 멈출 수 있습니다. 바뀌는 내용이 이용자에게 중요하면 미리 앱이나 이 웹페이지에 알립니다.</li>
+        <li>운영자가 모바일 연결을 종료할 때는 종료일 30일 전부터 앱과 이 웹페이지에 알립니다.</li>
+        <li>모바일 연결을 종료하면 중계 서버에 있는 계정 정보는 개인정보 처리방침에 따라 파기합니다.</li>
+      </ol>
+
+      <h2>제12조 (계정 삭제)</h2>
+      <ol>
+        <li>이용자는 언제든지 계정 관리 페이지에서 계정을 삭제할 수 있습니다. 앱을 쓸 수 없으면 <a href="mailto:mcsung@novum-lab.com">mcsung@novum-lab.com</a>으로 요청할 수 있습니다.</li>
+        <li>계정을 삭제하면 계정 정보와 등록한 기기, 기기 연결 정보가 지체 없이 삭제되고, 모든 기기의 모바일 연결이 끊깁니다. 연결 기록은 개인정보 처리방침에 따라 90일 동안 보관한 뒤 지웁니다.</li>
+        <li>계정을 삭제해도 맥 앱은 계정 없이 계속 쓸 수 있습니다.</li>
+      </ol>
+
+      <h2>제13조 (보증의 부인)</h2>
+      <p>법령이 허용하는 범위에서, 앱은 "있는 그대로", "이용할 수 있는 상태로" 제공되며 어떤 종류의 보증도 하지 않습니다. 운영자는 앱이나 AI가 만든 결과물에 오류가 없거나, 안전하거나, 이용자의 목적에 맞는다고 보증하지 않습니다.</p>
+
+      <h2>제14조 (책임의 제한)</h2>
+      <ol>
+        <li>법령이 허용하는 범위에서, 운영자는 간접 손해, 부수적 손해, 특별 손해, 결과적 손해와 데이터, 코드, 이익의 손실에 책임을 지지 않습니다.</li>
+        <li>운영자는 천재지변 같은 불가항력이나 이용자의 기기, 네트워크 문제처럼 이용자에게 책임이 있는 사유로 생긴 손해에는 책임을 지지 않습니다.</li>
+        <li>운영자의 고의나 과실로 이용자에게 손해가 생기면 운영자가 관련 법령에 따라 책임을 집니다.</li>
+      </ol>
+
+      <h2>제15조 (이용 계약의 종료)</h2>
+      <p>이용자가 이 약관을 어기거나 앱 사용을 멈추면 이용 계약은 끝납니다. 계약이 끝나면 이용자는 앱 사용을 멈추고 앱을 삭제해야 합니다. 제7조, 제10조, 제13조, 제14조, 제16조는 계약이 끝난 뒤에도 효력이 있습니다.</p>
+
+      <h2>제16조 (준거법과 분쟁 해결)</h2>
+      <ol>
+        <li>이 약관은 대한민국 법률에 따릅니다. 서비스 이용과 관련해 분쟁이 생기면 서울중앙지방법원에서 해결합니다.</li>
+        <li>다만 이용자가 대한민국 밖에 사는 소비자라면, 그 나라의 법이 소비자에게 보장하는 권리(예: 약관으로 배제할 수 없는 권리, 이용자가 사는 곳의 법원에서 다툴 권리)는 이 약관으로 제한되지 않습니다.</li>
+      </ol>
+
+      <h2>문의</h2>
+      <p><a href="mailto:mcsung@novum-lab.com">mcsung@novum-lab.com</a></p>
+      <p>운영자: 노붐랩(Novum Lab), 대표 김은주, 사업자등록번호 496-37-01619, 대한민국 서울</p>
     </div>
-    <!-- 이 사이트(athena.novum-lab.com)의 쿠키 안내 — EULA 원문 밖이라 따로 둔다(2026-11-03 풋터에서 옮김) -->
+    <div class="not-ko">
+    <p class="notice only-intl" data-t="t.intl">この文書は韓国語と英語で提供されます。以下の英語は翻訳で、韓国語版と異なる場合は韓国語版が優先されます。</p>
+    <div class="prose" lang="en">
+      <p class="meta">Version 2, posted <mark>[upload date]</mark>, effective <mark>[upload date]</mark> · <a href="/ja/terms/history/">Previous versions</a></p>
+      <p>This is a translation. If the English and Korean versions differ, the Korean version prevails, except where the law of your country of residence requires otherwise.</p>
+
+      <h2>Article 1 (Purpose)</h2>
+      <p>These Terms set out the conditions and procedures for using the Athena Studio Mac app, the Athena mobile app, and related services (the "Service") provided by Novum Lab (representative: Eunju Kim; "we" or "us"), and the rights and responsibilities of us and of users. These Terms also serve as the Athena Studio End User License Agreement (EULA).</p>
+
+      <h2>Article 2 (Definitions)</h2>
+      <ol>
+        <li>"User" or "you" means a person who uses the Service under these Terms.</li>
+        <li>"Mac app" means Athena Studio, installed and used on your Mac computer.</li>
+        <li>"Mobile app" means the Athena app, installed on your mobile device and connected to the Mac app.</li>
+        <li>"Mobile connection" means the feature that lets you view and type into the Mac app's work screens (terminals) from the Mobile app. It passes through our relay server.</li>
+        <li>"Relay server" means our server that connects the Mac app and the Mobile app.</li>
+        <li>"Account" means the Service account you create by signing in with an Apple or Google account to use the Mobile connection.</li>
+        <li>"Device" means a Mac or mobile device that you have signed in to with the same Account and registered for the Mobile connection.</li>
+      </ol>
+
+      <h2>Article 3 (Posting and changes)</h2>
+      <ol>
+        <li>We post these Terms on this web page.</li>
+        <li>We may change these Terms to the extent permitted by applicable law. When we do, we will announce the effective date and the changes, starting 7 days before the effective date, through an in-app notice or email and on this web page. Changes that are unfavorable to you will be announced 30 days in advance.</li>
+        <li>If you do not agree to the changed Terms, you may stop using the apps, delete your Account, and end this agreement.</li>
+      </ol>
+
+      <h2>Article 4 (The Service)</h2>
+      <ol>
+        <li>The Mac app runs and manages AI agents (for example Claude Code) and developer tools (for example git) on your computer. The Mac app is free.</li>
+        <li>The Mobile connection is optional. If you do not use it, you can use the Mac app without an Account.</li>
+        <li>When you turn on the Mobile connection, the Mac app and the Mobile app connect through the Relay server. Terminal screens and input are end-to-end encrypted between your Mac and your mobile device, and neither the Relay server nor we can read them.</li>
+        <li>The Mobile connection works only while your Mac is on and the Mac app is running.</li>
+        <li>The Mobile app sends push notifications when an agent asks for confirmation, finishes, or stops. A notification contains only the notification type and the agent's name.</li>
+      </ol>
+
+      <h2>Article 5 (License)</h2>
+      <p>Subject to these Terms, we grant you a personal, non-exclusive, non-transferable, revocable license to install and use the Mac app on Mac computers you own or control, and the Mobile app on mobile devices you own or control.</p>
+
+      <h2>Article 6 (Accounts)</h2>
+      <ol>
+        <li>People under 14 may not use the Service.</li>
+        <li>You are responsible for your own Apple or Google account and for the Devices you register. If you lose a Device or stop using it, you should disconnect it.</li>
+      </ol>
+
+      <h2>Article 7 (Prohibited conduct)</h2>
+      <p>When using the Service, you must not:</p>
+      <ol>
+        <li>copy, modify, or create derivative works of the apps, except as allowed by law;</li>
+        <li>reverse engineer, decompile, or disassemble the apps, except to the extent the law expressly permits despite this restriction;</li>
+        <li>rent, lease, resell, sublicense, or share or redistribute the apps;</li>
+        <li>remove or bypass notices or security features;</li>
+        <li>use another person's Account or Device;</li>
+        <li>access the Relay server without permission, or interfere with the normal operation of the Service or its servers;</li>
+        <li>use the Service for any purpose that violates the law.</li>
+      </ol>
+
+      <h2>Article 8 (Third-party services and your content)</h2>
+      <ol>
+        <li>The Mac app runs AI agents (for example Claude Code) and developer tools (for example git) on your computer. Your use of those services is governed by their own terms; you are responsible for your accounts with them and any fees they charge.</li>
+        <li>Only if you add your own TypeSafe Jev key does the Mac app send QA error details and learning notes to TypeSafe Jev (api.typesafe.ai). These may include parts of your code, and Jev's own terms apply. Without a key, nothing is sent to TypeSafe Jev.</li>
+        <li>Your code, files, and repositories stay yours. Our servers do not receive your code or files. If you turn on the Mobile connection, terminal screens pass through the Relay server end-to-end encrypted between your Mac and your mobile device, and the server cannot read them. See the <a href="/ja/privacy/">Privacy Policy</a> for details.</li>
+        <li>You are responsible for reviewing changes, commits, and pull requests made by agents you run in the apps.</li>
+      </ol>
+
+      <h2>Article 9 (Updates)</h2>
+      <p>We may provide updates. Some updates may be required to keep using the apps.</p>
+
+      <h2>Article 10 (Ownership)</h2>
+      <p>The apps are licensed, not sold. We and our licensors keep all rights, title, and interest in the apps. Third-party components are licensed under their own terms (see THIRD_PARTY_NOTICES in the app).</p>
+
+      <h2>Article 11 (Changes, suspension, and termination of the Service)</h2>
+      <ol>
+        <li>We may change the Service when technically or operationally necessary, and may temporarily suspend the Mobile connection for maintenance or outages. If a change matters to you, we will announce it in advance in the app or on this web page.</li>
+        <li>If we end the Mobile connection, we will announce it on this web page and in the app starting 30 days before the end date.</li>
+        <li>When the Mobile connection ends, Account information on the Relay server will be destroyed in accordance with the Privacy Policy.</li>
+      </ol>
+
+      <h2>Article 12 (Deleting your Account)</h2>
+      <ol>
+        <li>You can delete your Account at any time on the account management page. If you cannot use the apps, you can request deletion at <a href="mailto:mcsung@novum-lab.com">mcsung@novum-lab.com</a>.</li>
+        <li>When you delete your Account, your Account information, registered Devices, and Device connections are deleted without delay, and the Mobile connection ends on all Devices. Connection logs are kept for 90 days under the Privacy Policy and then deleted.</li>
+        <li>After deleting your Account, you can keep using the Mac app without an Account.</li>
+      </ol>
+
+      <h2>Article 13 (Disclaimer)</h2>
+      <p class="caps">TO THE EXTENT PERMITTED BY LAW, THE APPS ARE PROVIDED “AS IS” AND “AS AVAILABLE”, WITHOUT WARRANTIES OF ANY KIND. WE DO NOT WARRANT THAT THE APPS OR AI-GENERATED OUTPUT WILL BE ERROR-FREE, SECURE, OR SUITABLE FOR YOUR PURPOSE.</p>
+
+      <h2>Article 14 (Limitation of liability)</h2>
+      <ol>
+        <li class="caps">TO THE EXTENT PERMITTED BY LAW, NOVUM LAB IS NOT LIABLE FOR INDIRECT, INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES, OR FOR LOSS OF DATA, CODE, OR PROFITS.</li>
+        <li>We are not liable for damage caused by force majeure such as natural disasters, or by reasons for which you are responsible, such as problems with your device or network.</li>
+        <li>If damage is caused to you by our intent or negligence, we are liable in accordance with applicable law.</li>
+      </ol>
+
+      <h2>Article 15 (Termination)</h2>
+      <p>This agreement ends if you breach these Terms or stop using the apps. On termination you must stop using and delete the apps. Articles 7, 10, 13, 14, and 16 survive termination.</p>
+
+      <h2>Article 16 (Governing law and dispute resolution)</h2>
+      <ol>
+        <li>These Terms are governed by the laws of the Republic of Korea. Disputes arising in connection with use of the Service will be resolved in the Seoul Central District Court.</li>
+        <li>However, if you are a consumer living outside the Republic of Korea, nothing in these Terms limits the rights that the law of your country gives you as a consumer (for example, rights that cannot be excluded by contract, or the right to bring a claim in the courts where you live).</li>
+      </ol>
+
+      <h2>Contact</h2>
+      <p><a href="mailto:mcsung@novum-lab.com">mcsung@novum-lab.com</a></p>
+      <p>Operator: Novum Lab, representative Eunju Kim, business registration number 496-37-01619, Seoul, Republic of Korea</p>
+    </div>
+    </div>
+    <!-- 이 사이트(athena.novum-lab.com)의 쿠키 안내 — 약관 본문 밖이라 따로 둔다(2026-11-03 풋터에서 옮김) -->
     <div class="prose" style="margin-top:40px">
       <p data-t="c.ga">このサイトでは、訪問数とダウンロード数を数えるために Google Analytics の Cookie を使用しています。</p>
     </div>
@@ -138,6 +316,7 @@
         <a href="/ja/releases/" data-t="nav.releases">更新履歴</a>
         <a href="/ja/download/" data-t="nav.download">ダウンロード</a>
         <a href="/ja/terms/" data-t="nav.terms">利用規約</a>
+        <a href="/ja/privacy/" data-t="nav.privacy">プライバシーポリシー</a>
         <a href="https://github.com/novum-lab-kr/athena-studio/issues/new/choose" data-t="nav.issue">問題を報告</a>
         <a href="https://novum-lab.com">novum-lab.com</a>
       </div>

@@ -67,7 +67,10 @@ Every task gets a plan, its own worktree and a check before it ships.
 - [Docs](https://athena.novum-lab.com/docs/): Getting started with Athena Studio, keyboard shortcuts, data and security, how it compares, and frequently asked questions.
 - [Download](https://athena.novum-lab.com/download/): Download Athena Studio for macOS (Apple Silicon and Intel). Requirements and first steps.
 - [Release notes](https://athena.novum-lab.com/releases/): What changed in Athena Studio, newest first.
-- [Terms](https://athena.novum-lab.com/terms/): Athena Studio End User License Agreement.
+- [Terms of Use](https://athena.novum-lab.com/terms/): Athena Terms of Use (Athena Studio End User License Agreement).
+- [Terms of Use versions](https://athena.novum-lab.com/terms/history/): Every version of the Athena Terms of Use, with dates and changes.
+- [Privacy Policy](https://athena.novum-lab.com/privacy/): How Athena Studio and the Athena mobile app handle personal information.
+- [Privacy Policy versions](https://athena.novum-lab.com/privacy/history/): Every version of the Athena Privacy Policy, with dates and changes.
 
 ## Other languages
 
