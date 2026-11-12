@@ -40,6 +40,8 @@
 - 서버가 돌려주는 `closed`, `full`, `rate_limited`(없는 코드를 한 곳에서 1시간 30번, 앱 저장소 `supabase/migrations/20261106000001~3`)마다 차곡이 카드를 보여 준다.
 - 차곡이 그림과 스티커는 앱 저장소에서 만든다: `node deploy/build-chagok-invite-assets.mjs <chagok-app 경로>`.
 - 초대 링크 미리보기 그림(`assets/invite/og.png`, 1200×630)은 `node deploy/build-chagok-og.mjs`로 만든다(맥 Chrome 헤드리스). 카카오톡이 양옆을 잘라서 스티커 타일은 글과 차곡이에서 40px, 양옆 끝에서 60px 넘게 떨어뜨리고, 스크립트가 이 간격을 재서 어기면 멈춘다.
+- **영어 초대(2026-11-12):** 앱 1.1.1부터 앱 언어가 영어면 초대 링크에 `?lang=en`을 붙인다. Caddy가 `lang=en`인 `/invite/*`를 `invite/en.html`로 보낸다(링크 미리보기 og 메타가 영어). 그림은 `LANG_CODE=en node deploy/build-chagok-og.mjs`로 만든 `assets/invite/og-en.png`. 본문은 `index.html`과 같으니 한쪽을 고치면 다른 쪽도 고친다. og 그림 주소의 `?v=`는 카카오톡 캐시를 넘기려고 그림을 바꿀 때마다 올린다.
+- **미리보기 그림 간격(2026-11-12):** 카카오톡은 카드를 2:1로 크게 채우며 양옆을 100px 안팎 자른다. 40px 간격에서는 오른쪽 물방울 타일이 「채워요」에 붙어 보였다. 지금 검사는 글 줄마다 80px, 글과 차곡이 묶음은 한국어 0.9배, 영어 0.85배다.
 - **서버(Caddy) 설정은 끝났다(2026-11-06, 운영 서버):** `/invite/*`를 `/invite/index.html`로 보내고, `/.well-known/apple-app-site-association`을 `Content-Type: application/json`으로 낸다. 이 설정이 빠지면 `/invite/<코드>`가 404다.
 
 ## 개정하는 방법
