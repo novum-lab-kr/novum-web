@@ -6,6 +6,6 @@
   "privacy": [
     { "version": 1, "postedAt": "2026-11-03", "effectiveAt": "2026-11-03", "summary": "최초 제정", "requiresConsent": false, "languages": ["ko"] },
     { "version": 2, "postedAt": "2026-11-07", "effectiveAt": "2026-11-07", "summary": "앱 오류 보고와 사용 기록 추가, 함께 목표 추가", "requiresConsent": false, "languages": ["ko", "en"] },
-    { "version": 3, "postedAt": "2026-11-__", "effectiveAt": "2026-11-__", "summary": "미국 나이 확인(9절)과 호주 이용자 절(18절) 추가", "requiresConsent": false, "languages": ["ko", "en"] }
+    { "version": 3, "postedAt": "2026-11-12", "effectiveAt": "2026-11-19", "summary": "미국 나이 확인(9절)과 호주 이용자 절(18절) 추가", "requiresConsent": false, "languages": ["ko", "en"] }
   ]
 }
