@@ -1,6 +1,7 @@
 // 초대 링크 미리보기 그림(chagok/assets/invite/og.png, 1200×630, invite/index.html 의 og:image)을 만든다.
 //   node deploy/build-chagok-og.mjs            # 한국어 og.png
 //   LANG_CODE=en node deploy/build-chagok-og.mjs  # 영어 og-en.png (invite/en.html 의 og:image, 2026-11-12)
+//   LANG_CODE=ja node deploy/build-chagok-og.mjs  # 일본어 og-ja.png (invite/ja.html 의 og:image, 2026-11-14). 글꼴은 DotGothic16 부분 집합(deploy/build-chagok-ja-font.py)
 // HTML 한 장(인라인 CSS, 사이트 도트 글꼴, 차곡이 SVG(기본 웃는 얼굴 mascot-smile, MASCOT=<이름>으로 바꿈), stickers.json 스티커)을 쓰고 맥의 Chrome 헤드리스로 찍는다.
 // 카카오톡은 미리보기를 2:1 카드에 크게 채우며 양옆을 100px 안팎 자른다(2026-11-12 카톡 화면으로 확인). 그래서 차곡이와 글은 가운데에 두고,
 // 스티커 타일은 글 줄과 차곡이에서 80px 넘게, 양옆 끝에서 60px 넘게 떨어뜨린다. 찍기 전에 같은 페이지를 한 번 더 열어 이 간격을 재고, 어기면 멈춘다.
@@ -13,13 +14,14 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', 'chagok');
-const LANG = process.env.LANG_CODE === 'en' ? 'en' : 'ko';
-const OUT = process.env.OUT ?? path.join(ROOT, 'assets', 'invite', LANG === 'en' ? 'og-en.png' : 'og.png');
+const LANG = ['en', 'ja'].includes(process.env.LANG_CODE) ? process.env.LANG_CODE : 'ko';
+const OUT = process.env.OUT ?? path.join(ROOT, 'assets', 'invite', LANG === 'ko' ? 'og.png' : `og-${LANG}.png`);
 const CHROME = process.env.CHROME ?? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const W = 1200, H = 630, GAP = 80, SIDE = 60;
 
 const ink = '#06261C', mint = '#AFE1CB', apricot = '#FD855F', ivory = '#FEF1D1';
-const font = fs.readFileSync(path.join(ROOT, 'assets/fonts/neodgm/neodgm.woff2')).toString('base64');
+// 일본어는 앱과 같은 DotGothic16(일본어 화면 글꼴), 나머지는 Neo둥근모
+const font = fs.readFileSync(path.join(ROOT, LANG === 'ja' ? 'assets/fonts/dotgothic16/dotgothic16-ja.woff2' : 'assets/fonts/neodgm/neodgm.woff2')).toString('base64');
 const mascot = fs.readFileSync(path.join(ROOT, `assets/invite/mascot-${process.env.MASCOT ?? 'smile'}.svg`), 'utf8');
 const stickers = JSON.parse(fs.readFileSync(path.join(ROOT, 'assets/invite/stickers.json'), 'utf8'));
 
@@ -35,10 +37,11 @@ const tiles = [
 const COPY = {
   ko: '<h1>친구와 같이<br><span class="band">스티커 판</span> 채워요</h1><p>초대를 받았어요</p>',
   en: '<h1 class="en">Fill a<br><span class="band">sticker board</span> together</h1><p class="en">You\'re invited</p>',
+  ja: '<h1 class="ja">友達と一緒に<br><span class="band">シール</span>を貼ろう</h1><p>招待が届きました</p>',
 };
 
 // 글과 차곡이 묶음의 크기. 0.9 아래로 줄여 옆 타일과 80px를 지킨다(2026-11-12). 영어는 줄이 길어 더 줄인다
-const SCALE = { ko: 0.9, en: 0.85 };
+const SCALE = { ko: 0.9, en: 0.85, ja: 0.85 };
 
 const sticker = (id) => {
   const layers = stickers[id];
@@ -59,6 +62,8 @@ h1 { font-weight: normal; font-size: 54px; line-height: 72px; white-space: nowra
 .band { background: ${apricot}; padding: 0 12px; margin-right: 6px; }
 p { font-size: 26px; line-height: 34px; margin-top: 18px; }
 h1.en { font-size: 46px; line-height: 64px; }
+h1.ja { font-size: 50px; line-height: 66px; } /* DotGothic16 은 글자 상자가 글자 크기의 1.45배라 조금 줄인다 */
+h1.ja .band { margin-right: 0; } /* 일본어는 띠 뒤에 빈칸 없이 「を」가 붙는다 */
 .tile { position: absolute; width: 104px; height: 104px; background: #FFFDF6; border: 6px solid ${ink}; border-radius: 16px;
   box-shadow: 8px 8px 0 ${ink}; display: flex; align-items: center; justify-content: center; }
 .tile svg { width: 64px; height: 64px; display: block; }

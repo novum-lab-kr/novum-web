@@ -8,12 +8,15 @@
 | `/` | 랜딩(`index.html`, 스타일 `assets/landing.css`, 그림 `assets/img`, 영상 `assets/vid`, 글꼴 `assets/fonts` — Neo둥근모 원본 그대로(모든 글자), SIL OFL 1.1, `LICENSE.txt`) | 허용 |
 | `/support/` | 문의, 자주 묻는 것, 운영자 정보 | 허용 |
 | `/en/`, `/en/support/` | 랜딩과 고객 지원 영어판(2026-11-06, 앱 1.1.0). 그림은 `assets/img/en/` | 허용 |
+| `/ja/`, `/ja/support/` | 랜딩과 고객 지원 일본어판(2026-11-14 준비, 앱 1.2.0). 바닥글과 지원에 일본어 약관 `/ja/terms/`, 처리방침 `/ja/privacy/`, 特定商取引法に基づく表記 `/ja/tokushoho/`(약관 담당이 만든다) 링크. 앱 화면 그림과 영상은 일본어 캡처 전이라 영어(`assets/img/en/`, `assets/vid/en/`)를 임시로 쓴다 | 허용 |
 | `/terms/`, `/privacy/`, `/delete-account/`, `/versions.json` | 약관, 처리방침, 계정 삭제 안내, 판 목록 — **앱이 읽는 경로라 바꾸지 않는다** | 허용 (`/versions.json` 은 sitemap 에 넣지 않는다) |
 | `/threads/` | SNS 프로필용 짧은 주소(2026-11-08). `/?utm_source=threads&utm_medium=social&utm_content=profile` 로 넘겨 GA 에 threads / social 로 잡히게 한다. 이 페이지에는 GA 를 넣지 않는다. 새 SNS 는 폴더를 복사해 `utm_source` 만 바꾼다(소문자, 한 번 정한 이름은 바꾸지 않는다). 영어 브라우저는 `assets/lang.js` 가 꼬리표를 그대로 들고 `/en/` 으로 옮긴다 | 차단(페이지의 `noindex`) |
 | `/invite/<코드>` | 함께 목표 초대 페이지(`invite/index.html`, `assets/invite/`). 앱이 없거나 앱이 열리지 않을 때 보인다 | 차단(페이지의 `noindex`) |
 | `/.well-known/apple-app-site-association` | 앱이 `/invite/*` 링크를 바로 여는 유니버설 링크 설정. 출시 앱(`com.novumlab.chagok`)과 개발 앱(`.dev`) | — |
 
-**언어(2026-11-06):** 랜딩과 고객 지원은 `assets/lang.js`가 약관(`assets/policy.js`)과 같은 규칙으로 언어를 고른다: `?lang=ko|en` → 이 브라우저에 기억한 값(`chagok-policy-lang`, 약관과 같은 이름) → 브라우저 첫 언어(한국어면 한국어, 나머지는 영어). 짝 페이지는 `<html data-alt>`의 상대 주소라 개발 사이트에서도 같은 사이트 안으로 옮긴다. 고른 적 없는 검색엔진과 미리보기 로봇은 옮기지 않는다. 각 페이지에 `hreflang`(ko, en, x-default=en)을 두고 `sitemap.xml`에도 짝을 적는다. 영어 문구는 앱 `src/i18n/en.ts`(slots, Tally board, Calendar board, Finished, Own boards, One board)와 영어 스토어 스크린샷 문구에 맞춘다. 영어판 App Store 링크는 지역 없는 `https://apps.apple.com/app/id6824725721`, 배지는 Apple 공식 US-UK 검은색(`assets/img/app-store-badge-en.svg`, developer.apple.com 원본 그대로). 영어판 운영자 주소는 약관 영어판과 같은 영문 표기다. 영어판의 워치와 위젯은 영상 대신 영어 캡처 그림이고, 첫 화면 휴대폰도 영상 대신 목표 탭 캡처다(스플래시 영상 끝에 한국어 화면이 나와서). **랜딩 문구를 고치면 영어판(`en/index.html`)도 같이 고친다.**
+**언어(2026-11-06, 일본어 2026-11-14):** 랜딩과 고객 지원은 `assets/lang.js`가 약관(`assets/policy.js`)과 같은 규칙으로 언어를 고른다: `?lang=ko|en|ja` → 이 브라우저에 기억한 값(`chagok-policy-lang`, 약관과 같은 이름) → 브라우저 첫 언어(한국어면 한국어, 일본어면 일본어, 나머지는 영어). 짝 페이지는 `<html data-alt-ko data-alt-en data-alt-ja>`(자기 언어는 빼고)의 상대 주소라 개발 사이트에서도 같은 사이트 안으로 옮긴다. 고른 언어의 짝이 없는 페이지는 옮기지 않는다. 고른 적 없는 검색엔진과 미리보기 로봇은 옮기지 않는다. 각 페이지에 `hreflang`(ko, en, ja, x-default=en)을 두고 `sitemap.xml`에도 짝을 적는다. 위 막대와 바닥글의 언어 링크는 자기 말을 뺀 두 언어다. 영어 문구는 앱 `src/i18n/en.ts`(slots, Tally board, Calendar board, Finished, Own boards, One board)와 영어 스토어 스크린샷 문구에 맞춘다. 영어판 App Store 링크는 지역 없는 `https://apps.apple.com/app/id6824725721`, 배지는 Apple 공식 US-UK 검은색(`assets/img/app-store-badge-en.svg`, developer.apple.com 원본 그대로). 영어판 운영자 주소는 약관 영어판과 같은 영문 표기다. 영어판의 워치와 위젯은 영상 대신 영어 캡처 그림이고, 첫 화면 휴대폰도 영상 대신 목표 탭 캡처다(스플래시 영상 끝에 한국어 화면이 나와서). **랜딩 문구를 고치면 영어판(`en/index.html`)과 일본어판(`ja/index.html`)도 같이 고친다.**
+
+**일본어판(2026-11-14):** `ja/index.html`은 영어판을 바탕으로 만들었다. 용어는 앱 `src/i18n/ja.ts`와 같다(앱 이름과 차곡이 모두 チャゴク, 스티커 シール, 판 台紙, 칸 マス, 적립판 回数の台紙, 달력판 カレンダーの台紙). 원어민 검수 전이다. 글꼴은 앱 일본어 화면과 같은 DotGothic16(SIL OFL 1.1, `assets/fonts/dotgothic16/LICENSE.txt`)이고, 페이지가 쓰는 글자와 가나만 남긴 부분 집합이라 **일본어 문구(랜딩, 초대, 미리보기 그림)를 고치면 `python3 deploy/build-chagok-ja-font.py <앱 저장소>/src/design-system/assets/dotgothic16-jis.ttf`로 다시 만든다**(fonttools, brotli 필요). 일본어는 낱말 사이 빈칸이 없어 `:lang(ja)`에서 `word-break: keep-all`을 풀었다. App Store 배지는 Apple 공식 일본어판 `assets/img/app-store-badge-ja.svg`(toolbox.marketingtools.apple.com 원본 그대로, 한국어 배지와 같은 출처), 링크는 영어판과 같은 지역 없는 주소다. 공유 그림 `assets/img/ja/og.jpg`는 `node deploy/build-chagok-landing-og.mjs`로 만든다(한국어와 영어 og.jpg 는 만든 스크립트가 없어 영어 그림 가운데만 덮어 다시 그린다). 운영자 줄에는 주소와 전화를 쓰지 않고 약관 일본어판과 같이 「청구하면 알린다」와 特商法 표기 링크를 둔다(아래 「일본어 약관」). 영어 지원 페이지 전화는 일본의 050 번호와 헷갈리지 않게 `+82-50-6994-4416`으로 바꿨다(2026-11-14). **일본어판에는 Google 애널리틱스를 넣지 않았다**(처리방침 15절이 한국어와 영어 두 주소만 적는다. 넣으려면 처리방침도 같이 고친다).
 
 랜딩 한국어(`/`)와 영어(`/en/`) 첫 화면에만 Google 애널리틱스(측정 ID `G-DR15LTP1EW`, 속성 「차곡차곡 랜딩」)를 넣는다. 해외 접근을 보려고 영어판에도 넣었고(2026-11-07 사용자), 처리방침 2판 15절도 두 주소를 적는다. 영어 지원 페이지 등 다른 페이지에는 넣지 않는다. 언어를 옮기는 중이면(`window.chagokLangRedirect`) 태그를 부르지 않는다. 처리방침 1판 15절이 이 설정을 설명하므로, 아래를 바꾸면 15절도 같이 고친다. 페이지 소스는 누구나 보므로 GA 코드에 주석을 달지 않고 이유는 여기에 적는다.
 - 동의 기본값은 태그를 읽기 전에 정한다. EEA 30개국과 영국은 `analytics_storage: 'denied'`(쿠키 없이 측정), 광고 항목 셋은 모든 지역에서 `denied`.
@@ -41,6 +44,7 @@
 - 차곡이 그림과 스티커는 앱 저장소에서 만든다: `node deploy/build-chagok-invite-assets.mjs <chagok-app 경로>`.
 - 초대 링크 미리보기 그림(`assets/invite/og.png`, 1200×630)은 `node deploy/build-chagok-og.mjs`로 만든다(맥 Chrome 헤드리스). 카카오톡이 양옆을 잘라서 스티커 타일은 글과 차곡이에서 40px, 양옆 끝에서 60px 넘게 떨어뜨리고, 스크립트가 이 간격을 재서 어기면 멈춘다.
 - **영어 초대(2026-11-12):** 앱 1.1.1부터 앱 언어가 영어면 초대 링크에 `?lang=en`을 붙인다. Caddy가 `lang=en`인 `/invite/*`를 `invite/en.html`로 보낸다(링크 미리보기 og 메타가 영어). 그림은 `LANG_CODE=en node deploy/build-chagok-og.mjs`로 만든 `assets/invite/og-en.png`. 본문은 `index.html`과 같으니 한쪽을 고치면 다른 쪽도 고친다. og 그림 주소의 `?v=`는 카카오톡 캐시를 넘기려고 그림을 바꿀 때마다 올린다.
+- **일본어 초대(2026-11-14 준비, 앱 1.2.0):** 앱 언어가 일본어면 초대 링크에 `?lang=ja`가 붙는다. 영어와 같이 Caddy가 `lang=ja`인 `/invite/*`를 `invite/ja.html`로 보내야 한다(**운영 Caddy에 아직 넣지 않았다**, 파일이 운영에 올라간 뒤 넣는다). 그림은 `LANG_CODE=ja node deploy/build-chagok-og.mjs`로 만든 `assets/invite/og-ja.png`(DotGothic16, 글과 차곡이 묶음 0.85배). 본문 글은 `index.html`, `en.html`, `ja.html`의 `data-ja`와 `invite.js`의 `JA` 문구다. 글꼴은 `:lang(ja)`일 때 DotGothic16(부분 집합에 없는 한자가 든 목표 이름은 그 글자만 시스템 글꼴로 그려진다).
 - **미리보기 그림 간격(2026-11-12):** 카카오톡은 카드를 2:1로 크게 채우며 양옆을 100px 안팎 자른다. 40px 간격에서는 오른쪽 물방울 타일이 「채워요」에 붙어 보였다. 지금 검사는 글 줄마다 80px, 글과 차곡이 묶음은 한국어 0.9배, 영어 0.85배다.
 - **서버(Caddy) 설정은 끝났다(2026-11-06, 운영 서버):** `/invite/*`를 `/invite/index.html`로 보내고, `/.well-known/apple-app-site-association`을 `Content-Type: application/json`으로 낸다. 이 설정이 빠지면 `/invite/<코드>`가 404다.
 
@@ -100,6 +104,8 @@ CHAGOK_DEPLOY_HOST=<서버 주소> sh deploy/chagok-dev.sh <chagok-app 저장소
 
 ## 약관과 처리방침 2판 게시 (앱 1.1.0)
 
+(2판은 2026-11-07 게시로 끝났다. 아래 명령의 날짜 스크립트는 2026-11에 약관 3판과 처리방침 4판용으로 바뀌었다. 아래 「일본어 약관」 절을 본다.)
+
 PR #64 하나에 2판(한국어, 영어), 해외 조항, 언어 자동 전환(`assets/policy.js`, `versions.json`의 `languages`), 초대 페이지 영어판, 개발 사이트 배포 스크립트가 모두 들어 있다. 머지하면 운영에 바로 반영된다.
 
 **게시 순서 (앱 1.1.0 심사가 끝난 날)**
@@ -114,6 +120,17 @@ git push   # 그다음 PR #64를 main에 합친다
 - 날짜는 게시일과 시행일이 같다(1.0 이용자가 사실상 없어 미리 알릴 대상이 없다, 2026-11-06 결정).
 - 날짜를 바꾸지 않고 합치면 PR에 적힌 날짜(지금 2026-11-06)로 게시된다.
 - 시행일을 미래 날짜로 두고 합치면 그날까지 1판이 보이고 「바뀌어요」 안내가 붙는다.
+
+## 일본어 약관, 처리방침, 特定商取引法に基づく表記 (앱 1.2.0, 2026-11 초안)
+
+- 경로: 일본어 이용약관 `/ja/terms/`(본문 `ja/terms/v3/`), 처리방침 `/ja/privacy/`(본문 `ja/privacy/v4/`), 표기 `/ja/tokushoho/`(판 없이 한 장). 랜딩 `/ja/`와 `assets/lang.js`는 랜딩 담당이 따로 한다.
+- 판: 약관 3판(제15조 일본 이용자 조항)과 처리방침 4판(19절 일본 이용자)을 한국어, 영어, 일본어로 함께 낸다. `versions.json`의 `languages`에 `ja`가 있다. 일본어판도 번역이고 한국어판이 우선한다(영어판과 같은 문장).
+- 날짜: **지금 들어 있는 2026-11-14(게시일과 시행일)는 임시 날짜다(2026-11-14 사용자 지시).** 앱 1.2.0 심사가 통과한 뒤, 이 브랜치를 main에 합치기 전에 실제 날짜로 고친다. 검사(`check-chagok.mjs`)는 임시 날짜로도 통과하므로 검사가 막아 주지 않는다. 고칠 곳은 8곳: `versions.json`의 terms 3판과 privacy 4판 줄의 `postedAt`, `effectiveAt`, 그리고 문서 6개(`terms/v3`, `en/terms/v3`, `ja/terms/v3`, `privacy/v4`, `en/privacy/v4`, `ja/privacy/v4`)의 머리줄 `<p class="meta">`(「2026년 11월 14일」, 「November 14, 2026」, 「2026年11月14日」 형식). 날짜 스크립트(`set-chagok-policy-date.mjs`)는 자리 표시 `2026-11-XX`(게시일)와 `2026-11-YY`(시행일)만 바꾸므로, 이 8곳을 자리 표시로 되돌린 뒤 `node deploy/set-chagok-policy-date.mjs <게시일> <시행일>`을 돌리거나 손으로 고친다. 처리방침 4판의 게시일은 3판 시행일(2026-11-19) 이후로 한다(예정 판은 하나만). 시행일은 게시일 7일 뒤로 하고, 일본 판매는 시행일 뒤에 켠다.
+- 언어 고르기(`assets/policy.js`): `?lang=ko|en|ja` → 기억한 값(`chagok-policy-lang`) → 브라우저 첫 언어(ko, ja, 나머지 en). 시행 중인 판에 일본어판이 없으면 영어판으로 보낸다. 언어 바꾸기 링크는 시행 중인 판에 있는 다른 언어를 모두 보인다. `lang.js`가 같은 저장 이름을 쓰므로, 랜딩이 `ja`를 고르게 되면 두 파일의 규칙을 같이 맞춘다.
+- 일본어 문서(약관, 처리방침, 표기, 지원 페이지)에는 사업장 주소와 전화번호를 쓰지 않는다. 사업장 주소가 자택이라 새로 공개하는 곳에는 넣지 않는다. 표기와 처리방침 13절, 19.1은 「청구하면 지체 없이 메일로 알린다」로 둔다(특정상거래법 11조 단서와 시행규칙 25조 2항, 개인정보보호법 32조 1항 괄호). 청구가 오면 지체 없이 답한다. 한국어판과 영어판에는 한국 법 표시 때문에 주소와 전화가 그대로 있다.
+- 일본어 문의 메일 링크는 앱 일본어 틀(`contact.subjectQuestion`, `contact.bodyQuestion`)과 같다. 앱 틀을 바꾸면 일본어 세 곳(약관 3판, 처리방침 4판 13절, 표기)도 바꾼다.
+- 표기의 가격은 금액을 적지 않고 「구매 화면과 App Store에 표시하는 가격(소비세 포함)」으로 둔다. 동작 환경(iOS 16.4 이상)은 앱 최소 버전이 바뀌면 고친다.
+- 근거와 남은 위험은 앱 저장소 `docs/LEGAL-REVIEW.md`에 옮긴다.
 
 ## 랜딩 캡처 (앱 1.1.0)
 

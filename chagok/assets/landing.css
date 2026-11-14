@@ -8,6 +8,15 @@
 	font-display: swap;
 	src: url("fonts/neodgm/neodgm.woff2") format("woff2");
 }
+/* 일본어판(/ja/)은 앱 일본어 화면과 같은 DotGothic16 — SIL OFL 1.1, 라이선스 assets/fonts/dotgothic16/LICENSE.txt.
+   페이지에 쓰는 글자와 가나만 남긴 부분 집합이라 문구를 고치면 deploy/build-chagok-ja-font.py 로 다시 만든다 */
+@font-face {
+	font-family: "DotGothic16";
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+	src: url("fonts/dotgothic16/dotgothic16-ja.woff2") format("woff2");
+}
 :root {
 	--ink: #06261C;
 	--mint: #AFE1CB;
@@ -21,6 +30,10 @@
 	--muted: #3F574F;
 	--pixel: "NeoDunggeunmo", "Neo둥근모", monospace;
 }
+/* 일본어는 낱말 사이에 빈칸이 없어 keep-all 이면 줄이 바뀌지 않는다. 글자 사이에서 바꾸고, 되는 브라우저는 구절 단위로 바꾼다 */
+:root:lang(ja) { --pixel: "DotGothic16", monospace; }
+:root:lang(ja) [lang="ko"] { font-family: "NeoDunggeunmo", "Neo둥근모", monospace; } /* 일본어판의 「한국어」 링크. DotGothic16 에는 한글이 없다 */
+:lang(ja) body { word-break: normal; word-break: auto-phrase; line-break: strict; }
 * { box-sizing: border-box; }
 /* 페이지 바깥 바탕은 푸터와 같은 민트. Safari(iOS 26)는 페이지가 끝난 아래, 주소창 뒤, 홈 표시줄 영역을 이 색으로 칠한다. 본문 바탕은 body 의 아이보리 */
 html { scroll-behavior: smooth; background: var(--mint); }
@@ -72,8 +85,9 @@ nav.top {
 nav.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 60px; }
 nav.top .brand { font-size: 20px; white-space: nowrap; display: flex; align-items: center; gap: 8px; text-decoration: none; }
 nav.top .brand img { width: 28px; height: 28px; border-radius: 7px; }
-/* 언어 바꾸기(한국어 쪽은 English, 영어 쪽은 한국어). 배지 왼쪽에 둔다 */
+/* 언어 바꾸기(자기 말을 뺀 나머지 두 언어). 배지 왼쪽에 둔다 */
 nav.top .lang { margin-left: auto; font-size: 15px; color: var(--muted); white-space: nowrap; }
+nav.top .lang + .lang { margin-left: -4px; }
 
 section { padding: 112px 0 0; }
 h2 { font-size: clamp(30px, 4.2vw, 44px); line-height: 1.35; margin: 0 0 20px; }
@@ -100,6 +114,8 @@ header.hero {
 .hero h1 em { font-style: normal; background: var(--apricot); padding: 0 10px; }
 /* 영어 제목 둘째 줄(one sticker at a time)이 한 줄에 들어가도록 영어판만 줄인다 */
 .hero h1:lang(en) { font-size: clamp(32px, 3.6vw, 46px); }
+/* 일본어 제목 첫 줄(今日の「できた」に)도 9자라 영어와 같은 크기로 줄인다 */
+.hero h1:lang(ja) { font-size: clamp(32px, 3.6vw, 46px); }
 .hero .lead { font-size: clamp(18px, 2vw, 20px); margin: 0 0 32px; color: #1d3a32; max-width: 26em; }
 
 /* 채우는 재미 — 앱 판처럼 생긴 연둣빛 판 */
@@ -348,6 +364,8 @@ footer .owner.info { display: flex; flex-wrap: wrap; gap: 2px 16px; }
 	.m-hero2 h1 { font-size: 34px; line-height: 1.3; margin: 0; }
 	.m-hero2 h1 em { font-style: normal; background: var(--apricot); padding: 0 8px; }
 	/* 휴대폰 영어 제목은 띠를 one sticker / at a time 두 줄로 나누고, 줄마다 띠 양끝 여백을 준다 */
+	/* 휴대폰 일본어 제목 첫 줄 9자가 양옆 스티커에 닿지 않게 줄인다 */
+	.m-hero2 h1:lang(ja) { font-size: clamp(22px, 7.2vw, 28px); }
 	.m-hero2 h1:lang(en) em { -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 	.m-hero2 > p { font-size: 15px; max-width: 19em; }
 	.m-hero2 .badge { font-size: 14px; }

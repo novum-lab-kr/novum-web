@@ -97,20 +97,22 @@
     return svg;
   }
 
-  // ── 언어 (2026-11-06) ──
-  // 브라우저 첫 언어가 한국어가 아니면 영어로 보인다(앱과 같은 규칙: 한국어면 한국어, 나머지는 영어). ?lang=ko|en 으로 고를 수 있다.
-  var langParam = (location.search.match(/[?&]lang=(ko|en)\b/) || [])[1];
+  // ── 언어 (2026-11-06, 일본어 2026-11-14) ──
+  // 앱과 같은 규칙: 브라우저 첫 언어가 한국어면 한국어, 일본어면 일본어, 나머지는 영어. ?lang=ko|en|ja 로 고를 수 있다(앱이 초대 링크에 붙인다).
+  var langParam = (location.search.match(/[?&]lang=(ko|en|ja)\b/) || [])[1];
   var browserLang = ((navigator.languages && navigator.languages[0]) || navigator.language || '').toLowerCase();
-  var EN = langParam ? langParam === 'en' : browserLang.indexOf('ko') !== 0;
+  var LANG = langParam || (browserLang.indexOf('ko') === 0 ? 'ko' : browserLang.indexOf('ja') === 0 ? 'ja' : 'en');
+  var EN = LANG === 'en', JA = LANG === 'ja';
+  var TITLE = { ko: '차곡차곡 초대', en: 'Chagok invite', ja: 'チャゴクへの招待' }[LANG];
   function applyLanguage() {
-    if (!EN) return;
-    document.documentElement.lang = 'en';
-    Array.prototype.forEach.call(document.querySelectorAll('[data-en]'), function (el) {
-      setLines(el, el.getAttribute('data-en').replace(/<br>/g, '\n'));
+    if (LANG === 'ko') return;
+    document.documentElement.lang = LANG;
+    Array.prototype.forEach.call(document.querySelectorAll('[data-' + LANG + ']'), function (el) {
+      setLines(el, el.getAttribute('data-' + LANG).replace(/<br>/g, '\n'));
     });
     $('store-ko').hidden = true;
-    $('store-en').hidden = false;
-    document.title = 'Chagok invite';
+    $('store-' + LANG).hidden = false;
+    document.title = TITLE;
   }
 
   // ── 화면 ──
@@ -125,12 +127,17 @@
       full: ['shy', 'This goal is full', 'All ' + max + ' people have already joined this goal.'],
       rate_limited: ['sleepy', "We can't check\nthis invite right now", 'Please open this invite link again in a little while.'],
     }[kind];
+    if (JA) copy = {
+      closed: ['curious', 'この目標には\n参加できません', '目標が削除されたか、招待リンクが新しくなりました。招待してくれた友達に、新しいリンクを送ってもらってください。'],
+      full: ['shy', 'メンバーがいっぱいです', 'この目標には、すでに' + max + '人全員が参加しています。'],
+      rate_limited: ['sleepy', '今は招待を\n確認できません', 'しばらくしてから、この招待リンクをもう一度開いてください。'],
+    }[kind];
     $('problem-mascot').src = '/assets/invite/mascot-' + copy[0] + '.svg';
     setLines($('problem-title'), copy[1]);
     $('problem-detail').textContent = copy[2];
     $('join').hidden = true;
     $('problem').hidden = false;
-    document.title = EN ? 'Chagok invite' : '차곡차곡 초대';
+    document.title = TITLE;
     frames();
   }
   function setLines(el, text) {
@@ -143,13 +150,14 @@
   function showOpen(data) {
     var name = data.goal && data.goal.name;
     if (name) {
-      setLines($('join-title'), EN ? '\u201c' + name + '\u201d\nLet\'s fill it together' : '「' + name + '」\n같이 차곡차곡 쌓아요');
-      document.title = EN ? '\u201c' + name + '\u201d Chagok invite' : '「' + name + '」 차곡차곡 초대';
+      setLines($('join-title'), EN ? '\u201c' + name + '\u201d\nLet\'s fill it together' : JA ? '「' + name + '」\nみんなで埋めましょう' : '「' + name + '」\n같이 차곡차곡 쌓아요');
+      document.title = EN ? '\u201c' + name + '\u201d Chagok invite' : '「' + name + '」' + (JA ? '' : ' ') + TITLE;
     }
     var owner = data.owner_name, n = data.member_count;
     if (owner && n >= 1) {
       $('join-people-text').textContent = EN
         ? (n > 1 ? owner + ' and ' + (n - 1) + (n - 1 > 1 ? ' others are' : ' other is') + ' in' : owner + ' invited you')
+        : JA ? (n > 1 ? owner + 'さんほか' + (n - 1) + '人が参加しています' : owner + 'さんからの招待です')
         : (n > 1 ? owner + '님 외 ' + (n - 1) + '명이 함께해요' : owner + '님이 초대했어요');
       $('join-people').hidden = false;
     }
