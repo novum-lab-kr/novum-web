@@ -1,6 +1,10 @@
 /* 초대 페이지. 색과 글씨 크기는 앱 디자인 시스템 토큰(docs/design/retro-pocket-v1/system/tokens.json)과 같다.
    계단 테두리는 invite.js 가 앱 PixelFrame 과 같은 계산(pixelOutline)으로 SVG 를 그려 깐다. 스크립트가 없으면 아래 단순 테두리가 남는다. */
 @font-face { font-family: "NeoDunggeunmo"; src: url(/assets/fonts/neodgm/neodgm.woff2) format("woff2"); font-display: swap; }
+/* 일본어 화면은 앱 일본어 화면과 같은 DotGothic16(부분 집합, deploy/build-chagok-ja-font.py). 일본어는 빈칸이 없어 keep-all 을 풀고 구절 단위로 줄을 바꾼다 */
+@font-face { font-family: "DotGothic16"; src: url(/assets/fonts/dotgothic16/dotgothic16-ja.woff2) format("woff2"); font-display: swap; }
+:root:lang(ja) { --px: "DotGothic16", "Hiragino Sans", sans-serif; }
+:lang(ja) body { word-break: normal; word-break: auto-phrase; line-break: strict; }
 :root {
   --mint: #AFE1CB; --lcd: #C7DE94; --ink: #06261C; --apricot: #FD855F; --ivory: #FEF1D1; --button-ink: #01241C;
   --px: "NeoDunggeunmo", "Apple SD Gothic Neo", sans-serif;
