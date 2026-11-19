@@ -280,6 +280,8 @@ window.ATHENA_I18N.ja = {
   "r.62k1": "起動中に止めると直接接続サーバーが残る問題を修正",
   "r.62m": "<a href=\"https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.62.2\">すべての変更を GitHub で見る</a>",
   "r.d61": "2026 年 11 月 14 日",
+  "r.61k1": "ペインタイトルの横にセッション累計トークンを表示 — 入出力とキャッシュ",
+  "r.61k2": "スマホでのテスト中に重いコマンドが待ったまま止まる問題を修正 — 同時に 3 つ、Expo 開発サーバーが枠を解放",
   "r.61m": "<a href=\"https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.61.4\">すべての変更を GitHub で見る</a>",
   "r.d60": "2026 年 11 月 8–13 日",
   "r.60k1": "SSH サーバー登録を簡素化 — [登録] ひとつ、編集メニューから、既存 Host を選択",

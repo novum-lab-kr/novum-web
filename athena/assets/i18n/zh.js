@@ -280,6 +280,8 @@ window.ATHENA_I18N.zh = {
   "r.62k1": "修复启动过程中停止时直连服务器仍残留的问题",
   "r.62m": "<a href=\"https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.62.2\">在 GitHub 上查看全部变化</a>",
   "r.d61": "2026 年 11 月 14 日",
+  "r.61k1": "窗格标题旁新增会话累计 Token 显示 — 输入输出与缓存",
+  "r.61k2": "修复手机测试时重型命令一直卡在等待的问题 — 同时 3 个，Expo 开发服务器会释放占位",
   "r.61m": "<a href=\"https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.61.4\">在 GitHub 上查看全部变化</a>",
   "r.d60": "2026 年 11 月 8–13 日",
   "r.60k1": "简化 SSH 服务器注册 — 一个 [注册]，编辑菜单入口，可选现有 Host",

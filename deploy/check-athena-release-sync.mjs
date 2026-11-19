@@ -1,6 +1,6 @@
 // deploy/sync-athena-release.mjs 시험(GitHub Actions · 손으로: node deploy/check-athena-release-sync.mjs) — 네트워크 없이
 // 지금 사이트 파일을 임시 폴더에 복사하고 가짜 GitHub 응답(공개 저장소 · 소스 태그 · 태그별 docs/site-release-notes.json)으로 맞춰 본다. 실제 사이트 파일은 건드리지 않는다.
-//   다음 패치(앞 2줄 · 뒤 3줄 → 새 1줄) · 새 minor(지난 태그에 파일 없음 → 그 minor 줄 전부) · 최대 5줄(밀린 옛 줄은 페이지 · 사전에서 뺌) · 새 줄 없음 · 사이트에 이미 있는 줄 · 파일 없음 · 파일 이상 · 같은 버전 · 낮은 버전 · 입력이 latest 보다 높음 · 이스케이프
+//   다음 패치(앞 2줄 · 뒤 3줄 → 새 1줄) · 새 minor(지난 태그에 파일 없음 → 그 minor 줄 전부) · 최대 5줄(밀린 옛 줄은 페이지 · 사전에서 뺌) · 지난 판 파일에 미리 들어간 다음 minor 줄 · 새 줄 없음 · 사이트에 이미 있는 줄 · 파일 없음 · 파일 이상 · 같은 버전 · 낮은 버전 · 입력이 latest 보다 높음 · 이스케이프
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -102,9 +102,14 @@ for (const bad of [{}, { versions: [{ version: '9.9.9', items: [] }] }, { versio
 }
 
 {
-  const items = newNoteItems({ [currentMinor]: OLD_LINES }, { [currentMinor]: [...OLD_LINES, line('security', 'Sec.')], [nextMinor]: [line('new', 'Other minor.')] }, `${currentMinor}.99`);
+  const items = newNoteItems({ [currentMinor]: OLD_LINES }, { [currentMinor]: [...OLD_LINES, line('security', 'Sec.')], [nextMinor]: [line('new', 'Other minor.')] }, `${currentMinor}.99`, `${currentMinor}.0`);
   expect(items.length === 1 && items[0].tag === 'sec' && items[0].en === 'Sec.', `newNoteItems: 새 줄 · 태그 이름 바꾸기 — ${JSON.stringify(items)}`);
-  expect(newNoteItems(null, { [nextMinor]: NEW_MINOR_LINES }, `${nextMinor}.0`).length === 2, 'newNoteItems: 지난 파일 없음 → 그 minor 줄 전부');
+  expect(newNoteItems(null, { [nextMinor]: NEW_MINOR_LINES }, `${nextMinor}.0`, '0.0.0').length === 2, 'newNoteItems: 지난 파일 없음 → 그 minor 줄 전부');
+  // 지난 판(0.60.32) 파일에 미리 들어간 다음 minor(0.61) 줄 — 그 판에서 공개되지 않았으니 0.61.0 에서 새 줄, 0.61.0 에서 공개된 뒤 0.61.1 에서는 아니다
+  const early = { '0.60': [line('fixed', 'Sixty fix.')], '0.61': [line('new', 'Sixty-one early.')] };
+  const earlyItems = newNoteItems(early, early, '0.61.0', '0.60.32');
+  expect(earlyItems.length === 1 && earlyItems[0].en === 'Sixty-one early.', `newNoteItems: 지난 판보다 높은 minor 줄은 새 줄 — ${JSON.stringify(earlyItems)}`);
+  expect(newNoteItems(early, early, '0.61.1', '0.61.0').length === 0, 'newNoteItems: 지난 판 minor 이하 줄은 known');
 }
 
 // 맨 위 판 블록 · 그 안 줄 수

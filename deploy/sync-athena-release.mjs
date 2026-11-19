@@ -335,10 +335,16 @@ export async function readNotesFile({ fetchImpl, env, version }) {
 
 const enOf = (item) => String(item?.en ?? '').trim();
 
-// 지난 공개판 파일(어느 minor 든)에 없는 새 판 minor 의 줄(en 기준). 지난 파일이 없으면(null) 그 minor 줄 전부. 태그는 페이지 이름으로
-export function newNoteItems(previous, latest, version) {
+// 지난 공개판 파일에서 그 판 minor 이하 줄에 없는 새 판 minor 의 줄(en 기준). 지난 파일이 없으면(null) 그 minor 줄 전부. 태그는 페이지 이름으로
+// 지난 판 파일에 미리 들어간 더 높은 minor 줄은 그 판에서 공개되지 않았으니 known 에서 뺀다(그 minor 가 되면 새 줄로 붙는다)
+export function newNoteItems(previous, latest, version, previousVersion) {
   const [major, minor] = parseVersion(version);
-  const known = new Set(Object.values(previous ?? {}).flat().map(enOf));
+  const [previousMajor, previousMinor] = parseVersion(previousVersion);
+  const shipped = ([fileMinor]) => {
+    const [fileMajor, fileMinorNumber] = fileMinor.split('.').map(Number);
+    return fileMajor < previousMajor || (fileMajor === previousMajor && fileMinorNumber <= previousMinor);
+  };
+  const known = new Set(Object.entries(previous ?? {}).filter(shipped).flatMap(([, items]) => items).map(enOf));
   return (latest[`${major}.${minor}`] ?? [])
     .filter((item) => !known.has(enOf(item)))
     .map((item) => ({ ...item, tag: FILE_TAGS[String(item?.tag ?? '').toLowerCase()] ?? item?.tag }));
@@ -374,7 +380,7 @@ export async function sync({ root = REPO_ROOT, version = '', env = process.env, 
     if (!latestFile) throw new Error(`v${target} 에 ${NOTES_FILE} 이 없다`);
     const previousFile = await readNotesFile({ fetchImpl, env, version: current });
     // 사이트 릴리스 페이지에 이미 있는 줄(en 기준 · 손으로 넣었거나 다시 돌린 경우)은 다시 붙이지 않는다
-    const items = newNoteItems(previousFile, latestFile, target).filter((item) => !site.releases.includes(`>${escapeHtml(enOf(item))}</span>`));
+    const items = newNoteItems(previousFile, latestFile, target, current).filter((item) => !site.releases.includes(`>${escapeHtml(enOf(item))}</span>`));
     notes = validateNotes({ versions: [{ version: target, items }] }, [target]);
     log(`릴리스 글 ${notes[0]?.items.length ?? 0}줄(v${target}${previousFile ? '' : ` · v${current} 에 파일이 없어 그 minor 줄 전부`})`);
   } catch (error) {

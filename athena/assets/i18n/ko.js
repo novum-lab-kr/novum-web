@@ -280,6 +280,8 @@ window.ATHENA_I18N.ko = {
   "r.62k1": "켜는 중에 끄면 직접 연결 서버가 남던 것 수정",
   "r.62m": "<a href=\"https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.62.2\">GitHub에서 전체 보기</a>",
   "r.d61": "2026년 11월 14일",
+  "r.61k1": "pane 제목 옆에 세션 누적 토큰 표시 추가 — 입출력 · 캐시",
+  "r.61k2": "폰 시험 중 무거운 명령이 기다리기만 하던 것 수정 — 동시 3개, Expo 개발 서버가 자리 반납",
   "r.61m": "<a href=\"https://github.com/novum-lab-kr/athena-studio-releases/releases/tag/v0.61.4\">GitHub에서 전체 보기</a>",
   "r.d60": "2026년 11월 8–13일",
   "r.60k1": "SSH 서버 등록 간소화 — [등록] 하나, 편집 메뉴 입구, 기존 Host 고르기",
