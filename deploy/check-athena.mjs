@@ -3,6 +3,7 @@
 // 2) 페이지가 부르는 사이트 안 파일(/assets/… 등 href · src · srcset)이 실제로 있는지 — 언어판(/ko/ …)까지
 // 3) 언어판 · seo 블록 · sitemap · llms.txt 가 영어 페이지와 사전으로 다시 만든 것과 같은지(deploy/gen-athena-lang.mjs)
 // 4) JSON-LD 가 JSON 으로 읽히고 schema.org 필수 칸이 있는지, sitemap 주소가 실제 파일과 맞는지
+// 5) 약관 · 처리방침의 시행일 전환 표시(data-until · data-from)가 맞게 달렸는지
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
@@ -87,6 +88,31 @@ for (const [, loc, lastmod] of sitemapText.matchAll(/<url><loc>([^<]+)<\/loc><la
   if (!fs.existsSync(path.join(ROOT, route.endsWith('/') ? route + 'index.html' : route))) errors.push(`sitemap.xml: 없는 페이지 ${loc}`);
 }
 for (const lang of ['en', ...LANGS]) for (const [, route] of PAGES) if (!lastmods.has(pageUrl(lang, route))) errors.push(`sitemap.xml: ${pageUrl(lang, route)} 없음`);
+
+// 약관 · 처리방침의 시행일 전환 표시(assets/policy-date.js) — 언어판과 보관판(/terms/v2/ 같은 v<숫자>)까지
+// data-until · data-from 은 날짜여야 하고, data-from 조각은 hidden 으로 시작해야 하고, 표시가 있으면 스크립트를 불러야 한다.
+// 시행 전 · 후 어느 쪽에서도 "시행 예정 · 시행 중" 같은 날짜에 묶인 말이 표시 밖에 남으면 안 된다(시행일 뒤에 틀린 채 남는다).
+const LEGAL_KINDS = ['terms', 'privacy'];
+const legalPages = ['', ...LANGS.map((lang) => lang + '/')].flatMap((prefix) => LEGAL_KINDS.flatMap((kind) => {
+  const dir = path.join(ROOT, prefix + kind);
+  const archives = fs.existsSync(dir) ? fs.readdirSync(dir).filter((name) => /^v\d+$/.test(name)).map((name) => `${prefix}${kind}/${name}/index.html`) : [];
+  return [`${prefix}${kind}/index.html`, `${prefix}${kind}/history/index.html`, ...archives];
+})).filter((page) => fs.existsSync(path.join(ROOT, page)));
+const DATE_BOUND = /시행 예정|\(시행 중\)|시행일 전까지|\(scheduled\)|\(in effect\)|in effect until|remains in effect until|Scheduled version/;
+// 표시가 달린 조각을 통째로 뺀다(같은 이름 태그가 안에 겹치지 않는 span · p 만 쓴다)
+const dropMarked = (html, attr) => html.replace(new RegExp(`<(span|p)\\b[^>]*\\s${attr}="[^"]*"[^>]*>[\\s\\S]*?<\\/\\1>`, 'g'), '');
+for (const page of legalPages) {
+  const html = fs.readFileSync(path.join(ROOT, page), 'utf8');
+  const marks = [...html.matchAll(/<(\w+)\b([^>]*\sdata-(until|from)="([^"]*)"[^>]*)>/g)];
+  for (const [, tag, attrs, kind, date] of marks) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || Number.isNaN(Date.parse(`${date}T00:00:00Z`))) errors.push(`${page}: data-${kind} 날짜가 이상함(${date})`);
+    const swaps = /\sdata-from-(text|content)="/.test(attrs);
+    if (kind === 'from' && !swaps && !/\shidden\b/.test(attrs)) errors.push(`${page}: data-from 조각(<${tag}>)에 hidden 없음 — 시행일 전에 보인다`);
+  }
+  if (marks.length && !html.includes('src="/assets/policy-date.js')) errors.push(`${page}: 시행일 표시가 있는데 /assets/policy-date.js 를 부르지 않음`);
+  const body = html.slice(html.indexOf('<body'));
+  if (DATE_BOUND.test(dropMarked(body, 'data-until'))) errors.push(`${page}: 시행일 뒤에도 남는 "시행 예정 · 시행 중" 류 글 — data-until 조각 안에 둔다`);
+}
 
 // 만든 파일이 원본(영어 페이지 · 사전)과 맞는지 — sitemap 날짜는 지금 파일의 것을 그대로 쓴다
 try {
