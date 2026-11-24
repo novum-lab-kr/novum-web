@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 관리자 통계 화면(2026-11-24 · 계획서 plans/feature/20261124-아테나-통계-관리-화면-admin.md)
+     relay /admin/api/* 를 같은 출처로 부른다(계약 athena-app relay/docs/admin-api.md).
+     검색 노출 X — noindex · sitemap · 언어 사전 · gen-athena-lang PAGES 에 넣지 않는다 · 다른 페이지에서 링크하지 않는다.
+     한국어만 · 외부 스크립트 · 글꼴 · 차트 라이브러리 없음(분석 스크립트도 부르지 않는다) · 색 · 헤더 · 카드는 /assets/site.css 를 그대로 쓴다 -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>관리자 통계 — Athena Studio</title>
+<meta name="theme-color" content="#09090b">
+<link rel="icon" type="image/png" href="/assets/favicon-white.png">
+<link rel="stylesheet" href="/assets/site.css?v=20261102d">
+<link rel="stylesheet" href="/admin/admin.css?v=20261124c">
+<script src="/admin/admin.js?v=20261124c" defer></script>
+</head>
+<body class="admin">
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/assets/owl-white.png" alt="">Athena Studio</a>
+    <span class="admin-tag">Admin</span>
+    <div class="admin-who" id="who" hidden>
+      <span id="who-name"></span>
+      <button class="btn sm" type="button" id="logout">로그아웃</button>
+    </div>
+  </div>
+</header>
+
+<main class="admin-main">
+  <!-- 처음 확인 중 -->
+  <p class="wrap admin-loading" id="view-loading">확인하는 중…</p>
+
+  <!-- 관리 기능이 꺼져 있을 때(404 · 503) · 서버에 닿지 못할 때 -->
+  <div class="page-head admin-gate" id="view-off" hidden>
+    <div class="wrap">
+      <div class="admin-panel">
+        <img class="admin-owl" src="/assets/owl-white.png" alt="">
+        <p class="admin-label">Athena Studio · Admin</p>
+        <h1>관리 기능을 쓸 수 없습니다</h1>
+        <p class="admin-panel-text" id="off-text">관리 기능이 아직 켜지지 않았습니다.</p>
+        <button class="btn sm" type="button" id="off-retry">다시 시도</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 로그인 -->
+  <div class="page-head admin-gate" id="view-login" hidden>
+    <div class="wrap">
+      <div class="admin-panel">
+        <img class="admin-owl" src="/assets/owl-white.png" alt="">
+        <p class="admin-label">Athena Studio · Admin</p>
+        <h1>관리자 로그인</h1>
+        <p class="admin-panel-text">서비스 이용 통계를 보려면 로그인하세요.</p>
+        <form id="login-form" novalidate>
+          <label for="login-user">아이디</label>
+          <input id="login-user" name="username" type="text" autocomplete="username" autocapitalize="off" spellcheck="false" required>
+          <label for="login-password">비밀번호</label>
+          <input id="login-password" name="password" type="password" autocomplete="current-password" required>
+          <p class="admin-error" id="login-error" role="alert" hidden></p>
+          <button class="btn gold" type="submit" id="login-submit">로그인</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 통계 -->
+  <div id="view-stats" hidden>
+    <div class="page-head admin-hero">
+      <div class="wrap">
+        <div class="admin-hero-row">
+          <div>
+            <p class="admin-label">Service stats</p>
+            <h1>이용 현황</h1>
+            <p class="admin-meta"><span id="stats-today"></span><span id="stats-range"></span></p>
+          </div>
+          <div class="tabs admin-range" role="group" aria-label="기간">
+            <button type="button" data-days="7">7일</button>
+            <button type="button" data-days="30">30일</button>
+            <button type="button" data-days="90">90일</button>
+          </div>
+        </div>
+        <!-- 지금 숫자(저장소 기준) -->
+        <dl class="admin-now">
+          <div><dt>가입 계정</dt><dd id="cur-accounts"></dd><dd class="admin-now-sub" id="cur-accounts-sub"></dd></div>
+          <div><dt>로그인된 기기</dt><dd id="cur-devices"></dd><dd class="admin-now-sub" id="cur-devices-sub"></dd></div>
+          <div><dt>연결 쌍</dt><dd id="cur-pairs"></dd><dd class="admin-now-sub">맥 ↔ 앱</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="wrap admin-body">
+      <p class="admin-error" id="stats-error" role="alert" hidden></p>
+
+      <!-- 기간 숫자 카드 — 누르면 아래 큰 그래프가 그 숫자로 바뀐다(오류 카드는 이유별 팝업) -->
+      <div class="admin-kpis" id="kpis-main"></div>
+      <div class="admin-kpis sub" id="kpis-sub"></div>
+
+      <!-- 고른 숫자의 날짜별 그래프 -->
+      <section class="admin-chart" id="chart" aria-live="polite">
+        <div class="admin-chart-head">
+          <div>
+            <h2 id="chart-title"></h2>
+            <p class="admin-chart-sum" id="chart-sum"></p>
+          </div>
+          <p class="admin-legend" id="chart-legend"></p>
+        </div>
+        <div class="admin-plot" id="chart-plot" tabindex="0" aria-label="날짜별 그래프 · 왼쪽 오른쪽 화살표로 날을 옮긴다"></div>
+        <div class="admin-x"><span id="chart-x-from"></span><span id="chart-x-to"></span></div>
+      </section>
+
+      <details class="admin-table-wrap">
+        <summary>날짜별 표</summary>
+        <div class="admin-table-scroll">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th scope="col">날짜</th>
+                <th scope="col">새 계정</th>
+                <th scope="col">활성 계정</th>
+                <th scope="col">로그인</th>
+                <th scope="col">계정 삭제</th>
+                <th scope="col">푸시 성공</th>
+                <th scope="col">푸시 실패</th>
+                <th scope="col">오류</th>
+                <th scope="col">연결 시간</th>
+                <th scope="col">전송량</th>
+              </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+          </table>
+        </div>
+      </details>
+
+      <ul class="admin-limits">
+        <li>날짜는 한국 시간(0시~24시) 기준입니다. 이 기능을 반영한 날부터 셉니다. 증감은 바로 앞 같은 길이 기간과 견줍니다.</li>
+        <li>활성 계정은 그날 relay 메모리에서 셉니다. relay 를 다시 켠 날은 켜기 전에만 붙었던 계정이 빠져 적게 나올 수 있습니다.</li>
+        <li>연결 시간 · 전송량은 연결이 끊긴 날에 들어갑니다. 밤을 넘긴 연결은 끊긴 날에 통째로 셉니다.</li>
+        <li>relay 가 강제로 멈추면 마지막 저장(5분마다) 뒤의 숫자는 잃습니다.</li>
+        <li>오류 합계 · 증감에서 전달 못 한 메시지 가운데 '상대 미접속'은 뺍니다(맥이 꺼져 있기만 해도 생겨서). 오류 카드를 누르면 이유별로 함께 볼 수 있습니다.</li>
+      </ul>
+    </div>
+
+    <!-- 오류 카드를 누르면 — 기간 오류 종류별 막대 · 이유별 표(바깥 누름 · Esc · X 로 닫는다 · 휴대폰 폭은 아래 시트) -->
+    <dialog class="admin-dialog" id="errors-dialog" aria-labelledby="errors-title">
+      <div class="admin-dialog-body">
+        <div class="admin-dialog-head">
+          <div>
+            <h2 id="errors-title">오류</h2>
+            <p class="admin-chart-sum" id="errors-sum"></p>
+          </div>
+          <button type="button" class="admin-dialog-close" id="errors-close" aria-label="닫기">×</button>
+        </div>
+        <p class="admin-dialog-empty" id="errors-empty" hidden>이 기간 오류 없음</p>
+        <div id="errors-detail">
+          <p class="admin-legend" id="errors-legend"></p>
+          <div class="admin-plot small" id="errors-plot"></div>
+          <div class="admin-x"><span id="errors-x-from"></span><span id="errors-x-to"></span></div>
+          <div class="admin-reasons" id="reasons" hidden>
+            <div class="admin-reasons-head">
+              <h3>이유별</h3>
+              <button type="button" class="admin-reasons-toggle" id="reasons-toggle" aria-controls="reasons-body" aria-expanded="false" hidden></button>
+            </div>
+            <table class="admin-table admin-reasons-table">
+              <thead>
+                <tr>
+                  <th scope="col">종류</th>
+                  <th scope="col">이유</th>
+                  <th scope="col">건수</th>
+                  <th scope="col">비중</th>
+                </tr>
+              </thead>
+              <tbody id="reasons-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </dialog>
+  </div>
+</main>
+</body>
+</html>
