@@ -108,7 +108,7 @@ html[data-lang="ko"] .not-ko, html[data-lang="ja"] .not-ja { display: none; }
           <tr><td>푸시 토큰(Expo가 발급한 모바일 앱의 알림 주소)</td><td>모바일 앱에 알림 보내기</td></tr>
           <tr><td>Apple 토큰(Apple로 로그인한 경우): Apple이 발급한 갱신 토큰(발급되지 않으면 접근 토큰), 받은 시각</td><td>계정을 삭제할 때 Apple 로그인 연결 취소</td></tr>
           <tr><td>서버 오류 기록: 서버에서 연결 오류가 났을 때 남는 접속 IP 주소, 기기와 브라우저 정보(User-Agent), 시각, 오류 내용(4절에 따라 최대 약 5주 보관). 로그인 정보(쿠키, 인증 헤더)는 남기지 않습니다.</td><td>서버 오류 찾기, 보안 사고 확인</td></tr>
-          <tr><td>연결 기록: 계정 식별자, 기기 식별값, 연결과 해제 같은 사건, 오류 코드, 주고받은 데이터의 양과 개수, 알림 종류와 알림 전달 결과, 로그인에 쓴 서비스(Apple 또는 Google), 시각(4절에 따라 90일 보관)</td><td>오류 찾기, 부정 이용 방지, 보안 사고 확인</td></tr>
+          <tr><td>연결 기록: 계정 식별자, 기기 식별값, 연결과 해제 같은 사건, 오류 코드, 주고받은 데이터의 양과 개수, 알림 종류와 알림 전달 결과, 로그인에 쓴 서비스(Apple 또는 Google), 시각(4절에 따라 90일 보관)</td><td>오류 찾기, 부정 이용 방지, 보안 사고 확인, 서비스 이용 통계</td></tr>
         </tbody>
       </table>
       <p>이 정보는 서비스 이용 계약을 이행하는 데 필요한 정보로, 「개인정보 보호법」 제15조 제1항 제4호에 따라 처리합니다.</p>
@@ -126,7 +126,7 @@ html[data-lang="ko"] .not-ko, html[data-lang="ja"] .not-ja { display: none; }
       <ol>
         <li>계정을 삭제하면 계정 식별자, 기기 정보, 기기 연결 정보, 푸시 토큰, Apple 토큰을 지체 없이 파기하고, 서버 메모리에서 처리하던 이메일 주소와 이름도 지웁니다. Apple로 로그인한 계정이면 Apple 토큰을 지우면서 Apple에 그 토큰의 취소를 요청합니다. Apple에 연결하지 못하거나 취소 요청이 실패해도 계정 삭제는 그대로 진행됩니다. 이메일 주소와 이름은 계정을 삭제하지 않아도 로그인을 마치거나 10분이 지나면, 계정 관리 페이지는 30분이 지나면 서버 메모리에서 지웁니다.</li>
         <li>기기의 로그인은 정해진 기간(기본 30일)이 지나면 만료되고, 쓰는 동안에는 늘어납니다. 만료된 기기와 그 기기의 연결 정보는 정기 정리 때 지웁니다. 한 계정의 기기가 20대를 넘으면, 맥과 연결되지 않았고 접속해 있지 않은 기기 가운데 가장 오래된 기기 정보를 지웁니다.</li>
-        <li>연결 기록은 오류를 찾고, 보안 사고를 확인하고, 부정 이용을 막는 데만 쓰고 90일 동안 보관한 뒤 지웁니다. 계정을 삭제해도 이 기간에는 남습니다.</li>
+        <li>연결 기록은 오류를 찾고, 보안 사고를 확인하고, 부정 이용을 막고, 서비스 이용 통계를 내는 데만 쓰고 90일 동안 보관한 뒤 지웁니다. 계정을 삭제해도 이 기간에는 남습니다. 서비스 이용 통계는 연결 기록의 사건을 날짜별로 센 숫자 합계로, 계정 식별자와 기기 식별값이 들어 있지 않아 개인을 알아볼 수 없으며 기한 없이 보관합니다.</li>
         <li>서버 오류 기록은 서버의 기록 보관 설정에 따라 자동으로 지워지며, 최대 약 5주 동안 남습니다. 계정을 삭제해도 이 기간에는 남습니다.</li>
         <li>전자 파일은 복구할 수 없는 방법으로 지웁니다.</li>
       </ol>
@@ -153,7 +153,7 @@ html[data-lang="ko"] .not-ko, html[data-lang="ja"] .not-ja { display: none; }
           <tr><th>이전되는 국가</th><td>말레이시아(쿠알라룸푸르)</td></tr>
           <tr><th>이전 항목</th><td>2절의 계정 정보, 기기 정보, 기기 연결 정보, 푸시 토큰, Apple 토큰, 연결 기록, 서버 오류 기록</td></tr>
           <tr><th>이전 시기와 방법</th><td>로그인하고 모바일 연결을 쓰는 동안 네트워크를 통해 암호화해 전송</td></tr>
-          <tr><th>이용 목적과 보유 기간</th><td>중계 서버 운영. 4절에 따라 계정 식별자, 기기 정보, 기기 연결 정보, 푸시 토큰, Apple 토큰은 계정을 삭제할 때까지, 이메일 주소와 이름은 서버 메모리에서 최대 10분(계정 관리 페이지는 최대 30분), 연결 기록은 90일, 서버 오류 기록은 최대 약 5주</td></tr>
+          <tr><th>이용 목적과 보유 기간</th><td>중계 서버 운영과 서비스 이용 통계. 4절에 따라 계정 식별자, 기기 정보, 기기 연결 정보, 푸시 토큰, Apple 토큰은 계정을 삭제할 때까지, 이메일 주소와 이름은 서버 메모리에서 최대 10분(계정 관리 페이지는 최대 30분), 연결 기록은 90일, 서버 오류 기록은 최대 약 5주</td></tr>
           <tr><th>거부 방법과 결과</th><td>모바일 연결을 쓰지 않으면 이전되지 않습니다. 이때 맥 앱은 그대로 쓸 수 있고 모바일 연결은 쓸 수 없습니다.</td></tr>
         </tbody>
       </table>
@@ -271,7 +271,7 @@ html[data-lang="ko"] .not-ko, html[data-lang="ja"] .not-ja { display: none; }
           <tr><td>プッシュトークン（Expo が発行するモバイルアプリの通知先）</td><td>モバイルアプリへの通知の送信</td></tr>
           <tr><td>Apple トークン（Apple でサインインした場合）：Apple が発行したリフレッシュトークン（発行されない場合はアクセストークン）、受け取った日時</td><td>アカウントを削除するときの Apple でサインインの連携の取り消し</td></tr>
           <tr><td>サーバーのエラー記録：サーバーで接続エラーが起きたときに残る接続元 IP アドレス、端末とブラウザーの情報（User-Agent）、日時、エラーの内容（第4節に従い最長約5週間保管）。サインイン情報（Cookie、認証ヘッダー）は記録しません。</td><td>サーバーのエラーの調査、セキュリティ事故の確認</td></tr>
-          <tr><td>接続記録：アカウント識別子、端末識別値、接続や切断などのイベント、エラーコード、やり取りしたデータの量と件数、通知の種類と通知の配信結果、サインインに使ったサービス（Apple または Google）、日時（第4節に従い90日間保管）</td><td>エラーの調査、不正利用の防止、セキュリティ事故の確認</td></tr>
+          <tr><td>接続記録：アカウント識別子、端末識別値、接続や切断などのイベント、エラーコード、やり取りしたデータの量と件数、通知の種類と通知の配信結果、サインインに使ったサービス（Apple または Google）、日時（第4節に従い90日間保管）</td><td>エラーの調査、不正利用の防止、セキュリティ事故の確認、サービス利用統計の作成</td></tr>
         </tbody>
       </table>
       <p>これらの情報はサービス利用契約の履行に必要な情報であり、大韓民国の「個人情報保護法」第15条第1項第4号に基づいて取り扱います。</p>
@@ -289,7 +289,7 @@ html[data-lang="ko"] .not-ko, html[data-lang="ja"] .not-ja { display: none; }
       <ol>
         <li>アカウントを削除すると、アカウント識別子、端末情報、端末の接続情報、プッシュトークン、Apple トークンを遅滞なく廃棄し、サーバーのメモリー上で取り扱っていたメールアドレスと名前も消去します。Apple でサインインしたアカウントの場合は、Apple トークンを消去するとともに、Apple にそのトークンの取り消しを依頼します。Apple に接続できないときや取り消しの依頼が失敗したときも、アカウントの削除はそのまま行われます。メールアドレスと名前は、アカウントを削除しなくても、サインインが終わるか10分が過ぎると、アカウント管理ページの場合は30分が過ぎるとサーバーのメモリーから消去します。</li>
         <li>端末のサインインは決められた期間（初期設定では30日）が過ぎると期限切れになり、使っている間は延長されます。期限切れの端末とその端末の接続情報は、定期的な整理のときに削除します。1つのアカウントの端末が20台を超えると、Mac と接続されておらず、接続中でもない端末のうち最も古い端末の情報を削除します。</li>
-        <li>接続記録は、エラーの調査、セキュリティ事故の確認、不正利用の防止にだけ使い、90日間保管した後に削除します。アカウントを削除しても、この期間は残ります。</li>
+        <li>接続記録は、エラーの調査、セキュリティ事故の確認、不正利用の防止、サービス利用統計の作成にだけ使い、90日間保管した後に削除します。アカウントを削除しても、この期間は残ります。サービス利用統計は、接続記録のイベントを日付ごとに数えた数値の合計で、アカウント識別子と端末識別値を含まず、個人を識別できないため、期限を定めずに保管します。</li>
         <li>サーバーのエラー記録は、サーバーの記録保管設定に従って自動的に削除され、最長約5週間残ります。アカウントを削除しても、この期間は残ります。</li>
         <li>電子ファイルは復元できない方法で削除します。</li>
       </ol>
@@ -316,7 +316,7 @@ html[data-lang="ko"] .not-ko, html[data-lang="ja"] .not-ja { display: none; }
           <tr><th>移転先の国</th><td>マレーシア（クアラルンプール）</td></tr>
           <tr><th>移転する項目</th><td>第2節のアカウント情報、端末情報、端末の接続情報、プッシュトークン、Apple トークン、接続記録、サーバーのエラー記録</td></tr>
           <tr><th>移転の時期と方法</th><td>サインインしてモバイル接続を使う間、ネットワークを通じて暗号化して送信</td></tr>
-          <tr><th>利用目的と保管期間</th><td>中継サーバーの運用。第4節に従い、アカウント識別子、端末情報、端末の接続情報、プッシュトークン、Apple トークンはアカウントを削除するまで、メールアドレスと名前はサーバーのメモリー上で最長10分（アカウント管理ページは最長30分）、接続記録は90日、サーバーのエラー記録は最長約5週間</td></tr>
+          <tr><th>利用目的と保管期間</th><td>中継サーバーの運用とサービス利用統計の作成。第4節に従い、アカウント識別子、端末情報、端末の接続情報、プッシュトークン、Apple トークンはアカウントを削除するまで、メールアドレスと名前はサーバーのメモリー上で最長10分（アカウント管理ページは最長30分）、接続記録は90日、サーバーのエラー記録は最長約5週間</td></tr>
           <tr><th>拒否の方法とその結果</th><td>モバイル接続を使わなければ移転されません。この場合、Mac アプリはそのまま使えますが、モバイル接続は使えません。</td></tr>
         </tbody>
       </table>
@@ -444,7 +444,7 @@ html[data-lang="ko"] .not-ko, html[data-lang="ja"] .not-ja { display: none; }
           <tr><td>Push token (the Mobile app’s notification address issued by Expo)</td><td>Sending notifications to the Mobile app</td></tr>
           <tr><td>Apple token (if you sign in with Apple): the refresh token issued by Apple (or the access token if no refresh token is issued), and when it was received</td><td>Revoking the Sign in with Apple connection when you delete your Account</td></tr>
           <tr><td>Server error logs: when a connection error occurs on the server, the IP address, device and browser information (User-Agent), time, and error details (kept for up to about 5 weeks under Section 4). Sign-in information (cookies, authorization headers) is not recorded.</td><td>Finding server errors, investigating security incidents</td></tr>
-          <tr><td>Connection logs: account identifier, device identifier, events such as connecting and disconnecting, error codes, amount and count of data exchanged, notification type and delivery result, the service used to sign in (Apple or Google), time (kept for 90 days under Section 4)</td><td>Finding errors, preventing abuse, investigating security incidents</td></tr>
+          <tr><td>Connection logs: account identifier, device identifier, events such as connecting and disconnecting, error codes, amount and count of data exchanged, notification type and delivery result, the service used to sign in (Apple or Google), time (kept for 90 days under Section 4)</td><td>Finding errors, preventing abuse, investigating security incidents, service usage statistics</td></tr>
         </tbody>
       </table>
       <p>This information is necessary to perform our contract with you, and we process it under Article 15(1)(4) of the Personal Information Protection Act.</p>
@@ -462,7 +462,7 @@ html[data-lang="ko"] .not-ko, html[data-lang="ja"] .not-ja { display: none; }
       <ol>
         <li>When you delete your Account, we destroy your account identifier, device information, Device connections, push tokens, and Apple token without delay, and also delete the email address and name being processed in server memory. If the Account signs in with Apple, we ask Apple to revoke the Apple token as we delete it. Account deletion still goes ahead even if we cannot reach Apple or the revocation request fails. Even without Account deletion, your email address and name are deleted from server memory when sign-in finishes or after 10 minutes, and for the account management page after 30 minutes.</li>
         <li>A Device's sign-in expires after a set period (30 days by default) and is extended while you use it. Expired Devices and their connections are deleted during regular cleanup. If an Account has more than 20 Devices, we delete the oldest Device that is not connected to a Mac and not online.</li>
-        <li>Connection logs are used only to find errors, investigate security incidents, and prevent abuse, and are deleted after 90 days. They remain for this period even if you delete your Account.</li>
+        <li>Connection logs are used only to find errors, investigate security incidents, prevent abuse, and produce service usage statistics, and are deleted after 90 days. They remain for this period even if you delete your Account. Service usage statistics are daily totals counted from connection log events; they contain no account identifiers or device identifiers, cannot identify any individual, and are kept indefinitely.</li>
         <li>Server error logs are deleted automatically under the server's log retention settings and remain for up to about 5 weeks. They remain for this period even if you delete your Account.</li>
         <li>Electronic files are deleted in a way that cannot be recovered.</li>
       </ol>
@@ -489,7 +489,7 @@ html[data-lang="ko"] .not-ko, html[data-lang="ja"] .not-ja { display: none; }
           <tr><th>Country</th><td>Malaysia (Kuala Lumpur)</td></tr>
           <tr><th>Items</th><td>Account information, device information, Device connections, push tokens, Apple tokens, connection logs, and server error logs in Section 2</td></tr>
           <tr><th>When and how</th><td>While you are signed in and using the Mobile connection, sent encrypted over the network</td></tr>
-          <tr><th>Purpose and retention</th><td>Operating the Relay server. Under Section 4: account identifier, device information, Device connections, push tokens, and Apple tokens until you delete your Account; email address and name in server memory for up to 10 minutes (up to 30 minutes for the account management page); connection logs for 90 days; server error logs for up to about 5 weeks</td></tr>
+          <tr><th>Purpose and retention</th><td>Operating the Relay server and producing service usage statistics. Under Section 4: account identifier, device information, Device connections, push tokens, and Apple tokens until you delete your Account; email address and name in server memory for up to 10 minutes (up to 30 minutes for the account management page); connection logs for 90 days; server error logs for up to about 5 weeks</td></tr>
           <tr><th>How to refuse, and what happens</th><td>If you do not use the Mobile connection, nothing is transferred. You can still use the Mac app, but not the Mobile connection.</td></tr>
         </tbody>
       </table>
