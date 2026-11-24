@@ -10,9 +10,14 @@
 .as-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; border-radius: 32px; overscroll-behavior-x: contain; }
 .as-track::-webkit-scrollbar { display: none; }
 .as-slide { flex: 0 0 100%; margin: 0; scroll-snap-align: center; scroll-snap-stop: always; cursor: pointer; }
-.as-slide img { display: block; width: 100%; height: auto; background: var(--bg); }
+.as-slide img { display: block; width: 100%; height: auto; background: var(--bg); -webkit-user-drag: none; user-select: none; }
+/* 마우스로 끄는 동안(app-slides.js) — 스냅 · 부드러운 이동을 끄고 손을 따라가게 */
+.as-track.is-drag { scroll-snap-type: none; scroll-behavior: auto; cursor: grabbing; user-select: none; }
+.as-track.is-drag .as-slide { cursor: grabbing; }
 .as-dots { display: flex; justify-content: center; gap: 8px; margin-top: 18px; }
 .as-dots button { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 99px; background: rgba(255, 255, 255, .18); cursor: pointer; transition: width .25s ease, background .25s ease; }
 .as-dots button[aria-current="true"] { width: 22px; background: var(--gold); }
 .as-dots button:focus-visible { outline: 2px solid var(--gold-2); outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { .as-dots button { transition: none; } }
+/* 'iPhone · iPad · Android 준비 중' 한 줄 — 본문보다 작고 흐리게 */
+.app-note { margin: 12px 0 0; font-size: 14px; color: var(--dim); }

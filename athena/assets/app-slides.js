@@ -1,7 +1,8 @@
 /* 홈 06 모바일 앱 화면 슬라이드 — 외부 라이브러리 없이(2026-11-24).
    틀은 가로 scroll-snap 이라 휴대폰은 손가락으로 밀어 넘긴다(JS 가 없어도 된다). JS 는 그 위에
    몇 초마다 다음 장 · 점(지금 장 표시 · 눌러 이동) · 화면을 누르면 다음 장 · 마우스를 올리거나 점에 초점이 있으면 멈춤을 얹는다.
-   동작 줄이기(prefers-reduced-motion)를 켠 사람은 자동으로 넘기지 않고, 넘길 때도 미끄러지지 않고 바로 바뀐다 */
+   동작 줄이기(prefers-reduced-motion)를 켠 사람은 자동으로 넘기지 않고, 넘길 때도 미끄러지지 않고 바로 바뀐다.
+   데스크톱은 마우스로 끌어 넘길 수도 있다(2026-11-25) — 끄는 동안 멈추고, 놓으면 가까운 장으로 맞춘다 */
 (function () {
   var root = document.querySelector('.as');
   if (!root) return;
@@ -11,7 +12,7 @@
   if (!track || slides.length < 2 || !dotsBox) return;
   var DELAY = 4000;
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var current = 0, timer = null, hovering = false, focused = false, touching = false;
+  var current = 0, timer = null, hovering = false, focused = false, touching = false, dragging = false;
   var label = dotsBox.getAttribute('data-label') || 'Screen';
 
   // 점 — 장마다 하나(번호는 화면 읽기 프로그램용)
@@ -56,7 +57,61 @@
     slide.addEventListener('click', function () { go(current + 1); restart(); });
   });
 
-  function paused() { return reduce || hovering || focused || touching || document.hidden; }
+  // 마우스로 끌어 넘기기 — 터치는 브라우저의 기본 밀기에 맡기고 마우스만 다룬다
+  var DRAG_MIN = 5; // 이만큼(px) 움직여야 끌기로 본다 — 그 아래는 그냥 누르기(다음 장)
+  var press = null, justDragged = false, unlockTimer = null;
+  function unlock() {
+    clearTimeout(unlockTimer);
+    track.classList.remove('is-drag');
+  }
+  track.addEventListener('pointerdown', function (event) {
+    if (event.pointerType !== 'mouse' || event.button !== 0) return;
+    press = { id: event.pointerId, x: event.clientX, left: track.scrollLeft, index: current };
+  });
+  track.addEventListener('pointermove', function (event) {
+    if (!press || event.pointerId !== press.id) return;
+    var moved = event.clientX - press.x;
+    if (!dragging) {
+      if (Math.abs(moved) < DRAG_MIN) return;
+      dragging = true;
+      unlock();
+      // 끄는 동안은 스냅 · 부드러운 이동을 꺼야 손을 따라 바로 움직인다
+      track.classList.add('is-drag');
+      track.setPointerCapture(press.id);
+      restart();
+    }
+    track.scrollLeft = press.left - moved;
+  });
+  function release(event) {
+    if (!press || event.pointerId !== press.id) return;
+    var moved = event.clientX - press.x;
+    var from = press.index;
+    press = null;
+    if (!dragging) return;
+    dragging = false;
+    justDragged = true;
+    setTimeout(function () { justDragged = false; }, 0);
+    // 가까운 장으로 — 폭의 15% 넘게 끌었으면 그 방향 다음 장(끝에서는 더 가지 않는다)
+    var target = Math.round(track.scrollLeft / track.clientWidth);
+    var flick = track.clientWidth * 0.15;
+    if (target === from && moved < -flick) target = from + 1;
+    if (target === from && moved > flick) target = from - 1;
+    target = Math.max(0, Math.min(slides.length - 1, target));
+    go(target);
+    // 맞춤 이동이 끝난 뒤 스냅을 되돌린다(이동 중에 되돌리면 중간에서 튄다)
+    unlockTimer = setTimeout(unlock, reduce ? 0 : 600);
+    restart();
+  }
+  track.addEventListener('pointerup', release);
+  track.addEventListener('pointercancel', release);
+  // 끈 뒤 손을 뗄 때 생기는 클릭이 '다음 장' 으로 눌리지 않게
+  track.addEventListener('click', function (event) {
+    if (justDragged) { event.stopPropagation(); event.preventDefault(); }
+  }, true);
+  // 그림을 끌면 브라우저가 그림 자체를 끌어 가는(고스트 이미지) 기본 동작을 막는다
+  track.addEventListener('dragstart', function (event) { event.preventDefault(); });
+
+  function paused() { return reduce || hovering || focused || touching || dragging || document.hidden; }
   function restart() {
     clearInterval(timer);
     timer = null;
