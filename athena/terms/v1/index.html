@@ -22,6 +22,11 @@
 <link rel="stylesheet" href="/assets/site.css?v=20261102d">
 <script src="/assets/analytics.js?v=20261029a" async></script>
 <script src="/assets/motion.js?v=20261028i" defer></script>
+<style>
+/* 법적 문서 옛 판 보관 — 영어 주소는 영어 본문만, 한국어판(/ko/ · gen-athena-lang.mjs 가 만든다)은 한국어 원문만 보인다.
+   display 를 정하지 않고 숨기기만 해서 hidden(시행일 조각) · 글 안 span 은 그대로다 */
+html:not([data-lang="ko"]) .only-ko, html[data-lang="ko"] .not-ko { display: none; }
+</style>
 </head>
 <body>
 <header class="top">
@@ -50,7 +55,8 @@
 <!-- 이용약관 제1판 보관(2026-10-28 ~ 제2판 시행 전) — 시행된 판이라 본문을 고치지 않는다 -->
 <section style="padding-top:0">
   <div class="wrap">
-    <p class="notice">This version is no longer in effect. 이 판은 더 이상 시행되지 않습니다. <a href="/terms/">Version in effect · 지금 시행 중인 판</a> · <a href="/terms/history/">All versions · 판 목록</a></p>
+    <p class="notice not-ko">This version is no longer in effect. <a href="/terms/">Version in effect</a> · <a href="/terms/history/">All versions</a></p>
+    <p class="notice only-ko">이 판은 더 이상 시행되지 않습니다. <a href="/terms/">지금 시행 중인 판</a> · <a href="/terms/history/">판 목록</a></p>
     <div class="prose" lang="en">
       <p>Last updated: October 28, 2026</p>
       <p>This End User License Agreement (“Agreement”) is between you and Novum Lab (representative: Eunju Kim, Business Registration No. 496-37-01619, Seoul, Republic of Korea) (“Novum Lab”, “we”). By installing or using Athena Studio (“App”), you agree to this Agreement. If you do not agree, do not install or use the App.</p>

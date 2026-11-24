@@ -24,7 +24,9 @@
 <script src="/assets/motion.js?v=20261028i" defer></script>
 <script src="/assets/policy-date.js?v=20261120a" defer></script>
 <style>
-/* 법적 문서 옛 판 보관 — 한국어 원문과 영어 번역을 함께 보인다 */
+/* 법적 문서 옛 판 보관 — 영어 주소는 영어 본문만, 한국어판(/ko/ · gen-athena-lang.mjs 가 만든다)은 한국어 원문만 보인다.
+   display 를 정하지 않고 숨기기만 해서 hidden(시행일 조각) · 글 안 span 은 그대로다 */
+html:not([data-lang="ko"]) .only-ko, html[data-lang="ko"] .not-ko { display: none; }
 .prose .meta { font-size: 14px; }
 .prose ol { padding-left: 22px; }
 .prose h3 { font-size: 16px; color: var(--text); margin: 28px 0 10px; }
@@ -54,14 +56,16 @@
 <div class="page-head">
   <div class="wrap">
     <p class="eyebrow"><i></i><span data-t="t.eyebrow">Legal</span></p>
-    <h1 class="grad">Athena Terms of Use — 제2판 · Version 2</h1>
+    <h1 class="grad">Athena Terms of Use — <span class="only-ko">제2판</span><span class="not-ko">Version 2</span></h1>
   </div>
 </div>
 
 <section style="padding-top:0">
   <div class="wrap">
-    <p class="notice" data-until="2026-12-21">This version is in effect until Version 3 takes effect. 이 판은 제3판 시행일 전까지 시행됩니다. <a href="/terms/">Version 3 (scheduled) · 제3판(시행 예정)</a> · <a href="/terms/history/">All versions · 판 목록</a></p>
-    <p class="notice" data-from="2026-12-21" hidden>This version is no longer in effect. 이 판은 더 이상 시행되지 않습니다. <a href="/terms/">Version in effect · 지금 시행 중인 판</a> · <a href="/terms/history/">All versions · 판 목록</a></p>
+    <p class="notice not-ko" data-until="2026-12-21">This version is in effect until Version 3 takes effect. <a href="/terms/">Version 3 (scheduled)</a> · <a href="/terms/history/">All versions</a></p>
+    <p class="notice only-ko" data-until="2026-12-21">이 판은 제3판 시행일 전까지 시행됩니다. <a href="/terms/">제3판(시행 예정)</a> · <a href="/terms/history/">판 목록</a></p>
+    <p class="notice not-ko" data-from="2026-12-21" hidden>This version is no longer in effect. <a href="/terms/">Version in effect</a> · <a href="/terms/history/">All versions</a></p>
+    <p class="notice only-ko" data-from="2026-12-21" hidden>이 판은 더 이상 시행되지 않습니다. <a href="/terms/">지금 시행 중인 판</a> · <a href="/terms/history/">판 목록</a></p>
     <!-- Terms of Use 제2판 보관(2026-11-11 ~ 제3판 시행 전) — 시행된 판이라 본문을 고치지 않는다 -->
     <div class="prose only-ko" lang="ko">
       <p class="meta">제2판, 게시일 2026-11-11, 시행일 2026-11-11 · <a href="/terms/history/">이전 판 보기</a></p>
