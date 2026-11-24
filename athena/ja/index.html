@@ -64,6 +64,8 @@
 <script src="/assets/lang.js?v=20261102d"></script>
 <script src="/assets/motion.js?v=20261028i" defer></script>
 <script src="/assets/flow.js?v=20261029a" defer></script>
+<link rel="stylesheet" href="/assets/app-slides.css?v=20261124a">
+<script src="/assets/app-slides.js?v=20261124a" defer></script>
 </head>
 <body>
 <header class="top">
@@ -238,12 +240,45 @@
     <h2 data-t="n.k.h">いつも使っているコーディングエージェントと一緒に使えます。</h2>
     <p class="h3-p" data-t="h.c.p">Athena Studio は、いつも使っている Claude Code や Codex をそのまま動かし、その上にチームリード・計画書・レビューを加えます。</p>
     <dl class="h3-facts">
-      <div><dt data-t="m.f2h">コードの行き先</dt><dd data-t="n.x2">アプリがコードやファイルを Novum Lab のサーバーに送ることはありません。AI へのリクエストはお使いの提供元へ、プッシュはあなたの GitHub へ送られます。<a href="/ja/docs/#security">詳しく</a></dd></div>
+      <div><dt data-t="m.f2h">コードの行き先</dt><dd data-t="n.x2">アプリがコードやファイルを Novum Lab のサーバーに送ることはありません。モバイル接続をオンにすると、Mac とモバイル端末の間でエンドツーエンド暗号化されたまま中継サーバーを通り、中継サーバーはその内容を読んだり保存したりしません。AI へのリクエストはお使いの提供元へ、プッシュはあなたの GitHub へ送られます。<a href="/ja/docs/#security">詳しく</a></dd></div>
       <div><dt data-t="m.f3h">料金</dt><dd data-t="m.f3">Athena Studio 自体は無料です。AI の利用料はお使いの Claude または Codex のプランで請求されます。</dd></div>
       <div><dt data-t="m.f4h">言語</dt><dd data-t="n.x4">英語・韓国語・日本語・中国語。アプリとエージェントの両方に適用されます。</dd></div>
       <div><dt data-t="m.f1h">必要なもの</dt><dd data-t="n.x1">macOS 13 以降。PR 自動レビューは Claude Code か Codex のどちらか一つで使えます。<a href="/ja/download/">すべての条件</a></dd></div>
     </dl>
     <p class="h3-link"><a href="/ja/docs/#install" data-t="n.k.more">インストールと初回設定はドキュメントへ →</a></p>
+  </div>
+</section>
+
+<!-- 모바일 앱 '곧 출시' — 기능은 athena-app 레포 코드로 확인한 것만 · 스토어 링크는 심사 통과 뒤 따로(2026-11-24) -->
+<section id="mobile" class="h3-sec">
+  <div class="wrap">
+    <p class="h3-num">06 · <span data-t="n.app.l">iPhone · iPad</span> <span class="tag new" data-t="app.soon">近日公開</span></p>
+    <div class="app-row">
+      <div>
+        <h2 data-t="n.app.h">iPhone や iPad からもエージェントの様子がわかります。</h2>
+        <p class="h3-p" data-t="n.app.p">Athena モバイルアプリは Mac の Athena Studio に接続します。席を離れているあいだもエージェントに答えられます。Mac で Athena Studio が起動しているときに接続できます。間に入る中継サーバーは暗号化されたデータを渡すだけで、ターミナルやリクエストの内容を読んだり保存したりしません。</p>
+        <dl class="h3-facts">
+          <div><dt data-t="n.app.1h">質問と決定に答える</dt><dd data-t="n.app.1p">エージェントの質問や決定コンソールがアプリに届きます。答えを選ぶと、Mac で作業が続きます。</dd></div>
+          <div><dt data-t="n.app.2h">計画書とマージを見る</dt><dd data-t="n.app.2p">タスクごとの計画書を読み、何がマージされたかを確認できます。変更ファイル、コミット、GitHub の PR まで見られます。</dd></div>
+          <div><dt data-t="n.app.3h">エージェントのターミナルを開く</dt><dd data-t="n.app.3p">Mac 上のエージェントのターミナルをそのまま見て、入力もできます。</dd></div>
+          <div><dt data-t="n.app.4h">通知</dt><dd data-t="n.app.4p">オンにすると、エージェントから質問があったときやタスクが終わったときに通知が届きます。</dd></div>
+        </dl>
+      </div>
+      <!-- 앱 실제 화면(iOS 시뮬레이터 · athena-app 이 찍음 · 앱 심사용 스크린샷 · 데모 팩 Orbit Labs · 원본 1320x2868 → 600px webp · 언어판은 그 언어 사진(data-lang-src)) — 넘김은 app-slides.js -->
+      <figure class="as" aria-roledescription="carousel" aria-label="Athena モバイルアプリの画面" data-ta="aria-label:n.app.aria">
+        <div class="as-frame">
+          <div class="as-track">
+            <div class="as-slide"><img data-lang-src="/assets/app/{l}/01-work" src="/assets/app/ja/01-work.webp" width="600" height="1304" loading="lazy" decoding="async" alt="Athena アプリの作業タブ:上にエージェントが働くオフィスの絵、下に進行中の計画書と状態、今日のリポジトリ別マージがあります。" data-ta="alt:n.app.s1"></div>
+            <div class="as-slide"><img data-lang-src="/assets/app/{l}/02-merge-feed" src="/assets/app/ja/02-merge-feed.webp" width="600" height="1304" loading="lazy" decoding="async" alt="Athena アプリのマージフィード:日付ごとにマージされた PR の追加・削除行数とファイル数が表示されます。" data-ta="alt:n.app.s2"></div>
+            <div class="as-slide"><img data-lang-src="/assets/app/{l}/03-panes" src="/assets/app/ja/03-panes.webp" width="600" height="1304" loading="lazy" decoding="async" alt="Athena アプリのエージェント一覧:リポジトリごとにエージェントのブランチと状態(待機・作業中・応答待ち)が表示されます。" data-ta="alt:n.app.s3"></div>
+            <div class="as-slide"><img data-lang-src="/assets/app/{l}/04-terminal" src="/assets/app/ja/04-terminal.webp" width="600" height="1304" loading="lazy" decoding="async" alt="Athena アプリのエージェントターミナル:スマートフォンから操作し、クイックキーと入力欄で入力します。" data-ta="alt:n.app.s4"></div>
+            <div class="as-slide"><img data-lang-src="/assets/app/{l}/05-repo-settings" src="/assets/app/ja/05-repo-settings.webp" width="600" height="1304" loading="lazy" decoding="async" alt="Athena アプリのリポジトリ設定:リポジトリごとに自動 PR・自動レビューをオンオフし、マージ方法(手動・確認後・自動)を選びます。" data-ta="alt:n.app.s5"></div>
+            <div class="as-slide"><img data-lang-src="/assets/app/{l}/06-server" src="/assets/app/ja/06-server.webp" width="600" height="1304" loading="lazy" decoding="async" alt="Athena アプリのサーバー画面:過去 24 時間の稼働時間、CPU、負荷、メモリ、ディスク使用量が表示されます。" data-ta="alt:n.app.s6"></div>
+          </div>
+        </div>
+        <div class="as-dots" data-label="画面" data-ta="data-label:n.app.dot"></div>
+      </figure>
+    </div>
   </div>
 </section>
 

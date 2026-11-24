@@ -1,0 +1,18 @@
+/* 홈 06 모바일 앱 블록 — 글 옆에 폰 화면 슬라이드(app-slides.js). 색 · 선은 site.css 변수 그대로 */
+.app-row { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 64px; align-items: start; }
+.app-row .h3-facts { grid-template-columns: 1fr; margin-top: 40px; }
+@media (max-width: 900px) { .app-row { grid-template-columns: 1fr; gap: 40px; } .app-row .h3-facts { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 700px) { .app-row .h3-facts { grid-template-columns: 1fr; } }
+
+/* 폰 틀 — 둥근 테두리 안에서 화면이 옆으로 넘어간다(JS 가 없어도 밀어서 볼 수 있다) */
+.as { width: 100%; max-width: 300px; margin: 0 auto; }
+.as-frame { position: relative; padding: 8px; border: 1px solid var(--line); border-radius: 40px; background: var(--bg-2); box-shadow: 0 30px 80px rgba(0, 0, 0, .45), 0 0 0 1px rgba(255, 255, 255, .03) inset; }
+.as-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; border-radius: 32px; overscroll-behavior-x: contain; }
+.as-track::-webkit-scrollbar { display: none; }
+.as-slide { flex: 0 0 100%; margin: 0; scroll-snap-align: center; scroll-snap-stop: always; cursor: pointer; }
+.as-slide img { display: block; width: 100%; height: auto; background: var(--bg); }
+.as-dots { display: flex; justify-content: center; gap: 8px; margin-top: 18px; }
+.as-dots button { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 99px; background: rgba(255, 255, 255, .18); cursor: pointer; transition: width .25s ease, background .25s ease; }
+.as-dots button[aria-current="true"] { width: 22px; background: var(--gold); }
+.as-dots button:focus-visible { outline: 2px solid var(--gold-2); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .as-dots button { transition: none; } }

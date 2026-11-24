@@ -64,6 +64,8 @@
 <script src="/assets/lang.js?v=20261102d"></script>
 <script src="/assets/motion.js?v=20261028i" defer></script>
 <script src="/assets/flow.js?v=20261029a" defer></script>
+<link rel="stylesheet" href="/assets/app-slides.css?v=20261124a">
+<script src="/assets/app-slides.js?v=20261124a" defer></script>
 </head>
 <body>
 <header class="top">
@@ -238,12 +240,45 @@
     <h2 data-t="n.k.h">与你已在用的编程智能体配合使用。</h2>
     <p class="h3-p" data-t="h.c.p">Athena Studio 直接运行你已在用的 Claude Code 或 Codex，并在其上加入团队负责人、书面计划和审查。</p>
     <dl class="h3-facts">
-      <div><dt data-t="m.f2h">代码会去哪里</dt><dd data-t="n.x2">应用不会把你的代码或文件发送到 Novum Lab 的服务器。AI 请求发往你使用的服务商，推送发往你的 GitHub。<a href="/zh/docs/#security">详情</a></dd></div>
+      <div><dt data-t="m.f2h">代码会去哪里</dt><dd data-t="n.x2">应用不会把你的代码或文件发送到 Novum Lab 的服务器。开启移动连接后，它们会在 Mac 与移动设备之间端到端加密并经过中继服务器，中继服务器不会读取或保存其内容。AI 请求发往你使用的服务商，推送发往你的 GitHub。<a href="/zh/docs/#security">详情</a></dd></div>
       <div><dt data-t="m.f3h">费用</dt><dd data-t="m.f3">Athena Studio 本身免费。AI 用量按你的 Claude 或 Codex 套餐计费。</dd></div>
       <div><dt data-t="m.f4h">语言</dt><dd data-t="n.x4">英语、韩语、日语或中文，同时用于应用和智能体。</dd></div>
       <div><dt data-t="m.f1h">所需条件</dt><dd data-t="n.x1">macOS 13 或更高版本。PR 自动审查只需 Claude Code 或 Codex 其中一个。<a href="/zh/download/">完整条件</a></dd></div>
     </dl>
     <p class="h3-link"><a href="/zh/docs/#install" data-t="n.k.more">在文档中查看安装与首次设置 →</a></p>
+  </div>
+</section>
+
+<!-- 모바일 앱 '곧 출시' — 기능은 athena-app 레포 코드로 확인한 것만 · 스토어 링크는 심사 통과 뒤 따로(2026-11-24) -->
+<section id="mobile" class="h3-sec">
+  <div class="wrap">
+    <p class="h3-num">06 · <span data-t="n.app.l">iPhone · iPad</span> <span class="tag new" data-t="app.soon">即将推出</span></p>
+    <div class="app-row">
+      <div>
+        <h2 data-t="n.app.h">在 iPhone 或 iPad 上也能跟进你的智能体。</h2>
+        <p class="h3-p" data-t="n.app.p">Athena 移动应用连接到你 Mac 上的 Athena Studio，离开工位时也能回答智能体。只有 Mac 上的 Athena Studio 开着时才能连接。中间的中继服务器只传递加密数据，不会读取或保存你的终端和请求内容。</p>
+        <dl class="h3-facts">
+          <div><dt data-t="n.app.1h">回答问题和决定</dt><dd data-t="n.app.1p">智能体的问题和决定控制台会出现在应用里。选好答案后，工作会在 Mac 上继续。</dd></div>
+          <div><dt data-t="n.app.2h">查看计划书和合并</dt><dd data-t="n.app.2p">阅读每个任务的计划书，查看合并了什么：改动的文件、提交以及 GitHub 上的 PR。</dd></div>
+          <div><dt data-t="n.app.3h">打开智能体的终端</dt><dd data-t="n.app.3p">原样查看 Mac 上智能体的终端，并直接输入。</dd></div>
+          <div><dt data-t="n.app.4h">通知</dt><dd data-t="n.app.4p">开启后，智能体向你提问或任务完成时会收到通知。</dd></div>
+        </dl>
+      </div>
+      <!-- 앱 실제 화면(iOS 시뮬레이터 · athena-app 이 찍음 · 앱 심사용 스크린샷 · 데모 팩 Orbit Labs · 원본 1320x2868 → 600px webp · 언어판은 그 언어 사진(data-lang-src)) — 넘김은 app-slides.js -->
+      <figure class="as" aria-roledescription="carousel" aria-label="Athena 移动应用界面" data-ta="aria-label:n.app.aria">
+        <div class="as-frame">
+          <div class="as-track">
+            <div class="as-slide"><img data-lang-src="/assets/app/{l}/01-work" src="/assets/app/zh/01-work.webp" width="600" height="1304" loading="lazy" decoding="async" alt="Athena 应用的工作标签:上方是智能体工作的办公室画面,下方是进行中的计划书及其状态,以及今天各仓库的合并。" data-ta="alt:n.app.s1"></div>
+            <div class="as-slide"><img data-lang-src="/assets/app/{l}/02-merge-feed" src="/assets/app/zh/02-merge-feed.webp" width="600" height="1304" loading="lazy" decoding="async" alt="Athena 应用的合并动态:按日期列出已合并的 PR,显示增删行数和文件数。" data-ta="alt:n.app.s2"></div>
+            <div class="as-slide"><img data-lang-src="/assets/app/{l}/03-panes" src="/assets/app/zh/03-panes.webp" width="600" height="1304" loading="lazy" decoding="async" alt="Athena 应用的智能体列表:每个仓库的智能体及其分支和状态(空闲 · 工作中 · 等待)。" data-ta="alt:n.app.s3"></div>
+            <div class="as-slide"><img data-lang-src="/assets/app/{l}/04-terminal" src="/assets/app/zh/04-terminal.webp" width="600" height="1304" loading="lazy" decoding="async" alt="Athena 应用的智能体终端:在手机上控制,用快捷键和输入框输入。" data-ta="alt:n.app.s4"></div>
+            <div class="as-slide"><img data-lang-src="/assets/app/{l}/05-repo-settings" src="/assets/app/zh/05-repo-settings.webp" width="600" height="1304" loading="lazy" decoding="async" alt="Athena 应用的仓库设置:为每个仓库开关自动 PR 和自动评审,并选择合并方式(手动 · 确认后 · 自动)。" data-ta="alt:n.app.s5"></div>
+            <div class="as-slide"><img data-lang-src="/assets/app/{l}/06-server" src="/assets/app/zh/06-server.webp" width="600" height="1304" loading="lazy" decoding="async" alt="Athena 应用的服务器画面:显示过去 24 小时的运行时间、CPU、负载、内存和磁盘使用量。" data-ta="alt:n.app.s6"></div>
+          </div>
+        </div>
+        <div class="as-dots" data-label="界面" data-ta="data-label:n.app.dot"></div>
+      </figure>
+    </div>
   </div>
 </section>
 

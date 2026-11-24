@@ -64,6 +64,8 @@
 <script src="/assets/lang.js?v=20261102d"></script>
 <script src="/assets/motion.js?v=20261028i" defer></script>
 <script src="/assets/flow.js?v=20261029a" defer></script>
+<link rel="stylesheet" href="/assets/app-slides.css?v=20261124a">
+<script src="/assets/app-slides.js?v=20261124a" defer></script>
 </head>
 <body>
 <header class="top">
@@ -238,12 +240,45 @@
     <h2 data-t="n.k.h">It works with the coding agent you already use.</h2>
     <p class="h3-p" data-t="h.c.p">Athena Studio runs the Claude Code or Codex you already use, and adds a team lead, written plans and reviews on top.</p>
     <dl class="h3-facts">
-      <div><dt data-t="m.f2h">Where your code goes</dt><dd data-t="n.x2">The app doesn't send your code or files to Novum Lab. AI requests go to the provider you use, and pushes go to your GitHub. <a href="/docs/#security">Details</a></dd></div>
+      <div><dt data-t="m.f2h">Where your code goes</dt><dd data-t="n.x2">The app doesn't send your code or files to Novum Lab. If you turn on the mobile connection, they pass through the Relay server end-to-end encrypted between your Mac and your mobile device, and the Relay server doesn't read or store them. AI requests go to the provider you use, and pushes go to your GitHub. <a href="/docs/#security">Details</a></dd></div>
       <div><dt data-t="m.f3h">Cost</dt><dd data-t="m.f3">Athena Studio itself is free. AI usage is billed under your Claude or Codex plan.</dd></div>
       <div><dt data-t="m.f4h">Languages</dt><dd data-t="n.x4">English, Korean, Japanese or Chinese, for the app and the agents.</dd></div>
       <div><dt data-t="m.f1h">What you need</dt><dd data-t="n.x1">macOS 13 or later. Automatic PR review works with Claude Code or Codex alone. <a href="/download/">Full requirements</a></dd></div>
     </dl>
     <p class="h3-link"><a href="/docs/#install" data-t="n.k.more">Install and first setup in Docs →</a></p>
+  </div>
+</section>
+
+<!-- 모바일 앱 '곧 출시' — 기능은 athena-app 레포 코드로 확인한 것만 · 스토어 링크는 심사 통과 뒤 따로(2026-11-24) -->
+<section id="mobile" class="h3-sec">
+  <div class="wrap">
+    <p class="h3-num">06 · <span data-t="n.app.l">iPhone · iPad</span> <span class="tag new" data-t="app.soon">Coming soon</span></p>
+    <div class="app-row">
+      <div>
+        <h2 data-t="n.app.h">Keep up with your agents from your iPhone or iPad.</h2>
+        <p class="h3-p" data-t="n.app.p">The Athena mobile app connects to Athena Studio on your Mac, so you can answer your agents when you're away from your desk. It connects while Athena Studio is running on your Mac. The relay in between passes only encrypted data and doesn't read or store your terminals or requests.</p>
+        <dl class="h3-facts">
+          <div><dt data-t="n.app.1h">Answer questions and decisions</dt><dd data-t="n.app.1p">Agents' questions and decision consoles show up in the app. Pick an answer and the work goes on on your Mac.</dd></div>
+          <div><dt data-t="n.app.2h">Follow plans and merges</dt><dd data-t="n.app.2p">Read each task's plan, and see what was merged: changed files, commits and the PR on GitHub.</dd></div>
+          <div><dt data-t="n.app.3h">Open an agent's terminal</dt><dd data-t="n.app.3p">See an agent's terminal as it is on your Mac and type into it.</dd></div>
+          <div><dt data-t="n.app.4h">Notifications</dt><dd data-t="n.app.4p">If you turn them on, you get a notification when an agent asks you something or a task is done.</dd></div>
+        </dl>
+      </div>
+      <!-- 앱 실제 화면(iOS 시뮬레이터 · athena-app 이 찍음 · 앱 심사용 스크린샷 · 데모 팩 Orbit Labs · 원본 1320x2868 → 600px webp · 언어판은 그 언어 사진(data-lang-src)) — 넘김은 app-slides.js -->
+      <figure class="as" aria-roledescription="carousel" aria-label="Athena mobile app screens" data-ta="aria-label:n.app.aria">
+        <div class="as-frame">
+          <div class="as-track">
+            <div class="as-slide"><img data-lang-src="/assets/app/{l}/01-work" src="/assets/app/en/01-work.webp" width="600" height="1304" loading="lazy" decoding="async" alt="The Work tab of the Athena app: an office picture of the agents on top, the plans in progress with their status, and today's merges by repo." data-ta="alt:n.app.s1"></div>
+            <div class="as-slide"><img data-lang-src="/assets/app/{l}/02-merge-feed" src="/assets/app/en/02-merge-feed.webp" width="600" height="1304" loading="lazy" decoding="async" alt="The merge feed in the Athena app: merged pull requests by day, with lines added and removed and the number of files." data-ta="alt:n.app.s2"></div>
+            <div class="as-slide"><img data-lang-src="/assets/app/{l}/03-panes" src="/assets/app/en/03-panes.webp" width="600" height="1304" loading="lazy" decoding="async" alt="The agent list in the Athena app: each repo's agent with its branch and whether it is idle, working or waiting." data-ta="alt:n.app.s3"></div>
+            <div class="as-slide"><img data-lang-src="/assets/app/{l}/04-terminal" src="/assets/app/en/04-terminal.webp" width="600" height="1304" loading="lazy" decoding="async" alt="An agent's terminal in the Athena app, controlled from the phone, with quick keys and an input field." data-ta="alt:n.app.s4"></div>
+            <div class="as-slide"><img data-lang-src="/assets/app/{l}/05-repo-settings" src="/assets/app/en/05-repo-settings.webp" width="600" height="1304" loading="lazy" decoding="async" alt="Repo settings in the Athena app: turn auto PR and auto review on or off and choose how each repo merges (manual, after confirm or auto)." data-ta="alt:n.app.s5"></div>
+            <div class="as-slide"><img data-lang-src="/assets/app/{l}/06-server" src="/assets/app/en/06-server.webp" width="600" height="1304" loading="lazy" decoding="async" alt="A server screen in the Athena app: uptime, CPU, load, memory and disk usage over the last 24 hours." data-ta="alt:n.app.s6"></div>
+          </div>
+        </div>
+        <div class="as-dots" data-label="Screen" data-ta="data-label:n.app.dot"></div>
+      </figure>
+    </div>
   </div>
 </section>
 
