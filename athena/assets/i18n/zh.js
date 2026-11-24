@@ -719,7 +719,7 @@ window.ATHENA_I18N.zh = {
   "n.app.4p": "开启后，智能体向你提问或任务完成时会收到通知。",
   "d.app.h": "Athena 移动应用",
   "d.app.p": "连接 Mac 上的 Athena Studio，在手机或平板上回答智能体、跟进工作。只有 Mac 上的 Athena Studio 开着时才能连接。",
-  "app.android": "iPhone · iPad · Android 正在准备中 · 中国大陆暂未上架",
+  "app.android": "iPhone · iPad · Android 正在准备中",
   "n.app.aria": "Athena 移动应用界面",
   "n.app.dot": "界面",
   "n.app.s1": "Athena 应用的工作标签:上方是智能体工作的办公室画面,下方是进行中的计划书及其状态,以及今天各仓库的合并。",
