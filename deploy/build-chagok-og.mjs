@@ -1,6 +1,8 @@
 // 초대 링크 미리보기 그림(chagok/assets/invite/og.png, 1200×630, invite/index.html 의 og:image)을 만든다.
 //   node deploy/build-chagok-og.mjs            # 한국어 og.png
 //   LANG_CODE=en node deploy/build-chagok-og.mjs  # 영어 og-en.png (invite/en.html 의 og:image, 2026-11-12)
+//   WINTER=1 [KIND=landing] [LANG_CODE=..] node deploy/build-chagok-og.mjs  # 겨울판(2026-11-24, 앱 1.3.0 겨울 숲): 소나무 밤 바탕, 크리스마스 스티커, 털모자 차곡이.
+//     KIND=landing 이면 랜딩 공유 그림(assets/img/og.jpg, en/og.jpg, ja/og.jpg)을 같은 짜임에 랜딩 제목으로 만든다. 1월에 WINTER 없이 돌리거나 git 에서 되돌린다
 //   LANG_CODE=ja node deploy/build-chagok-og.mjs  # 일본어 og-ja.png (invite/ja.html 의 og:image, 2026-11-14). 글꼴은 DotGothic16 부분 집합(deploy/build-chagok-ja-font.py)
 // HTML 한 장(인라인 CSS, 사이트 도트 글꼴, 차곡이 SVG(기본 웃는 얼굴 mascot-smile, MASCOT=<이름>으로 바꿈), stickers.json 스티커)을 쓰고 맥의 Chrome 헤드리스로 찍는다.
 // 카카오톡은 미리보기를 2:1 카드에 크게 채우며 양옆을 100px 안팎 자른다(2026-11-12 카톡 화면으로 확인). 그래서 차곡이와 글은 가운데에 두고,
@@ -15,30 +17,61 @@ import { execFileSync } from 'node:child_process';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', 'chagok');
 const LANG = ['en', 'ja'].includes(process.env.LANG_CODE) ? process.env.LANG_CODE : 'ko';
-const OUT = process.env.OUT ?? path.join(ROOT, 'assets', 'invite', LANG === 'ko' ? 'og.png' : `og-${LANG}.png`);
+const WINTER = process.env.WINTER === '1';
+const LANDING = process.env.KIND === 'landing';
+const OUT = process.env.OUT ?? (LANDING ? path.join(ROOT, 'assets', 'img', LANG === 'ko' ? '' : LANG, 'og.jpg')
+  : path.join(ROOT, 'assets', 'invite', LANG === 'ko' ? 'og.png' : `og-${LANG}.png`));
 const CHROME = process.env.CHROME ?? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const W = 1200, H = 630, GAP = 80, SIDE = 60;
 
 const ink = '#06261C', mint = '#AFE1CB', apricot = '#FD855F', ivory = '#FEF1D1';
+// 겨울판 색: 바탕은 앱 겨울 숲의 소나무 밤, 물방울 대신 흩뿌린 흰 네모 눈(아래 snow), 글은 아이보리, 띠는 별 금색
+const night = '#1E4D3B', gold = '#FFD25E';
+const bg = WINTER ? night : ivory, dot = WINTER ? 'rgba(255,255,255,.28)' : mint, text = WINTER ? ivory : ink, band = WINTER ? gold : apricot;
 // 일본어는 앱과 같은 DotGothic16(일본어 화면 글꼴), 나머지는 Neo둥근모
 const font = fs.readFileSync(path.join(ROOT, LANG === 'ja' ? 'assets/fonts/dotgothic16/dotgothic16-ja.woff2' : 'assets/fonts/neodgm/neodgm.woff2')).toString('base64');
-const mascot = fs.readFileSync(path.join(ROOT, `assets/invite/mascot-${process.env.MASCOT ?? 'smile'}.svg`), 'utf8');
+const mascot = fs.readFileSync(path.join(ROOT, `assets/invite/mascot-${process.env.MASCOT ?? (WINTER ? 'winterFront' : 'smile')}.svg`), 'utf8');
 const stickers = JSON.parse(fs.readFileSync(path.join(ROOT, 'assets/invite/stickers.json'), 'utf8'));
 
 // 타일: [스티커, 왼쪽, 위, 기울기]. 타일은 104px(그림자 8px 별도)
-const tiles = [
+const plainTiles = [
   ['basic.star', 84, 52, -8], ['basic.flower', 86, 262, 6], ['basic.cat', 84, 468, -5],
   ['basic.shoe', 330, 34, 7], ['basic.moon', 780, 34, -6],
   ['basic.clover', 420, 488, -7], ['basic.music', 690, 494, 5],
   ['animals_normal.rabbit', 1010, 52, 8], ['basic.water', 1000, 262, -6], ['animals_normal.dog', 1010, 468, 6],
 ];
+// 겨울판은 자리를 그대로 두고 크리스마스 묶음 열 가지로 바꾼다
+const xmas = ['gift', 'bell', 'reindeer', 'cane', 'wreath', 'stocking', 'ginger', 'hat', 'mitten', 'tree'];
+const tiles = WINTER ? plainTiles.map(([, x, y, r], i) => [`christmas_normal.${xmas[i]}`, x, y, r]) : plainTiles;
 
 // 언어별 글. 줄과 띠는 같은 모양이다. 영어는 줄이 길어 글자를 줄인다(.en)
-const COPY = {
+const INVITE_COPY = {
   ko: '<h1>친구와 같이<br><span class="band">스티커 판</span> 채워요</h1><p>초대를 받았어요</p>',
   en: '<h1 class="en">Fill a<br><span class="band">sticker board</span> together</h1><p class="en">You\'re invited</p>',
   ja: '<h1 class="ja">友達と一緒に<br><span class="band">シール</span>を貼ろう</h1><p>招待が届きました</p>',
 };
+// 랜딩 공유 그림: 랜딩 첫 화면 제목과 겨울 한 줄
+const LANDING_COPY = {
+  ko: '<h1>오늘 해낸 일에<br><span class="band">스티커 한 장</span></h1><p>눈 내리는 숲에 트리를 채워요</p>',
+  en: '<h1 class="en">Small wins,<br><span class="band">one sticker</span> at a time</h1><p class="en">Decorate a snowy forest</p>',
+  ja: '<h1 class="ja">今日の「できた」に<br><span class="band">シールを1枚</span></h1><p>雪の森にツリーを飾ろう</p>',
+};
+const COPY = LANDING ? LANDING_COPY : INVITE_COPY;
+
+// 겨울판 바탕: 랜딩 첫 화면의 눈(4, 7, 10px 흰 네모 세 층, landing.css .snowfall)을 멈춘 한 장면처럼 흩뿌린다(2026-11-25 사용자 메모 「원형 도트가 아니라 눈 내리는 그림」).
+// 위치는 고정 씨앗이라 다시 만들어도 같다. 작은 눈일수록 많고 흐리다
+const snow = (() => {
+  let seed = 20261125;
+  const rnd = () => ((seed = (seed * 1103515245 + 12345) % 2147483648) / 2147483648);
+  const out = [];
+  for (const [size, count, alpha] of [[4, 90, 0.55], [7, 45, 0.75], [10, 22, 0.9]]) {
+    for (let i = 0; i < count; i += 1) {
+      const x = Math.round(rnd() * (W - size)), y = Math.round(rnd() * (H - size));
+      out.push(`<i class="flake" style="left:${x}px;top:${y}px;width:${size}px;height:${size}px;opacity:${alpha}"></i>`);
+    }
+  }
+  return out.join('');
+})();
 
 // 글과 차곡이 묶음의 크기. 0.9 아래로 줄여 옆 타일과 80px를 지킨다(2026-11-12). 영어는 줄이 길어 더 줄인다
 const SCALE = { ko: 0.9, en: 0.85, ja: 0.85 };
@@ -53,13 +86,14 @@ const html = `<!doctype html><html><head><meta charset="utf-8"><style>
 @font-face { font-family: px; src: url(data:font/woff2;base64,${font}) format("woff2"); }
 * { box-sizing: border-box; margin: 0; }
 html, body { width: ${W}px; height: ${H}px; overflow: hidden; }
-body { position: relative; font-family: px; color: ${ink}; background-color: ${ivory};
-  background-image: radial-gradient(circle, ${mint} 6px, transparent 6.5px); background-size: 52px 52px; background-position: -4px -4px; }
+body { position: relative; font-family: px; color: ${text}; background-color: ${bg};
+  ${WINTER ? '' : `background-image: radial-gradient(circle, ${dot} 6px, transparent 6.5px); background-size: 52px 52px; background-position: -4px -4px;`} }
+.flake { position: absolute; background: #fff; }
 .hero { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(var(--s, 1)); display: flex; align-items: center; gap: 40px; }
 .mascot { width: 156px; height: 156px; }
 .mascot svg { width: 100%; height: 100%; display: block; }
 h1 { font-weight: normal; font-size: 54px; line-height: 72px; white-space: nowrap; }
-.band { background: ${apricot}; padding: 0 12px; margin-right: 6px; }
+.band { background: ${band}; color: ${ink}; padding: 0 12px; margin-right: 6px; }
 p { font-size: 26px; line-height: 34px; margin-top: 18px; }
 h1.en { font-size: 46px; line-height: 64px; }
 h1.ja { font-size: 50px; line-height: 66px; } /* DotGothic16 은 글자 상자가 글자 크기의 1.45배라 조금 줄인다 */
@@ -70,6 +104,7 @@ h1.ja .band { margin-right: 0; } /* 일본어는 띠 뒤에 빈칸 없이 「を
 </style></head><body style="--s:${SCALE[LANG]}">
 <div class="hero"><div class="mascot">${mascot}</div>
 <div class="text">${COPY[LANG]}</div></div>
+${WINTER ? snow : ''}
 ${tiles.map(([id, x, y, r]) => `<div class="tile" style="left:${x}px;top:${y}px;transform:rotate(${r}deg)">${sticker(id)}</div>`).join('\n')}
 <script>
 document.fonts.ready.then(() => {
@@ -79,6 +114,11 @@ document.fonts.ready.then(() => {
   document.querySelectorAll('.text h1, .text p').forEach((el) => {
     const r = document.createRange(); r.selectNodeContents(el);
     for (const rect of r.getClientRects()) if (rect.width && rect.height) keep.push(rect);
+  });
+  // 겨울판 눈송이는 글과 차곡이 둘레 16px 안에 있으면 뺀다(글 읽기 방해)
+  document.querySelectorAll('.flake').forEach((f) => {
+    const b = box(f);
+    if (keep.some((k) => b.right > k.left - 16 && b.left < k.right + 16 && b.bottom > k.top - 16 && b.top < k.bottom + 16)) f.remove();
   });
   const bad = [];
   document.querySelectorAll('.tile').forEach((t, i) => {
@@ -115,6 +155,11 @@ const chrome = (args) => {
 
 const check = chrome(['--dump-dom']).match(/data-check="([^"]*)"/)?.[1];
 if (check !== 'ok') { console.error(`간격 검사 실패: ${check ?? '결과 없음'}`); process.exit(1); }
-chrome([`--screenshot=${OUT}`]);
+if (OUT.endsWith('.jpg')) {
+  const png = path.join(dir, 'og.png');
+  chrome([`--screenshot=${png}`]);
+  fs.mkdirSync(path.dirname(OUT), { recursive: true });
+  execFileSync('sips', ['-s', 'format', 'jpeg', '-s', 'formatOptions', '90', png, '--out', OUT], { stdio: 'ignore' });
+} else chrome([`--screenshot=${OUT}`]);
 fs.rmSync(dir, { recursive: true, force: true });
 console.log(`${path.relative(process.cwd(), OUT)} ${Math.round(fs.statSync(OUT).size / 1024)}KB`);
