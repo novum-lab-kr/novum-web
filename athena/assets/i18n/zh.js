@@ -705,7 +705,7 @@ window.ATHENA_I18N.zh = {
   "doc.pk.many.h": "多个包",
   "doc.pk.many.p": "每个包都有自己的 Athena 文件夹和待办页面，因此可以同时打开多个包。打开另一个包时，这个包的智能体会继续工作，包与包之间不会混在一起。",
   "doc.pk.note": "在标签栏左侧的包名称(⌘⇧P)中切换、新建、导入或导出。",
-  "app.store": "在 App Store 下载",
+  "app.store": "App Store",
   "n.app.l": "移动端",
   "n.app.h": "在移动端也与你的智能体同行。",
   "n.app.p": "Athena 移动应用连接到你 Mac 上的 Athena Studio，离开工位时也能回答智能体。只有 Mac 上的 Athena Studio 开着时才能连接。中间的中继服务器只传递加密数据，不会读取或保存你的终端和请求内容。",

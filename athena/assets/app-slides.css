@@ -19,5 +19,6 @@
 .as-dots button[aria-current="true"] { width: 22px; background: var(--gold); }
 .as-dots button:focus-visible { outline: 2px solid var(--gold-2); outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { .as-dots button { transition: none; } }
-/* 'iPhone · iPad · Android 준비 중' 한 줄 — 본문보다 작고 흐리게 */
-.app-note { margin: 12px 0 0; font-size: 14px; color: var(--dim); }
+/* App Store 버튼 옆 'Android 준비 중' 태그 — 같은 줄 가운데 정렬 · 좁으면 아래로 넘어간다 */
+#mobile .btns { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; }
+#mobile .btns .tag { display: inline-flex; align-items: center; gap: 6px; }
