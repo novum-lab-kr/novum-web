@@ -151,6 +151,7 @@
         <a href="#settings" data-t="doc.n.settings">Settings</a>
         <a href="#shortcuts" data-t="f.k.label">Shortcuts</a>
         <a href="#update" data-t="doc.n.update">Updating</a>
+        <a href="#mobile" data-t="doc.n.mobile">Mobile app</a>
         <a href="#security" data-t="h.s.label">Data and security</a>
         <a href="#troubleshooting" data-t="doc.n.trouble">Troubleshooting</a>
         <a href="#faq">FAQ</a>
@@ -522,6 +523,37 @@
   <p class="doc-p" data-t="doc.u.app">From 0.17.6 on, the app updates itself: open Settings (⚙) and, when a new version is out, press Update on the App update line. The app downloads it, verifies it, and restarts. If anything fails, the current version keeps running and a short reason is shown.</p>
   <p class="doc-p" data-t="doc.u.old">Still on 0.15.8? That version can't update itself. Download the new .dmg once from the <a href="/download/">Download page</a> and drag Athena Studio into Applications to replace the old app. Your packs and work stay where they are, and after that you can update from ⚙.</p>
   <p class="doc-p" data-t="doc.u.core">The Athena core that comes with the app is updated when you open a new version, even while agents are working. A popup then shows the previous and new versions, what’s new, and how the update went.</p>
+</section>
+
+<!-- 모바일 앱 연결 — 버튼 · 화면 이름은 Athena Studio(v0.71.5 src/i18n · ui/mobile-account.tsx) · Athena 앱(app/src/i18n · app/relay.tsx · settings) 문구 그대로 -->
+<section class="doc-sec" id="mobile">
+  <p class="doc-label" data-t="doc.n.mobile">Mobile app</p>
+  <h2 data-t="doc.m.h">Connect the mobile app to your Mac.</h2>
+  <p class="doc-p" data-t="doc.m.p">The Athena mobile app connects to Athena Studio on your Mac. You need Athena Studio 0.71.4 or later, and the app connects only while Athena Studio is running on your Mac.</p>
+  <h3 class="doc-h3" data-t="doc.m.c.h">Connect for the first time</h3>
+  <ol class="h3-steps-list">
+    <li data-t="doc.m1"><b>Get the app.</b> Download Athena from the <a href="https://apps.apple.com/app/id6838557098" target="_blank" rel="noopener">App Store</a>.</li>
+    <li data-t="doc.m2"><b>Sign in on your Mac.</b> In Athena Studio, click the round profile button at the bottom of the pack column on the far left (Sign in). Finish signing in in your browser, and Studio picks it up.</li>
+    <li data-t="doc.m3"><b>Sign in on your phone with the same account.</b> In the app, tap Sign in · connect, then Sign in, and use the same account as Athena Studio.</li>
+    <li data-t="doc.m4"><b>Choose your Mac.</b> The app lists the Macs signed in with the same account. Tap yours to connect.</li>
+    <li data-t="doc.m5"><b>Check the code and allow.</b> Studio opens New device with a code, and the app shows a code too. Choose Allow in Studio only if the two match. The request ends after 5 minutes.</li>
+  </ol>
+  <p class="doc-note" data-t="doc.m.auto">After that, the app connects automatically whenever Athena Studio is on.</p>
+  <h3 class="doc-h3" data-t="doc.m.d.h">See and remove connected devices</h3>
+  <dl class="doc-dl">
+      <div><dt data-t="doc.m.d1t">On your Mac</dt><dd data-t="doc.m.d1">Profile button → Devices. Connected devices lists each phone or tablet and when it was last seen. Remove disconnects it.</dd></div>
+      <div><dt data-t="doc.m.d2t">In the app</dt><dd data-t="doc.m.d2">Tap your profile icon to open App Settings. Connected devices shows your Macs and whether they're on. Sign out clears sign-in and connection info from the relay and this device.</dd></div>
+      <div><dt data-t="doc.m.d3t">Typing from the phone</dt><dd data-t="doc.m.d3">Allow input from devices, in Studio's Devices window, applies to all devices. When it's off, phones can only view. When it's on, they can type, send images, answer requests and decisions, change repo settings and switch packs.</dd></div>
+  </dl>
+  <h3 class="doc-h3" data-t="doc.m.t.h">If it doesn't connect</h3>
+  <dl class="doc-dl">
+      <div><dt data-t="doc.m.t1q">Studio has no profile button</dt><dd data-t="doc.m.t1a">Update Athena Studio to 0.71.4 or later (<a href="#update">Updating</a>). The button isn't on the start screen; open a pack first.</dd></div>
+      <div><dt data-t="doc.m.t2q">The app says no devices are on</dt><dd data-t="doc.m.t2a">Open Athena Studio on your Mac and sign in with the same account as the app.</dd></div>
+      <div><dt data-t="doc.m.t3q">The app says Studio is off or not connected to the server</dt><dd data-t="doc.m.t3a">Make sure Athena Studio is running on your Mac and the Mac is online.</dd></div>
+      <div><dt data-t="doc.m.t4q">The connection request ended</dt><dd data-t="doc.m.t4a">A request ends after 5 minutes or when it's rejected. Choose your Mac in the app again.</dd></div>
+      <div><dt data-t="doc.m.t5q">Too many devices</dt><dd data-t="doc.m.t5a">Profile button → Manage account opens your account on the web. Remove devices you no longer use there.</dd></div>
+      <div><dt data-t="doc.m.t6q">The app can't change or answer anything</dt><dd data-t="doc.m.t6a">Allow input from devices is off. Turn it on in Studio's Devices window.</dd></div>
+  </dl>
 </section>
 
 <section class="doc-sec" id="security">

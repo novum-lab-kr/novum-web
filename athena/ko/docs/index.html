@@ -151,6 +151,7 @@
         <a href="#settings" data-t="doc.n.settings">설정</a>
         <a href="#shortcuts" data-t="f.k.label">단축키</a>
         <a href="#update" data-t="doc.n.update">업데이트</a>
+        <a href="#mobile" data-t="doc.n.mobile">모바일 앱</a>
         <a href="#security" data-t="h.s.label">데이터와 보안</a>
         <a href="#troubleshooting" data-t="doc.n.trouble">문제 해결</a>
         <a href="#faq">FAQ</a>
@@ -522,6 +523,37 @@
   <p class="doc-p" data-t="doc.u.app">0.17.6부터는 앱이 스스로 업데이트됩니다. 설정(⚙)을 열고 새 버전이 나와 있으면 [앱 업데이트] 줄의 [업데이트]를 누릅니다. 앱이 새 버전을 받아 확인하고 다시 켭니다. 중간에 실패하면 지금 버전이 그대로 돌고 짧은 이유가 보입니다.</p>
   <p class="doc-p" data-t="doc.u.old">아직 0.15.8이라면 그 버전은 스스로 업데이트하지 못합니다. <a href="/ko/download/">다운로드 페이지</a>에서 새 .dmg를 한 번만 받아 Athena Studio를 응용 프로그램 폴더에 덮어씁니다. 팩과 작업은 그대로 남고, 그다음부터는 ⚙에서 업데이트하면 됩니다.</p>
   <p class="doc-p" data-t="doc.u.core">앱에 들어 있는 Athena 코어는 새 버전을 열 때 업데이트됩니다. 에이전트가 일하는 중이어도 됩니다. 끝나면 팝업에서 이전 · 새 버전과 새로 생긴 것, 업데이트 결과를 보여 줍니다.</p>
+</section>
+
+<!-- 모바일 앱 연결 — 버튼 · 화면 이름은 Athena Studio(v0.71.5 src/i18n · ui/mobile-account.tsx) · Athena 앱(app/src/i18n · app/relay.tsx · settings) 문구 그대로 -->
+<section class="doc-sec" id="mobile">
+  <p class="doc-label" data-t="doc.n.mobile">모바일 앱</p>
+  <h2 data-t="doc.m.h">모바일 앱을 맥에 연결</h2>
+  <p class="doc-p" data-t="doc.m.p">Athena 모바일 앱은 맥의 Athena Studio에 연결됩니다. Athena Studio 0.71.4 이상이 필요하고, 맥에서 Athena Studio가 켜져 있을 때만 연결됩니다.</p>
+  <h3 class="doc-h3" data-t="doc.m.c.h">처음 연결하기</h3>
+  <ol class="h3-steps-list">
+    <li data-t="doc.m1"><b>앱을 받습니다.</b> <a href="https://apps.apple.com/app/id6838557098" target="_blank" rel="noopener">App Store</a>에서 Athena를 받습니다.</li>
+    <li data-t="doc.m2"><b>맥에서 로그인합니다.</b> Athena Studio 왼쪽 끝 팩 줄 맨 아래의 동그란 프로필 버튼([로그인])을 누릅니다. 브라우저에서 로그인을 마치면 Studio로 돌아옵니다.</li>
+    <li data-t="doc.m3"><b>폰에서 같은 계정으로 로그인합니다.</b> 앱에서 [로그인 · 연결] → [로그인]을 누르고 Athena Studio와 같은 계정으로 로그인합니다.</li>
+    <li data-t="doc.m4"><b>맥을 고릅니다.</b> 같은 계정으로 로그인한 맥이 목록에 나옵니다. 연결할 맥을 누릅니다.</li>
+    <li data-t="doc.m5"><b>인증번호를 확인하고 허용합니다.</b> Studio에 [새 디바이스 연결] 창이 인증번호와 함께 뜨고, 앱에도 인증번호가 나옵니다. 둘이 같을 때만 Studio에서 [허용]을 누릅니다. 요청은 5분이 지나면 끝납니다.</li>
+  </ol>
+  <p class="doc-note" data-t="doc.m.auto">그다음부터는 Athena Studio를 켜면 앱이 자동으로 연결됩니다.</p>
+  <h3 class="doc-h3" data-t="doc.m.d.h">연결된 디바이스 보기 · 해제</h3>
+  <dl class="doc-dl">
+      <div><dt data-t="doc.m.d1t">맥에서</dt><dd data-t="doc.m.d1">프로필 버튼 → [디바이스 연결]. [연결된 디바이스]에 폰 · 태블릿마다 마지막 접속 시각이 보이고, [해제]를 누르면 연결이 끊깁니다.</dd></div>
+      <div><dt data-t="doc.m.d2t">앱에서</dt><dd data-t="doc.m.d2">프로필 아이콘을 눌러 [앱 설정]을 엽니다. [연결된 디바이스]에 맥과 켜져 있는지가 보입니다. [로그아웃]은 중계 서버와 이 디바이스에서 로그인 · 연결 정보를 지웁니다.</dd></div>
+      <div><dt data-t="doc.m.d3t">폰에서 입력하기</dt><dd data-t="doc.m.d3">Studio [디바이스 연결] 창의 [디바이스에서 입력 허용]은 모든 디바이스에 함께 걸립니다. 꺼져 있으면 폰에서는 보기만 됩니다. 켜면 입력 · 이미지 보내기 · 요청 · 결정 답 · 레포 설정 · 팩 바꾸기를 할 수 있습니다.</dd></div>
+  </dl>
+  <h3 class="doc-h3" data-t="doc.m.t.h">연결이 안 될 때</h3>
+  <dl class="doc-dl">
+      <div><dt data-t="doc.m.t1q">Studio에 프로필 버튼이 없을 때</dt><dd data-t="doc.m.t1a">Athena Studio를 0.71.4 이상으로 업데이트합니다(<a href="#update">업데이트</a>). 시작 화면에는 버튼이 없으니 팩을 먼저 엽니다.</dd></div>
+      <div><dt data-t="doc.m.t2q">앱에 켜져 있는 디바이스가 없다고 나올 때</dt><dd data-t="doc.m.t2a">맥에서 Athena Studio를 켜고 앱과 같은 계정으로 로그인합니다.</dd></div>
+      <div><dt data-t="doc.m.t3q">앱에 Studio가 꺼져 있거나 서버에 연결되어 있지 않다고 나올 때</dt><dd data-t="doc.m.t3a">맥에서 Athena Studio가 켜져 있는지, 맥이 인터넷에 연결되어 있는지 봅니다.</dd></div>
+      <div><dt data-t="doc.m.t4q">연결 요청이 끝났을 때</dt><dd data-t="doc.m.t4a">요청은 5분이 지나거나 거절되면 끝납니다. 앱에서 맥을 다시 고릅니다.</dd></div>
+      <div><dt data-t="doc.m.t5q">디바이스가 너무 많다고 나올 때</dt><dd data-t="doc.m.t5a">프로필 버튼 → [계정 관리]를 누르면 웹에서 계정이 열립니다. 거기서 안 쓰는 디바이스를 지웁니다.</dd></div>
+      <div><dt data-t="doc.m.t6q">앱에서 바꾸거나 답할 수 없을 때</dt><dd data-t="doc.m.t6a">[디바이스에서 입력 허용]이 꺼져 있습니다. Studio [디바이스 연결] 창에서 켭니다.</dd></div>
+  </dl>
 </section>
 
 <section class="doc-sec" id="security">
