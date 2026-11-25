@@ -151,6 +151,7 @@
         <a href="#settings" data-t="doc.n.settings">Settings</a>
         <a href="#shortcuts" data-t="f.k.label">Shortcuts</a>
         <a href="#update" data-t="doc.n.update">Updating</a>
+        <a href="#mobile" data-t="doc.n.mobile">Mobile app</a>
         <a href="#security" data-t="h.s.label">Data and security</a>
         <a href="#troubleshooting" data-t="doc.n.trouble">Troubleshooting</a>
         <a href="#faq">FAQ</a>
@@ -524,12 +525,43 @@
   <p class="doc-p" data-t="doc.u.core">The Athena core that comes with the app is updated when you open a new version, even while agents are working. A popup then shows the previous and new versions, what’s new, and how the update went.</p>
 </section>
 
+<!-- 모바일 앱 연결 — 버튼 · 화면 이름은 Athena Studio(v0.71.5 src/i18n · ui/mobile-account.tsx) · Athena 앱(app/src/i18n · app/relay.tsx · settings) 문구 그대로 -->
+<section class="doc-sec" id="mobile">
+  <p class="doc-label" data-t="doc.n.mobile">Mobile app</p>
+  <h2 data-t="doc.m.h">Connect the mobile app to your Mac.</h2>
+  <p class="doc-p" data-t="doc.m.p">The Athena mobile app connects to Athena Studio on your Mac. You need Athena Studio 0.71.4 or later, and the app connects only while Athena Studio is running on your Mac.</p>
+  <h3 class="doc-h3" data-t="doc.m.c.h">Connect for the first time</h3>
+  <ol class="h3-steps-list">
+    <li data-t="doc.m1"><b>Get the app.</b> Download Athena from the <a href="https://apps.apple.com/app/id6838557098" target="_blank" rel="noopener">App Store</a>.</li>
+    <li data-t="doc.m2"><b>Sign in on your Mac.</b> In Athena Studio, click the round profile button at the bottom of the pack column on the far left (Sign in). Finish signing in in your browser, and Studio picks it up.</li>
+    <li data-t="doc.m3"><b>Sign in on your phone with the same account.</b> In the app, tap Sign in · connect, then Sign in, and use the same account as Athena Studio.</li>
+    <li data-t="doc.m4"><b>Choose your Mac.</b> The app lists the Macs signed in with the same account. Tap yours to connect.</li>
+    <li data-t="doc.m5"><b>Check the code and allow.</b> Studio opens New device with a code, and the app shows a code too. Choose Allow in Studio only if the two match. The request ends after 5 minutes.</li>
+  </ol>
+  <p class="doc-note" data-t="doc.m.auto">After that, the app connects automatically whenever Athena Studio is on.</p>
+  <h3 class="doc-h3" data-t="doc.m.d.h">See and remove connected devices</h3>
+  <dl class="doc-dl">
+      <div><dt data-t="doc.m.d1t">On your Mac</dt><dd data-t="doc.m.d1">Profile button → Devices. Connected devices lists each phone or tablet and when it was last seen. Remove disconnects it.</dd></div>
+      <div><dt data-t="doc.m.d2t">In the app</dt><dd data-t="doc.m.d2">Tap your profile icon to open App Settings. Connected devices shows your Macs and whether they're on. Sign out clears sign-in and connection info from the relay and this device.</dd></div>
+      <div><dt data-t="doc.m.d3t">Typing from the phone</dt><dd data-t="doc.m.d3">Allow input from devices, in Studio's Devices window, applies to all devices. When it's off, phones can only view. When it's on, they can type, send images, answer requests and decisions, change repo settings and switch packs.</dd></div>
+  </dl>
+  <h3 class="doc-h3" data-t="doc.m.t.h">If it doesn't connect</h3>
+  <dl class="doc-dl">
+      <div><dt data-t="doc.m.t1q">Studio has no profile button</dt><dd data-t="doc.m.t1a">Update Athena Studio to 0.71.4 or later (<a href="#update">Updating</a>). The button isn't on the start screen; open a pack first.</dd></div>
+      <div><dt data-t="doc.m.t2q">The app says no devices are on</dt><dd data-t="doc.m.t2a">Open Athena Studio on your Mac and sign in with the same account as the app.</dd></div>
+      <div><dt data-t="doc.m.t3q">The app says Studio is off or not connected to the server</dt><dd data-t="doc.m.t3a">Make sure Athena Studio is running on your Mac and the Mac is online.</dd></div>
+      <div><dt data-t="doc.m.t4q">The connection request ended</dt><dd data-t="doc.m.t4a">A request ends after 5 minutes or when it's rejected. Choose your Mac in the app again.</dd></div>
+      <div><dt data-t="doc.m.t5q">Too many devices</dt><dd data-t="doc.m.t5a">Profile button → Manage account opens your account on the web. Remove devices you no longer use there.</dd></div>
+      <div><dt data-t="doc.m.t6q">The app can't change or answer anything</dt><dd data-t="doc.m.t6a">Allow input from devices is off. Turn it on in Studio's Devices window.</dd></div>
+  </dl>
+</section>
+
 <section class="doc-sec" id="security">
   <p class="doc-label" data-t="h.s.label">Data and security</p>
   <h2 data-t="h.s.h2">What runs on your Mac, and what is sent elsewhere.</h2>
   <p class="doc-p" data-t="h.s.p">The app runs on your computer. Your agents still send requests to their AI provider, and your code goes to GitHub when they push.</p>
   <div class="sec-grid">
-      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><b data-t="h.s.1">Runs on your Mac</b><span data-t="h.s.1p">Agents, terminals and the Worklist run locally. The app does not send your code or files to Novum Lab's servers.</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><b data-t="h.s.1">Runs on your Mac</b><span data-t="h.s.1p">Agents, terminals and the Worklist run locally. The app does not send your code or files to Novum Lab's servers. If you turn on the mobile connection, they pass through the Relay server end-to-end encrypted between your Mac and your mobile device, and the Relay server does not read or store them.</span></div>
       <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span><b data-t="h.s.2">Your own AI account</b><span data-t="h.s.2p">Agents run as the Claude Code or Codex you already signed into, under that provider's terms and your plan.</span></div>
       <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="12" r="2.5"/><path d="M6 8.5v7M8.3 7.2l7.5 3.6"/></svg></span><b data-t="h.s.3">Agents work on branches</b><span data-t="h.s.3p">Each agent works on its own branch and worktree. Automatic merge is off until you turn it on for a repository.</span></div>
       <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l8-4 8 4v6c0 4-3.5 7-8 8-4.5-1-8-4-8-8z"/><path d="M9 12l2 2 4-4"/></svg></span><b data-t="h.s.4">Signed and notarized</b><span data-t="h.s.4p">Public release builds are signed with an Apple Developer ID and notarized by Apple.</span></div>

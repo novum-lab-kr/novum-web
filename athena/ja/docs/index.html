@@ -151,6 +151,7 @@
         <a href="#settings" data-t="doc.n.settings">設定</a>
         <a href="#shortcuts" data-t="f.k.label">ショートカット</a>
         <a href="#update" data-t="doc.n.update">アップデート</a>
+        <a href="#mobile" data-t="doc.n.mobile">モバイルアプリ</a>
         <a href="#security" data-t="h.s.label">データとセキュリティ</a>
         <a href="#troubleshooting" data-t="doc.n.trouble">トラブルシューティング</a>
         <a href="#faq">FAQ</a>
@@ -524,12 +525,43 @@
   <p class="doc-p" data-t="doc.u.core">アプリに含まれる Athena コアは、新しいバージョンを開いたときに更新されます。エージェントが作業中でも構いません。更新後はポップアップで、前後のバージョン、新しくなった点、更新結果が表示されます。</p>
 </section>
 
+<!-- 모바일 앱 연결 — 버튼 · 화면 이름은 Athena Studio(v0.71.5 src/i18n · ui/mobile-account.tsx) · Athena 앱(app/src/i18n · app/relay.tsx · settings) 문구 그대로 -->
+<section class="doc-sec" id="mobile">
+  <p class="doc-label" data-t="doc.n.mobile">モバイルアプリ</p>
+  <h2 data-t="doc.m.h">モバイルアプリを Mac に接続します。</h2>
+  <p class="doc-p" data-t="doc.m.p">Athena モバイルアプリは Mac の Athena Studio に接続します。Athena Studio 0.71.4 以降が必要で、Mac で Athena Studio が起動しているときだけ接続できます。</p>
+  <h3 class="doc-h3" data-t="doc.m.c.h">はじめて接続する</h3>
+  <ol class="h3-steps-list">
+    <li data-t="doc.m1"><b>アプリを入手します。</b> <a href="https://apps.apple.com/app/id6838557098" target="_blank" rel="noopener">App Store</a> から Athena をダウンロードします。</li>
+    <li data-t="doc.m2"><b>Mac でログインします。</b> Athena Studio の左端のパック列のいちばん下にある丸いプロフィールボタン([ログイン])をクリックします。ブラウザでログインを終えると Studio に戻ります。</li>
+    <li data-t="doc.m3"><b>スマートフォンで同じアカウントにログインします。</b> アプリで [ログイン · 接続] → [ログイン] を押し、Athena Studio と同じアカウントでログインします。</li>
+    <li data-t="doc.m4"><b>Mac を選びます。</b> 同じアカウントでログインしている Mac が一覧に出ます。接続する Mac を押します。</li>
+    <li data-t="doc.m5"><b>認証番号を確かめて許可します。</b> Studio に認証番号つきの [新しいデバイスの接続] が開き、アプリにも認証番号が出ます。2 つが同じときだけ Studio で [許可] を選びます。リクエストは 5 分で終了します。</li>
+  </ol>
+  <p class="doc-note" data-t="doc.m.auto">それ以降は、Athena Studio を起動するとアプリが自動で接続されます。</p>
+  <h3 class="doc-h3" data-t="doc.m.d.h">接続済みデバイスの確認と解除</h3>
+  <dl class="doc-dl">
+      <div><dt data-t="doc.m.d1t">Mac で</dt><dd data-t="doc.m.d1">プロフィールボタン → [デバイス接続]。[接続済みデバイス] にスマートフォン・タブレットごとの最終接続が表示され、[解除] で接続を切ります。</dd></div>
+      <div><dt data-t="doc.m.d2t">アプリで</dt><dd data-t="doc.m.d2">プロフィールアイコンを押して [アプリ設定] を開きます。[接続済みデバイス] に Mac と起動しているかどうかが表示されます。[ログアウト] は中継サーバーとこのデバイスからログイン・接続情報を消します。</dd></div>
+      <div><dt data-t="doc.m.d3t">スマートフォンからの入力</dt><dd data-t="doc.m.d3">Studio の [デバイス接続] にある [デバイスからの入力を許可] は、すべてのデバイスにまとめて適用されます。オフならスマートフォンでは見るだけです。オンにすると、入力・画像の送信・リクエストと決定への回答・リポジトリ設定・パックの切り替えができます。</dd></div>
+  </dl>
+  <h3 class="doc-h3" data-t="doc.m.t.h">接続できないとき</h3>
+  <dl class="doc-dl">
+      <div><dt data-t="doc.m.t1q">Studio にプロフィールボタンがない</dt><dd data-t="doc.m.t1a">Athena Studio を 0.71.4 以降にアップデートします(<a href="#update">アップデート</a>)。スタート画面にはボタンがないので、先にパックを開きます。</dd></div>
+      <div><dt data-t="doc.m.t2q">アプリに起動しているデバイスがないと出る</dt><dd data-t="doc.m.t2a">Mac で Athena Studio を起動し、アプリと同じアカウントでログインします。</dd></div>
+      <div><dt data-t="doc.m.t3q">アプリに Studio がオフか、サーバーに接続されていないと出る</dt><dd data-t="doc.m.t3a">Mac で Athena Studio が起動しているか、Mac がインターネットにつながっているか確認します。</dd></div>
+      <div><dt data-t="doc.m.t4q">接続リクエストが終了した</dt><dd data-t="doc.m.t4a">リクエストは 5 分たつか拒否されると終了します。アプリでもう一度 Mac を選びます。</dd></div>
+      <div><dt data-t="doc.m.t5q">デバイスが多すぎると出る</dt><dd data-t="doc.m.t5a">プロフィールボタン → [アカウント管理] で Web のアカウントページが開きます。使っていないデバイスをそこで削除します。</dd></div>
+      <div><dt data-t="doc.m.t6q">アプリで変更や回答ができない</dt><dd data-t="doc.m.t6a">[デバイスからの入力を許可] がオフです。Studio の [デバイス接続] でオンにします。</dd></div>
+  </dl>
+</section>
+
 <section class="doc-sec" id="security">
   <p class="doc-label" data-t="h.s.label">データとセキュリティ</p>
   <h2 data-t="h.s.h2">Mac で動くものと、外に送られるもの。</h2>
   <p class="doc-p" data-t="h.s.p">アプリはあなたのコンピューターで動きます。エージェントは AI の提供元にリクエストを送り、コードはプッシュ時に GitHub へ送られます。</p>
   <div class="sec-grid">
-      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><b data-t="h.s.1">Mac の上で動く</b><span data-t="h.s.1p">エージェント、ターミナル、作業リストはローカルで動きます。アプリがコードやファイルを Novum Lab のサーバーに送ることはありません。</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><b data-t="h.s.1">Mac の上で動く</b><span data-t="h.s.1p">エージェント、ターミナル、作業リストはローカルで動きます。アプリがコードやファイルを Novum Lab のサーバーに送ることはありません。モバイル接続をオンにすると、Mac とモバイル端末の間でエンドツーエンド暗号化されたまま中継サーバーを通り、中継サーバーはその内容を読んだり保存したりしません。</span></div>
       <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span><b data-t="h.s.2">あなた自身の AI アカウント</b><span data-t="h.s.2p">エージェントは、すでにサインインしている Claude Code や Codex として、その提供元の規約とあなたのプランの範囲で動きます。</span></div>
       <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="12" r="2.5"/><path d="M6 8.5v7M8.3 7.2l7.5 3.6"/></svg></span><b data-t="h.s.3">エージェントはブランチで作業</b><span data-t="h.s.3p">エージェントはそれぞれ専用のブランチとワークツリーで作業します。自動マージは、リポジトリごとにあなたがオンにするまでオフです。</span></div>
       <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l8-4 8 4v6c0 4-3.5 7-8 8-4.5-1-8-4-8-8z"/><path d="M9 12l2 2 4-4"/></svg></span><b data-t="h.s.4">署名と公証</b><span data-t="h.s.4p">公開配布版は Apple Developer ID で署名され、Apple の公証を受けています。</span></div>

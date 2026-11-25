@@ -7,9 +7,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
-import { ROOT, ORIGIN, LANGS, PAGES, pageUrl, buildAll } from './gen-athena-lang.mjs';
+import { ROOT, ORIGIN, LANGS, PAGES, ARCHIVE_PAGES, ARCHIVE_LANGS, pageUrl, buildAll } from './gen-athena-lang.mjs';
 
-const ALL_PAGES = [...PAGES.map(([file]) => file), ...LANGS.flatMap((lang) => PAGES.map(([file]) => `${lang}/${file}`))];
+// 보관 판 한국어판(/ko/terms/v2/ …)도 사전 키 · 사이트 안 파일 검사에 넣는다
+const ARCHIVE_FILES = ARCHIVE_LANGS.flatMap((lang) => ARCHIVE_PAGES.map(([file]) => `${lang}/${file}`));
+const ALL_PAGES = [...PAGES.map(([file]) => file), ...LANGS.flatMap((lang) => PAGES.map(([file]) => `${lang}/${file}`)), ...ARCHIVE_FILES];
 const errors = [];
 
 const dicts = {};
@@ -62,7 +64,7 @@ for (const page of ALL_PAGES) {
     const target = path.join(ROOT, ref.endsWith('/') ? ref + 'index.html' : ref);
     if (!fs.existsSync(target)) errors.push(`${page}: 없는 파일 ${ref}`);
   }
-  checkJsonLd(page, html);
+  if (!ARCHIVE_FILES.includes(page)) checkJsonLd(page, html);   // 보관 판은 noindex 라 seo 블록이 없다
 }
 
 // 영어 페이지(손으로 쓰는 원본)의 언어 링크가 같은 페이지의 각 언어 주소인지

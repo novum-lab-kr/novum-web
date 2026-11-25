@@ -26,6 +26,14 @@ export const PAGES = [
   ['privacy/index.html', '/privacy/'],
   ['privacy/history/index.html', '/privacy/history/'],
 ];
+// 보관 판(옛 약관 · 처리방침) — 영어 주소는 영어 본문만, 한국어 원문은 한국어판(/ko/)에서만 보인다(2026-11-24 앱 심사).
+// noindex 라 seo 블록 · sitemap · llms.txt 에 넣지 않고, 한국어 원문이 있는 한국어판만 만든다(ja · zh 는 영어 주소로 간다)
+export const ARCHIVE_PAGES = [
+  ['terms/v1/index.html', '/terms/v1/'],
+  ['terms/v2/index.html', '/terms/v2/'],
+  ['privacy/v1/index.html', '/privacy/v1/'],
+];
+export const ARCHIVE_LANGS = ['ko'];
 const HTML_LANG = { en: 'en', ko: 'ko', ja: 'ja', zh: 'zh-Hans' };
 const LANG_NAMES = { en: 'English', ko: '한국어', ja: '日本語', zh: '中文' };
 const SEO_START = '<!-- seo:start · deploy/gen-athena-lang.mjs 가 만든다(손으로 고치지 않는다) -->';
@@ -141,7 +149,8 @@ function metaContent(html, attrName, attrValue) {
 
 // 사이트 안 페이지 링크(/ · /features/ …, #절 포함)를 그 언어 주소로. /assets/ 같은 파일 주소는 그대로
 function localizeLinks(html, lang) {
-  const routes = new Set(PAGES.map(([, route]) => route));
+  const archives = ARCHIVE_LANGS.includes(lang) ? ARCHIVE_PAGES : [];
+  const routes = new Set([...PAGES, ...archives].map(([, route]) => route));
   const withHref = html.replace(/(\shref=")(\/[^"#?]*)([^"]*")/g, (whole, head, route, tail) => (routes.has(route) ? head + '/' + lang + route + tail : whole));
   // 인라인 스크립트 안의 페이지 주소 문자열('/docs/#workflow' 같은 이동 주소)도 같은 언어로 — src 가 있는 스크립트는 건드리지 않는다
   return withHref.replace(/(<script>)([\s\S]*?)(<\/script>)/g, (whole, open, code, close) => open + code.replace(
@@ -221,7 +230,7 @@ function withSeo(html, lang, route) {
 
 // ---- 페이지 · 파일 만들기 ----
 
-function renderLang(source, lang, route, dict, missing) {
+function renderLang(source, lang, route, dict, missing, { seo = true } = {}) {
   let html = source.replace(SEO_BLOCK, '');
   html = applyText(html, dict, missing);
   html = applyAttrs(html, dict, missing);
@@ -234,7 +243,7 @@ function renderLang(source, lang, route, dict, missing) {
   html = localizeLinks(html, lang);
   html = setLangLinks(html, lang, route);
   html = setLangShots(html, lang);
-  return withSeo(html, lang, route);
+  return seo ? withSeo(html, lang, route) : html;
 }
 
 function sitemap(lastmodFor) {
@@ -312,6 +321,10 @@ export function buildAll(lastmodFor) {
     sources.set(route, source);
     files.set(file, withSeo(source, 'en', route));
     for (const lang of LANGS) files.set(`${lang}/${file}`, renderLang(source, lang, route, dicts[lang], missing[lang]));
+  }
+  for (const [file, route] of ARCHIVE_PAGES) {
+    const source = fs.readFileSync(path.join(ROOT, file), 'utf8');
+    for (const lang of ARCHIVE_LANGS) files.set(`${lang}/${file}`, renderLang(source, lang, route, dicts[lang], missing[lang], { seo: false }));
   }
   files.set('sitemap.xml', sitemap(lastmodFor));
   files.set('llms.txt', llms(sources, dicts));

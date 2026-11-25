@@ -44,10 +44,10 @@
 <script src="/assets/motion.js?v=20261028i" defer></script>
 <script src="/assets/policy-date.js?v=20261120a" defer></script>
 <style>
-/* 법적 문서 페이지 — 한국어판(/ko/)은 한국어 본문, 나머지 언어판은 영어 본문을 보인다 */
-.only-ko { display: none; }
-html[data-lang="ko"] .only-ko { display: block; }
-html[data-lang="ko"] .not-ko { display: none; }
+/* 법적 문서 페이지 — 한국어판(/ko/)은 한국어 본문, 일본어판(/ja/)은 일본어 본문, 나머지 언어판은 영어 본문을 보인다 */
+.only-ko, .only-ja { display: none; }
+html[data-lang="ko"] .only-ko, html[data-lang="ja"] .only-ja { display: block; }
+html[data-lang="ko"] .not-ko, html[data-lang="ja"] .not-ja { display: none; }
 .prose .meta { font-size: 14px; }
 .prose ol { padding-left: 22px; }
 .prose h3 { font-size: 16px; color: var(--text); margin: 28px 0 10px; }
@@ -83,9 +83,9 @@ html[data-lang="ko"] .not-ko { display: none; }
 
 <section style="padding-top:0">
   <div class="wrap">
-    <!-- 개인정보 처리방침 제2판(차곡차곡 방침 구조). 근거: athena-app relay/src/store.ts · log.ts · push.ts · web-login.ts · app/src/connection/directLink.ts · app.json · 알림 확장 PushCrypto.swift · athena-studio src/lib/push-model.mts(2026-11-20 대조). 제1판은 /privacy/v1/ 에 보관. 새 판은 이 본문을 /privacy/v2/ 로 옮겨 보관하고 판 목록에 줄을 더한다 -->
+    <!-- 개인정보 처리방침 제2판(차곡차곡 방침 구조). 근거: athena-app relay/src/store.ts · apple.ts · server.ts · log.ts · push.ts · web-login.ts · app/src/connection/directLink.ts · app.json · 알림 확장 PushCrypto.swift · athena-studio src/lib/push-model.mts(2026-11-20 대조 · Apple 토큰은 2026-11-24 대조). 제1판은 /privacy/v1/ 에 보관. 새 판은 이 본문을 /privacy/v2/ 로 옮겨 보관하고 판 목록에 줄을 더한다 -->
     <div class="prose only-ko" lang="ko">
-      <p class="meta">제2판<span data-until="2026-12-21">(시행 예정)</span>, 게시일 2026-11-21, 시행일 2026-12-21<span data-until="2026-12-21"> · 시행일 전까지는 <a href="/privacy/v1/">제1판</a>이 시행됩니다</span> · <a href="/zh/privacy/history/">판 목록</a></p>
+      <p class="meta">제2판<span data-until="2026-12-01">(시행 예정)</span>, 게시일 2026-11-21, 시행일 2026-12-01<span data-until="2026-12-01"> · 시행일 전까지는 <a href="/privacy/v1/">제1판</a>이 시행됩니다</span> · <a href="/zh/privacy/history/">판 목록</a></p>
       <p>노붐랩(Novum Lab)(대표 김은주, 이하 "운영자")은 「개인정보 보호법」에 따라 이용자의 개인정보를 보호하고, 관련 고충을 원활하게 처리하기 위해 이 처리방침을 둡니다. 이 처리방침은 Athena Studio 맥 앱, Athena 모바일 앱, 모바일 연결(중계 서버)과 이 웹사이트에 적용됩니다. 용어는 <a href="/zh/terms/">이용약관</a> 제2조와 같습니다.</p>
 
       <h2>1. 모바일 연결을 쓰지 않을 때</h2>
@@ -106,12 +106,13 @@ html[data-lang="ko"] .not-ko { display: none; }
           <tr><td>기기 정보: 기기 식별값, 기기 종류(맥 또는 모바일 앱), 로그인 유지 토큰(서버에는 되돌릴 수 없는 해시로만 저장), 등록 시각과 만료 시각</td><td>로그인 유지, 기기 구분</td></tr>
           <tr><td>기기 연결 정보: 같은 계정 안에서 연결을 허용한 맥과 모바일 기기의 짝, 연결 시각</td><td>허용한 기기끼리만 이어 주기</td></tr>
           <tr><td>푸시 토큰(Expo가 발급한 모바일 앱의 알림 주소)</td><td>모바일 앱에 알림 보내기</td></tr>
+          <tr><td>Apple 토큰(Apple로 로그인한 경우): Apple이 발급한 갱신 토큰(발급되지 않으면 접근 토큰), 받은 시각</td><td>계정을 삭제할 때 Apple 로그인 연결 취소</td></tr>
           <tr><td>서버 오류 기록: 서버에서 연결 오류가 났을 때 남는 접속 IP 주소, 기기와 브라우저 정보(User-Agent), 시각, 오류 내용(4절에 따라 최대 약 5주 보관). 로그인 정보(쿠키, 인증 헤더)는 남기지 않습니다.</td><td>서버 오류 찾기, 보안 사고 확인</td></tr>
-          <tr><td>연결 기록: 계정 식별자, 기기 식별값, 연결과 해제 같은 사건, 오류 코드, 주고받은 데이터의 양과 개수, 알림 종류와 알림 전달 결과, 로그인에 쓴 서비스(Apple 또는 Google), 시각(4절에 따라 90일 보관)</td><td>오류 찾기, 부정 이용 방지, 보안 사고 확인</td></tr>
+          <tr><td>연결 기록: 계정 식별자, 기기 식별값, 연결과 해제 같은 사건, 오류 코드, 주고받은 데이터의 양과 개수, 알림 종류와 알림 전달 결과, 로그인에 쓴 서비스(Apple 또는 Google), 시각(4절에 따라 90일 보관)</td><td>오류 찾기, 부정 이용 방지, 보안 사고 확인, 서비스 이용 통계</td></tr>
         </tbody>
       </table>
       <p>이 정보는 서비스 이용 계약을 이행하는 데 필요한 정보로, 「개인정보 보호법」 제15조 제1항 제4호에 따라 처리합니다.</p>
-      <p>이메일 주소와 이름은 중계 서버의 저장 파일에 기록하지 않습니다. 로그인하는 동안(최대 10분)과 계정 관리 페이지를 연 동안(최대 30분)만 서버 메모리에서 처리하고, 로그인한 앱에 넘깁니다. 모바일 앱은 이를 휴대 기기 안에, 맥 앱은 이름(없으면 이메일 주소)을 맥 안에 두고, 로그아웃하거나 계정을 삭제하면 지웁니다. 중계 서버의 저장 파일에 기록하는 계정 정보는 계정 식별자뿐입니다.</p>
+      <p>이메일 주소와 이름은 중계 서버의 저장 파일에 기록하지 않습니다. 로그인하는 동안(최대 10분)과 계정 관리 페이지를 연 동안(최대 30분)만 서버 메모리에서 처리하고, 로그인한 앱에 넘깁니다. 모바일 앱은 이를 휴대 기기 안에, 맥 앱은 이름(없으면 이메일 주소)을 맥 안에 두고, 로그아웃하거나 계정을 삭제하면 지웁니다. 중계 서버의 저장 파일에 기록하는 계정 정보는 계정 식별자와, Apple로 로그인한 경우의 Apple 토큰뿐입니다.</p>
       <p>새 기기를 연결할 때 기기 이름과 암호화에 쓰는 공개 열쇠는 상대 기기에 전달만 하고 서버에 저장하지 않습니다.</p>
 
       <h2>3. 콘텐츠 암호화와 기기 안 처리</h2>
@@ -123,9 +124,9 @@ html[data-lang="ko"] .not-ko { display: none; }
 
       <h2>4. 보유 기간과 파기</h2>
       <ol>
-        <li>계정을 삭제하면 계정 식별자, 기기 정보, 기기 연결 정보, 푸시 토큰을 지체 없이 파기하고, 서버 메모리에서 처리하던 이메일 주소와 이름도 지웁니다. 이메일 주소와 이름은 계정을 삭제하지 않아도 로그인을 마치거나 10분이 지나면, 계정 관리 페이지는 30분이 지나면 서버 메모리에서 지웁니다.</li>
+        <li>계정을 삭제하면 계정 식별자, 기기 정보, 기기 연결 정보, 푸시 토큰, Apple 토큰을 지체 없이 파기하고, 서버 메모리에서 처리하던 이메일 주소와 이름도 지웁니다. Apple로 로그인한 계정이면 Apple 토큰을 지우면서 Apple에 그 토큰의 취소를 요청합니다. Apple에 연결하지 못하거나 취소 요청이 실패해도 계정 삭제는 그대로 진행됩니다. 이메일 주소와 이름은 계정을 삭제하지 않아도 로그인을 마치거나 10분이 지나면, 계정 관리 페이지는 30분이 지나면 서버 메모리에서 지웁니다.</li>
         <li>기기의 로그인은 정해진 기간(기본 30일)이 지나면 만료되고, 쓰는 동안에는 늘어납니다. 만료된 기기와 그 기기의 연결 정보는 정기 정리 때 지웁니다. 한 계정의 기기가 20대를 넘으면, 맥과 연결되지 않았고 접속해 있지 않은 기기 가운데 가장 오래된 기기 정보를 지웁니다.</li>
-        <li>연결 기록은 오류를 찾고, 보안 사고를 확인하고, 부정 이용을 막는 데만 쓰고 90일 동안 보관한 뒤 지웁니다. 계정을 삭제해도 이 기간에는 남습니다.</li>
+        <li>연결 기록은 오류를 찾고, 보안 사고를 확인하고, 부정 이용을 막고, 서비스 이용 통계를 내는 데만 쓰고 90일 동안 보관한 뒤 지웁니다. 계정을 삭제해도 이 기간에는 남습니다. 서비스 이용 통계는 연결 기록의 사건을 날짜별로 센 숫자 합계로, 계정 식별자와 기기 식별값이 들어 있지 않아 개인을 알아볼 수 없으며 기한 없이 보관합니다.</li>
         <li>서버 오류 기록은 서버의 기록 보관 설정에 따라 자동으로 지워지며, 최대 약 5주 동안 남습니다. 계정을 삭제해도 이 기간에는 남습니다.</li>
         <li>전자 파일은 복구할 수 없는 방법으로 지웁니다.</li>
       </ol>
@@ -150,9 +151,9 @@ html[data-lang="ko"] .not-ko { display: none; }
         <tbody>
           <tr><th>이전받는 자와 연락처</th><td>HOSTINGER PTE LTD (gdpr@hostinger.com)</td></tr>
           <tr><th>이전되는 국가</th><td>말레이시아(쿠알라룸푸르)</td></tr>
-          <tr><th>이전 항목</th><td>2절의 계정 정보, 기기 정보, 기기 연결 정보, 푸시 토큰, 연결 기록, 서버 오류 기록</td></tr>
+          <tr><th>이전 항목</th><td>2절의 계정 정보, 기기 정보, 기기 연결 정보, 푸시 토큰, Apple 토큰, 연결 기록, 서버 오류 기록</td></tr>
           <tr><th>이전 시기와 방법</th><td>로그인하고 모바일 연결을 쓰는 동안 네트워크를 통해 암호화해 전송</td></tr>
-          <tr><th>이용 목적과 보유 기간</th><td>중계 서버 운영. 4절에 따라 계정 식별자, 기기 정보, 기기 연결 정보, 푸시 토큰은 계정을 삭제할 때까지, 이메일 주소와 이름은 서버 메모리에서 최대 10분(계정 관리 페이지는 최대 30분), 연결 기록은 90일, 서버 오류 기록은 최대 약 5주</td></tr>
+          <tr><th>이용 목적과 보유 기간</th><td>중계 서버 운영과 서비스 이용 통계. 4절에 따라 계정 식별자, 기기 정보, 기기 연결 정보, 푸시 토큰, Apple 토큰은 계정을 삭제할 때까지, 이메일 주소와 이름은 서버 메모리에서 최대 10분(계정 관리 페이지는 최대 30분), 연결 기록은 90일, 서버 오류 기록은 최대 약 5주</td></tr>
           <tr><th>거부 방법과 결과</th><td>모바일 연결을 쓰지 않으면 이전되지 않습니다. 이때 맥 앱은 그대로 쓸 수 있고 모바일 연결은 쓸 수 없습니다.</td></tr>
         </tbody>
       </table>
@@ -172,9 +173,9 @@ html[data-lang="ko"] .not-ko { display: none; }
         <tbody>
           <tr><th>이전받는 자와 연락처</th><td>Apple Inc. (<a href="https://www.apple.com/legal/privacy/contact/">개인정보 문의 페이지</a>)</td></tr>
           <tr><th>이전되는 국가</th><td>미국</td></tr>
-          <tr><th>이전 항목</th><td>Apple로 로그인할 때 로그인 확인에 필요한 정보, 푸시 토큰과 알림(알림 종류를 나타내는 고정 문구, 맥의 기기 식별값, 알림 식별값, 암호화된 알림 내용)</td></tr>
-          <tr><th>이전 시기와 방법</th><td>Apple로 로그인할 때, 알림을 보낼 때 네트워크를 통해 암호화해 전송</td></tr>
-          <tr><th>이용 목적과 보유 기간</th><td>Apple로 로그인 확인, 푸시 알림 전달. 휴대 기기에 바로 전달하지 못한 알림은 Apple이 최대 30일 동안(앱마다 하나만) 보관하며 다시 전달을 시도합니다(<a href="https://developer.apple.com/documentation/usernotifications/sending-notification-requests-to-apns">Apple 알림 문서</a>). 그 밖의 정보는 목적에 필요한 기간 동안 보관한다고 Apple의 방침에 적혀 있으며, 구체적인 기간은 적혀 있지 않습니다(<a href="https://www.apple.com/legal/privacy/">Apple 개인정보 처리방침</a>).</td></tr>
+          <tr><th>이전 항목</th><td>Apple로 로그인할 때 로그인 확인과 Apple 토큰 발급에 필요한 정보, 계정을 삭제할 때 취소를 요청하는 Apple 토큰, 푸시 토큰과 알림(알림 종류를 나타내는 고정 문구, 맥의 기기 식별값, 알림 식별값, 암호화된 알림 내용)</td></tr>
+          <tr><th>이전 시기와 방법</th><td>Apple로 로그인할 때, Apple로 로그인한 계정을 삭제할 때, 알림을 보낼 때 네트워크를 통해 암호화해 전송</td></tr>
+          <tr><th>이용 목적과 보유 기간</th><td>Apple로 로그인 확인, 계정을 삭제할 때 Apple 토큰 취소, 푸시 알림 전달. 휴대 기기에 바로 전달하지 못한 알림은 Apple이 최대 30일 동안(앱마다 하나만) 보관하며 다시 전달을 시도합니다(<a href="https://developer.apple.com/documentation/usernotifications/sending-notification-requests-to-apns">Apple 알림 문서</a>). 그 밖의 정보는 목적에 필요한 기간 동안 보관한다고 Apple의 방침에 적혀 있으며, 구체적인 기간은 적혀 있지 않습니다(<a href="https://www.apple.com/legal/privacy/">Apple 개인정보 처리방침</a>).</td></tr>
           <tr><th>거부 방법과 결과</th><td>Google로 로그인하면 로그인 정보는 이전되지 않습니다. 모바일 앱의 알림을 끄면 알림은 이전되지 않고, 알림을 받을 수 없습니다.</td></tr>
         </tbody>
       </table>
@@ -193,7 +194,7 @@ html[data-lang="ko"] .not-ko { display: none; }
       <h2>8. 이용자의 권리와 의무</h2>
       <ol>
         <li>이용자는 자신의 개인정보를 열람하거나, 정정하거나, 삭제하거나, 처리 정지를 요구할 수 있습니다. 동의를 근거로 처리하는 개인정보는 동의를 철회할 수 있습니다.</li>
-        <li>계정 관리 페이지에서 언제든지 계정을 삭제할 수 있고, 맥 앱에서 기기 연결을 해제할 수 있습니다. 앱을 쓸 수 없으면 10절의 메일로 요청합니다.</li>
+        <li>계정 관리 페이지(<a href="https://relay.athena.novum-lab.com/account">https://relay.athena.novum-lab.com/account</a>)에서 언제든지 계정을 삭제할 수 있습니다. 모바일 앱에서는 앱 설정 → 계정 삭제를 누르면 이 페이지가 열립니다. 맥 앱에서는 기기 연결을 해제할 수 있습니다. 앱을 쓸 수 없으면 10절의 메일로 요청합니다.</li>
         <li>그 밖의 요구는 10절의 메일로 보내면 지체 없이 처리하고, 처리 결과도 메일로 알립니다.</li>
         <li>법정대리인이나 이용자에게 위임받은 사람도 이 권리를 대신 행사할 수 있습니다. 이때 법정대리인은 법정대리 관계를, 위임받은 사람은 위임 관계를 확인할 수 있는 서류를 함께 보내야 합니다.</li>
         <li>정정을 요구하면 정정을 마칠 때까지 그 개인정보를 쓰지 않습니다.</li>
@@ -244,10 +245,182 @@ html[data-lang="ko"] .not-ko { display: none; }
       <h2>13. 처리방침의 변경</h2>
       <p>이 처리방침을 바꿀 때는 시행일 7일 전부터 이 웹페이지와 <a href="/zh/privacy/history/">판 목록</a>에 바뀌는 내용과 시행일을 게시해 알립니다. 이용자에게 불리한 변경은 30일 전부터 알립니다. 이전 판은 <a href="/zh/privacy/history/">판 목록</a>에서 볼 수 있습니다.</p>
     </div>
-    <div class="not-ko">
+    <!-- 일본어 본문(한국어 원문의 번역 · 7절 끝에 일본 개인정보보호법 제28조 외국 제3자 제공 정보) — 일본어판(/ja/)에서만 보인다 -->
+    <div class="prose only-ja" lang="ja">
+      <p class="meta">第2版<span data-until="2026-12-01">（施行予定）</span>、掲載日 2026-11-21、施行日 2026-12-01<span data-until="2026-12-01"> · 施行日までは<a href="/privacy/v1/">第1版</a>が施行されます</span> · <a href="/zh/privacy/history/">版の一覧</a></p>
+      <p class="notice">この文書は韓国語を原文とし、日本語は翻訳です。日本語版と韓国語版の内容が異なる場合は、お住まいの国の法律が別に定める場合を除き、韓国語版が優先されます。</p>
+      <p>Novum Lab（代表 Eunju Kim、以下「運営者」）は、大韓民国の「個人情報保護法」に従って利用者の個人情報を保護し、関連する苦情を円滑に処理するため、このプライバシーポリシーを定めます。このポリシーは、Athena Studio Mac アプリ、Athena モバイルアプリ、モバイル接続（中継サーバー）およびこのウェブサイトに適用されます。用語の意味は<a href="/zh/terms/">利用規約</a>第2条と同じです。</p>
+
+      <h2>1. モバイル接続を使わない場合</h2>
+      <ol>
+        <li>Mac アプリはアカウントなしで使うことができ、この場合、運営者は利用者の個人情報を受け取りません。コード、ファイル、リポジトリ、ターミナルの内容は利用者のコンピューターにだけあります。</li>
+        <li>Mac アプリは新しいバージョンを確認してダウンロードするために GitHub に接続します。このとき GitHub が接続情報（IP アドレスなど）を受け取り、この情報には GitHub のプライバシーポリシーが適用されます。</li>
+        <li>利用者が自分で TypeSafe Jev のキーを入力した場合に限り、Mac アプリは学習候補（タイトル、説明、似たノートの行）と、学習を検討するときに終わった作業の記録（計画書、マージされたプルリクエストのレビューコメントと変更されたコード、作業の会話）を TypeSafe Jev（api.typesafe.ai）に送ります。これにはコードが含まれることがあり、秘密の値と思われる文字は隠してから送ります。運営者を経由せず直接送られ、Jev のポリシーが適用されます。</li>
+        <li>Mac アプリで実行する AI エージェント（例：Claude Code）や開発ツールが送る情報には、そのサービスのポリシーが適用されます。運営者はその情報を受け取りません。</li>
+        <li>このウェブサイトのアクセス解析ツールについては第12節に記載しています。</li>
+      </ol>
+
+      <h2>2. モバイル接続を使う場合に取り扱う個人情報</h2>
+      <p>モバイルアカウントとモバイル接続は、14歳以上の利用者を対象としています。利用者が Apple または Google のアカウントでサインインしてモバイル接続を使う場合、次の情報を取り扱います。</p>
+      <table class="legal-table">
+        <thead><tr><th>項目</th><th>目的</th></tr></thead>
+        <tbody>
+          <tr><td>アカウント識別子（Apple または Google のユーザー ID）、メールアドレス（Apple の「メールを非公開」を使う場合は中継用アドレス）、名前（Apple または Google が提供する場合）</td><td>アカウントの確認、同じアカウントの端末の接続、アプリとアカウント管理ページへのサインイン中のアカウントの表示</td></tr>
+          <tr><td>端末情報：端末識別値、端末の種類（Mac またはモバイルアプリ）、サインイン維持トークン（サーバーには元に戻せないハッシュでのみ保存）、登録日時と有効期限</td><td>サインインの維持、端末の区別</td></tr>
+          <tr><td>端末の接続情報：同じアカウント内で接続を許可した Mac とモバイル端末の組み合わせ、接続日時</td><td>許可した端末同士だけをつなぐこと</td></tr>
+          <tr><td>プッシュトークン（Expo が発行するモバイルアプリの通知先）</td><td>モバイルアプリへの通知の送信</td></tr>
+          <tr><td>Apple トークン（Apple でサインインした場合）：Apple が発行したリフレッシュトークン（発行されない場合はアクセストークン）、受け取った日時</td><td>アカウントを削除するときの Apple でサインインの連携の取り消し</td></tr>
+          <tr><td>サーバーのエラー記録：サーバーで接続エラーが起きたときに残る接続元 IP アドレス、端末とブラウザーの情報（User-Agent）、日時、エラーの内容（第4節に従い最長約5週間保管）。サインイン情報（Cookie、認証ヘッダー）は記録しません。</td><td>サーバーのエラーの調査、セキュリティ事故の確認</td></tr>
+          <tr><td>接続記録：アカウント識別子、端末識別値、接続や切断などのイベント、エラーコード、やり取りしたデータの量と件数、通知の種類と通知の配信結果、サインインに使ったサービス（Apple または Google）、日時（第4節に従い90日間保管）</td><td>エラーの調査、不正利用の防止、セキュリティ事故の確認、サービス利用統計の作成</td></tr>
+        </tbody>
+      </table>
+      <p>これらの情報はサービス利用契約の履行に必要な情報であり、大韓民国の「個人情報保護法」第15条第1項第4号に基づいて取り扱います。</p>
+      <p>メールアドレスと名前は、中継サーバーの保存ファイルには記録しません。サインインしている間（最長10分）とアカウント管理ページを開いている間（最長30分）だけサーバーのメモリー上で取り扱い、サインインしたアプリに渡します。モバイルアプリはこれをモバイル端末内に、Mac アプリは名前（ない場合はメールアドレス）を Mac 内に保存し、サインアウトするかアカウントを削除すると消去します。中継サーバーの保存ファイルに記録するアカウント情報は、アカウント識別子と、Apple でサインインした場合の Apple トークンだけです。</p>
+      <p>新しい端末を接続するとき、端末の名前と暗号化に使う公開鍵は相手の端末に渡すだけで、サーバーには保存しません。</p>
+
+      <h2>3. コンテンツの暗号化と端末内での処理</h2>
+      <ol>
+        <li>ターミナル画面、利用者が入力した内容、コード、ファイル、モバイルアプリから Mac に送る写真は、Mac とモバイル端末の間でエンドツーエンド暗号化されます。中継サーバーは暗号文を中継するだけで保存せず、運営者はその内容を読むことができません。同じ Wi-Fi や利用者のプライベートネットワーク（例：Tailscale）では、中継サーバーを経由せずに Mac とモバイル端末が直接接続され、この場合もエンドツーエンド暗号化されます。</li>
+        <li>プッシュ通知は Expo と Apple を経由して配信されます。これらに見えるのは、通知の種類を表す固定の文字列（request または done）、通知を送った Mac の端末識別値、通知識別値だけです。通知のタイトルと本文（エージェント名、通知の種類、確認依頼のタイトル）と通知を送った作業ウィンドウは Mac で暗号化して送り、モバイル端末でだけ復号するため、中継サーバー、Expo、Apple、運営者はその内容を読むことができません。</li>
+        <li>モバイルアプリの Face ID ロックはモバイル端末内でだけ確認し、アプリと運営者は顔の情報を受け取りません。写真は、利用者が Mac のターミナルに送るときに選んだ1枚だけをアプリが受け取り、上記1のとおり Mac に送ります。Mac アプリは受け取った写真を Mac の一時フォルダーに置き、1日を過ぎた写真は次に写真を受け取るときに削除します。</li>
+      </ol>
+
+      <h2>4. 保管期間と廃棄</h2>
+      <ol>
+        <li>アカウントを削除すると、アカウント識別子、端末情報、端末の接続情報、プッシュトークン、Apple トークンを遅滞なく廃棄し、サーバーのメモリー上で取り扱っていたメールアドレスと名前も消去します。Apple でサインインしたアカウントの場合は、Apple トークンを消去するとともに、Apple にそのトークンの取り消しを依頼します。Apple に接続できないときや取り消しの依頼が失敗したときも、アカウントの削除はそのまま行われます。メールアドレスと名前は、アカウントを削除しなくても、サインインが終わるか10分が過ぎると、アカウント管理ページの場合は30分が過ぎるとサーバーのメモリーから消去します。</li>
+        <li>端末のサインインは決められた期間（初期設定では30日）が過ぎると期限切れになり、使っている間は延長されます。期限切れの端末とその端末の接続情報は、定期的な整理のときに削除します。1つのアカウントの端末が20台を超えると、Mac と接続されておらず、接続中でもない端末のうち最も古い端末の情報を削除します。</li>
+        <li>接続記録は、エラーの調査、セキュリティ事故の確認、不正利用の防止、サービス利用統計の作成にだけ使い、90日間保管した後に削除します。アカウントを削除しても、この期間は残ります。サービス利用統計は、接続記録のイベントを日付ごとに数えた数値の合計で、アカウント識別子と端末識別値を含まず、個人を識別できないため、期限を定めずに保管します。</li>
+        <li>サーバーのエラー記録は、サーバーの記録保管設定に従って自動的に削除され、最長約5週間残ります。アカウントを削除しても、この期間は残ります。</li>
+        <li>電子ファイルは復元できない方法で削除します。</li>
+      </ol>
+
+      <h2>5. 第三者への提供</h2>
+      <p>運営者は、利用者の個人情報を第三者に提供しません。ただし、法令に特別な定めがある場合は除きます。運営者は個人情報を販売しません。第12節のウェブサイトのアクセス解析情報は、運営者が受け取って渡すものではなく、Google が訪問者のブラウザーから直接収集します。</p>
+
+      <h2>6. 取り扱いの委託</h2>
+      <table class="legal-table">
+        <thead><tr><th>受託者</th><th>委託する業務</th><th>保管場所</th></tr></thead>
+        <tbody>
+          <tr><td>HOSTINGER PTE LTD</td><td>中継サーバーの運用（第2節の情報の保存）</td><td>マレーシア（クアラルンプール）</td></tr>
+          <tr><td>650 Industries, Inc.（Expo）</td><td>モバイルアプリのプッシュトークンの発行、プッシュ通知の Apple への受け渡し</td><td>アメリカ合衆国</td></tr>
+          <tr><td>Apple Inc.</td><td>モバイルアプリのプッシュ通知の配信</td><td>アメリカ合衆国</td></tr>
+        </tbody>
+      </table>
+
+      <h2>7. 個人情報の国外移転</h2>
+      <p>サービス利用契約の履行に必要な委託と保管であるため、このポリシーで公開し、次のとおり国外に移転します（大韓民国の「個人情報保護法」第28条の8第1項第3号イ）。</p>
+      <h3>サーバーの運用：HOSTINGER PTE LTD</h3>
+      <table class="legal-table">
+        <tbody>
+          <tr><th>移転を受ける者と連絡先</th><td>HOSTINGER PTE LTD（gdpr@hostinger.com）</td></tr>
+          <tr><th>移転先の国</th><td>マレーシア（クアラルンプール）</td></tr>
+          <tr><th>移転する項目</th><td>第2節のアカウント情報、端末情報、端末の接続情報、プッシュトークン、Apple トークン、接続記録、サーバーのエラー記録</td></tr>
+          <tr><th>移転の時期と方法</th><td>サインインしてモバイル接続を使う間、ネットワークを通じて暗号化して送信</td></tr>
+          <tr><th>利用目的と保管期間</th><td>中継サーバーの運用とサービス利用統計の作成。第4節に従い、アカウント識別子、端末情報、端末の接続情報、プッシュトークン、Apple トークンはアカウントを削除するまで、メールアドレスと名前はサーバーのメモリー上で最長10分（アカウント管理ページは最長30分）、接続記録は90日、サーバーのエラー記録は最長約5週間</td></tr>
+          <tr><th>拒否の方法とその結果</th><td>モバイル接続を使わなければ移転されません。この場合、Mac アプリはそのまま使えますが、モバイル接続は使えません。</td></tr>
+        </tbody>
+      </table>
+      <h3>プッシュ通知の配信：650 Industries, Inc.（Expo）</h3>
+      <table class="legal-table">
+        <tbody>
+          <tr><th>移転を受ける者と連絡先</th><td>650 Industries, Inc.（Expo）（<a href="https://expo.dev/contact">お問い合わせフォーム</a>）</td></tr>
+          <tr><th>移転先の国</th><td>アメリカ合衆国</td></tr>
+          <tr><th>移転する項目</th><td>モバイル端末の通知トークン、プッシュトークンと通知（通知の種類を表す固定の文字列、Mac の端末識別値、通知識別値、暗号化された通知の内容）</td></tr>
+          <tr><th>移転の時期と方法</th><td>モバイルアプリで通知をオンにするとき（モバイルアプリが Expo に直接接続）と通知を送るとき（中継サーバーが Expo に接続）、ネットワークを通じて暗号化して送信</td></tr>
+          <tr><th>利用目的と保管期間</th><td>モバイルアプリのプッシュトークンの発行、プッシュ通知の Apple への受け渡し。通知の配信結果は、送信から24時間が過ぎると Expo が削除します（<a href="https://docs.expo.dev/push-notifications/sending-notifications/">Expo の通知に関する文書</a>）。そのほかの情報は、目的に合理的に必要な期間保管すると Expo のポリシーに記載されており、具体的な期間は記載されていません（<a href="https://expo.dev/privacy">Expo のプライバシーポリシー</a>）。</td></tr>
+          <tr><th>拒否の方法とその結果</th><td>モバイルアプリの通知をオフにすると移転されず、通知を受け取れなくなります。</td></tr>
+        </tbody>
+      </table>
+      <h3>Apple でサインインとプッシュ通知：Apple Inc.</h3>
+      <table class="legal-table">
+        <tbody>
+          <tr><th>移転を受ける者と連絡先</th><td>Apple Inc.（<a href="https://www.apple.com/legal/privacy/contact/">プライバシーに関するお問い合わせページ</a>）</td></tr>
+          <tr><th>移転先の国</th><td>アメリカ合衆国</td></tr>
+          <tr><th>移転する項目</th><td>Apple でサインインするときにサインインの確認と Apple トークンの発行に必要な情報、アカウントを削除するときに取り消しを依頼する Apple トークン、プッシュトークンと通知（通知の種類を表す固定の文字列、Mac の端末識別値、通知識別値、暗号化された通知の内容）</td></tr>
+          <tr><th>移転の時期と方法</th><td>Apple でサインインするとき、Apple でサインインしたアカウントを削除するとき、通知を送るとき、ネットワークを通じて暗号化して送信</td></tr>
+          <tr><th>利用目的と保管期間</th><td>Apple でサインインの確認、アカウントを削除するときの Apple トークンの取り消し、プッシュ通知の配信。モバイル端末にすぐ配信できなかった通知は、Apple が最長30日間（アプリごとに1件だけ）保管し、配信を再試行します（<a href="https://developer.apple.com/documentation/usernotifications/sending-notification-requests-to-apns">Apple の通知に関する文書</a>）。そのほかの情報は、目的に必要な期間保管すると Apple のポリシーに記載されており、具体的な期間は記載されていません（<a href="https://www.apple.com/legal/privacy/">Apple のプライバシーポリシー</a>）。</td></tr>
+          <tr><th>拒否の方法とその結果</th><td>Google でサインインすると、サインイン情報は移転されません。モバイルアプリの通知をオフにすると通知は移転されず、通知を受け取れなくなります。</td></tr>
+        </tbody>
+      </table>
+      <h3>Google でサインイン：Google LLC</h3>
+      <table class="legal-table">
+        <tbody>
+          <tr><th>移転を受ける者と連絡先</th><td>Google LLC（<a href="https://support.google.com/policies/contact/general_privacy_form">プライバシーに関するお問い合わせフォーム</a>）</td></tr>
+          <tr><th>移転先の国</th><td>アメリカ合衆国</td></tr>
+          <tr><th>移転する項目</th><td>Google でサインインするときにサインインの確認に必要な情報</td></tr>
+          <tr><th>移転の時期と方法</th><td>Google でサインインするとき、ネットワークを通じて暗号化して送信</td></tr>
+          <tr><th>利用目的と保管期間</th><td>Google でサインインの確認。保管期間は情報の種類と用途によって異なると Google のポリシーに記載されており、サインインの確認に使う情報の具体的な期間は記載されていません（<a href="https://policies.google.com/privacy?hl=ja">Google プライバシーポリシー</a>、<a href="https://policies.google.com/technologies/retention?hl=ja">Google によるデータの保持</a>）。</td></tr>
+          <tr><th>拒否の方法とその結果</th><td>Apple でサインインすると移転されません。</td></tr>
+        </tbody>
+      </table>
+      <h3>日本にお住まいの利用者への情報提供（日本の個人情報の保護に関する法律第28条）</h3>
+      <p>上記の移転を受ける者は日本国外にあります。日本にお住まいの利用者のために、移転先の国、その国の個人情報の保護に関する制度、移転を受ける者が講じる措置について次のとおりお知らせします。</p>
+      <table class="legal-table">
+        <tbody>
+          <tr><th>移転先の国</th><td>マレーシア（HOSTINGER PTE LTD）、アメリカ合衆国（650 Industries, Inc.（Expo）、Apple Inc.、Google LLC）</td></tr>
+          <tr><th>その国の個人情報の保護に関する制度</th><td>日本の個人情報保護委員会が公表している「<a href="https://www.ppc.go.jp/personalinfo/legal/kaiseihogohou/#gaikoku">外国における個人情報の保護に関する制度等の調査</a>」で確認できます（<a href="https://www.ppc.go.jp/files/pdf/malaysia_report.pdf">マレーシア</a>、<a href="https://www.ppc.go.jp/files/pdf/USA_report.pdf">アメリカ合衆国（連邦）</a>）。</td></tr>
+          <tr><th>移転を受ける者が講じる措置</th><td>各移転を受ける者が個人情報の保護のために講じる措置は、それぞれのプライバシーポリシーで確認できます（<a href="https://www.hostinger.com/legal/privacy-policy">HOSTINGER</a>、<a href="https://expo.dev/privacy">Expo</a>、<a href="https://www.apple.com/legal/privacy/">Apple</a>、<a href="https://policies.google.com/privacy?hl=ja">Google</a>）。なお、第3節のとおり、ターミナル画面、入力した内容、写真、通知の内容は Mac とモバイル端末の間で暗号化されており、移転を受ける者はその内容を読むことができません。</td></tr>
+        </tbody>
+      </table>
+
+      <h2>8. 利用者の権利と義務</h2>
+      <ol>
+        <li>利用者は、自分の個人情報の閲覧、訂正、削除、取り扱いの停止を求めることができます。同意に基づいて取り扱う個人情報については、同意を撤回できます。</li>
+        <li>アカウント管理ページ（<a href="https://relay.athena.novum-lab.com/account">https://relay.athena.novum-lab.com/account</a>）でいつでもアカウントを削除できます。モバイルアプリでは「アプリ設定」→「アカウント削除」をタップするとこのページが開きます。Mac アプリでは端末の接続を解除できます。アプリを使えない場合は、第10節のメールでご依頼ください。</li>
+        <li>そのほかの求めは第10節のメールに送っていただければ遅滞なく対応し、対応結果もメールでお知らせします。</li>
+        <li>法定代理人や利用者から委任を受けた人も、この権利を代わりに行使できます。この場合、法定代理人は法定代理関係を、委任を受けた人は委任関係を確認できる書類を併せて送る必要があります。</li>
+        <li>訂正を求められた場合は、訂正が終わるまでその個人情報を使いません。</li>
+        <li>大韓民国の外に住む利用者も、この節の権利を同じ方法で行使できます。利用者がお住まいの国の法律がより多くの権利（例：受け取った情報の移転を受ける権利）を定めている場合は、その権利も第10節のメールで求めることができます。お住まいの国の個人情報保護の監督機関に苦情を申し立てることもできます。</li>
+        <li>利用者は自分の個人情報を自ら守り、他人のアカウントや個人情報を使ってはなりません。</li>
+      </ol>
+
+      <h2>9. 安全管理のための措置</h2>
+      <ol>
+        <li>アプリと中継サーバーの間の通信を暗号化します（TLS）。</li>
+        <li>ターミナル画面と入力は、Mac とモバイル端末の間でエンドツーエンド暗号化します（XChaCha20-Poly1305）。中継サーバーには復号の鍵がありません。同じネットワークで Mac に直接接続する場合も、利用者が登録した Mac の鍵でだけ接続を開きます。</li>
+        <li>プッシュ通知の内容は、モバイル端末の通知専用の鍵で暗号化します（X25519、ChaCha20-Poly1305）。その鍵はモバイル端末にだけあります。</li>
+        <li>サインイン維持トークンは、サーバーに元に戻せないハッシュ（SHA-256）でのみ保存します。</li>
+        <li>中継サーバーの保存ファイルは、サーバー運用用のアカウントだけが読み書きできるようにします。</li>
+        <li>同じアカウントで、利用者が Mac で許可した端末同士だけを接続します。</li>
+      </ol>
+
+      <h2>10. 個人情報保護責任者</h2>
+      <ul>
+        <li>保護責任者：MinChang Sung</li>
+        <li>連絡先：<a href="mailto:mcsung@novum-lab.com">mcsung@novum-lab.com</a></li>
+      </ul>
+
+      <h2>11. 権利侵害の救済</h2>
+      <p>個人情報の侵害について申告や相談が必要な場合は、次の大韓民国の機関に問い合わせることができます。</p>
+      <ul>
+        <li>個人情報紛争調停委員会：+82 1833-6972（www.kopico.go.kr）</li>
+        <li>個人情報侵害申告センター：118（privacy.kisa.or.kr）</li>
+        <li>大検察庁：1301（www.spo.go.kr）</li>
+        <li>警察庁：182（ecrm.police.go.kr）</li>
+      </ul>
+
+      <h2>12. ウェブサイトのアクセス解析ツール（Google アナリティクス）</h2>
+      <p>このウェブサイト（athena.novum-lab.com）のすべてのページに Google アナリティクス（GA4）を設置し、Google が訪問者のブラウザーから次の情報を直接収集するようにしています。Google アナリティクスはこのウェブサイトにだけあり、Mac アプリ（Athena Studio）とモバイルアプリには含まれていません。</p>
+      <table class="legal-table">
+        <tbody>
+          <tr><th>ツールと種類</th><td>Google アナリティクス（GA4）。ウェブページの JavaScript タグ（Google タグ）と Cookie</td></tr>
+          <tr><th>収集する事業者</th><td>Google LLC</td></tr>
+          <tr><th>収集する項目</th><td>訪問したページのアドレスとタイトル、前のページのアドレス、訪問日時、ダウンロードボタンを押した記録（どのチップ用のファイルか）、ブラウザーと端末の情報、言語設定、おおよその位置、Cookie に保存されたブラウザーの識別値</td></tr>
+          <tr><th>目的</th><td>訪問者数とダウンロード数、ページの利用状況を統計で把握し、ウェブサイトを改善すること</td></tr>
+          <tr><th>保管期間</th><td>イベントデータは2か月、ユーザーデータは14か月保管した後、Google が自動的に削除します。ユーザーデータは、同じブラウザーから新たに訪問すると、そのときから保管期間が改めて始まります（Google アナリティクスのデータ保持の設定）。</td></tr>
+          <tr><th>Cookie</th><td>_ga（ブラウザーの区別）、_ga_&lt;コンテナ ID&gt;（訪問状態の維持）</td></tr>
+          <tr><th>拒否の方法</th><td><a href="https://tools.google.com/dlpage/gaoptout?hl=ja">Google アナリティクス オプトアウト アドオン</a>をインストールすると収集されません。ブラウザーの設定で Cookie をブロックすると Cookie の保存は防げますが、すべての情報の送信が止まるわけではなく、プライベートウィンドウを使うだけでは収集は止まりません。アドオンをインストールしたり Cookie をブロックしたりしても、ウェブサイトの閲覧に支障はありません。</td></tr>
+          <tr><th>取り扱いの国</th><td>アメリカ合衆国など Google のデータセンターがある国</td></tr>
+        </tbody>
+      </table>
+
+      <h2>13. ポリシーの変更</h2>
+      <p>このポリシーを変更するときは、施行日の7日前からこのウェブページと<a href="/zh/privacy/history/">版の一覧</a>に変更内容と施行日を掲載してお知らせします。利用者に不利な変更は30日前からお知らせします。以前の版は<a href="/zh/privacy/history/">版の一覧</a>で見ることができます。</p>
+    </div>
+    <div class="not-ko not-ja">
     <p class="notice only-intl" data-t="p.intl">本文件以韩语和英语提供。以下英文为译本；如与韩语版本不一致，以韩语版本为准。</p>
     <div class="prose" lang="en">
-      <p class="meta">Version 2<span data-until="2026-12-21"> (scheduled)</span>, posted 2026-11-21, effective 2026-12-21<span data-until="2026-12-21"> · <a href="/privacy/v1/">Version 1</a> remains in effect until then</span> · <a href="/zh/privacy/history/">Version list</a></p>
+      <p class="meta">Version 2<span data-until="2026-12-01"> (scheduled)</span>, posted 2026-11-21, effective 2026-12-01<span data-until="2026-12-01"> · <a href="/privacy/v1/">Version 1</a> remains in effect until then</span> · <a href="/zh/privacy/history/">Version list</a></p>
       <p>This is a translation. If the English and Korean versions differ, the Korean version prevails, except where the law of your country of residence requires otherwise.</p>
       <p>Novum Lab (representative: Eunju Kim; "we" or "us") has this Privacy Policy to protect users' personal information and handle related complaints smoothly, in accordance with the Personal Information Protection Act of the Republic of Korea. It applies to the Athena Studio Mac app, the Athena mobile app, the Mobile connection (Relay server), and this website. Terms have the meanings given in Article 2 of the <a href="/zh/terms/">Terms of Use</a>.</p>
 
@@ -269,12 +442,13 @@ html[data-lang="ko"] .not-ko { display: none; }
           <tr><td>Device information: device identifier, device type (Mac or Mobile app), sign-in token (stored on the server only as an irreversible hash), registration and expiry times</td><td>Keeping you signed in, telling Devices apart</td></tr>
           <tr><td>Device connections: the pairs of Mac and mobile Device you allowed to connect within the same Account, and the time they were connected</td><td>Connecting only the Devices you allowed</td></tr>
           <tr><td>Push token (the Mobile app’s notification address issued by Expo)</td><td>Sending notifications to the Mobile app</td></tr>
+          <tr><td>Apple token (if you sign in with Apple): the refresh token issued by Apple (or the access token if no refresh token is issued), and when it was received</td><td>Revoking the Sign in with Apple connection when you delete your Account</td></tr>
           <tr><td>Server error logs: when a connection error occurs on the server, the IP address, device and browser information (User-Agent), time, and error details (kept for up to about 5 weeks under Section 4). Sign-in information (cookies, authorization headers) is not recorded.</td><td>Finding server errors, investigating security incidents</td></tr>
-          <tr><td>Connection logs: account identifier, device identifier, events such as connecting and disconnecting, error codes, amount and count of data exchanged, notification type and delivery result, the service used to sign in (Apple or Google), time (kept for 90 days under Section 4)</td><td>Finding errors, preventing abuse, investigating security incidents</td></tr>
+          <tr><td>Connection logs: account identifier, device identifier, events such as connecting and disconnecting, error codes, amount and count of data exchanged, notification type and delivery result, the service used to sign in (Apple or Google), time (kept for 90 days under Section 4)</td><td>Finding errors, preventing abuse, investigating security incidents, service usage statistics</td></tr>
         </tbody>
       </table>
       <p>This information is necessary to perform our contract with you, and we process it under Article 15(1)(4) of the Personal Information Protection Act.</p>
-      <p>Your email address and name are not written to the Relay server's data files. They are processed only in server memory while you sign in (up to 10 minutes) and while the account management page is open (up to 30 minutes), and are passed to the app you signed in to. The Mobile app keeps them on your mobile device, and the Mac app keeps your name (or your email address if there is no name) on your Mac; both delete them when you sign out or delete your Account. The only Account information written to the Relay server's data files is the account identifier.</p>
+      <p>Your email address and name are not written to the Relay server's data files. They are processed only in server memory while you sign in (up to 10 minutes) and while the account management page is open (up to 30 minutes), and are passed to the app you signed in to. The Mobile app keeps them on your mobile device, and the Mac app keeps your name (or your email address if there is no name) on your Mac; both delete them when you sign out or delete your Account. The only Account information written to the Relay server's data files is the account identifier and, if you sign in with Apple, the Apple token.</p>
       <p>When you connect a new Device, the device name and the public key used for encryption are only passed to the other Device; they are not stored on the server.</p>
 
       <h2>3. Content encryption and on-device processing</h2>
@@ -286,9 +460,9 @@ html[data-lang="ko"] .not-ko { display: none; }
 
       <h2>4. Retention and destruction</h2>
       <ol>
-        <li>When you delete your Account, we destroy your account identifier, device information, Device connections, and push tokens without delay, and also delete the email address and name being processed in server memory. Even without Account deletion, your email address and name are deleted from server memory when sign-in finishes or after 10 minutes, and for the account management page after 30 minutes.</li>
+        <li>When you delete your Account, we destroy your account identifier, device information, Device connections, push tokens, and Apple token without delay, and also delete the email address and name being processed in server memory. If the Account signs in with Apple, we ask Apple to revoke the Apple token as we delete it. Account deletion still goes ahead even if we cannot reach Apple or the revocation request fails. Even without Account deletion, your email address and name are deleted from server memory when sign-in finishes or after 10 minutes, and for the account management page after 30 minutes.</li>
         <li>A Device's sign-in expires after a set period (30 days by default) and is extended while you use it. Expired Devices and their connections are deleted during regular cleanup. If an Account has more than 20 Devices, we delete the oldest Device that is not connected to a Mac and not online.</li>
-        <li>Connection logs are used only to find errors, investigate security incidents, and prevent abuse, and are deleted after 90 days. They remain for this period even if you delete your Account.</li>
+        <li>Connection logs are used only to find errors, investigate security incidents, prevent abuse, and produce service usage statistics, and are deleted after 90 days. They remain for this period even if you delete your Account. Service usage statistics are daily totals counted from connection log events; they contain no account identifiers or device identifiers, cannot identify any individual, and are kept indefinitely.</li>
         <li>Server error logs are deleted automatically under the server's log retention settings and remain for up to about 5 weeks. They remain for this period even if you delete your Account.</li>
         <li>Electronic files are deleted in a way that cannot be recovered.</li>
       </ol>
@@ -313,9 +487,9 @@ html[data-lang="ko"] .not-ko { display: none; }
         <tbody>
           <tr><th>Recipient and contact</th><td>HOSTINGER PTE LTD (gdpr@hostinger.com)</td></tr>
           <tr><th>Country</th><td>Malaysia (Kuala Lumpur)</td></tr>
-          <tr><th>Items</th><td>Account information, device information, Device connections, push tokens, connection logs, and server error logs in Section 2</td></tr>
+          <tr><th>Items</th><td>Account information, device information, Device connections, push tokens, Apple tokens, connection logs, and server error logs in Section 2</td></tr>
           <tr><th>When and how</th><td>While you are signed in and using the Mobile connection, sent encrypted over the network</td></tr>
-          <tr><th>Purpose and retention</th><td>Operating the Relay server. Under Section 4: account identifier, device information, Device connections, and push tokens until you delete your Account; email address and name in server memory for up to 10 minutes (up to 30 minutes for the account management page); connection logs for 90 days; server error logs for up to about 5 weeks</td></tr>
+          <tr><th>Purpose and retention</th><td>Operating the Relay server and producing service usage statistics. Under Section 4: account identifier, device information, Device connections, push tokens, and Apple tokens until you delete your Account; email address and name in server memory for up to 10 minutes (up to 30 minutes for the account management page); connection logs for 90 days; server error logs for up to about 5 weeks</td></tr>
           <tr><th>How to refuse, and what happens</th><td>If you do not use the Mobile connection, nothing is transferred. You can still use the Mac app, but not the Mobile connection.</td></tr>
         </tbody>
       </table>
@@ -335,9 +509,9 @@ html[data-lang="ko"] .not-ko { display: none; }
         <tbody>
           <tr><th>Recipient and contact</th><td>Apple Inc. (<a href="https://www.apple.com/legal/privacy/contact/">privacy contact page</a>)</td></tr>
           <tr><th>Country</th><td>United States</td></tr>
-          <tr><th>Items</th><td>Information needed to verify sign-in when you sign in with Apple; push tokens and notifications (a fixed word for the notification type, the Mac's device identifier, a notification identifier, and encrypted notification content)</td></tr>
-          <tr><th>When and how</th><td>When you sign in with Apple and when a notification is sent, encrypted over the network</td></tr>
-          <tr><th>Purpose and retention</th><td>Verifying Sign in with Apple and delivering push notifications. If a notification cannot be delivered right away, Apple stores it for up to 30 days (one per app) and retries delivery (<a href="https://developer.apple.com/documentation/usernotifications/sending-notification-requests-to-apns">Apple notification docs</a>). For other information, Apple's policy says it is kept only as long as necessary for its purposes and does not state a specific period (<a href="https://www.apple.com/legal/privacy/">Apple Privacy Policy</a>).</td></tr>
+          <tr><th>Items</th><td>Information needed to verify sign-in and obtain an Apple token when you sign in with Apple; the Apple token we ask Apple to revoke when you delete your Account; push tokens and notifications (a fixed word for the notification type, the Mac's device identifier, a notification identifier, and encrypted notification content)</td></tr>
+          <tr><th>When and how</th><td>When you sign in with Apple, when you delete an Account that signs in with Apple, and when a notification is sent, encrypted over the network</td></tr>
+          <tr><th>Purpose and retention</th><td>Verifying Sign in with Apple, revoking the Apple token when you delete your Account, and delivering push notifications. If a notification cannot be delivered right away, Apple stores it for up to 30 days (one per app) and retries delivery (<a href="https://developer.apple.com/documentation/usernotifications/sending-notification-requests-to-apns">Apple notification docs</a>). For other information, Apple's policy says it is kept only as long as necessary for its purposes and does not state a specific period (<a href="https://www.apple.com/legal/privacy/">Apple Privacy Policy</a>).</td></tr>
           <tr><th>How to refuse, and what happens</th><td>If you sign in with Google, sign-in information is not transferred. If you turn off notifications for the Mobile app, notifications are not transferred and you will not receive them.</td></tr>
         </tbody>
       </table>
@@ -356,7 +530,7 @@ html[data-lang="ko"] .not-ko { display: none; }
       <h2>8. Your rights and duties</h2>
       <ol>
         <li>You can ask to access, correct, or delete your personal information, or to stop its processing. For personal information processed on the basis of your consent, you can withdraw your consent.</li>
-        <li>You can delete your Account at any time on the account management page, and disconnect Devices in the Mac app. If you cannot use the apps, request it by the email in Section 10.</li>
+        <li>You can delete your Account at any time on the account management page (<a href="https://relay.athena.novum-lab.com/account">https://relay.athena.novum-lab.com/account</a>). In the Mobile app, tap App Settings → Delete account to open this page. You can disconnect Devices in the Mac app. If you cannot use the apps, request it by the email in Section 10.</li>
         <li>Send any other request to the email in Section 10. We will handle it without delay and tell you the result by email.</li>
         <li>A legal representative or a person you authorize can exercise these rights for you. A legal representative must send documents showing the legal representation, and an authorized person must send documents showing the authorization.</li>
         <li>If you ask for a correction, we will not use that information until the correction is complete.</li>

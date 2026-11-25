@@ -151,6 +151,7 @@
         <a href="#settings" data-t="doc.n.settings">设置</a>
         <a href="#shortcuts" data-t="f.k.label">快捷键</a>
         <a href="#update" data-t="doc.n.update">更新</a>
+        <a href="#mobile" data-t="doc.n.mobile">移动应用</a>
         <a href="#security" data-t="h.s.label">数据与安全</a>
         <a href="#troubleshooting" data-t="doc.n.trouble">故障排除</a>
         <a href="#faq">FAQ</a>
@@ -524,12 +525,43 @@
   <p class="doc-p" data-t="doc.u.core">应用自带的 Athena 核心会在你打开新版本时更新，即使智能体正在工作也没关系。更新后会弹出窗口，显示更新前后的版本、新增内容和更新结果。</p>
 </section>
 
+<!-- 모바일 앱 연결 — 버튼 · 화면 이름은 Athena Studio(v0.71.5 src/i18n · ui/mobile-account.tsx) · Athena 앱(app/src/i18n · app/relay.tsx · settings) 문구 그대로 -->
+<section class="doc-sec" id="mobile">
+  <p class="doc-label" data-t="doc.n.mobile">移动应用</p>
+  <h2 data-t="doc.m.h">把移动应用连接到你的 Mac。</h2>
+  <p class="doc-p" data-t="doc.m.p">Athena 移动应用连接到你 Mac 上的 Athena Studio。需要 Athena Studio 0.71.4 或更高版本，并且只有 Mac 上的 Athena Studio 开着时才能连接。</p>
+  <h3 class="doc-h3" data-t="doc.m.c.h">第一次连接</h3>
+  <ol class="h3-steps-list">
+    <li data-t="doc.m1"><b>下载应用。</b> 从 <a href="https://apps.apple.com/app/id6838557098" target="_blank" rel="noopener">App Store</a> 下载 Athena。</li>
+    <li data-t="doc.m2"><b>在 Mac 上登录。</b> 在 Athena Studio 中，点击最左侧包栏底部的圆形个人资料按钮(“登录”)。在浏览器中完成登录后会回到 Studio。</li>
+    <li data-t="doc.m3"><b>在手机上用同一账号登录。</b> 在应用中点按“登录 · 连接”→“登录”，使用与 Athena Studio 相同的账号登录。</li>
+    <li data-t="doc.m4"><b>选择你的 Mac。</b> 列表中会出现用同一账号登录的 Mac，点按要连接的那台。</li>
+    <li data-t="doc.m5"><b>核对验证码并允许。</b> Studio 会打开带验证码的“连接新设备”，应用中也会显示验证码。只有两者相同时才在 Studio 中选择“允许”。请求在 5 分钟后结束。</li>
+  </ol>
+  <p class="doc-note" data-t="doc.m.auto">之后，只要打开 Athena Studio，应用就会自动连接。</p>
+  <h3 class="doc-h3" data-t="doc.m.d.h">查看和解除已连接的设备</h3>
+  <dl class="doc-dl">
+      <div><dt data-t="doc.m.d1t">在 Mac 上</dt><dd data-t="doc.m.d1">个人资料按钮 →“设备连接”。“已连接的设备”中列出每台手机或平板及其最后连接时间，点“解除”即可断开。</dd></div>
+      <div><dt data-t="doc.m.d2t">在应用中</dt><dd data-t="doc.m.d2">点按个人资料图标打开“应用设置”。“已连接的设备”中显示你的 Mac 以及是否开着。“退出登录”会清除中继服务器和本设备上的登录与连接信息。</dd></div>
+      <div><dt data-t="doc.m.d3t">从手机输入</dt><dd data-t="doc.m.d3">Studio“设备连接”窗口中的“允许设备输入”对所有设备同时生效。关闭时，手机只能查看；开启后，可以输入、发送图片、回答请求和决定、更改仓库设置以及切换包。</dd></div>
+  </dl>
+  <h3 class="doc-h3" data-t="doc.m.t.h">连接不上时</h3>
+  <dl class="doc-dl">
+      <div><dt data-t="doc.m.t1q">Studio 中没有个人资料按钮</dt><dd data-t="doc.m.t1a">把 Athena Studio 更新到 0.71.4 或更高版本(<a href="#update">更新</a>)。开始界面上没有这个按钮，请先打开一个包。</dd></div>
+      <div><dt data-t="doc.m.t2q">应用提示没有开着的设备</dt><dd data-t="doc.m.t2a">在 Mac 上打开 Athena Studio，并用与应用相同的账号登录。</dd></div>
+      <div><dt data-t="doc.m.t3q">应用提示 Studio 已关闭或未连接到服务器</dt><dd data-t="doc.m.t3a">确认 Mac 上的 Athena Studio 开着，并且 Mac 已连接互联网。</dd></div>
+      <div><dt data-t="doc.m.t4q">连接请求已结束</dt><dd data-t="doc.m.t4a">请求超过 5 分钟或被拒绝时就会结束。请在应用中重新选择你的 Mac。</dd></div>
+      <div><dt data-t="doc.m.t5q">提示设备过多</dt><dd data-t="doc.m.t5a">个人资料按钮 →“管理账户”会在网页上打开你的账户，在那里删除不再使用的设备。</dd></div>
+      <div><dt data-t="doc.m.t6q">应用中无法更改或回答</dt><dd data-t="doc.m.t6a">“允许设备输入”已关闭。请在 Studio 的“设备连接”窗口中开启。</dd></div>
+  </dl>
+</section>
+
 <section class="doc-sec" id="security">
   <p class="doc-label" data-t="h.s.label">数据与安全</p>
   <h2 data-t="h.s.h2">哪些在你的 Mac 上运行，哪些会发往别处。</h2>
   <p class="doc-p" data-t="h.s.p">应用在你的电脑上运行。智能体仍会向其 AI 服务商发送请求，推送时代码会发到 GitHub。</p>
   <div class="sec-grid">
-      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><b data-t="h.s.1">在你的 Mac 上运行</b><span data-t="h.s.1p">智能体、终端和待办都在本地运行。应用不会把你的代码或文件发送到 Novum Lab 的服务器。</span></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><b data-t="h.s.1">在你的 Mac 上运行</b><span data-t="h.s.1p">智能体、终端和待办都在本地运行。应用不会把你的代码或文件发送到 Novum Lab 的服务器。开启移动连接后，它们会在 Mac 与移动设备之间端到端加密并经过中继服务器，中继服务器不会读取或保存其内容。</span></div>
       <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span><b data-t="h.s.2">使用你自己的 AI 账号</b><span data-t="h.s.2p">智能体以你已登录的 Claude Code 或 Codex 身份运行，遵循该服务商的条款和你的套餐。</span></div>
       <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="12" r="2.5"/><path d="M6 8.5v7M8.3 7.2l7.5 3.6"/></svg></span><b data-t="h.s.3">智能体在分支上工作</b><span data-t="h.s.3p">每个智能体在自己的分支和工作树上工作。在你为某个仓库开启之前，自动合并一直是关闭的。</span></div>
       <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l8-4 8 4v6c0 4-3.5 7-8 8-4.5-1-8-4-8-8z"/><path d="M9 12l2 2 4-4"/></svg></span><b data-t="h.s.4">签名与公证</b><span data-t="h.s.4p">公开发布版使用 Apple Developer ID 签名并经过 Apple 公证。</span></div>
