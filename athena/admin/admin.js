@@ -880,8 +880,158 @@
     error.textContent = message ?? '';
   };
 
+  // ── 계정 목록(계약 admin-api.md "accounts 답" · 기간은 위 고르기와 같다 · 최대 90일) ──
+  const PROVIDER_NAMES = { apple: 'Apple', google: 'Google', dev: '개발' };
+  const countOf = (value) => (Number.isFinite(value) && value > 0 ? value : 0);
+  const timeOf = (iso) => {
+    const parsed = typeof iso === 'string' ? Date.parse(iso) : Number.NaN;
+    return Number.isNaN(parsed) ? null : parsed;
+  };
+  // 가입일 — KST 날짜(YYYY-MM-DD)
+  const kstDate = (time) => new Date(time + KST_OFFSET_MS).toISOString().slice(0, 10);
+  const kstDateTime = (time) => new Date(time + KST_OFFSET_MS).toISOString().slice(0, 16).replace('T', ' ');
+
+  // 서버 답을 화면 줄로 — 숫자는 0 이상 정수만 · 시각은 밀리초(없거나 틀리면 null)
+  const accountRow = (account) => ({
+    id: typeof account.id === 'string' ? account.id : '',
+    provider: typeof account.provider === 'string' ? account.provider : '',
+    createdAt: timeOf(account.createdAt),
+    mac: countOf(account.devices?.mac),
+    app: countOf(account.devices?.app),
+    pairs: countOf(account.pairs),
+    pushSent: countOf(account.push?.sent),
+    pushFailed: countOf(account.push?.failed),
+    durationMs: countOf(account.connections?.durationMs),
+    lastSeenAt: timeOf(account.lastSeenAt),
+  });
+
+  // 열마다 처음 누를 때의 방향 — 글자는 가나다 순, 숫자 · 시각은 큰(최근) 것부터
+  const TEXT_COLUMNS = ['id', 'provider'];
+  const firstDirection = (key) => (TEXT_COLUMNS.includes(key) ? 'asc' : 'desc');
+  // 기본은 서버 순서와 같은 가입 최근 순
+  let accountSort = { key: 'createdAt', direction: 'desc' };
+  let accountRows = [];
+  let accountsRequest = 0;
+
+  const providerName = (provider) => PROVIDER_NAMES[provider] ?? provider;
+
+  const compareValues = (key, left, right) => {
+    if (TEXT_COLUMNS.includes(key)) {
+      const leftText = key === 'provider' ? providerName(left) : left;
+      const rightText = key === 'provider' ? providerName(right) : right;
+      return leftText.localeCompare(rightText, 'ko-KR');
+    }
+    return left - right;
+  };
+
+  const sortedAccounts = () => {
+    const { key, direction } = accountSort;
+    const sign = direction === 'asc' ? 1 : -1;
+    return [...accountRows].sort((left, right) => {
+      const leftValue = left[key];
+      const rightValue = right[key];
+      // 시각이 없는 줄(마지막 접속 없음)은 방향과 상관없이 끝에
+      if (leftValue === null || rightValue === null) {
+        if (leftValue !== rightValue) return leftValue === null ? 1 : -1;
+      } else {
+        const order = compareValues(key, leftValue, rightValue) * sign;
+        if (order !== 0) return order;
+      }
+      // 같으면 가입 최근 순
+      return (right.createdAt ?? 0) - (left.createdAt ?? 0);
+    });
+  };
+
+  const markAccountSort = () => {
+    for (const header of byId('accounts-head').querySelectorAll('th[data-sort]')) {
+      const active = header.dataset.sort === accountSort.key;
+      if (active) header.setAttribute('aria-sort', accountSort.direction === 'asc' ? 'ascending' : 'descending');
+      else header.removeAttribute('aria-sort');
+    }
+  };
+
+  const renderAccountsBody = () => {
+    const body = byId('accounts-body');
+    body.replaceChildren();
+    for (const account of sortedAccounts()) {
+      const row = document.createElement('tr');
+      const idCell = htmlElement('th', 'admin-account-id', account.id);
+      idCell.scope = 'row';
+      row.appendChild(idCell);
+      row.appendChild(htmlElement('td', 'admin-account-text', providerName(account.provider)));
+      const created = htmlElement('td', '', account.createdAt === null ? '—' : kstDate(account.createdAt));
+      if (account.createdAt !== null) created.title = `${kstDateTime(account.createdAt)} 한국 시간`;
+      row.appendChild(created);
+      for (const key of ['mac', 'app', 'pairs', 'pushSent', 'pushFailed']) {
+        row.appendChild(htmlElement('td', account[key] === 0 ? 'zero' : '', numberText(account[key])));
+      }
+      row.appendChild(htmlElement('td', account.durationMs === 0 ? 'zero' : '', durationText(account.durationMs)));
+      const lastSeen = htmlElement('td', account.lastSeenAt === null ? 'zero' : '', account.lastSeenAt === null ? '—' : kstDateTime(account.lastSeenAt));
+      if (account.lastSeenAt === null) lastSeen.title = '90일 안에 접속 기록 없음';
+      row.appendChild(lastSeen);
+      body.appendChild(row);
+    }
+    markAccountSort();
+  };
+
+  const showAccountsError = (message) => {
+    const error = byId('accounts-error');
+    error.hidden = !message;
+    error.textContent = message ?? '';
+  };
+
+  const renderAccounts = (answer) => {
+    accountRows = answer.accounts.filter((account) => typeof account === 'object' && account !== null).map(accountRow);
+    byId('accounts-sum').textContent = `${numberText(accountRows.length)}개 · 푸시 · 연결 시간은 ${answer.from} ~ ${answer.to} 합계`;
+    byId('accounts-empty').hidden = accountRows.length > 0;
+    byId('accounts-scroll').hidden = accountRows.length === 0;
+    renderAccountsBody();
+  };
+
+  for (const header of byId('accounts-head').querySelectorAll('th[data-sort]')) {
+    header.querySelector('button').addEventListener('click', () => {
+      const key = header.dataset.sort;
+      if (accountSort.key === key) accountSort = { key, direction: accountSort.direction === 'asc' ? 'desc' : 'asc' };
+      else accountSort = { key, direction: firstDirection(key) };
+      renderAccountsBody();
+    });
+  }
+
+  async function loadAccounts() {
+    const requestId = ++accountsRequest;
+    const to = kstToday();
+    const from = shiftDate(to, -(rangeDays - 1));
+    let result;
+    try {
+      result = await request(`/accounts?from=${from}&to=${to}`);
+    } catch {
+      result = null;
+    }
+    // 기간을 빨리 바꿨으면 늦게 온 앞 답은 버린다
+    if (requestId !== accountsRequest) return;
+    if (result?.status === 200 && Array.isArray(result.body?.accounts)) {
+      showAccountsError(null);
+      renderAccounts(result.body);
+      return;
+    }
+    if (result?.status === 401) {
+      showLogin('로그인이 끝났습니다. 다시 로그인해 주세요.');
+      return;
+    }
+    if (result?.status === 503) {
+      showOff(result.status);
+      return;
+    }
+    // 앞 기간 표가 새 기간 것처럼 보이지 않게 숨긴다
+    byId('accounts-sum').textContent = '';
+    byId('accounts-empty').hidden = true;
+    byId('accounts-scroll').hidden = true;
+    showAccountsError('계정 목록을 불러오지 못했습니다. 잠시 뒤 다시 시도해 주세요.');
+  }
+
   async function loadStats() {
     markRange();
+    loadAccounts();
     const requestId = ++statsRequest;
     const to = kstToday();
     // 증감을 보려고 앞 같은 길이 기간까지 한 번에 받는다(90일이면 180일 · 계약 한도 366일)

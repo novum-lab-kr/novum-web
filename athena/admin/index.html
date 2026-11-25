@@ -13,8 +13,8 @@
 <meta name="theme-color" content="#09090b">
 <link rel="icon" type="image/png" href="/assets/favicon-white.png">
 <link rel="stylesheet" href="/assets/site.css?v=20261102d">
-<link rel="stylesheet" href="/admin/admin.css?v=20261124c">
-<script src="/admin/admin.js?v=20261124c" defer></script>
+<link rel="stylesheet" href="/admin/admin.css?v=20261125a">
+<script src="/admin/admin.js?v=20261125a" defer></script>
 </head>
 <body class="admin">
 <header class="top">
@@ -110,6 +110,37 @@
         <div class="admin-x"><span id="chart-x-from"></span><span id="chart-x-to"></span></div>
       </section>
 
+      <!-- 계정 목록 — 계정마다 한 줄(계약 relay/docs/admin-api.md "accounts 답" · 기간은 위 고르기와 같다 · 열 머리를 누르면 정렬) -->
+      <section class="admin-accounts" id="accounts" aria-labelledby="accounts-title">
+        <div class="admin-chart-head">
+          <div>
+            <h2 id="accounts-title">계정 목록</h2>
+            <p class="admin-chart-sum" id="accounts-sum"></p>
+          </div>
+        </div>
+        <p class="admin-error" id="accounts-error" role="alert" hidden></p>
+        <p class="admin-accounts-empty" id="accounts-empty" hidden>가입한 계정이 없습니다</p>
+        <div class="admin-table-scroll" id="accounts-scroll" hidden>
+          <table class="admin-table admin-accounts-table">
+            <thead>
+              <tr id="accounts-head">
+                <th scope="col" data-sort="id"><button type="button">번호</button></th>
+                <th scope="col" data-sort="provider"><button type="button">서비스</button></th>
+                <th scope="col" data-sort="createdAt"><button type="button">가입일</button></th>
+                <th scope="col" data-sort="mac"><button type="button">맥</button></th>
+                <th scope="col" data-sort="app"><button type="button">폰</button></th>
+                <th scope="col" data-sort="pairs"><button type="button">연결</button></th>
+                <th scope="col" data-sort="pushSent"><button type="button">푸시 보냄</button></th>
+                <th scope="col" data-sort="pushFailed"><button type="button">푸시 실패</button></th>
+                <th scope="col" data-sort="durationMs"><button type="button">연결 시간</button></th>
+                <th scope="col" data-sort="lastSeenAt"><button type="button">마지막 접속</button></th>
+              </tr>
+            </thead>
+            <tbody id="accounts-body"></tbody>
+          </table>
+        </div>
+      </section>
+
       <details class="admin-table-wrap">
         <summary>날짜별 표</summary>
         <div class="admin-table-scroll">
@@ -137,6 +168,7 @@
         <li>날짜는 한국 시간(0시~24시) 기준입니다. 이 기능을 반영한 날부터 셉니다. 증감은 바로 앞 같은 길이 기간과 견줍니다.</li>
         <li>활성 계정은 그날 relay 메모리에서 셉니다. relay 를 다시 켠 날은 켜기 전에만 붙었던 계정이 빠져 적게 나올 수 있습니다.</li>
         <li>연결 시간 · 전송량은 연결이 끊긴 날에 들어갑니다. 밤을 넘긴 연결은 끊긴 날에 통째로 셉니다.</li>
+        <li>계정 목록의 맥 · 폰 · 연결은 지금 숫자이고, 푸시 · 연결 시간은 고른 기간의 합계입니다(연결이 끊긴 날에 들어갑니다). 마지막 접속은 기간과 상관없이 90일 안의 마지막 시각이고, 없으면 — 로 보입니다.</li>
         <li>relay 가 강제로 멈추면 마지막 저장(5분마다) 뒤의 숫자는 잃습니다.</li>
         <li>오류 합계 · 증감에서 전달 못 한 메시지 가운데 '상대 미접속'은 뺍니다(맥이 꺼져 있기만 해도 생겨서). 오류 카드를 누르면 이유별로 함께 볼 수 있습니다.</li>
       </ul>
