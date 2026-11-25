@@ -728,7 +728,6 @@ window.ATHENA_I18N.ko = {
   "n.app.s4": "Athena 앱의 에이전트 터미널: 폰에서 제어하며 빠른 키와 입력창으로 입력합니다.",
   "n.app.s5": "Athena 앱의 레포 설정: 레포마다 자동 PR · 자동 리뷰를 켜고 끄고, 머지 방식(직접 · 확인 후 · 자동)을 고릅니다.",
   "n.app.s6": "Athena 앱의 서버 화면: 지난 24시간의 가동 시간, CPU, 부하, 메모리, 디스크 사용량이 보입니다.",
-  "app.guide": "연결 방법",
   "doc.n.mobile": "모바일 앱",
   "doc.m.h": "모바일 앱을 맥에 연결",
   "doc.m.p": "Athena 모바일 앱은 맥의 Athena Studio에 연결됩니다. Athena Studio 0.71.4 이상이 필요하고, 맥에서 Athena Studio가 켜져 있을 때만 연결됩니다.",

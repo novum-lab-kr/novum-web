@@ -728,7 +728,6 @@ window.ATHENA_I18N.zh = {
   "n.app.s4": "Athena 应用的智能体终端:在手机上控制,用快捷键和输入框输入。",
   "n.app.s5": "Athena 应用的仓库设置:为每个仓库开关自动 PR 和自动评审,并选择合并方式(手动 · 确认后 · 自动)。",
   "n.app.s6": "Athena 应用的服务器画面:显示过去 24 小时的运行时间、CPU、负载、内存和磁盘使用量。",
-  "app.guide": "连接方法",
   "doc.n.mobile": "移动应用",
   "doc.m.h": "把移动应用连接到你的 Mac。",
   "doc.m.p": "Athena 移动应用连接到你 Mac 上的 Athena Studio。需要 Athena Studio 0.71.4 或更高版本，并且只有 Mac 上的 Athena Studio 开着时才能连接。",

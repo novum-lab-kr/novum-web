@@ -728,7 +728,6 @@ window.ATHENA_I18N.ja = {
   "n.app.s4": "Athena アプリのエージェントターミナル:スマートフォンから操作し、クイックキーと入力欄で入力します。",
   "n.app.s5": "Athena アプリのリポジトリ設定:リポジトリごとに自動 PR・自動レビューをオンオフし、マージ方法(手動・確認後・自動)を選びます。",
   "n.app.s6": "Athena アプリのサーバー画面:過去 24 時間の稼働時間、CPU、負荷、メモリ、ディスク使用量が表示されます。",
-  "app.guide": "接続方法",
   "doc.n.mobile": "モバイルアプリ",
   "doc.m.h": "モバイルアプリを Mac に接続します。",
   "doc.m.p": "Athena モバイルアプリは Mac の Athena Studio に接続します。Athena Studio 0.71.4 以降が必要で、Mac で Athena Studio が起動しているときだけ接続できます。",
