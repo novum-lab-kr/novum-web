@@ -499,3 +499,33 @@ footer .owner.info { display: flex; flex-wrap: wrap; gap: 2px 16px; }
 	.m-together .m-shot { box-shadow: 4px 4px 0 var(--ink); }
 	nav.top .lang { font-size: 14px; }
 }
+
+/* 겨울(2026-11-24, 앱 1.3.0 겨울 숲): 첫 화면과 「겨울 숲」 칸을 밤으로, 눈이 살랑이며 내린다. 1월에 이 덩어리와 첫 화면 스티커, 파비콘, og를 되돌린다 */
+:root { --night: #1E4D3B; --night-2: #173E30; --gold: #FFD25E; }
+.m-hero2, header.hero { background: var(--night) !important; color: var(--ivory); }
+.m-hero2 h1, header.hero h1, .m-hero2 > p, header.hero p { color: var(--ivory) !important; }
+.m-hero2 .badge, header.hero .badge { background: var(--gold); color: var(--ink); }
+.snowfall { position: absolute !important; inset: 0; overflow: hidden; pointer-events: none; z-index: 1 !important; }
+.snowfall i { position: absolute; top: -12px; width: var(--s); height: var(--s); background: #fff; opacity: .9; animation: snow-fall var(--d) linear var(--t) infinite; }
+@keyframes snow-fall {
+  0% { transform: translate3d(0, -12px, 0); }
+  25% { transform: translate3d(14px, 25vh, 0); }
+  50% { transform: translate3d(-10px, 50vh, 0); }
+  75% { transform: translate3d(12px, 75vh, 0); }
+  100% { transform: translate3d(0, 105vh, 0); }
+}
+@media (prefers-reduced-motion: reduce) { .snowfall i { animation: none; top: auto; transform: translate3d(0, calc(var(--s) * 9), 0); } }
+.m-winter { position: relative; overflow: hidden; background: var(--night-2); color: var(--ivory); }
+.m-winter > :not(.snowfall) { position: relative; z-index: 2; }
+.m-winter h2, .m-winter p { color: var(--ivory) !important; }
+.m-winter .m-note { font-size: 14px; color: #D6EBDF !important; }
+.winter-vid { border: 3px solid var(--ivory); border-radius: 14px; overflow: hidden; box-shadow: 4px 4px 0 #000; background: var(--night); }
+.winter-vid video { display: block; width: 100%; height: auto; }
+#winter { position: relative; overflow: hidden; background: var(--night-2); color: var(--ivory); padding: 96px 0; }
+#winter .winter-wrap { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 64px; align-items: center; }
+#winter h2 { color: var(--ivory); font-size: 40px; line-height: 1.3; margin: 0 0 20px; }
+#winter p { color: var(--ivory); font-size: 18px; line-height: 1.8; margin: 0; max-width: 32em; }
+#winter .winter-note { margin-top: 16px; font-size: 15px; color: #D6EBDF; }
+/* 눈이 글자 사이로 지나가도 읽히게 밤색 테두리 */
+header.hero .hero-text, .m-hero2 h1, .m-hero2 > p, #winter .winter-text, .m-winter h2, .m-winter p { text-shadow: 2px 2px 0 var(--night-2), -2px -2px 0 var(--night-2), 2px -2px 0 var(--night-2), -2px 2px 0 var(--night-2); }
+header.hero .badge, .m-hero2 .badge, header.hero h1 em, .m-hero2 h1 em { text-shadow: none; }

@@ -11,10 +11,10 @@ const OUT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', 
 
 // 차곡이: 같은 색 칸을 가로로 이어 사각형 하나로 (앱 src/design-system/mascot.tsx mascotPaths와 같다)
 const ink = '#06261C', lcd = '#C7DE94', apricot = '#FD855F', ivory = '#FEF1D1', mint = '#AFE1CB';
-const cellColor = { '#': ink, g: lcd, o: apricot, w: ivory, m: mint };
+const cellColor = { '#': ink, g: lcd, o: apricot, w: ivory, m: mint, r: '#E03D36', d: '#A82B2B', W: '#FFFFFF' }; // r, d, W는 겨울 차림만 쓴다(앱 mascot.tsx)
 const source = JSON.parse(fs.readFileSync(path.join(app, 'docs/design/character/character-data.json'), 'utf8'));
-const art = { ...source.faces, ...source.variants, ...source.blockStates };
-for (const pose of ['b0', 'b1', 'b2', 'b3', 'curious', 'shy', 'sleepy']) {
+const art = { ...source.faces, ...source.variants, ...source.blockStates, ...source.winter };
+for (const pose of ['b0', 'b1', 'b2', 'b3', 'curious', 'shy', 'sleepy', 'winterFront']) {
   const rows = art[pose];
   const byCell = new Map();
   rows.forEach((row, y) => {
@@ -40,4 +40,4 @@ for (const m of ts.matchAll(/\{id:'([^']+)',label:'[^']*',pack:'[^']+',layers:\[
   stickers[m[1]] = [...m[2].matchAll(/\{color:'([^']+)',d:'([^']+)'\}/g)].map((l) => [l[1], l[2]]);
 }
 fs.writeFileSync(path.join(OUT, 'stickers.json'), JSON.stringify(stickers));
-console.log(`차곡이 7장, 스티커 ${Object.keys(stickers).length}종`);
+console.log(`차곡이 8장, 스티커 ${Object.keys(stickers).length}종`);
