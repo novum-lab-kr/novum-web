@@ -261,6 +261,7 @@ section.admin-accounts { margin-top: 36px; padding: 0; }
 .admin-accounts-table thead th[aria-sort="descending"] button::after { content: '▼'; font-size: 9px; color: var(--gold); opacity: 1; }
 .admin-accounts-table th.admin-account-id { color: var(--text); letter-spacing: .02em; }
 .admin-accounts-table td.admin-account-text { text-align: left; font-family: inherit; color: var(--muted); }
+.admin-accounts-table td .admin-account-all { margin-left: 4px; font-size: 11px; color: var(--dim); }
 
 /* 날짜별 표 */
 .admin-table-wrap { margin-top: 36px; border-top: 1px solid var(--line); padding-top: 22px; }

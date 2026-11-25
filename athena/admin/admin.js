@@ -892,18 +892,28 @@
   const kstDateTime = (time) => new Date(time + KST_OFFSET_MS).toISOString().slice(0, 16).replace('T', ' ');
 
   // 서버 답을 화면 줄로 — 숫자는 0 이상 정수만 · 시각은 밀리초(없거나 틀리면 null)
-  const accountRow = (account) => ({
-    id: typeof account.id === 'string' ? account.id : '',
-    provider: typeof account.provider === 'string' ? account.provider : '',
-    createdAt: timeOf(account.createdAt),
-    mac: countOf(account.devices?.mac),
-    app: countOf(account.devices?.app),
-    pairs: countOf(account.pairs),
-    pushSent: countOf(account.push?.sent),
-    pushFailed: countOf(account.push?.failed),
-    durationMs: countOf(account.connections?.durationMs),
-    lastSeenAt: timeOf(account.lastSeenAt),
-  });
+  // 맥 · 폰은 최근 7일 연결 기기 수(devices.recent7d)로 보이고 정렬한다 — recent7d 가 없는 옛 relay 답이면 전체 수
+  const accountRow = (account) => {
+    const devices = account.devices;
+    const recent = typeof devices?.recent7d === 'object' && devices.recent7d !== null ? devices.recent7d : null;
+    const macAll = countOf(devices?.mac);
+    const appAll = countOf(devices?.app);
+    return {
+      id: typeof account.id === 'string' ? account.id : '',
+      provider: typeof account.provider === 'string' ? account.provider : '',
+      createdAt: timeOf(account.createdAt),
+      hasRecent: recent !== null,
+      mac: recent === null ? macAll : countOf(recent.mac),
+      app: recent === null ? appAll : countOf(recent.app),
+      macAll,
+      appAll,
+      pairs: countOf(account.pairs),
+      pushSent: countOf(account.push?.sent),
+      pushFailed: countOf(account.push?.failed),
+      durationMs: countOf(account.connections?.durationMs),
+      lastSeenAt: timeOf(account.lastSeenAt),
+    };
+  };
 
   // 열마다 처음 누를 때의 방향 — 글자는 가나다 순, 숫자 · 시각은 큰(최근) 것부터
   const TEXT_COLUMNS = ['id', 'provider'];
@@ -962,7 +972,16 @@
       const created = htmlElement('td', '', account.createdAt === null ? '—' : kstDate(account.createdAt));
       if (account.createdAt !== null) created.title = `${kstDateTime(account.createdAt)} 한국 시간`;
       row.appendChild(created);
-      for (const key of ['mac', 'app', 'pairs', 'pushSent', 'pushFailed']) {
+      // 맥 · 폰 — 최근 7일 수를 크게 · 세션이 남은 전체 수를 옆에 작게(옛 relay 답이면 전체만)
+      for (const [key, allKey] of [['mac', 'macAll'], ['app', 'appAll']]) {
+        const cell = htmlElement('td', account[key] === 0 ? 'zero' : '', numberText(account[key]));
+        if (account.hasRecent) {
+          cell.appendChild(htmlElement('small', 'admin-account-all', `(${numberText(account[allKey])})`));
+          cell.title = `최근 7일 연결 ${numberText(account[key])}대 · 세션이 남은 전체 ${numberText(account[allKey])}대`;
+        }
+        row.appendChild(cell);
+      }
+      for (const key of ['pairs', 'pushSent', 'pushFailed']) {
         row.appendChild(htmlElement('td', account[key] === 0 ? 'zero' : '', numberText(account[key])));
       }
       row.appendChild(htmlElement('td', account.durationMs === 0 ? 'zero' : '', durationText(account.durationMs)));
