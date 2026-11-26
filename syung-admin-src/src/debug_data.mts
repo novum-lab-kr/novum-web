@@ -4,9 +4,13 @@
 export interface Station { id:number; name:string; lat:number; lon:number }
 export interface Tap { kind:string; t:number; station?:string | null }
 export interface SensorEvent { kind:string; t:number }
+export interface Judge { t:number; state:string | null }
+export interface Answer { t:number; answer:string | null }
+// 지도 타고 가기 탑승(source "map")에만 source · device(익명 기기 id, 개발자 회원 기록이면 null) · judges · answers 가 붙는다(2026-11-26 syung PR #177)
 export interface RideSummary {
   ride:string; mode:string; line:string | null; from:number; to:number; stops:number; gps:number; taps:Tap[];
   sensor?:SensorEvent[]; series?:[number, number][];
+  source?:string; device?:string | null; judges?:Judge[]; answers?:Answer[];
 }
 export interface Shot { at:number; type:string; bytes:number; note:string | null }
 export interface Recent { day?:string; days?:string[]; rides?:RideSummary[]; shots?:Shot[] }
@@ -125,3 +129,18 @@ export const dayLabel = (day:string, days:string[]):string => `${Number(day.slic
 export const rideTitle = (ride:RideSummary):string => `${ride.mode === 'bus' ? '버스' : '지하철'} ${ride.line || ''}`;
 export const rideLine = (ride:RideSummary):string => `${fmt(ride.from)}~${fmt(ride.to)} · 도착 ${ride.stops}번 · GPS ${ride.gps}점${ride.series ? ' · 센서 있음' : ''}`;
 export const shotLine = (shot:Shot):string => `${new Date(shot.at).toLocaleString('ko-KR')} · ${shot.type} · ${Math.round(shot.bytes / 1024)}KB`;
+
+// ---- 타고 가기(지도 기록) ----
+export const mapRides = (rides:RideSummary[]):RideSummary[] => rides.filter(ride => ride.source === 'map');
+// 기기 id 는 앞 6자만 보인다
+export const deviceLabel = (device:string | null | undefined):string => device ? `기기 ${device.slice(0, 6)}` : '회원 기록';
+const ANSWER_LABELS:Record<string, string> = { rode: '탔음', not_rode: '안 탔음' };   // 지도 웹 ride_card 의 정답 단추 글자
+// 판정 흐름 · 정답을 시각 차례로 한 표에 → [시각, 판정 | 정답, 값]. 칸이 없는 옛 기록은 빈 표
+export function alongRows(ride:RideSummary):string[][] {
+  const rows = [
+    ...(ride.judges || []).map(judge => ({ t: judge.t, kind: '판정', text: judge.state || '—' })),
+    ...(ride.answers || []).map(answer => ({ t: answer.t, kind: '정답', text: (answer.answer && ANSWER_LABELS[answer.answer]) || answer.answer || '—' })),
+  ];
+  rows.sort((left, right) => left.t - right.t);
+  return rows.map(row => [fmt(row.t), row.kind, row.text]);
+}

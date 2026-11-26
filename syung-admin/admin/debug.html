@@ -35,7 +35,7 @@ html[data-theme=dark] .mast{background:#1b1c1f;color:var(--syung);box-shadow:0 2
 .mast a.on{background:var(--syung-ink);color:var(--syung)}
 html[data-theme=dark] .mast a.on{background:var(--syung);color:var(--syung-ink)}
 @media (max-width:400px){.mast-in{gap:6px}.mast h1{font-size:19px}.mast a,.mast button{padding:7px 10px}}
-nav.tabs{max-width:960px;margin:12px auto 0;padding:0 16px;display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+nav.tabs{max-width:960px;margin:12px auto 0;padding:0 16px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
 nav.tabs button{height:40px;border:0;border-radius:12px;background:var(--control);color:var(--secondary);font:700 14px inherit;cursor:pointer}
 nav.tabs button[aria-selected=true]{background:var(--ink);color:var(--board)}
 main{max-width:960px;margin:0 auto;padding:14px 16px calc(48px + env(safe-area-inset-bottom));display:grid;gap:14px}
@@ -95,6 +95,7 @@ textarea{min-height:80px;resize:vertical}
   <button role="tab" id="tab-ride" aria-selected="true" aria-controls="ride">탑승 기록</button>
   <button role="tab" id="tab-shot" aria-selected="false" aria-controls="shot">캡처 올리기</button>
   <button role="tab" id="tab-list" aria-selected="false" aria-controls="list">올린 것</button>
+  <button role="tab" id="tab-along" aria-selected="false" aria-controls="along">타고 가기</button>
 </nav>
 <main>
   <p class="login" id="login" hidden>로그인이 풀렸어요. <a href="/admin/login.html?next=%2Fadmin%2Fdebug">다시 로그인</a>하면 쌓아 둔 기록을 이어서 보내요.</p>
@@ -159,6 +160,11 @@ textarea{min-height:80px;resize:vertical}
   <section id="list" role="tabpanel" hidden>
     <div class="box"><div class="row day-row"><h2>탑승 기록</h2><select id="ride-day" aria-label="날짜"></select></div><ul class="list" id="rides"></ul></div>
     <div class="box"><h2>최근 캡처</h2><ul class="list" id="shots"></ul></div>
+  </section>
+
+  <!-- 4. 타고 가기 -->
+  <section id="along" role="tabpanel" hidden>
+    <div class="box"><div class="row day-row"><h2>타고 가기 기록</h2><select id="along-day" aria-label="날짜"></select></div><ul class="list" id="along-rides"></ul></div>
   </section>
 </main>
 <script type="module" src="./debug.mjs"></script>   <!-- 화면은 admin/debug.tsx(Preact) — 빌드가 debug.mjs 로 낸다 -->

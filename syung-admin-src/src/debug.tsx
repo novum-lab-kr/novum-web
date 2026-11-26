@@ -7,7 +7,7 @@ import { createRef, render } from 'preact';
 import type { TargetedEvent } from 'preact';
 import { useEffect, useRef } from 'preact/hooks';
 import {
-  batchSize, busLabel, closeCell, compareRows, dayLabel, elapsed, fmt, lineGraph, lineStations, motionChunks, nearest, rideLine, rideTitle, ridingView, shotLine,
+  alongRows, batchSize, busLabel, closeCell, compareRows, dayLabel, deviceLabel, elapsed, fmt, lineGraph, lineStations, mapRides, motionChunks, nearest, rideLine, rideTitle, ridingView, shotLine,
 } from './debug_data.mts';
 import type { BusRoute, MotionCell, Recent, Ride, RideEvent, RideSummary, RidingView, Station } from './debug_data.mts';
 
@@ -24,7 +24,7 @@ const store = {
 };
 const QUEUE = 'syung-debug-queue', RIDE = 'syung-debug-ride';
 
-type Tab = 'ride' | 'shot' | 'list';
+type Tab = 'ride' | 'shot' | 'list' | 'along';
 interface View {
   login:boolean; tab:Tab;
   lines:string[] | null; linesFailed:boolean; line:string; station:string; train:string; busno:string; vehicle:string;
@@ -244,18 +244,18 @@ async function send() {
 
 // ---------- 올린 것 ----------
 let loads = 0;   // 받을 때마다 늘려 목록 · 그래프를 새로 만든다(옛 innerHTML 비우기)
-async function loadRecent() {
-  const pick = dayRef.current?.value;
+// 날짜는 고른 칸에서(타고 가기 탭의 날짜 칸이 넘긴다) · 없으면 올린 것 탭의 날짜 칸
+async function loadRecent(pick = dayRef.current?.value) {
   const response = await fetch(`/api/admin/debug/recent${pick ? `?day=${pick}` : ''}`, { credentials: 'same-origin' });
   if (response.status === 401) return showLogin(true);
   set({ recent: { ...await response.json() as Recent, load: ++loads } });
 }
-function openTab(tab:Tab) { set({ tab }); if (tab === 'list') loadRecent() }
+function openTab(tab:Tab) { set({ tab }); if (tab === 'list' || tab === 'along') loadRecent() }
 
 // ---------- 그리기 ----------
 function Tabs() {
   const tab = (id:Tab, label:string) => <button role="tab" id={`tab-${id}`} aria-selected={view.tab === id} aria-controls={id} onClick={() => openTab(id)}>{label}</button>;
-  return <>{tab('ride', '탑승 기록')}{tab('shot', '캡처 올리기')}{tab('list', '올린 것')}</>;
+  return <>{tab('ride', '탑승 기록')}{tab('shot', '캡처 올리기')}{tab('list', '올린 것')}{tab('along', '타고 가기')}</>;
 }
 
 // 센서 그래프(uPlot, vendor/uplot): 가운데 = 힘(위 초록 출발 가속 · 아래 빨강 브레이크), 세로 실선 = 내가 누름, 아래 가장자리 △ = 센서가 잡은 것(초록 출발 · 빨강 도착)
@@ -331,13 +331,13 @@ function RideItem({ ride }:{ ride:RideSummary }) {
 function Recently() {
   const recent = view.recent;
   if (!recent) return <>
-    <div class="box"><div class="row day-row"><h2>탑승 기록</h2><select id="ride-day" aria-label="날짜" ref={dayRef} onChange={loadRecent}></select></div><ul class="list" id="rides"></ul></div>
+    <div class="box"><div class="row day-row"><h2>탑승 기록</h2><select id="ride-day" aria-label="날짜" ref={dayRef} onChange={() => loadRecent()}></select></div><ul class="list" id="rides"></ul></div>
     <div class="box"><h2>최근 캡처</h2><ul class="list" id="shots"></ul></div>
   </>;
   const { day = '', days = [], rides = [], shots = [], load } = recent;
   return <>
     <div class="box"><div class="row day-row"><h2>탑승 기록</h2>
-      <select id="ride-day" aria-label="날짜" ref={dayRef} onChange={loadRecent}>{days.map(each => <option key={`${load}:${each}`} value={each} selected={each === day}>{dayLabel(each, days)}</option>)}</select></div>
+      <select id="ride-day" aria-label="날짜" ref={dayRef} onChange={() => loadRecent()}>{days.map(each => <option key={`${load}:${each}`} value={each} selected={each === day}>{dayLabel(each, days)}</option>)}</select></div>
       <ul class="list" id="rides">{rides.length
         ? rides.map((ride, index) => <RideItem key={`${load}:${index}`} ride={ride} />)
         : <li class="muted">{day === days[0] ? '오늘은' : '이날은'} 기록이 없어요.</li>}</ul></div>
@@ -345,6 +345,27 @@ function Recently() {
       ? shots.map(shot => <li><b>{shot.note || '(메모 없음)'}</b><br /><small>{shotLine(shot)}</small></li>)
       : <li class="muted">아직 없어요.</li>}</ul></div>
   </>;
+}
+
+// 지도 타고 가기 탑승(source "map")만: 기기 앞 6자 · 판정 흐름 · 정답을 시각 차례로
+function AlongItem({ ride }:{ ride:RideSummary }) {
+  const rows = alongRows(ride);
+  return <li><b>{rideTitle(ride)}</b> <small>· {deviceLabel(ride.device)}</small><br /><small>{rideLine(ride)}</small>
+    {rows.length > 0
+      ? <table class="cmp"><thead><tr><th>시각</th><th></th><th>값</th></tr></thead>
+        <tbody>{rows.map(row => <tr>{row.map(text => <td>{text}</td>)}</tr>)}</tbody></table>
+      : <p class="muted">판정 · 정답 기록이 없어요.</p>}
+  </li>;
+}
+
+function Along() {
+  const { day = '', days = [], rides = [], load = 0 } = view.recent || {};
+  const along = mapRides(rides);
+  return <div class="box"><div class="row day-row"><h2>타고 가기 기록</h2>
+    <select id="along-day" aria-label="날짜" onChange={event => loadRecent(event.currentTarget.value)}>{days.map(each => <option key={`${load}:${each}`} value={each} selected={each === day}>{dayLabel(each, days)}</option>)}</select></div>
+    <ul class="list" id="along-rides">{view.recent && (along.length
+      ? along.map(ride => <AlongItem key={`${load}:${ride.device || ''}:${ride.ride}`} ride={ride} />)
+      : <li class="muted">{day === days[0] ? '오늘은' : '이날은'} 타고 가기 기록이 없어요.</li>)}</ul></div>;
 }
 
 function DebugPage() {
@@ -413,6 +434,11 @@ function DebugPage() {
     {/* 3. 올린 것 */}
     <section id="list" role="tabpanel" hidden={view.tab !== 'list'}>
       <Recently />
+    </section>
+
+    {/* 4. 타고 가기 */}
+    <section id="along" role="tabpanel" hidden={view.tab !== 'along'}>
+      <Along />
     </section>
   </>;
 }

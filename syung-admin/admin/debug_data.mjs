@@ -119,4 +119,27 @@ var dayLabel = (day, days) => `${Number(day.slice(4, 6))}월 ${Number(day.slice(
 var rideTitle = (ride) => `${ride.mode === "bus" ? "버스" : "지하철"} ${ride.line || ""}`;
 var rideLine = (ride) => `${fmt(ride.from)}~${fmt(ride.to)} · 도착 ${ride.stops}번 · GPS ${ride.gps}점${ride.series ? " · 센서 있음" : ""}`;
 var shotLine = (shot) => `${new Date(shot.at).toLocaleString("ko-KR")} · ${shot.type} · ${Math.round(shot.bytes / 1024)}KB`;
-export { batchSize, busLabel, closeCell, compareRows, dayLabel, elapsed, fmt, lineGraph, lineStations, motionChunks, nearest, rideLine, rideTitle, ridingView, shotLine };
+var mapRides = (rides) => rides.filter((ride) => ride.source === "map");
+var deviceLabel = (device) => device ? `기기 ${device.slice(0, 6)}` : "회원 기록";
+var ANSWER_LABELS = {
+	rode: "탔음",
+	not_rode: "안 탔음"
+};
+function alongRows(ride) {
+	const rows = [...(ride.judges || []).map((judge) => ({
+		t: judge.t,
+		kind: "판정",
+		text: judge.state || "—"
+	})), ...(ride.answers || []).map((answer) => ({
+		t: answer.t,
+		kind: "정답",
+		text: answer.answer && ANSWER_LABELS[answer.answer] || answer.answer || "—"
+	}))];
+	rows.sort((left, right) => left.t - right.t);
+	return rows.map((row) => [
+		fmt(row.t),
+		row.kind,
+		row.text
+	]);
+}
+export { alongRows, batchSize, busLabel, closeCell, compareRows, dayLabel, deviceLabel, elapsed, fmt, lineGraph, lineStations, mapRides, motionChunks, nearest, rideLine, rideTitle, ridingView, shotLine };

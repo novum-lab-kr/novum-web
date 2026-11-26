@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
   elapsed, lineGraph, lineStations, nearest, batchSize, closeCell, motionChunks, ridingView, busLabel, compareRows, dayLabel, rideTitle, rideLine, fmt,
+  mapRides, deviceLabel, alongRows,
 } from '../src/debug_data.mts';
 
 // 관리 화면 '디버깅'의 셈(admin/debug.tsx 가 그린다) — 옛 인라인 스크립트와 같은 글자
@@ -59,4 +60,19 @@ test('디버깅: 날짜 · 탑승 줄', () => {
   const ride = { ride: 'r', mode: 'bus', line: null, from: 0, to: 60_000, stops: 3, gps: 12, taps: [] };
   assert.equal(rideTitle(ride), '버스 '); assert.equal(rideTitle({ ...ride, mode: 'subway', line: '2호선' }), '지하철 2호선');
   assert.equal(rideLine(ride), `${fmt(0)}~${fmt(60_000)} · 도착 3번 · GPS 12점`); assert.ok(rideLine({ ...ride, series: [] }).endsWith(' · 센서 있음'));
+});
+
+test('디버깅: 타고 가기(지도 기록) — 거르기 · 기기 앞 6자 · 판정 · 정답 시각 차례 · 옛 기록', () => {
+  const at = Date.UTC(2026, 10, 26, 1, 0, 0);
+  const base = { mode: 'subway', line: '2호선', from: at, to: at, stops: 0, gps: 0, taps: [] };
+  const map = { ...base, ride: 'map-1', source: 'map', device: 'abcdef0123456789',
+    judges: [{ t: at, state: 'boarding' }, { t: at + 60_000, state: 'riding' }, { t: at + 90_000, state: null }],
+    answers: [{ t: at + 30_000, answer: 'rode' }, { t: at + 120_000, answer: 'not_rode' }] };
+  const page = { ...base, ride: 'r1' };
+  assert.deepEqual(mapRides([page, map, { ...map, device: null }]).map(ride => ride.device), ['abcdef0123456789', null]);
+  assert.equal(deviceLabel('abcdef0123456789'), '기기 abcdef'); assert.equal(deviceLabel(null), '회원 기록'); assert.equal(deviceLabel(undefined), '회원 기록');
+  assert.deepEqual(alongRows(map), [[fmt(at), '판정', 'boarding'], [fmt(at + 30_000), '정답', '탔음'], [fmt(at + 60_000), '판정', 'riding'],
+    [fmt(at + 90_000), '판정', '—'], [fmt(at + 120_000), '정답', '안 탔음']]);
+  assert.deepEqual(alongRows({ ...map, judges: undefined, answers: undefined }), []);   // 칸이 없는 옛 기록
+  assert.deepEqual(alongRows(page), []);
 });

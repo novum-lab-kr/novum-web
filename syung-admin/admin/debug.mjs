@@ -1,6 +1,6 @@
 import { Fragment as M, createRef as $, render as K } from "./npm/preact/dist/preact.mjs";
 import { useEffect as A, useRef as T } from "./npm/preact/hooks/dist/hooks.mjs";
-import { batchSize, busLabel, closeCell, compareRows, dayLabel, elapsed, fmt, lineGraph, lineStations, motionChunks, nearest, rideLine, rideTitle, ridingView, shotLine } from "./debug_data.mjs";
+import { alongRows, batchSize, busLabel, closeCell, compareRows, dayLabel, deviceLabel, elapsed, fmt, lineGraph, lineStations, mapRides, motionChunks, nearest, rideLine, rideTitle, ridingView, shotLine } from "./debug_data.mjs";
 import { jsx as a } from "./npm/preact/jsx-runtime/dist/jsxRuntime.mjs";
 // src/debug.tsx
 var store = {
@@ -505,8 +505,7 @@ async function send() {
 	}
 }
 var loads = 0;
-async function loadRecent() {
-	const pick = dayRef.current?.value;
+async function loadRecent(pick = dayRef.current?.value) {
 	const response = await fetch(`/api/admin/debug/recent${pick ? `?day=${pick}` : ""}`, { credentials: "same-origin" });
 	if (response.status === 401) return showLogin(true);
 	set({ recent: {
@@ -516,7 +515,7 @@ async function loadRecent() {
 }
 function openTab(tab) {
 	set({ tab });
-	if (tab === "list") loadRecent();
+	if (tab === "list" || tab === "along") loadRecent();
 }
 function Tabs() {
 	const tab = (id, label) => /* @__PURE__ */ a("button", {
@@ -530,7 +529,8 @@ function Tabs() {
 	return /* @__PURE__ */ a(M, { children: [
 		tab("ride", "탑승 기록"),
 		tab("shot", "캡처 올리기"),
-		tab("list", "올린 것")
+		tab("list", "올린 것"),
+		tab("along", "타고 가기")
 	] });
 }
 function MotionChart({ ride }) {
@@ -713,7 +713,7 @@ function Recently() {
 				id: "ride-day",
 				"aria-label": "날짜",
 				ref: dayRef,
-				onChange: loadRecent
+				onChange: () => loadRecent()
 			})]
 		}), /* @__PURE__ */ a("ul", {
 			class: "list",
@@ -735,7 +735,7 @@ function Recently() {
 				id: "ride-day",
 				"aria-label": "날짜",
 				ref: dayRef,
-				onChange: loadRecent,
+				onChange: () => loadRecent(),
 				children: days.map((each) => /* @__PURE__ */ a("option", {
 					value: each,
 					selected: each === day,
@@ -765,6 +765,54 @@ function Recently() {
 			})
 		})]
 	})] });
+}
+function AlongItem({ ride }) {
+	const rows = alongRows(ride);
+	return /* @__PURE__ */ a("li", { children: [
+		/* @__PURE__ */ a("b", { children: rideTitle(ride) }),
+		" ",
+		/* @__PURE__ */ a("small", { children: ["· ", deviceLabel(ride.device)] }),
+		/* @__PURE__ */ a("br", {}),
+		/* @__PURE__ */ a("small", { children: rideLine(ride) }),
+		rows.length > 0 ? /* @__PURE__ */ a("table", {
+			class: "cmp",
+			children: [/* @__PURE__ */ a("thead", { children: /* @__PURE__ */ a("tr", { children: [
+				/* @__PURE__ */ a("th", { children: "시각" }),
+				/* @__PURE__ */ a("th", {}),
+				/* @__PURE__ */ a("th", { children: "값" })
+			] }) }), /* @__PURE__ */ a("tbody", { children: rows.map((row) => /* @__PURE__ */ a("tr", { children: row.map((text) => /* @__PURE__ */ a("td", { children: text })) })) })]
+		}) : /* @__PURE__ */ a("p", {
+			class: "muted",
+			children: "판정 · 정답 기록이 없어요."
+		})
+	] });
+}
+function Along() {
+	const { day = "", days = [], rides = [], load = 0 } = view.recent || {};
+	const along = mapRides(rides);
+	return /* @__PURE__ */ a("div", {
+		class: "box",
+		children: [/* @__PURE__ */ a("div", {
+			class: "row day-row",
+			children: [/* @__PURE__ */ a("h2", { children: "타고 가기 기록" }), /* @__PURE__ */ a("select", {
+				id: "along-day",
+				"aria-label": "날짜",
+				onChange: (event) => loadRecent(event.currentTarget.value),
+				children: days.map((each) => /* @__PURE__ */ a("option", {
+					value: each,
+					selected: each === day,
+					children: dayLabel(each, days)
+				}, `${load}:${each}`))
+			})]
+		}), /* @__PURE__ */ a("ul", {
+			class: "list",
+			id: "along-rides",
+			children: view.recent && (along.length ? along.map((ride) => /* @__PURE__ */ a(AlongItem, { ride }, `${load}:${ride.device || ""}:${ride.ride}`)) : /* @__PURE__ */ a("li", {
+				class: "muted",
+				children: [day === days[0] ? "오늘은" : "이날은", " 타고 가기 기록이 없어요."]
+			}))
+		})]
+	});
 }
 function DebugPage() {
 	const text = view.ridingText;
@@ -1090,6 +1138,12 @@ function DebugPage() {
 			role: "tabpanel",
 			hidden: view.tab !== "list",
 			children: /* @__PURE__ */ a(Recently, {})
+		}),
+		/* @__PURE__ */ a("section", {
+			id: "along",
+			role: "tabpanel",
+			hidden: view.tab !== "along",
+			children: /* @__PURE__ */ a(Along, {})
 		})
 	] });
 }
